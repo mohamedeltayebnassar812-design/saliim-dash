@@ -907,13 +907,16 @@
           </span>
         </div>
 
-        <button type="submit" class="w-full py-3.5 bg-[#00C2CB] active:bg-[#00A8B0] text-slate-950 font-black rounded-xl text-sm shadow-lg shadow-[#00C2CB]/25 flex items-center justify-center gap-1.5 transition-all">
-          <span>تأكيد الموعد عبر الواتساب</span>
-          <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <button type="submit" id="submit-btn" class="w-full py-4 bg-[#00C2CB] hover:bg-[#00D8E2] active:bg-[#00A8B0] text-slate-950 font-black rounded-xl text-sm shadow-xl shadow-[#00C2CB]/25 flex items-center justify-center gap-2 transition-all transform active:scale-98">
+          <span>تأكيد الاشتراك والدفع أونلاين ($199)</span>
+          <i data-lucide="credit-card" class="w-4 h-4"></i>
         </button>
 
+        <p class="text-center text-[10px] text-slate-400 mt-2 flex items-center justify-center gap-1">
+          <i data-lucide="lock" class="w-3 h-3 text-[#00C2CB]"></i>
+          <span>دفع آمن ومشفر 100% يدعم Apple Pay والبطاقات البنكية</span>
+        </p>
       </form>
-
     </div>
   </div>
 
@@ -1004,10 +1007,17 @@
       else box.classList.add('hidden');
     }
 
+    // PAYMENT CHECKOUT CONFIGURATION
+    // يمكنك تغيير هذا الرابط في أي وقت برابط Stripe أو MyFatoorah أو Tap المخصص لك
+    const CHECKOUT_PAYMENT_URL = "https://buy.stripe.com/test_placeholder_saliim_199";
+
     function handleBookingSubmit(e) {
       e.preventDefault();
-      const name = document.getElementById('client_name').value;
-      const phone = document.getElementById('client_phone').value;
+      const submitBtn = document.getElementById('submit-btn');
+      const originalContent = submitBtn.innerHTML;
+      
+      const name = document.getElementById('client_name').value.trim();
+      const phone = document.getElementById('client_phone').value.trim();
       const goalSelect = document.getElementById('modal_goal');
       let goal = goalSelect.options[goalSelect.selectedIndex].text;
       if (goalSelect.value === 'other') {
@@ -1015,24 +1025,28 @@
         if (customText) goal = 'هدف مخصص: ' + customText;
       }
 
+      // إظهار حالة التحميل للعميل
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="inline-block animate-spin mr-2 border-2 border-slate-950 border-t-transparent rounded-full w-4 h-4"></span>
+        <span>جاري تحويلك لبوابة الدفع الآمنة...</span>
+      `;
+
+      // 1. تسجيل بيانات العميل في Google Sheets أولاً لضمان عدم ضياع أي عميل
       sendDataToGoogleSheets({
-        form_type: "حجز موبايل لباقة Precision",
+        form_type: "شراء باقة Precision أونلاين ($199)",
         client_name: name,
         client_phone: phone,
         client_goal: goal,
-        price: "$199"
+        price: "$199",
+        status: "في انتظار إتمام الدفع أونلاين"
       });
 
-      const waText = encodeURIComponent(
-        'مرحباً د. أحمد الخطيب، أود حجز باقة Precision للمتابعة الشهرية بالخصم المبكر (199$).\n\n' +
-        'الاسم: ' + name + '\n' +
-        'الهاتف: ' + phone + '\n' +
-        'الهدف: ' + goal + '\n\n' +
-        'تتضمن: مكالمة 30 دقيقة مع د. أحمد + متابعة ختامية + 8 متابعات مع أخصائي التغذية والكوتش + 5 رسائل للتيم.'
-      );
-      const waUrl = 'https://api.whatsapp.com/send?phone=201000000000&text=' + waText;
-      window.open(waUrl, '_blank');
-      closeBookingModal();
+      // 2. توجيه العميل فوراً إلى صفحة الشيك أوت والدفع
+      setTimeout(() => {
+        // يمكنك تمرير إيميل أو رقم العميل كـ query parameters إذا دعمتها بوابة الدفع
+        window.location.href = CHECKOUT_PAYMENT_URL;
+      }, 700);
     }
   </script>
 </body>

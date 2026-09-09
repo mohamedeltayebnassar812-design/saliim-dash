@@ -280,23 +280,23 @@
             كلّ حمية فشلت معك سابقاً كانت تحارب كيمياء جسمك وهرموناتك بدلاً من أن تفهمها. هنا نبدأ بشكل صحيح من جسمك أنت: من حرقك، وهرموناتك، ونومك، وحتى أدويتك.
           </p>
 
-          <!-- Social Proof Stats Badges (Animated Counters) -->
+          <!-- Social Proof Stats Badges (Smooth 60fps Animated Counters) -->
           <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg mx-auto lg:mx-0 pt-2" id="hero-stats">
-            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all shadow-md">
               <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none flex items-center justify-center">
-                <span>+</span><span class="stat-counter" data-target="9" data-suffix="M">0</span>
+                <span>+</span><span class="stat-counter" data-target="9" data-suffix="M" data-decimals="0">0</span>
               </div>
               <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">متابع على المنصات</div>
             </div>
-            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all shadow-md">
               <div class="text-2xl sm:text-3xl font-black text-teal-300 leading-none flex items-center justify-center">
-                <span>+</span><span class="stat-counter" data-target="10" data-suffix=",000">0</span>
+                <span>+</span><span class="stat-counter" data-target="10000" data-format="comma" data-suffix="">0</span>
               </div>
               <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">حالة ناجحة وملتزمة</div>
             </div>
-            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all shadow-md">
               <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none flex items-center justify-center">
-                <span>+</span><span class="stat-counter" data-target="15" data-suffix=" سنة">0</span>
+                <span>+</span><span class="stat-counter" data-target="15" data-suffix=" سنة" data-decimals="0">0</span>
               </div>
               <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">خبرة صيدلانية وسريرية</div>
             </div>
@@ -1818,9 +1818,9 @@
       }
     }
 
-    // ==========================================
-    // 8. ANIMATED NUMBER COUNTERS (On Scroll)
-    // ==========================================
+    // ==========================================================
+    // 8. ULTRA-SMOOTH 60FPS ANIMATED NUMBER COUNTERS (easeOutQuart)
+    // ==========================================================
     function initStatsCounter() {
       const statsSection = document.getElementById('hero-stats');
       if (!statsSection) return;
@@ -1830,33 +1830,60 @@
         entries.forEach(entry => {
           if (entry.isIntersecting && !started) {
             started = true;
-            runAllCounters();
+            runAllCountersSmooth();
           }
         });
-      }, { threshold: 0.25 });
+      }, { threshold: 0.15 });
 
       observer.observe(statsSection);
     }
 
-    function runAllCounters() {
-      const counters = document.querySelectorAll('.stat-counter');
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
-        const suffix = counter.getAttribute('data-suffix') || '';
-        let count = 0;
-        const speed = Math.max(20, Math.floor(1200 / (target || 1)));
+    function easeOutQuart(x) {
+      return 1 - Math.pow(1 - x, 4);
+    }
 
-        const updateCount = () => {
-          count++;
-          counter.innerText = count + suffix;
-          if (count < target) {
-            setTimeout(updateCount, speed);
+    function runAllCountersSmooth() {
+      const counters = document.querySelectorAll('.stat-counter');
+      const duration = 1800; // 1.8 seconds perfectly smooth duration
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+
+        counters.forEach(counter => {
+          const target = parseFloat(counter.getAttribute('data-target') || '0');
+          const suffix = counter.getAttribute('data-suffix') || '';
+          const isComma = counter.getAttribute('data-format') === 'comma';
+          
+          const currentVal = Math.floor(easedProgress * target);
+
+          if (isComma) {
+            counter.innerText = currentVal.toLocaleString('en-US') + suffix;
           } else {
-            counter.innerText = target + suffix;
+            counter.innerText = currentVal + suffix;
           }
-        };
-        updateCount();
-      });
+        });
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          // Guarantee final values are exact
+          counters.forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target') || '0');
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const isComma = counter.getAttribute('data-format') === 'comma';
+            if (isComma) {
+              counter.innerText = target.toLocaleString('en-US') + suffix;
+            } else {
+              counter.innerText = target + suffix;
+            }
+          });
+        }
+      }
+
+      requestAnimationFrame(update);
     }
 
     // ==========================================

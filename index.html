@@ -597,45 +597,43 @@
       </div>
 
       <!-- Touch/Mouse Interactive Slider Container -->
-      <div class="max-w-2xl mx-auto">
-        <div class="ba-slider-container" id="ba-container">
+      <div class="max-w-[460px] mx-auto">
+        <div class="relative w-full aspect-square rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl user-select-none select-none touch-none cursor-ew-resize" id="ba-container" style="direction: ltr;">
           
-          <!-- Base Image (Underneath): Before / Traditional Diet -->
-          <img src="assets/food_slider_plate.webp" alt="الحمية التقليدية vs أسلوب حياة سليم" class="ba-img-base" id="ba-base-img">
+          <!-- Base Image (Left: Traditional Diet / الحرمان) -->
+          <img src="assets/meal_before_diet.webp" alt="دايت الحرمان التقليدي" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
           
-          <!-- Top Overlay Image (Saliim Lifestyle) -->
-          <div class="ba-overlay-wrap" id="ba-overlay">
-            <img src="assets/food_slider_plate.webp" alt="أسلوب حياة سليم" class="ba-img-overlay" id="ba-overlay-img" style="filter: saturate(1.2) contrast(1.05);">
-            
-            <!-- Badge Inside Left -->
-            <div class="absolute top-4 right-4 bg-[#00C2CB] text-slate-950 px-3 py-1 rounded-full font-black text-xs shadow-md z-10">
-              ✓ أسلوب حياة سليم
+          <!-- Clipped Image (Right: Saliim Lifestyle / وجبات سليم) -->
+          <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none" id="ba-clip-wrap" style="clip-path: inset(0 0 0 50%);">
+            <img src="assets/meal_after_saliim.webp" alt="أسلوب حياة سليم" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
+          </div>
+
+          <!-- Vertical Divider Line & Handle -->
+          <div class="absolute top-0 bottom-0 pointer-events-none z-20" id="ba-divider-line" style="left: 50%; transform: translateX(-50%); width: 3px; background: #FFFFFF; box-shadow: 0 0 20px rgba(0,0,0,0.8);">
+            <!-- Handle Circle -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white text-slate-900 shadow-2xl flex items-center justify-center border-2 border-slate-300">
+              <i data-lucide="chevrons-left-right" class="w-5 h-5 text-slate-900"></i>
             </div>
           </div>
 
-          <!-- Badge Inside Right (Base) -->
-          <div class="absolute top-4 left-4 bg-slate-900/90 text-slate-300 border border-slate-700 px-3 py-1 rounded-full font-bold text-xs shadow-md z-10">
-            ✕ دايت الحرمان التقليدي
+          <!-- Badges inside slider -->
+          <div class="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/20 text-slate-200 font-bold text-[11px] pointer-events-none shadow-lg" style="direction: rtl;">
+            ✕ دايت الحرمان
           </div>
-
-          <!-- Divider Handle -->
-          <div class="ba-handle" id="ba-handle">
-            <i data-lucide="chevrons-left-right" class="w-5 h-5 text-slate-900"></i>
+          <div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-[#00C2CB] text-slate-950 font-black text-[11px] pointer-events-none shadow-lg" style="direction: rtl;">
+            ✓ أسلوب حياة سليم
           </div>
-
-          <!-- Native Slider Input -->
-          <input type="range" min="0" max="100" value="50" class="ba-range-input" id="ba-slider" oninput="updateSlider(this.value)">
         </div>
 
         <!-- Explanatory Comparison Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 text-xs text-slate-300">
-          <div class="p-4 rounded-2xl bg-red-950/20 border border-red-900/30 space-y-1.5">
-            <span class="font-bold text-red-400 block text-sm">✕ دايت الحرمان الشائع:</span>
-            <p class="leading-relaxed text-slate-400">قطع عنيف للنشويات والدهون، أطعمة مسلوقة ومملة، هبوط طاقة وصداع دائم، وارتداد سريع للوزن بعد التوقف.</p>
+        <div class="grid grid-cols-2 gap-3 mt-4 text-xs text-slate-300">
+          <div class="p-3.5 rounded-2xl bg-red-950/20 border border-red-900/30 text-right">
+            <span class="font-bold text-red-400 block text-xs">✕ دايت الحرمان الشائع:</span>
+            <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">أكل مسلوق وممل، هبوط طاقة دائم، وارتداد سريع للوزن بعد التوقف.</p>
           </div>
-          <div class="p-4 rounded-2xl bg-teal-950/30 border border-[#00C2CB]/40 space-y-1.5">
-            <span class="font-bold text-[#00C2CB] block text-sm">✓ طريقة سليم المعتمدة:</span>
-            <p class="leading-relaxed text-slate-300">وجبات مشبعة وشهية من مطبخك، كميات بروتين وألياف كافية، مرونة في العزومات والمطاعم، وتثبيت مستمر للنتائج.</p>
+          <div class="p-3.5 rounded-2xl bg-teal-950/30 border border-[#00C2CB]/40 text-right">
+            <span class="font-bold text-[#00C2CB] block text-xs">✓ طريقة سليم المعتمدة:</span>
+            <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">وجبات متكاملة ولذيذة من مطبخك، شبع وطاقة، وتثبيت مستمر للنتائج.</p>
           </div>
         </div>
 
@@ -1490,26 +1488,60 @@
       if (menu) menu.classList.toggle('hidden');
     }
 
-    // 3. Plate Comparison Slider Logic
-    function updateSlider(val) {
-      const overlayWrap = document.getElementById('ba-overlay');
-      const handle = document.getElementById('ba-handle');
+    // 3. Plate Comparison Slider Logic (Ultra-smooth 60fps Pointer & Touch Drag)
+    function initSlider() {
       const container = document.getElementById('ba-container');
-      const overlayImg = document.getElementById('ba-overlay-img');
-      if (!container || !overlayWrap || !handle) return;
-      const containerWidth = container.offsetWidth;
-      overlayWrap.style.width = val + '%';
-      handle.style.left = val + '%';
-      if (overlayImg) {
-        overlayImg.style.width = containerWidth + 'px';
-        overlayImg.style.maxWidth = 'none';
+      const clipWrap = document.getElementById('ba-clip-wrap');
+      const line = document.getElementById('ba-divider-line');
+      if (!container || !clipWrap || !line) return;
+
+      let isDragging = false;
+
+      function updatePos(clientX) {
+        const rect = container.getBoundingClientRect();
+        let x = clientX - rect.left;
+        if (x < 0) x = 0;
+        if (x > rect.width) x = rect.width;
+        const percent = (x / rect.width) * 100;
+        clipWrap.style.clipPath = `inset(0 0 0 ${percent}%)`;
+        line.style.left = `${percent}%`;
       }
+
+      function onPointerDown(e) {
+        isDragging = true;
+        try { container.setPointerCapture(e.pointerId); } catch(err) {}
+        updatePos(e.clientX);
+      }
+
+      function onPointerMove(e) {
+        if (!isDragging) return;
+        updatePos(e.clientX);
+      }
+
+      function onPointerUp(e) {
+        isDragging = false;
+        try { container.releasePointerCapture(e.pointerId); } catch(err) {}
+      }
+
+      container.addEventListener('pointerdown', onPointerDown);
+      container.addEventListener('pointermove', onPointerMove);
+      container.addEventListener('pointerup', onPointerUp);
+      container.addEventListener('pointercancel', onPointerUp);
+
+      // Touch events fallback
+      container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        if (e.touches && e.touches[0]) updatePos(e.touches[0].clientX);
+      }, { passive: true });
+      container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        if (e.touches && e.touches[0]) updatePos(e.touches[0].clientX);
+      }, { passive: true });
+      container.addEventListener('touchend', () => { isDragging = false; });
+      container.addEventListener('touchcancel', () => { isDragging = false; });
     }
-    window.addEventListener('load', () => updateSlider(50));
-    window.addEventListener('resize', () => {
-      const s = document.getElementById('ba-slider');
-      if (s) updateSlider(s.value);
-    });
+    window.addEventListener('DOMContentLoaded', initSlider);
+    window.addEventListener('load', initSlider);
 
     // 4. FAQ Accordion Logic
     function toggleFaq(num) {

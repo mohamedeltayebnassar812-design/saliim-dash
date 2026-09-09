@@ -216,6 +216,7 @@
         <a href="#packages" class="hover:text-[#4EB098] transition-colors">الباقات والاشتراكات</a>
         <a href="#app" class="hover:text-[#4EB098] transition-colors">تطبيق سليم</a>
         <a href="#supplements" class="hover:text-[#4EB098] transition-colors">المكملات</a>
+        <a href="#quiz" class="hover:text-[#4EB098] transition-colors flex items-center gap-1 text-[#4EB098] font-bold"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> حاسبة جسمك</a>
         <a href="#faq" class="hover:text-[#4EB098] transition-colors">أسئلة شائعة</a>
       </div>
 
@@ -243,6 +244,7 @@
       <a href="#app" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">تطبيق سليم الذكي</a>
       <a href="#supplements" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">ترشيحات المكملات (iHerb)</a>
       <a href="#testimonials" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">آراء المتابعين</a>
+      <a href="#quiz" onclick="toggleMobileMenu()" class="block py-2 text-[#4EB098] font-black flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> حاسبة جسمك والتوصية الطبية</a>
       <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">الأسئلة الأكثر شيوعاً</a>
       <div class="pt-3 border-t border-slate-800">
         <button onclick="toggleMobileMenu(); openBookingModal('private', 'باقة المتابعة الخاصة (Private)', '$199');" class="w-full py-3 bg-[#4EB098] text-slate-950 font-black rounded-xl text-center shadow-lg">
@@ -278,19 +280,25 @@
             كلّ حمية فشلت معك سابقاً كانت تحارب كيمياء جسمك وهرموناتك بدلاً من أن تفهمها. هنا نبدأ بشكل صحيح من جسمك أنت: من حرقك، وهرموناتك، ونومك، وحتى أدويتك.
           </p>
 
-          <!-- Social Proof Stats Badges -->
-          <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg mx-auto lg:mx-0 pt-2">
-            <div class="bg-[#142538] border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center">
-              <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none">+9M</div>
+          <!-- Social Proof Stats Badges (Animated Counters) -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 max-w-lg mx-auto lg:mx-0 pt-2" id="hero-stats">
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+              <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none flex items-center justify-center">
+                <span>+</span><span class="stat-counter" data-target="9" data-suffix="M">0</span>
+              </div>
               <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">متابع على المنصات</div>
             </div>
-            <div class="bg-[#142538] border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center">
-              <div class="text-2xl sm:text-3xl font-black text-teal-300 leading-none">+300</div>
-              <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">حالة خاصة بإشراف مباشر</div>
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+              <div class="text-2xl sm:text-3xl font-black text-teal-300 leading-none flex items-center justify-center">
+                <span>+</span><span class="stat-counter" data-target="10" data-suffix=",000">0</span>
+              </div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">حالة ناجحة وملتزمة</div>
             </div>
-            <div class="bg-[#142538] border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center">
-              <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none">8+</div>
-              <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">سنوات خبرة وبحث</div>
+            <div class="bg-[#142538]/90 border border-[#1E354F] rounded-2xl p-3 sm:p-4 text-center transform hover:scale-[1.03] transition-all">
+              <div class="text-2xl sm:text-3xl font-black text-[#4EB098] leading-none flex items-center justify-center">
+                <span>+</span><span class="stat-counter" data-target="15" data-suffix=" سنة">0</span>
+              </div>
+              <div class="text-[11px] sm:text-xs text-slate-400 mt-1.5 font-medium">خبرة صيدلانية وسريرية</div>
             </div>
           </div>
 
@@ -543,6 +551,228 @@
                 </p>
               </div>
             </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==================== SECTION: INTERACTIVE HEALTH QUIZ & BODY CALCULATOR ==================== -->
+  <section id="quiz" class="py-16 sm:py-24 bg-[#0A1624] text-white relative overflow-hidden border-t border-slate-800">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-900/20 via-transparent to-transparent pointer-events-none"></div>
+    
+    <div class="responsive-container max-w-4xl relative z-10">
+      
+      <!-- Quiz Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#142538] border border-[#4EB098]/40 text-[#4EB098] text-xs font-black shadow-inner">
+          <i data-lucide="activity" class="w-4 h-4 text-[#4EB098]"></i>
+          <span>حاسبة كيمياء الجسم التفاعلية • أقل من دقيقة</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          اكتشف المسار الطبي <br/>
+          <span class="bg-gradient-to-l from-[#4EB098] to-teal-200 bg-clip-text text-transparent">
+            الأنسب لطبيعة حرق وهرمونات جسمك
+          </span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg mx-auto">
+          أجب عن 3 أسئلة سريرية سريعة وسنحلل لك مؤشر كتلة جسمك (BMI) واحتياج الأيض ونقترح الباقة المباشرة لحالتك.
+        </p>
+      </div>
+
+      <!-- Quiz Interactive Card Container -->
+      <div class="bg-[#0E1D2D] rounded-3xl border border-[#1E354F] shadow-2xl p-6 sm:p-10 text-right">
+        
+        <!-- Progress Steps Indicator -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-2">
+            <span id="quiz-step-title">الخطوة 1 من 3: هدفك الصحي الأساسي</span>
+            <span id="quiz-step-pct" class="text-[#4EB098]">33%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="quiz-progress-bar" class="bg-gradient-to-r from-teal-500 to-[#4EB098] h-full w-1/3 transition-all duration-300 ease-out"></div>
+          </div>
+        </div>
+
+        <form id="health-quiz-form" onsubmit="calculateQuizResult(event)">
+          
+          <!-- STEP 1: Main Health Goal -->
+          <div id="quiz-step-1" class="quiz-step space-y-4">
+            <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center text-sm font-bold">1</span>
+              <span>ما هو التحدي أو الهدف الأكبر الذي يواجهك حالياً؟</span>
+            </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+              <label class="quiz-opt-card cursor-pointer block p-4 rounded-2xl bg-[#142538] border-2 border-transparent hover:border-[#4EB098]/50 transition-all">
+                <input type="radio" name="quiz_goal" value="weight_burn" checked class="hidden" onchange="highlightQuizCard(this)">
+                <div class="flex items-start gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-[#4EB098]/10 text-[#4EB098] flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="flame" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">نزول وزن وحرق دهون</h4>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">ثبات وزن متكرر أو دهون عنيدة في البطن والأرداف.</p>
+                  </div>
+                </div>
+              </label>
+
+              <label class="quiz-opt-card cursor-pointer block p-4 rounded-2xl bg-[#142538] border-2 border-transparent hover:border-[#4EB098]/50 transition-all">
+                <input type="radio" name="quiz_goal" value="insulin_metabolic" class="hidden" onchange="highlightQuizCard(this)">
+                <div class="flex items-start gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-teal-500/10 text-teal-300 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="heart-pulse" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">مقاومة إنسولين وهرمونات</h4>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">خمول بعد الأكل، شراهة سكريات، تكيسات أو بوادر سكري.</p>
+                  </div>
+                </div>
+              </label>
+
+              <label class="quiz-opt-card cursor-pointer block p-4 rounded-2xl bg-[#142538] border-2 border-transparent hover:border-[#4EB098]/50 transition-all">
+                <input type="radio" name="quiz_goal" value="fitness_energy" class="hidden" onchange="highlightQuizCard(this)">
+                <div class="flex items-start gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-bold text-white">نشاط بدني وتحسين طاقة</h4>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-relaxed">بناء صحة مستدامة، تحسين الهضم ونوم عميق بدون إجهاد.</p>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="flex justify-end pt-4">
+              <button type="button" onclick="nextQuizStep(2)" class="px-6 py-3 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-all">
+                <span>التالي: القياسات الحيوية</span>
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Height & Weight (BMI calculation) -->
+          <div id="quiz-step-2" class="quiz-step hidden space-y-4">
+            <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center text-sm font-bold">2</span>
+              <span>القياسات الأساسية لحساب مؤشر كتلة الجسم (BMI)</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300 block">الطول (بالسنتيمتر - cm):</label>
+                <div class="relative">
+                  <input type="number" id="quiz_height" min="120" max="230" placeholder="مثال: 172" required class="w-full px-4 py-3.5 bg-[#142538] border border-[#1E354F] rounded-xl text-white font-bold text-sm focus:border-[#4EB098] focus:outline-none transition-colors">
+                  <span class="absolute left-3.5 top-3.5 text-xs text-slate-400 font-bold">سم</span>
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300 block">الوزن الحالي (بالكيلوغرام - kg):</label>
+                <div class="relative">
+                  <input type="number" id="quiz_weight" min="35" max="250" placeholder="مثال: 85" required class="w-full px-4 py-3.5 bg-[#142538] border border-[#1E354F] rounded-xl text-white font-bold text-sm focus:border-[#4EB098] focus:outline-none transition-colors">
+                  <span class="absolute left-3.5 top-3.5 text-xs text-slate-400 font-bold">كغ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <button type="button" onclick="nextQuizStep(1)" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all">
+                السابق
+              </button>
+              <button type="button" onclick="validateAndGoStep3()" class="px-6 py-3 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg transition-all">
+                <span>التالي: نمط يومك ونشاطك</span>
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Activity & Medical Profile -->
+          <div id="quiz-step-3" class="quiz-step hidden space-y-4">
+            <h3 class="text-base sm:text-lg font-black text-white flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center text-sm font-bold">3</span>
+              <span>مستوى نشاطك وتناولك لأي أدوية أو فيتامينات</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300 block">طبيعة حركتك ونشاطك الأسبوعي:</label>
+                <select id="quiz_activity" class="w-full px-4 py-3.5 bg-[#142538] border border-[#1E354F] rounded-xl text-white font-medium text-xs sm:text-sm focus:border-[#4EB098] focus:outline-none">
+                  <option value="sedentary">قليل الحركة (عمل مكتبي / جلوس معظم اليوم)</option>
+                  <option value="moderate" selected>متوسط النشاط (مشي خفيف أو رياضة 1-2 يوم)</option>
+                  <option value="active">نشط جداً (تمارين منتظمة 3-5 أيام أسبوعياً)</option>
+                </select>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300 block">هل تستخدم أدوية منتظمة أو تحاليل طبية سابقة؟</label>
+                <select id="quiz_medical" class="w-full px-4 py-3.5 bg-[#142538] border border-[#1E354F] rounded-xl text-white font-medium text-xs sm:text-sm focus:border-[#4EB098] focus:outline-none">
+                  <option value="none">لا أتناول أدوية حالياً</option>
+                  <option value="chronic">نعم (سكر، ضغط، غدة درقية، أو هرمونات)</option>
+                  <option value="supplements">أتناول مكملات وفيتامينات فقط</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-4">
+              <button type="button" onclick="nextQuizStep(2)" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all">
+                السابق
+              </button>
+              <button type="submit" id="quiz-submit-btn" class="px-7 py-3.5 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-xl shadow-[#4EB098]/30 transition-all">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>استخراج التقرير والتشخيص الآن</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+        <!-- RESULT CONTAINER (Shown dynamically upon submission) -->
+        <div id="quiz-result" class="hidden space-y-6 pt-4 text-right animate-fadeIn">
+          
+          <div class="p-6 rounded-2xl bg-[#142538] border-2 border-[#4EB098] text-right space-y-4">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b border-[#1E354F]">
+              <div>
+                <span class="text-xs font-bold text-[#4EB098] block">النتيجة التشخيصية الأولية لحالتك:</span>
+                <h4 id="result-bmi-status" class="text-xl sm:text-2xl font-black text-white mt-0.5">مؤشر كتلة جسمك: 28.5 (زيادة وزن)</h4>
+              </div>
+              <div class="px-3.5 py-1.5 rounded-full bg-[#4EB098]/20 border border-[#4EB098]/40 text-[#4EB098] text-xs font-black">
+                تحليل دقيق فوري
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <h5 class="text-xs sm:text-sm font-bold text-slate-300">التوصية السريرية من منهج سليم:</h5>
+              <p id="result-diagnosis-text" class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium bg-[#0E1D2D] p-4 rounded-xl border border-slate-800">
+                جسمك يحتاج خطة حرق دهون مرنة تركز على تنظيم حساسية الأنسولين وضبط أوقات الوجبات بدون تجويع أو هبوط طاقة.
+              </p>
+            </div>
+
+            <!-- Recommended Plan Badge & Button -->
+            <div class="p-4 rounded-xl bg-[#08121D] border border-[#1E354F] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="text-right w-full sm:w-auto">
+                <span class="text-[11px] text-slate-400 block font-medium">الباقة الأكثر ملائمة للوصول لهدفك:</span>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <span id="result-plan-name" class="text-base sm:text-lg font-black text-[#4EB098]">باقة المتابعة الخاصة (Private)</span>
+                  <span id="result-plan-price" class="text-xs font-bold text-slate-300 bg-slate-800 px-2.5 py-0.5 rounded-full">$199</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 w-full sm:w-auto">
+                <button id="result-cta-btn" onclick="bookFromQuiz()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm shadow-md transition-all">
+                  ابدأ بحجز هذه الباقة
+                </button>
+                <button type="button" onclick="resetQuiz()" class="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all">
+                  إعادة الاختبار
+                </button>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -1587,6 +1817,180 @@
         document.body.style.overflow = 'auto';
       }
     }
+
+    // ==========================================
+    // 8. ANIMATED NUMBER COUNTERS (On Scroll)
+    // ==========================================
+    function initStatsCounter() {
+      const statsSection = document.getElementById('hero-stats');
+      if (!statsSection) return;
+
+      let started = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            runAllCounters();
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(statsSection);
+    }
+
+    function runAllCounters() {
+      const counters = document.querySelectorAll('.stat-counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target') || '0', 10);
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let count = 0;
+        const speed = Math.max(20, Math.floor(1200 / (target || 1)));
+
+        const updateCount = () => {
+          count++;
+          counter.innerText = count + suffix;
+          if (count < target) {
+            setTimeout(updateCount, speed);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+        updateCount();
+      });
+    }
+
+    // ==========================================
+    // 9. INTERACTIVE HEALTH QUIZ / CALCULATOR
+    // ==========================================
+    let currentQuizStep = 1;
+    let quizSelectedGoal = 'weight_burn';
+    let quizRecommendedPackage = 'private';
+    let quizRecommendedTitle = 'باقة المتابعة الخاصة (Private)';
+    let quizRecommendedPrice = '$199';
+
+    function highlightQuizCard(radio) {
+      document.querySelectorAll('.quiz-opt-card').forEach(c => {
+        c.classList.remove('border-[#4EB098]', 'bg-[#1a314b]');
+        c.classList.add('border-transparent');
+      });
+      const parent = radio.closest('.quiz-opt-card');
+      if (parent) {
+        parent.classList.add('border-[#4EB098]', 'bg-[#1a314b]');
+        parent.classList.remove('border-transparent');
+      }
+      quizSelectedGoal = radio.value;
+    }
+
+    function nextQuizStep(step) {
+      currentQuizStep = step;
+      document.querySelectorAll('.quiz-step').forEach(s => s.classList.add('hidden'));
+      const activeStep = document.getElementById('quiz-step-' + step);
+      if (activeStep) activeStep.classList.remove('hidden');
+
+      const titleEl = document.getElementById('quiz-step-title');
+      const pctEl = document.getElementById('quiz-step-pct');
+      const barEl = document.getElementById('quiz-progress-bar');
+
+      if (step === 1) {
+        if (titleEl) titleEl.innerText = 'الخطوة 1 من 3: هدفك الصحي الأساسي';
+        if (pctEl) pctEl.innerText = '33%';
+        if (barEl) barEl.style.width = '33%';
+      } else if (step === 2) {
+        if (titleEl) titleEl.innerText = 'الخطوة 2 من 3: القياسات الحيوية (الطول والوزن)';
+        if (pctEl) pctEl.innerText = '66%';
+        if (barEl) barEl.style.width = '66%';
+      } else if (step === 3) {
+        if (titleEl) titleEl.innerText = 'الخطوة 3 من 3: مستوى النشاط والتاريخ الدوائي';
+        if (pctEl) pctEl.innerText = '100%';
+        if (barEl) barEl.style.width = '100%';
+      }
+      lucide.createIcons();
+    }
+
+    function validateAndGoStep3() {
+      const h = parseFloat(document.getElementById('quiz_height').value);
+      const w = parseFloat(document.getElementById('quiz_weight').value);
+      if (!h || h < 100 || !w || w < 30) {
+        alert('يرجى إدخال الطول والوزن بشكل صحيح للمتابعة');
+        return;
+      }
+      nextQuizStep(3);
+    }
+
+    function calculateQuizResult(e) {
+      e.preventDefault();
+      const h = parseFloat(document.getElementById('quiz_height').value) / 100;
+      const w = parseFloat(document.getElementById('quiz_weight').value);
+      const act = document.getElementById('quiz_activity').value;
+      const med = document.getElementById('quiz_medical').value;
+
+      const bmi = (w / (h * h)).toFixed(1);
+      let bmiStatus = '';
+      let diagnosis = '';
+
+      if (bmi < 18.5) {
+        bmiStatus = `مؤشر كتلة جسمك: ${bmi} (نحافة أو كتلة عضلية منخفضة)`;
+        diagnosis = 'جسمك يحتاج خطة تغذية بنائية لزيادة الكتلة العضلية وتحسين امتصاص المغذيات بدون دهون حشوية.';
+        quizRecommendedPackage = 'pro';
+        quizRecommendedTitle = 'باقة PRO (المتابعة المكثفة)';
+        quizRecommendedPrice = '$120/شهرياً';
+      } else if (bmi >= 18.5 && bmi < 25) {
+        bmiStatus = `مؤشر كتلة جسمك: ${bmi} (وزن طبيعي ومتناسق)`;
+        diagnosis = 'وزنك العام مثالي، والتركيز معك سيكون على إعادة تشكيل الجسم (Body Recomposition)، حرق الدهون السطحية الموضعية، وزيادة النشاط والإنتاجية اليومية.';
+        quizRecommendedPackage = 'healthy';
+        quizRecommendedTitle = 'باقة Healthy الأساسية';
+        quizRecommendedPrice = '$60/شهرياً';
+      } else if (bmi >= 25 && bmi < 30) {
+        bmiStatus = `مؤشر كتلة جسمك: ${bmi} (زيادة وزن خفيفة إلى متوسطة)`;
+        if (med === 'chronic' || quizSelectedGoal === 'insulin_metabolic') {
+          diagnosis = 'تظهر قراءاتك احتمالية مقاومة إنسولين أو تأثر الميتابوليزم بالأدوية. الحل يبدأ من فهم هرمونات الشبع وضبط أوقات الوجبات وليس التجويع السعري.';
+          quizRecommendedPackage = 'private';
+          quizRecommendedTitle = 'باقة المتابعة الخاصة مع د. أحمد (Private)';
+          quizRecommendedPrice = '$199';
+        } else {
+          diagnosis = 'جسمك يحتاج خطة حرق دهون مرنة تركز على كسر ثبات الوزن وتنظيم عادات الأكل مع تعديلات أسبوعية دقيقة على تقدمك.';
+          quizRecommendedPackage = 'pro';
+          quizRecommendedTitle = 'باقة PRO (المتابعة المكثفة)';
+          quizRecommendedPrice = '$120/شهرياً';
+        }
+      } else {
+        bmiStatus = `مؤشر كتلة جسمك: ${bmi} (سمنة أو دهون حشوية عنيدة)`;
+        diagnosis = 'حالتك تتطلب تقييماً سريرياً دقيقاً للتحاليل المخبرية والتاريخ الدوائي، مع إشراف مباشر لبناء بروتوكول علاجي يمنع الانتكاسة نهائياً.';
+        quizRecommendedPackage = 'private';
+        quizRecommendedTitle = 'باقة المتابعة الخاصة مع د. أحمد (Private)';
+        quizRecommendedPrice = '$199';
+      }
+
+      // Display Result
+      document.getElementById('result-bmi-status').innerText = bmiStatus;
+      document.getElementById('result-diagnosis-text').innerText = diagnosis;
+      document.getElementById('result-plan-name').innerText = quizRecommendedTitle;
+      document.getElementById('result-plan-price').innerText = quizRecommendedPrice;
+
+      document.getElementById('health-quiz-form').classList.add('hidden');
+      document.getElementById('quiz-result').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function bookFromQuiz() {
+      openBookingModal(quizRecommendedPackage, quizRecommendedTitle, quizRecommendedPrice);
+    }
+
+    function resetQuiz() {
+      document.getElementById('health-quiz-form').reset();
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('health-quiz-form').classList.remove('hidden');
+      nextQuizStep(1);
+    }
+
+    // Automatically initialize counters when DOM loads
+    document.addEventListener('DOMContentLoaded', () => {
+      initStatsCounter();
+      // Auto highlight step 1 first option
+      const firstOpt = document.querySelector('input[name="quiz_goal"]:checked');
+      if (firstOpt) highlightQuizCard(firstOpt);
+    });
+
   </script>
 </body>
 </html>

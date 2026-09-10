@@ -216,7 +216,7 @@
         <a href="#packages" class="hover:text-[#4EB098] transition-colors">الباقات والاشتراكات</a>
         <a href="#app" class="hover:text-[#4EB098] transition-colors">تطبيق سليم</a>
         <a href="#supplements" class="hover:text-[#4EB098] transition-colors">المكملات</a>
-        <a href="#journey-options" class="hover:text-[#4EB098] transition-colors">رحلة المشترك</a>
+        <a href="#body-transformation" class="hover:text-[#4EB098] transition-colors">قصة التحول (قبل وبعد)</a>
         <a href="#quiz" class="hover:text-[#4EB098] transition-colors flex items-center gap-1 text-[#4EB098] font-bold"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> حاسبة جسمك</a>
         <a href="#faq" class="hover:text-[#4EB098] transition-colors">أسئلة شائعة</a>
       </div>
@@ -245,7 +245,7 @@
       <a href="#app" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">تطبيق سليم الذكي</a>
       <a href="#supplements" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">ترشيحات المكملات (iHerb)</a>
       <a href="#testimonials" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">آراء المتابعين</a>
-      <a href="#journey-options" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">رحلة المشترك مع سليم</a>
+      <a href="#body-transformation" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">قصة التحول (قبل وبعد) مع سليم</a>
       <a href="#quiz" onclick="toggleMobileMenu()" class="block py-2 text-[#4EB098] font-black flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> حاسبة جسمك والتوصية الطبية</a>
       <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#4EB098]">الأسئلة الأكثر شيوعاً</a>
       <div class="pt-3 border-t border-slate-800">
@@ -542,130 +542,90 @@
 
 
     <!-- ==================== HIGHLY VISUAL & ANIMATED CUSTOMER JOURNEY ==================== -->
-  <section id="journey-options" class="py-16 sm:py-24 bg-[#08121D] text-white relative overflow-hidden border-b border-slate-800">
+    <!-- ==================== BODY TRANSFORMATION BEFORE / AFTER SLIDER ==================== -->
+  <section id="body-transformation" class="py-16 sm:py-24 bg-[#08121D] text-white relative overflow-hidden border-b border-slate-800">
     <!-- Ambient Glow Effects -->
-    <div class="absolute top-1/4 -right-40 w-96 h-96 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-10 -left-40 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/3 -right-32 w-80 h-80 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 -left-32 w-80 h-80 bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="responsive-container relative z-10">
       
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
         <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#142538] border border-[#4EB098]/40 text-[#4EB098] text-xs font-black shadow-inner">
           <i data-lucide="sparkles" class="w-4 h-4 text-[#4EB098]"></i>
-          <span>رحلة التحول الحقيقي • Customer Journey</span>
+          <span>التحول الحقيقي • قبل وبعد نظام سليم</span>
         </div>
         
         <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
-          لم نخسر وزناً فقط.. <br/>
+          الفرق بين جسد منهك يحارب كيمياءه.. <br/>
           <span class="bg-gradient-to-l from-[#4EB098] via-[#00C2CB] to-teal-200 bg-clip-text text-transparent">
-            بل استعدنا صحتنا وحياتنا بالكامل
+            وبين جسد استعاد شبابه وطاقته الكاملة
           </span>
         </h2>
         
         <p class="text-xs sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-          شاهد كيف تتحول كيمياء جسمك وتتغير مقاساتك وطاقتك من اليوم الأول وحتى الوصول لنمط الحياة المستدام:
+          اسحب المؤشر لترى كيف يتحول نفس الشخص الأربعيني من مرحلة السمنة وإجهاد الشيخوخة إلى القوام الرياضي والشباب المتجدد:
         </p>
       </div>
-      <!-- INTEGRATED VISUAL STAGES: MERGED DIRECTLY WITH REAL IMAGES -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch pt-2">
-        
-        <!-- Card 1: Phase 1 & 2 - Vitality & Metabolic Energy (Featuring Fit Man Image) -->
-        <div class="relative rounded-3xl overflow-hidden border border-[#1E354F] hover:border-teal-400 shadow-2xl bg-[#0E1D2D] p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group">
+
+      <!-- Touch/Mouse Interactive Before-After Slider -->
+      <div class="max-w-[480px] mx-auto">
+        <div class="relative w-full aspect-square rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl user-select-none select-none touch-none cursor-ew-resize bg-[#142538]" id="body-ba-container" style="direction: ltr;">
           
-          <div class="flex flex-col sm:flex-row items-center gap-7">
-            <!-- Real Visual Element -->
-            <div class="w-40 sm:w-48 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-[#142538] transform group-hover:scale-105 transition-transform duration-500">
-              <img src="assets/journey_fit_man.png" alt="الخفة والنشاط اليومي - سليم" class="w-full h-auto object-cover">
-            </div>
+          <!-- Base Image (Left: Before - Overweight, Fatigued, Aged) -->
+          <img src="assets/man_before_journey.webp" alt="قبل سليم - إجهاد وسمنة" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
+          
+          <!-- Clipped Image (Right: After - Lean, Athletic, Youthful, Energetic) -->
+          <div class="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none" id="body-ba-clip-wrap" style="clip-path: inset(0 0 0 50%);">
+            <img src="assets/man_after_journey.webp" alt="بعد سليم - شباب وطاقة وقوام رياضي" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
+          </div>
 
-            <!-- Content Details -->
-            <div class="text-right space-y-3.5 flex-1">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/15 border border-teal-400/30 text-teal-300 text-xs font-black">
-                <i data-lucide="zap" class="w-3.5 h-3.5"></i>
-                <span>المرحلة الأولى • استعادة الطاقة والأيض</span>
-              </div>
-              
-              <h3 class="text-xl sm:text-2xl font-black text-white leading-snug">
-                الخفة والنشاط اليومي المستمر
-              </h3>
-              
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                ستشعر بالفرق في كفاءة الحرق ونشاطك من أول أسبوعين؛ استيقاظ بنشاط، انتهاء خمول ما بعد الوجبات، وهدوء هرمونات التوتر والشره.
-              </p>
-
-              <!-- Integrated Milestones Pills -->
-              <div class="pt-2 space-y-2">
-                <div class="flex items-center gap-2.5 text-xs text-slate-200">
-                  <span class="w-5 h-5 rounded-full bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold text-[11px] flex-shrink-0">✓</span>
-                  <span><strong>فهم الميتابوليزم:</strong> قراءة كاملة لكيمياء جسمك بدون تجويع.</span>
-                </div>
-                <div class="flex items-center gap-2.5 text-xs text-slate-200">
-                  <span class="w-5 h-5 rounded-full bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold text-[11px] flex-shrink-0">✓</span>
-                  <span><strong>أكل بيتك في جيبك:</strong> خطة مرنة تتطور معك على تطبيق سليم.</span>
-                </div>
-              </div>
-
+          <!-- Vertical Divider Line & Handle -->
+          <div class="absolute top-0 bottom-0 pointer-events-none z-20" id="body-ba-divider-line" style="left: 50%; transform: translateX(-50%); width: 3px; background: #FFFFFF; box-shadow: 0 0 20px rgba(0,0,0,0.8);">
+            <!-- Handle Circle -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white text-slate-900 shadow-2xl flex items-center justify-center border-2 border-slate-300">
+              <i data-lucide="chevrons-left-right" class="w-5 h-5 text-slate-900"></i>
             </div>
           </div>
 
-          <div class="mt-6 pt-4 border-t border-[#1E354F]/80 flex items-center justify-between text-xs font-bold text-teal-300">
-            <span>تثبيت الأيض وتنظيم الكورتيزول</span>
-            <span class="text-slate-400 font-medium">الأسابيع 1 - 4</span>
+          <!-- Badges inside slider -->
+          <div class="absolute top-4 left-4 z-10 px-3.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-white/20 text-slate-200 font-bold text-xs pointer-events-none shadow-lg" style="direction: rtl;">
+            ✕ قبل: إجهاد وسمنة
           </div>
-
+          <div class="absolute top-4 right-4 z-10 px-3.5 py-1 rounded-full bg-[#4EB098] text-slate-950 font-black text-xs pointer-events-none shadow-lg" style="direction: rtl;">
+            ✓ بعد: شباب ولياقة وطاقة
+          </div>
         </div>
 
-        <!-- Card 2: Phase 3 & 4 - True Fat Loss & Measurement Shrinking (Featuring Tape Man Image) -->
-        <div class="relative rounded-3xl overflow-hidden border border-[#1E354F] hover:border-[#4EB098] shadow-2xl bg-[#0E1D2D] p-7 sm:p-9 flex flex-col justify-between transition-all duration-300 group">
-          
-          <div class="flex flex-col sm:flex-row items-center gap-7">
-            <!-- Real Visual Element -->
-            <div class="w-40 sm:w-48 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-white/10 bg-[#142538] transform group-hover:scale-105 transition-transform duration-500">
-              <img src="assets/journey_tape_man.png" alt="نزول مقاسات السنتيمترات - سليم" class="w-full h-auto object-cover">
-            </div>
-
-            <!-- Content Details -->
-            <div class="text-right space-y-3.5 flex-1">
-              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4EB098]/15 border border-[#4EB098]/30 text-[#4EB098] text-xs font-black">
-                <i data-lucide="target" class="w-3.5 h-3.5"></i>
-                <span>المرحلة الثانية • انكماش المقاسات الحقيقي</span>
-              </div>
-              
-              <h3 class="text-xl sm:text-2xl font-black text-white leading-snug">
-                المقاسات وشريط القياس هي الحقيقة
-              </h3>
-              
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                الميزان قد يخدعك باحتباس السوائل أو وزن الطعام؛ لكن الملابس وشريط القياس لا تكذب. نزول حقيقي في سنتيمترات الخصر والبطن بدون ترهل.
-              </p>
-
-              <!-- Integrated Milestones Pills -->
-              <div class="pt-2 space-y-2">
-                <div class="flex items-center gap-2.5 text-xs text-slate-200">
-                  <span class="w-5 h-5 rounded-full bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold text-[11px] flex-shrink-0">✓</span>
-                  <span><strong>نزول المقاسات الفعلي:</strong> فرق ملحوظ كل 7 أيام في مقاسات ملابسك.</span>
-                </div>
-                <div class="flex items-center gap-2.5 text-xs text-slate-200">
-                  <span class="w-5 h-5 rounded-full bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold text-[11px] flex-shrink-0">✓</span>
-                  <span><strong>تثبيت دائم وثقة:</strong> حماية وزنك من الارتداد مدى الحياة.</span>
-                </div>
-              </div>
-
-            </div>
+        <!-- Explanatory Comparison Cards -->
+        <div class="grid grid-cols-2 gap-3.5 mt-4 text-xs text-slate-300 text-right">
+          <div class="p-4 rounded-2xl bg-red-950/20 border border-red-900/40 space-y-1.5">
+            <span class="font-bold text-red-400 block text-xs">✕ قبل نظام سليم:</span>
+            <p class="text-[11px] text-slate-300 leading-relaxed">
+              سمنة دهون عنيدة، إجهاد دائم وخمول بعد الأكل، وملامح تظهر كبر السن بسبب مقاومة الأنسولين والكورتيزول المرتفع.
+            </p>
           </div>
-
-          <div class="mt-6 pt-4 border-t border-[#1E354F]/80 flex items-center justify-between text-xs font-bold text-[#4EB098]">
-            <span>حرق موضعي مستمر من الدهون الحشوية</span>
-            <span class="text-slate-400 font-medium">الأسابيع 4 - 12</span>
+          <div class="p-4 rounded-2xl bg-teal-950/30 border border-[#4EB098]/40 space-y-1.5">
+            <span class="font-bold text-[#4EB098] block text-xs">✓ بعد نظام سليم:</span>
+            <p class="text-[11px] text-slate-200 leading-relaxed">
+              انكماش محيط الخصر، بناء عضلي متناسق، بشرة نضرة وابتسامة واثقة، وطاقة متجددة تجعله يبدو أصغر بـ 10 سنوات.
+            </p>
           </div>
+        </div>
 
+        <!-- Call to action button below comparison -->
+        <div class="text-center mt-6">
+          <button onclick="openBookingModal('private', 'باقة المتابعة الخاصة', '$199')" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-[#4EB098]/30 transition-all transform hover:-translate-y-0.5">
+            ابدأ رحلة تحولك واستعادة طاقتك
+          </button>
         </div>
 
       </div>
 
     </div>
   </section>
+
 
   <!-- ==================== SECTION: INTERACTIVE HEALTH QUIZ & BODY CALCULATOR ==================== -->
   <section id="quiz" class="py-16 sm:py-24 bg-[#0A1624] text-white relative overflow-hidden border-t border-slate-800">
@@ -1739,10 +1699,10 @@
     }
 
     // 3. Plate Comparison Slider Logic (Ultra-smooth 60fps Pointer & Touch Drag)
-    function initSlider() {
-      const container = document.getElementById('ba-container');
-      const clipWrap = document.getElementById('ba-clip-wrap');
-      const line = document.getElementById('ba-divider-line');
+        function setupGenericSlider(containerId, clipWrapId, lineId) {
+      const container = document.getElementById(containerId);
+      const clipWrap = document.getElementById(clipWrapId);
+      const line = document.getElementById(lineId);
       if (!container || !clipWrap || !line) return;
 
       let isDragging = false;
@@ -1778,7 +1738,6 @@
       container.addEventListener('pointerup', onPointerUp);
       container.addEventListener('pointercancel', onPointerUp);
 
-      // Touch events fallback
       container.addEventListener('touchstart', (e) => {
         isDragging = true;
         if (e.touches && e.touches[0]) updatePos(e.touches[0].clientX);
@@ -1790,8 +1749,12 @@
       container.addEventListener('touchend', () => { isDragging = false; });
       container.addEventListener('touchcancel', () => { isDragging = false; });
     }
-    window.addEventListener('DOMContentLoaded', initSlider);
-    window.addEventListener('load', initSlider);
+
+    function initSlider() {
+      setupGenericSlider('ba-container', 'ba-clip-wrap', 'ba-divider-line');
+      setupGenericSlider('body-ba-container', 'body-ba-clip-wrap', 'body-ba-divider-line');
+    }
+    // Existing slider logic replaced with setupGenericSlider wrapper
 
     // 4. FAQ Accordion Logic
     function toggleFaq(num) {

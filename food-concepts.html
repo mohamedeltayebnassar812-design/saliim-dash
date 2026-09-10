@@ -2,404 +2,602 @@
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>معاينة أفكار سيكشن التغذية والوجبات • منصة سليم</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>معاينة أفكار سيكشن التغذية والوجبات • د. أحمد الخطيب | منصة سليم (Saliim)</title>
+  
+  <!-- Google Fonts: IBM Plex Sans Arabic & Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans Arabic"', 'Cairo', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#08121D',
+              surface: '#0E1D2D',
+              card: '#142538',
+              cardBorder: '#1E354F',
+              cyan: '#00C2CB',
+              cyanHover: '#00A8B0',
+              teal: '#4EB098',
+              tealDark: '#3A907C',
+              mintBg: '#E7F2ED',
+              mintSoft: '#D9ECE4',
+              creamBg: '#F3F7F5',
+              navyText: '#0A1D30',
+              gold: '#E5A93C',
+              textMuted: '#94A3B8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #08121D; color: #F8FAFC; }
-    .teal-glow { box-shadow: 0 10px 40px -10px rgba(78, 176, 152, 0.35); }
-    .cyan-glow { box-shadow: 0 10px 40px -10px rgba(0, 194, 203, 0.35); }
+    html {
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #08121D;
+      color: #F8FAFC;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .responsive-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    @media (min-width: 640px) {
+      .responsive-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .responsive-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* Cyan & Teal Glow */
+    .cyan-glow {
+      box-shadow: 0 0 40px -10px rgba(0, 194, 203, 0.35);
+    }
+    .teal-glow {
+      box-shadow: 0 10px 35px -5px rgba(78, 176, 152, 0.3);
+    }
   </style>
 </head>
-<body class="bg-[#08121D] text-slate-100 min-h-screen selection:bg-[#4EB098] selection:text-slate-950">
+<body class="bg-[#08121D] text-slate-100 selection:bg-[#4EB098] selection:text-slate-950">
 
-  <!-- TOP STICKY BAR: Back to Home & Concept Quick Switcher -->
-  <header class="sticky top-0 z-50 bg-[#050C14]/95 backdrop-blur-md border-b border-[#1E354F] py-4 px-4 sm:px-8">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-3">
-        <a href="/" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#142538] hover:bg-[#1E354F] text-[#4EB098] text-xs font-black transition-colors border border-[#1E354F]">
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          <span>العودة للرئيسية</span>
-        </a>
+  <!-- ==================== 1. TOP TICKER ANNOUNCEMENT ==================== -->
+  <aside class="bg-gradient-to-r from-teal-950 via-[#0E1D2D] to-teal-950 border-b border-[#00C2CB]/30 py-2.5 px-4 text-center sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+    <div class="responsive-container flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+      <span class="px-2.5 py-0.5 rounded-full bg-[#00C2CB]/20 text-[#00C2CB] border border-[#00C2CB]/40 text-[11px]">
+        💡 صفحة معاينة المقترحات
+      </span>
+      <span>4 أفكار بديلة لسيكشن التغذية والوجبات • تصفح واختر الأنسب للموقع</span>
+      <a href="/" class="inline-flex items-center gap-1 text-[#00C2CB] hover:underline underline-offset-4 mr-2">
+        <span>العودة للرئيسية</span>
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== 2. MAIN NAVIGATION HEADER (DARK GLASS) ==================== -->
+  <nav class="border-b border-white/10 bg-[#08121D]/90 backdrop-blur-md sticky top-[41px] z-40">
+    <div class="responsive-container py-4 flex items-center justify-between">
+      
+      <!-- Brand Logo & Name -->
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#3A907C] to-[#4EB098] text-white font-black text-xl flex items-center justify-center shadow-lg shadow-[#4EB098]/30 group-hover:scale-105 transition-transform">
+          س
+        </div>
         <div>
-          <h1 class="text-sm sm:text-base font-black text-white">معرض الأفكار الأربعة لسيكشن الأكل والتغذية</h1>
-          <p class="text-[11px] text-slate-400">صفحة مخصصة للمعاينة والمقارنة بين المقترحات الأربعة لتختار الأنسب</p>
+          <span class="font-black text-xl tracking-tight text-white block leading-none">سَـلِيم</span>
+          <span class="text-xs text-slate-400 font-medium">د. أحمد الخطيب</span>
         </div>
+      </a>
+
+      <!-- Desktop Jump Links to the 4 Concepts -->
+      <div class="hidden lg:flex items-center gap-3 text-xs font-bold">
+        <a href="#concept-1" class="px-3.5 py-2 rounded-xl bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 border border-[#1E354F] transition-all">1. مطبخ سليم العائلي</a>
+        <a href="#concept-2" class="px-3.5 py-2 rounded-xl bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 border border-[#1E354F] transition-all">2. الماسح الذكي AI</a>
+        <a href="#concept-3" class="px-3.5 py-2 rounded-xl bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 border border-[#1E354F] transition-all">3. كيمياء الهرمونات</a>
+        <a href="#concept-4" class="px-3.5 py-2 rounded-xl bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 border border-[#1E354F] transition-all">4. مجتمع وجبات المشتركين</a>
       </div>
 
-      <!-- Quick Nav Jump Buttons -->
-      <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
-        <a href="#concept-1" class="px-3 py-1.5 rounded-lg bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 transition-all">1. مطبخ سليم</a>
-        <a href="#concept-2" class="px-3 py-1.5 rounded-lg bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 transition-all">2. الماسح الذكي AI</a>
-        <a href="#concept-3" class="px-3 py-1.5 rounded-lg bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 transition-all">3. إنفوجرافيك الهرمونات</a>
-        <a href="#concept-4" class="px-3 py-1.5 rounded-lg bg-[#142538] hover:bg-[#4EB098] hover:text-slate-950 text-slate-200 transition-all">4. مجتمع وجبات سليم</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="space-y-24 py-12">
-
-    <!-- ========================================================================= -->
-    <!-- CONCEPT 1: DAY IN SALIIM KITCHEN (Interactive Meals Cards & Real Food Spread) -->
-    <!-- ========================================================================= -->
-    <section id="concept-1" class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="p-6 sm:p-10 rounded-[36px] bg-[#0E1D2D] border-2 border-teal-500/40 shadow-2xl space-y-10 relative overflow-hidden">
-        <div class="absolute -top-24 -right-24 w-80 h-80 bg-[#4EB098]/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Concept Tag -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#1E354F] pb-6">
-          <div class="space-y-1">
-            <span class="inline-block px-3 py-1 rounded-full bg-[#4EB098]/20 border border-[#4EB098]/40 text-[#4EB098] text-xs font-black">
-              الفكرة الأولى • روتين يومي حقيقي
-            </span>
-            <h2 class="text-2xl sm:text-4xl font-black text-white">«يوم كامل في مطبخ سليم: تأكل مع عائلتك بلا طبخ منفصل»</h2>
-          </div>
-          <span class="text-xs text-slate-400 bg-[#142538] px-3.5 py-1.5 rounded-xl border border-[#1E354F]">
-            يركز على: الأكل الشهي وراحة البيت
-          </span>
-        </div>
-
-        <!-- Big Hero Visual: Wholesome Table -->
-        <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group">
-          <img src="assets/concept_family_meals.webp" alt="سفرة طعام سليم الحقيقية" class="w-full h-[360px] sm:h-[440px] object-cover transform group-hover:scale-105 transition-transform duration-700">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#08121D] via-transparent to-transparent"></div>
-          
-          <div class="absolute bottom-6 right-6 left-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            <div class="space-y-1 text-right">
-              <span class="px-3 py-1 rounded-full bg-[#4EB098] text-slate-950 text-xs font-black inline-block">حقيقة سليم</span>
-              <h3 class="text-xl sm:text-2xl font-black text-white">أكل حقيقي، مشبع، غني بالنكهات</h3>
-              <p class="text-xs sm:text-sm text-slate-300">دجاج مشوي بالأعشاب، أرز بسمتي، سلطات غنية وزيت زيتون بكر.</p>
-            </div>
-            <div class="bg-[#08121D]/90 backdrop-blur-md border border-[#4EB098]/40 rounded-2xl py-2 px-4 text-xs font-bold text-[#4EB098]">
-              ✓ لا أكل مسلوق • لا إقصاء لمجموعات غذائية
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 Interactive Daily Meal Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-right">
-          
-          <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-black text-lg">🍳</div>
-            <span class="text-[11px] font-bold text-[#4EB098] block">01 • الفطور المشبع</span>
-            <h4 class="text-base font-bold text-white">بيض بلدي + أجبان طبيعية + زيتون</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">بروتين ودهون صحية تؤمّن ثبات طاقتك 5 ساعات دون رغبة في التلقيط.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-black text-lg">🍲</div>
-            <span class="text-[11px] font-bold text-teal-300 block">02 • غداء البيت الساخن</span>
-            <h4 class="text-base font-bold text-white">طواجن اللحم أو الدجاج مع أرز وخضار</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">من نفس طعام بيتك وعائلتك، مع ضبط التوازن لحماية استجابة الأنسولين.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-black text-lg">☕</div>
-            <span class="text-[11px] font-bold text-amber-300 block">03 • سناك الطاقة والسعادة</span>
-            <h4 class="text-base font-bold text-white">قهوتك المفضلة + شوكولاتة داكنة</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">لا حرمان من متعتك اليومية، بمقادير ذكية تمنع هبوط السكر العصبي.</p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-black text-lg">🥗</div>
-            <span class="text-[11px] font-bold text-blue-300 block">04 • عشاء خفيف مريح</span>
-            <h4 class="text-base font-bold text-white">سلطات غنية وبروتين مهدئ</h4>
-            <p class="text-xs text-slate-300 leading-relaxed">هضم فائق الراحة لنوم عميق يساعد الكبد على تفعيل حرق الدهون الليلي.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- CONCEPT 2: AI MEAL SCANNER SHOWCASE (High-Tech App Experience) -->
-    <!-- ========================================================================= -->
-    <section id="concept-2" class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="p-6 sm:p-10 rounded-[36px] bg-[#0E1D2D] border-2 border-[#00C2CB]/40 shadow-2xl space-y-10 relative overflow-hidden">
-        <div class="absolute -top-24 -left-24 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Concept Tag -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#1E354F] pb-6">
-          <div class="space-y-1">
-            <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-xs font-black">
-              الفكرة الثانية • الماسح الذكي لتطبيق سليم (AI Vision)
-            </span>
-            <h2 class="text-2xl sm:text-4xl font-black text-white">«صوّر طبقك فقط.. ودع ذكاء سليم يحلل كيمياء الوجبة»</h2>
-          </div>
-          <span class="text-xs text-slate-400 bg-[#142538] px-3.5 py-1.5 rounded-xl border border-[#1E354F]">
-            يركز على: التكنولوجيا والسهولة والابتكار
-          </span>
-        </div>
-
-        <!-- Split Grid: Image on right, interactive feature tags on left -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          <div class="lg:col-span-6 relative flex justify-center">
-            <div class="relative w-full max-w-[460px] rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl cyan-glow">
-              <img src="assets/concept_ai_scanner.webp" alt="AI Food Scanner Saliim" class="w-full h-auto object-cover">
-            </div>
-          </div>
-
-          <div class="lg:col-span-6 space-y-6 text-right">
-            <div class="space-y-2">
-              <span class="text-xs font-bold text-[#00C2CB] uppercase tracking-wider block">وداعاً لحساب السعرات اليدوي الممل</span>
-              <h3 class="text-2xl sm:text-3xl font-black text-white">أسهل تجربة التزام في العالم العربي</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                لا داعي لوزن الطعام بالميزان أو إدخال أرقام السعرات يدوياً؛ كاميرا تطبيق سليم المدعومة بالذكاء الاصطناعي تفحص مكونات وجبتك في ثانية واحدة وتخبرك بتأثيرها على الأنسولين والشبع.
-              </p>
-            </div>
-
-            <div class="space-y-3 pt-2">
-              <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3">
-                <div class="w-8 h-8 rounded-xl bg-[#00C2CB]/20 text-[#00C2CB] flex items-center justify-center font-bold flex-shrink-0 mt-0.5">
-                  <i data-lucide="scan" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">تحليل فوري من مجرد صورة</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">يتعرف تلقائياً على الأطباق العربية والخليجية والمطاعم.</p>
-                </div>
-              </div>
-
-              <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3">
-                <div class="w-8 h-8 rounded-xl bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold flex-shrink-0 mt-0.5">
-                  <i data-lucide="gauge" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">مؤشر الشبع السريري (Satiety Score)</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">يعطيك تقييماً لمدى قدرة الوجبة على كبح الجوع لعدة ساعات.</p>
-                </div>
-              </div>
-
-              <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3">
-                <div class="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">
-                  <i data-lucide="message-square" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <h4 class="text-sm font-bold text-white">إشعار فوري وتوجيه من الكوتش</h4>
-                  <p class="text-xs text-slate-400 mt-0.5">يصل التقرير مباشرة لفريق المتابعة لتعديل ما يلزم دون تأخير.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- CONCEPT 3: HORMONE CHEMISTRY VS CALORIES INFOGRAPHIC -->
-    <!-- ========================================================================= -->
-    <section id="concept-3" class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="p-6 sm:p-10 rounded-[36px] bg-[#0E1D2D] border-2 border-purple-500/40 shadow-2xl space-y-10 relative overflow-hidden">
-        <div class="absolute -top-24 -right-24 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Concept Tag -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#1E354F] pb-6">
-          <div class="space-y-1">
-            <span class="inline-block px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-300 text-xs font-black">
-              الفكرة الثالثة • إنفوجرافيك علمي هرموني
-            </span>
-            <h2 class="text-2xl sm:text-4xl font-black text-white">«لماذا يفشل الحرمان وينجح نظام سليم؟ كيمياء الهرمونات تتحدث»</h2>
-          </div>
-          <span class="text-xs text-slate-400 bg-[#142538] px-3.5 py-1.5 rounded-xl border border-[#1E354F]">
-            يركز على: المصداقية الطبية والصيدلانية لدكتور أحمد
-          </span>
-        </div>
-
-        <!-- Comparison Dashboard -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
-          
-          <!-- Red: Restriction Diet Hormones -->
-          <div class="p-7 rounded-3xl bg-red-950/20 border-2 border-red-900/40 space-y-6">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-black text-red-400 bg-red-950/60 px-3 py-1 rounded-full border border-red-800">دايت الحرمان 800-1000 سعرة</span>
-              <span class="text-2xl">⚠️</span>
-            </div>
-            
-            <h3 class="text-xl font-black text-white">ماذا يحدث في كيمياء جسمك؟</h3>
-
-            <div class="space-y-4 text-xs">
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>هرمون التوتر والكورتيزول (Cortisol)</span>
-                  <span class="text-red-400">مرتفع جداً 95%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-red-500 h-full w-[95%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-400 mt-1">يحبس الدهون في البطن والأرداف ويقاوم الحرق.</p>
-              </div>
-
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>كفاءة الغدة الدرقية والأيض (Metabolism)</span>
-                  <span class="text-red-400">منخفضة جداً 25%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-red-500 h-full w-[25%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-400 mt-1">يدخل الجسم في طور المجاعة وثبات الوزن المستحيل.</p>
-              </div>
-
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>هرمون الجوع والشره (Ghrelin)</span>
-                  <span class="text-red-400">منفجر 90%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-red-500 h-full w-[90%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-400 mt-1">ينتهي بانتكاسة ليلية وأكل عاطفي يضاعف الوزن.</p>
-              </div>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-red-950/40 border border-red-900/50 text-center text-xs font-bold text-red-300">
-              النتيجة الحتمية: انهيار الإرادة وارتداد سريع للوزن
-            </div>
-          </div>
-
-          <!-- Green: Saliim Hormonal Balance -->
-          <div class="p-7 rounded-3xl bg-teal-950/30 border-2 border-[#4EB098] space-y-6 teal-glow">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-black text-slate-950 bg-[#4EB098] px-3.5 py-1 rounded-full shadow-sm">نظام سليم المشبع 1800 سعرة</span>
-              <span class="text-2xl">🌿</span>
-            </div>
-            
-            <h3 class="text-xl font-black text-white">كيف يعالج سليم الأيض؟</h3>
-
-            <div class="space-y-4 text-xs">
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>حساسية الأنسولين (Insulin Sensitivity)</span>
-                  <span class="text-[#4EB098]">مثالية ومستقرة 90%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-[#4EB098] h-full w-[90%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-300 mt-1">استقرار السكر يفتح مخازن الدهون العنيدة للحرق اليومي.</p>
-              </div>
-
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>هرمون الشبع والامتلاء (Leptin)</span>
-                  <span class="text-[#4EB098]">نشط ومتوازن 85%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-[#4EB098] h-full w-[85%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-300 mt-1">إشارات شبع طبيعية من الدماغ بدون صراع نفسي مع الطعام.</p>
-              </div>
-
-              <div>
-                <div class="flex justify-between font-bold text-slate-300 mb-1">
-                  <span>معدل الحرق أثناء النوم (Resting Metabolic Rate)</span>
-                  <span class="text-[#4EB098]">مستمر وفعال 88%</span>
-                </div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                  <div class="bg-[#4EB098] h-full w-[88%]"></div>
-                </div>
-                <p class="text-[11px] text-slate-300 mt-1">يستمر جسمك في خسارة السنتيمترات حتى أثناء نومك.</p>
-              </div>
-            </div>
-
-            <div class="p-3.5 rounded-xl bg-teal-950/60 border border-[#4EB098]/40 text-center text-xs font-bold text-[#4EB098]">
-              النتيجة الحتمية: خفة ونزول قياسات دائم بلا حرمان
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================= -->
-    <!-- CONCEPT 4: REAL COMMUNITY DISHES MOSAIC -->
-    <!-- ========================================================================= -->
-    <section id="concept-4" class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="p-6 sm:p-10 rounded-[36px] bg-[#0E1D2D] border-2 border-emerald-500/40 shadow-2xl space-y-10 relative overflow-hidden">
-        <div class="absolute -top-24 -left-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <!-- Concept Tag -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#1E354F] pb-6">
-          <div class="space-y-1">
-            <span class="inline-block px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-black">
-              الفكرة الرابعة • متحف وجبات أبطال سليم الحقيقيين
-            </span>
-            <h2 class="text-2xl sm:text-4xl font-black text-white">«هذه هي الوجبات التي خسروا بها 15 و 25 كيلوغراماً»</h2>
-          </div>
-          <span class="text-xs text-slate-400 bg-[#142538] px-3.5 py-1.5 rounded-xl border border-[#1E354F]">
-            يركز على: الإثبات المجتمعي وإزالة الخوف من الجوع
-          </span>
-        </div>
-
-        <!-- Meals Grid with Real Member Quotes -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-right">
-          
-          <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3 hover:border-emerald-400 transition-all">
-            <div class="h-44 rounded-2xl overflow-hidden bg-[#0A1624] border border-white/10">
-              <img src="assets/meal_after_saliim.webp" alt="مكرونة سليم بالخضار" class="w-full h-full object-cover">
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-slate-400">
-              <span>طبق الغداء • مكرونة وخضار وزيت زيتون</span>
-              <span class="text-emerald-400">خسارة 18 كغ</span>
-            </div>
-            <p class="text-xs text-slate-200 italic leading-relaxed">
-              "كنت معتقد إني مستحيل آكل مكرونة وأخس.. مع د. أحمد نزلت مقاسين بنطلون وأنا باكل مع عيالي عادي جداً."
-            </p>
-            <span class="text-[11px] text-slate-400 block font-semibold">— محمد ع. (مشترك باقة Private)</span>
-          </div>
-
-          <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3 hover:border-emerald-400 transition-all">
-            <div class="h-44 rounded-2xl overflow-hidden bg-[#0A1624] border border-white/10">
-              <img src="assets/concept_family_meals.webp" alt="دجاج مشوي وسلطة" class="w-full h-full object-cover">
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-slate-400">
-              <span>طعام البيت • دجاج مشوي وأرز وسلطة</span>
-              <span class="text-emerald-400">علاج مقاومة أنسولين</span>
-            </div>
-            <p class="text-xs text-slate-200 italic leading-relaxed">
-              "أول دايت في حياتي ما أحسش فيه بصداع العصر وشره السكر. الأكل طعمه حلو ومشبع ومليان طاقة."
-            </p>
-            <span class="text-[11px] text-slate-400 block font-semibold">— داليا س. (مشتركة باقة PRO)</span>
-          </div>
-
-          <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3 hover:border-emerald-400 transition-all">
-            <div class="h-44 rounded-2xl overflow-hidden bg-[#0A1624] border border-white/10">
-              <img src="assets/concept_ai_scanner.webp" alt="سلمون وسلطة أفوكادو" class="w-full h-full object-cover">
-            </div>
-            <div class="flex items-center justify-between text-xs font-bold text-slate-400">
-              <span>وجبة خارجية • سلمون وكينوا وسلطة</span>
-              <span class="text-emerald-400">خسارة 12 كغ</span>
-            </div>
-            <p class="text-xs text-slate-200 italic leading-relaxed">
-              "التطبيق علمني اختيارات المطاعم، باسافر وأخرج مع أصحابي وبافضل على مسار النزول بدون تأنيب ضمير."
-            </p>
-            <span class="text-[11px] text-slate-400 block font-semibold">— طارق م. (مشترك باقة Healthy)</span>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- BOTTOM DECISION BANNER -->
-    <div class="max-w-4xl mx-auto px-4 text-center space-y-4">
-      <h3 class="text-xl sm:text-2xl font-black text-white">أي فكرة من هذه الأفكار الأربعة وجدتها الأقوى؟</h3>
-      <p class="text-xs sm:text-sm text-slate-400">
-        أخبرني برقم الفكرة المفضلة لديك وسنقوم بدمجها مباشرة في الصفحة الرئيسية بدلاً من السلايدر القديم.
-      </p>
-      <div class="pt-2">
-        <a href="/" class="px-8 py-3.5 rounded-full bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm shadow-xl transition-all inline-block">
-          العودة للصفحة الرئيسية
+      <!-- Back Button -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-[#4EB098]/25 active:scale-95 transition-all">
+          <span>الرئيسية</span>
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
         </a>
       </div>
-    </div>
 
-  </main>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO OVERVIEW BANNER ==================== -->
+  <section class="py-12 bg-[#08121D] border-b border-white/5 text-center">
+    <div class="responsive-container max-w-3xl space-y-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#142538] border border-[#1E354F] text-[#4EB098] text-xs font-bold">
+        <i data-lucide="layout-grid" class="w-4 h-4 text-[#4EB098]"></i>
+        <span>معرض المقترحات البديلة لسيكشن الوجبات</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+        4 أفكار حصرية بديلة <br/>
+        <span class="bg-gradient-to-l from-[#4EB098] via-[#00C2CB] to-teal-200 bg-clip-text text-transparent">
+          بنفس خط وهوية وتنسيق سليم
+        </span>
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl mx-auto">
+        صممت هذه الصفحة لتجربة واختيار السيكشن الأنسب لجمهور د. أحمد الخطيب، ليحل محل سلايدر الوجبات القديم.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CONCEPT 1: A FULL DAY IN SALIIM KITCHEN (Family Table & Daily Meal Cards) -->
+  <!-- ========================================================================= -->
+  <section id="concept-1" class="py-16 sm:py-24 bg-[#0A1624] border-b border-[#1E354F] relative">
+    <div class="responsive-container">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#142538] border border-[#4EB098]/30 text-[#4EB098] text-xs font-bold">
+          <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
+          <span>المقترح الأول • روتين الأكل المشبع</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          الأكل الصحي ليس عقاباً.. <br/>
+          <span class="text-[#4EB098]">تأكل مع عائلتك من نفس طعام البيت بلا حرمان</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          فلسفة سليم تعتمد على إشباعك بطعام لذيذ من مطبخ بيتك؛ لا دايت منفصل يرهقك، ولا وجبات مسلوقة بلا نكهة:
+        </p>
+      </div>
+
+      <!-- Real Big Food Spread Visual -->
+      <div class="max-w-4xl mx-auto mb-10">
+        <div class="relative rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl group bg-[#142538]">
+          <img src="assets/concept_family_meals.webp" alt="سفرة سليم العائلية الصحية" class="w-full h-[320px] sm:h-[420px] object-cover transform group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#08121D] via-[#08121D]/30 to-transparent"></div>
+
+          <div class="absolute bottom-6 right-6 left-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 text-right">
+            <div class="space-y-1">
+              <span class="px-3 py-1 rounded-full bg-[#4EB098] text-slate-950 text-xs font-black inline-block shadow-md">طعام البيت الحقيقي</span>
+              <h3 class="text-lg sm:text-2xl font-black text-white">دجاج مشوي، أرز بسمتي، طواجن خضار، وزيت زيتون بكر</h3>
+              <p class="text-xs text-slate-300">أنت لست معزولاً عن سفرة بيتك.. بل تتعلم فن التوازن الهرموني الذكي.</p>
+            </div>
+            <div class="bg-[#08121D]/90 backdrop-blur-md border border-[#4EB098]/40 rounded-2xl py-2 px-4 text-xs font-bold text-[#4EB098] flex-shrink-0">
+              ✓ شبع حقيقي • ثبات طاقة 6 ساعات
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Meal Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto text-right">
+        
+        <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
+          <div class="w-9 h-9 rounded-xl bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold text-sm">01</div>
+          <div>
+            <span class="text-[11px] font-bold text-[#4EB098] block">الفطور المشبع</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">بيض بلدي + أجبان طبيعية + زيتون</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            بروتين ودهون صحية تمنع تقلبات سكر الدم وتؤمن لك تركيزاً ذهنياً حتى الظهيرة.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold text-sm">02</div>
+          <div>
+            <span class="text-[11px] font-bold text-teal-300 block">غداء البيت الساخن</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">طواجن اللحم أو الدجاج مع أرز وخضار</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            وجبة كاملة دسمة ومغذية من طعام البيت دون إعداد أكلات منفصلة أو تكلفة إضافية.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-sm">03</div>
+          <div>
+            <span class="text-[11px] font-bold text-amber-300 block">سناك السعادة والقهوة</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">قهوتك المفضلة + شوكولاتة داكنة ومكسرات</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            لا نلغي استمتاعك بالقهوة؛ نضبط كمياتها لتهدئة هرمون التوتر ومنع هبوط الطاقة.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#142538] border border-[#1E354F] hover:border-[#4EB098] transition-all space-y-3">
+          <div class="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center font-bold text-sm">04</div>
+          <div>
+            <span class="text-[11px] font-bold text-blue-300 block">عشاء خفيف مريح</span>
+            <h4 class="text-sm font-bold text-white mt-0.5">سلطات غنية بجبنة الفيتا وبروتين هادئ</h4>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            هضم سلس ومريح لنوم عميق يساعد الكبد على تفعيل مسارات حرق الدهون طوال الليل.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CONCEPT 2: AI MEAL SCANNER (Smart Tech & App Integration) -->
+  <!-- ========================================================================= -->
+  <section id="concept-2" class="py-16 sm:py-24 bg-[#08121D] border-b border-[#1E354F] relative overflow-hidden">
+    <div class="responsive-container">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#142538] border border-[#00C2CB]/40 text-[#00C2CB] text-xs font-bold shadow-inner">
+          <i data-lucide="scan" class="w-3.5 h-3.5"></i>
+          <span>المقترح الثاني • الذكاء الاصطناعي في تطبيق سليم</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          صوّر طبقك فقط.. <br/>
+          <span class="text-[#00C2CB]">ودع الذكاء الاصطناعي يحلل كيمياء الوجبة والشبع</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          وداعاً لوزن الطعام بالميزان أو حساب السعرات المعقد؛ التزامك أصبح أسهل مما تتخيل:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center max-w-5xl mx-auto">
+        
+        <!-- Left: App Scanner Mockup Image -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-[430px] rounded-3xl overflow-hidden border-2 border-[#00C2CB]/30 shadow-2xl cyan-glow bg-[#142538]">
+            <img src="assets/concept_ai_scanner.webp" alt="تطبيق سليم لفحص الوجبات بالذكاء الاصطناعي" class="w-full h-auto object-cover">
+          </div>
+        </div>
+
+        <!-- Right: Tech Bullet Features -->
+        <div class="lg:col-span-6 space-y-4 text-right">
+          
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#00C2CB] uppercase tracking-wider block">تجربة متابعة ذكية في جيبك</span>
+            <h3 class="text-xl sm:text-2xl font-black text-white">تحليل فوري لأي وجبة في ثوانٍ</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              كاميرا تطبيق سليم تفحص مكونات طبقك، تقدر كمية البروتين والألياف، وتحدد تلقائياً تأثير الوجبة على هرمون الأنسولين وسرعة الحرق.
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#00C2CB]/20 text-[#00C2CB] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="camera" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">التعرف على الأكلات العربية والمنزلية</h4>
+                <p class="text-xs text-slate-400 mt-0.5">مدرب ومخصص ليتعرف على الأطباق الخليجية والمصرية والوجبات السريعة.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#4EB098]/20 text-[#4EB098] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">مؤشر الشبع السريري (Satiety Index)</h4>
+                <p class="text-xs text-slate-400 mt-0.5">يخبرك فوراً إذا كانت الوجبة ستمنحك شبعاً مستقراً أم ستسبب لك خمولاً بعد الأكل.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#142538] border border-[#1E354F] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">ربط مباشر مع فريق المتابعة</h4>
+                <p class="text-xs text-slate-400 mt-0.5">تصل الصور والبيانات لأخصائي التغذية ليقترح عليك البدائل الفورية إن كنت في مطعم.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CONCEPT 3: HORMONAL CHEMISTRY VS RESTRICTION INFOGRAPHIC -->
+  <!-- ========================================================================= -->
+  <section id="concept-3" class="py-16 sm:py-24 bg-[#0E1D2D] border-b border-[#1E354F] relative">
+    <div class="responsive-container">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#142538] border border-[#4EB098]/30 text-[#4EB098] text-xs font-bold">
+          <i data-lucide="flask-conical" class="w-3.5 h-3.5"></i>
+          <span>المقترح الثالث • الحقيقة الصيدلانية والهرمونية</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          لماذا يفشل دايت الحرمان وينجح نظام سليم؟ <br/>
+          <span class="text-[#4EB098]">المسألة كيمياء هرمونات وليست مجرد حساب سعرات</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          بحكم التخصص الصيدلاني لدكتور أحمد الخطيب؛ إليك ما يحدث لهرمونات جسمك في الحالتين:
+        </p>
+      </div>
+
+      <!-- Side by Side Dashboard -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-right">
+        
+        <!-- Red Card: Traditional Restriction -->
+        <div class="p-7 rounded-3xl bg-red-950/20 border-2 border-red-900/40 space-y-6">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-red-400 bg-red-950/80 px-3 py-1 rounded-full border border-red-800">دايت الحرمان 800-1000 سعرة</span>
+            <span class="text-xl">⚠️</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-white">انهيار كيمياء الحرق والميتابوليزم:</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>هرمون التوتر والكورتيزول (Cortisol)</span>
+                <span class="text-red-400 font-black">مرتفع جداً 95%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[95%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يحبس الدهون الحشوية في البطن والخصر لمنع نزولها.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>كفاءة الغدة الدرقية والأيض (Metabolism)</span>
+                <span class="text-red-400 font-black">هبوط حاد 25%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[25%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يدخل الجسم في حالة دفاع ومجاعة مسبباً ثبات الوزن التام.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>هرمون الجوع والشره (Ghrelin)</span>
+                <span class="text-red-400 font-black">منفجر 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يؤدي لنوبات شراهة ليلية عارمة واستعادة الوزن بزيادة.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-red-950/40 border border-red-900/50 text-center text-xs font-bold text-red-300">
+            النتيجة: إحباط متكرر وتوقف الحرق تماماً
+          </div>
+        </div>
+
+        <!-- Green Card: Saliim Hormonal Balance -->
+        <div class="p-7 rounded-3xl bg-teal-950/30 border-2 border-[#4EB098] space-y-6 teal-glow">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-slate-950 bg-[#4EB098] px-3.5 py-1 rounded-full shadow-sm">نظام سليم المشبع 1800 سعرة</span>
+            <span class="text-xl">🌿</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-white">تفعيل الحرق الطبيعي المستدام:</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>حساسية الأنسولين (Insulin Sensitivity)</span>
+                <span class="text-[#4EB098] font-black">مثالية ومستقرة 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-[#4EB098] h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">ثبات سكر الدم يفتح مخازن الدهون العنيدة للحرق اليومي.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>هرمون الشبع والامتلاء (Leptin)</span>
+                <span class="text-[#4EB098] font-black">نشط ومتوازن 85%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-[#4EB098] h-full w-[85%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">إشارات شبع طبيعية من المخ دون أي صراع نفسي مع الطعام.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1">
+                <span>حرق الدهون أثناء النوم (Resting Metabolic Rate)</span>
+                <span class="text-[#4EB098] font-black">مستمر وفعال 88%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-[#4EB098] h-full w-[88%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">يستمر جسمك في خسارة المقاسات والسنتيمترات حتى وأنت نائم.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-teal-950/60 border border-[#4EB098]/40 text-center text-xs font-bold text-[#4EB098]">
+            النتيجة: راحة وشبع ونزول حقيقي مستمر
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- CONCEPT 4: REAL COMMUNITY DISHES (Social Proof & Members Meals) -->
+  <!-- ========================================================================= -->
+  <section id="concept-4" class="py-16 sm:py-24 bg-[#0A1624] border-b border-[#1E354F] relative">
+    <div class="responsive-container">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#142538] border border-[#4EB098]/30 text-[#4EB098] text-xs font-bold">
+          <i data-lucide="users" class="w-3.5 h-3.5"></i>
+          <span>المقترح الرابع • تجارب وأطباق حقيقية</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          هذه هي الأطباق التي خسروا بها <br/>
+          <span class="text-[#4EB098]">15 و 25 كيلوغراماً واستعادوا نشاطهم</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          لقطات من وجبات المشتركين اليومية في مجموعات المتابعة وتطبيق سليم:
+        </p>
+      </div>
+
+      <!-- 3 Real Member Meals Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-right">
+        
+        <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3.5 hover:border-[#4EB098] transition-all">
+          <div class="h-44 rounded-2xl overflow-hidden bg-[#08121D] border border-white/10">
+            <img src="assets/meal_after_saliim.webp" alt="مكرونة سليم بالخضار" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span class="text-white">مكرونة بالخضار وزيت الزيتون</span>
+            <span class="text-[#4EB098] bg-[#4EB098]/10 px-2.5 py-0.5 rounded-full">نزول 18 كغ</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed italic">
+            "كنت فاكر إني مستحيل آكل مكرونة وأخس.. مع د. أحمد نزلت مقاسين بنطلون وباتغدى مع عائلتي عادي جداً."
+          </p>
+          <span class="text-[11px] text-slate-400 block font-semibold">— محمد ع. (مشترك باقة Private)</span>
+        </div>
+
+        <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3.5 hover:border-[#4EB098] transition-all">
+          <div class="h-44 rounded-2xl overflow-hidden bg-[#08121D] border border-white/10">
+            <img src="assets/concept_family_meals.webp" alt="دجاج مشوي وأرز وسلطة" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span class="text-white">دجاج مشوي وأرز وسلطة يونانية</span>
+            <span class="text-[#4EB098] bg-[#4EB098]/10 px-2.5 py-0.5 rounded-full">علاج مقاومة الأنسولين</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed italic">
+            "أول نظام في حياتي ما أحسش فيه بصداع العصر وشره السكر. الأكل طعمه حلو ومشبع ومليان طاقة."
+          </p>
+          <span class="text-[11px] text-slate-400 block font-semibold">— داليا س. (مشتركة باقة PRO)</span>
+        </div>
+
+        <div class="p-5 rounded-3xl bg-[#142538] border border-[#1E354F] space-y-3.5 hover:border-[#4EB098] transition-all">
+          <div class="h-44 rounded-2xl overflow-hidden bg-[#08121D] border border-white/10">
+            <img src="assets/concept_ai_scanner.webp" alt="سلمون وكينوا وسلطة أفوكادو" class="w-full h-full object-cover">
+          </div>
+          <div class="flex items-center justify-between text-xs font-bold">
+            <span class="text-white">سلمون مشوي وكينوا وأفوكادو</span>
+            <span class="text-[#4EB098] bg-[#4EB098]/10 px-2.5 py-0.5 rounded-full">نزول 12 كغ</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed italic">
+            "التطبيق علمني اختيارات المطاعم، باسافر وأخرج مع أصحابي وبافضل على مسار النزول بدون تأنيب ضمير."
+          </p>
+          <span class="text-[11px] text-slate-400 block font-semibold">— طارق م. (مشترك باقة Healthy)</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 12. COMPREHENSIVE FOOTER ==================== -->
+  <footer class="bg-[#050C14] border-t border-[#1E354F] pt-12 pb-14 text-right text-slate-400">
+    <div class="responsive-container">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#3A907C] to-[#4EB098] text-white font-black text-lg flex items-center justify-center">
+              س
+            </div>
+            <div>
+              <span class="font-black text-lg text-white block">سَـلِيم</span>
+              <span class="text-[11px] text-slate-400">د. أحمد الخطيب Pharm.D</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            منصة متخصصة في التدريب على نمط الحياة الصحي، التغذية السريرية، واستعادة كفاءة الأيض دون حرمان.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-2 text-xs">
+          <h4 class="font-bold text-white text-sm mb-3">روابط الصفحة</h4>
+          <a href="#concept-1" class="block text-slate-400 hover:text-[#4EB098]">1. مطبخ سليم العائلي</a>
+          <a href="#concept-2" class="block text-slate-400 hover:text-[#4EB098]">2. الماسح الذكي AI</a>
+          <a href="#concept-3" class="block text-slate-400 hover:text-[#4EB098]">3. كيمياء الهرمونات</a>
+          <a href="#concept-4" class="block text-slate-400 hover:text-[#4EB098]">4. مجتمع وجبات المشتركين</a>
+        </div>
+
+        <!-- Support & Contact -->
+        <div class="space-y-2 text-xs">
+          <h4 class="font-bold text-white text-sm mb-3">التواصل والدعم</h4>
+          <p class="text-slate-400">لديك استفسار؟</p>
+          <p class="text-slate-300 font-mono pt-1">
+            البريد الرسمي: <br/>
+            <a href="mailto:elkhateebahmed81@gmail.com" class="text-[#4EB098] hover:underline">elkhateebahmed81@gmail.com</a>
+          </p>
+        </div>
+
+        <!-- Back to Main Site -->
+        <div class="space-y-3 text-xs">
+          <h4 class="font-bold text-white text-sm mb-3">الموقع الرئيسي</h4>
+          <p class="text-slate-400">جاهز لاختيار وتطبيق السيكشن؟</p>
+          <a href="/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4EB098] hover:bg-[#3A907C] text-slate-950 font-black text-xs transition-all shadow-md">
+            <span>العودة للرئيسية</span>
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Disclaimer & Copyright -->
+      <div class="pt-8 border-t border-slate-800/80 text-center text-xs text-slate-500 space-y-2">
+        <p class="max-w-2xl mx-auto text-[11px] text-slate-500 leading-relaxed">
+          تنويه: هذه المنصة تقدم استشارات ونمط حياة وتغذية وتثقيف صحي، وليست بديلاً عن الطوارئ الطبية أو الرعاية في المستشفيات. يُرجى مراجعة طبيبك المعالج دائماً للأمراض الحادة.
+        </p>
+        <p class="text-slate-600">
+          جميع الحقوق محفوظة &copy; 2026 د. أحمد الخطيب • منصة سليم (Saliim) • ahmedelkhateeb.com
+        </p>
+      </div>
+
+    </div>
+  </footer>
 
   <script>
     lucide.createIcons();

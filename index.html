@@ -570,8 +570,8 @@
       </div>
 
       <!-- Touch/Mouse Interactive Before-After Slider -->
-      <div class="max-w-[480px] mx-auto">
-        <div class="relative w-full aspect-square rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl user-select-none select-none touch-none cursor-ew-resize bg-[#142538]" id="body-ba-container" style="direction: ltr;">
+      <div class="max-w-[440px] mx-auto">
+        <div class="relative w-full aspect-[3/4] rounded-[32px] overflow-hidden border-2 border-white/10 shadow-2xl user-select-none select-none touch-none cursor-ew-resize bg-[#142538]" id="body-ba-container" style="direction: ltr;">
           
           <!-- Base Image (Left: Before - Overweight, Fatigued, Aged) -->
           <img src="assets/man_before_journey.webp" alt="قبل سليم - إجهاد وسمنة" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
@@ -1703,7 +1703,10 @@
       const container = document.getElementById(containerId);
       const clipWrap = document.getElementById(clipWrapId);
       const line = document.getElementById(lineId);
-      if (!container || !clipWrap || !line) return;
+      if (!container || !clipWrap || !line) {
+        console.warn('Slider elements not found for:', containerId);
+        return;
+      }
 
       let isDragging = false;
 
@@ -1717,44 +1720,58 @@
         line.style.left = `${percent}%`;
       }
 
-      function onPointerDown(e) {
+      // Universal Pointer Events
+      container.addEventListener('pointerdown', (e) => {
         isDragging = true;
         try { container.setPointerCapture(e.pointerId); } catch(err) {}
         updatePos(e.clientX);
-      }
+      });
 
-      function onPointerMove(e) {
+      container.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
         updatePos(e.clientX);
-      }
+      });
 
-      function onPointerUp(e) {
+      const stopDrag = (e) => {
         isDragging = false;
-        try { container.releasePointerCapture(e.pointerId); } catch(err) {}
-      }
+        try { if (e.pointerId) container.releasePointerCapture(e.pointerId); } catch(err) {}
+      };
 
-      container.addEventListener('pointerdown', onPointerDown);
-      container.addEventListener('pointermove', onPointerMove);
-      container.addEventListener('pointerup', onPointerUp);
-      container.addEventListener('pointercancel', onPointerUp);
+      container.addEventListener('pointerup', stopDrag);
+      container.addEventListener('pointercancel', stopDrag);
+      container.addEventListener('pointerleave', stopDrag);
 
+      // Touch Events fallback
       container.addEventListener('touchstart', (e) => {
         isDragging = true;
         if (e.touches && e.touches[0]) updatePos(e.touches[0].clientX);
       }, { passive: true });
+
       container.addEventListener('touchmove', (e) => {
         if (!isDragging) return;
         if (e.touches && e.touches[0]) updatePos(e.touches[0].clientX);
       }, { passive: true });
+
       container.addEventListener('touchend', () => { isDragging = false; });
       container.addEventListener('touchcancel', () => { isDragging = false; });
+
+      // Click to move anywhere
+      container.addEventListener('click', (e) => {
+        updatePos(e.clientX);
+      });
     }
 
-    function initSlider() {
+    function initAllSliders() {
       setupGenericSlider('ba-container', 'ba-clip-wrap', 'ba-divider-line');
       setupGenericSlider('body-ba-container', 'body-ba-clip-wrap', 'body-ba-divider-line');
     }
-    // Existing slider logic replaced with setupGenericSlider wrapper
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAllSliders);
+    } else {
+      initAllSliders();
+    }
+    window.addEventListener('load', initAllSliders);
 
     // 4. FAQ Accordion Logic
     function toggleFaq(num) {

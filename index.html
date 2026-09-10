@@ -154,6 +154,26 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
+
+    /* Premium Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
     /* Floating WhatsApp Button */
     .whatsapp-float {
       position: fixed;
@@ -361,7 +381,7 @@
   </section>
 
   <!-- ==================== SECTION 4: FOOD PLATE COMPARISON SLIDER (DARK CINEMATIC) ==================== -->
-  <section id="philosophy" class="py-16 sm:py-24 bg-[#0A1624]">
+  <section id="philosophy" class="py-16 sm:py-24 bg-[#0A1624] reveal-on-scroll">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
@@ -425,7 +445,7 @@
   </section>
 
   <!-- ==================== SECTION 5: FRUSTRATION CYCLE vs 4 SCIENTIFIC STEPS ==================== -->
-  <section id="cycle" class="py-16 sm:py-24 bg-[#0E1D2D] border-y border-white/5 relative">
+  <section id="cycle" class="py-16 sm:py-24 bg-[#0E1D2D] border-y border-white/5 relative reveal-on-scroll">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -543,7 +563,7 @@
 
     <!-- ==================== HIGHLY VISUAL & ANIMATED CUSTOMER JOURNEY ==================== -->
     <!-- ==================== BODY TRANSFORMATION BEFORE / AFTER SLIDER ==================== -->
-  <section id="body-transformation" class="py-16 sm:py-24 bg-[#08121D] text-white relative overflow-hidden border-b border-slate-800">
+  <section id="body-transformation" class="py-16 sm:py-24 bg-[#08121D] text-white relative overflow-hidden border-b border-slate-800 reveal-on-scroll">
     <!-- Ambient Glow Effects -->
     <div class="absolute top-1/3 -right-32 w-80 h-80 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-10 -left-32 w-80 h-80 bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -628,7 +648,7 @@
 
 
   <!-- ==================== SECTION: INTERACTIVE HEALTH QUIZ & BODY CALCULATOR ==================== -->
-  <section id="quiz" class="py-16 sm:py-24 bg-[#0A1624] text-white relative overflow-hidden border-t border-slate-800">
+  <section id="quiz" class="py-16 sm:py-24 bg-[#0A1624] text-white relative overflow-hidden border-t border-slate-800 reveal-on-scroll">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-teal-900/20 via-transparent to-transparent pointer-events-none"></div>
     
     <div class="responsive-container max-w-4xl relative z-10">
@@ -849,7 +869,7 @@
   </section>
 
   <!-- ==================== SECTION 6: PACKAGES & SUBSCRIPTIONS (LIGHT CLEAN SURFACE) ==================== -->
-  <section id="packages" class="py-16 sm:py-24 bg-[#F2F7F4] text-[#0A1D30] border-y border-slate-200">
+  <section id="packages" class="py-16 sm:py-24 bg-[#F2F7F4] text-[#0A1D30] border-y border-slate-200 reveal-on-scroll">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -1084,7 +1104,7 @@
   </section>
 
   <!-- ==================== SECTION 7: SALIIM MOBILE APP (DARK TECH) ==================== -->
-  <section id="app" class="py-16 sm:py-24 bg-[#08121D] border-b border-white/5 relative">
+  <section id="app" class="py-16 sm:py-24 bg-[#08121D] border-b border-white/5 relative reveal-on-scroll">
     <div class="responsive-container">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
@@ -1171,7 +1191,7 @@
   </section>
 
   <!-- ==================== SECTION 8: CURATED SUPPLEMENTS (SOFT SAGE GREEN CONTRAST) ==================== -->
-  <section id="supplements" class="py-16 sm:py-24 bg-[#E0EFE8] text-[#0A1D30] border-y border-teal-200/80">
+  <section id="supplements" class="py-16 sm:py-24 bg-[#E0EFE8] text-[#0A1D30] border-y border-teal-200/80 reveal-on-scroll">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
@@ -1299,7 +1319,7 @@
   </section>
 
   <!-- ==================== SECTION 10: TESTIMONIALS (WARM LIGHT MINT SURFACE) ==================== -->
-  <section id="testimonials" class="py-16 sm:py-24 bg-[#EAF4EF] text-[#0A1D30] border-t border-slate-200">
+  <section id="testimonials" class="py-16 sm:py-24 bg-[#EAF4EF] text-[#0A1D30] border-t border-slate-200 reveal-on-scroll">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
@@ -1370,7 +1390,7 @@
   </section>
 
   <!-- ==================== SECTION 11: FAQS (DEEP NAVY) ==================== -->
-  <section id="faq" class="py-16 sm:py-24 bg-[#08121D] border-t border-white/5">
+  <section id="faq" class="py-16 sm:py-24 bg-[#08121D] border-t border-white/5 reveal-on-scroll">
     <div class="responsive-container max-w-4xl">
       
       <div class="text-center mb-12 space-y-2">
@@ -2096,9 +2116,34 @@
       nextQuizStep(1);
     }
 
+
+    // ==========================================
+    // 10. SCROLL REVEAL ANIMATIONS (IntersectionObserver)
+    // ==========================================
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!revealElements.length) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target); // Reveal once smoothly
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
     // Automatically initialize counters when DOM loads
     document.addEventListener('DOMContentLoaded', () => {
       initStatsCounter();
+      initScrollReveal();
       // Auto highlight step 1 first option
       const firstOpt = document.querySelector('input[name="quiz_goal"]:checked');
       if (firstOpt) highlightQuizCard(firstOpt);

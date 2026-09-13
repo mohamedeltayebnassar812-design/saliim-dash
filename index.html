@@ -243,7 +243,7 @@
 
       <!-- Action Button & Mobile Menu Toggle -->
       <div class="flex items-center gap-3">
-        <button onclick="openBookingModal('private', 'باقة المتابعة الخاصة (Private)', '$199 (بدلاً من $240)')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-[#18746F]/25 active:scale-95 transition-all">
+        <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm shadow-md shadow-[#18746F]/25 active:scale-95 transition-all">
           <span>ابدأ بفهم جسمك</span>
           <i data-lucide="sparkles" class="w-4 h-4"></i>
         </button>
@@ -269,7 +269,7 @@
       <a href="#quiz" onclick="toggleMobileMenu()" class="block py-2 text-[#18746F] font-black flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> حاسبة جسمك والتوصية الطبية</a>
       <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-[#18746F]">الأسئلة الأكثر شيوعاً</a>
       <div class="pt-3 border-t border-slate-800">
-        <button onclick="toggleMobileMenu(); openBookingModal('private', 'باقة المتابعة الخاصة (Private)', '$199');" class="w-full py-3 bg-[#18746F] text-slate-950 font-black rounded-xl text-center shadow-lg">
+        <button onclick="toggleMobileMenu(); openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً');" class="w-full py-3 bg-[#18746F] text-slate-950 font-black rounded-xl text-center shadow-lg">
           ابدأ بفهم جسمك الآن
         </button>
       </div>
@@ -636,7 +636,7 @@
 
         <!-- Call to action button below comparison -->
         <div class="text-center mt-6">
-          <button onclick="openBookingModal('private', 'باقة المتابعة الخاصة', '$199')" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-[#18746F]/30 transition-all transform hover:-translate-y-0.5">
+          <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً')" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-[#18746F]/30 transition-all transform hover:-translate-y-0.5">
             ابدأ رحلة تحولك واستعادة طاقتك
           </button>
         </div>
@@ -845,7 +845,7 @@
                 <span class="text-[11px] text-slate-400 block font-medium">الباقة الأكثر ملائمة للوصول لهدفك:</span>
                 <div class="flex items-center gap-2 mt-0.5">
                   <span id="result-plan-name" class="text-base sm:text-lg font-black text-[#18746F]">باقة المتابعة الخاصة (Private)</span>
-                  <span id="result-plan-price" class="text-xs font-bold text-slate-300 bg-slate-800 px-2.5 py-0.5 rounded-full">$199</span>
+                  <span id="result-plan-price" class="text-xs font-bold text-slate-300 bg-slate-800 px-2.5 py-0.5 rounded-full">$119</span>
                 </div>
               </div>
 
@@ -885,217 +885,149 @@
         </p>
       </div>
 
-      <!-- Packages Grid: 4 Tiers + Consultation Card -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-right">
+      <!-- Packages Grid: 2 Subscription Tiers + 1 Direct Consultation Card -->
+      <div class="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8 text-right">
         
-        <!-- 1. HEALTHY TIER ($60) -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl hover:border-[#18746F]/40 shadow-sm relative group cursor-pointer">
-          <div class="space-y-4">
+        <!-- 1. HEALTHY TIER ($69) -->
+        <div class="bg-white border border-slate-200 rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#18746F]/40 shadow-sm relative group">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-slate-100 text-slate-700">الاشتراك الأساسي</span>
+              <span class="text-[11px] font-bold text-slate-400">باقة HEALTHY</span>
+            </div>
+
             <div>
-              <span class="text-[11px] font-bold text-slate-400 block">باقة HEALTHY</span>
-              <h3 class="text-lg font-black text-[#0A1D30] mt-1">الخطوة الأولى نحو التوجيه</h3>
-              <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">
-                لمن يحتاج إلى خطة واضحة ومتابعة مستمرة من فريق الأخصائيين للبقاء على المسار الصحيح.
+              <h3 class="text-2xl font-black text-[#0A1D30]">الخطوة الأولى نحو التوجيه</h3>
+              <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                لمن يحتاج إلى خطة غذائية علمية واضحة ومتابعة منتظمة من فريق الأخصائيين لإنقاص الوزن وتحسين الصحة العامة بثبات.
               </p>
             </div>
 
-            <div class="flex items-baseline gap-1 pt-2 border-t border-slate-100">
-              <span class="text-3xl font-black text-[#0A1D30]">$60</span>
-              <span class="text-xs text-slate-500 font-medium">/ شهرياً</span>
+            <div class="flex items-baseline gap-1.5 pt-3 border-t border-slate-100">
+              <span class="text-4xl font-black text-[#0A1D30]">$69</span>
+              <span class="text-sm text-slate-500 font-medium">/ شهرياً</span>
             </div>
 
-            <ul class="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-100">
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>5 تذاكر استفسارات شهرية لطرح أسئلتك.</span>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-700 pt-3 border-t border-slate-100">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>خطة تغذية ونظام حياة مخصص 100% لروتينك اليومي.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>4 متابعات شهرية مع أخصائي التغذية والكوتش.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>5 تذاكر استفسارات شهرية لطرح أسئلتك على الأخصائي.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>مكالمة صوتية تصل إلى 15 دقيقة أسبوعياً.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>4 متابعات شهرية منتظمة مع أخصائي التغذية والكوتش.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>تقرير تحليل حالة شامل كل 14 يوماً.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>مكالمة صوتية استشارية تصل إلى 15 دقيقة أسبوعياً.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>خطة تتطور مع تقدمك + دعم بالتطبيق.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>تقرير تقييم حالة وقياسات شامل كل 14 يوماً.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
+                <span>تحديث وتطوير مستمر لخطتك + وصول كامل لتطبيق سليم.</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openBookingModal('healthy', 'باقة Healthy', '$60/شهرياً')" class="w-full mt-6 py-3 px-4 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 font-bold text-xs rounded-xl transition-all shadow-sm">
-            اشترك في باقة Healthy
+          <button onclick="openBookingModal('healthy', 'باقة Healthy', '$69/شهرياً')" class="w-full mt-8 py-3.5 px-5 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 font-black text-sm rounded-xl transition-all shadow-sm">
+            اشترك في باقة Healthy ($69)
           </button>
         </div>
 
-        <!-- 2. PRO TIER ($120) -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl hover:border-[#18746F]/40 shadow-sm relative group cursor-pointer">
-          <div class="space-y-4">
-            <div>
-              <span class="text-[11px] font-bold text-[#2E7D6A] block">باقة PRO</span>
-              <h3 class="text-lg font-black text-[#0A1D30] mt-1">دعم مكثف لنتائج أسرع</h3>
-              <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">
-                للأشخاص الذين يحتاجون إلى تواصل أعمق ومراقبة مستمرة لتخطي عقبات ثبات الوزن.
-              </p>
-            </div>
-
-            <div class="flex items-baseline gap-1 pt-2 border-t border-slate-100">
-              <span class="text-3xl font-black text-[#0A1D30]">$120</span>
-              <span class="text-xs text-slate-500 font-medium">/ شهرياً</span>
-            </div>
-
-            <ul class="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-100">
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>10 تذاكر استفسارات شهرية لضمان الإجابة عن كل التفاصيل.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>8 متابعات شهرية من أخصائي التغذية والمدربين.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>مكالمات صوتية تصل إلى 30 دقيقة أسبوعياً.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>تقرير تحليل حالة شامل يصدر كل 7 أيام.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#2E7D6A] flex-shrink-0 mt-0.5"></i>
-                <span>دعم ذو أولوية وتعديلات أسرع لخطتك.</span>
-              </li>
-            </ul>
-          </div>
-
-          <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$120/شهرياً')" class="w-full mt-6 py-3 px-4 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 font-bold text-xs rounded-xl transition-all shadow-sm">
-            اشترك في باقة Pro
-          </button>
-        </div>
-
-        <!-- 3. PRIVATE TIER ($199 SPECIAL / ORIGINALLY $240) - HIGH CONTRAST DARK NAVY -->
-        <div class="bg-[#091D2F] text-white border-2 border-[#18746F] rounded-3xl p-6 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-2 hover:-translate-y-5 hover:scale-[1.03] transition-all duration-300 teal-glow group cursor-pointer">
+        <!-- 2. PRO TIER ($119) - FEATURED / MOST POPULAR -->
+        <div class="bg-[#091D2F] text-white border-2 border-[#18746F] rounded-3xl p-7 sm:p-8 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-2 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 teal-glow group">
           <!-- Ribbon -->
-          <div class="absolute -top-3.5 right-6 bg-[#18746F] text-slate-950 px-3 py-1 rounded-full font-black text-[10px] shadow-lg">
-            الأكثر طلباً • وفر 41$
+          <div class="absolute -top-3.5 right-8 bg-[#18746F] text-white px-4 py-1 rounded-full font-black text-xs shadow-lg">
+            الأكثر طلباً • متابعة مكثفة
           </div>
 
-          <div class="space-y-4">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-[#18746F]/20 text-[#07C1BE] border border-[#18746F]/40">الرعاية المتقدمة</span>
+              <span class="text-[11px] font-bold text-[#07C1BE]">باقة PRO المتقدمة</span>
+            </div>
+
             <div>
-              <span class="text-[11px] font-bold text-[#18746F] block">باقة PRIVATE (مع د. أحمد)</span>
-              <h3 class="text-lg font-black text-white mt-1">التدخل المباشر للحالات الدقيقة</h3>
-              <p class="text-[11px] text-slate-300 mt-1 leading-relaxed">
-                دراسة طبية وغذائية متقدمة مع د. أحمد الخطيب شخصياً للحالات التي تتناول أدوية أو متلازمات.
+              <h3 class="text-2xl font-black text-white">دعم مكثف لنتائج أسرع ومستدامة</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                للأشخاص الذين يحتاجون إلى تواصل أعمق ومراقبة مستمرة لتخطي عقبات ثبات الوزن، علاج مقاومة الإنسولين، وضبط المؤشرات الحيوية.
               </p>
             </div>
 
-            <div class="flex items-baseline gap-2 pt-2 border-t border-slate-700">
-              <span class="text-4xl font-black text-[#18746F]">$199</span>
-              <span class="text-base text-slate-400 line-through">$240</span>
-              <span class="text-xs text-slate-300 font-medium">/ شهرياً</span>
+            <div class="flex items-baseline gap-1.5 pt-3 border-t border-slate-700">
+              <span class="text-4xl font-black text-[#07C1BE]">$119</span>
+              <span class="text-sm text-slate-300 font-medium">/ شهرياً</span>
             </div>
 
-            <ul class="space-y-2.5 text-xs text-slate-200 pt-2 border-t border-slate-700">
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
-                <span class="font-bold text-white">مكالمة تشخيصية 30 دقيقة مع د. أحمد شخصياً.</span>
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 pt-3 border-t border-slate-700">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span class="font-bold text-white">كل مميزات باقة Healthy بالكامل طوال الشهر.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
-                <span>مراجعة شخصية لملفك مرتين (اليوم 14 واليوم 28).</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>10 تذاكر استفسارات شهرية لضمان الإجابة عن أدق التفاصيل.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
-                <span>جميع مميزات باقة Pro بالكامل طوال الشهر.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>8 متابعات شهرية من أخصائي التغذية والمدربين (مرتين أسبوعياً).</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
-                <span>10 تذاكر استفسارات مباشرة شهرياً.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>مكالمات صوتية تصل إلى 30 دقيقة أسبوعياً للمتابعة والتوجيه.</span>
               </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-[#18746F] flex-shrink-0 mt-0.5"></i>
-                <span>متابعتان أسبوعياً ومكالمات مع الفريق المعاون.</span>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>تقرير تحليل حالة شامل يصدر كل 7 أيام لمواكبة استجابة جسمك.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>دعم ذو أولوية فائقة وتعديلات سريعة لخطتك الغذائية والرياضية.</span>
               </li>
             </ul>
           </div>
 
-          <button onclick="openBookingModal('private', 'باقة Private (إشراف د. أحمد)', '$199 (خصم خاص)')" class="w-full mt-6 py-3.5 px-4 bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-lg shadow-[#18746F]/30 active:scale-95 transition-all">
-            احجز باقة Private بـ 199$
-          </button>
-        </div>
-
-        <!-- 4. THE PROTOCOL ($500 FOR 2 MONTHS) -->
-        <div class="bg-white border border-slate-200 rounded-3xl p-6 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-3 hover:scale-[1.02] hover:shadow-2xl hover:border-purple-400/60 shadow-sm relative group cursor-pointer">
-          <div class="space-y-4">
-            <div>
-              <span class="text-[11px] font-bold text-purple-600 block">THE PROTOCOL (شهرين)</span>
-              <h3 class="text-lg font-black text-[#0A1D30] mt-1">التحول الجذري والمستدام</h3>
-              <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">
-                أعلى مستوى من الرعاية الطبية والغذائية لمدة 60 يوماً متواصلة لمن يعانون من مقاومة الإنسولين أو الكبد الدهني.
-              </p>
-            </div>
-
-            <div class="flex items-baseline gap-1 pt-2 border-t border-slate-100">
-              <span class="text-3xl font-black text-[#0A1D30]">$500</span>
-              <span class="text-xs text-slate-500 font-medium">/ 60 يوماً</span>
-            </div>
-
-            <ul class="space-y-2.5 text-xs text-slate-600 pt-2 border-t border-slate-100">
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5"></i>
-                <span class="font-bold text-slate-900">مكالمة فيديو شاملة 60 دقيقة مع د. أحمد.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5"></i>
-                <span>4 مراجعات شخصية لملفك بالأيام 14، 28، 42، و56.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5"></i>
-                <span>20 تذكرة استفسار (10 شهرياً) مع أولوية مطلقة.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5"></i>
-                <span>متابعتان أسبوعياً ومكالمات حتى 30 دقيقة.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <i data-lucide="check" class="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5"></i>
-                <span>خطة طويلة الأمد تتطور مع التحاليل والنتائج.</span>
-              </li>
-            </ul>
-          </div>
-
-          <button onclick="openBookingModal('protocol', 'باقة البروتوكول الشامل (The Protocol - شهرين)', '$500')" class="w-full mt-6 py-3 px-4 bg-slate-100 hover:bg-slate-200 border border-slate-300 text-purple-900 font-bold text-xs rounded-xl transition-all shadow-sm">
-            احجز The Protocol بـ 500$
+          <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً')" class="w-full mt-8 py-3.5 px-5 bg-[#18746F] hover:bg-[#135E5A] text-white font-black text-sm rounded-xl shadow-lg shadow-[#18746F]/30 active:scale-95 transition-all">
+            اشترك في باقة Pro ($119)
           </button>
         </div>
 
       </div>
 
-      <!-- 5. INDEPENDENT 1-ON-1 DIAGNOSTIC CONSULTATION CARD ($49) -->
-      <div id="consultancy" class="mt-10 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 text-right transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:border-amber-400/60">
-        <div class="space-y-2 max-w-xl">
-          <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold">
-            <i data-lucide="clipboard-check" class="w-3.5 h-3.5 text-amber-600"></i>
-            <span>استشارة تشخيصية مستقلة (1-on-1)</span>
+      <!-- 3. DIRECT 1-ON-1 CONSULTATION OPTION WITH DR. AHMED EL-KHATEEB ($89) -->
+      <div id="consultancy" class="max-w-5xl mx-auto mt-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-md flex flex-col md:flex-row items-center justify-between gap-6 text-right transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:border-[#18746F]/50">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF7F5] text-[#18746F] border border-[#18746F]/20 text-xs font-bold">
+            <i data-lucide="stethoscope" class="w-3.5 h-3.5 text-[#18746F]"></i>
+            <span>خيار الاستشارة الطبية المباشرة (جلسة واحدة)</span>
           </div>
-          <h3 class="text-xl font-black text-[#0A1D30]">هل تريد تشخيص حالتك وقراءة تحاليلك فقط بدون اشتراك شهري؟</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            جلسة فيديو أو صوتية مركزة لمدة 30 دقيقة مع أخصائي التغذية السريرية لمراجعة تحاليلك، أدويتك، وتزويدك بتقرير التوصيات الطبية والغذائية الأساسية.
+          <h3 class="text-xl sm:text-2xl font-black text-[#0A1D30]">
+            حجز استشارة خاصة ومباشرة مع د. أحمد الخطيب
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            جلسة تشخيصية فردية (1-on-1) مباشرة مع د. أحمد الخطيب شخصياً لمراجعة تحاليلك الطبية، تقييم تاريخك الصحي والأدوية، ووضع خارطة طريق علاجية وتوصيات غذائية دقيقة مخصصة لحالتك دون الحاجة لاشتراك شهري.
           </p>
+          <div class="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-500 font-medium">
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#18746F]"></i> جلسة فردية 1:1 مع د. أحمد الخطيب</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#18746F]"></i> قراءة التحاليل والتاريخ الدوائي</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#18746F]"></i> خطة وتوصيات طبية مخصصة</span>
+          </div>
         </div>
 
-        <div class="flex flex-col sm:items-end gap-3 flex-shrink-0 w-full sm:w-auto">
-          <div class="flex items-baseline gap-1">
-            <span class="text-3xl font-black text-[#0A1D30]">$49</span>
-            <span class="text-xs text-slate-500 font-normal">/ جلسة واحدة</span>
+        <div class="flex flex-col sm:items-end gap-3 flex-shrink-0 w-full md:w-auto">
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-4xl font-black text-[#0A1D30]">$89</span>
+            <span class="text-xs text-slate-500 font-normal">/ استشارة واحدة</span>
           </div>
-          <button onclick="openBookingModal('consultation_single', 'جلسة استشارة تشخيصية مستقلة', '$49')" class="w-full sm:w-auto px-6 py-3 bg-[#0A1D30] hover:bg-slate-800 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-all">
-            احجز استشارة تشخيصية ($49)
+          <button onclick="openBookingModal('consultation_dr', 'استشارة خاصة مع د. أحمد الخطيب', '$89')" class="w-full md:w-auto px-7 py-3.5 bg-[#0A1B24] hover:bg-slate-800 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-all">
+            احجز استشارتك مع د. أحمد ($89)
           </button>
         </div>
       </div>
@@ -1568,11 +1500,9 @@
         <div>
           <label class="block text-slate-300 font-bold mb-1.5">الباقة المختارة</label>
           <select id="package_select" onchange="syncPackagePrice(this.value)" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#18746F]">
-            <option value="private">باقة المتابعة الخاصة (Private) - $199 شهرياً (عرض خاص)</option>
-            <option value="healthy">باقة Healthy - $60 شهرياً</option>
-            <option value="pro">باقة Pro - $120 شهرياً</option>
-            <option value="protocol">باقة البروتوكول الشامل (The Protocol) - $500 لمدة شهرين</option>
-            <option value="consultation_single">استشارة تشخيصية مستقلة 1:1 - $49</option>
+            <option value="healthy">باقة Healthy - $69 شهرياً</option>
+            <option value="pro" selected>باقة Pro المتقدمة - $119 شهرياً (الأكثر طلباً)</option>
+            <option value="consultation_dr">استشارة خاصة مع د. أحمد الخطيب - $89</option>
           </select>
         </div>
 
@@ -1596,7 +1526,7 @@
         <div class="p-3.5 bg-[#0A1B24] rounded-xl border border-slate-800 flex items-center justify-between">
           <div>
             <p class="text-[11px] text-slate-400">قيمة الاشتراك:</p>
-            <p class="text-lg font-black text-[#18746F]" id="summary_price">$199</p>
+            <p class="text-lg font-black text-[#18746F]" id="summary_price">$119</p>
           </div>
           <span class="text-xs font-bold text-amber-400 bg-amber-950/60 px-2.5 py-1 rounded-lg border border-amber-900/40" id="summary_badge">
             حجز مؤكد
@@ -1809,15 +1739,13 @@
 
     // 5. Booking Modal Logic & Package Sync
     const PACKAGE_PRICES = {
-      'private': '$199 (خصم خاص)',
-      'healthy': '$60/شهرياً',
-      'pro': '$120/شهرياً',
-      'protocol': '$500 (شهرين)',
-      'consultation_single': '$49',
+      'healthy': '$69/شهرياً',
+      'pro': '$119/شهرياً',
+      'consultation_dr': '$89',
       'app_waitlist': 'مجاني'
     };
 
-    function openBookingModal(pkgKey = 'private', pkgTitle = 'باقة المتابعة الخاصة', priceText = '$199') {
+    function openBookingModal(pkgKey = 'pro', pkgTitle = 'باقة Pro المتقدمة', priceText = '$119/شهرياً') {
       const modal = document.getElementById('booking-modal');
       const select = document.getElementById('package_select');
       const titleEl = document.getElementById('modal-title');
@@ -2006,9 +1934,9 @@
     // ==========================================
     let currentQuizStep = 1;
     let quizSelectedGoal = 'weight_burn';
-    let quizRecommendedPackage = 'private';
-    let quizRecommendedTitle = 'باقة المتابعة الخاصة (Private)';
-    let quizRecommendedPrice = '$199';
+    let quizRecommendedPackage = 'pro';
+    let quizRecommendedTitle = 'باقة Pro المتقدمة';
+    let quizRecommendedPrice = '$119/شهرياً';
 
     function highlightQuizCard(radio) {
       document.querySelectorAll('.quiz-opt-card').forEach(c => {
@@ -2075,32 +2003,32 @@
         diagnosis = 'جسمك يحتاج خطة تغذية بنائية لزيادة الكتلة العضلية وتحسين امتصاص المغذيات بدون دهون حشوية.';
         quizRecommendedPackage = 'pro';
         quizRecommendedTitle = 'باقة PRO (المتابعة المكثفة)';
-        quizRecommendedPrice = '$120/شهرياً';
+        quizRecommendedPrice = '$119/شهرياً';
       } else if (bmi >= 18.5 && bmi < 25) {
         bmiStatus = `مؤشر كتلة جسمك: ${bmi} (وزن طبيعي ومتناسق)`;
         diagnosis = 'وزنك العام مثالي، والتركيز معك سيكون على إعادة تشكيل الجسم (Body Recomposition)، حرق الدهون السطحية الموضعية، وزيادة النشاط والإنتاجية اليومية.';
         quizRecommendedPackage = 'healthy';
         quizRecommendedTitle = 'باقة Healthy الأساسية';
-        quizRecommendedPrice = '$60/شهرياً';
+        quizRecommendedPrice = '$69/شهرياً';
       } else if (bmi >= 25 && bmi < 30) {
         bmiStatus = `مؤشر كتلة جسمك: ${bmi} (زيادة وزن خفيفة إلى متوسطة)`;
         if (med === 'chronic' || quizSelectedGoal === 'insulin_metabolic') {
           diagnosis = 'تظهر قراءاتك احتمالية مقاومة إنسولين أو تأثر الميتابوليزم بالأدوية. الحل يبدأ من فهم هرمونات الشبع وضبط أوقات الوجبات وليس التجويع السعري.';
-          quizRecommendedPackage = 'private';
-          quizRecommendedTitle = 'باقة المتابعة الخاصة مع د. أحمد (Private)';
-          quizRecommendedPrice = '$199';
+          quizRecommendedPackage = 'pro';
+          quizRecommendedTitle = 'باقة Pro المتقدمة';
+          quizRecommendedPrice = '$119/شهرياً';
         } else {
           diagnosis = 'جسمك يحتاج خطة حرق دهون مرنة تركز على كسر ثبات الوزن وتنظيم عادات الأكل مع تعديلات أسبوعية دقيقة على تقدمك.';
           quizRecommendedPackage = 'pro';
           quizRecommendedTitle = 'باقة PRO (المتابعة المكثفة)';
-          quizRecommendedPrice = '$120/شهرياً';
+          quizRecommendedPrice = '$119/شهرياً';
         }
       } else {
         bmiStatus = `مؤشر كتلة جسمك: ${bmi} (سمنة أو دهون حشوية عنيدة)`;
-        diagnosis = 'حالتك تتطلب تقييماً سريرياً دقيقاً للتحاليل المخبرية والتاريخ الدوائي، مع إشراف مباشر لبناء بروتوكول علاجي يمنع الانتكاسة نهائياً.';
-        quizRecommendedPackage = 'private';
-        quizRecommendedTitle = 'باقة المتابعة الخاصة مع د. أحمد (Private)';
-        quizRecommendedPrice = '$199';
+        diagnosis = 'حالتك تتطلب تقييماً سريرياً دقيقاً للتحاليل المخبرية والتاريخ الدوائي، مع إشراف ومتابعة مكثفة لبناء خطة علاجية تمنع الانتكاسة نهائياً.';
+        quizRecommendedPackage = 'pro';
+        quizRecommendedTitle = 'باقة Pro المتقدمة';
+        quizRecommendedPrice = '$119/شهرياً';
       }
 
       // Display Result

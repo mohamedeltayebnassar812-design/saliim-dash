@@ -322,10 +322,9 @@
               <div class="sm:col-span-2">
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_package">الباقة المختارة <span class="text-rose-400">*</span></label>
                 <select id="client_package" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
-                  <option value="باقة Private مع د. أحمد الخطيب ($199)" data-i18n="pkg_private">باقة Private مع د. أحمد الخطيب مباشرة ($199 شهرياً)</option>
-                  <option value="باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)" data-i18n="pkg_protocol">باقة The Protocol - بروتوكول الـ 60 يوماً الشامل ($500)</option>
-                  <option value="باقة Pro السريرية ($120)" data-i18n="pkg_pro">باقة Pro السريرية مع الفريق الطبي ($120 شهرياً)</option>
-                  <option value="استشارة فردية 1:1 ($49)" data-i18n="pkg_single">استشارة فردية مخصصة 1:1 ($49)</option>
+                  <option value="باقة Healthy ($69)" data-i18n="pkg_healthy">باقة Healthy ($69 شهرياً)</option>
+                  <option value="باقة Pro ($119)" data-i18n="pkg_pro">باقة Pro المتقدمة ($119 شهرياً)</option>
+                  <option value="استشارة خاصة مع د. أحمد الخطيب ($89)" data-i18n="pkg_consultation">استشارة خاصة مع د. أحمد الخطيب ($89)</option>
                   <option value="أخرى / تحويل مباشر" data-i18n="pkg_other">أخرى / قمت بالتحويل البنكي أو الدفع المباشر</option>
                 </select>
               </div>
@@ -795,10 +794,9 @@
         lbl_weight: "الوزن الحالي",
         lbl_target_weight: "المستهدف",
         lbl_package: "الباقة المختارة",
-        pkg_private: "باقة Private مع د. أحمد الخطيب مباشرة ($199 شهرياً)",
-        pkg_protocol: "باقة The Protocol - بروتوكول الـ 60 يوماً الشامل ($500)",
-        pkg_pro: "باقة Pro السريرية مع الفريق الطبي ($120 شهرياً)",
-        pkg_single: "استشارة فردية مخصصة 1:1 ($49)",
+        pkg_healthy: "باقة Healthy ($69 شهرياً)",
+        pkg_pro: "باقة Pro المتقدمة ($119 شهرياً)",
+        pkg_consultation: "استشارة خاصة مع د. أحمد الخطيب ($89)",
         pkg_other: "أخرى / قمت بالتحويل البنكي أو الدفع المباشر",
         sec2_title: "الملف الصحي والهدف الطبي",
         lbl_goal: "ما هو هدفك الأساسي من الاشتراك؟",
@@ -902,10 +900,9 @@
         lbl_weight: "Current Weight (kg)",
         lbl_target_weight: "Target Weight (kg)",
         lbl_package: "Selected Package",
-        pkg_private: "Private VIP with Dr. Ahmed El-Khateeb ($199/mo)",
-        pkg_protocol: "The Protocol - 60 Days Intensive ($500)",
-        pkg_pro: "Clinical Pro with Medical Team ($120/mo)",
-        pkg_single: "Dedicated 1:1 Consultation ($49)",
+        pkg_healthy: "Healthy Package ($69/mo)",
+        pkg_pro: "Pro Advanced Package ($119/mo)",
+        pkg_consultation: "Private Consultation with Dr. Ahmed El-Khateeb ($89)",
         pkg_other: "Other / Direct Bank Transfer",
         sec2_title: "Health Background & Primary Goals",
         lbl_goal: "What is your primary health goal?",
@@ -1096,14 +1093,12 @@
         
         // Match common keywords if exact substring wasn't found
         if (!matched) {
-          if (pkgVal.includes('private') || pkgVal.includes('خاصة') || pkgVal.includes('199') || pkgVal.includes('precision')) {
-            pkgSelect.value = "باقة Private مع د. أحمد الخطيب ($199)";
-          } else if (pkgVal.includes('protocol') || pkgVal.includes('بروتوكول') || pkgVal.includes('500') || pkgVal.includes('60')) {
-            pkgSelect.value = "باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)";
-          } else if (pkgVal.includes('pro') || pkgVal.includes('120') || pkgVal.includes('سريرية')) {
-            pkgSelect.value = "باقة Pro السريرية ($120)";
-          } else if (pkgVal.includes('استشارة') || pkgVal.includes('49') || pkgVal.includes('single') || pkgVal.includes('consultation')) {
-            pkgSelect.value = "استشارة فردية 1:1 ($49)";
+          if (pkgVal.includes('healthy') || pkgVal.includes('هلثي') || pkgVal.includes('69') || pkgVal.includes('أساسي') || pkgVal.includes('60')) {
+            pkgSelect.value = "باقة Healthy ($69)";
+          } else if (pkgVal.includes('pro') || pkgVal.includes('برو') || pkgVal.includes('119') || pkgVal.includes('120') || pkgVal.includes('متقدمة') || pkgVal.includes('سريرية')) {
+            pkgSelect.value = "باقة Pro ($119)";
+          } else if (pkgVal.includes('consultation') || pkgVal.includes('استشارة') || pkgVal.includes('89') || pkgVal.includes('أحمد') || pkgVal.includes('49') || pkgVal.includes('private')) {
+            pkgSelect.value = "استشارة خاصة مع د. أحمد الخطيب ($89)";
           }
         }
       }

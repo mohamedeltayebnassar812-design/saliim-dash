@@ -1213,8 +1213,18 @@
       });
 
       // 2. توجيه العميل فوراً إلى صفحة الشيك أوت والدفع
+            // 2. توجيه العميل لبوابة الدفع أو استكمال الملف الطبي وحجز المواعيد
       setTimeout(() => {
-        window.location.href = CHECKOUT_PAYMENT_URL;
+        if (CHECKOUT_PAYMENT_URL && !CHECKOUT_PAYMENT_URL.includes('placeholder')) {
+          window.location.href = CHECKOUT_PAYMENT_URL;
+        } else {
+          const params = new URLSearchParams({
+            name: name,
+            phone: phone,
+            pkg: 'باقة Precision الخاصة ($199)'
+          });
+          window.location.href = `onboarding.html?${params.toString()}`;
+        }
       }, 700);
     }
 

@@ -1895,7 +1895,16 @@
 
       // Redirect after slight delay for UX
       setTimeout(() => {
-        window.location.href = CHECKOUT_REDIRECT_URL;
+        if (CHECKOUT_REDIRECT_URL && !CHECKOUT_REDIRECT_URL.includes('placeholder')) {
+          window.location.href = CHECKOUT_REDIRECT_URL;
+        } else {
+          const params = new URLSearchParams({
+            name: name,
+            phone: phone,
+            pkg: pkgName
+          });
+          window.location.href = `onboarding.html?${params.toString()}`;
+        }
       }, 800);
     }
 

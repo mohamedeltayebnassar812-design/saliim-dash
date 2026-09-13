@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>بوابة استقبال المشتركين الجدد | د. أحمد الخطيب - منصة سليم (Saliim)</title>
+  <meta name="description" content="البوابة الرسمية لاستقبال المشتركين الجدد في برامج سليم مع د. أحمد الخطيب. تسجيل الملف الطبي وحجز جلسات أخصائي التغذية والكوتش.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Calendly Widget Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"IBM Plex Sans Arabic"', 'Cairo', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#08121D',
+              surface: '#0E1D2D',
+              card: '#142538',
+              cardBorder: '#1E354F',
+              cyan: '#00C2CB',
+              cyanHover: '#00A8B0',
+              teal: '#4EB098',
+              tealDark: '#3A907C',
+              gold: '#E5A93C',
+              textMuted: '#94A3B8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #08121D;
+      color: #F1F5F9;
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Subtle background grid */
+    .bg-grid-pattern {
+      background-image: radial-gradient(rgba(0, 194, 203, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* Custom form styling */
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #4EB098;
+      box-shadow: 0 0 0 3px rgba(78, 176, 152, 0.2);
+    }
+
+    /* Calendly dark container */
+    .calendly-frame-wrapper {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(78, 176, 152, 0.3);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+      background: #0E1D2D;
+    }
+
+    /* Animations */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.02); }
+    }
+    .pulse-subtle {
+      animation: pulse-subtle 3s infinite ease-in-out;
+    }
+
+    .step-transition {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+</head>
+<body class="bg-grid-pattern flex flex-col justify-between">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="border-b border-[#1E354F] bg-[#0E1D2D]/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00C2CB] to-[#4EB098] p-0.5 flex items-center justify-center shadow-lg shadow-teal-500/20">
+          <div class="w-full h-full bg-[#08121D] rounded-[10px] flex items-center justify-center">
+            <span class="text-[#00C2CB] font-black text-xl">S</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-base font-black text-white flex items-center gap-2">
+            منصة سليم <span class="text-xs font-normal text-slate-400">| د. أحمد الخطيب</span>
+          </div>
+          <p class="text-[11px] text-[#4EB098] font-semibold">بوابة استقبال وتفعيل اشتراكات المشتركين VIP</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/201016629916" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-bold hover:bg-emerald-900/60 transition-colors">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+          دعم المشتركين
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== STEPPER PROGRESS ==================== -->
+  <div class="max-w-4xl mx-auto w-full px-4 pt-8 pb-4">
+    <div class="bg-[#0E1D2D]/80 border border-[#1E354F] rounded-2xl p-4 sm:p-6 shadow-xl">
+      <!-- Progress Bar -->
+      <div class="relative mb-6">
+        <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+          <div id="progress-bar-fill" class="h-full bg-gradient-to-l from-[#00C2CB] to-[#4EB098] transition-all duration-500 rounded-full" style="width: 25%;"></div>
+        </div>
+      </div>
+
+      <!-- Step Badges -->
+      <div class="grid grid-cols-4 gap-2 text-center text-xs font-bold">
+        <!-- Step 1 Badge -->
+        <div id="step-badge-1" class="flex flex-col items-center gap-1.5 text-[#00C2CB]">
+          <div class="w-8 h-8 rounded-full bg-teal-950 border-2 border-[#00C2CB] flex items-center justify-center shadow-lg shadow-teal-500/30">
+            <i data-lucide="clipboard-list" class="w-4 h-4"></i>
+          </div>
+          <span class="hidden sm:inline">1. الملف الطبي</span>
+          <span class="sm:hidden text-[10px]">البيانات</span>
+        </div>
+
+        <!-- Step 2 Badge -->
+        <div id="step-badge-2" class="flex flex-col items-center gap-1.5 text-slate-500">
+          <div class="w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center">
+            <i data-lucide="apple" class="w-4 h-4"></i>
+          </div>
+          <span class="hidden sm:inline">2. موعد أخصائي التغذية</span>
+          <span class="sm:hidden text-[10px]">التغذية</span>
+        </div>
+
+        <!-- Step 3 Badge -->
+        <div id="step-badge-3" class="flex flex-col items-center gap-1.5 text-slate-500">
+          <div class="w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center">
+            <i data-lucide="dumbbell" class="w-4 h-4"></i>
+          </div>
+          <span class="hidden sm:inline">3. موعد الكوتش الرياضي</span>
+          <span class="sm:hidden text-[10px]">الكوتش</span>
+        </div>
+
+        <!-- Step 4 Badge -->
+        <div id="step-badge-4" class="flex flex-col items-center gap-1.5 text-slate-500">
+          <div class="w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center">
+            <i data-lucide="check-check" class="w-4 h-4"></i>
+          </div>
+          <span class="hidden sm:inline">4. اكتمال التفعيل</span>
+          <span class="sm:hidden text-[10px]">التأكيد</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="max-w-4xl mx-auto w-full px-4 py-4 flex-grow">
+
+    <!-- ==================== STEP 1: INTAKE & HEALTH FORM ==================== -->
+    <div id="step-1-container" class="step-transition">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        
+        <!-- Header Banner -->
+        <div class="flex items-start gap-4 pb-6 border-b border-slate-800">
+          <div class="w-12 h-12 rounded-2xl bg-teal-950 border border-[#4EB098]/40 flex items-center justify-center flex-shrink-0 text-[#4EB098]">
+            <i data-lucide="file-heart" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-[#00C2CB] uppercase tracking-wider bg-cyan-950/60 px-3 py-1 rounded-full border border-[#00C2CB]/30">الخطوة 1 من 4</span>
+            <h1 class="text-xl sm:text-2xl font-black text-white mt-2">تسجيل البيانات الأساسية والملف الطبي الشامل</h1>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
+              أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية والتدريبية والطبية بأعلى درجات الدقة والنتائج المستدامة، يرجى استكمال البيانات التالية.
+            </p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <form id="onboarding-form" onsubmit="handleOnboardingSubmit(event)" class="mt-8 space-y-8 text-right">
+          
+          <!-- القسم الأول: البيانات الأساسية -->
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2 h-2 rounded-full bg-[#4EB098]"></span>
+              <h2 class="text-base sm:text-lg font-bold text-white">البيانات الشخصية والأساسية</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">الاسم ثلاثي أو رباعي <span class="text-rose-400">*</span></label>
+                <div class="relative">
+                  <input type="text" id="client_name" required placeholder="أدخل اسمك بالكامل" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5"></i>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">رقم الواتساب مع كود الدولة <span class="text-rose-400">*</span></label>
+                <div class="relative">
+                  <input type="tel" id="client_phone" required placeholder="مثال: +966501234567 أو +2010..." class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
+                  <i data-lucide="phone" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5"></i>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">البريد الإلكتروني <span class="text-rose-400">*</span></label>
+                <div class="relative">
+                  <input type="email" id="client_email" required placeholder="name@example.com" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
+                  <i data-lucide="mail" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5"></i>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">الدولة والمدينة (لضبط فارق التوقيت للمواعيد) <span class="text-rose-400">*</span></label>
+                <div class="relative">
+                  <input type="text" id="client_location" required placeholder="مثال: السعودية - الرياض / مصر - القاهرة" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5"></i>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">السن (بالسنوات) <span class="text-rose-400">*</span></label>
+                  <input type="number" id="client_age" required min="12" max="95" placeholder="مثال: 38" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الجنس <span class="text-rose-400">*</span></label>
+                  <select id="client_gender" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                    <option value="" disabled selected>اختر الجنس</option>
+                    <option value="ذكر">ذكر</option>
+                    <option value="أنثى">أنثى</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2">
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1.5">الطول (سم) <span class="text-rose-400">*</span></label>
+                  <input type="number" id="client_height" required min="100" max="230" placeholder="مثال: 175" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1.5">الوزن الحالي (كجم) <span class="text-rose-400">*</span></label>
+                  <input type="number" id="client_weight" required min="30" max="250" step="0.5" placeholder="مثال: 94" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1.5">الوزن المستهدف <span class="text-rose-400">*</span></label>
+                  <input type="number" id="client_target_weight" required min="30" max="200" step="0.5" placeholder="مثال: 78" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                </div>
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">الباقة التي اشتركت بها أو ترغب بالانضمام إليها <span class="text-rose-400">*</span></label>
+                <select id="client_package" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <option value="باقة Private مع د. أحمد الخطيب ($199)">باقة Private مع د. أحمد الخطيب مباشرة ($199 شهرياً)</option>
+                  <option value="باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)">باقة The Protocol - بروتوكول الـ 60 يوماً الشامل ($500)</option>
+                  <option value="باقة Pro السريرية ($120)">باقة Pro السريرية مع الفريق الطبي ($120 شهرياً)</option>
+                  <option value="استشارة فردية 1:1 ($49)">استشارة فردية مخصصة 1:1 ($49)</option>
+                  <option value="أخرى / قمت بالتحويل المباشر">أخرى / قمت بالتحويل البنكي أو الدفع المباشر</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- القسم الثاني: الملف الصحي والتاريخ الطبي -->
+          <div class="pt-6 border-t border-slate-800">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2 h-2 rounded-full bg-[#00C2CB]"></span>
+              <h2 class="text-base sm:text-lg font-bold text-white">الملف الصحي والهدف الطبي</h2>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">ما هو هدفك الأساسي من الاشتراك؟ <span class="text-rose-400">*</span></label>
+                <select id="client_goal" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <option value="علاج مقاومة الأنسولين والتخلص من دهون البطن">علاج مقاومة الأنسولين والتخلص من دهون البطن الحشوية</option>
+                  <option value="خسارة وزن صحية مستدامة ونحت القوام">خسارة وزن صحية مستدامة ونحت القوام دون حرمان</option>
+                  <option value="علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد">علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد</option>
+                  <option value="التحكم في سكر الدم وخفض التراكمي (HbA1c)">التحكم في سكر الدم وخفض التراكمي (HbA1c)</option>
+                  <option value="علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض">علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض (PCOS)</option>
+                  <option value="علاج مشاكل الهضم، القولون العصبي، والانتفاخات">علاج مشاكل الهضم، القولون العصبي، والانتفاخات</option>
+                  <option value="رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر">رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر</option>
+                  <option value="هدف آخر">هدف آخر (سأشرحه في الملاحظات)</option>
+                </select>
+              </div>
+
+              <!-- الأمراض المزمنة -->
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-2">هل تم تشخيصك بأي من الحالات التالية؟ (اختر كل ما ينطبق) <span class="text-rose-400">*</span></label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="مقاومة أنسولين" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>مقاومة أنسولين</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="سكر نوع 2" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>سكر نوع 2</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="ضغط دم مرتفع" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>ضغط دم مرتفع</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="دهون على الكبد" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>دهون على الكبد</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="خمول الغدة الدرقية" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>خمول الغدة الدرقية</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="ارتفاع كولسترول / دهون ثلاثية" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>كولسترول أو دهون ثلاثية</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="تكيس مبايض" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>تكيس مبايض (PCOS)</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="قولون عصبي / اضطرابات هضمية" class="rounded text-[#4EB098] focus:ring-0">
+                    <span>قولون عصبي / اضطراب هضم</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="لا توجد أمراض مزمنة (سليم تماماً)" class="rounded text-[#4EB098] focus:ring-0">
+                    <span class="text-emerald-400 font-bold">لا يوجد أمراض (سليم تماماً)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- الأدوية والحساسيات -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الأدوية أو المكملات المتناولة حالياً (إن وجدت)</label>
+                  <textarea id="client_medications" rows="2" placeholder="اكتب أسماء الأدوية أو الجرعات، أو اكتب: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الحساسيات الغذائية أو أطعمة ترفض تناولها</label>
+                  <textarea id="client_allergies" rows="2" placeholder="مثال: حساسية جلوتين، لاكتوز، بيض، سمك، أو اكتب: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                </div>
+              </div>
+
+              <!-- العمليات الجراحية والنشاط البدني -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">العمليات الجراحية السابقة أو إصابات المفاصل</label>
+                  <input type="text" id="client_surgeries" placeholder="مثال: استئصال مرارة، تكميم، غضروف ركبة، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">مستوى النشاط البدني الحالي <span class="text-rose-400">*</span></label>
+                  <select id="client_activity_level" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+                    <option value="خامل (عمل مكتبي ولا أمارس رياضة)">خامل (عمل مكتبي، حركة قليلة جداً)</option>
+                    <option value="متوسط (أمشي بعض الأيام، نشاط عادي)">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
+                    <option value="نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)">نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)</option>
+                    <option value="رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)">رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- التحاليل والملاحظات -->
+              <div>
+                <label class="block text-xs font-bold text-slate-300 mb-1.5">رابط التحاليل الطبية أو نتائج الفحوصات الحديثة (اختياري)</label>
+                <input type="text" id="client_lab_link" placeholder="رابط Google Drive للتحاليل، أو اكتب أهم النتائج: مثل HbA1c، كولسترول، إلخ" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
+                <p class="text-[11px] text-slate-500 mt-1">يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-6 border-t border-slate-800">
+            <button type="submit" id="step-1-btn" class="w-full py-4 px-8 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-teal-500/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <span>حفظ البيانات ومتابعة حجز المواعيد</span>
+              <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </button>
+            <p class="text-center text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#4EB098]"></i>
+              بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه المعتمد.
+            </p>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- ==================== STEP 2: NUTRITION SPECIALIST CALENDLY ==================== -->
+    <div id="step-2-container" class="step-transition hidden">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-950 border border-[#4EB098]/40 flex items-center justify-center flex-shrink-0 text-[#4EB098]">
+              <i data-lucide="apple" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-[#4EB098] bg-teal-950 px-3 py-0.5 rounded-full border border-[#4EB098]/40">الخطوة 2 من 4</span>
+                <span class="text-xs text-slate-400">جلسة فردية 1:1 مخصصة</span>
+              </div>
+              <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5">حجز استشارة أخصائي التغذية الإكلينيكية</h2>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                اختر اليوم والوقت الأنسب لك في التقويم أدناه لحجز جلستك الفردية مع أخصائي التغذية لمناقشة ملفك وتفصيل خطتك.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 flex-shrink-0">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold mb-1">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+              حجز حصري مضمون
+            </div>
+            <div class="text-[11px] text-slate-400">بمجرد اختيارك للموعد، يُغلق تلقائياً ولا يستطيع أي عميل آخر اختياره.</div>
+          </div>
+        </div>
+
+        <!-- Client Info summary badge -->
+        <div class="mt-4 p-3 bg-[#08121D] border border-slate-800 rounded-xl flex items-center justify-between text-xs">
+          <div class="text-slate-300">
+            المشترك: <span id="summary-client-name" class="font-bold text-white">-</span>
+            <span class="text-slate-500 mx-2">|</span>
+            رقم التواصل: <span id="summary-client-phone" class="font-bold text-[#00C2CB]" dir="ltr">-</span>
+          </div>
+          <span class="text-emerald-400 font-semibold flex items-center gap-1">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            تم تعبئة بياناتك تلقائياً
+          </span>
+        </div>
+
+        <!-- Calendly Frame Wrapper -->
+        <div class="mt-6 calendly-frame-wrapper">
+          <div id="calendly-nutrition-container" style="min-width:320px;height:680px;" class="w-full">
+            <!-- Fallback / Loading notice -->
+            <div class="flex flex-col items-center justify-center h-full text-center p-8">
+              <div class="w-10 h-10 border-3 border-[#4EB098] border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p class="text-sm font-bold text-slate-300">جاري تحميل جدول مواعيد أخصائي التغذية...</p>
+              <p class="text-xs text-slate-500 mt-1">تأكد من اتصالك بالإنترنت إذا تأخر التحميل</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action / Manual advance buttons -->
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
+          <button onclick="goToStep(1)" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-700 text-xs font-bold text-slate-400 hover:text-white hover:border-slate-500 transition-colors flex items-center justify-center gap-1.5">
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            العودة للبيانات السابقة
+          </button>
+
+          <button onclick="advanceToStep3()" id="skip-nutrition-btn" class="w-full sm:w-auto px-6 py-3 bg-[#142538] hover:bg-[#1E354F] border border-slate-700 text-white text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+            <span>تم الحجز، المتابعة لموعد الكوتش الرياضي</span>
+            <i data-lucide="arrow-left" class="w-4 h-4 text-[#4EB098]"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== STEP 3: FITNESS COACH CALENDLY ==================== -->
+    <div id="step-3-container" class="step-transition hidden">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+        
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-[#00C2CB]/40 flex items-center justify-center flex-shrink-0 text-[#00C2CB]">
+              <i data-lucide="dumbbell" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-[#00C2CB] bg-cyan-950 px-3 py-0.5 rounded-full border border-[#00C2CB]/40">الخطوة 3 من 4</span>
+                <span class="text-xs text-slate-400">تقييم حركي وبرنامج تدريبي</span>
+              </div>
+              <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5">حجز جلسة الكوتش الرياضي والتقييم الحركي</h2>
+              <p class="text-xs sm:text-sm text-slate-400 mt-1">
+                اختر الموعد المناسب لجلستك الرياضية الفردية مع الكوتش لتحديد مستوى لياقتك وبرنامجك الحركي.
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 flex-shrink-0">
+            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-1">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              جدول ساعات مستقل
+            </div>
+            <div class="text-[11px] text-slate-400">مواعيد خاصة بالكوتش لا تتعارض مع جلسة التغذية.</div>
+          </div>
+        </div>
+
+        <!-- Calendly Frame Wrapper -->
+        <div class="mt-6 calendly-frame-wrapper">
+          <div id="calendly-coach-container" style="min-width:320px;height:680px;" class="w-full">
+            <!-- Fallback / Loading notice -->
+            <div class="flex flex-col items-center justify-center h-full text-center p-8">
+              <div class="w-10 h-10 border-3 border-[#00C2CB] border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p class="text-sm font-bold text-slate-300">جاري تحميل جدول مواعيد الكوتش الرياضي...</p>
+              <p class="text-xs text-slate-500 mt-1">يرجى الانتظار ثوانٍ معدودة</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
+          <button onclick="goToStep(2)" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-700 text-xs font-bold text-slate-400 hover:text-white hover:border-slate-500 transition-colors flex items-center justify-center gap-1.5">
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            العودة لموعد التغذية
+          </button>
+
+          <button onclick="advanceToStep4()" id="skip-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2">
+            <span>تم الحجز، استكمال التفعيل والانضمام</span>
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==================== STEP 4: SUCCESS & VIP WELCOME ==================== -->
+    <div id="step-4-container" class="step-transition hidden">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden text-center">
+        
+        <!-- Decorative Glow -->
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- Success Icon -->
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#00C2CB] to-[#4EB098] p-1 flex items-center justify-center shadow-2xl shadow-teal-500/30 mb-6">
+          <div class="w-full h-full bg-[#08121D] rounded-[22px] flex items-center justify-center text-[#4EB098]">
+            <i data-lucide="sparkles" class="w-10 h-10"></i>
+          </div>
+        </div>
+
+        <span class="text-xs font-bold text-[#00C2CB] bg-cyan-950/70 border border-[#00C2CB]/30 px-4 py-1 rounded-full uppercase tracking-wider">
+          تم تفعيل ملفك بنجاح!
+        </span>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white mt-4">
+          أهلاً بك رسمياً في عائلة سليم، <span id="final-client-name" class="text-[#00C2CB]">-</span>!
+        </h2>
+        
+        <p class="text-sm text-slate-300 max-w-xl mx-auto mt-3 leading-relaxed">
+          تم استلام ملفك الطبي وحفظ كافة تفاصيلك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب أصبحوا جاهزين الآن لمرافقتك في رحلة التحول الصحي خطوة بخطوة.
+        </p>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mt-8 text-right">
+          
+          <!-- Card 1: Nutrition Session -->
+          <div class="p-5 rounded-2xl bg-[#08121D] border border-emerald-500/30 flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="apple" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs text-emerald-400 font-bold">الموعد الأول</div>
+              <h3 class="text-sm font-bold text-white mt-0.5">جلسة أخصائي التغذية الإكلينيكية</h3>
+              <p class="text-xs text-slate-400 mt-1">تم تثبيت حجزك، وستصلك رسالة تأكيد وروابط الحضور عبر البريد والواتساب.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Coach Session -->
+          <div class="p-5 rounded-2xl bg-[#08121D] border border-cyan-500/30 flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-cyan-950 text-cyan-400 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="dumbbell" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs text-cyan-400 font-bold">الموعد الثاني</div>
+              <h3 class="text-sm font-bold text-white mt-0.5">جلسة الكوتش الرياضي والتقييم</h3>
+              <p class="text-xs text-slate-400 mt-1">تم إشعار الكوتش ببياناتك ومستوى نشاطك لتجهيز خطتك البدنية المناسبة.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Instructions Box -->
+        <div class="max-w-2xl mx-auto mt-6 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-right text-xs text-slate-300 space-y-2">
+          <div class="font-bold text-white flex items-center gap-2 mb-2">
+            <i data-lucide="info" class="w-4 h-4 text-[#4EB098]"></i>
+            ماذا تفعل قبل موعدك الأول؟
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4EB098]"></span>
+            <span>تأكد من تواجدك في مكان هادئ قبل الموعد بـ 5 دقائق.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4EB098]"></span>
+            <span>إذا كانت لديك تحاليل طبية حديثة، جهزها لمشاركتها مع الأخصائي.</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4EB098]"></span>
+            <span>دوّن أي أسئلة أو استفسارات تدور في ذهنك لمناقشتها مباشرة.</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp VIP CTA -->
+        <div class="mt-8 max-w-md mx-auto">
+          <a id="whatsapp-vip-link" href="https://wa.me/201016629916" target="_blank" class="w-full py-4 px-8 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-emerald-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5">
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>الانضمام لمحادثة الواتساب VIP للمشتركين</span>
+          </a>
+          <p class="text-[11px] text-slate-500 mt-2">اضغط للتواصل المباشر مع فريق سليم المخصص للمتابعة</p>
+        </div>
+
+        <!-- Back to Home Link -->
+        <div class="mt-6">
+          <a href="index.html" class="text-xs text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1">
+            <span>العودة إلى الصفحة الرئيسية لمنصة سليم</span>
+            <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-[#1E354F] bg-[#08121D] py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        جميع الحقوق محفوظة &copy; <span id="year">2026</span> منصة سليم (Saliim) - د. أحمد الخطيب
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="index.html#packages" class="hover:text-white transition-colors">الباقات</a>
+        <a href="index.html#faq" class="hover:text-white transition-colors">الأسئلة الشائعة</a>
+        <a href="https://wa.me/201016629916" target="_blank" class="hover:text-emerald-400 transition-colors">الدعم الطبي</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FUNNEL AUTOMATION SCRIPT ==================== -->
+  <script>
+    // ==========================================================
+    // CONFIGURATION & ENDPOINTS
+    // ==========================================================
+    // Google Sheets Webhook URL for recording client medical intake
+    const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
+
+    // Calendly URLs for Specialist & Coach (Can be customized at any time)
+    // Query parameters: hide_landing_page_details=1, hide_gdpr_banner=1, dark colors
+    let CALENDLY_NUTRITION_URL = "https://calendly.com/saliim-team/nutrition-specialist";
+    let CALENDLY_COACH_URL = "https://calendly.com/saliim-team/fitness-coach";
+
+    // Global Client State
+    let clientProfile = {
+      name: "",
+      phone: "",
+      email: "",
+      location: "",
+      age: "",
+      gender: "",
+      height: "",
+      weight: "",
+      target_weight: "",
+      package: "",
+      goal: "",
+      conditions: [],
+      medications: "",
+      allergies: "",
+      surgeries: "",
+      activity: "",
+      lab_link: ""
+    };
+
+    let currentStep = 1;
+
+    // ==========================================================
+    // INITIALIZATION
+    // ==========================================================
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Check URL parameters (e.g. if redirected from checkout with package or email)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has('name')) document.getElementById('client_name').value = urlParams.get('name');
+      if (urlParams.has('email')) document.getElementById('client_email').value = urlParams.get('email');
+      if (urlParams.has('phone')) document.getElementById('client_phone').value = urlParams.get('phone');
+      if (urlParams.has('pkg')) {
+        const pkgVal = urlParams.get('pkg');
+        const pkgSelect = document.getElementById('client_package');
+        for (let i = 0; i < pkgSelect.options.length; i++) {
+          if (pkgSelect.options[i].value.toLowerCase().includes(pkgVal.toLowerCase())) {
+            pkgSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      // Check if client profile was already saved in this session
+      const cached = localStorage.getItem('saliim_client_profile');
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (parsed.name) {
+            clientProfile = parsed;
+            populateFormFromProfile();
+          }
+        } catch(e) {}
+      }
+
+      // Setup Calendly window message listener for scheduled events
+      setupCalendlyEventListener();
+    });
+
+    function populateFormFromProfile() {
+      if (clientProfile.name) document.getElementById('client_name').value = clientProfile.name;
+      if (clientProfile.phone) document.getElementById('client_phone').value = clientProfile.phone;
+      if (clientProfile.email) document.getElementById('client_email').value = clientProfile.email;
+      if (clientProfile.location) document.getElementById('client_location').value = clientProfile.location;
+      if (clientProfile.age) document.getElementById('client_age').value = clientProfile.age;
+      if (clientProfile.gender) document.getElementById('client_gender').value = clientProfile.gender;
+      if (clientProfile.height) document.getElementById('client_height').value = clientProfile.height;
+      if (clientProfile.weight) document.getElementById('client_weight').value = clientProfile.weight;
+      if (clientProfile.target_weight) document.getElementById('client_target_weight').value = clientProfile.target_weight;
+      if (clientProfile.package) document.getElementById('client_package').value = clientProfile.package;
+      if (clientProfile.goal) document.getElementById('client_goal').value = clientProfile.goal;
+    }
+
+    // ==========================================================
+    // STEP 1: FORM SUBMISSION & GOOGLE SHEETS SYNC
+    // ==========================================================
+    function handleOnboardingSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('step-1-btn');
+      
+      // Collect selected medical conditions
+      const checkboxes = document.querySelectorAll('input[name="medical_condition"]:checked');
+      const conditions = Array.from(checkboxes).map(cb => cb.value);
+
+      // Populate clientProfile object
+      clientProfile = {
+        name: document.getElementById('client_name').value.trim(),
+        phone: document.getElementById('client_phone').value.trim(),
+        email: document.getElementById('client_email').value.trim(),
+        location: document.getElementById('client_location').value.trim(),
+        age: document.getElementById('client_age').value.trim(),
+        gender: document.getElementById('client_gender').value,
+        height: document.getElementById('client_height').value.trim(),
+        weight: document.getElementById('client_weight').value.trim(),
+        target_weight: document.getElementById('client_target_weight').value.trim(),
+        package: document.getElementById('client_package').value,
+        goal: document.getElementById('client_goal').value,
+        conditions: conditions.length > 0 ? conditions.join(', ') : 'لم يتم تحديد أمراض',
+        medications: document.getElementById('client_medications').value.trim() || 'لا يوجد',
+        allergies: document.getElementById('client_allergies').value.trim() || 'لا يوجد',
+        surgeries: document.getElementById('client_surgeries').value.trim() || 'لا يوجد',
+        activity: document.getElementById('client_activity_level').value,
+        lab_link: document.getElementById('client_lab_link').value.trim() || 'لا يوجد',
+        submitted_at: new Date().toISOString()
+      };
+
+      // Save to localStorage
+      localStorage.setItem('saliim_client_profile', JSON.stringify(clientProfile));
+
+      // Visual feedback on button
+      btn.disabled = true;
+      btn.innerHTML = `
+        <span class="inline-block animate-spin mr-2 border-2 border-slate-950 border-t-transparent rounded-full w-4 h-4"></span>
+        <span>جاري حفظ ملفك الطبي ومتابعة المواعيد...</span>
+      `;
+
+      // Dispatch to Google Sheets
+      sendToGoogleSheets(clientProfile);
+
+      // Transition to Step 2 (Nutritionist) after brief delay
+      setTimeout(() => {
+        goToStep(2);
+        btn.disabled = false;
+        btn.innerHTML = `<span>حفظ البيانات ومتابعة حجز المواعيد</span><i data-lucide="arrow-left" class="w-5 h-5"></i>`;
+        lucide.createIcons();
+      }, 700);
+    }
+
+    // ==========================================================
+    // GOOGLE SHEETS DISPATCHER
+    // ==========================================================
+    function sendToGoogleSheets(data) {
+      if (!GOOGLE_SHEETS_WEBAPP_URL) return;
+
+      const payload = {
+        form_type: "استمارة استقبال العميل الشاملة - Onboarding Intake",
+        client_name: data.name,
+        client_phone: data.phone,
+        client_email: data.email,
+        client_location: data.location,
+        client_age: data.age,
+        client_gender: data.gender,
+        client_height: data.height,
+        client_weight: data.weight,
+        client_target_weight: data.target_weight,
+        package: data.package,
+        client_goal: data.goal,
+        medical_conditions: data.conditions,
+        medications: data.medications,
+        allergies: data.allergies,
+        surgeries: data.surgeries,
+        activity_level: data.activity,
+        lab_link: data.lab_link,
+        submitted_at: data.submitted_at
+      };
+
+      try {
+        fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.log('Sheets log:', err));
+      } catch(err) {
+        console.log('Sheets log:', err);
+      }
+    }
+
+    // ==========================================================
+    // CALENDLY EMBED INITIALIZATION & EVENT LISTENER
+    // ==========================================================
+    let nutritionWidgetLoaded = false;
+    let coachWidgetLoaded = false;
+
+    function buildCalendlyUrl(baseUrl) {
+      const url = new URL(baseUrl);
+      url.searchParams.set('hide_landing_page_details', '1');
+      url.searchParams.set('hide_gdpr_banner', '1');
+      url.searchParams.set('background_color', '0e1d2d');
+      url.searchParams.set('text_color', 'ffffff');
+      url.searchParams.set('primary_color', '4eb098');
+
+      if (clientProfile.name) url.searchParams.set('name', clientProfile.name);
+      if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
+      if (clientProfile.phone) url.searchParams.set('a1', clientProfile.phone);
+
+      return url.toString();
+    }
+
+    function initNutritionCalendly() {
+      if (nutritionWidgetLoaded) return;
+      const container = document.getElementById('calendly-nutrition-container');
+      if (!container) return;
+
+      const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL);
+
+      container.innerHTML = `
+        <iframe 
+          src="${fullUrl}" 
+          width="100%" 
+          height="100%" 
+          frameborder="0"
+          title="حجز موعد أخصائي التغذية">
+        </iframe>
+      `;
+      nutritionWidgetLoaded = true;
+    }
+
+    function initCoachCalendly() {
+      if (coachWidgetLoaded) return;
+      const container = document.getElementById('calendly-coach-container');
+      if (!container) return;
+
+      const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL);
+
+      container.innerHTML = `
+        <iframe 
+          src="${fullUrl}" 
+          width="100%" 
+          height="100%" 
+          frameborder="0"
+          title="حجز موعد الكوتش الرياضي">
+        </iframe>
+      `;
+      coachWidgetLoaded = true;
+    }
+
+    // Listen to Calendly events via window.postMessage
+    function setupCalendlyEventListener() {
+      window.addEventListener('message', (e) => {
+        if (!e.data) return;
+
+        // Check if event is from Calendly
+        if (e.data.event === 'calendly.event_scheduled') {
+          console.log('Calendly appointment confirmed:', e.data);
+
+          if (currentStep === 2) {
+            // Nutrition event scheduled -> Notify and go to Coach step
+            showBookingToast("تم تأكيد حجز موعد أخصائي التغذية بنجاح! جاري الانتقال لموعد الكوتش...");
+            setTimeout(() => {
+              advanceToStep3();
+            }, 1200);
+          } else if (currentStep === 3) {
+            // Coach event scheduled -> Notify and go to Step 4
+            showBookingToast("تم تأكيد حجز موعد الكوتش الرياضي بنجاح! جاري إكمال التفعيل...");
+            setTimeout(() => {
+              advanceToStep4();
+            }, 1200);
+          }
+        }
+      });
+    }
+
+    function showBookingToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-slate-950 font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-sm animate-bounce';
+      toast.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5"></i><span>${message}</span>`;
+      document.body.appendChild(toast);
+      lucide.createIcons();
+      setTimeout(() => toast.remove(), 3500);
+    }
+
+    // ==========================================================
+    // STEP NAVIGATION
+    // ==========================================================
+    function goToStep(step) {
+      currentStep = step;
+
+      // Hide all step containers
+      document.getElementById('step-1-container').classList.add('hidden');
+      document.getElementById('step-2-container').classList.add('hidden');
+      document.getElementById('step-3-container').classList.add('hidden');
+      document.getElementById('step-4-container').classList.add('hidden');
+
+      // Update progress bar
+      const progressFill = document.getElementById('progress-bar-fill');
+      const progressMap = { 1: '25%', 2: '50%', 3: '75%', 4: '100%' };
+      progressFill.style.width = progressMap[step];
+
+      // Update badge states
+      for (let i = 1; i <= 4; i++) {
+        const badge = document.getElementById(`step-badge-${i}`);
+        const circle = badge.querySelector('div');
+        if (i < step) {
+          // Completed
+          badge.className = 'flex flex-col items-center gap-1.5 text-emerald-400 font-bold';
+          circle.className = 'w-8 h-8 rounded-full bg-emerald-950 border-2 border-emerald-500 flex items-center justify-center';
+        } else if (i === step) {
+          // Active
+          badge.className = 'flex flex-col items-center gap-1.5 text-[#00C2CB] font-black';
+          circle.className = 'w-8 h-8 rounded-full bg-cyan-950 border-2 border-[#00C2CB] flex items-center justify-center shadow-lg shadow-cyan-500/30';
+        } else {
+          // Inactive
+          badge.className = 'flex flex-col items-center gap-1.5 text-slate-500 font-bold';
+          circle.className = 'w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center';
+        }
+      }
+
+      // Show current step container
+      const currentContainer = document.getElementById(`step-${step}-container`);
+      if (currentContainer) {
+        currentContainer.classList.remove('hidden');
+      }
+
+      // Step specific triggers
+      if (step === 2) {
+        document.getElementById('summary-client-name').innerText = clientProfile.name || 'المشترك';
+        document.getElementById('summary-client-phone').innerText = clientProfile.phone || '';
+        initNutritionCalendly();
+      } else if (step === 3) {
+        initCoachCalendly();
+      } else if (step === 4) {
+        document.getElementById('final-client-name').innerText = clientProfile.name || 'عزيزي المشترك';
+        
+        // Prepare customized WhatsApp VIP text
+        const waMsg = encodeURIComponent(
+          `مرحباً د. أحمد الخطيب وفريق سليم 🌿
+
+` +
+          `أنا المشترك: ${clientProfile.name}
+` +
+          `الباقة: ${clientProfile.package}
+` +
+          `أتممت تسجيل ملفي الطبي وحجز المواعيد، وجاهز لبدء الخطة والتواصل معكم!`
+        );
+        document.getElementById('whatsapp-vip-link').href = `https://wa.me/201016629916?text=${waMsg}`;
+      }
+
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function advanceToStep3() {
+      goToStep(3);
+    }
+
+    function advanceToStep4() {
+      goToStep(4);
+    }
+  </script>
+</body>
+</html>

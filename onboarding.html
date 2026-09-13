@@ -649,10 +649,9 @@
     // Google Sheets Webhook URL for recording client medical intake
     const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
 
-    // Calendly URLs for Specialist & Coach (Can be customized at any time)
-    // Query parameters: hide_landing_page_details=1, hide_gdpr_banner=1, dark colors
-    let CALENDLY_NUTRITION_URL = "https://calendly.com/saliim-team/nutrition-specialist";
-    let CALENDLY_COACH_URL = "https://calendly.com/saliim-team/fitness-coach";
+    // Calendly URLs for Specialist & Coach (Live URLs)
+    let CALENDLY_NUTRITION_URL = "https://calendly.com/mohamedeltayebreyad222/meet-with-me";
+    let CALENDLY_COACH_URL = "https://calendly.com/mohamedeltayebreyad222/clone";
 
     // Global Client State
     let clientProfile = {
@@ -831,13 +830,13 @@
     let nutritionWidgetLoaded = false;
     let coachWidgetLoaded = false;
 
-    function buildCalendlyUrl(baseUrl) {
+    function buildCalendlyUrl(baseUrl, primaryColor = '4eb098') {
       const url = new URL(baseUrl);
       url.searchParams.set('hide_landing_page_details', '1');
       url.searchParams.set('hide_gdpr_banner', '1');
       url.searchParams.set('background_color', '0e1d2d');
       url.searchParams.set('text_color', 'ffffff');
-      url.searchParams.set('primary_color', '4eb098');
+      url.searchParams.set('primary_color', primaryColor);
 
       if (clientProfile.name) url.searchParams.set('name', clientProfile.name);
       if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
@@ -851,7 +850,7 @@
       const container = document.getElementById('calendly-nutrition-container');
       if (!container) return;
 
-      const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL);
+      const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '4eb098');
 
       container.innerHTML = `
         <iframe 
@@ -870,7 +869,7 @@
       const container = document.getElementById('calendly-coach-container');
       if (!container) return;
 
-      const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL);
+      const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL, '00c2cb');
 
       container.innerHTML = `
         <iframe 

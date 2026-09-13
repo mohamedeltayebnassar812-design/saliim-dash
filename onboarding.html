@@ -601,7 +601,7 @@
             <span>كود المشترك الطبي المعتمد في منصة سليم</span>
           </div>
           <div class="flex items-center justify-center gap-3 my-2">
-            <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#4EB098] tracking-widest font-mono">SLM-4821</span>
+            <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#4EB098] tracking-widest font-mono">---</span>
             <button type="button" onclick="copyClientCode()" id="copy-code-btn" class="px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-xs flex items-center gap-1.5 border border-slate-700 shadow-sm" title="نسخ الكود">
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
               <span id="copy-code-text">نسخ الكود</span>
@@ -709,19 +709,14 @@
 
     
     // ==========================================================
-    // CLIENT CODE GENERATOR (SLM-XXXX, prestigious baseline > 2400)
+    // FRESH CLIENT CODE GENERATOR (SLM-XXXX, prestigious baseline 2480 - 9890)
     // ==========================================================
-    function generateClientCode() {
-      const existing = localStorage.getItem('saliim_client_code');
-      if (existing && existing.startsWith('SLM-')) return existing;
-
-      // Generate a realistic 4-digit code never starting from 1 or 0001 (e.g. 2480 - 9890)
+    function generateNewClientCode() {
+      // Always generate a fresh random 4-digit code never starting from 1 or 0001
       const min = 2480;
       const max = 9890;
       const num = Math.floor(Math.random() * (max - min + 1)) + min;
-      const newCode = `SLM-${num}`;
-      localStorage.setItem('saliim_client_code', newCode);
-      return newCode;
+      return `SLM-${num}`;
     }
 
     function copyClientCode() {
@@ -832,10 +827,10 @@
       const checkboxes = document.querySelectorAll('input[name="medical_condition"]:checked');
       const conditions = Array.from(checkboxes).map(cb => cb.value);
 
-      // Populate clientProfile object with unique prestigious code
-      const assignedCode = clientProfile.client_code || generateClientCode();
+      // Every new form submission generates a FRESH unique prestigious code
+      const freshCode = generateNewClientCode();
       clientProfile = {
-        client_code: assignedCode,
+        client_code: freshCode,
         name: document.getElementById('client_name').value.trim(),
         phone: document.getElementById('client_phone').value.trim(),
         email: document.getElementById('client_email').value.trim(),

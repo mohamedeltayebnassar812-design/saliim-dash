@@ -1189,9 +1189,7 @@
         <span>${currentLang === 'ar' ? 'جاري حفظ ملفك الطبي...' : 'Saving medical profile...'}</span>
       `;
 
-      // Dispatch to Google Sheets
-      sendToGoogleSheets(clientProfile);
-
+      // Hold dispatch until appointments are chosen, so all 22 fields + appointments are sent in ONE single clean row
       setTimeout(() => {
         btn.disabled = false;
         btn.innerHTML = `
@@ -1511,8 +1509,8 @@
 
       clientProfile.coach_slot = document.getElementById('coach-chosen-text').innerText;
       
-      // Update Google Sheets with both appointment slots
-      updateBookingSlotsInGoogleSheets();
+      // Dispatch ONE SINGLE COMPLETE ROW containing all 22 medical fields + both confirmed appointments
+      sendToGoogleSheets(clientProfile);
 
       goToStep(4);
     }

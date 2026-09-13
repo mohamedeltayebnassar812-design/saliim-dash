@@ -17,6 +17,9 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Calendly Widget Script -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -452,7 +455,7 @@
       </div>
     </div>
 
-    <!-- ==================== STEP 2: NATIVE NUTRITION SPECIALIST CALENDAR ==================== -->
+    <!-- ==================== STEP 2: NUTRITION SPECIALIST CALENDLY ==================== -->
     <div id="step-2-container" class="step-transition hidden">
       <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
         
@@ -464,58 +467,34 @@
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-[#18746F] bg-teal-950 px-3 py-0.5 rounded-full border border-[#18746F]/40" data-i18n="step2_tag">الخطوة 2 من 4</span>
+                <span class="text-xs font-bold text-[#07C1BE] bg-teal-950 px-3 py-0.5 rounded-full border border-[#07C1BE]/40" data-i18n="step2_tag">الخطوة 2 من 4</span>
                 <span class="text-xs text-slate-400" data-i18n="step2_sub">جلسة فردية 1:1 متخصصة</span>
               </div>
               <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5" data-i18n="step2_title">حجز استشارة أخصائي التغذية الإكلينيكية</h2>
               <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="step2_desc">
-                اختر اليوم والفترة الأنسب لك لحجز جلستك الفردية مع أخصائي التغذية لمناقشة ملفك الطبي وتفصيل خطتك.
+                اختر اليوم والوقت الأنسب لك في التقويم المباشر لحجز جلستك الفردية مع أخصائي التغذية لمناقشة ملفك وتفصيل خطتك.
               </p>
             </div>
           </div>
 
           <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 flex-shrink-0">
-            <div class="flex items-center gap-2 text-emerald-400 font-bold mb-1">
-              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-              <span data-i18n="lbl_client_confirmed">المشترك المسجل:</span>
+            <div class="flex items-center gap-2 text-[#07C1BE] font-bold mb-1">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+              <span data-i18n="calendly_lock_title">حجز مضمون وغير متكرر:</span>
             </div>
-            <div id="summary-client-name" class="text-white font-bold text-sm">-</div>
-            <div id="summary-client-phone" class="text-[11px] text-slate-400" dir="ltr">-</div>
+            <div class="text-[11px] text-slate-400 max-w-[240px]" data-i18n="calendly_lock_notice">
+              بمجرد اختيارك للموعد، يُغلق تلقائياً في Calendly لمنع أي تعارض ولا يستطيع أي عميل آخر اختياره.
+            </div>
           </div>
         </div>
 
-        <!-- Native Calendar Widget for Nutrition -->
-        <div class="mt-6">
-          <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4 text-[#07C1BE]"></i>
-            <span data-i18n="lbl_select_day">1. اختر اليوم المتاح للمقابلة:</span>
-          </label>
-          
-          <!-- Days Horizontal Scroll / Grid -->
-          <div id="nutrition-days-container" class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 mb-6">
-            <!-- Rendered dynamically by JS -->
-          </div>
-
-          <!-- Time Slots Container -->
-          <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="clock" class="w-4 h-4 text-[#18746F]"></i>
-            <span data-i18n="lbl_select_time">2. اختر التوقيت الأنسب لك (بتوقيت مكة والقاهرة):</span>
-          </label>
-          
-          <div id="nutrition-slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <!-- Rendered dynamically based on selected day -->
-          </div>
-
-          <!-- Selected Notice -->
-          <div id="nutrition-selected-notice" class="mt-6 p-4 rounded-xl bg-teal-950/40 border border-[#18746F]/30 hidden flex items-center justify-between">
-            <div class="flex items-center gap-2.5 text-xs text-slate-200">
-              <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
-              <div>
-                <span class="font-bold text-emerald-400" data-i18n="lbl_slot_chosen">الموعد المحدد للتغذية:</span>
-                <span id="nutrition-chosen-text" class="font-bold text-white mr-1.5 ml-1.5"></span>
-              </div>
+        <!-- Calendly Frame Wrapper -->
+        <div class="mt-6 rounded-2xl overflow-hidden border border-[#1E4354] bg-[#0A1B24]">
+          <div id="calendly-nutrition-container" style="min-width:300px;height:720px;" class="w-full">
+            <div class="flex flex-col items-center justify-center h-full text-center p-8">
+              <div class="w-10 h-10 border-3 border-[#07C1BE] border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p class="text-sm font-bold text-slate-300" data-i18n="loading_nutrition_cal">جاري تحميل تقويم المواعيد المباشر من Calendly...</p>
             </div>
-            <span class="text-[11px] text-emerald-400 bg-emerald-950 px-2 py-1 rounded-md border border-emerald-500/30" data-i18n="lbl_ready">جاهز للاعتماد ✓</span>
           </div>
         </div>
 
@@ -526,16 +505,16 @@
             <span data-i18n="btn_back_intake">العودة لتعديل البيانات</span>
           </button>
 
-          <button type="button" onclick="confirmNutritionSlotAndAdvance()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-500 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed">
-            <i data-lucide="lock" class="w-4 h-4 text-amber-400" id="advance-lock-icon"></i>
-            <span id="advance-to-coach-text" data-i18n="btn_lock_coach">خطوة الكوتش مقفولة حتى تحديد موعد التغذية أولاً</span>
+          <button type="button" onclick="handleAdvanceToCoach()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-[#07C1BE] shadow-md">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE]" id="advance-lock-icon"></i>
+            <span id="advance-to-coach-text" data-i18n="btn_advance_coach_manual">أتممت حجز التغذية ➔ الانتقال لموعد الكوتش</span>
           </button>
         </div>
 
       </div>
     </div>
 
-    <!-- ==================== STEP 3: NATIVE FITNESS COACH CALENDAR (WITH ANTI-CONFLICT) ==================== -->
+    <!-- ==================== STEP 3: FITNESS COACH CALENDLY ==================== -->
     <div id="step-3-container" class="step-transition hidden">
       <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
         
@@ -552,58 +531,27 @@
               </div>
               <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5" data-i18n="step3_title">حجز جلسة الكوتش الرياضي والتقييم الحركي</h2>
               <p class="text-xs sm:text-sm text-slate-400 mt-1" data-i18n="step3_desc">
-                اختر موعد جلستك مع المدرب الرياضي لتحديد مستوى لياقتك وبرنامج التمارين المتوافق مع حالتك الصحية.
+                اختر موعد جلستك مع المدرب الرياضي لتحديد مستوى لياقتك وتفصيل برنامج التمارين المتوافق مع حالتك.
               </p>
             </div>
           </div>
 
           <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs text-slate-300 flex-shrink-0">
-            <div class="flex items-center gap-2 text-cyan-400 font-bold mb-1">
-              <i data-lucide="calendar-check" class="w-3.5 h-3.5"></i>
-              <span data-i18n="lbl_confirmed_nutrition">موعد التغذية المحجوز:</span>
+            <div class="flex items-center gap-2 text-[#07C1BE] font-bold mb-1">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+              <span data-i18n="lbl_confirmed_nutrition">موعد التغذية:</span>
             </div>
-            <div id="confirmed-nutrition-time-badge" class="text-white font-bold text-xs">-</div>
+            <div class="text-white font-bold text-xs" data-i18n="lbl_nutrition_booked_success">تم تأكيده في Calendly ✓</div>
           </div>
         </div>
 
-        <!-- Anti-Conflict Alert Box -->
-        <div id="conflict-info-banner" class="mt-4 p-3.5 rounded-xl bg-slate-900/80 border border-cyan-500/30 text-xs flex items-center gap-2.5 text-cyan-300">
-          <i data-lucide="shield-alert" class="w-4 h-4 flex-shrink-0 text-[#07C1BE]"></i>
-          <span data-i18n="msg_anti_conflict">نظام الحجز الذكي يمنع تلقائياً اختيار نفس توقيت موعد التغذية لتجنب أي تعارض في جدولك.</span>
-        </div>
-
-        <!-- Native Calendar Widget for Coach -->
-        <div class="mt-6">
-          <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4 text-[#07C1BE]"></i>
-            <span data-i18n="lbl_select_coach_day">1. اختر يوم جلسة الكوتش:</span>
-          </label>
-          
-          <!-- Days Horizontal Scroll / Grid -->
-          <div id="coach-days-container" class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 mb-6">
-            <!-- Rendered dynamically by JS -->
-          </div>
-
-          <!-- Time Slots Container -->
-          <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="clock" class="w-4 h-4 text-[#07C1BE]"></i>
-            <span data-i18n="lbl_select_coach_time">2. اختر التوقيت المتاح للكوتش:</span>
-          </label>
-          
-          <div id="coach-slots-container" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <!-- Rendered dynamically based on selected day -->
-          </div>
-
-          <!-- Selected Notice -->
-          <div id="coach-selected-notice" class="mt-6 p-4 rounded-xl bg-cyan-950/40 border border-[#07C1BE]/30 hidden flex items-center justify-between">
-            <div class="flex items-center gap-2.5 text-xs text-slate-200">
-              <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400"></i>
-              <div>
-                <span class="font-bold text-cyan-400" data-i18n="lbl_slot_coach_chosen">الموعد المحدد للكوتش:</span>
-                <span id="coach-chosen-text" class="font-bold text-white mr-1.5 ml-1.5"></span>
-              </div>
+        <!-- Calendly Frame Wrapper -->
+        <div class="mt-6 rounded-2xl overflow-hidden border border-[#1E4354] bg-[#0A1B24]">
+          <div id="calendly-coach-container" style="min-width:300px;height:720px;" class="w-full">
+            <div class="flex flex-col items-center justify-center h-full text-center p-8">
+              <div class="w-10 h-10 border-3 border-[#07C1BE] border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p class="text-sm font-bold text-slate-300" data-i18n="loading_coach_cal">جاري تحميل تقويم الكوتش المباشر من Calendly...</p>
             </div>
-            <span class="text-[11px] text-cyan-400 bg-cyan-950 px-2 py-1 rounded-md border border-cyan-500/30" data-i18n="lbl_ready">جاهز للاعتماد ✓</span>
           </div>
         </div>
 
@@ -614,9 +562,9 @@
             <span data-i18n="btn_back_nutrition">العودة لتعديل موعد التغذية</span>
           </button>
 
-          <button type="button" onclick="confirmCoachSlotAndAdvance()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-500 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed">
-            <i data-lucide="lock" class="w-4 h-4 text-amber-400" id="advance-step4-lock-icon"></i>
-            <span id="advance-to-step4-text" data-i18n="btn_lock_step4">خطوة التفعيل مقفولة حتى تحديد موعد الكوتش</span>
+          <button type="button" onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-[#07C1BE] shadow-md">
+            <i data-lucide="sparkles" class="w-4 h-4 text-[#07C1BE]" id="advance-step4-lock-icon"></i>
+            <span id="advance-to-step4-text" data-i18n="btn_advance_step4_manual">أتممت حجز الكوتش ➔ استكمال وتأكيد التفعيل</span>
           </button>
         </div>
 
@@ -751,15 +699,6 @@
       coach_slot: ""
     };
 
-    let selectedNutritionDay = null;
-    let selectedNutritionSlot = null;
-
-    let selectedCoachDay = null;
-    let selectedCoachSlot = null;
-
-    // Generated Schedule Dates (Next 6 Business Days excluding Fridays)
-    let availableDays = [];
-
     // ==========================================================
     // 2. BILINGUAL TRANSLATION DICTIONARY (i18n)
     // ==========================================================
@@ -829,6 +768,13 @@
         lbl_lab: "رابط التحاليل الطبية أو نتائج الفحوصات (اختياري)",
         lbl_lab_hint: "يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.",
         btn_submit_step1: "حفظ البيانات ومتابعة حجز المواعيد",
+        calendly_lock_title: "حجز مضمون وغير متكرر:",
+        calendly_lock_notice: "بمجرد اختيارك للموعد، يُغلق تلقائياً في Calendly لمنع أي تعارض ولا يستطيع أي عميل آخر اختياره.",
+        loading_nutrition_cal: "جاري تحميل تقويم المواعيد المباشر من Calendly...",
+        loading_coach_cal: "جاري تحميل تقويم الكوتش المباشر من Calendly...",
+        btn_advance_coach_manual: "أتممت حجز التغذية ➔ الانتقال لموعد الكوتش",
+        btn_advance_step4_manual: "أتممت حجز الكوتش ➔ استكمال وتأكيد التفعيل",
+        lbl_nutrition_booked_success: "تم تأكيده في Calendly ✓",
         msg_confidential: "بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه.",
         step2_tag: "الخطوة 2 من 4",
         step2_sub: "جلسة فردية 1:1 متخصصة",
@@ -1065,8 +1011,7 @@
       sessionStorage.removeItem('saliim_nutrition_time');
       sessionStorage.removeItem('saliim_coach_time');
 
-      availableDays = buildAvailableCalendarDays();
-
+      
       // Read incoming parameters (from checkout or home page)
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('name')) document.getElementById('client_name').value = urlParams.get('name');
@@ -1107,8 +1052,7 @@
       setupConditionCheckboxesLogic();
 
       // Render Step 2 (Nutrition) Calendar
-      renderNutritionCalendar();
-
+      
       // Always start fresh at Step 1
       goToStep(1);
     });
@@ -1171,12 +1115,11 @@
       });
 
       // Update advance buttons state text if needed
-      updateAdvanceButtonsUI();
-
-      // Re-render calendars to update day & time labels
-      renderNutritionCalendar();
-      if (currentStep >= 3) {
-        renderCoachCalendar();
+      if (isNutritionScheduled) {
+        unlockNutritionStep();
+      }
+      if (isCoachScheduled) {
+        unlockCoachStep();
       }
 
       lucide.createIcons();
@@ -1309,263 +1252,143 @@
     }
 
     // ==========================================================
-    // 7. STEP 2: NATIVE NUTRITION CALENDAR LOGIC
+    // 7. CALENDLY WIDGET INTEGRATION & REAL-TIME SCHEDULING
     // ==========================================================
-    function renderNutritionCalendar() {
-      const daysContainer = document.getElementById('nutrition-days-container');
-      if (!daysContainer) return;
-      daysContainer.innerHTML = '';
+    const CALENDLY_NUTRITION_URL = "https://calendly.com/mohamedeltayebreyad222/meet-with-me";
+    const CALENDLY_COACH_URL = "https://calendly.com/mohamedeltayebreyad222/clone";
 
-      if (!selectedNutritionDay && availableDays.length > 0) {
-        selectedNutritionDay = availableDays[0].dateKey;
+    let nutritionWidgetLoaded = false;
+    let coachWidgetLoaded = false;
+    let isNutritionScheduled = false;
+    let isCoachScheduled = false;
+
+    function buildCalendlyUrl(baseUrl, primaryColor = '07c1be') {
+      const url = new URL(baseUrl);
+      url.searchParams.set('hide_landing_page_details', '1');
+      url.searchParams.set('hide_gdpr_banner', '1');
+      url.searchParams.set('background_color', '0E2530');
+      url.searchParams.set('text_color', 'ffffff');
+      url.searchParams.set('primary_color', primaryColor);
+
+      if (clientProfile.name) {
+        const displayName = clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name;
+        url.searchParams.set('name', displayName);
       }
+      if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
+      if (clientProfile.phone) url.searchParams.set('a1', clientProfile.phone);
 
-      availableDays.forEach(day => {
-        const isSelected = (day.dateKey === selectedNutritionDay);
-        const dayPill = document.createElement('div');
-        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#132F3D] border-[#07C1BE]' : 'bg-[#0A1B24] border-slate-800'}`;
-        dayPill.onclick = () => {
-          selectedNutritionDay = day.dateKey;
-          selectedNutritionSlot = null;
-          updateNutritionChosenDisplay();
-          renderNutritionCalendar();
-        };
-
-        const dayName = currentLang === 'ar' ? day.dayNameAr : day.dayNameEn;
-        const monthName = currentLang === 'ar' ? day.monthAr : day.monthEn;
-
-        dayPill.innerHTML = `
-          <div class="text-[11px] font-bold ${isSelected ? 'text-[#07C1BE]' : 'text-slate-400'}">${dayName}</div>
-          <div class="text-lg font-black text-white my-0.5">${day.dayNum}</div>
-          <div class="text-[10px] text-slate-500">${monthName}</div>
-        `;
-        daysContainer.appendChild(dayPill);
-      });
-
-      renderNutritionSlots();
+      return url.toString();
     }
 
-    function renderNutritionSlots() {
-      const slotsContainer = document.getElementById('nutrition-slots-container');
-      if (!slotsContainer) return;
-      slotsContainer.innerHTML = '';
+    function initNutritionCalendly() {
+      if (nutritionWidgetLoaded) return;
+      const container = document.getElementById('calendly-nutrition-container');
+      if (!container) return;
 
-      standardSlots.forEach(slot => {
-        const slotKey = `${selectedNutritionDay} @ ${slot.id}`;
-        const isSelected = (selectedNutritionSlot === slotKey);
+      const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '07c1be');
+      container.innerHTML = '';
 
-        const slotBtn = document.createElement('button');
-        slotBtn.type = 'button';
-        slotBtn.className = `time-slot-btn py-3 px-3 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ${
-          isSelected 
-            ? 'selected' 
-            : 'bg-[#0A1B24] border-slate-800 text-slate-300'
-        }`;
-
-        const timeLabel = currentLang === 'ar' ? slot.timeAr : slot.timeEn;
-        slotBtn.innerHTML = `
-          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-          <span>${timeLabel}</span>
-        `;
-
-        slotBtn.onclick = () => {
-          selectedNutritionSlot = slotKey;
-          updateNutritionChosenDisplay();
-          renderNutritionSlots();
-        };
-
-        slotsContainer.appendChild(slotBtn);
-      });
-
-      lucide.createIcons();
-    }
-
-    function updateNutritionChosenDisplay() {
-      const notice = document.getElementById('nutrition-selected-notice');
-      const chosenText = document.getElementById('nutrition-chosen-text');
-      const advanceBtn = document.getElementById('advance-to-coach-btn');
-      const advanceText = document.getElementById('advance-to-coach-text');
-      const advanceIcon = document.getElementById('advance-lock-icon');
-
-      if (selectedNutritionSlot) {
-        const parts = selectedNutritionSlot.split(' @ ');
-        const dayObj = availableDays.find(d => d.dateKey === parts[0]);
-        const slotObj = standardSlots.find(s => s.id === parts[1]);
-        const dayLabel = dayObj ? (currentLang === 'ar' ? `${dayObj.dayNameAr} ${dayObj.dayNum} ${dayObj.monthAr}` : `${dayObj.dayNameEn}, ${dayObj.dayNum} ${dayObj.monthEn}`) : parts[0];
-        const timeLabel = slotObj ? (currentLang === 'ar' ? slotObj.timeAr : slotObj.timeEn) : parts[1];
-
-        const formatted = `${dayLabel} (${timeLabel})`;
-        chosenText.innerText = formatted;
-        notice.classList.remove('hidden');
-
-        // Unlock Step 2 -> 3
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
-        advanceText.innerText = translations[currentLang].btn_advance_coach;
-        advanceIcon.className = "w-4 h-4 text-slate-950";
-        advanceIcon.setAttribute('data-lucide', 'arrow-left');
+      if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
+        window.Calendly.initInlineWidget({
+          url: fullUrl,
+          parentElement: container
+        });
       } else {
-        notice.classList.add('hidden');
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-500 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed";
-        advanceText.innerText = translations[currentLang].btn_lock_coach;
-        advanceIcon.className = "w-4 h-4 text-amber-400";
-        advanceIcon.setAttribute('data-lucide', 'lock');
+        container.innerHTML = `
+          <iframe 
+            src="${fullUrl}" 
+            width="100%" 
+            height="100%" 
+            frameborder="0"
+            title="حجز موعد أخصائي التغذية">
+          </iframe>
+        `;
       }
-      lucide.createIcons();
+      nutritionWidgetLoaded = true;
     }
 
-    function confirmNutritionSlotAndAdvance() {
-      if (!selectedNutritionSlot) {
-        showToastAlert(currentLang === 'ar' ? "يرجى اختيار اليوم والموعد المناسب للتغذية أولاً" : "Please select your Nutrition date and time first");
-        return;
-      }
+    function initCoachCalendly() {
+      if (coachWidgetLoaded) return;
+      const container = document.getElementById('calendly-coach-container');
+      if (!container) return;
 
-      clientProfile.nutrition_slot = document.getElementById('nutrition-chosen-text').innerText;
-      document.getElementById('confirmed-nutrition-time-badge').innerText = clientProfile.nutrition_slot;
-      
-      // Calculate ISO timestamp for Google Calendar (e.g. 2026-03-15T11:00:00+03:00)
-      if (selectedNutritionSlot) {
-        const parts = selectedNutritionSlot.split(' @ ');
-        clientProfile.nutrition_iso = `${parts[0]}T${parts[1]}:00+03:00`;
+      const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL, '07c1be');
+      container.innerHTML = '';
+
+      if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
+        window.Calendly.initInlineWidget({
+          url: fullUrl,
+          parentElement: container
+        });
+      } else {
+        container.innerHTML = `
+          <iframe 
+            src="${fullUrl}" 
+            width="100%" 
+            height="100%" 
+            frameborder="0"
+            title="حجز موعد الكوتش الرياضي">
+          </iframe>
+        `;
       }
-      
-      // Render Coach Calendar and go to Step 3
-      renderCoachCalendar();
+      coachWidgetLoaded = true;
+    }
+
+    function unlockNutritionStep() {
+      isNutritionScheduled = true;
+      const btn = document.getElementById('advance-to-coach-btn');
+      if (btn) {
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد التغذية! المتابعة للكوتش ←' : 'Nutrition Confirmed! Proceed to Coach →'}</span>`;
+        lucide.createIcons();
+      }
+    }
+
+    function unlockCoachStep() {
+      isCoachScheduled = true;
+      const btn = document.getElementById('advance-to-step4-btn');
+      if (btn) {
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد الكوتش! تفعيل الحساب ←' : 'Coach Confirmed! Activate Profile →'}</span>`;
+        lucide.createIcons();
+      }
+    }
+
+    function handleAdvanceToCoach() {
+      clientProfile.nutrition_slot = "تم الحجز والتأكيد عبر Calendly ✓";
+      isNutritionScheduled = true;
+      updateBookingSlotsInGoogleSheets();
       goToStep(3);
     }
 
-    // ==========================================================
-    // 8. STEP 3: NATIVE COACH CALENDAR (WITH ANTI-CONFLICT LOGIC)
-    // ==========================================================
-    function renderCoachCalendar() {
-      const daysContainer = document.getElementById('coach-days-container');
-      if (!daysContainer) return;
-      daysContainer.innerHTML = '';
-
-      if (!selectedCoachDay && availableDays.length > 0) {
-        selectedCoachDay = availableDays[0].dateKey;
-      }
-
-      availableDays.forEach(day => {
-        const isSelected = (day.dateKey === selectedCoachDay);
-        const dayPill = document.createElement('div');
-        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#132F3D] border-[#07C1BE]' : 'bg-[#0A1B24] border-slate-800'}`;
-        dayPill.onclick = () => {
-          selectedCoachDay = day.dateKey;
-          selectedCoachSlot = null;
-          updateCoachChosenDisplay();
-          renderCoachCalendar();
-        };
-
-        const dayName = currentLang === 'ar' ? day.dayNameAr : day.dayNameEn;
-        const monthName = currentLang === 'ar' ? day.monthAr : day.monthEn;
-
-        dayPill.innerHTML = `
-          <div class="text-[11px] font-bold ${isSelected ? 'text-[#07C1BE]' : 'text-slate-400'}">${dayName}</div>
-          <div class="text-lg font-black text-white my-0.5">${day.dayNum}</div>
-          <div class="text-[10px] text-slate-500">${monthName}</div>
-        `;
-        daysContainer.appendChild(dayPill);
-      });
-
-      renderCoachSlots();
-    }
-
-    function renderCoachSlots() {
-      const slotsContainer = document.getElementById('coach-slots-container');
-      if (!slotsContainer) return;
-      slotsContainer.innerHTML = '';
-
-      standardSlots.forEach(slot => {
-        const slotKey = `${selectedCoachDay} @ ${slot.id}`;
-        const isSelected = (selectedCoachSlot === slotKey);
-
-        // Anti-Conflict Check: If this is the exact same slot this client picked for nutrition, disable it!
-        const isConflict = (selectedNutritionSlot && selectedNutritionSlot === slotKey);
-
-        const slotBtn = document.createElement('button');
-        slotBtn.type = 'button';
-        slotBtn.disabled = isConflict;
-
-        slotBtn.className = `time-slot-btn py-3 px-3 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ${
-          isConflict 
-            ? 'opacity-30 border-rose-900 bg-rose-950/20 text-rose-400 cursor-not-allowed line-through' 
-            : isSelected 
-              ? 'selected' 
-              : 'bg-[#0A1B24] border-slate-800 text-slate-300'
-        }`;
-
-        const timeLabel = currentLang === 'ar' ? slot.timeAr : slot.timeEn;
-        slotBtn.innerHTML = `
-          <i data-lucide="${isConflict ? 'ban' : 'clock'}" class="w-3.5 h-3.5"></i>
-          <span>${timeLabel} ${isConflict ? (currentLang === 'ar' ? '(تعارض التغذية)' : '(Conflict)') : ''}</span>
-        `;
-
-        if (!isConflict) {
-          slotBtn.onclick = () => {
-            selectedCoachSlot = slotKey;
-            updateCoachChosenDisplay();
-            renderCoachSlots();
-          };
-        }
-
-        slotsContainer.appendChild(slotBtn);
-      });
-
-      lucide.createIcons();
-    }
-
-    function updateCoachChosenDisplay() {
-      const notice = document.getElementById('coach-selected-notice');
-      const chosenText = document.getElementById('coach-chosen-text');
-      const advanceBtn = document.getElementById('advance-to-step4-btn');
-      const advanceText = document.getElementById('advance-to-step4-text');
-      const advanceIcon = document.getElementById('advance-step4-lock-icon');
-
-      if (selectedCoachSlot) {
-        const parts = selectedCoachSlot.split(' @ ');
-        const dayObj = availableDays.find(d => d.dateKey === parts[0]);
-        const slotObj = standardSlots.find(s => s.id === parts[1]);
-        const dayLabel = dayObj ? (currentLang === 'ar' ? `${dayObj.dayNameAr} ${dayObj.dayNum} ${dayObj.monthAr}` : `${dayObj.dayNameEn}, ${dayObj.dayNum} ${dayObj.monthEn}`) : parts[0];
-        const timeLabel = slotObj ? (currentLang === 'ar' ? slotObj.timeAr : slotObj.timeEn) : parts[1];
-
-        const formatted = `${dayLabel} (${timeLabel})`;
-        chosenText.innerText = formatted;
-        notice.classList.remove('hidden');
-
-        // Unlock Step 3 -> 4
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
-        advanceText.innerText = translations[currentLang].btn_advance_step4;
-        advanceIcon.className = "w-4 h-4 text-slate-950";
-        advanceIcon.setAttribute('data-lucide', 'arrow-left');
-      } else {
-        notice.classList.add('hidden');
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-500 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed";
-        advanceText.innerText = translations[currentLang].btn_lock_step4;
-        advanceIcon.className = "w-4 h-4 text-amber-400";
-        advanceIcon.setAttribute('data-lucide', 'lock');
-      }
-      lucide.createIcons();
-    }
-
-    function confirmCoachSlotAndAdvance() {
-      if (!selectedCoachSlot) {
-        showToastAlert(currentLang === 'ar' ? "يرجى اختيار اليوم والموعد المناسب للكوتش أولاً" : "Please select your Coach date and time first");
-        return;
-      }
-
-      clientProfile.coach_slot = document.getElementById('coach-chosen-text').innerText;
-      
-      // Calculate ISO timestamp for Google Calendar
-      if (selectedCoachSlot) {
-        const parts = selectedCoachSlot.split(' @ ');
-        clientProfile.coach_iso = `${parts[0]}T${parts[1]}:00+03:00`;
-      }
-      
-      // Dispatch ONE SINGLE COMPLETE ROW containing all 22 medical fields + both confirmed appointments
+    function handleAdvanceToStep4() {
+      clientProfile.coach_slot = "تم الحجز والتأكيد عبر Calendly ✓";
+      isCoachScheduled = true;
+      // Dispatch full profile to Google Sheets
       sendToGoogleSheets(clientProfile);
-
       goToStep(4);
     }
+
+    // Window Message Listener for Calendly Bookings
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.event === 'calendly.event_scheduled') {
+        if (currentStep === 2) {
+          isNutritionScheduled = true;
+          clientProfile.nutrition_slot = "تم الحجز والتأكيد عبر Calendly ✓";
+          updateBookingSlotsInGoogleSheets();
+          unlockNutritionStep();
+          showToastAlert(currentLang === 'ar' ? 'تم حجز موعد التغذية على كاليندلي بنجاح! جاري الانتقال لموعد الكوتش...' : 'Nutrition slot booked on Calendly! Moving to Coach...');
+          setTimeout(() => { goToStep(3); }, 1500);
+        } else if (currentStep === 3) {
+          isCoachScheduled = true;
+          clientProfile.coach_slot = "تم الحجز والتأكيد عبر Calendly ✓";
+          sendToGoogleSheets(clientProfile);
+          unlockCoachStep();
+          showToastAlert(currentLang === 'ar' ? 'تم حجز موعد الكوتش على كاليندلي بنجاح! جاري التفعيل...' : 'Coach slot booked on Calendly! Activating...');
+          setTimeout(() => { goToStep(4); }, 1500);
+        }
+      }
+    });
 
     // ==========================================================
     // 9. STEP NAVIGATION & STEP 4 FINAL SETUP
@@ -1605,8 +1428,11 @@
 
       // Step specific setups
       if (step === 2) {
+        initNutritionCalendly();
         document.getElementById('summary-client-name').innerText = (clientProfile.name || 'المشترك') + (clientProfile.client_code ? ` [${clientProfile.client_code}]` : '');
         document.getElementById('summary-client-phone').innerText = clientProfile.phone || '';
+      } else if (step === 3) {
+        initCoachCalendly();
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || (currentLang === 'ar' ? 'عزيزي المشترك' : 'Valued Client');
         
@@ -1669,13 +1495,6 @@
       }, 80);
 
       lucide.createIcons();
-    }
-
-    function updateAdvanceButtonsUI() {
-      updateNutritionChosenDisplay();
-      if (currentStep >= 3) {
-        updateCoachChosenDisplay();
-      }
     }
 
     function showToastAlert(msg) {

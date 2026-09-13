@@ -1042,18 +1042,18 @@
         
         <!-- Text & Feature Cards -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#132F3D] border border-[#18746F]/30 text-[#18746F] text-xs font-bold">
-            <i data-lucide="smartphone" class="w-4 h-4"></i>
-            <span>تطبيق سليم الذكي (Saliim App)</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-pulse"></span>
+            <span>قريباً • تطبيق سليم الذكي (Saliim App)</span>
           </div>
 
           <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
             خطّتك، ومدربك، وتقدّمك.. <br/>
-            <span class="text-[#18746F]">في جيبك دائماً وأينما كنت.</span>
+            <span class="text-[#07C1BE]">في جيبك قريباً على iOS و Android</span>
           </h2>
 
           <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            صممنا تطبيق سليم ليكون رفيقك المخلص. لا أوراق مطبوعة تضيع، ولا حيرة أمام المطاعم. كل ما تحتاجه للالتزام والوصول لهدفك متوفر بلمسة زر واحدة.
+            صممنا تطبيق سليم ليكون رفيقك المخلص. لا أوراق مطبوعة تضيع، ولا حيرة أمام المطاعم. التطبيق حالياً في مرحلته التجريبية الأخيرة وسيتم إطلاقه قريباً لجميع المشتركين.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 text-right">
@@ -1100,11 +1100,25 @@
 
           </div>
 
-          <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button onclick="openBookingModal('app_waitlist', 'قائمة انتظار تطبيق سليم', 'مجاني');" class="px-7 py-3.5 bg-[#18746F] hover:bg-[#135E5A] text-slate-950 font-black text-xs sm:text-sm rounded-2xl shadow-lg shadow-[#18746F]/30 flex items-center gap-2">
-              <i data-lucide="download" class="w-4 h-4"></i>
-              <span>انضم لمستخدمي تطبيق سليم</span>
-            </button>
+          <!-- Email Waitlist Form -->
+          <div class="pt-3 max-w-md mx-auto lg:mx-0">
+            <div class="bg-[#0E2530] border border-[#1E4354] p-4 rounded-2xl shadow-lg">
+              <p class="text-xs text-slate-200 font-bold mb-2.5 flex items-center gap-2 justify-center lg:justify-start">
+                <i data-lucide="bell-ring" class="w-4 h-4 text-[#07C1BE]"></i>
+                <span>سجّل بريدك لنرسل لك إشعاراً فور إطلاق التطبيق:</span>
+              </p>
+              <form id="app-waitlist-form" onsubmit="handleAppWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-2">
+                <input type="email" id="waitlist_email" required placeholder="أدخل بريدك الإلكتروني..." class="flex-1 bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#07C1BE]">
+                <button type="submit" id="waitlist-btn" class="px-5 py-2.5 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 flex-shrink-0">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>أبلغني عند الإطلاق</span>
+                </button>
+              </form>
+              <div id="waitlist-success-msg" class="hidden text-xs text-emerald-400 font-bold mt-2.5 flex items-center gap-1.5 justify-center lg:justify-start bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-500/30">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>شكراً لتسجيلك! سنرسل لك إشعاراً ورابط التحميل فور إطلاق التطبيق.</span>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -1783,6 +1797,34 @@
       if (!box) return;
       if (val === 'other') box.classList.remove('hidden');
       else box.classList.add('hidden');
+    }
+
+    // 6.2 App Email Waitlist Handler
+    function handleAppWaitlistSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('waitlist_email');
+      const btn = document.getElementById('waitlist-btn');
+      const msg = document.getElementById('waitlist-success-msg');
+      const email = input.value.trim();
+      if (!email) return;
+
+      btn.disabled = true;
+      btn.innerHTML = `<span class="inline-block animate-spin border-2 border-slate-950 border-t-transparent rounded-full w-3.5 h-3.5"></span> <span>جاري الحفظ...</span>`;
+
+      sendDataToGoogleSheets({
+        form_type: "قائمة انتظار تطبيق سليم (Email Waitlist)",
+        client_email: email,
+        client_name: "مشترك مهتم بالتطبيق",
+        submitted_at: new Date().toISOString()
+      });
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> <span>تم التسجيل ✓</span>`;
+        input.value = '';
+        if (msg) msg.classList.remove('hidden');
+        lucide.createIcons();
+      }, 600);
     }
 
     // 6. Form Submission & Payment Link Redirect

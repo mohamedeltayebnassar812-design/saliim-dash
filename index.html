@@ -195,6 +195,24 @@
       transform: scale(1.1);
       box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
     }
+  
+    /* AI Scanner Video Simulation Animations */
+    @keyframes scanLaser {
+      0% { top: 8%; opacity: 0.8; }
+      50% { top: 88%; opacity: 1; }
+      100% { top: 8%; opacity: 0.8; }
+    }
+    .scanner-laser-line {
+      animation: scanLaser 3.5s ease-in-out infinite;
+    }
+    @keyframes tagPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .scanner-hud-tag {
+      animation: tagPulse 2.5s ease-in-out infinite;
+    }
+
   </style>
 </head>
 <body class="bg-[#0A1B24] text-slate-100 selection:bg-[#18746F] selection:text-slate-950">
@@ -1035,77 +1053,292 @@
     </div>
   </section>
 
-  <!-- ==================== SECTION 7: SALIIM MOBILE APP (DARK TECH) ==================== -->
-  <section id="app" class="py-16 sm:py-24 bg-[#0A1B24] border-b border-white/5 relative reveal-on-scroll">
+  
+  <!-- ==================== SECTION: CONCEPT 3 - HORMONAL CHEMISTRY VS RESTRICTION ==================== -->
+  <section id="hormones" class="py-16 sm:py-24 bg-[#0E2530] text-white border-b border-white/5 relative reveal-on-scroll">
     <div class="responsive-container">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+          <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+          <span>الحقيقة الصيدلانية والهرمونية • د. أحمد الخطيب</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          لماذا يفشل دايت الحرمان وينجح نظام سليم؟ <br/>
+          <span class="text-[#07C1BE]">المسألة كيمياء هرمونات وليست مجرد حساب سعرات</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          بحكم التخصص الصيدلاني لدكتور أحمد الخطيب؛ إليك ما يحدث لهرمونات وميتابوليزم جسمك في الحالتين:
+        </p>
+      </div>
+
+      <!-- Side by Side Comparison Dashboard -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-right">
         
-        <!-- Text & Feature Cards -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
-            <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-pulse"></span>
-            <span>قريباً • تطبيق سليم الذكي (Saliim App)</span>
+        <!-- Red Card: Traditional Restriction (800-1000 kcal) -->
+        <div class="p-7 sm:p-8 rounded-3xl bg-red-950/20 border-2 border-red-900/40 space-y-6 shadow-xl">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-red-400 bg-red-950/80 px-3.5 py-1 rounded-full border border-red-800">دايت الحرمان 800 - 1000 سعرة</span>
+            <span class="text-2xl">⚠️</span>
           </div>
 
-          <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
-            خطّتك، ومدربك، وتقدّمك.. <br/>
-            <span class="text-[#07C1BE]">في جيبك قريباً على iOS و Android</span>
-          </h2>
+          <h3 class="text-lg sm:text-xl font-black text-white">انهيار كيمياء الحرق والميتابوليزم:</h3>
 
-          <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            صممنا تطبيق سليم ليكون رفيقك المخلص. لا أوراق مطبوعة تضيع، ولا حيرة أمام المطاعم. التطبيق حالياً في مرحلته التجريبية الأخيرة وسيتم إطلاقه قريباً لجميع المشتركين.
-          </p>
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون التوتر والكورتيزول (Cortisol)</span>
+                <span class="text-red-400 font-black">مرتفع جداً 95%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[95%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يحبس الدهون الحشوية العنيدة في البطن والخصر لمنع نزولها.</p>
+            </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 text-right">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>كفاءة الغدة الدرقية والأيض (Metabolism)</span>
+                <span class="text-red-400 font-black">هبوط حاد 25%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[25%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يدخل الجسم في حالة مجاعة ودفاع مسبباً ثبات الوزن التام والتعب.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون الجوع والشره (Ghrelin)</span>
+                <span class="text-red-400 font-black">منفجر 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يؤدي لنوبات شراهة ليلية عارمة واستعادة الوزن بزيادة مضاعفة.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-red-950/50 border border-red-900/60 text-center text-xs font-bold text-red-300">
+            النتيجة الحتمية: إحباط متكرر، بطء حرق دائم، واسترجاع أسرع للوزن
+          </div>
+        </div>
+
+        <!-- Teal Card: Saliim Satiating Chemistry (1800+ kcal) -->
+        <div class="p-7 sm:p-8 rounded-3xl bg-[#0A1B24] border-2 border-[#07C1BE] space-y-6 shadow-2xl cyan-glow relative">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-slate-950 bg-[#07C1BE] px-3.5 py-1 rounded-full shadow-md">نظام سليم المشبع 1800+ سعرة</span>
+            <span class="text-2xl">🌿</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-white">تفعيل الحرق الطبيعي المستدام:</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>حساسية الأنسولين (Insulin Sensitivity)</span>
+                <span class="text-[#07C1BE] font-black">مثالية ومستقرة 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">ثبات سكر الدم يفتح مخازن الدهون العنيدة للحرق والاستخدام كطاقة.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون الشبع والامتلاء (Leptin)</span>
+                <span class="text-[#07C1BE] font-black">نشط ومتوازن 85%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[85%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">إشارات شبع واضحة من المخ دون أي صراع نفسي أو حرمان مع الأكل.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>حرق الدهون أثناء النوم (Resting Metabolic Rate)</span>
+                <span class="text-[#07C1BE] font-black">مستمر وفعال 88%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[88%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">الكبد والعضلات تستمر في التخلص من الدهون الحشوية على مدار 24 ساعة.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-teal-950/60 border border-[#07C1BE]/40 text-center text-xs font-bold text-[#07C1BE]">
+            النتيجة العلمية: نزول دهون حقيقي وصحة ونشاط مستدامين مدى الحياة
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Quote Callout -->
+      <div class="max-w-3xl mx-auto mt-10 p-5 rounded-2xl bg-[#132F3D]/80 border border-[#1E4354] text-center text-xs sm:text-sm text-slate-300 flex items-center justify-center gap-3">
+        <i data-lucide="quote" class="w-5 h-5 text-[#07C1BE] flex-shrink-0"></i>
+        <span>"النجاح في التخسيس لا يأتي من معاقبة جسدك بالجوع، بل من إعطائه الإشارات البيولوجية الصحيحة التي تجعله يتخلص من الدهون بأمان." — <strong>د. أحمد الخطيب</strong></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SECTION 7: SALIIM MOBILE APP & AI SCANNER (DARK TECH) ==================== -->
+  <section id="app" class="py-16 sm:py-24 bg-[#0A1B24] border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-pulse"></span>
+          <span>المقترح الثاني • الذكاء الاصطناعي في تطبيق سليم (قريباً)</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          صوّر طبقك فقط.. <br/>
+          <span class="text-[#07C1BE]">ودع الذكاء الاصطناعي يحلل كيمياء الوجبة والشبع</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          وداعاً لوزن الطعام بالميزان أو حساب السعرات المعقد؛ التزامك أصبح أسهل وأذكى مما تتخيل:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-5xl mx-auto">
+        
+        <!-- Left Column: Interactive Video-style Simulated AI Scanner -->
+        <div class="lg:col-span-6 flex justify-center order-2 lg:order-1">
+          <div class="relative w-full max-w-[420px] rounded-3xl overflow-hidden border-2 border-[#07C1BE]/40 shadow-2xl cyan-glow bg-[#0E2530] group">
             
-            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3">
-              <div class="w-9 h-9 rounded-xl bg-[#18746F]/10 text-[#18746F] flex items-center justify-center flex-shrink-0">
-                <i data-lucide="scan" class="w-4 h-4"></i>
+            <!-- Video Mockup Header Bar -->
+            <div class="bg-[#08121D] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+                <span class="font-black text-white text-[11px] flex items-center gap-1">
+                  <span>فيديو توضيحي حي</span>
+                  <span class="text-[#07C1BE]">• ماسح سليم الذكي</span>
+                </span>
               </div>
-              <div>
-                <h4 class="text-xs sm:text-sm font-bold text-white">تتبع يومي سهل</h4>
-                <p class="text-[11px] text-slate-400 mt-0.5 leading-relaxed">سجّل وجباتك، كمية الماء، وخطواتك اليومية في ثوانٍ وبدون حسابات معقدة.</p>
-              </div>
-            </div>
-
-            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3">
-              <div class="w-9 h-9 rounded-xl bg-teal-500/10 text-teal-300 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="sliders" class="w-4 h-4"></i>
-              </div>
-              <div>
-                <h4 class="text-xs sm:text-sm font-bold text-white">خطة تتجدد أسبوعياً</h4>
-                <p class="text-[11px] text-slate-400 mt-0.5 leading-relaxed">تتطور وجباتك باستمرار بحسب سرعة استجابة ونزول قياساتك كل أسبوع.</p>
+              <div class="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
+                AI Vision 4.0
               </div>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3">
-              <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="messages-square" class="w-4 h-4"></i>
+            <!-- Video Simulation Screen with Scanning Animation -->
+            <div class="relative overflow-hidden aspect-[4/5] bg-black">
+              <!-- Food Image Background -->
+              <img src="assets/concept_ai_scanner.webp" alt="كاميرا فحص الوجبات بالذكاء الاصطناعي في تطبيق سليم" class="w-full h-full object-cover">
+              
+              <!-- Dark Cinematic Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
+
+              <!-- Animated Green Laser Scan Line -->
+              <div class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#07C1BE] to-transparent shadow-[0_0_15px_#07C1BE] scanner-laser-line pointer-events-none z-10"></div>
+
+              <!-- HUD Diagnostic Overlay Pins (Arabic) -->
+              <div class="absolute top-4 right-4 z-20 scanner-hud-tag">
+                <div class="bg-[#0A1B24]/90 border border-[#07C1BE] backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
+                  <span class="text-[9px] text-[#07C1BE] font-bold block">المكونات التي تم رصدها:</span>
+                  <p class="text-xs font-black text-white">سلمون نرويجي + كينوا + أفوكادو</p>
+                </div>
               </div>
-              <div>
-                <h4 class="text-xs sm:text-sm font-bold text-white">تواصل مباشر مع الكوتش</h4>
-                <p class="text-[11px] text-slate-400 mt-0.5 leading-relaxed">فريق الأخصائيين والكوتش معك في المحادثة لإرشادك في أي موقف طارئ.</p>
+
+              <div class="absolute top-20 left-4 z-20 scanner-hud-tag" style="animation-delay: 0.8s;">
+                <div class="bg-[#0A1B24]/90 border border-emerald-400/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
+                  <span class="text-[9px] text-emerald-400 font-bold block">البروتين الصافي:</span>
+                  <p class="text-xs font-black text-white">38 جم (بناء عضلي مثالي)</p>
+                </div>
+              </div>
+
+              <div class="absolute bottom-16 right-4 z-20 scanner-hud-tag" style="animation-delay: 1.4s;">
+                <div class="bg-[#0A1B24]/95 border border-[#07C1BE]/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
+                  <div class="flex items-center gap-1.5 text-xs font-black text-white">
+                    <i data-lucide="activity" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+                    <span>مؤشر الشبع: 9.4 / 10</span>
+                  </div>
+                  <span class="text-[9px] text-emerald-400 block font-medium">شبع مستقر 5 ساعات دون خمول</span>
+                </div>
+              </div>
+
+              <div class="absolute bottom-16 left-4 z-20 scanner-hud-tag" style="animation-delay: 1.8s;">
+                <div class="bg-teal-950/90 border border-teal-400/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
+                  <span class="text-[9px] text-teal-300 font-bold block">تأثير الأنسولين:</span>
+                  <p class="text-xs font-black text-white">منخفض جداً • حرق دهون نشط</p>
+                </div>
+              </div>
+
+              <!-- Camera Viewfinder Corners -->
+              <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#07C1BE] pointer-events-none"></div>
+              <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#07C1BE] pointer-events-none"></div>
+              <div class="absolute bottom-14 left-3 w-4 h-4 border-b-2 border-l-2 border-[#07C1BE] pointer-events-none"></div>
+              <div class="absolute bottom-14 right-3 w-4 h-4 border-b-2 border-r-2 border-[#07C1BE] pointer-events-none"></div>
+
+              <!-- Bottom Video Controls / Status Bar -->
+              <div class="absolute bottom-0 left-0 right-0 bg-[#08121D]/95 border-t border-slate-800 p-2.5 flex items-center justify-between text-[11px] text-slate-300 z-20">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full bg-[#07C1BE] text-slate-950 flex items-center justify-center">
+                    <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+                  </div>
+                  <span class="font-bold text-white text-xs">جاري فحص الوجبة بالذكاء الاصطناعي...</span>
+                </div>
+                <span class="text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30 font-black">
+                  معتمد من سليم ✓
+                </span>
               </div>
             </div>
 
-            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3">
-              <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="line-chart" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <!-- Right Column: Tech Bullet Features & Email Waitlist -->
+        <div class="lg:col-span-6 space-y-5 text-right order-1 lg:order-2">
+          
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#07C1BE] uppercase tracking-wider block">تجربة متابعة ذكية وفريدة في جيبك</span>
+            <h3 class="text-xl sm:text-2xl font-black text-white">تحليل فوري لأي وجبة في ثوانٍ</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              كاميرا تطبيق سليم تفحص مكونات طبقك، تقدر كمية البروتين والألياف، وتحدد تلقائياً تأثير الوجبة على هرمون الأنسولين وسرعة الحرق.
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-1">
+            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#07C1BE]/20 text-[#07C1BE] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="camera" class="w-4 h-4"></i>
               </div>
               <div>
-                <h4 class="text-xs sm:text-sm font-bold text-white">تحليلات دقيقة لتقدمك</h4>
-                <p class="text-[11px] text-slate-400 mt-0.5 leading-relaxed">مخططات بيانية توضح تغير مقاسات جسمك، نزول الدهون، ومستوى طاقتك.</p>
+                <h4 class="text-sm font-bold text-white">التعرف على الأكلات العربية والمنزلية</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">مدرب ومخصص ليتعرف بدقة على الأطباق الخليجية والمصرية والوجبات السريعة والمطاعم.</p>
               </div>
             </div>
 
+            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#18746F]/30 text-[#07C1BE] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">مؤشر الشبع السريري (Satiety Index)</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">يخبرك فوراً إذا كانت الوجبة ستمنحك شبعاً مستقراً أم ستسبب لك خمولاً ورغبة في السكريات.</p>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">ربط مباشر مع فريق المتابعة</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">تصل الصور والبيانات لأخصائي التغذية ليقترح عليك البدائل الفورية إن كنت تأكل خارج المنزل.</p>
+              </div>
+            </div>
           </div>
 
           <!-- Email Waitlist Form -->
-          <div class="pt-3 max-w-md mx-auto lg:mx-0">
+          <div class="pt-2">
             <div class="bg-[#0E2530] border border-[#1E4354] p-4 rounded-2xl shadow-lg">
               <p class="text-xs text-slate-200 font-bold mb-2.5 flex items-center gap-2 justify-center lg:justify-start">
                 <i data-lucide="bell-ring" class="w-4 h-4 text-[#07C1BE]"></i>
-                <span>سجّل بريدك لنرسل لك إشعاراً فور إطلاق التطبيق:</span>
+                <span>سجّل بريدك لنرسل لك إشعاراً فور إطلاق التطبيق رسمياً:</span>
               </p>
               <form id="app-waitlist-form" onsubmit="handleAppWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-2">
                 <input type="email" id="waitlist_email" required placeholder="أدخل بريدك الإلكتروني..." class="flex-1 bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#07C1BE]">
@@ -1116,20 +1349,11 @@
               </form>
               <div id="waitlist-success-msg" class="hidden text-xs text-emerald-400 font-bold mt-2.5 flex items-center gap-1.5 justify-center lg:justify-start bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-500/30">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-                <span>شكراً لتسجيلك! سنرسل لك إشعاراً ورابط التحميل فور إطلاق التطبيق.</span>
+                <span>تم تسجيل بريدك بنجاح! سنرسل لك إشعاراً ورابط التحميل فور إطلاقه.</span>
               </div>
             </div>
           </div>
 
-        </div>
-
-        <!-- Phone Mockups Showcase -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative w-full max-w-[380px]">
-            <div class="aspect-[4/5] rounded-3xl overflow-hidden border border-[#18746F]/30 shadow-2xl cyan-glow bg-[#132F3D] p-3">
-              <img src="assets/app_mockup_phones.webp" alt="واجهة تطبيق سليم" class="w-full h-full object-contain">
-            </div>
-          </div>
         </div>
 
       </div>

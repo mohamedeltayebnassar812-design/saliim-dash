@@ -28,14 +28,14 @@
           },
           colors: {
             brand: {
-              dark: '#08121D',
-              surface: '#0E1D2D',
-              card: '#142538',
-              cardBorder: '#1E354F',
-              cyan: '#00C2CB',
-              cyanHover: '#00A8B0',
-              teal: '#4EB098',
-              tealDark: '#3A907C',
+              dark: '#0A1B24',
+              surface: '#0E2530',
+              card: '#132F3D',
+              cardBorder: '#1E4354',
+              cyan: '#07C1BE',
+              cyanHover: '#05A8A5',
+              teal: '#18746F',
+              tealDark: '#135E5A',
               gold: '#E5A93C',
               textMuted: '#94A3B8'
             }
@@ -50,7 +50,7 @@
       --font-current: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
     }
     body {
-      background-color: #08121D;
+      background-color: #0A1B24;
       color: #F1F5F9;
       font-family: var(--font-current);
       overflow-x: hidden;
@@ -61,14 +61,14 @@
     }
 
     .bg-grid-pattern {
-      background-image: radial-gradient(rgba(0, 194, 203, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(7, 193, 190, 0.08) 1px, transparent 1px);
       background-size: 32px 32px;
     }
 
     input:focus, select:focus, textarea:focus {
       outline: none;
-      border-color: #4EB098;
-      box-shadow: 0 0 0 3px rgba(78, 176, 152, 0.2);
+      border-color: #18746F;
+      box-shadow: 0 0 0 3px rgba(24, 116, 111, 0.2);
     }
 
     @media (max-width: 640px) {
@@ -93,29 +93,29 @@
       cursor: pointer;
     }
     .day-pill:hover {
-      border-color: #00C2CB;
+      border-color: #07C1BE;
       transform: translateY(-2px);
     }
     .day-pill.active {
-      background: linear-gradient(135deg, rgba(0, 194, 203, 0.25), rgba(78, 176, 152, 0.25));
-      border-color: #00C2CB;
-      box-shadow: 0 0 15px rgba(0, 194, 203, 0.2);
+      background: linear-gradient(135deg, rgba(7, 193, 190, 0.25), rgba(24, 116, 111, 0.25));
+      border-color: #07C1BE;
+      box-shadow: 0 0 15px rgba(7, 193, 190, 0.2);
     }
 
     .time-slot-btn {
       transition: all 0.15s ease;
     }
     .time-slot-btn:hover:not(:disabled) {
-      border-color: #4EB098;
-      background-color: rgba(78, 176, 152, 0.12);
+      border-color: #18746F;
+      background-color: rgba(24, 116, 111, 0.12);
       transform: scale(1.02);
     }
     .time-slot-btn.selected {
-      background: linear-gradient(135deg, #00C2CB, #4EB098) !important;
-      color: #08121D !important;
+      background: linear-gradient(135deg, #07C1BE, #18746F) !important;
+      color: #0A1B24 !important;
       font-weight: 800 !important;
-      border-color: #00C2CB !important;
-      box-shadow: 0 4px 15px rgba(0, 194, 203, 0.35);
+      border-color: #07C1BE !important;
+      box-shadow: 0 4px 15px rgba(7, 193, 190, 0.35);
     }
     .time-slot-btn:disabled {
       opacity: 0.35;
@@ -129,14 +129,14 @@
 <body class="bg-grid-pattern flex flex-col justify-between">
 
   <!-- ==================== HEADER WITH LANGUAGE SWITCHER ==================== -->
-  <header class="border-b border-[#1E354F] bg-[#0E1D2D]/90 backdrop-blur-md sticky top-0 z-40">
+  <header class="border-b border-[#1E4354] bg-[#0E2530]/90 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
       
       <!-- Brand Logo -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00C2CB] to-[#4EB098] p-0.5 flex items-center justify-center shadow-lg shadow-teal-500/20">
-          <div class="w-full h-full bg-[#08121D] rounded-[10px] flex items-center justify-center">
-            <span class="text-[#00C2CB] font-black text-xl">S</span>
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#07C1BE] to-[#18746F] p-0.5 flex items-center justify-center shadow-lg shadow-teal-500/20">
+          <div class="w-full h-full bg-[#0A1B24] rounded-[10px] flex items-center justify-center">
+            <span class="text-[#07C1BE] font-black text-xl">S</span>
           </div>
         </div>
         <div>
@@ -144,7 +144,7 @@
             <span data-i18n="header_brand">منصة سليم</span> 
             <span class="text-xs font-normal text-slate-400" data-i18n="header_dr">| د. أحمد الخطيب</span>
           </div>
-          <p class="text-[11px] text-[#4EB098] font-semibold" data-i18n="header_sub">بوابة استقبال وتفعيل اشتراكات المشتركين VIP</p>
+          <p class="text-[11px] text-[#18746F] font-semibold" data-i18n="header_sub">بوابة استقبال وتفعيل اشتراكات المشتركين VIP</p>
         </div>
       </div>
 
@@ -153,7 +153,7 @@
         
         <!-- Language Switcher Button -->
         <button type="button" onclick="toggleLanguage()" id="lang-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-slate-200 transition-all shadow-sm">
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#00C2CB]"></i>
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
           <span id="lang-btn-text">English</span>
         </button>
 
@@ -169,19 +169,19 @@
 
   <!-- ==================== STEPPER PROGRESS ==================== -->
   <div class="max-w-4xl mx-auto w-full px-4 pt-8 pb-4">
-    <div class="bg-[#0E1D2D]/80 border border-[#1E354F] rounded-2xl p-4 sm:p-6 shadow-xl">
+    <div class="bg-[#0E2530]/80 border border-[#1E4354] rounded-2xl p-4 sm:p-6 shadow-xl">
       <!-- Progress Bar -->
       <div class="relative mb-6">
         <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
-          <div id="progress-bar-fill" class="h-full bg-gradient-to-l from-[#00C2CB] to-[#4EB098] transition-all duration-500 rounded-full" style="width: 25%;"></div>
+          <div id="progress-bar-fill" class="h-full bg-gradient-to-l from-[#07C1BE] to-[#18746F] transition-all duration-500 rounded-full" style="width: 25%;"></div>
         </div>
       </div>
 
       <!-- Step Badges -->
       <div class="grid grid-cols-4 gap-2 text-center text-xs font-bold">
         <!-- Step 1 Badge -->
-        <div id="step-badge-1" class="flex flex-col items-center gap-1.5 text-[#00C2CB]">
-          <div class="w-8 h-8 rounded-full bg-teal-950 border-2 border-[#00C2CB] flex items-center justify-center shadow-lg shadow-teal-500/30">
+        <div id="step-badge-1" class="flex flex-col items-center gap-1.5 text-[#07C1BE]">
+          <div class="w-8 h-8 rounded-full bg-teal-950 border-2 border-[#07C1BE] flex items-center justify-center shadow-lg shadow-teal-500/30">
             <i data-lucide="clipboard-list" class="w-4 h-4"></i>
           </div>
           <span class="hidden sm:inline" data-i18n="badge_step1">1. الملف الطبي</span>
@@ -223,15 +223,15 @@
 
     <!-- ==================== STEP 1: COMPREHENSIVE MEDICAL INTAKE ==================== -->
     <div id="step-1-container" class="step-transition">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden">
+      <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden">
         
         <!-- Step Header -->
         <div class="flex items-start gap-4 pb-6 border-b border-slate-800">
-          <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-[#00C2CB]/40 flex items-center justify-center flex-shrink-0 text-[#00C2CB]">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-[#07C1BE]/40 flex items-center justify-center flex-shrink-0 text-[#07C1BE]">
             <i data-lucide="file-text" class="w-6 h-6"></i>
           </div>
           <div>
-            <span class="text-xs font-bold text-[#00C2CB] uppercase tracking-wider bg-cyan-950/60 px-3 py-1 rounded-full border border-[#00C2CB]/30" data-i18n="step1_tag">الخطوة 1 من 4</span>
+            <span class="text-xs font-bold text-[#07C1BE] uppercase tracking-wider bg-cyan-950/60 px-3 py-1 rounded-full border border-[#07C1BE]/30" data-i18n="step1_tag">الخطوة 1 من 4</span>
             <h1 class="text-xl sm:text-2xl font-black text-white mt-2" data-i18n="step1_title">تسجيل البيانات الأساسية والملف الطبي الشامل</h1>
             <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed" data-i18n="step1_desc">
               أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية والتدريبية والطبية بأعلى درجات الدقة والنتائج المستدامة، يرجى استكمال البيانات التالية.
@@ -245,7 +245,7 @@
           <!-- القسم الأول: البيانات الأساسية -->
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <span class="w-2 h-2 rounded-full bg-[#4EB098]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#18746F]"></span>
               <h2 class="text-base sm:text-lg font-bold text-white" data-i18n="sec1_title">البيانات الشخصية والأساسية</h2>
             </div>
 
@@ -254,7 +254,7 @@
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_name">الاسم ثلاثي أو رباعي <span class="text-rose-400">*</span></label>
                 <div class="relative">
-                  <input type="text" id="client_name" required placeholder="أدخل اسمك بالكامل" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="text" id="client_name" required placeholder="أدخل اسمك بالكامل" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
                   <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute end-3.5 top-3.5"></i>
                 </div>
               </div>
@@ -263,7 +263,7 @@
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_phone">رقم الواتساب مع كود الدولة <span class="text-rose-400">*</span></label>
                 <div class="relative">
-                  <input type="tel" id="client_phone" required placeholder="مثال: +966501234567" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
+                  <input type="tel" id="client_phone" required placeholder="مثال: +966501234567" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
                   <i data-lucide="phone" class="w-4 h-4 text-slate-500 absolute end-3.5 top-3.5"></i>
                 </div>
               </div>
@@ -272,7 +272,7 @@
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_email">البريد الإلكتروني <span class="text-rose-400">*</span></label>
                 <div class="relative">
-                  <input type="email" id="client_email" required placeholder="name@example.com" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
+                  <input type="email" id="client_email" required placeholder="name@example.com" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500" dir="ltr">
                   <i data-lucide="mail" class="w-4 h-4 text-slate-500 absolute end-3.5 top-3.5"></i>
                 </div>
               </div>
@@ -281,7 +281,7 @@
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_location">الدولة والمدينة (لضبط فارق التوقيت للمواعيد) <span class="text-rose-400">*</span></label>
                 <div class="relative">
-                  <input type="text" id="client_location" required placeholder="مثال: السعودية - الرياض" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="text" id="client_location" required placeholder="مثال: السعودية - الرياض" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
                   <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 absolute end-3.5 top-3.5"></i>
                 </div>
               </div>
@@ -290,11 +290,11 @@
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_age">السن (بالسنوات) <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_age" required min="12" max="95" placeholder="35" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_age" required min="12" max="95" placeholder="35" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_gender">الجنس <span class="text-rose-400">*</span></label>
-                  <select id="client_gender" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <select id="client_gender" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
                     <option value="" disabled selected data-i18n="opt_select_gender">اختر الجنس</option>
                     <option value="ذكر" data-i18n="opt_male">ذكر</option>
                     <option value="أنثى" data-i18n="opt_female">أنثى</option>
@@ -306,22 +306,22 @@
               <div class="grid grid-cols-3 gap-2">
                 <div>
                   <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="lbl_height">الطول (سم) <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_height" required min="100" max="230" placeholder="175" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_height" required min="100" max="230" placeholder="175" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="lbl_weight">الوزن الحالي <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_weight" required min="30" max="250" step="0.5" placeholder="88" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_weight" required min="30" max="250" step="0.5" placeholder="88" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-[11px] font-bold text-slate-300 mb-1.5" data-i18n="lbl_target_weight">المستهدف <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_target_weight" required min="30" max="200" step="0.5" placeholder="75" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_target_weight" required min="30" max="200" step="0.5" placeholder="75" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-3 py-3 text-sm text-white placeholder-slate-500">
                 </div>
               </div>
 
               <!-- Package Selection -->
               <div class="sm:col-span-2">
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_package">الباقة المختارة <span class="text-rose-400">*</span></label>
-                <select id="client_package" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                <select id="client_package" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
                   <option value="باقة Private مع د. أحمد الخطيب ($199)" data-i18n="pkg_private">باقة Private مع د. أحمد الخطيب مباشرة ($199 شهرياً)</option>
                   <option value="باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)" data-i18n="pkg_protocol">باقة The Protocol - بروتوكول الـ 60 يوماً الشامل ($500)</option>
                   <option value="باقة Pro السريرية ($120)" data-i18n="pkg_pro">باقة Pro السريرية مع الفريق الطبي ($120 شهرياً)</option>
@@ -335,14 +335,14 @@
           <!-- القسم الثاني: الملف الصحي والتاريخ الطبي -->
           <div class="pt-6 border-t border-slate-800">
             <div class="flex items-center gap-2 mb-4">
-              <span class="w-2 h-2 rounded-full bg-[#00C2CB]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#07C1BE]"></span>
               <h2 class="text-base sm:text-lg font-bold text-white" data-i18n="sec2_title">الملف الصحي والهدف الطبي</h2>
             </div>
 
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_goal">ما هو هدفك الأساسي من الاشتراك؟ <span class="text-rose-400">*</span></label>
-                <select id="client_goal" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                <select id="client_goal" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
                   <option value="علاج مقاومة الأنسولين والتخلص من دهون البطن" data-i18n="goal_ir">علاج مقاومة الأنسولين والتخلص من دهون البطن الحشوية</option>
                   <option value="خسارة وزن صحية مستدامة ونحت القوام" data-i18n="goal_wl">خسارة وزن صحية مستدامة ونحت القوام دون حرمان</option>
                   <option value="علاج الكبد الدهني وضبط إنزيمات الكبد" data-i18n="goal_fl">علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد</option>
@@ -358,40 +358,40 @@
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-2" data-i18n="lbl_conditions">هل تم تشخيصك بأي من الحالات التالية؟ (اختر كل ما ينطبق) <span class="text-rose-400">*</span></label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="مقاومة أنسولين" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="مقاومة أنسولين" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_ir">مقاومة أنسولين</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="سكر نوع 2" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="سكر نوع 2" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_dm2">سكر نوع 2</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ضغط دم مرتفع" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="ضغط دم مرتفع" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_bp">ضغط دم مرتفع</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="دهون على الكبد" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="دهون على الكبد" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_fl">دهون على الكبد</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="خمول الغدة الدرقية" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="خمول الغدة الدرقية" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_th">خمول الغدة الدرقية</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ارتفاع كولسترول" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="ارتفاع كولسترول" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_chol">كولسترول / دهون ثلاثية</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="تكيس مبايض" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="تكيس مبايض" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_pcos">تكيس مبايض (PCOS)</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="قولون عصبي" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="قولون عصبي" class="rounded text-[#18746F] focus:ring-0">
                     <span data-i18n="cond_ibs">قولون عصبي / هضمي</span>
                   </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="لا توجد أمراض (سليم تماماً)" class="rounded text-[#4EB098] focus:ring-0">
+                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input type="checkbox" name="medical_condition" value="لا توجد أمراض (سليم تماماً)" class="rounded text-[#18746F] focus:ring-0">
                     <span class="text-emerald-400 font-bold" data-i18n="cond_healthy">لا يوجد (سليم تماماً)</span>
                   </label>
                 </div>
@@ -401,11 +401,11 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_meds">الأدوية أو المكملات المتناولة حالياً (إن وجدت)</label>
-                  <textarea id="client_medications" rows="2" placeholder="اكتب أسماء الأدوية أو الجرعات، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                  <textarea id="client_medications" rows="2" placeholder="اكتب أسماء الأدوية أو الجرعات، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_allergies">الحساسيات الغذائية أو أطعمة ترفضها</label>
-                  <textarea id="client_allergies" rows="2" placeholder="مثال: جلوتين، لاكتوز، بيض، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                  <textarea id="client_allergies" rows="2" placeholder="مثال: جلوتين، لاكتوز، بيض، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
                 </div>
               </div>
 
@@ -413,11 +413,11 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_surgeries">العمليات الجراحية السابقة أو إصابات المفاصل</label>
-                  <input type="text" id="client_surgeries" placeholder="مثال: استئصال مرارة، غضروف ركبة، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
+                  <input type="text" id="client_surgeries" placeholder="مثال: استئصال مرارة، غضروف ركبة، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_activity">مستوى النشاط البدني الحالي <span class="text-rose-400">*</span></label>
-                  <select id="client_activity_level" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
+                  <select id="client_activity_level" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
                     <option value="خامل (عمل مكتبي ولا أمارس رياضة)" data-i18n="act_sedentary">خامل (عمل مكتبي، حركة قليلة جداً)</option>
                     <option value="متوسط (أمشي بعض الأيام، نشاط عادي)" data-i18n="act_moderate">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
                     <option value="نشط (أمارس تمارين مقاومة 2-3 أيام)" data-i18n="act_active">نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)</option>
@@ -429,7 +429,7 @@
               <!-- Lab results link -->
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_lab">رابط التحاليل الطبية أو نتائج الفحوصات (اختياري)</label>
-                <input type="text" id="client_lab_link" placeholder="رابط Google Drive للتحاليل أو اكتب أهم النتائج: HbA1c، كولسترول..." class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
+                <input type="text" id="client_lab_link" placeholder="رابط Google Drive للتحاليل أو اكتب أهم النتائج: HbA1c، كولسترول..." class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
                 <p class="text-[11px] text-slate-500 mt-1" data-i18n="lbl_lab_hint">يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.</p>
               </div>
 
@@ -438,12 +438,12 @@
 
           <!-- Submit Button -->
           <div class="pt-6 border-t border-slate-800">
-            <button type="submit" id="step-1-btn" class="w-full py-4 px-8 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-teal-500/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <button type="submit" id="step-1-btn" class="w-full py-4 px-8 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-teal-500/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
               <span data-i18n="btn_submit_step1">حفظ البيانات ومتابعة حجز المواعيد</span>
               <i data-lucide="arrow-left" id="step1-btn-icon" class="w-5 h-5"></i>
             </button>
             <p class="text-center text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1.5">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#4EB098]"></i>
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#18746F]"></i>
               <span data-i18n="msg_confidential">بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه.</span>
             </p>
           </div>
@@ -455,17 +455,17 @@
 
     <!-- ==================== STEP 2: NATIVE NUTRITION SPECIALIST CALENDAR ==================== -->
     <div id="step-2-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
+      <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-950 border border-[#4EB098]/40 flex items-center justify-center flex-shrink-0 text-[#4EB098]">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-950 border border-[#18746F]/40 flex items-center justify-center flex-shrink-0 text-[#18746F]">
               <i data-lucide="apple" class="w-6 h-6"></i>
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-[#4EB098] bg-teal-950 px-3 py-0.5 rounded-full border border-[#4EB098]/40" data-i18n="step2_tag">الخطوة 2 من 4</span>
+                <span class="text-xs font-bold text-[#18746F] bg-teal-950 px-3 py-0.5 rounded-full border border-[#18746F]/40" data-i18n="step2_tag">الخطوة 2 من 4</span>
                 <span class="text-xs text-slate-400" data-i18n="step2_sub">جلسة فردية 1:1 متخصصة</span>
               </div>
               <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5" data-i18n="step2_title">حجز استشارة أخصائي التغذية الإكلينيكية</h2>
@@ -488,7 +488,7 @@
         <!-- Native Calendar Widget for Nutrition -->
         <div class="mt-6">
           <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4 text-[#00C2CB]"></i>
+            <i data-lucide="calendar" class="w-4 h-4 text-[#07C1BE]"></i>
             <span data-i18n="lbl_select_day">1. اختر اليوم المتاح للمقابلة:</span>
           </label>
           
@@ -499,7 +499,7 @@
 
           <!-- Time Slots Container -->
           <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="clock" class="w-4 h-4 text-[#4EB098]"></i>
+            <i data-lucide="clock" class="w-4 h-4 text-[#18746F]"></i>
             <span data-i18n="lbl_select_time">2. اختر التوقيت الأنسب لك (بتوقيت مكة والقاهرة):</span>
           </label>
           
@@ -508,7 +508,7 @@
           </div>
 
           <!-- Selected Notice -->
-          <div id="nutrition-selected-notice" class="mt-6 p-4 rounded-xl bg-teal-950/40 border border-[#4EB098]/30 hidden flex items-center justify-between">
+          <div id="nutrition-selected-notice" class="mt-6 p-4 rounded-xl bg-teal-950/40 border border-[#18746F]/30 hidden flex items-center justify-between">
             <div class="flex items-center gap-2.5 text-xs text-slate-200">
               <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
               <div>
@@ -538,17 +538,17 @@
 
     <!-- ==================== STEP 3: NATIVE FITNESS COACH CALENDAR (WITH ANTI-CONFLICT) ==================== -->
     <div id="step-3-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
+      <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-8 mobile-p-tight shadow-2xl relative">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
           <div class="flex items-start gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-[#00C2CB]/40 flex items-center justify-center flex-shrink-0 text-[#00C2CB]">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-950 border border-[#07C1BE]/40 flex items-center justify-center flex-shrink-0 text-[#07C1BE]">
               <i data-lucide="dumbbell" class="w-6 h-6"></i>
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-[#00C2CB] bg-cyan-950 px-3 py-0.5 rounded-full border border-[#00C2CB]/40" data-i18n="step3_tag">الخطوة 3 من 4</span>
+                <span class="text-xs font-bold text-[#07C1BE] bg-cyan-950 px-3 py-0.5 rounded-full border border-[#07C1BE]/40" data-i18n="step3_tag">الخطوة 3 من 4</span>
                 <span class="text-xs text-slate-400" data-i18n="step3_sub">جلسة تدريبية وتقييم حركي</span>
               </div>
               <h2 class="text-xl sm:text-2xl font-black text-white mt-1.5" data-i18n="step3_title">حجز جلسة الكوتش الرياضي والتقييم الحركي</h2>
@@ -569,14 +569,14 @@
 
         <!-- Anti-Conflict Alert Box -->
         <div id="conflict-info-banner" class="mt-4 p-3.5 rounded-xl bg-slate-900/80 border border-cyan-500/30 text-xs flex items-center gap-2.5 text-cyan-300">
-          <i data-lucide="shield-alert" class="w-4 h-4 flex-shrink-0 text-[#00C2CB]"></i>
+          <i data-lucide="shield-alert" class="w-4 h-4 flex-shrink-0 text-[#07C1BE]"></i>
           <span data-i18n="msg_anti_conflict">نظام الحجز الذكي يمنع تلقائياً اختيار نفس توقيت موعد التغذية لتجنب أي تعارض في جدولك.</span>
         </div>
 
         <!-- Native Calendar Widget for Coach -->
         <div class="mt-6">
           <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="calendar" class="w-4 h-4 text-[#00C2CB]"></i>
+            <i data-lucide="calendar" class="w-4 h-4 text-[#07C1BE]"></i>
             <span data-i18n="lbl_select_coach_day">1. اختر يوم جلسة الكوتش:</span>
           </label>
           
@@ -587,7 +587,7 @@
 
           <!-- Time Slots Container -->
           <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-2">
-            <i data-lucide="clock" class="w-4 h-4 text-[#00C2CB]"></i>
+            <i data-lucide="clock" class="w-4 h-4 text-[#07C1BE]"></i>
             <span data-i18n="lbl_select_coach_time">2. اختر التوقيت المتاح للكوتش:</span>
           </label>
           
@@ -596,7 +596,7 @@
           </div>
 
           <!-- Selected Notice -->
-          <div id="coach-selected-notice" class="mt-6 p-4 rounded-xl bg-cyan-950/40 border border-[#00C2CB]/30 hidden flex items-center justify-between">
+          <div id="coach-selected-notice" class="mt-6 p-4 rounded-xl bg-cyan-950/40 border border-[#07C1BE]/30 hidden flex items-center justify-between">
             <div class="flex items-center gap-2.5 text-xs text-slate-200">
               <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400"></i>
               <div>
@@ -626,24 +626,24 @@
 
     <!-- ==================== STEP 4: SUCCESS & VIP CONFIRMATION HUB ==================== -->
     <div id="step-4-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden text-center">
+      <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden text-center">
         
         <!-- Decorative Glow -->
-        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#18746F]/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <!-- Success Icon -->
-        <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#00C2CB] to-[#4EB098] p-1 flex items-center justify-center shadow-2xl shadow-teal-500/30 mb-6">
-          <div class="w-full h-full bg-[#08121D] rounded-[22px] flex items-center justify-center text-[#4EB098]">
+        <div class="w-20 h-20 mx-auto rounded-3xl bg-gradient-to-tr from-[#07C1BE] to-[#18746F] p-1 flex items-center justify-center shadow-2xl shadow-teal-500/30 mb-6">
+          <div class="w-full h-full bg-[#0A1B24] rounded-[22px] flex items-center justify-center text-[#18746F]">
             <i data-lucide="sparkles" class="w-10 h-10"></i>
           </div>
         </div>
 
-        <span class="text-xs font-bold text-[#00C2CB] bg-cyan-950/70 border border-[#00C2CB]/30 px-4 py-1 rounded-full uppercase tracking-wider" data-i18n="step4_tag">
+        <span class="text-xs font-bold text-[#07C1BE] bg-cyan-950/70 border border-[#07C1BE]/30 px-4 py-1 rounded-full uppercase tracking-wider" data-i18n="step4_tag">
           تم تفعيل ملفك بنجاح!
         </span>
 
         <h2 class="text-2xl sm:text-3xl font-black text-white mt-4">
-          <span data-i18n="step4_welcome">أهلاً بك رسمياً في عائلة سليم،</span> <span id="final-client-name" class="text-[#00C2CB]">-</span>!
+          <span data-i18n="step4_welcome">أهلاً بك رسمياً في عائلة سليم،</span> <span id="final-client-name" class="text-[#07C1BE]">-</span>!
         </h2>
         
         <p class="text-sm text-slate-300 max-w-xl mx-auto mt-3 leading-relaxed" data-i18n="step4_desc">
@@ -651,15 +651,15 @@
         </p>
 
         <!-- Client Code VIP Card -->
-        <div class="max-w-md mx-auto mt-6 p-5 rounded-2xl bg-gradient-to-r from-teal-950/80 via-[#0E1D2D] to-cyan-950/80 border border-[#00C2CB]/40 shadow-xl text-center relative overflow-hidden">
+        <div class="max-w-md mx-auto mt-6 p-5 rounded-2xl bg-gradient-to-r from-teal-950/80 via-[#0E2530] to-cyan-950/80 border border-[#07C1BE]/40 shadow-xl text-center relative overflow-hidden">
           <div class="flex items-center justify-center gap-2 text-xs font-bold text-slate-300 mb-1">
-            <i data-lucide="badge-check" class="w-4 h-4 text-[#00C2CB]"></i>
+            <i data-lucide="badge-check" class="w-4 h-4 text-[#07C1BE]"></i>
             <span data-i18n="lbl_vip_code">كود المشترك الطبي المعتمد في منصة سليم</span>
           </div>
           <div class="flex items-center justify-center gap-3 my-2">
-            <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#4EB098] tracking-widest font-mono">---</span>
+            <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#07C1BE] to-[#18746F] tracking-widest font-mono">---</span>
           </div>
-          <button type="button" onclick="copyClientCode()" class="inline-flex items-center gap-1.5 text-xs text-[#00C2CB] hover:text-white transition-colors bg-cyan-950/60 px-3 py-1.5 rounded-lg border border-[#00C2CB]/30">
+          <button type="button" onclick="copyClientCode()" class="inline-flex items-center gap-1.5 text-xs text-[#07C1BE] hover:text-white transition-colors bg-cyan-950/60 px-3 py-1.5 rounded-lg border border-[#07C1BE]/30">
             <i data-lucide="copy" class="w-3.5 h-3.5"></i>
             <span id="copy-code-text" data-i18n="btn_copy_code">نسخ الكود</span>
           </button>
@@ -675,7 +675,7 @@
             <div id="final-nutrition-slot" class="text-white font-semibold">-</div>
           </div>
           <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800">
-            <div class="text-[#00C2CB] font-bold flex items-center gap-1.5 mb-1">
+            <div class="text-[#07C1BE] font-bold flex items-center gap-1.5 mb-1">
               <i data-lucide="dumbbell" class="w-3.5 h-3.5"></i>
               <span data-i18n="card_coach_title">موعد الكوتش الرياضي</span>
             </div>
@@ -706,7 +706,7 @@
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="border-t border-[#1E354F] bg-[#08121D] py-6 mt-12 text-center text-xs text-slate-500">
+  <footer class="border-t border-[#1E4354] bg-[#0A1B24] py-6 mt-12 text-center text-xs text-slate-500">
     <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
       <div>
         <span data-i18n="footer_copy">جميع الحقوق محفوظة &copy;</span> <span id="year">2026</span> <span data-i18n="footer_brand">منصة سليم (Saliim) - د. أحمد الخطيب</span>
@@ -1285,7 +1285,7 @@
       availableDays.forEach(day => {
         const isSelected = (day.dateKey === selectedNutritionDay);
         const dayPill = document.createElement('div');
-        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#142538] border-[#00C2CB]' : 'bg-[#08121D] border-slate-800'}`;
+        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#132F3D] border-[#07C1BE]' : 'bg-[#0A1B24] border-slate-800'}`;
         dayPill.onclick = () => {
           selectedNutritionDay = day.dateKey;
           selectedNutritionSlot = null;
@@ -1297,7 +1297,7 @@
         const monthName = currentLang === 'ar' ? day.monthAr : day.monthEn;
 
         dayPill.innerHTML = `
-          <div class="text-[11px] font-bold ${isSelected ? 'text-[#00C2CB]' : 'text-slate-400'}">${dayName}</div>
+          <div class="text-[11px] font-bold ${isSelected ? 'text-[#07C1BE]' : 'text-slate-400'}">${dayName}</div>
           <div class="text-lg font-black text-white my-0.5">${day.dayNum}</div>
           <div class="text-[10px] text-slate-500">${monthName}</div>
         `;
@@ -1321,7 +1321,7 @@
         slotBtn.className = `time-slot-btn py-3 px-3 rounded-xl border text-xs font-bold text-center flex items-center justify-center gap-1.5 ${
           isSelected 
             ? 'selected' 
-            : 'bg-[#08121D] border-slate-800 text-slate-300'
+            : 'bg-[#0A1B24] border-slate-800 text-slate-300'
         }`;
 
         const timeLabel = currentLang === 'ar' ? slot.timeAr : slot.timeEn;
@@ -1361,7 +1361,7 @@
         notice.classList.remove('hidden');
 
         // Unlock Step 2 -> 3
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         advanceText.innerText = translations[currentLang].btn_advance_coach;
         advanceIcon.className = "w-4 h-4 text-slate-950";
         advanceIcon.setAttribute('data-lucide', 'arrow-left');
@@ -1410,7 +1410,7 @@
       availableDays.forEach(day => {
         const isSelected = (day.dateKey === selectedCoachDay);
         const dayPill = document.createElement('div');
-        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#142538] border-[#00C2CB]' : 'bg-[#08121D] border-slate-800'}`;
+        dayPill.className = `day-pill p-3 rounded-2xl border text-center ${isSelected ? 'active bg-[#132F3D] border-[#07C1BE]' : 'bg-[#0A1B24] border-slate-800'}`;
         dayPill.onclick = () => {
           selectedCoachDay = day.dateKey;
           selectedCoachSlot = null;
@@ -1422,7 +1422,7 @@
         const monthName = currentLang === 'ar' ? day.monthAr : day.monthEn;
 
         dayPill.innerHTML = `
-          <div class="text-[11px] font-bold ${isSelected ? 'text-[#00C2CB]' : 'text-slate-400'}">${dayName}</div>
+          <div class="text-[11px] font-bold ${isSelected ? 'text-[#07C1BE]' : 'text-slate-400'}">${dayName}</div>
           <div class="text-lg font-black text-white my-0.5">${day.dayNum}</div>
           <div class="text-[10px] text-slate-500">${monthName}</div>
         `;
@@ -1453,7 +1453,7 @@
             ? 'opacity-30 border-rose-900 bg-rose-950/20 text-rose-400 cursor-not-allowed line-through' 
             : isSelected 
               ? 'selected' 
-              : 'bg-[#08121D] border-slate-800 text-slate-300'
+              : 'bg-[#0A1B24] border-slate-800 text-slate-300'
         }`;
 
         const timeLabel = currentLang === 'ar' ? slot.timeAr : slot.timeEn;
@@ -1495,7 +1495,7 @@
         notice.classList.remove('hidden');
 
         // Unlock Step 3 -> 4
-        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        advanceBtn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         advanceText.innerText = translations[currentLang].btn_advance_step4;
         advanceIcon.className = "w-4 h-4 text-slate-950";
         advanceIcon.setAttribute('data-lucide', 'arrow-left');
@@ -1552,8 +1552,8 @@
           badge.className = 'flex flex-col items-center gap-1.5 text-emerald-400 font-bold';
           circle.className = 'w-8 h-8 rounded-full bg-emerald-950 border-2 border-emerald-500 flex items-center justify-center';
         } else if (i === step) {
-          badge.className = 'flex flex-col items-center gap-1.5 text-[#00C2CB] font-black';
-          circle.className = 'w-8 h-8 rounded-full bg-cyan-950 border-2 border-[#00C2CB] flex items-center justify-center shadow-lg shadow-cyan-500/30';
+          badge.className = 'flex flex-col items-center gap-1.5 text-[#07C1BE] font-black';
+          circle.className = 'w-8 h-8 rounded-full bg-cyan-950 border-2 border-[#07C1BE] flex items-center justify-center shadow-lg shadow-cyan-500/30';
         } else {
           badge.className = 'flex flex-col items-center gap-1.5 text-slate-500 font-bold';
           circle.className = 'w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center';

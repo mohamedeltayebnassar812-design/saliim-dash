@@ -556,6 +556,22 @@
           تم استلام ملفك الطبي وحفظ كافة تفاصيلك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب أصبحوا جاهزين الآن لمرافقتك في رحلة التحول الصحي خطوة بخطوة.
         </p>
 
+        <!-- Client Code VIP Card -->
+        <div class="max-w-md mx-auto mt-6 p-5 rounded-2xl bg-gradient-to-r from-teal-950/80 via-[#0E1D2D] to-cyan-950/80 border border-[#00C2CB]/40 shadow-xl text-center relative overflow-hidden">
+          <div class="flex items-center justify-center gap-2 text-xs font-bold text-slate-300 mb-1">
+            <i data-lucide="badge-check" class="w-4 h-4 text-[#00C2CB]"></i>
+            <span>كود المشترك الطبي المعتمد في منصة سليم</span>
+          </div>
+          <div class="flex items-center justify-center gap-3 my-2">
+            <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#4EB098] tracking-widest font-mono">SLM-4821</span>
+            <button type="button" onclick="copyClientCode()" id="copy-code-btn" class="px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 hover:text-white transition-all text-xs flex items-center gap-1.5 border border-slate-700 shadow-sm" title="نسخ الكود">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copy-code-text">نسخ الكود</span>
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-400">احفظ هذا الكود، فهو مرجعك الطبي في المتابعة، والتحاليل، والبرامج الغذائية والتدريبية.</p>
+        </div>
+
         <!-- Summary Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mt-8 text-right">
           
@@ -653,8 +669,37 @@
     let CALENDLY_NUTRITION_URL = "https://calendly.com/mohamedeltayebreyad222/meet-with-me";
     let CALENDLY_COACH_URL = "https://calendly.com/mohamedeltayebreyad222/clone";
 
+    
+    // ==========================================================
+    // CLIENT CODE GENERATOR (SLM-XXXX, prestigious baseline > 2400)
+    // ==========================================================
+    function generateClientCode() {
+      const existing = localStorage.getItem('saliim_client_code');
+      if (existing && existing.startsWith('SLM-')) return existing;
+
+      // Generate a realistic 4-digit code never starting from 1 or 0001 (e.g. 2480 - 9890)
+      const min = 2480;
+      const max = 9890;
+      const num = Math.floor(Math.random() * (max - min + 1)) + min;
+      const newCode = `SLM-${num}`;
+      localStorage.setItem('saliim_client_code', newCode);
+      return newCode;
+    }
+
+    function copyClientCode() {
+      const code = clientProfile.client_code || document.getElementById('display-client-code').innerText;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          const textEl = document.getElementById('copy-code-text');
+          textEl.innerText = "تم النسخ ✓";
+          setTimeout(() => { textEl.innerText = "نسخ الكود"; }, 2500);
+        });
+      }
+    }
+
     // Global Client State
     let clientProfile = {
+      client_code: "",
       name: "",
       phone: "",
       email: "",
@@ -740,8 +785,10 @@
       const checkboxes = document.querySelectorAll('input[name="medical_condition"]:checked');
       const conditions = Array.from(checkboxes).map(cb => cb.value);
 
-      // Populate clientProfile object
+      // Populate clientProfile object with unique prestigious code
+      const assignedCode = clientProfile.client_code || generateClientCode();
       clientProfile = {
+        client_code: assignedCode,
         name: document.getElementById('client_name').value.trim(),
         phone: document.getElementById('client_phone').value.trim(),
         email: document.getElementById('client_email').value.trim(),
@@ -792,6 +839,8 @@
 
       const payload = {
         form_type: "استمارة استقبال العميل الشاملة - Onboarding Intake",
+        client_id: data.client_code,
+        client_code: data.client_code,
         client_name: data.name,
         client_phone: data.phone,
         client_email: data.email,
@@ -838,7 +887,10 @@
       url.searchParams.set('text_color', 'ffffff');
       url.searchParams.set('primary_color', primaryColor);
 
-      if (clientProfile.name) url.searchParams.set('name', clientProfile.name);
+      if (clientProfile.name) {
+        const displayName = clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name;
+        url.searchParams.set('name', displayName);
+      }
       if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
       if (clientProfile.phone) url.searchParams.set('a1', clientProfile.phone);
 
@@ -962,7 +1014,7 @@
 
       // Step specific triggers
       if (step === 2) {
-        document.getElementById('summary-client-name').innerText = clientProfile.name || 'المشترك';
+        document.getElementById('summary-client-name').innerText = (clientProfile.name || 'المشترك') + (clientProfile.client_code ? ` [${clientProfile.client_code}]` : '');
         document.getElementById('summary-client-phone').innerText = clientProfile.phone || '';
         initNutritionCalendly();
       } else if (step === 3) {

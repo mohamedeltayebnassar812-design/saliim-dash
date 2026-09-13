@@ -963,6 +963,33 @@
       }
     }
 
+    function updateBookingSlotsInGoogleSheets() {
+      if (!GOOGLE_SHEETS_WEBAPP_URL) return;
+      const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
+      if (!clientCode) return;
+
+      const nutTime = nutritionAppointmentTime || sessionStorage.getItem('saliim_nutrition_time') || 'تم الحجز عبر Calendly';
+      const coachTime = coachAppointmentTime || sessionStorage.getItem('saliim_coach_time') || 'تم الحجز عبر Calendly';
+
+      const payload = {
+        action: 'update_appointments',
+        client_code: clientCode,
+        nutrition_slot: nutTime,
+        coach_slot: coachTime
+      };
+
+      try {
+        fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.log('Update slots log:', err));
+      } catch(e) {
+        console.log('Update slots err:', e);
+      }
+    }
+
     // ==========================================================
     // CALENDLY EMBED INITIALIZATION & EVENT LISTENER
     // ==========================================================
@@ -1279,6 +1306,7 @@
         }
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || 'عزيزي المشترك';
+        updateBookingSlotsInGoogleSheets();
         
         // Ensure valid fresh client code is retrieved and displayed
         let codeToShow = clientProfile.client_code;

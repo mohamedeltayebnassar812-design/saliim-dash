@@ -747,12 +747,15 @@
     }
 
     function copyClientCode() {
-      const code = clientProfile.client_code || document.getElementById('display-client-code').innerText;
+      const codeEl = document.getElementById('display-client-code');
+      const code = (codeEl && codeEl.innerText && codeEl.innerText !== '---') ? codeEl.innerText : (clientProfile.client_code || 'SLM-5820');
       if (navigator.clipboard) {
         navigator.clipboard.writeText(code).then(() => {
           const textEl = document.getElementById('copy-code-text');
-          textEl.innerText = "تم النسخ ✓";
-          setTimeout(() => { textEl.innerText = "نسخ الكود"; }, 2500);
+          if (textEl) {
+            textEl.innerText = "تم النسخ ✓";
+            setTimeout(() => { textEl.innerText = "نسخ الكود"; }, 2500);
+          }
         });
       }
     }
@@ -856,6 +859,10 @@
 
       // Every new form submission generates a FRESH unique prestigious code
       const freshCode = generateNewClientCode();
+      sessionStorage.setItem('saliim_active_code', freshCode);
+      const codeElInit = document.getElementById('display-client-code');
+      if (codeElInit) codeElInit.innerText = freshCode;
+
       clientProfile = {
         client_code: freshCode,
         name: document.getElementById('client_name').value.trim(),

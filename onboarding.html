@@ -1208,15 +1208,35 @@
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || 'عزيزي المشترك';
         
-        // Prepare customized WhatsApp VIP text
-        const waMsg = encodeURIComponent(
-          `مرحباً د. أحمد الخطيب وفريق سليم 🌿
+        // Ensure valid fresh client code is retrieved and displayed
+        let codeToShow = clientProfile.client_code;
+        if (!codeToShow || codeToShow === '---') {
+          codeToShow = sessionStorage.getItem('saliim_active_code');
+        }
+        if (!codeToShow || codeToShow === '---') {
+          try {
+            const cachedProfile = JSON.parse(localStorage.getItem('saliim_client_profile') || '{}');
+            codeToShow = cachedProfile.client_code;
+          } catch(e) {}
+        }
+        if (!codeToShow || codeToShow === '---') {
+          codeToShow = generateNewClientCode();
+        }
+        clientProfile.client_code = codeToShow;
+        sessionStorage.setItem('saliim_active_code', codeToShow);
 
-` +
-          `أنا المشترك: ${clientProfile.name}
-` +
-          `الباقة: ${clientProfile.package}
-` +
+        // Update the display element in the VIP card
+        const codeDisplay = document.getElementById('display-client-code');
+        if (codeDisplay) {
+          codeDisplay.innerText = codeToShow;
+        }
+
+        // Prepare customized WhatsApp VIP text including Client ID
+        const waMsg = encodeURIComponent(
+          `مرحباً د. أحمد الخطيب وفريق سليم 🌿\n\n` +
+          `أنا المشترك: ${clientProfile.name || 'مشترك سليم'}\n` +
+          `كود المشترك الطبي الخاص بي: ${codeToShow}\n` +
+          `الباقة: ${clientProfile.package || 'سليم VIP'}\n` +
           `أتممت تسجيل ملفي الطبي وحجز المواعيد، وجاهز لبدء الخطة والتواصل معكم!`
         );
         document.getElementById('whatsapp-vip-link').href = `https://wa.me/201016629916?text=${waMsg}`;

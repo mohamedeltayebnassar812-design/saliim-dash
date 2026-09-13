@@ -1080,15 +1080,36 @@
       }
 
       if (urlParams.has('pkg')) {
-        const pkgVal = urlParams.get('pkg');
+        const pkgVal = urlParams.get('pkg').toLowerCase();
         const pkgSelect = document.getElementById('client_package');
+        let matched = false;
+        
         for (let i = 0; i < pkgSelect.options.length; i++) {
-          if (pkgSelect.options[i].value.toLowerCase().includes(pkgVal.toLowerCase())) {
+          const optVal = pkgSelect.options[i].value.toLowerCase();
+          const optText = pkgSelect.options[i].text.toLowerCase();
+          if (optVal.includes(pkgVal) || optText.includes(pkgVal) || pkgVal.includes(optVal)) {
             pkgSelect.selectedIndex = i;
+            matched = true;
             break;
           }
         }
+        
+        // Match common keywords if exact substring wasn't found
+        if (!matched) {
+          if (pkgVal.includes('private') || pkgVal.includes('خاصة') || pkgVal.includes('199') || pkgVal.includes('precision')) {
+            pkgSelect.value = "باقة Private مع د. أحمد الخطيب ($199)";
+          } else if (pkgVal.includes('protocol') || pkgVal.includes('بروتوكول') || pkgVal.includes('500') || pkgVal.includes('60')) {
+            pkgSelect.value = "باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)";
+          } else if (pkgVal.includes('pro') || pkgVal.includes('120') || pkgVal.includes('سريرية')) {
+            pkgSelect.value = "باقة Pro السريرية ($120)";
+          } else if (pkgVal.includes('استشارة') || pkgVal.includes('49') || pkgVal.includes('single') || pkgVal.includes('consultation')) {
+            pkgSelect.value = "استشارة فردية 1:1 ($49)";
+          }
+        }
       }
+
+      // Setup mutual exclusivity for medical condition checkboxes
+      setupConditionCheckboxesLogic();
 
       // Render Step 2 (Nutrition) Calendar
       renderNutritionCalendar();
@@ -1096,6 +1117,28 @@
       // Always start fresh at Step 1
       goToStep(1);
     });
+
+    function setupConditionCheckboxesLogic() {
+      const allCbs = document.querySelectorAll('input[name="medical_condition"]');
+      allCbs.forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          const isHealthyCb = (cb.value.includes('سليم') || cb.value.includes('لا توجد') || cb.value.includes('Healthy'));
+          if (isHealthyCb && cb.checked) {
+            // If healthy is selected, uncheck all other disease checkboxes
+            allCbs.forEach(other => {
+              if (other !== cb) other.checked = false;
+            });
+          } else if (!isHealthyCb && cb.checked) {
+            // If any condition is checked, uncheck the healthy checkbox
+            allCbs.forEach(other => {
+              if (other.value.includes('سليم') || other.value.includes('لا توجد') || other.value.includes('Healthy')) {
+                other.checked = false;
+              }
+            });
+          }
+        });
+      });
+    }
 
     // ==========================================================
     // 5. LANGUAGE TOGGLE IMPLEMENTATION

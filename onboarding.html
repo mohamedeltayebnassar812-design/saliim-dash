@@ -69,6 +69,29 @@
       box-shadow: 0 0 0 3px rgba(78, 176, 152, 0.2);
     }
 
+    /* Mobile-first enhancements */
+    @media (max-width: 640px) {
+      /* Prevent iOS Safari auto-zoom on input focus */
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+      .calendly-frame-wrapper {
+        border-radius: 16px;
+        margin-left: -6px;
+        margin-right: -6px;
+      }
+      #calendly-nutrition-container, #calendly-coach-container {
+        height: 740px !important;
+        min-height: 720px !important;
+      }
+      .mobile-p-tight {
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+        padding-top: 1.25rem !important;
+        padding-bottom: 1.25rem !important;
+      }
+    }
+
     /* Calendly dark container */
     .calendly-frame-wrapper {
       border-radius: 20px;
@@ -76,6 +99,7 @@
       border: 1px solid rgba(78, 176, 152, 0.3);
       box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
       background: #0E1D2D;
+      -webkit-overflow-scrolling: touch;
     }
 
     /* Animations */
@@ -176,7 +200,7 @@
 
     <!-- ==================== STEP 1: INTAKE & HEALTH FORM ==================== -->
     <div id="step-1-container" class="step-transition">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden">
         
         <!-- Header Banner -->
         <div class="flex items-start gap-4 pb-6 border-b border-slate-800">
@@ -401,7 +425,7 @@
 
     <!-- ==================== STEP 2: NUTRITION SPECIALIST CALENDLY ==================== -->
     <div id="step-2-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-3.5 sm:p-8 mobile-p-tight shadow-2xl relative">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
@@ -443,26 +467,28 @@
           </span>
         </div>
 
-        <!-- Schedule Event Instruction Banner -->
-        <div class="mt-3 p-3.5 bg-emerald-950/70 border border-emerald-500/40 rounded-xl text-xs text-emerald-200 flex items-center justify-between gap-3 shadow-lg">
+        <!-- Schedule Event Instruction Banner (Mobile Optimized) -->
+        <div class="mt-3 p-3 bg-gradient-to-r from-emerald-950 via-teal-950 to-[#08121D] border border-emerald-500/40 rounded-xl text-xs text-emerald-200 shadow-md">
           <div class="flex items-center gap-2.5">
-            <div class="w-7 h-7 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
-              <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0 text-emerald-400">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
             </div>
-            <div>
-              <span class="font-bold text-white">طريقة تأكيد الحجز:</span>
-              <span>اختر اليوم والوقت المناسبين، ثم اضغط على زر </span>
-              <span class="inline-flex items-center gap-1 bg-emerald-500 text-slate-950 px-2 py-0.5 rounded font-black text-[11px] shadow-sm">
-                Schedule Event (تأكيد الحجز)
-              </span>
-              <span> داخل النافذة ليتم نقلك تلقائياً لموعد الكوتش.</span>
+            <div class="leading-relaxed">
+              <div class="font-bold text-white text-xs sm:text-sm flex items-center gap-1.5">
+                <span>خطوات الحجز السريع عبر الهاتف:</span>
+                <span class="text-[10px] text-emerald-400 font-normal">3 خطوات بسيطة</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-0.5">
+                1. اضغط على اليوم ➔ 2. اختر التوقيت ➔ 3. اضغط زر 
+                <strong class="text-emerald-400 bg-emerald-950/80 px-1 rounded border border-emerald-500/30">Schedule Event</strong> بالأسفل لتأكيد حجزك ونقلك للكوتش تلقائياً.
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Calendly Frame Wrapper -->
         <div class="mt-6 calendly-frame-wrapper">
-          <div id="calendly-nutrition-container" style="min-width:320px;height:680px;" class="w-full">
+          <div id="calendly-nutrition-container" style="min-width:300px;height:720px;" class="w-full">
             <!-- Fallback / Loading notice -->
             <div class="flex flex-col items-center justify-center h-full text-center p-8">
               <div class="w-10 h-10 border-3 border-[#4EB098] border-t-transparent rounded-full animate-spin mb-4"></div>
@@ -492,7 +518,7 @@
 
     <!-- ==================== STEP 3: FITNESS COACH CALENDLY ==================== -->
     <div id="step-3-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-8 shadow-2xl relative">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-3.5 sm:p-8 mobile-p-tight shadow-2xl relative">
         
         <!-- Header -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
@@ -521,26 +547,27 @@
           </div>
         </div>
 
-        <!-- Schedule Event Instruction Banner for Coach -->
-        <div class="mt-4 p-3.5 bg-cyan-950/70 border border-cyan-500/40 rounded-xl text-xs text-cyan-200 flex items-center justify-between gap-3 shadow-lg">
+        <!-- Schedule Event Instruction Banner for Coach (Mobile Optimized) -->
+        <div class="mt-3 p-3 bg-gradient-to-r from-cyan-950 via-teal-950 to-[#08121D] border border-cyan-500/40 rounded-xl text-xs text-cyan-200 shadow-md">
           <div class="flex items-center gap-2.5">
-            <div class="w-7 h-7 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400">
-              <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center flex-shrink-0 text-cyan-400">
+              <i data-lucide="dumbbell" class="w-4 h-4"></i>
             </div>
-            <div>
-              <span class="font-bold text-white">تأكيد موعد الكوتش:</span>
-              <span>اختر الموعد ثم اضغط على زر </span>
-              <span class="inline-flex items-center gap-1 bg-cyan-400 text-slate-950 px-2 py-0.5 rounded font-black text-[11px] shadow-sm">
-                Schedule Event (تأكيد الحجز)
-              </span>
-              <span> داخل النافذة لاستكمال التفعيل والانضمام للواتساب.</span>
+            <div class="leading-relaxed">
+              <div class="font-bold text-white text-xs sm:text-sm flex items-center gap-1.5">
+                <span>تأكيد موعد الكوتش عبر الهاتف:</span>
+                <span class="text-[10px] text-cyan-400 font-normal">تقييم اللياقة</span>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-0.5">
+                اختر موعد الكوتش المناسب واضغط <strong class="text-cyan-300 bg-cyan-950/80 px-1 rounded border border-cyan-500/30">Schedule Event</strong> بالأسفل للانتقال لشاشة التفعيل والواتساب VIP.
+              </p>
             </div>
           </div>
         </div>
 
         <!-- Calendly Frame Wrapper -->
         <div class="mt-4 calendly-frame-wrapper">
-          <div id="calendly-coach-container" style="min-width:320px;height:680px;" class="w-full">
+          <div id="calendly-coach-container" style="min-width:300px;height:720px;" class="w-full">
             <!-- Fallback / Loading notice -->
             <div class="flex flex-col items-center justify-center h-full text-center p-8">
               <div class="w-10 h-10 border-3 border-[#00C2CB] border-t-transparent rounded-full animate-spin mb-4"></div>
@@ -570,7 +597,7 @@
 
     <!-- ==================== STEP 4: SUCCESS & VIP WELCOME ==================== -->
     <div id="step-4-container" class="step-transition hidden">
-      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden text-center">
+      <div class="bg-[#0E1D2D] border border-[#1E354F] rounded-3xl p-4 sm:p-10 mobile-p-tight shadow-2xl relative overflow-hidden text-center">
         
         <!-- Decorative Glow -->
         <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#4EB098]/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -1188,7 +1215,17 @@
         document.getElementById('whatsapp-vip-link').href = `https://wa.me/201016629916?text=${waMsg}`;
       }
 
-      window.scrollTo({ top: 120, behavior: 'smooth' });
+      // Smoothly scroll directly into view
+      setTimeout(() => {
+        const targetContainer = document.getElementById(`step-${step}-container`);
+        if (targetContainer) {
+          const isMobile = window.innerWidth < 640;
+          const yOffset = isMobile ? -65 : -80;
+          const y = targetContainer.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        }
+      }, 100);
+
       lucide.createIcons();
     }
 

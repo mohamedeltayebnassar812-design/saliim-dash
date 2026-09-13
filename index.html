@@ -1206,85 +1206,157 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-5xl mx-auto">
         
-        <!-- Left Column: Interactive Video-style Simulated AI Scanner -->
+        <!-- Left Column: Interactive 3-Stage Arabic AI Scanner Video Player -->
         <div class="lg:col-span-6 flex justify-center order-2 lg:order-1">
-          <div class="relative w-full max-w-[420px] rounded-3xl overflow-hidden border-2 border-[#07C1BE]/40 shadow-2xl cyan-glow bg-[#0E2530] group">
+          <div class="relative w-full max-w-[430px] rounded-3xl overflow-hidden border-2 border-[#07C1BE]/40 shadow-2xl cyan-glow bg-[#0E2530] group">
             
             <!-- Video Mockup Header Bar -->
             <div class="bg-[#08121D] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between text-xs">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
-                <span class="font-black text-white text-[11px] flex items-center gap-1">
+                <span class="font-black text-white text-[11px] flex items-center gap-1.5">
                   <span>فيديو توضيحي حي</span>
                   <span class="text-[#07C1BE]">• ماسح سليم الذكي</span>
                 </span>
               </div>
-              <div class="text-[10px] text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
-                AI Vision 4.0
+              <div class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/30 font-bold">
+                عربي 100% • AI Vision
               </div>
             </div>
 
-            <!-- Video Simulation Screen with Scanning Animation -->
-            <div class="relative overflow-hidden aspect-[4/5] bg-black">
-              <!-- Food Image Background -->
-              <img src="assets/concept_ai_scanner.webp" alt="كاميرا فحص الوجبات بالذكاء الاصطناعي في تطبيق سليم" class="w-full h-full object-cover">
+            <!-- Video Simulation Screen (4.5s 3-Stage Cycle) -->
+            <div id="ai-video-player" class="relative overflow-hidden aspect-[4/5] bg-black select-none">
               
-              <!-- Dark Cinematic Overlay -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
+              <!-- Clean Background Photo (No English Text) -->
+              <img src="assets/ai_food_scanner_clean.jpg" alt="كاميرا فحص الوجبات بالذكاء الاصطناعي في تطبيق سليم" class="w-full h-full object-cover">
 
-              <!-- Animated Green Laser Scan Line -->
-              <div class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#07C1BE] to-transparent shadow-[0_0_15px_#07C1BE] scanner-laser-line pointer-events-none z-10"></div>
-
-              <!-- HUD Diagnostic Overlay Pins (Arabic) -->
-              <div class="absolute top-4 right-4 z-20 scanner-hud-tag">
-                <div class="bg-[#0A1B24]/90 border border-[#07C1BE] backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
-                  <span class="text-[9px] text-[#07C1BE] font-bold block">المكونات التي تم رصدها:</span>
-                  <p class="text-xs font-black text-white">سلمون نرويجي + كينوا + أفوكادو</p>
-                </div>
+              <!-- Top Real-time Video Progress Bar -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-slate-800/80 z-30">
+                <div id="scanner-video-progress" class="h-full bg-gradient-to-r from-[#18746F] to-[#07C1BE] w-0 transition-all duration-100 ease-linear"></div>
               </div>
 
-              <div class="absolute top-20 left-4 z-20 scanner-hud-tag" style="animation-delay: 0.8s;">
-                <div class="bg-[#0A1B24]/90 border border-emerald-400/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
-                  <span class="text-[9px] text-emerald-400 font-bold block">البروتين الصافي:</span>
-                  <p class="text-xs font-black text-white">38 جم (بناء عضلي مثالي)</p>
-                </div>
-              </div>
+              <!-- ================= STAGE 1: التصوير والمسح ================= -->
+              <div id="video-stage-1" class="video-stage absolute inset-0 z-20 transition-opacity duration-300 pointer-events-none">
+                <!-- Camera Viewfinder Corners -->
+                <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#07C1BE]"></div>
+                <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#07C1BE]"></div>
+                <div class="absolute bottom-16 left-3 w-6 h-6 border-b-2 border-l-2 border-[#07C1BE]"></div>
+                <div class="absolute bottom-16 right-3 w-6 h-6 border-b-2 border-r-2 border-[#07C1BE]"></div>
 
-              <div class="absolute bottom-16 right-4 z-20 scanner-hud-tag" style="animation-delay: 1.4s;">
-                <div class="bg-[#0A1B24]/95 border border-[#07C1BE]/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
-                  <div class="flex items-center gap-1.5 text-xs font-black text-white">
-                    <i data-lucide="activity" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
-                    <span>مؤشر الشبع: 9.4 / 10</span>
+                <!-- Green Glowing Laser Line -->
+                <div class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#07C1BE] to-transparent shadow-[0_0_20px_#07C1BE] scanner-laser-line"></div>
+
+                <!-- Center Focus Reticle -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 border border-[#07C1BE]/40 rounded-full flex items-center justify-center animate-pulse">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#07C1BE]"></div>
+                </div>
+
+                <!-- Live Scanner Badge -->
+                <div class="absolute top-4 right-4 z-20">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-2xl flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span class="text-xs font-black text-white">1. جاري تصوير ومسح الطبق...</span>
                   </div>
-                  <span class="text-[9px] text-emerald-400 block font-medium">شبع مستقر 5 ساعات دون خمول</span>
                 </div>
               </div>
 
-              <div class="absolute bottom-16 left-4 z-20 scanner-hud-tag" style="animation-delay: 1.8s;">
-                <div class="bg-teal-950/90 border border-teal-400/80 backdrop-blur-md px-3 py-1.5 rounded-xl text-right shadow-lg">
-                  <span class="text-[9px] text-teal-300 font-bold block">تأثير الأنسولين:</span>
-                  <p class="text-xs font-black text-white">منخفض جداً • حرق دهون نشط</p>
+              <!-- ================= STAGE 2: بيانات الوجبة ================= -->
+              <div id="video-stage-2" class="video-stage absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 transition-opacity duration-300 hidden p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-xl">
+                    <span class="text-[10px] text-[#07C1BE] font-bold block">2. تحليل كيمياء الوجبة:</span>
+                    <h4 class="text-xs font-black text-white">سلمون مشوي + كينوا + أفوكادو</h4>
+                  </div>
+                  <span class="text-[10px] font-black bg-emerald-950 text-emerald-400 border border-emerald-500/40 px-2.5 py-1 rounded-lg">
+                    520 سعرة • 380 جم
+                  </span>
+                </div>
+
+                <div class="space-y-2 mb-14 text-right">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE]/80 p-3 rounded-xl shadow-xl">
+                    <div class="flex items-center justify-between text-xs font-black text-white mb-0.5">
+                      <span>مؤشر الشبع السريري (Satiety):</span>
+                      <span class="text-[#07C1BE] text-sm font-black">9.4 / 10</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">يمنحك شبعاً هرمونياً مستقراً 5 ساعات متواصلة دون خمول بعد الأكل.</p>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-teal-500/60 p-2.5 rounded-xl shadow-xl flex items-center justify-between text-xs">
+                    <span class="text-slate-200 font-bold">استجابة الأنسولين:</span>
+                    <span class="text-emerald-400 font-black flex items-center gap-1">
+                      <i data-lucide="trending-down" class="w-3.5 h-3.5"></i>
+                      منخفضة جداً • حرق دهون مستمر
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <!-- Camera Viewfinder Corners -->
-              <div class="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#07C1BE] pointer-events-none"></div>
-              <div class="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#07C1BE] pointer-events-none"></div>
-              <div class="absolute bottom-14 left-3 w-4 h-4 border-b-2 border-l-2 border-[#07C1BE] pointer-events-none"></div>
-              <div class="absolute bottom-14 right-3 w-4 h-4 border-b-2 border-r-2 border-[#07C1BE] pointer-events-none"></div>
+              <!-- ================= STAGE 3: المكونات والنسب ================= -->
+              <div id="video-stage-3" class="video-stage absolute inset-0 bg-black/60 backdrop-blur-[3px] z-20 transition-opacity duration-300 hidden p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-xl">
+                    <span class="text-[10px] text-[#07C1BE] font-bold block">3. المكونات والنسب الدقيقة:</span>
+                    <h4 class="text-xs font-black text-white">توزيع الماكروس (Macronutrients)</h4>
+                  </div>
+                  <span class="text-[10px] font-black bg-[#07C1BE] text-slate-950 px-2.5 py-1 rounded-lg shadow-sm">
+                    معتمد طبياً ✓
+                  </span>
+                </div>
 
-              <!-- Bottom Video Controls / Status Bar -->
-              <div class="absolute bottom-0 left-0 right-0 bg-[#08121D]/95 border-t border-slate-800 p-2.5 flex items-center justify-between text-[11px] text-slate-300 z-20">
+                <!-- Macronutrient Progress Bars in Arabic -->
+                <div class="space-y-2 mb-14 text-right text-xs">
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>بروتين صافي (لبناء العضلات)</span>
+                      <span class="text-emerald-400 font-black">38 جم (42%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-emerald-400 h-full w-[42%]"></div>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>دهون صحية (أوميغا 3 للكبد)</span>
+                      <span class="text-[#07C1BE] font-black">22 جم (35%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-[#07C1BE] h-full w-[35%]"></div>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>كربوهيدرات معقدة (طاقة مستقرة)</span>
+                      <span class="text-amber-400 font-black">28 جم (23%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-amber-400 h-full w-[23%]"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Interactive Video Control Bar -->
+              <div class="absolute bottom-0 left-0 right-0 bg-[#08121D]/95 border-t border-slate-800 p-2.5 flex items-center justify-between text-[11px] text-slate-300 z-30">
                 <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-[#07C1BE] text-slate-950 flex items-center justify-center">
-                    <i data-lucide="play" class="w-3 h-3 fill-current"></i>
+                  <button type="button" onclick="toggleScannerVideoPlay()" id="scanner-play-btn" class="w-7 h-7 rounded-full bg-[#07C1BE] text-slate-950 flex items-center justify-center hover:scale-105 transition-all shadow-md cursor-pointer">
+                    <i data-lucide="pause" id="scanner-play-icon" class="w-3.5 h-3.5 fill-current"></i>
+                  </button>
+                  <div class="flex flex-col text-right">
+                    <span id="scanner-stage-label" class="font-bold text-white text-[11px]">1. تصوير ومسح الطبق</span>
+                    <span class="text-[9px] text-slate-400">الدورة: 4.5 ثوانٍ</span>
                   </div>
-                  <span class="font-bold text-white text-xs">جاري فحص الوجبة بالذكاء الاصطناعي...</span>
                 </div>
-                <span class="text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30 font-black">
-                  معتمد من سليم ✓
-                </span>
+
+                <!-- Stage Selection Buttons -->
+                <div class="flex items-center gap-1 text-[10px]">
+                  <button type="button" onclick="setScannerStage(1)" id="pill-stage-1" class="px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer">1. التصوير</button>
+                  <button type="button" onclick="setScannerStage(2)" id="pill-stage-2" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer">2. البيانات</button>
+                  <button type="button" onclick="setScannerStage(3)" id="pill-stage-3" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer">3. النسب</button>
+                </div>
               </div>
+
             </div>
 
           </div>
@@ -2022,6 +2094,115 @@
       if (val === 'other') box.classList.remove('hidden');
       else box.classList.add('hidden');
     }
+
+    
+    // ==========================================
+    // AI SCANNER 4.5s 3-STAGE VIDEO ENGINE
+    // ==========================================
+    let scannerCurrentStage = 1;
+    let scannerIsPlaying = true;
+    let scannerStartTime = Date.now();
+    const SCANNER_TOTAL_DURATION = 4500; // 4.5 seconds
+
+    function updateScannerVideoLoop() {
+      if (!scannerIsPlaying) {
+        requestAnimationFrame(updateScannerVideoLoop);
+        return;
+      }
+
+      const elapsed = (Date.now() - scannerStartTime) % SCANNER_TOTAL_DURATION;
+      const progressPercent = (elapsed / SCANNER_TOTAL_DURATION) * 100;
+      
+      const progressBar = document.getElementById('scanner-video-progress');
+      if (progressBar) progressBar.style.width = progressPercent + '%';
+
+      // Stage 1: 0 to 1500ms (التصوير والمسح)
+      // Stage 2: 1500 to 3000ms (بيانات الوجبة)
+      // Stage 3: 3000 to 4500ms (المكونات والنسب)
+      let targetStage = 1;
+      if (elapsed >= 1500 && elapsed < 3000) {
+        targetStage = 2;
+      } else if (elapsed >= 3000) {
+        targetStage = 3;
+      }
+
+      if (targetStage !== scannerCurrentStage) {
+        applyScannerStageUI(targetStage);
+      }
+
+      requestAnimationFrame(updateScannerVideoLoop);
+    }
+
+    function applyScannerStageUI(stage) {
+      scannerCurrentStage = stage;
+
+      const s1 = document.getElementById('video-stage-1');
+      const s2 = document.getElementById('video-stage-2');
+      const s3 = document.getElementById('video-stage-3');
+      const label = document.getElementById('scanner-stage-label');
+
+      const p1 = document.getElementById('pill-stage-1');
+      const p2 = document.getElementById('pill-stage-2');
+      const p3 = document.getElementById('pill-stage-3');
+
+      if (!s1 || !s2 || !s3) return;
+
+      // Hide all stages
+      s1.classList.add('hidden');
+      s2.classList.add('hidden');
+      s3.classList.add('hidden');
+
+      // Reset pill styles
+      [p1, p2, p3].forEach(p => {
+        if (p) {
+          p.className = 'px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer';
+        }
+      });
+
+      if (stage === 1) {
+        s1.classList.remove('hidden');
+        if (label) label.innerText = '1. تصوير ومسح الطبق';
+        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      } else if (stage === 2) {
+        s2.classList.remove('hidden');
+        if (label) label.innerText = '2. تشخيص كيمياء الوجبة';
+        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      } else if (stage === 3) {
+        s3.classList.remove('hidden');
+        if (label) label.innerText = '3. المكونات والنسب الدقيقة';
+        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      }
+
+      lucide.createIcons();
+    }
+
+    function setScannerStage(stage) {
+      applyScannerStageUI(stage);
+      // Adjust start time so the loop aligns with the selected stage
+      if (stage === 1) scannerStartTime = Date.now();
+      else if (stage === 2) scannerStartTime = Date.now() - 1500;
+      else if (stage === 3) scannerStartTime = Date.now() - 3000;
+    }
+
+    function toggleScannerVideoPlay() {
+      scannerIsPlaying = !scannerIsPlaying;
+      const icon = document.getElementById('scanner-play-icon');
+      if (icon) {
+        icon.setAttribute('data-lucide', scannerIsPlaying ? 'pause' : 'play');
+        lucide.createIcons();
+      }
+      if (scannerIsPlaying) {
+        // Resume seamlessly
+        if (scannerCurrentStage === 1) scannerStartTime = Date.now();
+        else if (scannerCurrentStage === 2) scannerStartTime = Date.now() - 1500;
+        else if (scannerCurrentStage === 3) scannerStartTime = Date.now() - 3000;
+      }
+    }
+
+    // Start video loop on load
+    document.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(updateScannerVideoLoop);
+    });
 
     // 6.2 App Email Waitlist Handler
     function handleAppWaitlistSubmit(e) {

@@ -547,6 +547,20 @@
           </div>
         </div>
 
+        <!-- Nutrition Schedule Anti-Conflict Reminder -->
+        <div id="nutrition-conflict-warning" class="mt-3 p-3 bg-amber-950/85 border border-amber-500/50 rounded-xl text-xs text-amber-200 shadow-md hidden">
+          <div class="flex items-start gap-2.5">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <span class="font-bold text-white">تنبيه ذكي لمنع تعارض مواعيدك:</span>
+              <div class="mt-0.5 text-slate-200">
+                لقد حجزت موعد أخصائي التغذية في: <span id="nutrition-booked-slot-text" class="font-bold text-amber-300 bg-amber-900/80 px-2 py-0.5 rounded border border-amber-500/30">الموعد المحدد</span>.
+                <span class="text-amber-300 font-semibold block sm:inline mt-1 sm:mt-0"> يُرجى اختيار موعد مختلف مع الكوتش حتى لا يتعارض الموعدان!</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Schedule Event Instruction Banner for Coach (Mobile Optimized) -->
         <div class="mt-3 p-3 bg-gradient-to-r from-cyan-950 via-teal-950 to-[#08121D] border border-cyan-500/40 rounded-xl text-xs text-cyan-200 shadow-md">
           <div class="flex items-center gap-2.5">
@@ -555,11 +569,11 @@
             </div>
             <div class="leading-relaxed">
               <div class="font-bold text-white text-xs sm:text-sm flex items-center gap-1.5">
-                <span>تأكيد موعد الكوتش عبر الهاتف:</span>
+                <span>تأكيد موعد الكوتش:</span>
                 <span class="text-[10px] text-cyan-400 font-normal">تقييم اللياقة</span>
               </div>
               <p class="text-[11px] text-slate-300 mt-0.5">
-                اختر موعد الكوتش المناسب واضغط <strong class="text-cyan-300 bg-cyan-950/80 px-1 rounded border border-cyan-500/30">Schedule Event</strong> بالأسفل للانتقال لشاشة التفعيل والواتساب VIP.
+                اختر موعداً لا يتعارض مع جلسة التغذية، ثم اضغط <strong class="text-cyan-300 bg-cyan-950/80 px-1 rounded border border-cyan-500/30">Schedule Event</strong> لإكمال التفعيل.
               </p>
             </div>
           </div>
@@ -1029,6 +1043,8 @@
 
     let isNutritionScheduled = false;
     let isCoachScheduled = false;
+    let nutritionAppointmentTime = null;
+    let coachAppointmentTime = null;
 
     function unlockNutritionStep() {
       isNutritionScheduled = true;
@@ -1108,28 +1124,77 @@
       return false;
     }
 
+    // Extract time from Calendly event payload
+    function extractCalendlyTime(eventData) {
+      try {
+        let d = eventData;
+        if (typeof d === 'string') d = JSON.parse(d);
+        if (d && d.payload) {
+          if (d.payload.event && (d.payload.event.start_time || d.payload.event.start_time_formatted)) {
+            return d.payload.event.start_time_formatted || d.payload.event.start_time;
+          }
+          if (d.payload.start_time) return d.payload.start_time;
+        }
+      } catch(err) {}
+      return null;
+    }
+
     // Listen to Calendly events via window.postMessage
     function setupCalendlyEventListener() {
       window.addEventListener('message', (e) => {
         if (!e.data) return;
 
+        // Check for date & time selection in real-time (to catch conflicts early)
+        let d = e.data;
+        if (typeof d === 'string') {
+          try { d = JSON.parse(d); } catch(err) {}
+        }
+
+        if (d && typeof d === 'object') {
+          if (d.event === 'calendly.date_and_time_selected') {
+            const selectedTime = extractCalendlyTime(d);
+            if (currentStep === 2 && selectedTime) {
+              nutritionAppointmentTime = selectedTime;
+              sessionStorage.setItem('saliim_nutrition_time', selectedTime);
+            } else if (currentStep === 3 && selectedTime && nutritionAppointmentTime) {
+              if (selectedTime === nutritionAppointmentTime) {
+                showBookingAlert("⚠️ تنبيه تعارض: اخترت نفس توقيت موعد التغذية بالضبط! يرجى اختيار موعد آخر للكوتش.");
+              }
+            }
+          }
+        }
+
+        // Check for completed schedule
         if (checkIsCalendlyScheduled(e.data)) {
           console.log('Calendly appointment verified via postMessage:', e.data);
 
           if (currentStep === 2) {
             isNutritionScheduled = true;
             sessionStorage.setItem('saliim_nutrition_scheduled', 'true');
+            const capturedTime = extractCalendlyTime(e.data);
+            if (capturedTime) {
+              nutritionAppointmentTime = capturedTime;
+              sessionStorage.setItem('saliim_nutrition_time', capturedTime);
+            }
+
             unlockNutritionStep();
-            showBookingToast("✓ تم تأكيد حجز موعد أخصائي التغذية بنجاح! جاري نقلك تلقائياً لموعد الكوتش...");
+            showBookingToast("✓ تم تأكيد حجز موعد أخصائي التغذية بنجاح! جاري نقلك لموعد الكوتش...");
             setTimeout(() => {
               goToStep(3);
             }, 900);
 
           } else if (currentStep === 3) {
+            const capturedCoachTime = extractCalendlyTime(e.data);
+            // Verify no self-conflict for this client
+            if (capturedCoachTime && nutritionAppointmentTime && capturedCoachTime === nutritionAppointmentTime) {
+              showBookingAlert("⚠️ عذراً، لا يمكن حجز موعد الكوتش في نفس توقيت موعد التغذية! يرجى اختيار موعد شاغر آخر.");
+              return;
+            }
+
             isCoachScheduled = true;
             sessionStorage.setItem('saliim_coach_scheduled', 'true');
             unlockCoachStep();
-            showBookingToast("✓ تم تأكيد حجز موعد الكوتش بنجاح! جاري نقلك تلقائياً لشاشة التفعيل والترحيب...");
+            showBookingToast("✓ تم تأكيد حجز موعد الكوتش بنجاح! جاري نقلك لشاشة التفعيل والترحيب...");
             setTimeout(() => {
               goToStep(4);
             }, 900);
@@ -1205,6 +1270,13 @@
         initNutritionCalendly();
       } else if (step === 3) {
         initCoachCalendly();
+        const savedTime = nutritionAppointmentTime || sessionStorage.getItem('saliim_nutrition_time');
+        const conflictBox = document.getElementById('nutrition-conflict-warning');
+        const timeText = document.getElementById('nutrition-booked-slot-text');
+        if (conflictBox && savedTime) {
+          if (timeText) timeText.innerText = savedTime;
+          conflictBox.classList.remove('hidden');
+        }
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || 'عزيزي المشترك';
         

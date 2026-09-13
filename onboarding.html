@@ -479,10 +479,16 @@
             العودة للبيانات السابقة
           </button>
 
-          <button onclick="handleAdvanceToCoach()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-800/90 border border-slate-700 text-slate-400 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed">
-            <i data-lucide="lock" class="w-4 h-4 text-amber-400"></i>
-            <span id="advance-to-coach-text">بانتظار تأكيد حجز موعد التغذية (Schedule Event)</span>
-          </button>
+          <div class="w-full sm:w-auto flex flex-col items-center sm:items-end">
+            <button type="button" onclick="handleAdvanceToCoach()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-800/90 border border-slate-700 text-slate-400 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+              <i data-lucide="lock" class="w-4 h-4 text-amber-400" id="advance-coach-lock-icon"></i>
+              <span id="advance-to-coach-text">بانتظار تأكيد حجز موعد التغذية (Schedule Event)</span>
+            </button>
+            <button type="button" onclick="confirmManualBooking(2)" class="text-[11px] text-slate-400 hover:text-emerald-400 transition-colors mt-2 underline flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3 text-emerald-400"></i>
+              <span>أتممت الحجز وظهرت لك رسالة (You are scheduled)؟ اضغط هنا للمتابعة فوراً</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -555,10 +561,16 @@
             العودة لموعد التغذية
           </button>
 
-          <button onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-800/90 border border-slate-700 text-slate-400 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-not-allowed">
-            <i data-lucide="lock" class="w-4 h-4 text-amber-400"></i>
-            <span id="advance-to-step4-text">بانتظار تأكيد حجز موعد الكوتش (Schedule Event)</span>
-          </button>
+          <div class="w-full sm:w-auto flex flex-col items-center sm:items-end">
+            <button type="button" onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-800/90 border border-slate-700 text-slate-400 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+              <i data-lucide="lock" class="w-4 h-4 text-amber-400" id="advance-step4-lock-icon"></i>
+              <span id="advance-to-step4-text">بانتظار تأكيد حجز موعد الكوتش (Schedule Event)</span>
+            </button>
+            <button type="button" onclick="confirmManualBooking(3)" class="text-[11px] text-slate-400 hover:text-cyan-400 transition-colors mt-2 underline flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3 h-3 text-cyan-400"></i>
+              <span>أتممت حجز الكوتش وظهرت لك رسالة (You are scheduled)؟ اضغط هنا للتفعيل</span>
+            </button>
+          </div>
         </div>
 
       </div>
@@ -972,15 +984,42 @@
     let isNutritionScheduled = false;
     let isCoachScheduled = false;
 
+    function unlockNutritionStep() {
+      isNutritionScheduled = true;
+      const btn = document.getElementById('advance-to-coach-btn');
+      if (btn) {
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-teal-500/20";
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! المتابعة لموعد الكوتش</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
+        lucide.createIcons();
+      }
+    }
+
+    function unlockCoachStep() {
+      isCoachScheduled = true;
+      const btn = document.getElementById('advance-to-step4-btn');
+      if (btn) {
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20";
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! استكمال التفعيل والانضمام</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
+        lucide.createIcons();
+      }
+    }
+
+    function confirmManualBooking(step) {
+      if (step === 2) {
+        unlockNutritionStep();
+        showBookingToast("تم تأكيد حجز موعد التغذية! جاري الانتقال لموعد الكوتش...");
+        setTimeout(() => { goToStep(3); }, 800);
+      } else if (step === 3) {
+        unlockCoachStep();
+        showBookingToast("تم تأكيد حجز موعد الكوتش! جاري إكمال التفعيل والترحيب...");
+        setTimeout(() => { goToStep(4); }, 800);
+      }
+    }
+
     function handleAdvanceToCoach() {
       if (!isNutritionScheduled) {
-        showBookingAlert("⚠️ لا يمكنك الانتقال لموعد الكوتش قبل تأكيد حجز موعد التغذية أولاً بالضغط على زر Schedule Event (تأكيد الحجز) بالأعلى.");
-        const wrapper = document.querySelector('#step-2-container .calendly-frame-wrapper');
-        if (wrapper) {
-          wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          wrapper.classList.add('ring-2', 'ring-amber-400');
-          setTimeout(() => wrapper.classList.remove('ring-2', 'ring-amber-400'), 1800);
-        }
+        // Show interactive modal/alert that also offers quick confirmation
+        showBookingConfirmModal(2);
         return;
       }
       goToStep(3);
@@ -988,16 +1027,60 @@
 
     function handleAdvanceToStep4() {
       if (!isCoachScheduled) {
-        showBookingAlert("⚠️ يرجى تأكيد حجز موعد الكوتش أولاً بالضغط على زر Schedule Event (تأكيد الحجز) بالأعلى لاستكمال التفعيل.");
-        const wrapper = document.querySelector('#step-3-container .calendly-frame-wrapper');
-        if (wrapper) {
-          wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          wrapper.classList.add('ring-2', 'ring-cyan-400');
-          setTimeout(() => wrapper.classList.remove('ring-2', 'ring-cyan-400'), 1800);
-        }
+        showBookingConfirmModal(3);
         return;
       }
       goToStep(4);
+    }
+
+    function showBookingConfirmModal(step) {
+      const isStep2 = step === 2;
+      const title = isStep2 ? "تأكيد حجز موعد أخصائي التغذية" : "تأكيد حجز موعد الكوتش الرياضي";
+      const desc = isStep2 
+        ? "إذا كنت قد ضغطت على Schedule Event في التقويم وظهرت لك رسالة (You are scheduled)، اضغط على زر 'نعم أتممت الحجز' للمتابعة فوراً."
+        : "إذا كنت قد اخترت الموعد وأتممت الحجز وظهرت رسالة (You are scheduled)، اضغط للمتابعة إلى شاشة الترحيب VIP.";
+
+      const modalHtml = `
+        <div id="confirm-booking-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div class="bg-[#0E1D2D] border border-teal-500/40 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl animate-in fade-in zoom-in duration-200">
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-teal-950 border border-[#4EB098]/40 flex items-center justify-center text-[#4EB098] mb-4">
+              <i data-lucide="calendar-check-2" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">${title}</h3>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">${desc}</p>
+            <div class="mt-6 flex flex-col gap-2.5">
+              <button onclick="confirmManualBooking(${step}); document.getElementById('confirm-booking-modal').remove();" class="w-full py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] text-slate-950 font-black text-xs rounded-xl shadow-lg hover:brightness-110 transition-all">
+                نعم، أتممت الحجز (المتابعة للخطوة التالية) ✓
+              </button>
+              <button onclick="document.getElementById('confirm-booking-modal').remove();" class="w-full py-2.5 bg-slate-800 text-slate-400 font-bold text-xs rounded-xl hover:text-white transition-colors">
+                العودة للتقويم لحجز الموعد
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      const div = document.createElement('div');
+      div.innerHTML = modalHtml;
+      document.body.appendChild(div.firstElementChild);
+      lucide.createIcons();
+    }
+
+    // Comprehensive message matcher for Calendly
+    function checkIsCalendlyScheduled(eventData) {
+      if (!eventData) return false;
+      let d = eventData;
+      if (typeof d === 'string') {
+        if (d.indexOf('calendly.event_scheduled') !== -1 || d.indexOf('event_scheduled') !== -1) {
+          return true;
+        }
+        try { d = JSON.parse(d); } catch(err) { return false; }
+      }
+      if (d && typeof d === 'object') {
+        if (d.event === 'calendly.event_scheduled' || d.action === 'calendly.event_scheduled' || d.event === 'event_scheduled') {
+          return true;
+        }
+      }
+      return false;
     }
 
     // Listen to Calendly events via window.postMessage
@@ -1005,39 +1088,22 @@
       window.addEventListener('message', (e) => {
         if (!e.data) return;
 
-        // Check if event is from Calendly
-        if (e.data.event === 'calendly.event_scheduled') {
-          console.log('Calendly appointment confirmed:', e.data);
+        if (checkIsCalendlyScheduled(e.data)) {
+          console.log('Calendly appointment verified via postMessage:', e.data);
 
           if (currentStep === 2) {
-            isNutritionScheduled = true;
-            // Unlock advance button
-            const btn = document.getElementById('advance-to-coach-btn');
-            if (btn) {
-              btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-teal-500/20";
-              btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! المتابعة لموعد الكوتش</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
-              lucide.createIcons();
-            }
-
+            unlockNutritionStep();
             showBookingToast("تم تأكيد حجز موعد أخصائي التغذية بنجاح! جاري تحويلك لموعد الكوتش...");
             setTimeout(() => {
               goToStep(3);
-            }, 1400);
+            }, 1200);
 
           } else if (currentStep === 3) {
-            isCoachScheduled = true;
-            // Unlock advance button
-            const btn = document.getElementById('advance-to-step4-btn');
-            if (btn) {
-              btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#00C2CB] to-[#4EB098] hover:from-[#00A8B0] hover:to-[#3A907C] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20";
-              btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! استكمال التفعيل والانضمام</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
-              lucide.createIcons();
-            }
-
+            unlockCoachStep();
             showBookingToast("تم تأكيد حجز موعد الكوتش بنجاح! جاري إكمال التفعيل والترحيب...");
             setTimeout(() => {
               goToStep(4);
-            }, 1400);
+            }, 1200);
           }
         }
       });

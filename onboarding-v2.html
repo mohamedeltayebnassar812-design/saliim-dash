@@ -505,9 +505,15 @@
             <span data-i18n="btn_back_intake">العودة لتعديل البيانات</span>
           </button>
 
-          <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#0A1B24] border border-[#1E4354] text-xs text-slate-300">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#07C1BE] animate-ping"></span>
-            <span data-i18n="auto_step_notice_nutrition">بمجرد الضغط على Schedule Event، ستنتقل تلقائياً لحجز موعد الكوتش</span>
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <div class="hidden sm:flex items-center gap-2 text-[11px] text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-ping"></span>
+              <span>الانتقال يتم تلقائياً فور الحجز، أو يمكنك الضغط:</span>
+            </div>
+            <button type="button" onclick="handleAdvanceToCoach()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs sm:text-sm font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+              <span>الانتقال لموعد الكوتش الرياضي</span>
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
           </div>
         </div>
 
@@ -562,9 +568,15 @@
             <span data-i18n="btn_back_nutrition">العودة لتعديل موعد التغذية</span>
           </button>
 
-          <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#0A1B24] border border-[#1E4354] text-xs text-slate-300">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#07C1BE] animate-ping"></span>
-            <span data-i18n="auto_step_notice_coach">بمجرد الضغط على Schedule Event، ستنتقل تلقائياً لتأكيد وتفعيل ملفك</span>
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <div class="hidden sm:flex items-center gap-2 text-[11px] text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-ping"></span>
+              <span>الانتقال يتم تلقائياً فور الحجز، أو يمكنك الضغط:</span>
+            </div>
+            <button type="button" onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs sm:text-sm font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
+              <span>إتمام الحجز وتفعيل ملفك الطبي</span>
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
           </div>
         </div>
 
@@ -1396,6 +1408,8 @@
       url.searchParams.set('background_color', '0E2530');
       url.searchParams.set('text_color', 'ffffff');
       url.searchParams.set('primary_color', primaryColor);
+      url.searchParams.set('embed_domain', window.location.host || 'ahmedelkhateeb.com');
+      url.searchParams.set('embed_type', 'Inline');
 
       if (clientProfile.name) {
         const displayName = clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name;
@@ -1410,30 +1424,30 @@
     function initNutritionCalendly() {
       const container = document.getElementById('calendly-nutrition-container');
       if (!container) return;
+      if (nutritionWidgetLoaded && container.querySelector('iframe')) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '07c1be');
-      const existingIframe = container.querySelector('iframe');
-      if (existingIframe && nutritionWidgetLoaded) {
-        if (clientProfile && clientProfile.name) {
-          const currentSrc = existingIframe.getAttribute('src');
-          if (currentSrc !== fullUrl) {
-            existingIframe.setAttribute('src', fullUrl);
-          }
-        }
-        return;
-      }
+      container.innerHTML = '';
 
-      container.innerHTML = `
-        <iframe 
-          src="${fullUrl}" 
-          width="100%" 
-          height="100%" 
-          frameborder="0"
-          loading="eager"
-          title="حجز موعد أخصائي التغذية">
-        </iframe>
-      `;
-      nutritionWidgetLoaded = true;
+      if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
+        window.Calendly.initInlineWidget({
+          url: fullUrl,
+          parentElement: container
+        });
+        nutritionWidgetLoaded = true;
+      } else {
+        container.innerHTML = `
+          <iframe 
+            src="${fullUrl}" 
+            width="100%" 
+            height="100%" 
+            frameborder="0"
+            loading="eager"
+            title="حجز موعد أخصائي التغذية">
+          </iframe>
+        `;
+        nutritionWidgetLoaded = true;
+      }
     }
 
     function initCoachCalendly() {

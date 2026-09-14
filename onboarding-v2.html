@@ -6,6 +6,9 @@
   <title>بوابة استقبال وتفعيل المشتركين VIP | منصة سليم - د. أحمد الخطيب</title>
   <meta name="description" content="البوابة الرسمية لاستقبال المشتركين الجدد في برامج سليم مع د. أحمد الخطيب. تسجيل الملف الطبي وحجز جلسات التغذية والتدريب.">
 
+  <link rel="canonical" href="https://ahmedelkhateeb.com/onboarding-v2">
+  <meta property="og:image" content="https://ahmedelkhateeb.com/assets/dr_hero_cutout.webp">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,6 +131,23 @@
       text-decoration: line-through;
     }
   </style>
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "بوابة استقبال المشتركين VIP | منصة سليم - د. أحمد الخطيب",
+    "url": "https://ahmedelkhateeb.com/onboarding-v2.html",
+    "description": "استكمال البيانات الصحية وحجز مواعيد استشارات التغذية والتدريب الرياضي في منصة سليم.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Dr. Ahmed El-Khateeb",
+      "jobTitle": "Doctor of Pharmacy & Clinical Nutrition Consultant",
+      "url": "https://ahmedelkhateeb.com"
+    }
+  }
+  </script>
+
 </head>
 <body class="bg-grid-pattern flex flex-col justify-between">
 
@@ -235,9 +255,9 @@
           </div>
           <div>
             <span class="text-xs font-bold text-[#07C1BE] uppercase tracking-wider bg-cyan-950/60 px-3 py-1 rounded-full border border-[#07C1BE]/30" data-i18n="step1_tag">الخطوة 1 من 4</span>
-            <h1 class="text-xl sm:text-2xl font-black text-white mt-2" data-i18n="step1_title">تسجيل البيانات الأساسية والملف الطبي الشامل</h1>
+            <h1 class="text-xl sm:text-2xl font-black text-white mt-2" data-i18n="step1_title">تسجيل بياناتك وأهداف التغذية واللياقة</h1>
             <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed" data-i18n="step1_desc">
-              أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية والتدريبية والطبية بأعلى درجات الدقة والنتائج المستدامة، يرجى استكمال البيانات التالية.
+              أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية وبرنامج التمارين الرياضية المناسب لروتينك بدقة، يرجى استكمال البيانات التالية.
             </p>
           </div>
         </div>
@@ -293,7 +313,7 @@
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_age">السن (بالسنوات) <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_age" required min="12" max="95" placeholder="35" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_age" required min="18" max="95" placeholder="35" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_gender">الجنس <span class="text-rose-400">*</span></label>
@@ -325,6 +345,7 @@
               <div class="sm:col-span-2">
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_package">الباقة المختارة <span class="text-rose-400">*</span></label>
                 <select id="client_package" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <option value="" disabled selected data-i18n="opt_select_pkg">اختر الباقة المناسبة</option>
                   <option value="باقة Healthy ($69)" data-i18n="pkg_healthy">باقة Healthy ($69 شهرياً)</option>
                   <option value="باقة Pro ($119)" data-i18n="pkg_pro">باقة Pro المتقدمة ($119 شهرياً)</option>
                   <option value="استشارة خاصة مع د. أحمد الخطيب ($89)" data-i18n="pkg_consultation">استشارة خاصة مع د. أحمد الخطيب ($89)</option>
@@ -334,107 +355,77 @@
             </div>
           </div>
 
-          <!-- القسم الثاني: الملف الصحي والتاريخ الطبي -->
+                    <!-- القسم الثاني: أهدافك ونمط حياتك الغذائي والبدني -->
           <div class="pt-6 border-t border-slate-800">
             <div class="flex items-center gap-2 mb-4">
               <span class="w-2 h-2 rounded-full bg-[#07C1BE]"></span>
-              <h2 class="text-base sm:text-lg font-bold text-white" data-i18n="sec2_title">الملف الصحي والهدف الطبي</h2>
+              <h2 class="text-base sm:text-lg font-bold text-white" data-i18n="sec2_title">أهدافك ونمط حياتك الغذائي والبدني</h2>
             </div>
 
             <div class="space-y-4">
+              <!-- 1. الهدف الرئيسي من الاشتراك -->
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_goal">ما هو هدفك الأساسي من الاشتراك؟ <span class="text-rose-400">*</span></label>
-                <select id="client_goal" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
-                  <option value="علاج مقاومة الأنسولين والتخلص من دهون البطن" data-i18n="goal_ir">علاج مقاومة الأنسولين والتخلص من دهون البطن الحشوية</option>
-                  <option value="خسارة وزن صحية مستدامة ونحت القوام" data-i18n="goal_wl">خسارة وزن صحية مستدامة ونحت القوام دون حرمان</option>
-                  <option value="علاج الكبد الدهني وضبط إنزيمات الكبد" data-i18n="goal_fl">علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد</option>
-                  <option value="التحكم في سكر الدم وخفض التراكمي" data-i18n="goal_dm">التحكم في سكر الدم وخفض التراكمي (HbA1c)</option>
-                  <option value="علاج خمول الغدة الدرقية أو تكيس المبايض" data-i18n="goal_pcos">علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض (PCOS)</option>
-                  <option value="علاج مشاكل الهضم، القولون العصبي، والانتفاخات" data-i18n="goal_ibs">علاج مشاكل الهضم، القولون العصبي، والانتفاخات</option>
-                  <option value="رفع الطاقة اليومية والنشاط البدني" data-i18n="goal_energy">رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر</option>
-                  <option value="هدف آخر" data-i18n="goal_other">هدف آخر (سأشرحه في الملاحظات)</option>
+                <select id="client_goal" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:border-[#07C1BE] focus:outline-none">
+                  <option value="خسارة الوزن ونزول الدهون الزائدة وشد الجسم" data-i18n="goal_fatloss">خسارة الوزن ونزول الدهون الزائدة وشد الجسم</option>
+                  <option value="زيادة الوزن وبناء كتلة عضلية صحية" data-i18n="goal_tone">زيادة الوزن وبناء كتلة عضلية صحية</option>
+                  <option value="نمط حياة صحي وتنظيم التغذية والنشاط اليومي" data-i18n="goal_habits">نمط حياة صحي وتنظيم التغذية والنشاط اليومي</option>
+                  <option value="هدف آخر" data-i18n="goal_other">هدف آخر (سأوضحه لأخصائي التغذية والكوتش)</option>
                 </select>
               </div>
 
-              <!-- Medical Conditions Checkboxes -->
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-2" data-i18n="lbl_conditions">هل تم تشخيصك بأي من الحالات التالية؟ (اختر كل ما ينطبق) <span class="text-rose-400">*</span></label>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="مقاومة أنسولين" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_ir">مقاومة أنسولين</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="سكر نوع 2" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_dm2">سكر نوع 2</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ضغط دم مرتفع" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_bp">ضغط دم مرتفع</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="دهون على الكبد" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_fl">دهون على الكبد</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="خمول الغدة الدرقية" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_th">خمول الغدة الدرقية</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ارتفاع كولسترول" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_chol">كولسترول / دهون ثلاثية</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="تكيس مبايض" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_pcos">تكيس مبايض (PCOS)</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="قولون عصبي" class="rounded text-[#18746F] focus:ring-0">
-                    <span data-i18n="cond_ibs">قولون عصبي / هضمي</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#0A1B24] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="لا توجد أمراض (سليم تماماً)" class="rounded text-[#18746F] focus:ring-0">
-                    <span class="text-emerald-400 font-bold" data-i18n="cond_healthy">لا يوجد (سليم تماماً)</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- Medications & Allergies -->
+              <!-- 2. مكان وتفضيل أداء التمارين مع الكوتش -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_meds">الأدوية أو المكملات المتناولة حالياً (إن وجدت)</label>
-                  <textarea id="client_medications" rows="2" placeholder="اكتب أسماء الأدوية أو الجرعات، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_workout_place">أين تفضل أداء تمارينك مع الكوتش؟ <span class="text-rose-400">*</span></label>
+                  <select id="client_workout_place" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#07C1BE] focus:outline-none">
+                    <option value="تمارين منزلية (بأدوات بسيطة أو بوزن الجسم)" data-i18n="place_home">تمارين منزلية (بأدوات بسيطة أو بوزن الجسم)</option>
+                    <option value="في الجيم / النادي الرياضي (أوزان وأجهزة)" data-i18n="place_gym">في الجيم / النادي الرياضي (أوزان وأجهزة)</option>
+                    <option value="مشي يومي وتمارين خفيفة وتنشيطية" data-i18n="place_walk">مشي يومي وتمارين خفيفة وتنشيطية</option>
+                    <option value="التركيز على التغذية ونمط الحياة أولاً" data-i18n="place_diet_first">أفضّل التركيز على التغذية ونمط الحياة أولاً</option>
+                  </select>
                 </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_allergies">الحساسيات الغذائية أو أطعمة ترفضها</label>
-                  <textarea id="client_allergies" rows="2" placeholder="مثال: جلوتين، لاكتوز، بيض، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
-                </div>
-              </div>
 
-              <!-- Surgeries & Activity Level -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_surgeries">العمليات الجراحية السابقة أو إصابات المفاصل</label>
-                  <input type="text" id="client_surgeries" placeholder="مثال: استئصال مرارة، غضروف ركبة، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_activity">مستوى النشاط البدني الحالي <span class="text-rose-400">*</span></label>
-                  <select id="client_activity_level" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
-                    <option value="خامل (عمل مكتبي ولا أمارس رياضة)" data-i18n="act_sedentary">خامل (عمل مكتبي، حركة قليلة جداً)</option>
-                    <option value="متوسط (أمشي بعض الأيام، نشاط عادي)" data-i18n="act_moderate">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
-                    <option value="نشط (أمارس تمارين مقاومة 2-3 أيام)" data-i18n="act_active">نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)</option>
-                    <option value="رياضي متقدم (أتدرب بانتظام 4-6 أيام)" data-i18n="act_athlete">رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)</option>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_activity">مستوى النشاط البدني اليومي الحالي <span class="text-rose-400">*</span></label>
+                  <select id="client_activity_level" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#07C1BE] focus:outline-none">
+                    <option value="خامل (عمل مكتبي، حركة قليلة جداً)" data-i18n="act_sedentary">خامل (عمل مكتبي، حركة قليلة جداً)</option>
+                    <option value="متوسط (أمشي بين الحين والآخر، نشاط عادي)" data-i18n="act_moderate">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
+                    <option value="نشط (أمارس تمارين 2-3 أيام أسبوعياً)" data-i18n="act_active">نشط (أمارس تمارين 2-3 أيام أسبوعياً)</option>
+                    <option value="متقدم (أتدرب بانتظام 4-5 أيام أسبوعياً)" data-i18n="act_athlete">متقدم (أتدرب بانتظام 4-5 أيام أسبوعياً)</option>
                   </select>
                 </div>
               </div>
 
-              <!-- Lab results link -->
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_lab">رابط التحاليل الطبية أو نتائج الفحوصات (اختياري)</label>
-                <input type="text" id="client_lab_link" placeholder="رابط Google Drive للتحاليل أو اكتب أهم النتائج: HbA1c، كولسترول..." class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
-                <p class="text-[11px] text-slate-500 mt-1" data-i18n="lbl_lab_hint">يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.</p>
+              <!-- 3. عدد الوجبات وآلام المفاصل/الظهر -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_meals_count">كم وجبة رئيسية تفضل تناولها يومياً؟ <span class="text-rose-400">*</span></label>
+                  <select id="client_meals_count" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#07C1BE] focus:outline-none">
+                    <option value="وجبتان رئيسيتان (نظام الصيام أو وجبتين مشبعتين)" data-i18n="meals_2">وجبتان رئيسيتان (نظام الصيام أو وجبتين مشبعتين)</option>
+                    <option value="3 وجبات رئيسية منتظمة" data-i18n="meals_3">3 وجبات رئيسية منتظمة (إفطار، غداء، عشاء)</option>
+                    <option value="وجبات متعددة وصغيرة خلال اليوم" data-i18n="meals_multi">وجبات متعددة وصغيرة خلال اليوم</option>
+                    <option value="حسب ما يراه أخصائي التغذية مناسباً لي" data-i18n="meals_specialist">حسب ما يراه أخصائي التغذية مناسباً لروتين يومي</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_injuries">هل تعاني من أي آلام مفاصل أو ظهر يجب على الكوتش مراعاتها؟</label>
+                  <input type="text" id="client_injuries" placeholder="مثال: ألم بالركبة، أسفل الظهر، أو: لا يوجد تماماً" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:border-[#07C1BE] focus:outline-none">
+                </div>
               </div>
 
+              <!-- 4. الحساسيات والتفضيلات الغذائية والروتين اليومي -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_allergies">الحساسيات الغذائية أو أطعمة لا تفضل وجودها في وجباتك</label>
+                  <textarea id="client_allergies" rows="2" placeholder="مثال: حساسية لاكتوز/حليب، بيض، سمك، لا أحب أكلات معينة، أو: لا يوجد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-[#07C1BE] focus:outline-none"></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_lifestyle_notes">طبيعة روتين يومك، نومك، أو أي تفاصيل إضافية تحب توضيحها</label>
+                  <textarea id="client_lifestyle_notes" rows="2" placeholder="مثال: طبيعة ساعات دوامي، أنام 7 ساعات، أسهر أحياناً، أو أي تفاصيل أخرى..." class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-[#07C1BE] focus:outline-none"></textarea>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -446,7 +437,7 @@
             </button>
             <p class="text-center text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1.5">
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#18746F]"></i>
-              <span data-i18n="msg_confidential">بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه.</span>
+              <span data-i18n="msg_confidential">بياناتك وتفضيلاتك مشفرة ومحفوظة بخصوصية وسرية تامة تحت إشراف د. أحمد الخطيب وفريقه.</span>
             </p>
           </div>
 
@@ -574,7 +565,7 @@
               <span>الانتقال يتم تلقائياً فور الحجز، أو يمكنك الضغط:</span>
             </div>
             <button type="button" onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs sm:text-sm font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5">
-              <span>إتمام الحجز وتفعيل ملفك الطبي</span>
+              <span>إتمام الحجز وتفعيل اشتراكك</span>
               <i data-lucide="arrow-left" class="w-4 h-4"></i>
             </button>
           </div>
@@ -606,14 +597,14 @@
         </h2>
         
         <p class="text-sm text-slate-300 max-w-xl mx-auto mt-3 leading-relaxed" data-i18n="step4_desc">
-          تم استلام ملفك الطبي وحفظ كافة تفاصيلك ومواعيدك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب بانتظارك لمرافقتك في رحلة التحول الصحي.
+          تم استلام بياناتك وتفضيلاتك وحفظ كافة مواعيدك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب بانتظارك لمرافقتك في رحلة التحول الصحي.
         </p>
 
         <!-- Client Code VIP Card -->
         <div class="max-w-md mx-auto mt-6 p-5 rounded-2xl bg-gradient-to-r from-teal-950/80 via-[#0E2530] to-cyan-950/80 border border-[#07C1BE]/40 shadow-xl text-center relative overflow-hidden">
           <div class="flex items-center justify-center gap-2 text-xs font-bold text-slate-300 mb-1">
             <i data-lucide="badge-check" class="w-4 h-4 text-[#07C1BE]"></i>
-            <span data-i18n="lbl_vip_code">كود المشترك الطبي المعتمد في منصة سليم</span>
+            <span data-i18n="lbl_vip_code">كود المشترك المعتمد في منصة سليم</span>
           </div>
           <div class="flex items-center justify-center gap-3 my-2">
             <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#07C1BE] to-[#18746F] tracking-widest font-mono">---</span>
@@ -719,8 +710,8 @@
         header_brand: "منصة سليم",
         header_dr: "| د. أحمد الخطيب",
         header_sub: "بوابة استقبال وتفعيل اشتراكات المشتركين VIP",
-        btn_support: "الدعم الطبي",
-        badge_step1: "1. الملف الطبي",
+        btn_support: "المساعدة والدعم",
+        badge_step1: "1. بياناتك وأهدافك",
         badge_step1_m: "البيانات",
         badge_step2: "2. موعد أخصائي التغذية",
         badge_step2_m: "التغذية",
@@ -729,8 +720,8 @@
         badge_step4: "4. التفعيل والتأكيد",
         badge_step4_m: "التفعيل",
         step1_tag: "الخطوة 1 من 4",
-        step1_title: "تسجيل البيانات الأساسية والملف الطبي الشامل",
-        step1_desc: "أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية والتدريبية والطبية بأعلى درجات الدقة والنتائج المستدامة، يرجى استكمال البيانات التالية.",
+        step1_title: "تسجيل بياناتك وأهداف التغذية واللياقة",
+        step1_desc: "أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية وبرنامج التمارين الرياضية المناسب لروتينك بدقة، يرجى استكمال البيانات التالية.",
         sec1_title: "البيانات الشخصية والأساسية",
         lbl_name: "الاسم ثلاثي أو رباعي",
         lbl_phone: "رقم الواتساب مع كود الدولة",
@@ -745,41 +736,36 @@
         lbl_weight: "الوزن الحالي",
         lbl_target_weight: "المستهدف",
         lbl_package: "الباقة المختارة",
+        opt_select_pkg: "اختر الباقة المناسبة",
         pkg_healthy: "باقة Healthy ($69 شهرياً)",
         pkg_pro: "باقة Pro المتقدمة ($119 شهرياً)",
         pkg_consultation: "استشارة خاصة مع د. أحمد الخطيب ($89)",
         pkg_other: "أخرى / قمت بالتحويل البنكي أو الدفع المباشر",
-        sec2_title: "الملف الصحي والهدف الطبي",
+        sec2_title: "أهدافك ونمط حياتك الغذائي والبدني",
         lbl_goal: "ما هو هدفك الأساسي من الاشتراك؟",
-        goal_ir: "علاج مقاومة الأنسولين والتخلص من دهون البطن الحشوية",
-        goal_wl: "خسارة وزن صحية مستدامة ونحت القوام دون حرمان",
-        goal_fl: "علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد",
-        goal_dm: "التحكم في سكر الدم وخفض التراكمي (HbA1c)",
-        goal_pcos: "علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض (PCOS)",
-        goal_ibs: "علاج مشاكل الهضم، القولون العصبي، والانتفاخات",
-        goal_energy: "رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر",
-        goal_other: "هدف آخر (سأشرحه في الملاحظات)",
-        lbl_conditions: "هل تم تشخيصك بأي من الحالات التالية؟ (اختر كل ما ينطبق)",
-        cond_ir: "مقاومة أنسولين",
-        cond_dm2: "سكر نوع 2",
-        cond_bp: "ضغط دم مرتفع",
-        cond_fl: "دهون على الكبد",
-        cond_th: "خمول الغدة الدرقية",
-        cond_chol: "كولسترول / دهون ثلاثية",
-        cond_pcos: "تكيس مبايض (PCOS)",
-        cond_ibs: "قولون عصبي / هضمي",
-        cond_healthy: "لا يوجد (سليم تماماً)",
-        lbl_meds: "الأدوية أو المكملات المتناولة حالياً (إن وجدت)",
-        lbl_allergies: "الحساسيات الغذائية أو أطعمة ترفضها",
-        lbl_surgeries: "العمليات الجراحية السابقة أو إصابات المفاصل",
-        lbl_activity: "مستوى النشاط البدني الحالي",
+        goal_fatloss: "خسارة الوزن ونزول الدهون الزائدة وشد الجسم",
+        goal_tone: "زيادة الوزن وبناء كتلة عضلية صحية",
+        goal_habits: "نمط حياة صحي وتنظيم التغذية والنشاط اليومي",
+        goal_other: "هدف آخر (سأوضحه لأخصائي التغذية والكوتش)",
+        lbl_workout_place: "أين تفضل أداء تمارينك مع الكوتش؟",
+        place_home: "تمارين منزلية (بأدوات بسيطة أو بوزن الجسم)",
+        place_gym: "في الجيم / النادي الرياضي (أوزان وأجهزة)",
+        place_walk: "مشي يومي وتمارين خفيفة وتنشيطية",
+        place_diet_first: "أفضّل التركيز على التغذية ونمط الحياة أولاً",
+        lbl_activity: "مستوى النشاط البدني اليومي الحالي",
         act_sedentary: "خامل (عمل مكتبي، حركة قليلة جداً)",
         act_moderate: "متوسط (أمشي بين الحين والآخر، نشاط عادي)",
-        act_active: "نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)",
-        act_athlete: "رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)",
-        lbl_lab: "رابط التحاليل الطبية أو نتائج الفحوصات (اختياري)",
-        lbl_lab_hint: "يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.",
-        btn_submit_step1: "حفظ البيانات ومتابعة حجز المواعيد",
+        act_active: "نشط (أمارس تمارين 2-3 أيام أسبوعياً)",
+        act_athlete: "متقدم (أتدرب بانتظام 4-5 أيام أسبوعياً)",
+        lbl_meals_count: "كم وجبة رئيسية تفضل تناولها يومياً؟",
+        meals_2: "وجبتان رئيسيتان (نظام الصيام أو وجبتين مشبعتين)",
+        meals_3: "3 وجبات رئيسية منتظمة (إفطار، غداء، عشاء)",
+        meals_multi: "وجبات متعددة وصغيرة خلال اليوم",
+        meals_specialist: "حسب ما يراه أخصائي التغذية مناسباً لروتين يومي",
+        lbl_injuries: "هل تعاني من أي آلام مفاصل أو ظهر يجب على الكوتش مراعاتها؟",
+        lbl_allergies: "الحساسيات الغذائية أو أطعمة لا تفضل وجودها في وجباتك",
+        lbl_lifestyle_notes: "طبيعة روتين يومك، نومك، أو أي تفاصيل إضافية تحب توضيحها",
+        btn_submit_step1: "حفظ البيانات والانتقال لجدولة المواعيد",
         calendly_lock_title: "حجز مضمون وغير متكرر:",
         calendly_lock_notice: "بمجرد اختيارك للموعد، يُغلق تلقائياً في Calendly لمنع أي تعارض ولا يستطيع أي عميل آخر اختياره.",
         loading_nutrition_cal: "جاري تحميل تقويم المواعيد المباشر من Calendly...",
@@ -787,7 +773,7 @@
         btn_advance_coach_manual: "أتممت حجز التغذية ➔ الانتقال لموعد الكوتش",
         btn_advance_step4_manual: "أتممت حجز الكوتش ➔ استكمال وتأكيد التفعيل",
         lbl_nutrition_booked_success: "تم تأكيده في Calendly ✓",
-        msg_confidential: "بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه.",
+        msg_confidential: "بياناتك وتفضيلاتك مشفرة ومحفوظة بخصوصية وسرية تامة تحت إشراف د. أحمد الخطيب وفريقه.",
         step2_tag: "الخطوة 2 من 4",
         step2_sub: "جلسة فردية 1:1 متخصصة",
         step2_title: "حجز استشارة أخصائي التغذية الصحية",
@@ -814,8 +800,8 @@
         btn_advance_step4: "تأكيد موعد الكوتش وتفعيل الاشتراك ←",
         step4_tag: "تم تفعيل ملفك بنجاح!",
         step4_welcome: "أهلاً بك رسمياً في عائلة سليم،",
-        step4_desc: "تم استلام ملفك الطبي وحفظ كافة تفاصيلك ومواعيدك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب بانتظارك لمرافقتك في رحلة التحول الصحي.",
-        lbl_vip_code: "كود المشترك الطبي المعتمد في منصة سليم",
+        step4_desc: "تم استلام بياناتك وتفضيلاتك وحفظ كافة مواعيدك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب بانتظارك لمرافقتك في رحلة التحول الصحي.",
+        lbl_vip_code: "كود المشترك المعتمد في منصة سليم",
         btn_copy_code: "نسخ الكود",
         card_nutrition_title: "موعد أخصائي التغذية",
         card_coach_title: "موعد الكوتش الرياضي",
@@ -832,8 +818,8 @@
         header_brand: "Saliim Platform",
         header_dr: "| Dr. Ahmed El-Khateeb",
         header_sub: "VIP Client Intake & Onboarding Portal",
-        btn_support: "Medical Support",
-        badge_step1: "1. Medical Intake",
+        btn_support: "Support & Help",
+        badge_step1: "1. Goals & Profile",
         badge_step1_m: "Intake",
         badge_step2: "2. Nutrition Specialist",
         badge_step2_m: "Nutrition",
@@ -842,7 +828,7 @@
         badge_step4: "4. VIP Activation",
         badge_step4_m: "Activation",
         step1_tag: "Step 1 of 4",
-        step1_title: "Medical Intake & Personal Health Profile",
+        step1_title: "Nutrition & Fitness Goals Profile",
         step1_desc: "Welcome to the Saliim family! To help us tailor your medical, healthy nutrition, and fitness plan with the highest precision, please fill out your profile below.",
         sec1_title: "Personal Information",
         lbl_name: "Full Name",
@@ -858,20 +844,17 @@
         lbl_weight: "Current Weight (kg)",
         lbl_target_weight: "Target Weight (kg)",
         lbl_package: "Selected Package",
+        opt_select_pkg: "Select Suitable Package",
         pkg_healthy: "Healthy Package ($69/mo)",
         pkg_pro: "Pro Advanced Package ($119/mo)",
         pkg_consultation: "Private Consultation with Dr. Ahmed El-Khateeb ($89)",
         pkg_other: "Other / Direct Bank Transfer",
-        sec2_title: "Health Background & Primary Goals",
-        lbl_goal: "What is your primary health goal?",
-        goal_ir: "Reverse Insulin Resistance & visceral belly fat",
-        goal_wl: "Sustainable fat loss & body toning without starvation",
-        goal_fl: "Reverse Fatty Liver & normalize liver enzymes",
-        goal_dm: "Control blood glucose & lower HbA1c",
-        goal_pcos: "Manage Hypothyroidism or PCOS symptoms",
-        goal_ibs: "Treat IBS, bloating, and digestive discomfort",
-        goal_energy: "Boost daily energy, mental focus, and beat fatigue",
-        goal_other: "Other (I will describe in notes)",
+        sec2_title: "Nutrition & Fitness Goals",
+        lbl_goal: "What is your primary goal?",
+        goal_fatloss: "Weight loss & sustainable fat loss",
+        goal_tone: "Weight gain & healthy lean muscle building",
+        goal_habits: "Healthy lifestyle & balanced daily routine",
+        goal_other: "Other goal (will discuss with coach)",
         lbl_conditions: "Have you been diagnosed with any of the following? (Check all that apply)",
         cond_ir: "Insulin Resistance",
         cond_dm2: "Type 2 Diabetes",
@@ -921,7 +904,7 @@
         step4_tag: "Your Profile is Fully Activated!",
         step4_welcome: "Welcome officially to Saliim Family,",
         step4_desc: "Your medical intake and booked sessions are confirmed. Dr. Ahmed El-Khateeb and your care team are ready to guide you.",
-        lbl_vip_code: "Official Saliim Medical Client Code",
+        lbl_vip_code: "Official Saliim VIP Client Code",
         btn_copy_code: "Copy Code",
         card_nutrition_title: "Healthy Nutrition Session",
         card_coach_title: "Fitness Coach Session",
@@ -1024,11 +1007,27 @@
       sessionStorage.removeItem('saliim_coach_time');
 
       
-      // Read incoming parameters (from checkout or home page)
+      // Read incoming parameters and auto-fill ALL previous user inputs
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('name')) document.getElementById('client_name').value = urlParams.get('name');
-      if (urlParams.has('phone')) document.getElementById('client_phone').value = urlParams.get('phone');
-      if (urlParams.has('email')) document.getElementById('client_email').value = urlParams.get('email');
+      const prevName = urlParams.get('name') || sessionStorage.getItem('saliim_lead_name') || localStorage.getItem('saliim_user_name') || '';
+      const prevPhone = urlParams.get('phone') || sessionStorage.getItem('saliim_lead_phone') || localStorage.getItem('saliim_user_phone') || '';
+      const prevEmail = urlParams.get('email') || sessionStorage.getItem('saliim_lead_email') || localStorage.getItem('saliim_user_email') || '';
+      const prevGoal = urlParams.get('goal') || sessionStorage.getItem('saliim_lead_goal') || '';
+
+      if (prevName && document.getElementById('client_name')) document.getElementById('client_name').value = prevName;
+      if (prevPhone && document.getElementById('client_phone')) document.getElementById('client_phone').value = prevPhone;
+      if (prevEmail && document.getElementById('client_email')) document.getElementById('client_email').value = prevEmail;
+
+      if (prevGoal && document.getElementById('client_goal')) {
+        const goalEl = document.getElementById('client_goal');
+        for (let i = 0; i < goalEl.options.length; i++) {
+          if (goalEl.options[i].text.includes(prevGoal) || prevGoal.includes(goalEl.options[i].value)) {
+            goalEl.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
       if (urlParams.has('lang') && urlParams.get('lang') === 'en') {
         setLanguage('en');
       }
@@ -1036,7 +1035,7 @@
       autoSelectPackage();
 
       // Setup mutual exclusivity for medical condition checkboxes
-      setupConditionCheckboxesLogic();
+      // Lifestyle & nutrition preferences initialized
 
       // Render Step 2 (Nutrition) Calendar
       
@@ -1271,12 +1270,31 @@
       e.preventDefault();
       const btn = document.getElementById('step-1-btn');
 
-      const checkboxes = document.querySelectorAll('input[name="medical_condition"]:checked');
-      const conditions = Array.from(checkboxes).map(cb => cb.value);
+      const rawPhone = document.getElementById('client_phone').value.trim();
+      const cleanPhone = rawPhone.replace(/[^\d+]/g, '');
+      const phoneRegex = /^(\+?\d{8,16})$/;
+      if (!phoneRegex.test(cleanPhone)) {
+        alert(currentLang === 'ar' ? 'يرجى إدخال رقم واتساب صحيح يبدأ برمز الدولة (مثال: +966500000000)' : 'Please enter a valid phone number with country code (e.g. +966500000000)');
+        document.getElementById('client_phone').focus();
+        return;
+      }
+
+      // Save for auto-fill in browser storage
+      try {
+        localStorage.setItem('saliim_user_name', document.getElementById('client_name').value.trim());
+        localStorage.setItem('saliim_user_phone', rawPhone);
+        localStorage.setItem('saliim_user_email', document.getElementById('client_email').value.trim());
+      } catch(err) {}
 
       // Fresh unique prestigious code
       const freshCode = generateNewClientCode();
       sessionStorage.setItem('saliim_active_code', freshCode);
+
+      const workoutPlaceEl = document.getElementById('client_workout_place');
+      const mealsCountEl = document.getElementById('client_meals_count');
+      const injuriesEl = document.getElementById('client_injuries');
+      const allergiesEl = document.getElementById('client_allergies');
+      const notesEl = document.getElementById('client_lifestyle_notes');
 
       clientProfile = {
         client_code: freshCode,
@@ -1291,12 +1309,16 @@
         target_weight: document.getElementById('client_target_weight').value.trim(),
         package: document.getElementById('client_package').value,
         goal: document.getElementById('client_goal').value,
-        conditions: conditions.length > 0 ? conditions.join(', ') : (currentLang === 'ar' ? 'سليم تماماً' : 'Completely Healthy'),
-        medications: document.getElementById('client_medications').value.trim() || 'لا يوجد',
-        allergies: document.getElementById('client_allergies').value.trim() || 'لا يوجد',
-        surgeries: document.getElementById('client_surgeries').value.trim() || 'لا يوجد',
+        workout_place: workoutPlaceEl ? workoutPlaceEl.value : 'تمارين منزلية',
         activity: document.getElementById('client_activity_level').value,
-        lab_link: document.getElementById('client_lab_link').value.trim() || 'لا يوجد',
+        meals_count: mealsCountEl ? mealsCountEl.value : '3 وجبات رئيسية منتظمة',
+        injuries: (injuriesEl && injuriesEl.value.trim()) || 'لا توجد آلام مفاصل',
+        allergies: (allergiesEl && allergiesEl.value.trim()) || 'لا توجد حساسيات',
+        lifestyle_notes: (notesEl && notesEl.value.trim()) || 'لا توجد ملاحظات إضافية',
+        conditions: workoutPlaceEl ? workoutPlaceEl.value : 'نمط صحي',
+        medications: mealsCountEl ? mealsCountEl.value : '3 وجبات',
+        surgeries: (injuriesEl && injuriesEl.value.trim()) || 'لا يوجد',
+        lab_link: (notesEl && notesEl.value.trim()) || 'لا يوجد',
         nutrition_slot: 'بانتظار الاختيار',
         coach_slot: 'بانتظار الاختيار',
         submitted_at: new Date().toISOString()
@@ -1306,7 +1328,7 @@
       btn.disabled = true;
       btn.innerHTML = `
         <span class="inline-block animate-spin mr-2 border-2 border-slate-950 border-t-transparent rounded-full w-4 h-4"></span>
-        <span>${currentLang === 'ar' ? 'جاري حفظ ملفك الطبي...' : 'Saving medical profile...'}</span>
+        <span>${currentLang === 'ar' ? 'جاري حفظ بياناتك وتفضيلاتك...' : 'Saving your profile & goals...'}</span>
       `;
 
       // Hold dispatch until appointments are chosen, so all 22 fields + appointments are sent in ONE single clean row
@@ -1371,8 +1393,10 @@
       const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
       if (!clientCode) return;
 
+      // Update existing record with appointments
       const payload = {
         action: 'update_appointments',
+        client_id: clientCode,
         client_code: clientCode,
         nutrition_slot: clientProfile.nutrition_slot,
         coach_slot: clientProfile.coach_slot
@@ -1411,28 +1435,45 @@
       url.searchParams.set('embed_domain', window.location.host || 'ahmedelkhateeb.com');
       url.searchParams.set('embed_type', 'Inline');
 
-      if (clientProfile.name) {
-        const displayName = clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name;
+      const clientName = clientProfile.name || document.getElementById('client_name')?.value?.trim();
+      const clientEmail = clientProfile.email || document.getElementById('client_email')?.value?.trim();
+      const clientPhone = clientProfile.phone || document.getElementById('client_phone')?.value?.trim();
+      const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
+
+      if (clientName) {
+        const displayName = clientCode ? `${clientName} (${clientCode})` : clientName;
         url.searchParams.set('name', displayName);
       }
-      if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
-      if (clientProfile.phone) url.searchParams.set('a1', clientProfile.phone);
+      if (clientEmail) url.searchParams.set('email', clientEmail);
+      if (clientPhone) {
+        url.searchParams.set('a1', clientPhone);
+        url.searchParams.set('phone', clientPhone);
+      }
 
       return url.toString();
     }
 
-    function initNutritionCalendly() {
+    function initNutritionCalendly(forceReload = false) {
       const container = document.getElementById('calendly-nutrition-container');
       if (!container) return;
-      if (nutritionWidgetLoaded && container.querySelector('iframe')) return;
+      if (!forceReload && nutritionWidgetLoaded && container.querySelector('iframe')) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '07c1be');
       container.innerHTML = '';
 
+      const prefillData = {
+        name: clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name,
+        email: clientProfile.email || '',
+        customAnswers: {
+          a1: clientProfile.phone || ''
+        }
+      };
+
       if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
         window.Calendly.initInlineWidget({
           url: fullUrl,
-          parentElement: container
+          parentElement: container,
+          prefill: prefillData
         });
         nutritionWidgetLoaded = true;
       } else {
@@ -1450,18 +1491,27 @@
       }
     }
 
-    function initCoachCalendly() {
-      if (coachWidgetLoaded) return;
+    function initCoachCalendly(forceReload = false) {
       const container = document.getElementById('calendly-coach-container');
       if (!container) return;
+      if (!forceReload && coachWidgetLoaded && container.querySelector('iframe')) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL, '07c1be');
       container.innerHTML = '';
 
+      const prefillData = {
+        name: clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name,
+        email: clientProfile.email || '',
+        customAnswers: {
+          a1: clientProfile.phone || ''
+        }
+      };
+
       if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
         window.Calendly.initInlineWidget({
           url: fullUrl,
-          parentElement: container
+          parentElement: container,
+          prefill: prefillData
         });
       } else {
         container.innerHTML = `
@@ -1613,11 +1663,11 @@
 
       // Step specific setups
       if (step === 2) {
-        initNutritionCalendly();
+        initNutritionCalendly(true);
         document.getElementById('summary-client-name').innerText = (clientProfile.name || 'المشترك') + (clientProfile.client_code ? ` [${clientProfile.client_code}]` : '');
         document.getElementById('summary-client-phone').innerText = clientProfile.phone || '';
       } else if (step === 3) {
-        initCoachCalendly();
+        initCoachCalendly(true);
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || (currentLang === 'ar' ? 'عزيزي المشترك' : 'Valued Client');
         
@@ -1691,5 +1741,103 @@
       setTimeout(() => alert.remove(), 3500);
     }
   </script>
+
+  <!-- ==================== 11. LEGAL MODALS (Privacy, Terms, Medical, Refund) ==================== -->
+  <div id="legal-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
+    <div class="bg-[#0E2530] border-t sm:border border-[#18746F]/40 rounded-t-[32px] sm:rounded-3xl max-w-lg w-full p-6 sm:p-8 text-right shadow-2xl relative max-h-[88vh] overflow-y-auto">
+      <button onclick="closeLegalModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800 transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Privacy -->
+      <div id="legal-content-privacy" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">سياسة الخصوصية</span>
+          <h3 class="text-lg font-black text-white mt-1.5">حماية وسرية بيانات المشتركين</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. البيانات التي نجمعها</h5>
+            <p class="text-slate-400 text-[11px]">بيانات الاتصال (الاسم، الواتساب، البريد) والبيانات البدنية والصحية لغرض تصميم الخطة الغذائية والتدريبية ومتابعة التقدم فقط.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. أمن وسرية المعلومات</h5>
+            <p class="text-slate-400 text-[11px]">نلتزم بأعلى معايير السرية الرقمية. لا يتم بيع أو مشاركة بياناتك إطلاقاً مع أي طرف ثالث تجاري أو إعلاني تحت أي ظرف.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">3. تخزين البيانات</h5>
+            <p class="text-slate-400 text-[11px]">تحفظ ملفات المشتركين وسجلات المتابعة في بيئة سحابية مشفرة ومحمية لا يطلع عليها سوى الفريق المشرف على خطتك.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div id="legal-content-terms" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">الشروط والأحكام</span>
+          <h3 class="text-lg font-black text-white mt-1.5">اتفاقية الاشتراك والخدمة</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. طبيعة الخدمة</h5>
+            <p class="text-slate-400 text-[11px]">الاشتراك يشمل التقييم الغذائي، وضع الخطة الرياضية والغذائية المخصصة، والمتابعة عبر المنصة والواتساب حسب مزايا الباقة المختارة.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. التزام المشترك</h5>
+            <p class="text-slate-400 text-[11px]">النتائج ترتبط مباشرة بمدى التزام المشترك بالخطة المعتمدة وتقديم البيانات الدقيقة والصادقة في استمارة التسجيل والمتابعات الدورية.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">3. مواعيد الجلسات</h5>
+            <p class="text-slate-400 text-[11px]">يتم حجز الجلسات الاستشارية عبر نظام المواعيد المعتمد، ويمكن إعادة جدولة الموعد قبل 24 ساعة على الأقل من وقته المحدد.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical Disclaimer -->
+      <div id="legal-content-medical" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-amber-500 bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-500/30">تنويه وإخلاء مسؤولية</span>
+          <h3 class="text-lg font-black text-white mt-1.5">إخلاء المسؤولية الصحية والغذائية</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-amber-500/20">
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              جميع البرامج والإرشادات المقدمة في منصة سليم هي توجيهات واستشارات تغذية ونمط حياة صحي ولياقة بدنية عامة، وتهدف لدعم صحتك وتحسين عاداتك اليومية.
+            </p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              هذه البرامج ليست بديلاً عن الفحص الطبي السريري أو العلاج الدوائي المباشر لأي حالة مرضية حادة، ويجب على أي شخص يعاني من أمراض مزمنة أو يتناول علاجات مستمرة استشارة طبيبه المعالج قبل البدء بأي نظام غذائي أو تدريبي مكثف.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refund Policy -->
+      <div id="legal-content-refund" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">سياسة الاسترجاع</span>
+          <h3 class="text-lg font-black text-white mt-1.5">سياسة الإلغاء واسترداد الرسوم</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. قبل بدء إعداد الخطة</h5>
+            <p class="text-slate-400 text-[11px]">يحق للعميل طلب استرداد الرسوم بنسبة 100% خلال 24 ساعة من الدفع وقبل عقد الجلسة الاستشارية الأولى أو تسليم الخطة المخصصة.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. بعد تسليم الخطة أو انعقاد الجلسة</h5>
+            <p class="text-slate-400 text-[11px]">نظراً لأن الخطط والاستشارات مخصصة فردياً ويتم بذل جهد واستشارات مسبقة لها، فإن الرسوم غير قابلة للاسترداد بعد تسليم الخطة أو إتمام الجلسة الاستشارية.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-800 text-center">
+        <button onclick="closeLegalModal()" class="px-6 py-2 rounded-xl bg-[#18746F] hover:bg-[#135E5A] text-white text-xs font-bold transition-all">
+          فهمت ذلك، إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

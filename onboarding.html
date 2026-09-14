@@ -161,7 +161,7 @@
           <div class="w-8 h-8 rounded-full bg-teal-950 border-2 border-[#00C2CB] flex items-center justify-center shadow-lg shadow-teal-500/30">
             <i data-lucide="clipboard-list" class="w-4 h-4"></i>
           </div>
-          <span class="hidden sm:inline">1. الملف الطبي</span>
+          <span class="hidden sm:inline">1. بياناتك وأهدافك</span>
           <span class="sm:hidden text-[10px]">البيانات</span>
         </div>
 
@@ -209,9 +209,9 @@
           </div>
           <div>
             <span class="text-xs font-bold text-[#00C2CB] uppercase tracking-wider bg-cyan-950/60 px-3 py-1 rounded-full border border-[#00C2CB]/30">الخطوة 1 من 4</span>
-            <h1 class="text-xl sm:text-2xl font-black text-white mt-2">تسجيل البيانات الأساسية والملف الطبي الشامل</h1>
+            <h1 class="text-xl sm:text-2xl font-black text-white mt-2">تسجيل بياناتك وأهداف التغذية واللياقة</h1>
             <p class="text-xs sm:text-sm text-slate-400 mt-1 leading-relaxed">
-              أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية والتدريبية والطبية بأعلى درجات الدقة والنتائج المستدامة، يرجى استكمال البيانات التالية.
+              أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية وبرنامج التمارين الرياضية المناسب لروتينك بدقة، يرجى استكمال البيانات التالية.
             </p>
           </div>
         </div>
@@ -301,105 +301,75 @@
             </div>
           </div>
 
-          <!-- القسم الثاني: الملف الصحي والتاريخ الطبي -->
+          <!-- القسم الثاني: أهدافك ونمط حياتك الغذائي والبدني -->
           <div class="pt-6 border-t border-slate-800">
             <div class="flex items-center gap-2 mb-4">
               <span class="w-2 h-2 rounded-full bg-[#00C2CB]"></span>
-              <h2 class="text-base sm:text-lg font-bold text-white">الملف الصحي والهدف الطبي</h2>
+              <h2 class="text-base sm:text-lg font-bold text-white">أهدافك ونمط حياتك الغذائي والبدني</h2>
             </div>
 
             <div class="space-y-4">
+              <!-- الهدف الأساسي -->
               <div>
                 <label class="block text-xs font-bold text-slate-300 mb-1.5">ما هو هدفك الأساسي من الاشتراك؟ <span class="text-rose-400">*</span></label>
-                <select id="client_goal" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
-                  <option value="علاج مقاومة الأنسولين والتخلص من دهون البطن">علاج مقاومة الأنسولين والتخلص من دهون البطن الحشوية</option>
-                  <option value="خسارة وزن صحية مستدامة ونحت القوام">خسارة وزن صحية مستدامة ونحت القوام دون حرمان</option>
-                  <option value="علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد">علاج الكبد الدهني (Fatty Liver) وضبط إنزيمات الكبد</option>
-                  <option value="التحكم في سكر الدم وخفض التراكمي (HbA1c)">التحكم في سكر الدم وخفض التراكمي (HbA1c)</option>
-                  <option value="علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض">علاج خمول الغدة الدرقية أو متلازمة تكيس المبايض (PCOS)</option>
-                  <option value="علاج مشاكل الهضم، القولون العصبي، والانتفاخات">علاج مشاكل الهضم، القولون العصبي، والانتفاخات</option>
-                  <option value="رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر">رفع الطاقة اليومية، التركيز، والتخلص من الإجهاد المستمر</option>
-                  <option value="هدف آخر">هدف آخر (سأشرحه في الملاحظات)</option>
+                <select id="client_goal" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:border-[#00C2CB] focus:outline-none">
+                  <option value="خسارة الوزن ونزول الدهون الزائدة وشد الجسم">خسارة الوزن ونزول الدهون الزائدة وشد الجسم</option>
+                  <option value="زيادة الوزن وبناء كتلة عضلية صحية">زيادة الوزن وبناء كتلة عضلية صحية</option>
+                  <option value="نمط حياة صحي وتنظيم التغذية والنشاط اليومي">نمط حياة صحي وتنظيم التغذية والنشاط اليومي</option>
+                  <option value="هدف آخر">هدف آخر (سأوضحه لأخصائي التغذية والكوتش)</option>
                 </select>
               </div>
 
-              <!-- الأمراض المزمنة -->
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-2">هل تم تشخيصك بأي من الحالات التالية؟ (اختر كل ما ينطبق) <span class="text-rose-400">*</span></label>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="مقاومة أنسولين" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>مقاومة أنسولين</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="سكر نوع 2" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>سكر نوع 2</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ضغط دم مرتفع" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>ضغط دم مرتفع</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="دهون على الكبد" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>دهون على الكبد</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="خمول الغدة الدرقية" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>خمول الغدة الدرقية</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="ارتفاع كولسترول / دهون ثلاثية" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>كولسترول أو دهون ثلاثية</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="تكيس مبايض" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>تكيس مبايض (PCOS)</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="قولون عصبي / اضطرابات هضمية" class="rounded text-[#4EB098] focus:ring-0">
-                    <span>قولون عصبي / اضطراب هضم</span>
-                  </label>
-                  <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#08121D] border border-slate-800 cursor-pointer hover:border-slate-700">
-                    <input type="checkbox" name="medical_condition" value="لا توجد أمراض مزمنة (سليم تماماً)" class="rounded text-[#4EB098] focus:ring-0">
-                    <span class="text-emerald-400 font-bold">لا يوجد أمراض (سليم تماماً)</span>
-                  </label>
-                </div>
-              </div>
-
-              <!-- الأدوية والحساسيات -->
+              <!-- مكان التمارين والنشاط البدني -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الأدوية أو المكملات المتناولة حالياً (إن وجدت)</label>
-                  <textarea id="client_medications" rows="2" placeholder="اكتب أسماء الأدوية أو الجرعات، أو اكتب: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">أين تفضل أداء تمارينك مع الكوتش؟ <span class="text-rose-400">*</span></label>
+                  <select id="client_workout_place" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#00C2CB] focus:outline-none">
+                    <option value="تمارين منزلية (بأدوات بسيطة أو بوزن الجسم)">تمارين منزلية (بأدوات بسيطة أو بوزن الجسم)</option>
+                    <option value="في الجيم / النادي الرياضي (أوزان وأجهزة)">في الجيم / النادي الرياضي (أوزان وأجهزة)</option>
+                    <option value="مشي يومي وتمارين خفيفة وتنشيطية">مشي يومي وتمارين خفيفة وتنشيطية</option>
+                    <option value="التركيز على التغذية ونمط الحياة أولاً">أفضّل التركيز على التغذية ونمط الحياة أولاً</option>
+                  </select>
                 </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الحساسيات الغذائية أو أطعمة ترفض تناولها</label>
-                  <textarea id="client_allergies" rows="2" placeholder="مثال: حساسية جلوتين، لاكتوز، بيض، سمك، أو اكتب: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
-                </div>
-              </div>
 
-              <!-- العمليات الجراحية والنشاط البدني -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5">العمليات الجراحية السابقة أو إصابات المفاصل</label>
-                  <input type="text" id="client_surgeries" placeholder="مثال: استئصال مرارة، تكميم، غضروف ركبة، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-300 mb-1.5">مستوى النشاط البدني الحالي <span class="text-rose-400">*</span></label>
-                  <select id="client_activity_level" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white">
-                    <option value="خامل (عمل مكتبي ولا أمارس رياضة)">خامل (عمل مكتبي، حركة قليلة جداً)</option>
-                    <option value="متوسط (أمشي بعض الأيام، نشاط عادي)">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
-                    <option value="نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)">نشط (أمارس تمارين مقاومة أو كارديو 2-3 أيام)</option>
-                    <option value="رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)">رياضي متقدم (أتدرب بانتظام 4-6 أيام أسبوعياً)</option>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">مستوى النشاط البدني اليومي الحالي <span class="text-rose-400">*</span></label>
+                  <select id="client_activity_level" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#00C2CB] focus:outline-none">
+                    <option value="خامل (عمل مكتبي، حركة قليلة جداً)">خامل (عمل مكتبي، حركة قليلة جداً)</option>
+                    <option value="متوسط (أمشي بين الحين والآخر، نشاط عادي)">متوسط (أمشي بين الحين والآخر، نشاط عادي)</option>
+                    <option value="نشط (أمارس تمارين 2-3 أيام أسبوعياً)">نشط (أمارس تمارين 2-3 أيام أسبوعياً)</option>
+                    <option value="متقدم (أتدرب بانتظام 4-5 أيام أسبوعياً)">متقدم (أتدرب بانتظام 4-5 أيام أسبوعياً)</option>
                   </select>
                 </div>
               </div>
 
-              <!-- التحاليل والملاحظات -->
-              <div>
-                <label class="block text-xs font-bold text-slate-300 mb-1.5">رابط التحاليل الطبية أو نتائج الفحوصات الحديثة (اختياري)</label>
-                <input type="text" id="client_lab_link" placeholder="رابط Google Drive للتحاليل، أو اكتب أهم النتائج: مثل HbA1c، كولسترول، إلخ" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
-                <p class="text-[11px] text-slate-500 mt-1">يمكنك أيضاً إرسال ملفات التحاليل لاحقاً عبر الواتساب مباشرة للأخصائي.</p>
+              <!-- الوجبات وتفاصيل الحركة والمفاصل -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">كم وجبة رئيسية تفضل تناولها يومياً؟ <span class="text-rose-400">*</span></label>
+                  <select id="client_meals_count" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:border-[#00C2CB] focus:outline-none">
+                    <option value="وجبتان رئيسيتان (نظام الصيام أو وجبتين مشبعتين)">وجبتان رئيسيتان (نظام الصيام أو وجبتين مشبعتين)</option>
+                    <option value="3 وجبات رئيسية منتظمة (إفطار، غداء، عشاء)">3 وجبات رئيسية منتظمة (إفطار، غداء، عشاء)</option>
+                    <option value="وجبات متعددة وصغيرة خلال اليوم">وجبات متعددة وصغيرة خلال اليوم</option>
+                    <option value="حسب ما يراه أخصائي التغذية مناسباً لروتين يومي">حسب ما يراه أخصائي التغذية مناسباً لروتين يومي</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">هل تعاني من أي آلام مفاصل أو ظهر يجب على الكوتش مراعاتها؟</label>
+                  <input type="text" id="client_injuries" placeholder="مثال: خشونة ركبة خفيفة، ألم أسفل ظهر، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500">
+                </div>
+              </div>
+
+              <!-- الحساسيات ونمط الحياة -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">الحساسيات الغذائية أو أطعمة لا تفضل وجودها في وجباتك</label>
+                  <textarea id="client_allergies" rows="2" placeholder="مثال: حساسية لاكتوز، بيض، سمك، أو أطعمة لا تحبها، أو: لا يوجد" class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-300 mb-1.5">طبيعة روتين يومك، نومك، أو أي تفاصيل إضافية تحب توضيحها</label>
+                  <textarea id="client_lifestyle_notes" rows="2" placeholder="مثال: أصحى مبكراً، ساعات نومي 6 ساعات، طبيعة عملي، إلخ..." class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500"></textarea>
+                </div>
               </div>
 
             </div>
@@ -413,7 +383,7 @@
             </button>
             <p class="text-center text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1.5">
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#4EB098]"></i>
-              بياناتك مشفرة ومحفوظة بسرية طبية تامة تحت إشراف د. أحمد الخطيب وفريقه المعتمد.
+              بياناتك وتفضيلاتك مشفرة ومحفوظة بخصوصية وسرية تامة تحت إشراف د. أحمد الخطيب وفريقه.
             </p>
           </div>
 
@@ -638,7 +608,7 @@
         <div class="max-w-md mx-auto mt-6 p-5 rounded-2xl bg-gradient-to-r from-teal-950/80 via-[#0E1D2D] to-cyan-950/80 border border-[#00C2CB]/40 shadow-xl text-center relative overflow-hidden">
           <div class="flex items-center justify-center gap-2 text-xs font-bold text-slate-300 mb-1">
             <i data-lucide="badge-check" class="w-4 h-4 text-[#00C2CB]"></i>
-            <span>كود المشترك الطبي المعتمد في منصة سليم</span>
+            <span>كود المشترك المعتمد في منصة سليم</span>
           </div>
           <div class="flex items-center justify-center gap-3 my-2">
             <span id="display-client-code" class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#00C2CB] to-[#4EB098] tracking-widest font-mono">---</span>
@@ -1028,11 +998,11 @@
         package: document.getElementById('client_package').value,
         goal: document.getElementById('client_goal').value,
         conditions: conditions.length > 0 ? conditions.join(', ') : 'لم يتم تحديد أمراض',
-        medications: document.getElementById('client_medications').value.trim() || 'لا يوجد',
+        medications: mealsCountEl ? mealsCountEl.value : '3 وجبات منتظمة',
         allergies: document.getElementById('client_allergies').value.trim() || 'لا يوجد',
-        surgeries: document.getElementById('client_surgeries').value.trim() || 'لا يوجد',
+        surgeries: (injuriesEl && injuriesEl.value.trim()) || 'لا توجد إصابات',
         activity: document.getElementById('client_activity_level').value,
-        lab_link: document.getElementById('client_lab_link').value.trim() || 'لا يوجد',
+        lab_link: (notesEl && notesEl.value.trim()) || 'لا توجد ملاحظات إضافية',
         submitted_at: new Date().toISOString()
       };
 

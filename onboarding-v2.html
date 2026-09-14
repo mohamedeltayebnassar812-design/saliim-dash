@@ -498,17 +498,17 @@
           </div>
         </div>
 
-        <!-- Navigation Buttons -->
+        <!-- Step 2 Automated Navigation Bar -->
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
           <button type="button" onclick="goToStep(1)" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-700 text-xs font-bold text-slate-400 hover:text-white hover:border-slate-500 transition-colors flex items-center justify-center gap-1.5">
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
             <span data-i18n="btn_back_intake">العودة لتعديل البيانات</span>
           </button>
 
-          <button type="button" onclick="handleAdvanceToCoach()" id="advance-to-coach-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-[#07C1BE] shadow-md">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE]" id="advance-lock-icon"></i>
-            <span id="advance-to-coach-text" data-i18n="btn_advance_coach_manual">أتممت حجز التغذية ➔ الانتقال لموعد الكوتش</span>
-          </button>
+          <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#0A1B24] border border-[#1E4354] text-xs text-slate-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#07C1BE] animate-ping"></span>
+            <span data-i18n="auto_step_notice_nutrition">بمجرد الضغط على Schedule Event، ستنتقل تلقائياً لحجز موعد الكوتش</span>
+          </div>
         </div>
 
       </div>
@@ -555,17 +555,17 @@
           </div>
         </div>
 
-        <!-- Action buttons -->
+        <!-- Step 3 Automated Navigation Bar -->
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
           <button type="button" onclick="goToStep(2)" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-700 text-xs font-bold text-slate-400 hover:text-white hover:border-slate-500 transition-colors flex items-center justify-center gap-1.5">
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
             <span data-i18n="btn_back_nutrition">العودة لتعديل موعد التغذية</span>
           </button>
 
-          <button type="button" onclick="handleAdvanceToStep4()" id="advance-to-step4-btn" class="w-full sm:w-auto px-6 py-3 bg-slate-900 border border-slate-700/80 text-slate-300 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer hover:border-[#07C1BE] shadow-md">
-            <i data-lucide="sparkles" class="w-4 h-4 text-[#07C1BE]" id="advance-step4-lock-icon"></i>
-            <span id="advance-to-step4-text" data-i18n="btn_advance_step4_manual">أتممت حجز الكوتش ➔ استكمال وتأكيد التفعيل</span>
-          </button>
+          <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#0A1B24] border border-[#1E4354] text-xs text-slate-300">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#07C1BE] animate-ping"></span>
+            <span data-i18n="auto_step_notice_coach">بمجرد الضغط على Schedule Event، ستنتقل تلقائياً لتأكيد وتفعيل ملفك</span>
+          </div>
         </div>
 
       </div>
@@ -1498,23 +1498,65 @@
       goToStep(4);
     }
 
-    // Window Message Listener for Calendly Bookings
+    // ==========================================================
+    // INSTANT AUTOMATED CALENDLY EVENT SCHEDULING LISTENER
+    // Automatically transitions step-to-step the moment Schedule Event is clicked
+    // ==========================================================
+    function parseCalendlyMessage(e) {
+      if (!e || !e.data) return null;
+      let data = e.data;
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+        } catch(err) {
+          if (data.indexOf('calendly.event_scheduled') !== -1 || data.indexOf('event_scheduled') !== -1) {
+            return { event: 'calendly.event_scheduled' };
+          }
+          return null;
+        }
+      }
+      return data;
+    }
+
     window.addEventListener('message', function(e) {
-      if (e.data && e.data.event === 'calendly.event_scheduled') {
-        if (currentStep === 2) {
+      const msg = parseCalendlyMessage(e);
+      if (!msg) return;
+
+      const eventName = msg.event || msg.action || '';
+      const isScheduled = (eventName === 'calendly.event_scheduled' || eventName === 'event_scheduled');
+
+      if (isScheduled) {
+        console.log("Calendly schedule event triggered:", eventName, "currentStep:", currentStep);
+
+        // Transition from Step 2 (Nutrition) -> Step 3 (Coach)
+        if (currentStep === 2 || !isNutritionScheduled) {
           isNutritionScheduled = true;
           clientProfile.nutrition_slot = "تم الحجز والتأكيد عبر Calendly ✓";
-          updateBookingSlotsInGoogleSheets();
-          unlockNutritionStep();
-          showToastAlert(currentLang === 'ar' ? 'تم حجز موعد التغذية على كاليندلي بنجاح! جاري الانتقال لموعد الكوتش...' : 'Nutrition slot booked on Calendly! Moving to Coach...');
-          setTimeout(() => { goToStep(3); }, 1500);
-        } else if (currentStep === 3) {
+          
+          try { updateBookingSlotsInGoogleSheets(); } catch(err) {}
+          
+          showToastAlert(currentLang === 'ar' ? 'تم تأكيد موعد التغذية بنجاح! جاري تحويلك لحجز موعد الكوتش...' : 'Nutrition confirmed! Moving to Coach scheduling...');
+          
+          // Instant automated transition
+          setTimeout(() => {
+            goToStep(3);
+            window.scrollTo({ top: 100, behavior: 'smooth' });
+          }, 300);
+        }
+        // Transition from Step 3 (Coach) -> Step 4 (Activation)
+        else if (currentStep === 3 || isNutritionScheduled) {
           isCoachScheduled = true;
           clientProfile.coach_slot = "تم الحجز والتأكيد عبر Calendly ✓";
-          sendToGoogleSheets(clientProfile);
-          unlockCoachStep();
-          showToastAlert(currentLang === 'ar' ? 'تم حجز موعد الكوتش على كاليندلي بنجاح! جاري التفعيل...' : 'Coach slot booked on Calendly! Activating...');
-          setTimeout(() => { goToStep(4); }, 1500);
+
+          try { sendToGoogleSheets(clientProfile); } catch(err) {}
+
+          showToastAlert(currentLang === 'ar' ? 'تم تأكيد موعد الكوتش بنجاح! جاري إكمال تفعيل ملفك...' : 'Coach confirmed! Finalizing your activation...');
+
+          // Instant automated transition
+          setTimeout(() => {
+            goToStep(4);
+            window.scrollTo({ top: 50, behavior: 'smooth' });
+          }, 300);
         }
       }
     });

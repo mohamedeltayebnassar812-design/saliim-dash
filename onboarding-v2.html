@@ -1021,32 +1021,7 @@
         setLanguage('en');
       }
 
-      if (urlParams.has('pkg')) {
-        const pkgVal = urlParams.get('pkg').toLowerCase();
-        const pkgSelect = document.getElementById('client_package');
-        let matched = false;
-        
-        for (let i = 0; i < pkgSelect.options.length; i++) {
-          const optVal = pkgSelect.options[i].value.toLowerCase();
-          const optText = pkgSelect.options[i].text.toLowerCase();
-          if (optVal.includes(pkgVal) || optText.includes(pkgVal) || pkgVal.includes(optVal)) {
-            pkgSelect.selectedIndex = i;
-            matched = true;
-            break;
-          }
-        }
-        
-        // Match common keywords if exact substring wasn't found
-        if (!matched) {
-          if (pkgVal.includes('healthy') || pkgVal.includes('هلثي') || pkgVal.includes('69') || pkgVal.includes('أساسي') || pkgVal.includes('60')) {
-            pkgSelect.value = "باقة Healthy ($69)";
-          } else if (pkgVal.includes('pro') || pkgVal.includes('برو') || pkgVal.includes('119') || pkgVal.includes('120') || pkgVal.includes('متقدمة') || pkgVal.includes('صحية')) {
-            pkgSelect.value = "باقة Pro ($119)";
-          } else if (pkgVal.includes('consultation') || pkgVal.includes('استشارة') || pkgVal.includes('89') || pkgVal.includes('أحمد') || pkgVal.includes('49') || pkgVal.includes('private')) {
-            pkgSelect.value = "استشارة خاصة مع د. أحمد الخطيب ($89)";
-          }
-        }
-      }
+      autoSelectPackage();
 
       // Setup mutual exclusivity for medical condition checkboxes
       setupConditionCheckboxesLogic();
@@ -1056,6 +1031,151 @@
       // Always start fresh at Step 1
       goToStep(1);
     });
+
+    
+    // ==========================================================
+    // AUTO-FILL SELECTED PACKAGE FROM PAYMENT / CHECKOUT
+    // ==========================================================
+    function autoSelectPackage() {
+      const pkgSelect = document.getElementById('client_package');
+      if (!pkgSelect) return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // 1. Gather all potential package indicators from URL
+      const rawSources = [
+        urlParams.get('pkg'),
+        urlParams.get('package'),
+        urlParams.get('plan'),
+        urlParams.get('tier'),
+        urlParams.get('selected'),
+        urlParams.get('selected_package'),
+        urlParams.get('price'),
+        urlParams.get('amount')
+      ];
+
+      // 2. Add fallback sources: sessionStorage, localStorage, cookie
+      try {
+        rawSources.push(sessionStorage.getItem('saliim_selected_package'));
+        rawSources.push(localStorage.getItem('saliim_selected_package'));
+        rawSources.push(sessionStorage.getItem('saliim_package'));
+        rawSources.push(localStorage.getItem('saliim_package'));
+      } catch(e) {}
+
+      // Parse cookies
+      try {
+        const cookies = document.cookie.split(';');
+        for (let c of cookies) {
+          const [k, v] = c.trim().split('=');
+          if (k === 'saliim_selected_package' && v) {
+            rawSources.push(decodeURIComponent(v));
+          }
+        }
+      } catch(e) {}
+
+      // 3. Find first non-empty input
+      let rawInput = '';
+      for (let s of rawSources) {
+        if (s && typeof s === 'string' && s.trim().length > 0) {
+          rawInput = s.trim().toLowerCase();
+          break;
+        }
+      }
+
+      if (!rawInput) return; // No package specified, keep default or existing
+
+      // 4. Resolve package index:
+      // Option 0: Healthy ($69)
+      // Option 1: Pro ($119)
+      // Option 2: Consultation with Dr. Ahmed ($89)
+      // Option 3: Other / Direct transfer
+      let targetIndex = -1;
+
+      // Check PRO ($119) first (to prevent false matches)
+      if (
+        rawInput === 'pro' ||
+        rawInput.includes('pro') ||
+        rawInput.includes('119') ||
+        rawInput.includes('120') ||
+        rawInput.includes('برو') ||
+        rawInput.includes('متقدم') ||
+        rawInput.includes('advanced') ||
+        rawInput.includes('vip') ||
+        rawInput.includes('full')
+      ) {
+        targetIndex = 1;
+      }
+      // Check CONSULTATION ($89)
+      else if (
+        rawInput === 'consultation' ||
+        rawInput === 'consultation_dr' ||
+        rawInput.includes('consult') ||
+        rawInput.includes('89') ||
+        rawInput.includes('90') ||
+        rawInput.includes('استشارة') ||
+        rawInput.includes('جلسة') ||
+        rawInput.includes('دكتور') ||
+        rawInput.includes('احمد') ||
+        rawInput.includes('أحمد') ||
+        rawInput.includes('الخطيب') ||
+        rawInput.includes('private')
+      ) {
+        targetIndex = 2;
+      }
+      // Check HEALTHY ($69)
+      else if (
+        rawInput === 'healthy' ||
+        rawInput.includes('healthy') ||
+        rawInput.includes('69') ||
+        rawInput.includes('60') ||
+        rawInput.includes('هيلثي') ||
+        rawInput.includes('هلثي') ||
+        rawInput.includes('أساسي') ||
+        rawInput.includes('اساسي') ||
+        rawInput.includes('لايف ستايل') ||
+        rawInput.includes('lifestyle')
+      ) {
+        targetIndex = 0;
+      }
+      // Check OTHER / DIRECT TRANSFER
+      else if (
+        rawInput.includes('other') ||
+        rawInput.includes('transfer') ||
+        rawInput.includes('تحويل') ||
+        rawInput.includes('بنك') ||
+        rawInput.includes('مباشر') ||
+        rawInput.includes('أخرى') ||
+        rawInput.includes('اخري')
+      ) {
+        targetIndex = 3;
+      }
+
+      // 5. Apply selection
+      if (targetIndex >= 0 && targetIndex < pkgSelect.options.length) {
+        pkgSelect.selectedIndex = targetIndex;
+        for (let i = 0; i < pkgSelect.options.length; i++) {
+          pkgSelect.options[i].selected = (i === targetIndex);
+        }
+        pkgSelect.value = pkgSelect.options[targetIndex].value;
+        
+        // Trigger change event so any listeners run
+        pkgSelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+        // Persist back to storage
+        try {
+          localStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
+          sessionStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
+        } catch(e) {}
+      }
+
+      // Keep updated if user manually changes
+      pkgSelect.addEventListener('change', () => {
+        try {
+          localStorage.setItem('saliim_selected_package', pkgSelect.value);
+          sessionStorage.setItem('saliim_selected_package', pkgSelect.value);
+        } catch(e) {}
+      });
+    }
 
     function setupConditionCheckboxesLogic() {
       const allCbs = document.querySelectorAll('input[name="medical_condition"]');

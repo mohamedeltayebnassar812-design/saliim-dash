@@ -2056,6 +2056,16 @@
     };
 
     function openBookingModal(pkgKey = 'pro', pkgTitle = 'باقة Pro المتقدمة', priceText = '$119/شهرياً') {
+      try {
+        localStorage.setItem('saliim_selected_package', pkgKey);
+        sessionStorage.setItem('saliim_selected_package', pkgKey);
+        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+      } catch(e) {}
+      try {
+        localStorage.setItem('saliim_selected_package', pkgKey);
+        sessionStorage.setItem('saliim_selected_package', pkgKey);
+        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+      } catch(e) {}
       const modal = document.getElementById('booking-modal');
       const select = document.getElementById('package_select');
       const titleEl = document.getElementById('modal-title');
@@ -2082,6 +2092,11 @@
     }
 
     function syncPackagePrice(val) {
+      try {
+        localStorage.setItem('saliim_selected_package', val);
+        sessionStorage.setItem('saliim_selected_package', val);
+        document.cookie = `saliim_selected_package=${encodeURIComponent(val)}; path=/; max-age=604800`;
+      } catch(e) {}
       const priceEl = document.getElementById('summary_price');
       if (priceEl && PACKAGE_PRICES[val]) {
         priceEl.innerText = PACKAGE_PRICES[val];
@@ -2273,10 +2288,19 @@
         if (CHECKOUT_REDIRECT_URL && !CHECKOUT_REDIRECT_URL.includes('placeholder')) {
           window.location.href = CHECKOUT_REDIRECT_URL;
         } else {
+          const pkgKey = pkgSelect.value || 'pro';
+          try {
+            localStorage.setItem('saliim_selected_package', pkgKey);
+            sessionStorage.setItem('saliim_selected_package', pkgKey);
+            document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+          } catch(e) {}
+
           const params = new URLSearchParams({
             name: name,
             phone: phone,
-            pkg: pkgName
+            pkg: pkgKey,
+            package: pkgKey,
+            price: priceText
           });
           window.location.href = `onboarding-v2.html?${params.toString()}`;
         }

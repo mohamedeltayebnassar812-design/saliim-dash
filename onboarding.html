@@ -291,12 +291,11 @@
 
               <div class="sm:col-span-2">
                 <label class="block text-xs font-bold text-slate-300 mb-1.5">الباقة التي اشتركت بها أو ترغب بالانضمام إليها <span class="text-rose-400">*</span></label>
-                <select id="client_package" required class="w-full bg-[#08121D] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
-                  <option value="باقة Private مع د. أحمد الخطيب ($199)">باقة Private مع د. أحمد الخطيب مباشرة ($199 شهرياً)</option>
-                  <option value="باقة The Protocol - بروتوكول الـ 60 يوماً المكثف ($500)">باقة The Protocol - بروتوكول الـ 60 يوماً الشامل ($500)</option>
-                  <option value="باقة Pro السريرية ($120)">باقة Pro السريرية مع الفريق الطبي ($120 شهرياً)</option>
-                  <option value="استشارة فردية 1:1 ($49)">استشارة فردية مخصصة 1:1 ($49)</option>
-                  <option value="أخرى / قمت بالتحويل المباشر">أخرى / قمت بالتحويل البنكي أو الدفع المباشر</option>
+                <select id="client_package" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <option value="باقة Healthy ($69)">باقة Healthy ($69 شهرياً)</option>
+                  <option value="باقة Pro ($119)">باقة Pro المتقدمة ($119 شهرياً)</option>
+                  <option value="استشارة خاصة مع د. أحمد الخطيب ($89)">استشارة خاصة مع د. أحمد الخطيب ($89)</option>
+                  <option value="أخرى / تحويل مباشر">أخرى / قمت بالتحويل البنكي أو الدفع المباشر</option>
                 </select>
               </div>
             </div>
@@ -760,6 +759,151 @@
       return `SLM-${num}`;
     }
 
+    
+    // ==========================================================
+    // AUTO-FILL SELECTED PACKAGE FROM PAYMENT / CHECKOUT
+    // ==========================================================
+    function autoSelectPackage() {
+      const pkgSelect = document.getElementById('client_package');
+      if (!pkgSelect) return;
+
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // 1. Gather all potential package indicators from URL
+      const rawSources = [
+        urlParams.get('pkg'),
+        urlParams.get('package'),
+        urlParams.get('plan'),
+        urlParams.get('tier'),
+        urlParams.get('selected'),
+        urlParams.get('selected_package'),
+        urlParams.get('price'),
+        urlParams.get('amount')
+      ];
+
+      // 2. Add fallback sources: sessionStorage, localStorage, cookie
+      try {
+        rawSources.push(sessionStorage.getItem('saliim_selected_package'));
+        rawSources.push(localStorage.getItem('saliim_selected_package'));
+        rawSources.push(sessionStorage.getItem('saliim_package'));
+        rawSources.push(localStorage.getItem('saliim_package'));
+      } catch(e) {}
+
+      // Parse cookies
+      try {
+        const cookies = document.cookie.split(';');
+        for (let c of cookies) {
+          const [k, v] = c.trim().split('=');
+          if (k === 'saliim_selected_package' && v) {
+            rawSources.push(decodeURIComponent(v));
+          }
+        }
+      } catch(e) {}
+
+      // 3. Find first non-empty input
+      let rawInput = '';
+      for (let s of rawSources) {
+        if (s && typeof s === 'string' && s.trim().length > 0) {
+          rawInput = s.trim().toLowerCase();
+          break;
+        }
+      }
+
+      if (!rawInput) return; // No package specified, keep default or existing
+
+      // 4. Resolve package index:
+      // Option 0: Healthy ($69)
+      // Option 1: Pro ($119)
+      // Option 2: Consultation with Dr. Ahmed ($89)
+      // Option 3: Other / Direct transfer
+      let targetIndex = -1;
+
+      // Check PRO ($119) first (to prevent false matches)
+      if (
+        rawInput === 'pro' ||
+        rawInput.includes('pro') ||
+        rawInput.includes('119') ||
+        rawInput.includes('120') ||
+        rawInput.includes('برو') ||
+        rawInput.includes('متقدم') ||
+        rawInput.includes('advanced') ||
+        rawInput.includes('vip') ||
+        rawInput.includes('full')
+      ) {
+        targetIndex = 1;
+      }
+      // Check CONSULTATION ($89)
+      else if (
+        rawInput === 'consultation' ||
+        rawInput === 'consultation_dr' ||
+        rawInput.includes('consult') ||
+        rawInput.includes('89') ||
+        rawInput.includes('90') ||
+        rawInput.includes('استشارة') ||
+        rawInput.includes('جلسة') ||
+        rawInput.includes('دكتور') ||
+        rawInput.includes('احمد') ||
+        rawInput.includes('أحمد') ||
+        rawInput.includes('الخطيب') ||
+        rawInput.includes('private')
+      ) {
+        targetIndex = 2;
+      }
+      // Check HEALTHY ($69)
+      else if (
+        rawInput === 'healthy' ||
+        rawInput.includes('healthy') ||
+        rawInput.includes('69') ||
+        rawInput.includes('60') ||
+        rawInput.includes('هيلثي') ||
+        rawInput.includes('هلثي') ||
+        rawInput.includes('أساسي') ||
+        rawInput.includes('اساسي') ||
+        rawInput.includes('لايف ستايل') ||
+        rawInput.includes('lifestyle')
+      ) {
+        targetIndex = 0;
+      }
+      // Check OTHER / DIRECT TRANSFER
+      else if (
+        rawInput.includes('other') ||
+        rawInput.includes('transfer') ||
+        rawInput.includes('تحويل') ||
+        rawInput.includes('بنك') ||
+        rawInput.includes('مباشر') ||
+        rawInput.includes('أخرى') ||
+        rawInput.includes('اخري')
+      ) {
+        targetIndex = 3;
+      }
+
+      // 5. Apply selection
+      if (targetIndex >= 0 && targetIndex < pkgSelect.options.length) {
+        pkgSelect.selectedIndex = targetIndex;
+        for (let i = 0; i < pkgSelect.options.length; i++) {
+          pkgSelect.options[i].selected = (i === targetIndex);
+        }
+        pkgSelect.value = pkgSelect.options[targetIndex].value;
+        
+        // Trigger change event so any listeners run
+        pkgSelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+        // Persist back to storage
+        try {
+          localStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
+          sessionStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
+        } catch(e) {}
+      }
+
+      // Keep updated if user manually changes
+      pkgSelect.addEventListener('change', () => {
+        try {
+          localStorage.setItem('saliim_selected_package', pkgSelect.value);
+          sessionStorage.setItem('saliim_selected_package', pkgSelect.value);
+        } catch(e) {}
+      });
+    }
+
     function copyClientCode() {
       const codeEl = document.getElementById('display-client-code');
       const code = (codeEl && codeEl.innerText && codeEl.innerText !== '---') ? codeEl.innerText : (clientProfile.client_code || 'SLM-5820');
@@ -819,14 +963,7 @@
       if (urlParams.has('name')) document.getElementById('client_name').value = urlParams.get('name');
       if (urlParams.has('email')) document.getElementById('client_email').value = urlParams.get('email');
       if (urlParams.has('phone')) document.getElementById('client_phone').value = urlParams.get('phone');
-      if (urlParams.has('pkg')) {
-        const pkgVal = urlParams.get('pkg');
-        const pkgSelect = document.getElementById('client_package');
-        for (let i = 0; i < pkgSelect.options.length; i++) {
-          if (pkgSelect.options[i].value.toLowerCase().includes(pkgVal.toLowerCase())) {
-            pkgSelect.selectedIndex = i;
-            break;
-          }
+      autoSelectPackage();
         }
       }
 

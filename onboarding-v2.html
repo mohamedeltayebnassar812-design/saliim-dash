@@ -1030,6 +1030,13 @@
       
       // Always start fresh at Step 1
       goToStep(1);
+
+      // Instant Pre-warming: Pre-load Nutrition Calendly in background while user fills Step 1
+      setTimeout(() => {
+        initNutritionCalendly();
+        // Also pre-warm coach calendar
+        setTimeout(initCoachCalendly, 1500);
+      }, 500);
     });
 
     
@@ -1299,7 +1306,7 @@
         `;
         lucide.createIcons();
         goToStep(2);
-      }, 700);
+      }, 100);
     }
 
     // Google Sheets Dispatcher
@@ -1401,29 +1408,31 @@
     }
 
     function initNutritionCalendly() {
-      if (nutritionWidgetLoaded) return;
       const container = document.getElementById('calendly-nutrition-container');
       if (!container) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '07c1be');
-      container.innerHTML = '';
-
-      if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
-        window.Calendly.initInlineWidget({
-          url: fullUrl,
-          parentElement: container
-        });
-      } else {
-        container.innerHTML = `
-          <iframe 
-            src="${fullUrl}" 
-            width="100%" 
-            height="100%" 
-            frameborder="0"
-            title="حجز موعد أخصائي التغذية">
-          </iframe>
-        `;
+      const existingIframe = container.querySelector('iframe');
+      if (existingIframe && nutritionWidgetLoaded) {
+        if (clientProfile && clientProfile.name) {
+          const currentSrc = existingIframe.getAttribute('src');
+          if (currentSrc !== fullUrl) {
+            existingIframe.setAttribute('src', fullUrl);
+          }
+        }
+        return;
       }
+
+      container.innerHTML = `
+        <iframe 
+          src="${fullUrl}" 
+          width="100%" 
+          height="100%" 
+          frameborder="0"
+          loading="eager"
+          title="حجز موعد أخصائي التغذية">
+        </iframe>
+      `;
       nutritionWidgetLoaded = true;
     }
 

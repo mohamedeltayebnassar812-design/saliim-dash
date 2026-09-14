@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>سليم | منظومة التغذية واللياقة ونمط الحياة الصحي • د. أحمد الخطيب</title>
+  <meta name="description" content="العرض المتكامل لخسارة الدهون واستعادة طاقتك من أكل بيتك العادي مع أخصائي التغذية والكوتش الرياضي، تحت إشراف وتوجيه د. أحمد الخطيب. بدون حرمان أو ميزان.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="سليم | منظومة التغذية واللياقة ونمط الحياة الصحي • د. أحمد الخطيب">
+  <meta property="og:description" content="خسارة دهون مستدامة واستعادة طاقتك من أكل بيتك العادي. تغذية صحية + كوتش تدريب + متابعة نمط حياة.">
+  <meta property="og:image" content="assets/dr_hero_cutout.webp">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'IBM Plex Sans Arabic', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#0A1B24',
+              surface: '#0E2530',
+              card: '#132F3D',
+              cardBorder: '#1E4354',
+              cyan: '#07C1BE',
+              cyanHover: '#05A8A5',
+              teal: '#18746F',
+              tealDark: '#135E5A',
+              gold: '#E5A93C',
+              textMuted: '#94A3B8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0A1B24;
+      color: #F8FAFC;
+      font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .responsive-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    @media (min-width: 640px) {
+      .responsive-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      .responsive-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    .cyan-glow {
+      box-shadow: 0 0 45px -10px rgba(7, 193, 190, 0.35);
+    }
+    .teal-glow {
+      box-shadow: 0 10px 35px -5px rgba(24, 116, 111, 0.3);
+    }
+
+    @keyframes scanLaser {
+      0% { top: 8%; opacity: 0.8; }
+      50% { top: 88%; opacity: 1; }
+      100% { top: 8%; opacity: 0.8; }
+    }
+    .scanner-laser-line {
+      animation: scanLaser 3.5s ease-in-out infinite;
+    }
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-[#0A1B24] text-slate-100 selection:bg-[#07C1BE] selection:text-slate-950">
+
+  <!-- ==================== 1. TOP SCARCITY & URGENCY TICKER ==================== -->
+  <aside class="bg-gradient-to-r from-[#132F3D] via-[#0E2530] to-[#132F3D] border-b border-[#07C1BE]/30 py-2.5 px-4 text-center sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
+    <div class="responsive-container flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-bold">
+      <span class="px-2.5 py-0.5 rounded-full bg-[#07C1BE]/20 text-[#07C1BE] border border-[#07C1BE]/40 text-[11px] animate-pulse">
+        ⚡ الفوج الحالي محدود
+      </span>
+      <span>التسجيل مفتوح لـ 20 مشتركاً فقط لضمان دقة المتابعة الفردية اليومية مع أخصائي التغذية والكوتش</span>
+      <a href="#packages" class="inline-flex items-center gap-1 text-[#07C1BE] hover:underline underline-offset-4 mr-2">
+        <span>احجز مقعدك</span>
+        <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== 2. MAIN NAVIGATION ==================== -->
+  <nav class="border-b border-white/5 bg-[#0A1B24]/95 backdrop-blur-md sticky top-[41px] z-40">
+    <div class="responsive-container py-3.5 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#18746F] to-[#07C1BE] text-slate-950 font-black text-xl flex items-center justify-center shadow-lg shadow-[#07C1BE]/25 group-hover:scale-105 transition-transform">
+          س
+        </div>
+        <div>
+          <span class="font-black text-xl tracking-tight text-white block leading-none">سَـلِيم</span>
+          <span class="text-xs text-slate-400 font-medium">د. أحمد الخطيب</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-bold text-slate-300">
+        <a href="#results-timeline" class="hover:text-[#07C1BE] transition-colors">خارطة النتائج</a>
+        <a href="#hormones" class="hover:text-[#07C1BE] transition-colors">كيمياء الهرمونات</a>
+        <a href="#app" class="hover:text-[#07C1BE] transition-colors">الماسح الذكي AI</a>
+        <a href="#packages" class="hover:text-[#07C1BE] transition-colors text-[#07C1BE] flex items-center gap-1">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          الباقات والمكافآت
+        </a>
+        <a href="#guarantee" class="hover:text-[#07C1BE] transition-colors">الضمان والراحة</a>
+        <a href="#faq" class="hover:text-[#07C1BE] transition-colors">الأسئلة الشائعة</a>
+      </div>
+
+      <!-- Action CTA Button -->
+      <div class="flex items-center gap-3">
+        <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-[#07C1BE]/25 active:scale-95 transition-all">
+          <span>ابدأ رحلة تحولك</span>
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ==================== 3. SECTION: HERO (THE GRAND SLAM HOOK) ==================== -->
+  <section class="pt-10 pb-16 sm:py-20 relative overflow-hidden bg-[#0A1B24]">
+    <div class="responsive-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        
+        <!-- Hero Text -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-[#07C1BE]"></i>
+            <span>منظومة التغذية واللياقة ونمط الحياة الصحي • د. أحمد الخطيب</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+            خسارة دهون حقيقية واستعادة طاقتك <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#07C1BE] to-teal-300">من أكل بيتك العادي والمشبع..</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            بدون حرمان من الخبز، بدون وزن الطعام بالميزان، وبدون رجوع الوزن مرة أخرى. منظومة تجمع بين <strong class="text-white">أخصائي تغذية</strong> يفصّل خطتك من أكل منزلك، و<strong class="text-white">كوتش رياضي</strong> يرافقك لشد قوامك، تحت إشراف وتوجيه <strong class="text-[#07C1BE]">د. أحمد الخطيب</strong>.
+          </p>
+
+          <!-- Core Benefits Pills -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-right">
+            <div class="p-3 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-center gap-2.5">
+              <i data-lucide="utensils" class="w-5 h-5 text-[#07C1BE] flex-shrink-0"></i>
+              <span class="text-xs font-bold text-slate-200">أكل البيت العادي دون تجويع</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-center gap-2.5">
+              <i data-lucide="dumbbell" class="w-5 h-5 text-[#07C1BE] flex-shrink-0"></i>
+              <span class="text-xs font-bold text-slate-200">كوتش تدريب ولياقة مخصص</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-[#0E2530] border border-[#1E4354] flex items-center gap-2.5">
+              <i data-lucide="message-circle" class="w-5 h-5 text-[#07C1BE] flex-shrink-0"></i>
+              <span class="text-xs font-bold text-slate-200">متابعة واتساب مستمرة</span>
+            </div>
+          </div>
+
+          <!-- CTAs -->
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#packages" class="w-full sm:w-auto px-8 py-4 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-sm sm:text-base rounded-2xl shadow-xl shadow-[#07C1BE]/30 flex items-center justify-center gap-2 transform hover:-translate-y-0.5 active:scale-95 transition-all">
+              <span>عرض الباقات والمكافآت الحصرية</span>
+              <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            </a>
+            <a href="#results-timeline" class="w-full sm:w-auto px-6 py-4 bg-[#0E2530] hover:bg-[#132F3D] border border-slate-700 text-white font-bold text-xs sm:text-sm rounded-2xl transition-all flex items-center justify-center gap-2">
+              <i data-lucide="clock" class="w-4 h-4 text-[#07C1BE]"></i>
+              <span>ماذا تتوقع في أول 30 يوماً؟</span>
+            </a>
+          </div>
+
+          <!-- Social Proof Stats -->
+          <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 border-t border-slate-800 text-xs text-slate-400">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="users" class="w-4 h-4 text-[#07C1BE]"></i>
+              <span>أكثر من <strong>9 ملايين متابع</strong> يثقون في طرح د. أحمد</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400"></i>
+              <span>تقييم <strong>4.9 / 5</strong> لرضا المشتركين</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="shield" class="w-4 h-4 text-[#07C1BE]"></i>
+              <span>ضمان راحة وسهولة التزام 14 يوماً</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Media Image -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-[440px]">
+            <div class="relative rounded-3xl overflow-hidden border-2 border-[#1E4354] shadow-2xl cyan-glow bg-[#0E2530]">
+              <img src="assets/dr_hero_cutout.webp" alt="د. أحمد الخطيب - منصة سليم" class="w-full h-auto object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0A1B24] via-transparent to-transparent"></div>
+              
+              <!-- Floating Doctor Credential Badge -->
+              <div class="absolute bottom-5 right-5 left-5 p-4 rounded-2xl bg-[#0A1B24]/95 border border-[#07C1BE]/40 backdrop-blur-md shadow-2xl text-right">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3 class="font-black text-white text-sm">د. أحمد الخطيب</h3>
+                    <p class="text-[11px] text-[#07C1BE] font-bold">صيدلاني وباحث في التغذية الصحية ونمط الحياة</p>
+                  </div>
+                  <span class="w-8 h-8 rounded-xl bg-[#07C1BE]/20 text-[#07C1BE] flex items-center justify-center font-black text-xs">
+                    ✓
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. SECTION: RESULTS TIMELINE (WHAT HAPPENS TO YOUR BODY) ==================== -->
+  <section id="results-timeline" class="py-16 sm:py-24 bg-[#0E2530] border-y border-white/5 reveal-on-scroll">
+    <div class="responsive-container">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold">
+          <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+          <span>خارطة التحول التدريجي</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          ماذا تتوقع لجسدك وطاقتك في أول 30 يوماً؟ <br/>
+          <span class="text-[#07C1BE]">نتائج سريعة وملموسة خطوة بخطوة</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          لا نعدك بنزول وهمي للماء والعضلات كما تفعل حميات التجويع، بل بنزول دهون حقيقي وصحة مستدامة:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-right">
+        
+        <!-- Day 7 -->
+        <div class="p-6 rounded-3xl bg-[#0A1B24] border border-[#1E4354] space-y-4 shadow-lg hover:border-[#07C1BE] transition-all">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-[#07C1BE] bg-teal-950 px-3 py-1 rounded-full border border-[#07C1BE]/30">الأسبوع الأول (اليوم 7)</span>
+            <span class="text-2xl font-black text-slate-600">01</span>
+          </div>
+          <h3 class="text-lg font-black text-white">خفة البطن وانتهاء الخمول</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>زوال انتفاخ البطن المزعج وتحسن الهضم تماماً.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>ثبات سكر الدم واختفاء خمول ورغبة السكريات بعد الأكل.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>استيقاظ نشيط ونوم أعمق وأكثر راحة.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Day 14 -->
+        <div class="p-6 rounded-3xl bg-[#0A1B24] border-2 border-[#07C1BE] space-y-4 shadow-xl cyan-glow relative">
+          <div class="absolute -top-3.5 right-6 bg-[#07C1BE] text-slate-950 text-[10px] font-black px-3 py-0.5 rounded-full">
+            أول فرق في الملابس
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-[#07C1BE] bg-teal-950 px-3 py-1 rounded-full border border-[#07C1BE]/30">الأسبوع الثاني (اليوم 14)</span>
+            <span class="text-2xl font-black text-[#07C1BE]">02</span>
+          </div>
+          <h3 class="text-lg font-black text-white">فرق المقاسات والخصر</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>نزول ملموس في مقاسات البنطال والملابس المفضلة.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>تراجع دهون الخصر الموضعية دون فقدان الحيوية.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>اعتياد الجسم على النظام وسهولة الالتزام دون جهد.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Day 30 -->
+        <div class="p-6 rounded-3xl bg-[#0A1B24] border border-[#1E4354] space-y-4 shadow-lg hover:border-[#07C1BE] transition-all">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-[#07C1BE] bg-teal-950 px-3 py-1 rounded-full border border-[#07C1BE]/30">نهاية الشهر (اليوم 30)</span>
+            <span class="text-2xl font-black text-slate-600">03</span>
+          </div>
+          <h3 class="text-lg font-black text-white">تحول القوام وكسر الثبات</h3>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>كسر ثبات الوزن واستمرار النزول بمعدل طبيعي آمن.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>شد وتناسق العضلات بفضل برنامج الكوتش الرياضي.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+              <span>اكتساب عادات طعام صحية ومستقرة ترافقك مدى الحياة.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. SECTION: HORMONAL CHEMISTRY VS RESTRICTION ==================== -->
+  <section id="hormones" class="py-16 sm:py-24 bg-[#0A1B24] border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+          <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+          <span>الحقيقة العلمية والهرمونية • د. أحمد الخطيب</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          لماذا يفشل دايت الحرمان وينجح نظام سليم؟ <br/>
+          <span class="text-[#07C1BE]">المسألة كيمياء هرمونات وليست مجرد حساب سعرات</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          إليك ما يحدث لهرمونات وميتابوليزم جسمك في الحالتين:
+        </p>
+      </div>
+
+      <!-- Side by Side Comparison Dashboard -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto text-right">
+        
+        <!-- Red Card: Traditional Restriction (800-1000 kcal) -->
+        <div class="p-7 sm:p-8 rounded-3xl bg-red-950/20 border-2 border-red-900/40 space-y-6 shadow-xl">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-red-400 bg-red-950/80 px-3.5 py-1 rounded-full border border-red-800">دايت الحرمان 800 - 1000 سعرة</span>
+            <span class="text-2xl">⚠️</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-white">انهيار كيمياء الحرق والميتابوليزم:</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون التوتر والكورتيزول (Cortisol)</span>
+                <span class="text-red-400 font-black">مرتفع جداً 95%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[95%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يحبس الدهون الحشوية العنيدة في البطن والخصر لمنع نزولها.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>كفاءة الغدة الدرقية والأيض (Metabolism)</span>
+                <span class="text-red-400 font-black">هبوط حاد 25%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[25%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يدخل الجسم في حالة مجاعة ودفاع مسبباً ثبات الوزن والتعب.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون الجوع والشره (Ghrelin)</span>
+                <span class="text-red-400 font-black">منفجر 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-red-500 h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-1">يؤدي لنوبات شراهة ليلية عارمة واسترجاع الوزن بزيادة مضاعفة.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-red-950/50 border border-red-900/60 text-center text-xs font-bold text-red-300">
+            النتيجة الحتمية: إحباط متكرر، بطء حرق دائم، واسترجاع أسرع للوزن
+          </div>
+        </div>
+
+        <!-- Teal Card: Saliim Satiating Chemistry (1800+ kcal) -->
+        <div class="p-7 sm:p-8 rounded-3xl bg-[#0E2530] border-2 border-[#07C1BE] space-y-6 shadow-2xl cyan-glow relative">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-slate-950 bg-[#07C1BE] px-3.5 py-1 rounded-full shadow-md">نظام سليم المشبع 1800+ سعرة</span>
+            <span class="text-2xl">🌿</span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-black text-white">تفعيل الحرق الطبيعي المستدام:</h3>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>حساسية الأنسولين (Insulin Sensitivity)</span>
+                <span class="text-[#07C1BE] font-black">مثالية ومستقرة 90%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[90%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">ثبات سكر الدم يفتح مخازن الدهون العنيدة للحرق اليومي المستمر.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>هرمون الشبع والامتلاء (Leptin)</span>
+                <span class="text-[#07C1BE] font-black">نشط ومتوازن 85%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[85%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">إشارات شبع واضحة من المخ دون أي صراع نفسي أو حرمان مع الأكل.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-300 mb-1.5">
+                <span>حرق الدهون أثناء النوم (Resting Metabolic Rate)</span>
+                <span class="text-[#07C1BE] font-black">مستمر وفعال 88%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-[#18746F] to-[#07C1BE] h-full w-[88%]"></div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-1">الكبد والعضلات تستمر في التخلص من الدهون على مدار 24 ساعة.</p>
+            </div>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-teal-950/60 border border-[#07C1BE]/40 text-center text-xs font-bold text-[#07C1BE]">
+            النتيجة العلمية: نزول دهون حقيقي وصحة ونشاط مستدامين مدى الحياة
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. SECTION: AI MEAL SCANNER (4.5s INTERACTIVE VIDEO DEMO) ==================== -->
+  <section id="app" class="py-16 sm:py-24 bg-[#0E2530] border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#132F3D] border border-[#07C1BE]/40 text-[#07C1BE] text-xs font-bold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-[#07C1BE] animate-pulse"></span>
+          <span>الذكاء الاصطناعي في تطبيق سليم (قريباً)</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          صوّر طبقك فقط.. <br/>
+          <span class="text-[#07C1BE]">ودع الذكاء الاصطناعي يحلل كيمياء الوجبة والشبع</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          وداعاً لوزن الطعام بالميزان أو حساب السعرات المعقد؛ التزامك أصبح أسهل وأذكى مما تتخيل:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center max-w-5xl mx-auto">
+        
+        <!-- Left Column: Interactive 3-Stage Arabic AI Scanner Video Player -->
+        <div class="lg:col-span-6 flex justify-center order-2 lg:order-1">
+          <div class="relative w-full max-w-[430px] rounded-3xl overflow-hidden border-2 border-[#07C1BE]/40 shadow-2xl cyan-glow bg-[#0A1B24] group">
+            
+            <!-- Video Mockup Header Bar -->
+            <div class="bg-[#08121D] px-4 py-2.5 border-b border-slate-800 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+                <span class="font-black text-white text-[11px] flex items-center gap-1.5">
+                  <span>فيديو توضيحي حي</span>
+                  <span class="text-[#07C1BE]">• ماسح سليم الذكي</span>
+                </span>
+              </div>
+              <div class="text-[10px] text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/30 font-bold">
+                عربي 100% • AI Vision
+              </div>
+            </div>
+
+            <!-- Video Simulation Screen (4.5s 3-Stage Cycle) -->
+            <div id="ai-video-player" class="relative overflow-hidden aspect-[4/5] bg-black select-none">
+              
+              <!-- Clean Background Photo (No English Text) -->
+              <img src="assets/ai_food_scanner_clean.jpg" alt="كاميرا فحص الوجبات بالذكاء الاصطناعي في تطبيق سليم" class="w-full h-full object-cover">
+
+              <!-- Top Real-time Video Progress Bar -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-slate-800/80 z-30">
+                <div id="scanner-video-progress" class="h-full bg-gradient-to-r from-[#18746F] to-[#07C1BE] w-0 transition-all duration-100 ease-linear"></div>
+              </div>
+
+              <!-- ================= STAGE 1: التصوير والمسح ================= -->
+              <div id="video-stage-1" class="video-stage absolute inset-0 z-20 transition-opacity duration-300 pointer-events-none">
+                <div class="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#07C1BE]"></div>
+                <div class="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#07C1BE]"></div>
+                <div class="absolute bottom-16 left-3 w-6 h-6 border-b-2 border-l-2 border-[#07C1BE]"></div>
+                <div class="absolute bottom-16 right-3 w-6 h-6 border-b-2 border-r-2 border-[#07C1BE]"></div>
+
+                <div class="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#07C1BE] to-transparent shadow-[0_0_20px_#07C1BE] scanner-laser-line"></div>
+
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 border border-[#07C1BE]/40 rounded-full flex items-center justify-center animate-pulse">
+                  <div class="w-2.5 h-2.5 rounded-full bg-[#07C1BE]"></div>
+                </div>
+
+                <div class="absolute top-4 right-4 z-20">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-2xl flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span class="text-xs font-black text-white">1. جاري تصوير ومسح الطبق...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ================= STAGE 2: بيانات الوجبة ================= -->
+              <div id="video-stage-2" class="video-stage absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 transition-opacity duration-300 hidden p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-xl">
+                    <span class="text-[10px] text-[#07C1BE] font-bold block">2. تحليل كيمياء الوجبة:</span>
+                    <h4 class="text-xs font-black text-white">سلمون مشوي + كينوا + أفوكادو</h4>
+                  </div>
+                  <span class="text-[10px] font-black bg-emerald-950 text-emerald-400 border border-emerald-500/40 px-2.5 py-1 rounded-lg">
+                    520 سعرة • 380 جم
+                  </span>
+                </div>
+
+                <div class="space-y-2 mb-14 text-right">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE]/80 p-3 rounded-xl shadow-xl">
+                    <div class="flex items-center justify-between text-xs font-black text-white mb-0.5">
+                      <span>مؤشر الشبع المتقدم (Satiety):</span>
+                      <span class="text-[#07C1BE] text-sm font-black">9.4 / 10</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300">يمنحك شبعاً هرمونياً مستقراً 5 ساعات متواصلة دون خمول بعد الأكل.</p>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-teal-500/60 p-2.5 rounded-xl shadow-xl flex items-center justify-between text-xs">
+                    <span class="text-slate-200 font-bold">استجابة الأنسولين:</span>
+                    <span class="text-emerald-400 font-black flex items-center gap-1">
+                      <i data-lucide="trending-down" class="w-3.5 h-3.5"></i>
+                      منخفضة جداً • مسار حرق الدهون مفتوح
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ================= STAGE 3: المكونات والنسب ================= -->
+              <div id="video-stage-3" class="video-stage absolute inset-0 bg-black/60 backdrop-blur-[3px] z-20 transition-opacity duration-300 hidden p-4 flex flex-col justify-between">
+                <div class="flex items-center justify-between">
+                  <div class="bg-[#0A1B24]/95 border border-[#07C1BE] px-3.5 py-1.5 rounded-xl text-right shadow-xl">
+                    <span class="text-[10px] text-[#07C1BE] font-bold block">3. المكونات والنسب الدقيقة:</span>
+                    <h4 class="text-xs font-black text-white">توزيع الماكروس الغذائية</h4>
+                  </div>
+                  <span class="text-[10px] font-black bg-[#07C1BE] text-slate-950 px-2.5 py-1 rounded-lg shadow-sm">
+                    معتمد صحياً ✓
+                  </span>
+                </div>
+
+                <div class="space-y-2 mb-14 text-right text-xs">
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>بروتين صافي (لبناء وصيانة العضلات)</span>
+                      <span class="text-emerald-400 font-black">38 جم (42%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-emerald-400 h-full w-[42%]"></div>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>دهون صحية (أوميغا 3 للكبد والمفاصل)</span>
+                      <span class="text-[#07C1BE] font-black">22 جم (35%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-[#07C1BE] h-full w-[35%]"></div>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#0A1B24]/95 border border-slate-700 p-2.5 rounded-xl">
+                    <div class="flex justify-between font-bold text-slate-200 mb-1">
+                      <span>كربوهيدرات معقدة (طاقة مستقرة)</span>
+                      <span class="text-amber-400 font-black">28 جم (23%)</span>
+                    </div>
+                    <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                      <div class="bg-amber-400 h-full w-[23%]"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Video Controls -->
+              <div class="absolute bottom-0 left-0 right-0 bg-[#08121D]/95 border-t border-slate-800 p-2.5 flex items-center justify-between text-[11px] text-slate-300 z-30">
+                <div class="flex items-center gap-2">
+                  <button type="button" onclick="toggleScannerVideoPlay()" id="scanner-play-btn" class="w-7 h-7 rounded-full bg-[#07C1BE] text-slate-950 flex items-center justify-center hover:scale-105 transition-all shadow-md cursor-pointer">
+                    <i data-lucide="pause" id="scanner-play-icon" class="w-3.5 h-3.5 fill-current"></i>
+                  </button>
+                  <div class="flex flex-col text-right">
+                    <span id="scanner-stage-label" class="font-bold text-white text-[11px]">1. تصوير ومسح الطبق</span>
+                    <span class="text-[9px] text-slate-400">الدورة: 4.5 ثوانٍ</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-1 text-[10px]">
+                  <button type="button" onclick="setScannerStage(1)" id="pill-stage-1" class="px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer">1. التصوير</button>
+                  <button type="button" onclick="setScannerStage(2)" id="pill-stage-2" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer">2. البيانات</button>
+                  <button type="button" onclick="setScannerStage(3)" id="pill-stage-3" class="px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer">3. النسب</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Column: Features & Waitlist -->
+        <div class="lg:col-span-6 space-y-5 text-right order-1 lg:order-2">
+          
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-[#07C1BE] uppercase tracking-wider block">تجربة متابعة ذكية في جيبك</span>
+            <h3 class="text-xl sm:text-2xl font-black text-white">تحليل فوري لأي وجبة في ثوانٍ</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              كاميرا تطبيق سليم تفحص مكونات طبقك، تقدر كمية البروتين والألياف، وتحدد تلقائياً تأثير الوجبة على هرمون الأنسولين وسرعة الحرق.
+            </p>
+          </div>
+
+          <div class="space-y-3 pt-1">
+            <div class="p-3.5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#07C1BE]/20 text-[#07C1BE] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="camera" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">التعرف على الأكلات العربية والمنزلية</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">مدرب ومخصص ليتعرف بدقة على الأطباق الخليجية والمصرية والمحلية ومطاعم السفر.</p>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-[#18746F]/30 text-[#07C1BE] flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="activity" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">مؤشر الشبع المتقدم (Satiety Index)</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">يخبرك فوراً إذا كانت الوجبة ستمنحك طاقة مستقرة أم ستسبب لك خمولاً بعد الأكل.</p>
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold flex-shrink-0">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-white">ربط مباشر مع فريق المتابعة</h4>
+                <p class="text-xs text-slate-400 mt-0.5 leading-relaxed">تصل الصور والبيانات لأخصائي التغذية ليقترح عليك البدائل الفورية إن كنت تأكل خارج المنزل.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Waitlist -->
+          <div class="pt-2">
+            <div class="bg-[#0A1B24] border border-[#1E4354] p-4 rounded-2xl shadow-lg">
+              <p class="text-xs text-slate-200 font-bold mb-2.5 flex items-center gap-2 justify-center lg:justify-start">
+                <i data-lucide="bell-ring" class="w-4 h-4 text-[#07C1BE]"></i>
+                <span>سجّل بريدك لنرسل لك إشعاراً ورابط التحميل فور إطلاق التطبيق:</span>
+              </p>
+              <form id="app-waitlist-form" onsubmit="handleAppWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-2">
+                <input type="email" id="waitlist_email" required placeholder="أدخل بريدك الإلكتروني..." class="flex-1 bg-[#0E2530] border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#07C1BE]">
+                <button type="submit" id="waitlist-btn" class="px-5 py-2.5 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-1.5 flex-shrink-0 cursor-pointer">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>أبلغني عند الإطلاق</span>
+                </button>
+              </form>
+              <div id="waitlist-success-msg" class="hidden text-xs text-emerald-400 font-bold mt-2.5 flex items-center gap-1.5 justify-center lg:justify-start bg-emerald-950/50 p-2.5 rounded-xl border border-emerald-500/30">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+                <span>تم تسجيل بريدك بنجاح! سنرسل لك إشعاراً ورابط التحميل فور إطلاقه.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. SECTION: THE GRAND SLAM OFFERS & PACKAGES ==================== -->
+  <section id="packages" class="py-16 sm:py-24 bg-[#0A1B24] text-white border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+        <div class="inline-block px-3.5 py-1 rounded-full bg-[#132F3D] text-[#07C1BE] border border-[#07C1BE]/40 text-xs font-black">
+          العروض والباقات المعتمدة
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          استثمر في صحتك وطاقتك مع منظومة سليم المتكاملة <br/>
+          <span class="text-[#07C1BE]">بدون أي تجديد تلقائي إجباري</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
+          خطط مصممة 100% لروتين حياتك وأكل بيتك، متابعة بشرية حقيقية، وضمان راحة تام.
+        </p>
+      </div>
+
+      <!-- Packages Grid: 2 Tiers -->
+      <div class="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8 text-right">
+        
+        <!-- 1. HEALTHY TIER ($69) -->
+        <div class="bg-[#0E2530] border border-slate-700 rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-[#18746F]/60 shadow-lg relative group">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">باقة الانطلاقة</span>
+              <span class="text-[11px] font-bold text-slate-400">HEALTHY KICKSTART</span>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-black text-white">التغذية والبداية الصحية</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                لمن يحتاج إلى خطة غذائية مرنة وواضحة من أكل بيته، ومتابعة منتظمة مع الفريق للبقاء على المسار الصحيح بدون تعقيد.
+              </p>
+            </div>
+
+            <div class="flex items-baseline gap-1.5 pt-3 border-t border-slate-800">
+              <span class="text-4xl font-black text-white">$69</span>
+              <span class="text-sm text-slate-400 font-medium">/ شهرياً</span>
+            </div>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 pt-3 border-t border-slate-800">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>خطة تغذية ونمط حياة مخصص 100% من أكل منزلك اليومي.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>5 تذاكر استفسارات شهرية لطرح أسئلتك على الأخصائي عبر الواتساب.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>4 متابعات شهرية منتظمة مع أخصائي التغذية والكوتش.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>مكالمة صوتية استشارية أسبوعية للتوجيه وضبط الالتزام.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>تقرير تقييم حالة وقياسات شامل كل 14 يوماً.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>وصول كامل لمميزات تطبيق سليم الذكي فور إطلاقه.</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openBookingModal('healthy', 'باقة Healthy', '$69/شهرياً')" class="w-full mt-8 py-3.5 px-5 bg-[#0E2530] hover:bg-slate-800 border border-slate-600 text-white font-black text-sm rounded-xl transition-all shadow-md cursor-pointer">
+            اشترك في باقة Healthy ($69)
+          </button>
+        </div>
+
+        <!-- 2. PRO TIER ($119) - FEATURED GRAND SLAM OFFER -->
+        <div class="bg-[#0E2530] text-white border-2 border-[#07C1BE] rounded-3xl p-7 sm:p-8 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-2 hover:-translate-y-4 hover:scale-[1.02] transition-all duration-300 cyan-glow group">
+          <!-- Ribbon -->
+          <div class="absolute -top-3.5 right-8 bg-[#07C1BE] text-slate-950 px-4 py-1 rounded-full font-black text-xs shadow-lg">
+            الأكثر طلباً • وفر أكثر من 380$ من القيمة الفعلية
+          </div>
+
+          <div class="space-y-5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black px-3 py-1 rounded-full bg-[#07C1BE]/20 text-[#07C1BE] border border-[#07C1BE]/40">المنظومة المتكاملة</span>
+              <span class="text-[11px] font-bold text-[#07C1BE]">PRO TRANSFORMATION</span>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-black text-white">التحول المتكامل: تغذية + كوتش + نمط حياة</h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                للأشخاص الذين يحتاجون إلى متابعة مكثفة وتواصل أسرع للتغلب على ثبات الوزن وتراكم دهون البطن وضبط مؤشرات الصحة والنشاط.
+              </p>
+            </div>
+
+            <div class="flex items-baseline gap-1.5 pt-3 border-t border-slate-700">
+              <span class="text-4xl font-black text-[#07C1BE]">$119</span>
+              <span class="text-sm text-slate-300 font-medium">/ شهرياً</span>
+              <span class="text-xs text-slate-400 line-through mr-2">بدلاً من 500$ قيمة حقيقية</span>
+            </div>
+
+            <ul class="space-y-3 text-xs sm:text-sm text-slate-200 pt-3 border-t border-slate-700">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span class="font-bold text-white">كل مميزات باقة Healthy بالكامل طوال الشهر.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span><strong>برنامج تدريب ولياقة مخصص</strong> مع الكوتش (منزلي أو جيم حسب وقتك).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span><strong>8 متابعات شهرية</strong> من أخصائي التغذية والمدرب الرياضي (مرتين أسبوعياً).</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>مكالمات صوتية تصل إلى 30 دقيقة أسبوعياً للمتابعة والتوجيه الدقيق.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span><strong>10 تذاكر استفسار مع أولوية الرد السريع</strong> لحل أي طارئ في المطاعم والعزومات.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-[#07C1BE] flex-shrink-0 mt-0.5"></i>
+                <span>تقرير تحليل مقاسات وتطور يصدر كل 7 أيام لمواكبة استجابة جسمك.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="gift" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
+                <span class="text-amber-300 font-bold">الحصول مجاناً على حزمة المكافآت الأربعة الاستثنائية.</span>
+              </li>
+            </ul>
+          </div>
+
+          <button onclick="openBookingModal('pro', 'باقة Pro المتقدمة', '$119/شهرياً')" class="w-full mt-8 py-3.5 px-5 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-sm rounded-xl shadow-lg shadow-[#07C1BE]/30 active:scale-95 transition-all cursor-pointer">
+            اشترك في باقة Pro المتقدمة ($119)
+          </button>
+        </div>
+
+      </div>
+
+      <!-- 3. DIRECT 1-ON-1 CONSULTATION OPTION WITH DR. AHMED EL-KHATEEB ($89) -->
+      <div id="consultancy" class="max-w-5xl mx-auto mt-10 p-6 sm:p-8 rounded-3xl bg-[#0E2530] border border-slate-700 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 text-right transition-all duration-300 hover:border-[#07C1BE]/50">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#132F3D] text-[#07C1BE] border border-[#07C1BE]/20 text-xs font-bold">
+            <i data-lucide="user-check" class="w-3.5 h-3.5 text-[#07C1BE]"></i>
+            <span>جلسة التوجيه المباشرة مع د. أحمد الخطيب</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black text-white">
+            حجز استشارة خاصة ومباشرة مع د. أحمد الخطيب (1:1)
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            جلسة فردية مباشرة لمدة 30 دقيقة مع د. أحمد الخطيب شخصياً لمراجعة روتينك الغذائي، فهم أسباب ثبات وزنك ومشاكل الهضم السابقة، ووضع خارطة طريق واضحة ومخصصة لنمط حياتك دون الحاجة لاشتراك شهري.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-400 font-medium">
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#07C1BE]"></i> مكالمة مباشرة 1:1 مع د. أحمد شخصياً</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#07C1BE]"></i> تحليل نمط الأكل والأخطاء السابقة</span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#07C1BE]"></i> تقرير توصيات مخصص بعد الجلسة</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:items-end gap-3 flex-shrink-0 w-full md:w-auto">
+          <div class="flex items-baseline gap-1.5">
+            <span class="text-4xl font-black text-white">$89</span>
+            <span class="text-xs text-slate-400 font-normal">/ استشارة واحدة</span>
+          </div>
+          <button onclick="openBookingModal('consultation_dr', 'استشارة خاصة مع د. أحمد الخطيب', '$89')" class="w-full md:w-auto px-7 py-3.5 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-xs sm:text-sm rounded-xl shadow-md transition-all cursor-pointer">
+            احجز استشارتك مع د. أحمد ($89)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 8. SECTION: THE 4 HIGH-VALUE BONUSES (VALUE STACK) ==================== -->
+  <section class="py-16 sm:py-20 bg-[#0E2530] border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container max-w-5xl">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+        <span class="text-xs font-black text-amber-400 bg-amber-950/70 border border-amber-500/40 px-3.5 py-1 rounded-full inline-block">
+          🎁 مكافآت مجانية مضمنة مع الاشتراك
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">
+          حزمة المكافآت التي تجعل اشتراكك خياراً بديهياً
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+          أدوات وأدلة عملية صممناها لحل أكبر المشكلات التي تواجه المشتركين خارج المنزل وفي السفر:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-right">
+        
+        <!-- Bonus 1 -->
+        <div class="p-5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-4">
+          <div class="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center justify-center font-black text-base flex-shrink-0">
+            01
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-white">دليل سليم لتناول الطعام بالمطاعم والعزومات</h4>
+              <span class="text-[10px] text-amber-400 bg-amber-950 px-2 py-0.5 rounded font-bold">قيمته 40$ • مجاناً</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              كيف تطلب أفضل الوجبات المشبعة من المطاعم والجمعات العائلية دون إفساد نزول وزنك أو الشعور بالحرمان.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bonus 2 -->
+        <div class="p-5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-4">
+          <div class="w-11 h-11 rounded-2xl bg-[#07C1BE]/10 text-[#07C1BE] border border-[#07C1BE]/30 flex items-center justify-center font-black text-base flex-shrink-0">
+            02
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-white">دليل التمارين المنزلية السريعة (15 دقيقة للمشغولين)</h4>
+              <span class="text-[10px] text-[#07C1BE] bg-teal-950 px-2 py-0.5 rounded font-bold">قيمته 35$ • مجاناً</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              حركات ذكية وفعالة بدون أوزان لرفع معدل الحرق وشد الجسم حتى في أضيق أوقات يومك.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bonus 3 -->
+        <div class="p-5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-4">
+          <div class="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-black text-base flex-shrink-0">
+            03
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-white">كتيب البدائل الذكية للحلويات والمخبوزات</h4>
+              <span class="text-[10px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded font-bold">قيمته 30$ • مجاناً</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              وصفات منزلية سريعة تشبع رغبة السكريات دون أن ترفع سكر الدم أو تسبب خمولاً أو تخزن دهوناً.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bonus 4 -->
+        <div class="p-5 rounded-2xl bg-[#0A1B24] border border-[#1E4354] flex items-start gap-4">
+          <div class="w-11 h-11 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/30 flex items-center justify-center font-black text-base flex-shrink-0">
+            04
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-white">أولوية الوصول المجاني لتطبيق سليم وماسح الوجبات</h4>
+              <span class="text-[10px] text-purple-400 bg-purple-950 px-2 py-0.5 rounded font-bold">قيمته 45$ • مجاناً</span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              تفعيل حسابك الفوري VIP مع إمكانية مسح الأطباق وتحليل كيمياء الوجبة فور الإطلاق الرسمي.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 9. SECTION: THE ZERO-RISK GUARANTEE ==================== -->
+  <section id="guarantee" class="py-16 sm:py-20 bg-[#0A1B24] border-b border-white/5 relative reveal-on-scroll">
+    <div class="responsive-container max-w-4xl">
+      <div class="p-8 sm:p-10 rounded-3xl bg-gradient-to-tr from-[#0E2530] via-[#132F3D] to-[#0E2530] border-2 border-[#07C1BE]/50 shadow-2xl cyan-glow text-center space-y-4">
+        
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-[#07C1BE]/10 border border-[#07C1BE]/30 text-[#07C1BE] flex items-center justify-center">
+          <i data-lucide="shield-check" class="w-8 h-8"></i>
+        </div>
+
+        <span class="text-xs font-black text-[#07C1BE] uppercase tracking-wider block">ضمان الراحة وسهولة الالتزام التام</span>
+
+        <h3 class="text-2xl sm:text-3xl font-black text-white">
+          ضمان سليم لمدة 14 يوماً: تصفير المخاطرة بالكامل
+        </h3>
+
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
+          التزم معنا ومع أخصائي التغذية والكوتش لأول 14 يوماً؛ إن لم تجد النظام مريحاً وسهلاً في التطبيق على روتين يومك وأكل بيتك دون أي تجويع أو حرمان، أو لم تشعر بخفة وطاقة أفضل في نشاطك اليومي.. نلتزم بإعادة تعديل وتصميم برنامجك بالكامل مع جلسة توجيه إضافية خاصة مجاناً لضمان رضاك ووصولك لراحتك التامة.
+        </p>
+
+        <div class="pt-2 flex items-center justify-center gap-2 text-xs font-bold text-emerald-400">
+          <i data-lucide="check-circle" class="w-4 h-4"></i>
+          <span>راحة بالك ورضاك عن البرنامج هو أولويتنا المطلقة دائماً</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 10. SECTION: ABOUT DR. AHMED ==================== -->
+  <section id="about" class="py-16 sm:py-24 bg-[#0E2530] border-b border-white/5">
+    <div class="responsive-container max-w-5xl">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-4 flex justify-center">
+          <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-[#07C1BE]/40 shadow-2xl bg-[#0A1B24]">
+            <img src="assets/dr_hero_cutout.webp" alt="د. أحمد الخطيب" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="md:col-span-8 space-y-4 text-right">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#132F3D] text-[#07C1BE] text-xs font-bold">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>منهج علمي وصحي موثق</span>
+          </div>
+
+          <h3 class="text-2xl font-black text-white">عن د. أحمد الخطيب ومؤسسة سليم</h3>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            صيدلاني، باحث، وصانع محتوى رائد متخصص في التغذية الصحية ونمط الحياة المتوازن. وثق أكثر من 9 ملايين متابع في أطروحاته العلمية المبسطة عبر منصات التواصل، بهدف إنهاء خرافات الدايت التجاري والتجويع غير العلمي.
+          </p>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            أسس منصة سليم لتكون منظومة متكاملة تدعم المشتركين في رحلتهم من خلال فريق معتمد من أخصائيي التغذية الصحية ومدربي اللياقة المعتمدين، لتحقيق نتائج مستدامة ترافقهم مدى الحياة.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 11. SECTION: DIRECT-RESPONSE FAQS ==================== -->
+  <section id="faq" class="py-16 sm:py-24 bg-[#0A1B24] border-b border-white/5 reveal-on-scroll">
+    <div class="responsive-container max-w-4xl">
+      
+      <div class="text-center mb-12 space-y-2">
+        <span class="text-xs font-bold text-[#07C1BE] uppercase tracking-wider">إجابات شفافة ومباشرة</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">الأسئلة الأكثر شيوعاً</h2>
+      </div>
+
+      <div class="space-y-3.5 text-right">
+        
+        <div class="p-5 rounded-2xl bg-[#0E2530] border border-slate-700/80">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+            <span>هل سأضطر لتناول وجبات منفصلة عن أكل أسرتي أو طهي خاص؟</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#07C1BE] transition-transform"></i>
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed hidden">
+            إطلاقاً. فلسفة سليم تقوم على أن الدايت الذي يفصلك عن أكل بيتك وعائلتك هو دايت فاشل حتماً. نعلّمك كيف تأكل من نفس طعام البيت (اللحوم، الدواجن، الخضار، الأرز، والخبز) بكميات وتوليفات ذكية تشبعك وتساعد جسمك على الاستمرار في الحرق.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#0E2530] border border-slate-700/80">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+            <span>هل البرنامج مناسب لمن يعاني من مقاومة الإنسولين أو ثبات الوزن؟</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#07C1BE] transition-transform"></i>
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed hidden">
+            نعم، هذه هي الفئة الأكثر استفادة من منهج سليم. لأن مقاومة الإنسولين وثبات الوزن لا يُحلان بالتجويع وتقليل السعرات، بل بضبط أوقات وتوليفة المغذيات وتخفيض هرمون الكورتيزول لفتح مخازن الدهون للحرق بأمان.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#0E2530] border border-slate-700/80">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+            <span>هل أحتاج للذهاب إلى الجيم أو شراء أجهزة تدريب باهظة؟</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#07C1BE] transition-transform"></i>
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed hidden">
+            لا، برنامج الكوتش الرياضي مصمم ليتكيف مع ظروفك. إن كنت تفضل التمارين المنزلية، يتم تصميم جدول تمارين بوزن الجسم فقط لمدة 15 إلى 20 دقيقة، وإن كنت تفضل الجيم، يتم تصميم جدول أجهزة متدرج يناسب وقتك.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#0E2530] border border-slate-700/80">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+            <span>أنا مقيم خارج مصر / في الخليج أو أوروبا، هل يمكنني الاشتراك؟</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#07C1BE] transition-transform"></i>
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed hidden">
+            بالتأكيد. أكثر من 65% من مشتركي سليم مقيمون في المملكة العربية السعودية، الإمارات، الكويت، قطر، وباقي دول العالم. يتم ضبط مواعيد المكالمات حسب فارق التوقيت في بلدك، وتتوفر وسائل دفع إلكترونية آمنة وسهلة.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-[#0E2530] border border-slate-700/80">
+          <h4 class="text-sm sm:text-base font-bold text-white flex items-center justify-between cursor-pointer" onclick="toggleFaq(this)">
+            <span>هل هناك أي تجديد تلقائي أو سحب إجباري من بطاقتي؟</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[#07C1BE] transition-transform"></i>
+          </h4>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2.5 leading-relaxed hidden">
+            لا يوجد أي تجديد تلقائي إطلاقاً. أنت من يقرر تجديد اشتراكك بنفسك بعد نهاية الشهر، ولا يتم خصم أي مبالغ إضافية من بطاقتك أبداً.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 12. FOOTER ==================== -->
+  <footer class="py-12 bg-[#08121D] border-t border-slate-800 text-center text-xs text-slate-500">
+    <div class="responsive-container space-y-4">
+      <div class="flex items-center justify-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#18746F] to-[#07C1BE] text-slate-950 font-black text-sm flex items-center justify-center">
+          س
+        </div>
+        <span class="font-black text-base text-white">منصة سليم (Saliim)</span>
+      </div>
+      <p class="text-slate-400 max-w-xl mx-auto">
+        خدمات استشارات وتوجيه نمط حياة وتغذية صحية يقدمها د. أحمد الخطيب وفريقه المعتمد من أخصائيي التغذية والمدربين الرياضيين.
+      </p>
+      <div class="pt-2 text-slate-500">
+        جميع الحقوق محفوظة &copy; <span id="year">2026</span> • منصة سليم - د. أحمد الخطيب
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== BOOKING MODAL ==================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-[#0E2530] border border-[#1E4354] rounded-3xl p-6 sm:p-8 max-w-md w-full text-right shadow-2xl relative">
+      
+      <button onclick="closeBookingModal()" class="absolute top-4 left-4 text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-5">
+        <span class="text-[11px] font-bold text-[#07C1BE] bg-teal-950 px-3 py-0.5 rounded-full border border-[#07C1BE]/30">حجز مؤكد فوري</span>
+        <h3 class="text-xl font-black text-white mt-1.5" id="modal-title">
+          الاشتراك في باقة سليم
+        </h3>
+        <p class="text-xs text-slate-300 mt-1">
+          أدخل بياناتك وسيتم تسجيلك فوراً ونقلك لاستكمال ملفك وحجز مواعيدك.
+        </p>
+      </div>
+
+      <form onsubmit="handleBookingSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">الاسم بالكامل</label>
+          <input type="text" id="client_name" required placeholder="مثال: عبد الله أحمد" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#07C1BE]">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">رقم الواتساب (مع رمز الدولة)</label>
+          <input type="tel" id="client_phone" required dir="ltr" placeholder="+966 50 000 0000" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-[#07C1BE] text-left">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-bold mb-1.5">الباقة المختارة</label>
+          <select id="package_select" onchange="syncPackagePrice(this.value)" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#07C1BE]">
+            <option value="healthy">باقة Healthy - $69 شهرياً</option>
+            <option value="pro" selected>باقة Pro المتقدمة - $119 شهرياً (الأكثر طلباً)</option>
+            <option value="consultation_dr">استشارة خاصة مع د. أحمد الخطيب - $89</option>
+          </select>
+        </div>
+
+        <div class="p-3 bg-[#0A1B24] rounded-xl border border-slate-700 flex items-center justify-between">
+          <span class="text-xs text-slate-300">قيمة الاشتراك:</span>
+          <span class="text-base font-black text-[#07C1BE]" id="summary_price">$119</span>
+        </div>
+
+        <button type="submit" id="submit-btn" class="w-full py-3.5 px-4 bg-[#07C1BE] hover:bg-[#05A8A5] text-slate-950 font-black text-sm rounded-xl shadow-lg transition-all cursor-pointer">
+          تأكيد البيانات والانتقال لحجز المواعيد
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPT ENGINE ==================== -->
+  <script>
+    // 1. Package Sync
+    const PACKAGE_PRICES = {
+      'healthy': '$69/شهرياً',
+      'pro': '$119/شهرياً',
+      'consultation_dr': '$89'
+    };
+
+    function openBookingModal(pkgKey = 'pro', pkgTitle = 'باقة Pro المتقدمة', priceText = '$119/شهرياً') {
+      const modal = document.getElementById('booking-modal');
+      const select = document.getElementById('package_select');
+      const titleEl = document.getElementById('modal-title');
+      const priceEl = document.getElementById('summary_price');
+      
+      if (select && pkgKey && select.querySelector(`option[value="${pkgKey}"]`)) {
+        select.value = pkgKey;
+      }
+      if (titleEl && pkgTitle) titleEl.innerText = pkgTitle;
+      if (priceEl && priceText) priceEl.innerText = priceText;
+
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('booking-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function syncPackagePrice(val) {
+      const priceEl = document.getElementById('summary_price');
+      if (priceEl && PACKAGE_PRICES[val]) {
+        priceEl.innerText = PACKAGE_PRICES[val];
+      }
+    }
+
+    // 2. Booking Submission
+    const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submit-btn');
+      const name = document.getElementById('client_name').value.trim();
+      const phone = document.getElementById('client_phone').value.trim();
+      const pkgSelect = document.getElementById('package_select');
+      const pkgName = pkgSelect.options[pkgSelect.selectedIndex].text;
+      const priceText = document.getElementById('summary_price').innerText;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `جاري التأكيد...`;
+
+      try {
+        fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            form_type: "طلب اشتراك صفحة الهبوط الجديدة (Grand Slam)",
+            package: pkgName,
+            price: priceText,
+            client_name: name,
+            client_phone: phone,
+            submitted_at: new Date().toISOString()
+          })
+        });
+      } catch(err) { console.log(err); }
+
+      setTimeout(() => {
+        const params = new URLSearchParams({
+          name: name,
+          phone: phone,
+          pkg: pkgName
+        });
+        window.location.href = `onboarding-v2.html?${params.toString()}`;
+      }, 600);
+    }
+
+    // 3. AI Scanner 4.5s 3-Stage Video Engine
+    let scannerCurrentStage = 1;
+    let scannerIsPlaying = true;
+    let scannerStartTime = Date.now();
+    const SCANNER_TOTAL_DURATION = 4500;
+
+    function updateScannerVideoLoop() {
+      if (!scannerIsPlaying) {
+        requestAnimationFrame(updateScannerVideoLoop);
+        return;
+      }
+
+      const elapsed = (Date.now() - scannerStartTime) % SCANNER_TOTAL_DURATION;
+      const progressPercent = (elapsed / SCANNER_TOTAL_DURATION) * 100;
+      
+      const progressBar = document.getElementById('scanner-video-progress');
+      if (progressBar) progressBar.style.width = progressPercent + '%';
+
+      let targetStage = 1;
+      if (elapsed >= 1500 && elapsed < 3000) {
+        targetStage = 2;
+      } else if (elapsed >= 3000) {
+        targetStage = 3;
+      }
+
+      if (targetStage !== scannerCurrentStage) {
+        applyScannerStageUI(targetStage);
+      }
+
+      requestAnimationFrame(updateScannerVideoLoop);
+    }
+
+    function applyScannerStageUI(stage) {
+      scannerCurrentStage = stage;
+
+      const s1 = document.getElementById('video-stage-1');
+      const s2 = document.getElementById('video-stage-2');
+      const s3 = document.getElementById('video-stage-3');
+      const label = document.getElementById('scanner-stage-label');
+
+      const p1 = document.getElementById('pill-stage-1');
+      const p2 = document.getElementById('pill-stage-2');
+      const p3 = document.getElementById('pill-stage-3');
+
+      if (!s1 || !s2 || !s3) return;
+
+      s1.classList.add('hidden');
+      s2.classList.add('hidden');
+      s3.classList.add('hidden');
+
+      [p1, p2, p3].forEach(p => {
+        if (p) p.className = 'px-2 py-0.5 rounded border border-slate-700 bg-slate-800 text-slate-400 font-bold transition-all cursor-pointer';
+      });
+
+      if (stage === 1) {
+        s1.classList.remove('hidden');
+        if (label) label.innerText = '1. تصوير ومسح الطبق';
+        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      } else if (stage === 2) {
+        s2.classList.remove('hidden');
+        if (label) label.innerText = '2. تشخيص كيمياء الوجبة';
+        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      } else if (stage === 3) {
+        s3.classList.remove('hidden');
+        if (label) label.innerText = '3. المكونات والنسب الدقيقة';
+        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+      }
+
+      lucide.createIcons();
+    }
+
+    function setScannerStage(stage) {
+      applyScannerStageUI(stage);
+      if (stage === 1) scannerStartTime = Date.now();
+      else if (stage === 2) scannerStartTime = Date.now() - 1500;
+      else if (stage === 3) scannerStartTime = Date.now() - 3000;
+    }
+
+    function toggleScannerVideoPlay() {
+      scannerIsPlaying = !scannerIsPlaying;
+      const icon = document.getElementById('scanner-play-icon');
+      if (icon) {
+        icon.setAttribute('data-lucide', scannerIsPlaying ? 'pause' : 'play');
+        lucide.createIcons();
+      }
+      if (scannerIsPlaying) {
+        if (scannerCurrentStage === 1) scannerStartTime = Date.now();
+        else if (scannerCurrentStage === 2) scannerStartTime = Date.now() - 1500;
+        else if (scannerCurrentStage === 3) scannerStartTime = Date.now() - 3000;
+      }
+    }
+
+    // 4. Waitlist Form
+    function handleAppWaitlistSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('waitlist_email');
+      const btn = document.getElementById('waitlist-btn');
+      const msg = document.getElementById('waitlist-success-msg');
+      const email = input.value.trim();
+      if (!email) return;
+
+      btn.disabled = true;
+      btn.innerHTML = `جاري التسجيل...`;
+
+      try {
+        fetch(GOOGLE_SHEETS_WEBAPP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            form_type: "قائمة انتظار تطبيق سليم (Email Waitlist)",
+            client_email: email,
+            submitted_at: new Date().toISOString()
+          })
+        });
+      } catch(err) {}
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `تم التسجيل ✓`;
+        input.value = '';
+        msg.classList.remove('hidden');
+        lucide.createIcons();
+      }, 600);
+    }
+
+    // 5. FAQ Accordion
+    function toggleFaq(headerEl) {
+      const p = headerEl.nextElementSibling;
+      const icon = headerEl.querySelector('i');
+      if (p.classList.contains('hidden')) {
+        p.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+      } else {
+        p.classList.add('hidden');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Init Lucide and Observers
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      requestAnimationFrame(updateScannerVideoLoop);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+    });
+  </script>
+</body>
+</html>

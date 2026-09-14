@@ -12,6 +12,21 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ahmedelkhateeb.com">
 
+  <link rel="canonical" href="https://ahmedelkhateeb.com/">
+  <meta property="og:image" content="https://ahmedelkhateeb.com/assets/dr_hero_cutout.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dr. Ahmed El-Khateeb",
+    "alternateName": "د. أحمد الخطيب",
+    "url": "https://ahmedelkhateeb.com",
+    "image": "https://ahmedelkhateeb.com/assets/dr_hero_cutout.webp",
+    "jobTitle": "Doctor of Pharmacy & Clinical Nutrition Consultant",
+    "description": "استشاري التغذية العلاجية ونمط الحياة الصحي ومؤسس منصة سليم"
+  }
+  </script>
+
   <!-- Google Fonts: IBM Plex Sans Arabic & Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2164,6 +2179,15 @@
       const submitBtn = document.getElementById('submit-btn');
       const name = document.getElementById('client_name').value.trim();
       const phone = document.getElementById('client_phone').value.trim();
+
+      // International Phone Validation (digits only >= 8 chars)
+      const cleanPhone = phone.replace(/[^\d+]/g, '');
+      const phoneRegex = /^(\+?\d{8,16})$/;
+      if (!phoneRegex.test(cleanPhone)) {
+        alert("يرجى إدخال رقم واتساب صحيح يبدأ برمز الدولة (مثال: +966500000000 أو +201000000000)");
+        document.getElementById('client_phone').focus();
+        return;
+      }
       const pkgSelect = document.getElementById('package_select');
       const pkgName = pkgSelect.options[pkgSelect.selectedIndex].text;
       const priceText = document.getElementById('summary_price').innerText;
@@ -2181,16 +2205,13 @@
         <span>جاري تأكيد بياناتك وتحويلك لبوابة الدفع...</span>
       `;
 
-      // Record lead in Google Sheets
-      sendDataToGoogleSheets({
-        form_type: "طلب اشتراك من المنصة الرئيسية",
-        package: pkgName,
-        price: priceText,
-        client_name: name,
-        client_phone: phone,
-        client_goal: goal,
-        submitted_at: new Date().toISOString()
-      });
+      // Save lead details locally so Onboarding submits ONE comprehensive row in Google Sheets
+      try {
+        sessionStorage.setItem('saliim_lead_name', name);
+        sessionStorage.setItem('saliim_lead_phone', phone);
+        sessionStorage.setItem('saliim_lead_goal', goal);
+        sessionStorage.setItem('saliim_lead_pkg', pkgName);
+      } catch(e) {}
 
       // Redirect after slight delay for UX
       setTimeout(() => {
@@ -2207,6 +2228,7 @@
           const params = new URLSearchParams({
             name: name,
             phone: phone,
+            goal: goal,
             pkg: pkgKey,
             package: pkgKey,
             price: priceText

@@ -6,6 +6,9 @@
   <title>بوابة استقبال وتفعيل المشتركين VIP | منصة سليم - د. أحمد الخطيب</title>
   <meta name="description" content="البوابة الرسمية لاستقبال المشتركين الجدد في برامج سليم مع د. أحمد الخطيب. تسجيل الملف الطبي وحجز جلسات التغذية والتدريب.">
 
+  <link rel="canonical" href="https://ahmedelkhateeb.com/onboarding-v2">
+  <meta property="og:image" content="https://ahmedelkhateeb.com/assets/dr_hero_cutout.webp">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -293,7 +296,7 @@
               <div class="grid grid-cols-2 gap-3">
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_age">السن (بالسنوات) <span class="text-rose-400">*</span></label>
-                  <input type="number" id="client_age" required min="12" max="95" placeholder="35" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
+                  <input type="number" id="client_age" required min="18" max="95" placeholder="35" class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500">
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_gender">الجنس <span class="text-rose-400">*</span></label>
@@ -984,11 +987,27 @@
       sessionStorage.removeItem('saliim_coach_time');
 
       
-      // Read incoming parameters (from checkout or home page)
+      // Read incoming parameters and auto-fill ALL previous user inputs
       const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.has('name')) document.getElementById('client_name').value = urlParams.get('name');
-      if (urlParams.has('phone')) document.getElementById('client_phone').value = urlParams.get('phone');
-      if (urlParams.has('email')) document.getElementById('client_email').value = urlParams.get('email');
+      const prevName = urlParams.get('name') || sessionStorage.getItem('saliim_lead_name') || localStorage.getItem('saliim_user_name') || '';
+      const prevPhone = urlParams.get('phone') || sessionStorage.getItem('saliim_lead_phone') || localStorage.getItem('saliim_user_phone') || '';
+      const prevEmail = urlParams.get('email') || sessionStorage.getItem('saliim_lead_email') || localStorage.getItem('saliim_user_email') || '';
+      const prevGoal = urlParams.get('goal') || sessionStorage.getItem('saliim_lead_goal') || '';
+
+      if (prevName && document.getElementById('client_name')) document.getElementById('client_name').value = prevName;
+      if (prevPhone && document.getElementById('client_phone')) document.getElementById('client_phone').value = prevPhone;
+      if (prevEmail && document.getElementById('client_email')) document.getElementById('client_email').value = prevEmail;
+
+      if (prevGoal && document.getElementById('client_goal')) {
+        const goalEl = document.getElementById('client_goal');
+        for (let i = 0; i < goalEl.options.length; i++) {
+          if (goalEl.options[i].text.includes(prevGoal) || prevGoal.includes(goalEl.options[i].value)) {
+            goalEl.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
       if (urlParams.has('lang') && urlParams.get('lang') === 'en') {
         setLanguage('en');
       }
@@ -1231,6 +1250,22 @@
       e.preventDefault();
       const btn = document.getElementById('step-1-btn');
 
+      const rawPhone = document.getElementById('client_phone').value.trim();
+      const cleanPhone = rawPhone.replace(/[^\d+]/g, '');
+      const phoneRegex = /^(\+?\d{8,16})$/;
+      if (!phoneRegex.test(cleanPhone)) {
+        alert(currentLang === 'ar' ? 'يرجى إدخال رقم واتساب صحيح يبدأ برمز الدولة (مثال: +966500000000)' : 'Please enter a valid phone number with country code (e.g. +966500000000)');
+        document.getElementById('client_phone').focus();
+        return;
+      }
+
+      // Save for auto-fill in browser storage
+      try {
+        localStorage.setItem('saliim_user_name', document.getElementById('client_name').value.trim());
+        localStorage.setItem('saliim_user_phone', rawPhone);
+        localStorage.setItem('saliim_user_email', document.getElementById('client_email').value.trim());
+      } catch(err) {}
+
       // Fresh unique prestigious code
       const freshCode = generateNewClientCode();
       sessionStorage.setItem('saliim_active_code', freshCode);
@@ -1338,8 +1373,10 @@
       const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
       if (!clientCode) return;
 
+      // Update existing record with appointments
       const payload = {
         action: 'update_appointments',
+        client_id: clientCode,
         client_code: clientCode,
         nutrition_slot: clientProfile.nutrition_slot,
         coach_slot: clientProfile.coach_slot
@@ -1378,28 +1415,45 @@
       url.searchParams.set('embed_domain', window.location.host || 'ahmedelkhateeb.com');
       url.searchParams.set('embed_type', 'Inline');
 
-      if (clientProfile.name) {
-        const displayName = clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name;
+      const clientName = clientProfile.name || document.getElementById('client_name')?.value?.trim();
+      const clientEmail = clientProfile.email || document.getElementById('client_email')?.value?.trim();
+      const clientPhone = clientProfile.phone || document.getElementById('client_phone')?.value?.trim();
+      const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
+
+      if (clientName) {
+        const displayName = clientCode ? `${clientName} (${clientCode})` : clientName;
         url.searchParams.set('name', displayName);
       }
-      if (clientProfile.email) url.searchParams.set('email', clientProfile.email);
-      if (clientProfile.phone) url.searchParams.set('a1', clientProfile.phone);
+      if (clientEmail) url.searchParams.set('email', clientEmail);
+      if (clientPhone) {
+        url.searchParams.set('a1', clientPhone);
+        url.searchParams.set('phone', clientPhone);
+      }
 
       return url.toString();
     }
 
-    function initNutritionCalendly() {
+    function initNutritionCalendly(forceReload = false) {
       const container = document.getElementById('calendly-nutrition-container');
       if (!container) return;
-      if (nutritionWidgetLoaded && container.querySelector('iframe')) return;
+      if (!forceReload && nutritionWidgetLoaded && container.querySelector('iframe')) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_NUTRITION_URL, '07c1be');
       container.innerHTML = '';
 
+      const prefillData = {
+        name: clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name,
+        email: clientProfile.email || '',
+        customAnswers: {
+          a1: clientProfile.phone || ''
+        }
+      };
+
       if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
         window.Calendly.initInlineWidget({
           url: fullUrl,
-          parentElement: container
+          parentElement: container,
+          prefill: prefillData
         });
         nutritionWidgetLoaded = true;
       } else {
@@ -1417,18 +1471,27 @@
       }
     }
 
-    function initCoachCalendly() {
-      if (coachWidgetLoaded) return;
+    function initCoachCalendly(forceReload = false) {
       const container = document.getElementById('calendly-coach-container');
       if (!container) return;
+      if (!forceReload && coachWidgetLoaded && container.querySelector('iframe')) return;
 
       const fullUrl = buildCalendlyUrl(CALENDLY_COACH_URL, '07c1be');
       container.innerHTML = '';
 
+      const prefillData = {
+        name: clientProfile.client_code ? `${clientProfile.name} (${clientProfile.client_code})` : clientProfile.name,
+        email: clientProfile.email || '',
+        customAnswers: {
+          a1: clientProfile.phone || ''
+        }
+      };
+
       if (window.Calendly && typeof window.Calendly.initInlineWidget === 'function') {
         window.Calendly.initInlineWidget({
           url: fullUrl,
-          parentElement: container
+          parentElement: container,
+          prefill: prefillData
         });
       } else {
         container.innerHTML = `
@@ -1580,11 +1643,11 @@
 
       // Step specific setups
       if (step === 2) {
-        initNutritionCalendly();
+        initNutritionCalendly(true);
         document.getElementById('summary-client-name').innerText = (clientProfile.name || 'المشترك') + (clientProfile.client_code ? ` [${clientProfile.client_code}]` : '');
         document.getElementById('summary-client-phone').innerText = clientProfile.phone || '';
       } else if (step === 3) {
-        initCoachCalendly();
+        initCoachCalendly(true);
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || (currentLang === 'ar' ? 'عزيزي المشترك' : 'Valued Client');
         

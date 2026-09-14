@@ -131,6 +131,23 @@
       text-decoration: line-through;
     }
   </style>
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "بوابة استقبال المشتركين VIP | منصة سليم - د. أحمد الخطيب",
+    "url": "https://ahmedelkhateeb.com/onboarding-v2.html",
+    "description": "استكمال البيانات الصحية وحجز مواعيد استشارات التغذية والتدريب الرياضي في منصة سليم.",
+    "publisher": {
+      "@type": "Person",
+      "name": "Dr. Ahmed El-Khateeb",
+      "jobTitle": "Doctor of Pharmacy & Clinical Nutrition Consultant",
+      "url": "https://ahmedelkhateeb.com"
+    }
+  }
+  </script>
+
 </head>
 <body class="bg-grid-pattern flex flex-col justify-between">
 
@@ -328,6 +345,7 @@
               <div class="sm:col-span-2">
                 <label class="block text-xs font-bold text-slate-300 mb-1.5" data-i18n="lbl_package">الباقة المختارة <span class="text-rose-400">*</span></label>
                 <select id="client_package" required class="w-full bg-[#0A1B24] border border-slate-700 rounded-xl px-4 py-3 text-sm text-white">
+                  <option value="" disabled selected data-i18n="opt_select_pkg">اختر الباقة المناسبة</option>
                   <option value="باقة Healthy ($69)" data-i18n="pkg_healthy">باقة Healthy ($69 شهرياً)</option>
                   <option value="باقة Pro ($119)" data-i18n="pkg_pro">باقة Pro المتقدمة ($119 شهرياً)</option>
                   <option value="استشارة خاصة مع د. أحمد الخطيب ($89)" data-i18n="pkg_consultation">استشارة خاصة مع د. أحمد الخطيب ($89)</option>
@@ -718,6 +736,7 @@
         lbl_weight: "الوزن الحالي",
         lbl_target_weight: "المستهدف",
         lbl_package: "الباقة المختارة",
+        opt_select_pkg: "اختر الباقة المناسبة",
         pkg_healthy: "باقة Healthy ($69 شهرياً)",
         pkg_pro: "باقة Pro المتقدمة ($119 شهرياً)",
         pkg_consultation: "استشارة خاصة مع د. أحمد الخطيب ($89)",
@@ -825,6 +844,7 @@
         lbl_weight: "Current Weight (kg)",
         lbl_target_weight: "Target Weight (kg)",
         lbl_package: "Selected Package",
+        opt_select_pkg: "Select Suitable Package",
         pkg_healthy: "Healthy Package ($69/mo)",
         pkg_pro: "Pro Advanced Package ($119/mo)",
         pkg_consultation: "Private Consultation with Dr. Ahmed El-Khateeb ($89)",
@@ -1721,5 +1741,103 @@
       setTimeout(() => alert.remove(), 3500);
     }
   </script>
+
+  <!-- ==================== 11. LEGAL MODALS (Privacy, Terms, Medical, Refund) ==================== -->
+  <div id="legal-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-end sm:items-center justify-center p-0 sm:p-4 hidden transition-opacity duration-300">
+    <div class="bg-[#0E2530] border-t sm:border border-[#18746F]/40 rounded-t-[32px] sm:rounded-3xl max-w-lg w-full p-6 sm:p-8 text-right shadow-2xl relative max-h-[88vh] overflow-y-auto">
+      <button onclick="closeLegalModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white p-2 rounded-full bg-slate-800 transition-colors">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Privacy -->
+      <div id="legal-content-privacy" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">سياسة الخصوصية</span>
+          <h3 class="text-lg font-black text-white mt-1.5">حماية وسرية بيانات المشتركين</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. البيانات التي نجمعها</h5>
+            <p class="text-slate-400 text-[11px]">بيانات الاتصال (الاسم، الواتساب، البريد) والبيانات البدنية والصحية لغرض تصميم الخطة الغذائية والتدريبية ومتابعة التقدم فقط.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. أمن وسرية المعلومات</h5>
+            <p class="text-slate-400 text-[11px]">نلتزم بأعلى معايير السرية الرقمية. لا يتم بيع أو مشاركة بياناتك إطلاقاً مع أي طرف ثالث تجاري أو إعلاني تحت أي ظرف.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">3. تخزين البيانات</h5>
+            <p class="text-slate-400 text-[11px]">تحفظ ملفات المشتركين وسجلات المتابعة في بيئة سحابية مشفرة ومحمية لا يطلع عليها سوى الفريق المشرف على خطتك.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <div id="legal-content-terms" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">الشروط والأحكام</span>
+          <h3 class="text-lg font-black text-white mt-1.5">اتفاقية الاشتراك والخدمة</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. طبيعة الخدمة</h5>
+            <p class="text-slate-400 text-[11px]">الاشتراك يشمل التقييم الغذائي، وضع الخطة الرياضية والغذائية المخصصة، والمتابعة عبر المنصة والواتساب حسب مزايا الباقة المختارة.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. التزام المشترك</h5>
+            <p class="text-slate-400 text-[11px]">النتائج ترتبط مباشرة بمدى التزام المشترك بالخطة المعتمدة وتقديم البيانات الدقيقة والصادقة في استمارة التسجيل والمتابعات الدورية.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">3. مواعيد الجلسات</h5>
+            <p class="text-slate-400 text-[11px]">يتم حجز الجلسات الاستشارية عبر نظام المواعيد المعتمد، ويمكن إعادة جدولة الموعد قبل 24 ساعة على الأقل من وقته المحدد.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical Disclaimer -->
+      <div id="legal-content-medical" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-amber-500 bg-amber-950/60 px-2.5 py-0.5 rounded-full border border-amber-500/30">تنويه وإخلاء مسؤولية</span>
+          <h3 class="text-lg font-black text-white mt-1.5">إخلاء المسؤولية الصحية والغذائية</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-amber-500/20">
+            <p class="text-slate-300 text-[11px] leading-relaxed">
+              جميع البرامج والإرشادات المقدمة في منصة سليم هي توجيهات واستشارات تغذية ونمط حياة صحي ولياقة بدنية عامة، وتهدف لدعم صحتك وتحسين عاداتك اليومية.
+            </p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              هذه البرامج ليست بديلاً عن الفحص الطبي السريري أو العلاج الدوائي المباشر لأي حالة مرضية حادة، ويجب على أي شخص يعاني من أمراض مزمنة أو يتناول علاجات مستمرة استشارة طبيبه المعالج قبل البدء بأي نظام غذائي أو تدريبي مكثف.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refund Policy -->
+      <div id="legal-content-refund" class="hidden space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-[10px] font-bold text-[#18746F] bg-teal-950/60 px-2.5 py-0.5 rounded-full border border-[#18746F]/30">سياسة الاسترجاع</span>
+          <h3 class="text-lg font-black text-white mt-1.5">سياسة الإلغاء واسترداد الرسوم</h3>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">1. قبل بدء إعداد الخطة</h5>
+            <p class="text-slate-400 text-[11px]">يحق للعميل طلب استرداد الرسوم بنسبة 100% خلال 24 ساعة من الدفع وقبل عقد الجلسة الاستشارية الأولى أو تسليم الخطة المخصصة.</p>
+          </div>
+          <div class="p-3 bg-[#132F3D] rounded-xl border border-slate-800">
+            <h5 class="font-bold text-white mb-1">2. بعد تسليم الخطة أو انعقاد الجلسة</h5>
+            <p class="text-slate-400 text-[11px]">نظراً لأن الخطط والاستشارات مخصصة فردياً ويتم بذل جهد واستشارات مسبقة لها، فإن الرسوم غير قابلة للاسترداد بعد تسليم الخطة أو إتمام الجلسة الاستشارية.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-800 text-center">
+        <button onclick="closeLegalModal()" class="px-6 py-2 rounded-xl bg-[#18746F] hover:bg-[#135E5A] text-white text-xs font-bold transition-all">
+          فهمت ذلك، إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

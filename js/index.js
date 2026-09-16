@@ -5,7 +5,7 @@
 lucide.createIcons();
 
     // 1. Google Sheets Integration Webhook
-    const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
+    const GOOGLE_SHEETS_WEBAPP_URL = "/api/submit-lead";
 
     function sendDataToGoogleSheets(payload) {
       if (!GOOGLE_SHEETS_WEBAPP_URL) return;

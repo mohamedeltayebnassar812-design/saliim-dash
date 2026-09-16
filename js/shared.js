@@ -4,7 +4,7 @@
  */
 
 // Google Sheets Unified Webhook URL
-window.GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
+window.GOOGLE_SHEETS_WEBAPP_URL = "/api/submit-lead";
 
 // ==========================================================
 // 1. LEGAL MODALS CONTROLS (Privacy, Terms, Medical, Refund)

@@ -448,33 +448,52 @@ lucide.createIcons();
         sessionStorage.setItem('saliim_lead_pkg', pkgName);
       } catch(e) {}
 
-      // Redirect after slight delay for UX
-      setTimeout(() => {
-        if (CHECKOUT_REDIRECT_URL && !CHECKOUT_REDIRECT_URL.includes('placeholder')) {
-          window.location.href = CHECKOUT_REDIRECT_URL;
-        } else {
-          const pkgKey = pkgSelect.value || 'pro';
-          try {
-            localStorage.setItem('saliim_selected_package', pkgKey);
-            sessionStorage.setItem('saliim_selected_package', pkgKey);
-            document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
-          } catch(e) {}
+            const pkgKey = pkgSelect.value || 'pro';
+      try {
+        localStorage.setItem('saliim_selected_package', pkgKey);
+        sessionStorage.setItem('saliim_selected_package', pkgKey);
+        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+      } catch(e) {}
 
-          const params = new URLSearchParams({
-            name: name,
-            phone: fullPhone,
-            goal: goal,
-            pkg: pkgKey,
-            package: pkgKey,
-            price: priceText
-          });
+      const params = new URLSearchParams({
+        name: name,
+        phone: fullPhone,
+        goal: goal,
+        pkg: pkgKey,
+        package: pkgKey,
+        price: priceText
+      });
+
+      // Call EasyKash API via Vercel Serverless Function /api/create-payment
+      fetch('/api/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: fullPhone,
+          pkg: pkgKey,
+          goal: goal,
+          host: window.location.origin
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.paymentUrl) {
+          window.location.href = data.paymentUrl;
+        } else {
+          // Fallback if EasyKash callback URL is still pending confirmation in merchant dashboard
+          console.warn('EasyKash notice:', data.message || data);
           window.location.href = `onboarding-v2.html?${params.toString()}`;
         }
-      }, 100);
+      })
+      .catch(err => {
+        console.error('Payment gateway fetch error, fallback:', err);
+        window.location.href = `onboarding-v2.html?${params.toString()}`;
+      });
     }
 
     // 7. Legal Modals Logic
-    function openLegalModal(type) {
+function openLegalModal(type) {
       const modal = document.getElementById('legal-modal');
       const types = ['privacy', 'terms', 'medical', 'refund'];
       types.forEach(t => {

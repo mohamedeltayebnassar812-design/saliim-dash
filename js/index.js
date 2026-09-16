@@ -245,7 +245,7 @@ lucide.createIcons();
         if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
       } else if (stage === 2) {
         s2.classList.remove('hidden');
-        if (label) label.innerText = '2. تشخيص كيمياء الوجبة';
+        if (label) label.innerText = '2. تحليل كيمياء الوجبة والشبع';
         if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
       } else if (stage === 3) {
         s3.classList.remove('hidden');
@@ -631,7 +631,7 @@ function openLegalModal(type) {
         if (pctEl) pctEl.innerText = '66%';
         if (barEl) barEl.style.width = '66%';
       } else if (step === 3) {
-        if (titleEl) titleEl.innerText = 'الخطوة 3 من 3: مستوى النشاط والتاريخ الدوائي';
+        if (titleEl) titleEl.innerText = 'الخطوة 3 من 3: مستوى النشاط والتحدي الغذائي';
         if (pctEl) pctEl.innerText = '100%';
         if (barEl) barEl.style.width = '100%';
       }
@@ -673,8 +673,8 @@ function openLegalModal(type) {
         quizRecommendedPrice = '$69/شهرياً';
       } else if (bmi >= 25 && bmi < 30) {
         bmiStatus = `مؤشر كتلة جسمك: ${bmi} (زيادة وزن خفيفة إلى متوسطة)`;
-        if (med === 'chronic' || quizSelectedGoal === 'insulin_metabolic') {
-          diagnosis = 'تظهر قراءاتك احتمالية مقاومة إنسولين أو تأثر الميتابوليزم بالأدوية. الحل يبدأ من فهم هرمونات الشبع وضبط أوقات الوجبات وليس التجويع السعري.';
+        if (med === 'craving' || med === 'schedule') {
+          diagnosis = 'جسمك يحتاج تنظيم أوقات الوجبات وكسر ثبات الوزن، والحل يبدأ من ضبط جودة المغذيات وهرمونات الشبع بدلاً من التجويع السعري.';
           quizRecommendedPackage = 'pro';
           quizRecommendedTitle = 'باقة Pro المتقدمة';
           quizRecommendedPrice = '$119/شهرياً';

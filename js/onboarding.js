@@ -160,7 +160,7 @@
         badge_step4_m: "Activation",
         step1_tag: "Step 1 of 4",
         step1_title: "Nutrition & Fitness Goals Profile",
-        step1_desc: "Welcome to the Saliim family! To help us tailor your medical, healthy nutrition, and fitness plan with the highest precision, please fill out your profile below.",
+        step1_desc: "Welcome to the Saliim family! To help us tailor your healthy nutrition and fitness plan with the highest precision, please fill out your profile below.",
         sec1_title: "Personal Information",
         lbl_name: "Full Name",
         lbl_phone: "WhatsApp Number (with Country Code)",
@@ -190,7 +190,7 @@
         cond_ir: "Insulin Resistance",
         cond_dm2: "Type 2 Diabetes",
         cond_bp: "High Blood Pressure",
-        cond_fl: "Fatty Liver Disease",
+        
         cond_th: "Hypothyroidism",
         cond_chol: "High Cholesterol / Triglycerides",
         cond_pcos: "PCOS",
@@ -207,7 +207,7 @@
         lbl_lab: "Link to Recent Blood Tests / Lab Reports (Optional)",
         lbl_lab_hint: "You can also send your test results later via WhatsApp to your specialist.",
         btn_submit_step1: "Save Profile & Proceed to Scheduling",
-        msg_confidential: "Your medical data is securely encrypted under Dr. Ahmed El-Khateeb's expert supervision.",
+        msg_confidential: "Your profile data is securely encrypted under Dr. Ahmed El-Khateeb's expert supervision.",
         step2_tag: "Step 2 of 4",
         step2_sub: "Dedicated 1:1 Session",
         step2_title: "Schedule Your Healthy Nutrition Consultation",
@@ -234,13 +234,13 @@
         btn_advance_step4: "Confirm Coach Slot & Activate Profile →",
         step4_tag: "Your Profile is Fully Activated!",
         step4_welcome: "Welcome officially to Saliim Family,",
-        step4_desc: "Your medical intake and booked sessions are confirmed. Dr. Ahmed El-Khateeb and your care team are ready to guide you.",
+        step4_desc: "Your onboarding intake and booked sessions are confirmed. Dr. Ahmed El-Khateeb and your care team are ready to guide you.",
         lbl_vip_code: "Official Saliim VIP Client Code",
         btn_copy_code: "Copy Code",
         card_nutrition_title: "Healthy Nutrition Session",
         card_coach_title: "Fitness Coach Session",
         btn_join_wa: "Join VIP Members WhatsApp Chat",
-        msg_wa_hint: "Tap to connect directly with your dedicated medical follow-up team",
+        msg_wa_hint: "Tap to connect directly with your dedicated Saliim follow-up team",
         btn_home: "Return to Saliim Homepage",
         footer_copy: "All Rights Reserved ©",
         footer_brand: "Saliim Platform - Dr. Ahmed El-Khateeb",
@@ -1134,7 +1134,7 @@
 ` +
             `Client Name: ${clientProfile.name || 'Saliim Member'}
 ` +
-            `Medical Client Code: ${codeToShow}
+            `Saliim VIP Client Code: ${codeToShow}
 ` +
             `Package: ${clientProfile.package || 'Saliim VIP'}
 ` +
@@ -1143,7 +1143,7 @@
             `Fitness Session: ${clientProfile.coach_slot}
 
 ` +
-            `I have successfully completed my medical intake and booked my sessions. Ready to start!`
+            `I have successfully completed my onboarding profile and booked my sessions. Ready to start!`
           );
         }
         document.getElementById('whatsapp-vip-link').href = `https://wa.me/201016629916?text=${waMsg}`;

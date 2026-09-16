@@ -485,17 +485,43 @@ lucide.createIcons();
         if (data.success && data.paymentUrl) {
           window.location.href = data.paymentUrl;
         } else {
-          // Fallback if EasyKash callback URL is still pending confirmation in merchant dashboard
-          console.warn('EasyKash notice:', data.message || data);
-          submitBtn.innerHTML = `<span>جاري تحويلك لاستكمال بيانات الاشتراك والمواعيد...</span>`;
-          setTimeout(() => { window.location.href = `onboarding-v2.html?${params.toString()}`; }, 800);
+          // Fallback to test checkout simulation (Sandbox)
+          console.warn('EasyKash notice (routing to sandbox checkout):', data.message || data);
+          submitBtn.innerHTML = `<span>جاري تحويلك لصفحة الدفع التجريبي (Sandbox)...</span>`;
+          setTimeout(() => { window.location.href = `checkout-test.html?${params.toString()}`; }, 600);
         }
       })
       .catch(err => {
-        console.error('Payment gateway fetch error, fallback:', err);
-        window.location.href = `onboarding-v2.html?${params.toString()}`;
+        console.error('Payment gateway fetch error, routing to sandbox checkout:', err);
+        window.location.href = `checkout-test.html?${params.toString()}`;
       });
     }
+
+
+    // 6.5 Sandbox Test Payment Helper
+    window.startTestPayment = function() {
+      const name = document.getElementById('client_name')?.value?.trim() || 'مشترك تجريبي';
+      const fullPhone = (typeof getFormattedFullPhone === 'function' ? getFormattedFullPhone() : '') || '+966500000000';
+      const pkgSelect = document.getElementById('package_select');
+      const pkgKey = pkgSelect ? pkgSelect.value : 'pro';
+      const priceText = document.getElementById('summary_price')?.innerText || '$119';
+      const goalSelect = document.getElementById('modal_goal');
+      let goal = goalSelect ? goalSelect.options[goalSelect.selectedIndex].text : 'خسارة وزن ونمط حياة صحي';
+      if (goalSelect && goalSelect.value === 'other') {
+        const custom = document.getElementById('custom_goal_text')?.value?.trim();
+        if (custom) goal = 'مخصص: ' + custom;
+      }
+      const params = new URLSearchParams({
+        name: name,
+        phone: fullPhone,
+        goal: goal,
+        pkg: pkgKey,
+        package: pkgKey,
+        price: priceText,
+        sandbox: '1'
+      });
+      window.location.href = `checkout-test.html?${params.toString()}`;
+    };
 
     // 7. Legal Modals Logic
 function openLegalModal(type) {

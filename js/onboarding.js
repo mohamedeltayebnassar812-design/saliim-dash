@@ -365,6 +365,17 @@
 
       autoSelectPackage();
 
+      // Show payment confirmation banner if incoming from checkout
+      if (urlParams.get('paid') === '1' || urlParams.get('status') === 'success') {
+        const banner = document.getElementById('payment-success-banner');
+        const refEl = document.getElementById('banner-ref-num');
+        const refNum = urlParams.get('providerRefNum') || urlParams.get('order_id') || '';
+        if (banner) {
+          banner.classList.remove('hidden');
+          if (refEl && refNum) refEl.innerText = `رقم العملية: ${refNum}`;
+        }
+      }
+
       // Setup mutual exclusivity for medical condition checkboxes
       // Lifestyle & nutrition preferences initialized
 

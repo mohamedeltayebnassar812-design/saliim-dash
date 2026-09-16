@@ -237,6 +237,22 @@
           </div>
         </div>
 
+        <!-- Payment Success Confirmation Alert (Shown dynamically if paid=1 or status=success) -->
+        <div id="payment-success-banner" class="hidden mt-6 p-4 rounded-2xl bg-emerald-950/70 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm flex items-start gap-3 shadow-lg shadow-emerald-950/50">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="badge-check" class="w-5 h-5"></i>
+          </div>
+          <div class="space-y-1">
+            <div class="font-black text-white text-sm sm:text-base flex items-center gap-2">
+              <span>تم تأكيد الدفع والاشتراك بنجاح!</span>
+              <span id="banner-ref-num" class="text-[11px] font-mono font-normal bg-emerald-900/60 px-2 py-0.5 rounded text-emerald-200 border border-emerald-600/30"></span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تهانينا! تم تفعيل طلب اشتراكك بنجاح. أكمل بياناتك أدناه لتخصيص خطتك وحجز جلساتك فوراً مع أخصائي التغذية والكوتش.
+            </p>
+          </div>
+        </div>
+
         <!-- Form -->
         <form id="onboarding-form" onsubmit="handleOnboardingSubmit(event)" class="mt-8 space-y-8">
           

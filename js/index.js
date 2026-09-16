@@ -423,6 +423,10 @@ lucide.createIcons();
         return;
       }
       const fullPhone = getFormattedFullPhone();
+      if (window.validatePhoneNumber && !window.validatePhoneNumber(fullPhone)) {
+        showPhoneError("رقم الهاتف غير متوافق مع المعايير الدولية، يرجى التأكد من الرقم");
+        return;
+      }
       const pkgSelect = document.getElementById('package_select');
       const pkgName = pkgSelect.options[pkgSelect.selectedIndex].text;
       const priceText = document.getElementById('summary_price').innerText;
@@ -483,7 +487,8 @@ lucide.createIcons();
         } else {
           // Fallback if EasyKash callback URL is still pending confirmation in merchant dashboard
           console.warn('EasyKash notice:', data.message || data);
-          window.location.href = `onboarding-v2.html?${params.toString()}`;
+          submitBtn.innerHTML = `<span>جاري تحويلك لاستكمال بيانات الاشتراك والمواعيد...</span>`;
+          setTimeout(() => { window.location.href = `onboarding-v2.html?${params.toString()}`; }, 800);
         }
       })
       .catch(err => {

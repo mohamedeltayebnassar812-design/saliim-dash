@@ -96,6 +96,14 @@ window.getFormattedFullPhone = function() {
   return (code === '+' ? '+' : code) + raw;
 };
 
+
+window.validatePhoneNumber = function(fullPhone) {
+  if (!fullPhone) return false;
+  const clean = fullPhone.trim().replace(/[^\d+]/g, '');
+  const regex = /^\+\d{1,3}\d{7,14}$/;
+  return regex.test(clean);
+};
+
 window.setPhoneAndCountryCode = function(fullNumber) {
   if (!fullNumber) return;
   const codeSelect = document.getElementById('phone_country_code');

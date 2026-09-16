@@ -953,6 +953,10 @@
     }
 
     function unlockNutritionStep() {
+    // Pre-load Coach Calendly as soon as user unlocks Step 2
+    setTimeout(() => {
+      if (typeof initCoachCalendly === 'function') initCoachCalendly();
+    }, 1200);
       isNutritionScheduled = true;
       const btn = document.getElementById('advance-to-coach-btn');
       if (btn) {

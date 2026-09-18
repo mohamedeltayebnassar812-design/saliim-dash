@@ -468,6 +468,20 @@ lucide.createIcons();
         price: priceText
       });
 
+      // Save lead immediately to Supabase & Google Sheets
+      fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: fullPhone,
+          package: pkgKey,
+          price: priceText,
+          goal: goal,
+          source: 'landing_modal'
+        })
+      }).catch(err => console.log('Lead save background err:', err));
+
       // Call EasyKash API via Vercel Serverless Function /api/create-payment
       fetch('/api/create-payment', {
         method: 'POST',

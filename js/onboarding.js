@@ -767,7 +767,9 @@
         <span>${currentLang === 'ar' ? 'جاري حفظ بياناتك وتفضيلاتك...' : 'Saving your profile & goals...'}</span>
       `;
 
-      // Hold dispatch until appointments are chosen, so all 22 fields + appointments are sent in ONE single clean row
+      // Send Step 1 profile immediately to Supabase and Google Sheets so client is never lost
+      sendToGoogleSheets(clientProfile);
+
       setTimeout(() => {
         btn.disabled = false;
         btn.innerHTML = `
@@ -834,6 +836,9 @@
         action: 'update_appointments',
         client_id: clientCode,
         client_code: clientCode,
+        name: clientProfile.name || '',
+        phone: clientProfile.phone || '',
+        email: clientProfile.email || '',
         nutrition_slot: clientProfile.nutrition_slot,
         coach_slot: clientProfile.coach_slot
       };

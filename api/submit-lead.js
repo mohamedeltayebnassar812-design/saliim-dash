@@ -21,10 +21,73 @@ export default async function handler(req, res) {
   try {
     const payload = req.body || {};
 
-    // 1. Map incoming payload to Supabase "clients" schema
+    // 0. Handle appointment update action without creating a blank new client
+    if (payload.action === 'update_appointments') {
+      const cCode = payload.client_code || payload.client_id;
+      const cPhone = payload.client_phone || payload.phone;
+
+      if (SUPABASE_KEY && (cCode || cPhone)) {
+        try {
+          const matchQ = cCode ? `id=eq.${encodeURIComponent(cCode)}` : `phone=eq.${encodeURIComponent(cPhone)}`;
+          const findResp = await fetch(`${SUPABASE_URL}/rest/v1/clients?${matchQ}&select=*&limit=1`, {
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": `Bearer ${SUPABASE_KEY}`
+            }
+          });
+          const rows = await findResp.json();
+          if (Array.isArray(rows) && rows.length > 0) {
+            const client = rows[0];
+            let notes = client.notes_preview || "";
+            if (payload.nutrition_slot && !notes.includes(payload.nutrition_slot)) {
+              notes += ` | جلسة التغذية: ${payload.nutrition_slot}`;
+            }
+            if (payload.coach_slot && !notes.includes(payload.coach_slot)) {
+              notes += ` | جلسة الكوتش: ${payload.coach_slot}`;
+            }
+            await fetch(`${SUPABASE_URL}/rest/v1/clients?id=eq.${encodeURIComponent(client.id)}`, {
+              method: "PATCH",
+              headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`,
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                notes_preview: notes,
+                pipeline_stage: 'scheduled',
+                stage_updated_at: new Date().toISOString()
+              })
+            });
+          }
+        } catch (patchErr) {
+          console.error("Supabase update_appointments patch error:", patchErr);
+        }
+      }
+
+      // Forward to Google Sheets
+      if (GOOGLE_SHEETS_URL && GOOGLE_SHEETS_URL.startsWith("http")) {
+        try {
+          fetch(GOOGLE_SHEETS_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          }).catch(() => {});
+        } catch(e) {}
+      }
+
+      return res.status(200).json({ success: true, message: "Appointments updated" });
+    }
+
+    // 1. Standard Lead / Onboarding Submission
+    const fullName = payload.name || payload.client_name;
+    const phone = payload.phone || payload.client_phone;
+
+    // Safety: Ignore empty junk requests that have neither name nor phone
+    if (!fullName && !phone) {
+      return res.status(200).json({ success: false, message: "Ignored empty payload" });
+    }
+
     const clientId = payload.client_code || ('SLM-' + Date.now().toString(36).toUpperCase());
-    const fullName = payload.name || payload.client_name || "مشترك جديد";
-    const phone = payload.phone || payload.client_phone || "";
     const email = payload.email || payload.client_email || null;
     const pkg = payload.package || payload.package_name || payload.pkg || "pro";
     const goal = payload.goal || payload.client_goal || "";
@@ -56,8 +119,8 @@ export default async function handler(req, res) {
 
     const clientRecord = {
       id: clientId,
-      full_name: fullName,
-      phone: phone,
+      full_name: fullName || "مشترك سليم",
+      phone: phone || "",
       email: email,
       age: isNaN(age) ? null : age,
       gender: gender,
@@ -66,7 +129,7 @@ export default async function handler(req, res) {
       target_weight_kg: isNaN(targetWeight) ? null : targetWeight,
       health_condition: goal || 'نمط حياة صحي',
       package_name: pkg,
-      source: 'landing_funnel',
+      source: payload.source || 'website_funnel',
       pipeline_stage: stage,
       notes_preview: notesPreview.join(' | ') || null,
       stage_updated_at: new Date().toISOString()

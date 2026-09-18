@@ -200,6 +200,43 @@
       animation: tagPulse 2.5s ease-in-out infinite;
     }
 
+  
+    /* Luxury Pop-Up Orbit Animation Styles */
+    .saudi-orbit-station {
+      transition: z-index 0.3s ease;
+    }
+    .station-visual {
+      transition: width 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  height 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  border-color 0.4s ease,
+                  box-shadow 0.5s ease;
+    }
+    .station-bubble {
+      transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    /* When a station is active, it pops open huge like a message/hero preview */
+    .station-pop-active {
+      z-index: 50 !important;
+    }
+    .station-pop-active .station-visual {
+      width: 140px !important;
+      height: 140px !important;
+      border-width: 4px !important;
+      border-color: #1D9BF0 !important;
+      box-shadow: 0 0 35px 10px rgba(29, 155, 240, 0.65), 0 20px 45px rgba(0, 0, 0, 0.85) !important;
+    }
+    @media (min-width: 640px) {
+      .station-pop-active .station-visual {
+        width: 175px !important;
+        height: 175px !important;
+      }
+    }
+    .station-pop-active .station-bubble {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transform: translate(-50%, 0) scale(1) !important;
+    }
+
   </style>
 </head>
 <body class="bg-[#071626] text-slate-100 selection:bg-[#0A4174] selection:text-white">
@@ -476,7 +513,7 @@
     </div>
   </section>
 
-    <!-- ==================== SECTION: SAUDI WOMAN 4-STAGE CIRCULAR TRANSFORMATION JOURNEY ==================== -->
+      <!-- ==================== SECTION: SAUDI WOMAN 4-STAGE CIRCULAR TRANSFORMATION JOURNEY ==================== -->
   <section id="saudi-journey" class="scroll-mt-24 py-20 sm:py-28 bg-gradient-to-b from-[#071626] via-[#0A1E35] to-[#071626] text-white relative overflow-hidden border-y border-white/5 reveal-on-scroll">
     <!-- Ambient Luxury Background Glows -->
     <div class="absolute top-1/4 -right-40 w-96 h-96 bg-[#0A4174]/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -499,95 +536,100 @@
         </h2>
 
         <p class="text-xs sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-          تابعي كيف تحول جسد "نورة" عبر 4 محاور دائرية متصلة من مرحلة الوزن الزائد والإجهاد إلى استعادة القوام المثالي والصحة المتألقة دون حرمان.
+          شاهدي تحول "نورة" خطوة بخطوة مع دوران المدار الأيضي، حيث تتسع كل مرحلة لتكشف تفاصيل استعادة القوام والنشاط دون حرمان.
         </p>
       </div>
 
       <!-- Main Layout: 2 Columns (Interactive Circular Orbit on One Side + Detailed Story Card on the Other) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
 
-        <!-- Column 1: The Circular Animated Orbit with 4 Axis Nodes -->
+        <!-- Column 1: The Circular Animated Orbit with 4 Pop-up Stages -->
         <div class="lg:col-span-6 flex flex-col items-center justify-center">
 
           <div class="text-center mb-6">
-            <span class="text-xs font-black uppercase tracking-widest text-[#1D9BF0] block">دائرة التحوّل الأيضي الرباعية</span>
-            <p class="text-xs text-slate-400 mt-1">انقري على أي محور من المحاور الأربعة لرؤية ملامح التحول</p>
+            <span class="text-xs font-black uppercase tracking-widest text-[#1D9BF0] block">مدار التحوّل الأيضي الحي</span>
+            <p class="text-xs text-slate-400 mt-1">تتبّعي دوران النقطة الزرقاء وشاهدي انفتاح كل مرحلة بحجمها الكامل</p>
           </div>
 
-          <!-- Circular Orbit Container -->
-          <div class="relative w-[330px] h-[330px] sm:w-[410px] sm:h-[410px] mx-auto flex items-center justify-center select-none" id="saudi-orbit-box">
+          <!-- Circular Orbit Container with generous padding to prevent clipping when pop-up expands -->
+          <div class="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] my-6 sm:my-10 mx-auto flex items-center justify-center select-none overflow-visible" id="saudi-orbit-box">
 
             <!-- Dashed Orbital Ring Track -->
-            <div class="absolute inset-5 rounded-full border-2 border-dashed border-[#1D9BF0]/35 shadow-2xl pointer-events-none"></div>
+            <div class="absolute inset-8 sm:inset-10 rounded-full border-2 border-dashed border-[#1D9BF0]/35 shadow-2xl pointer-events-none"></div>
 
-            <!-- Rotating Glowing Beacon (The Exact Orbit Animation) -->
-            <div class="absolute inset-5 rounded-full pointer-events-none animate-spin" style="animation-duration: 20s;">
-              <div class="w-4 h-4 rounded-full bg-[#1D9BF0] shadow-[0_0_20px_6px_#1D9BF0] absolute -top-2 left-1/2 -translate-x-1/2"></div>
+            <!-- Controlled Rotating Beacon (Driven by JS to glide from station to station) -->
+            <div id="saudi-orbit-beacon" class="absolute inset-8 sm:inset-10 rounded-full pointer-events-none transition-transform duration-1000 ease-in-out z-30" style="transform: rotate(0deg);">
+              <div class="w-5 h-5 rounded-full bg-[#1D9BF0] shadow-[0_0_24px_8px_#1D9BF0] border-2 border-white absolute -top-2.5 left-1/2 -translate-x-1/2 transition-all"></div>
             </div>
 
-            <!-- Central Hero Image: Displays the active stage portrait -->
-            <div class="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full p-2 bg-gradient-to-tr from-[#0A4174] via-[#1D9BF0] to-teal-300 shadow-2xl group cursor-pointer" onclick="cycleSaudiStageNext()">
-              <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/25 bg-[#102A45]">
-                <img id="saudi-center-img" src="assets/saudi_step_1.webp" alt="نورة - رحلة التحول" class="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-[#071626]/80 via-transparent to-transparent"></div>
+            <!-- Central Core Luxury Disc (The Metabolic Heart) -->
+            <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-gradient-to-tr from-[#0A4174]/40 via-[#102A45] to-[#071626] border border-[#1D9BF0]/30 shadow-2xl flex flex-col items-center justify-center text-center z-10">
+              <div class="w-8 h-8 rounded-xl bg-[#0A4174]/40 text-[#1D9BF0] flex items-center justify-center mb-1.5 shadow">
+                <i id="center-core-icon" data-lucide="activity" class="w-4 h-4 text-[#1D9BF0]"></i>
               </div>
+              <span class="text-[10px] uppercase font-black tracking-widest text-[#1D9BF0]">سَـلِيم • المدار الأيضي</span>
+              <span id="center-core-title" class="text-xs sm:text-sm font-black text-white mt-0.5">المرحلة 01</span>
+              <span id="center-core-sub" class="text-[10px] text-slate-400 font-bold">84 كجم ➔ 66 كجم</span>
+            </div>
 
-              <!-- Floating Center Pill over Photo -->
-              <div id="saudi-center-tag" class="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1 rounded-full bg-[#071626]/95 border border-[#1D9BF0]/60 text-white font-black text-[11px] sm:text-xs shadow-xl flex items-center gap-1.5">
-                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[#1D9BF0]"></i>
-                <span id="saudi-center-tag-text">المرحلة 1: الوزن الطبيعي الزائد</span>
+            <!-- ==================== 4 ORBITAL STATIONS (WITH MASSIVE POP-UP ANIMATION) ==================== -->
+
+            <!-- Station 1 (Top / 12 o'clock / 0deg): Before / Overweight -->
+            <div id="saudi-station-1" onclick="handleStationClick(1)" class="saudi-orbit-station station-pop-active absolute top-8 sm:top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-40">
+              <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
+                <img src="assets/saudi_step_1.webp" alt="المرحلة 1: 84 كجم" class="w-full h-full object-cover object-top">
+              </div>
+              <!-- Floating Message Bubble -->
+              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span>
+                <span>المرحلة 1: 84 كجم (قبل سليم)</span>
               </div>
             </div>
 
-            <!-- 4 Circular Orbital Stage Nodes (Thumbnails on the Circle) -->
-            <!-- Stage 1 (Top / 12 o'clock): Before / Overweight -->
-            <button type="button" onclick="setSaudiStage(1)" id="saudi-station-1" class="saudi-orbit-station absolute -top-3 left-1/2 -translate-x-1/2 flex flex-col items-center group cursor-pointer transition-all duration-300 z-20">
-              <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-[#1D9BF0] shadow-xl shadow-[#1D9BF0]/50 scale-110 group-hover:scale-115 transition-transform overflow-hidden border-2 border-white">
-                <img src="assets/saudi_step_1.webp" alt="المرحلة 1" class="w-full h-full object-cover object-top rounded-full">
+            <!-- Station 2 (Right / 3 o'clock / 90deg): Early Progress -->
+            <div id="saudi-station-2" onclick="handleStationClick(2)" class="saudi-orbit-station absolute top-1/2 right-8 sm:right-10 translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+              <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
+                <img src="assets/saudi_step_2.webp" alt="المرحلة 2: 78 كجم" class="w-full h-full object-cover object-top">
               </div>
-              <span class="mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-[#1D9BF0]/50 text-[10px] sm:text-[11px] font-black text-white whitespace-nowrap shadow-md">
-                1. البداية (84 كجم)
-              </span>
-            </button>
+              <!-- Floating Message Bubble -->
+              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
+                <span class="w-2 h-2 rounded-full bg-[#1D9BF0] animate-ping"></span>
+                <span>المرحلة 2: 78 كجم (انطلاق الحرق)</span>
+              </div>
+            </div>
 
-            <!-- Stage 2 (Right / 3 o'clock): Early Progress -->
-            <button type="button" onclick="setSaudiStage(2)" id="saudi-station-2" class="saudi-orbit-station absolute top-1/2 -right-4 -translate-y-1/2 flex flex-col items-center group cursor-pointer transition-all duration-300 z-20">
-              <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-slate-700 shadow-lg group-hover:scale-115 transition-transform overflow-hidden border-2 border-slate-600">
-                <img src="assets/saudi_step_2.webp" alt="المرحلة 2" class="w-full h-full object-cover object-top rounded-full">
+            <!-- Station 3 (Bottom / 6 o'clock / 180deg): Major Progress -->
+            <div id="saudi-station-3" onclick="handleStationClick(3)" class="saudi-orbit-station absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 translate-y-1/2 cursor-pointer z-20">
+              <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
+                <img src="assets/saudi_step_3.webp" alt="المرحلة 3: 72 كجم" class="w-full h-full object-cover object-top">
               </div>
-              <span class="mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-white/10 text-[10px] sm:text-[11px] font-bold text-slate-300 whitespace-nowrap shadow-md">
-                2. انطلاق الحرق (78 كجم)
-              </span>
-            </button>
+              <!-- Floating Message Bubble -->
+              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
+                <span class="w-2 h-2 rounded-full bg-teal-300 animate-ping"></span>
+                <span>المرحلة 3: 72 كجم (نحت القوام)</span>
+              </div>
+            </div>
 
-            <!-- Stage 3 (Bottom / 6 o'clock): Major Progress -->
-            <button type="button" onclick="setSaudiStage(3)" id="saudi-station-3" class="saudi-orbit-station absolute -bottom-3 left-1/2 -translate-x-1/2 flex flex-col items-center group cursor-pointer transition-all duration-300 z-20">
-              <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-slate-700 shadow-lg group-hover:scale-115 transition-transform overflow-hidden border-2 border-slate-600">
-                <img src="assets/saudi_step_3.webp" alt="المرحلة 3" class="w-full h-full object-cover object-top rounded-full">
+            <!-- Station 4 (Left / 9 o'clock / 270deg): Ideal Weight -->
+            <div id="saudi-station-4" onclick="handleStationClick(4)" class="saudi-orbit-station absolute top-1/2 left-8 sm:left-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+              <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
+                <img src="assets/saudi_step_4.webp" alt="المرحلة 4: 66 كجم" class="w-full h-full object-cover object-top">
               </div>
-              <span class="mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-white/10 text-[10px] sm:text-[11px] font-bold text-slate-300 whitespace-nowrap shadow-md">
-                3. نحت القوام (72 كجم)
-              </span>
-            </button>
-
-            <!-- Stage 4 (Left / 9 o'clock): Ideal Weight -->
-            <button type="button" onclick="setSaudiStage(4)" id="saudi-station-4" class="saudi-orbit-station absolute top-1/2 -left-4 -translate-y-1/2 flex flex-col items-center group cursor-pointer transition-all duration-300 z-20">
-              <div class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-slate-700 shadow-lg group-hover:scale-115 transition-transform overflow-hidden border-2 border-slate-600">
-                <img src="assets/saudi_step_4.webp" alt="المرحلة 4" class="w-full h-full object-cover object-top rounded-full">
+              <!-- Floating Message Bubble -->
+              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>المرحلة 4: 66 كجم (الوزن المثالي)</span>
               </div>
-              <span class="mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-white/10 text-[10px] sm:text-[11px] font-bold text-slate-300 whitespace-nowrap shadow-md">
-                4. الوزن المثالي (66 كجم)
-              </span>
-            </button>
+            </div>
 
           </div>
 
           <!-- Quick Stage Progress Indicator Dots -->
           <div class="flex items-center gap-2 mt-8">
-            <button onclick="setSaudiStage(1)" id="saudi-dot-1" class="h-2 w-8 rounded-full bg-[#1D9BF0] transition-all"></button>
-            <button onclick="setSaudiStage(2)" id="saudi-dot-2" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
-            <button onclick="setSaudiStage(3)" id="saudi-dot-3" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
-            <button onclick="setSaudiStage(4)" id="saudi-dot-4" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
+            <button onclick="handleStationClick(1)" id="saudi-dot-1" class="h-2 w-8 rounded-full bg-[#1D9BF0] transition-all"></button>
+            <button onclick="handleStationClick(2)" id="saudi-dot-2" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
+            <button onclick="handleStationClick(3)" id="saudi-dot-3" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
+            <button onclick="handleStationClick(4)" id="saudi-dot-4" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
           </div>
 
         </div>
@@ -1945,11 +1987,13 @@
     <script src="js/shared.js"></script>
   <script src="js/index.js">
 
-    // ==================== SAUDI WOMAN 4-STAGE CIRCULAR TRANSFORMATION LOGIC ====================
+    
+  // ==================== SAUDI WOMAN 4-STAGE POP-UP ORBIT CONTROLLER ====================
   const saudiStagesData = {
     1: {
-      img: "assets/saudi_step_1.webp",
-      centerTag: "المرحلة 1: الوزن الطبيعي الزائد (84 كجم)",
+      coreTitle: "المرحلة 01",
+      coreSub: "84 كجم • البداية",
+      coreIcon: "activity",
       badge: "المرحلة الأولى • نقطة الانطلاق",
       progress: "قبل المتابعة مع سليم",
       progressClass: "text-amber-300",
@@ -1966,8 +2010,9 @@
       protocol: "التوقف الفوري عن تجويع الجسم، وفحص استجابة الهرمونات لكسر مقاومة الأنسولين والكورتيزول، وبناء خطة غذائية متوازنة بأطعمة مشبعة من المطبخ السعودي."
     },
     2: {
-      img: "assets/saudi_step_2.webp",
-      centerTag: "المرحلة 2: بداية النزول والنشاط (78 كجم)",
+      coreTitle: "المرحلة 02",
+      coreSub: "78 كجم • -6 كجم",
+      coreIcon: "flame",
       badge: "المرحلة الثانية • الأسبوع 3 - 6",
       progress: "بداية انطلاق الحرق",
       progressClass: "text-[#1D9BF0]",
@@ -1984,8 +2029,9 @@
       protocol: "تحفيز التمثيل الغذائي للاعتماد على مخازن الدهون الحشوية، مع وجبات ذكية تضبط سكر الدم وتمارين خفيفة مدتها 25 دقيقة فقط."
     },
     3: {
-      img: "assets/saudi_step_3.webp",
-      centerTag: "المرحلة 3: خسارة ملحوظة ونحت القوام (72 كجم)",
+      coreTitle: "المرحلة 03",
+      coreSub: "72 كجم • -12 كجم",
+      coreIcon: "zap",
       badge: "المرحلة الثالثة • الشهر 2 - 3",
       progress: "تقدم صحي ونزول كبير",
       progressClass: "text-teal-300",
@@ -2002,8 +2048,9 @@
       protocol: "استراتيجية المرونة الأيضية للمناسبات الاجتماعية، وشد العضلات وتناسق القوام مع استقرار هرموني وتصفية تامة للبشرة."
     },
     4: {
-      img: "assets/saudi_step_4.webp",
-      centerTag: "المرحلة 4: الوزن المثالي التام (66 كجم)",
+      coreTitle: "المرحلة 04",
+      coreSub: "66 كجم • المثالي",
+      coreIcon: "award",
       badge: "المرحلة الرابعة • الشهر 4 وما بعده",
       progress: "الوزن المثالي والرشاقة التامة",
       progressClass: "text-emerald-400",
@@ -2021,129 +2068,152 @@
     }
   };
 
-  let currentSaudiStage = 1;
-  let saudiStageTimer = null;
+  let saudiCurrentStage = 1;
+  let saudiRotationCount = 0;
+  let saudiAutoTimer = null;
+  let isTransitioning = false;
 
-  function setSaudiStage(stageNum) {
-    currentSaudiStage = stageNum;
-    const data = saudiStagesData[stageNum];
-    if (!data) return;
+  function activateStage(stageNum) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    saudiCurrentStage = stageNum;
 
-    // 1. Update Center Image & Tag
-    const centerImg = document.getElementById('saudi-center-img');
-    const centerTagText = document.getElementById('saudi-center-tag-text');
-    if (centerImg) {
-      centerImg.style.opacity = '0.3';
-      centerImg.style.transform = 'scale(0.96)';
-      setTimeout(() => {
-        centerImg.src = data.img;
-        centerImg.style.opacity = '1';
-        centerImg.style.transform = 'scale(1)';
-      }, 200);
+    // 1. Calculate Target Beacon Rotation angle (always rotates forward smoothly)
+    // 1: 0deg, 2: 90deg, 3: 180deg, 4: 270deg
+    const baseAngle = (stageNum - 1) * 90;
+    const targetDeg = baseAngle + (saudiRotationCount * 360);
+
+    const beacon = document.getElementById('saudi-orbit-beacon');
+    if (beacon) {
+      beacon.style.transition = 'transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)';
+      beacon.style.transform = `rotate(${targetDeg}deg)`;
     }
-    if (centerTagText) centerTagText.textContent = data.centerTag;
 
-    // 2. Update Stations Styling on the Orbit
+    // 2. Shrink all other stations first
     for (let i = 1; i <= 4; i++) {
-      const station = document.getElementById('saudi-station-' + i);
-      const dot = document.getElementById('saudi-dot-' + i);
-      if (station) {
-        const ring = station.querySelector('div');
-        const badge = station.querySelector('span');
-        if (i === stageNum) {
-          ring.className = 'relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-[#1D9BF0] shadow-xl shadow-[#1D9BF0]/50 scale-110 group-hover:scale-115 transition-transform overflow-hidden border-2 border-white';
-          if (badge) badge.className = 'mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-[#1D9BF0]/50 text-[10px] sm:text-[11px] font-black text-white whitespace-nowrap shadow-md';
-        } else {
-          ring.className = 'relative w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-slate-700 shadow-lg group-hover:scale-115 transition-transform overflow-hidden border-2 border-slate-600';
-          if (badge) badge.className = 'mt-1 px-2.5 py-0.5 rounded-full bg-[#071626]/95 border border-white/10 text-[10px] sm:text-[11px] font-bold text-slate-300 whitespace-nowrap shadow-md';
-        }
-      }
-      if (dot) {
-        if (i === stageNum) {
-          dot.className = 'h-2 w-8 rounded-full bg-[#1D9BF0] transition-all';
-        } else {
-          dot.className = 'h-2 w-2 rounded-full bg-slate-700 transition-all';
-        }
+      if (i !== stageNum) {
+        const otherSt = document.getElementById('saudi-station-' + i);
+        if (otherSt) otherSt.classList.remove('station-pop-active');
+        const dot = document.getElementById('saudi-dot-' + i);
+        if (dot) dot.className = 'h-2 w-2 rounded-full bg-slate-700 transition-all';
       }
     }
 
-    // 3. Update Text Content with Smooth Transition
-    const wrap = document.getElementById('saudi-stage-content-wrap');
-    if (wrap) {
-      wrap.style.opacity = '0.35';
-      wrap.style.transform = 'translateY(4px)';
-      wrap.style.transition = 'all 0.22s ease';
+    // 3. As the beacon arrives (or right on timing), POP the target station open!
+    setTimeout(() => {
+      const activeSt = document.getElementById('saudi-station-' + stageNum);
+      if (activeSt) {
+        activeSt.classList.add('station-pop-active');
+      }
 
-      setTimeout(() => {
-        const b = document.getElementById('saudi-stage-badge');
-        const p = document.getElementById('saudi-stage-progress');
-        const t = document.getElementById('saudi-stage-title');
-        const q = document.getElementById('saudi-stage-quote');
-        const mw = document.getElementById('metric-weight');
-        const mwd = document.getElementById('metric-weight-diff');
-        const mwst = document.getElementById('metric-waist');
-        const mwstd = document.getElementById('metric-waist-diff');
-        const me = document.getElementById('metric-energy');
-        const proto = document.getElementById('saudi-stage-protocol');
+      const activeDot = document.getElementById('saudi-dot-' + stageNum);
+      if (activeDot) {
+        activeDot.className = 'h-2 w-8 rounded-full bg-[#1D9BF0] transition-all';
+      }
 
-        if (b) b.textContent = data.badge;
-        if (p) {
-          p.className = 'text-xs font-bold flex items-center gap-1 ' + data.progressClass;
-          p.innerHTML = `<i data-lucide="${data.progressIcon}" class="w-3.5 h-3.5"></i> ` + data.progress;
+      // Update Center Disc Content
+      const data = saudiStagesData[stageNum];
+      if (data) {
+        const ct = document.getElementById('center-core-title');
+        const cs = document.getElementById('center-core-sub');
+        const ci = document.getElementById('center-core-icon');
+        if (ct) ct.textContent = data.coreTitle;
+        if (cs) cs.textContent = data.coreSub;
+        if (ci) ci.setAttribute('data-lucide', data.coreIcon);
+
+        // Update Side Card Text
+        const wrap = document.getElementById('saudi-stage-content-wrap');
+        if (wrap) {
+          wrap.style.opacity = '0.35';
+          wrap.style.transform = 'translateY(4px)';
+          wrap.style.transition = 'all 0.22s ease';
+
+          setTimeout(() => {
+            const b = document.getElementById('saudi-stage-badge');
+            const p = document.getElementById('saudi-stage-progress');
+            const t = document.getElementById('saudi-stage-title');
+            const q = document.getElementById('saudi-stage-quote');
+            const mw = document.getElementById('metric-weight');
+            const mwd = document.getElementById('metric-weight-diff');
+            const mwst = document.getElementById('metric-waist');
+            const mwstd = document.getElementById('metric-waist-diff');
+            const me = document.getElementById('metric-energy');
+            const proto = document.getElementById('saudi-stage-protocol');
+
+            if (b) b.textContent = data.badge;
+            if (p) {
+              p.className = 'text-xs font-bold flex items-center gap-1 ' + data.progressClass;
+              p.innerHTML = `<i data-lucide="${data.progressIcon}" class="w-3.5 h-3.5"></i> ` + data.progress;
+            }
+            if (t) t.textContent = data.title;
+            if (q) q.textContent = '"' + data.quote + '"';
+            if (mw) mw.textContent = data.weight;
+            if (mwd) {
+              mwd.textContent = data.weightDiff;
+              mwd.className = 'text-[10px] font-bold ' + data.weightDiffClass;
+            }
+            if (mwst) mwst.textContent = data.waist;
+            if (mwstd) mwstd.textContent = data.waistDiff;
+            if (me) me.textContent = data.energy;
+            if (proto) proto.textContent = data.protocol;
+
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+              lucide.createIcons();
+            }
+
+            wrap.style.opacity = '1';
+            wrap.style.transform = 'translateY(0)';
+          }, 200);
         }
-        if (t) t.textContent = data.title;
-        if (q) q.textContent = '"' + data.quote + '"';
-        if (mw) mw.textContent = data.weight;
-        if (mwd) {
-          mwd.textContent = data.weightDiff;
-          mwd.className = 'text-[10px] font-bold ' + data.weightDiffClass;
-        }
-        if (mwst) mwst.textContent = data.waist;
-        if (mwstd) mwstd.textContent = data.waistDiff;
-        if (me) me.textContent = data.energy;
-        if (proto) proto.textContent = data.protocol;
+      }
 
-        if (window.lucide && typeof lucide.createIcons === 'function') {
-          lucide.createIcons();
-        }
+      isTransitioning = false;
+    }, 450);
+  }
 
-        wrap.style.opacity = '1';
-        wrap.style.transform = 'translateY(0)';
-      }, 220);
+  function nextSaudiStage() {
+    let next = saudiCurrentStage + 1;
+    if (next > 4) {
+      next = 1;
+      saudiRotationCount++;
     }
+    activateStage(next);
   }
 
-  function cycleSaudiStageNext() {
-    let next = currentSaudiStage + 1;
-    if (next > 4) next = 1;
-    setSaudiStage(next);
+  function handleStationClick(stageNum) {
+    if (saudiAutoTimer) clearInterval(saudiAutoTimer);
+    if (stageNum < saudiCurrentStage) {
+      saudiRotationCount++;
+    }
+    activateStage(stageNum);
+    // Resume auto play after 7 seconds of inactivity
+    saudiAutoTimer = setInterval(nextSaudiStage, 4800);
   }
 
-  function initSaudiStageAutoCycle() {
+  function startSaudiOrbitCycle() {
     const sec = document.getElementById('saudi-journey');
     if (!sec) return;
-    
-    // Auto advance every 6.5 seconds
-    saudiStageTimer = setInterval(() => {
-      cycleSaudiStageNext();
-    }, 6500);
+
+    // Activate initial stage 1
+    activateStage(1);
+
+    // Auto cycle every 4.8 seconds
+    saudiAutoTimer = setInterval(nextSaudiStage, 4800);
 
     sec.addEventListener('mouseenter', () => {
-      if (saudiStageTimer) clearInterval(saudiStageTimer);
+      if (saudiAutoTimer) clearInterval(saudiAutoTimer);
     });
 
     sec.addEventListener('mouseleave', () => {
-      if (saudiStageTimer) clearInterval(saudiStageTimer);
-      saudiStageTimer = setInterval(() => {
-        cycleSaudiStageNext();
-      }, 6500);
+      if (saudiAutoTimer) clearInterval(saudiAutoTimer);
+      saudiAutoTimer = setInterval(nextSaudiStage, 4800);
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSaudiStageAutoCycle);
+    document.addEventListener('DOMContentLoaded', startSaudiOrbitCycle);
   } else {
-    initSaudiStageAutoCycle();
+    startSaudiOrbitCycle();
   }
 
   </script>

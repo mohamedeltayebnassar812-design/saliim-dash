@@ -87,7 +87,7 @@ lucide.createIcons();
     }
 
     function initAllSliders() {
-      setupGenericSlider('ba-container', 'ba-clip-wrap', 'ba-divider-line');
+      // Food plate comparison slider removed
       setupGenericSlider('body-ba-container', 'body-ba-clip-wrap', 'body-ba-divider-line');
     }
 

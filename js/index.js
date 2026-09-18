@@ -297,7 +297,7 @@ lucide.createIcons();
       btn.innerHTML = `<span class="inline-block animate-spin border-2 border-slate-950 border-t-transparent rounded-full w-3.5 h-3.5"></span> <span>جاري الحفظ...</span>`;
 
       sendDataToGoogleSheets({
-        form_type: "قائمة انتظار تطبيق سليم (Email Waitlist)",
+        form_type: "قائمة انتظار فاحص الوجبات الذكي عبر الموقع",
         client_email: email,
         client_name: "مشترك مهتم بالتطبيق",
         submitted_at: new Date().toISOString()

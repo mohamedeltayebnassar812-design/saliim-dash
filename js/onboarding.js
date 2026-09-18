@@ -629,7 +629,7 @@
       const errBox = document.getElementById('phone-error-msg');
       const errText = document.getElementById('phone-error-text');
       if (input) {
-        input.classList.remove('border-slate-700', 'focus:border-[#18746F]', 'focus:border-[#07C1BE]');
+        input.classList.remove('border-slate-700', 'focus:border-[#0A4174]', 'focus:border-[#1D9BF0]');
         input.classList.add('border-rose-500', 'bg-rose-950/20');
         input.focus();
       }
@@ -976,7 +976,7 @@
       isNutritionScheduled = true;
       const btn = document.getElementById('advance-to-coach-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد التغذية! المتابعة للكوتش ←' : 'Nutrition Confirmed! Proceed to Coach →'}</span>`;
         lucide.createIcons();
       }
@@ -986,7 +986,7 @@
       isCoachScheduled = true;
       const btn = document.getElementById('advance-to-step4-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#07C1BE] to-[#18746F] hover:from-[#05A8A5] hover:to-[#135E5A] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد الكوتش! تفعيل الحساب ←' : 'Coach Confirmed! Activate Profile →'}</span>`;
         lucide.createIcons();
       }
@@ -1090,11 +1090,11 @@
         const badge = document.getElementById(`step-badge-${i}`);
         const circle = badge.querySelector('div');
         if (i < step) {
-          badge.className = 'flex flex-col items-center gap-1.5 text-emerald-400 font-bold';
-          circle.className = 'w-8 h-8 rounded-full bg-emerald-950 border-2 border-emerald-500 flex items-center justify-center';
+          badge.className = 'flex flex-col items-center gap-1.5 text-sky-400 font-bold';
+          circle.className = 'w-8 h-8 rounded-full bg-blue-950 border-2 border-sky-500 flex items-center justify-center';
         } else if (i === step) {
-          badge.className = 'flex flex-col items-center gap-1.5 text-[#07C1BE] font-black';
-          circle.className = 'w-8 h-8 rounded-full bg-cyan-950 border-2 border-[#07C1BE] flex items-center justify-center shadow-lg shadow-cyan-500/30';
+          badge.className = 'flex flex-col items-center gap-1.5 text-[#1D9BF0] font-black';
+          circle.className = 'w-8 h-8 rounded-full bg-blue-950 border-2 border-[#1D9BF0] flex items-center justify-center shadow-lg shadow-cyan-500/30';
         } else {
           badge.className = 'flex flex-col items-center gap-1.5 text-slate-500 font-bold';
           circle.className = 'w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center';

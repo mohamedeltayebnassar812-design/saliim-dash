@@ -55,7 +55,7 @@ window.showPhoneError = function(msg) {
   const errBox = document.getElementById('phone-error-msg');
   const errText = document.getElementById('phone-error-text');
   if (input) {
-    input.classList.remove('border-slate-700', 'focus:border-[#18746F]', 'focus:border-[#07C1BE]');
+    input.classList.remove('border-slate-700', 'focus:border-[#0A4174]', 'focus:border-[#1D9BF0]');
     input.classList.add('border-rose-500', 'bg-rose-950/20');
     input.focus();
   }

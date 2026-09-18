@@ -242,15 +242,15 @@ lucide.createIcons();
       if (stage === 1) {
         s1.classList.remove('hidden');
         if (label) label.innerText = '1. تصوير ومسح الطبق';
-        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
       } else if (stage === 2) {
         s2.classList.remove('hidden');
         if (label) label.innerText = '2. تحليل كيمياء الوجبة والشبع';
-        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
       } else if (stage === 3) {
         s3.classList.remove('hidden');
         if (label) label.innerText = '3. المكونات والنسب الدقيقة';
-        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#07C1BE] bg-[#07C1BE] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
       }
 
       lucide.createIcons();
@@ -336,7 +336,7 @@ lucide.createIcons();
       const errBox = document.getElementById('phone-error-msg');
       const errText = document.getElementById('phone-error-text');
       if (input) {
-        input.classList.remove('border-slate-700', 'focus:border-[#18746F]', 'focus:border-[#07C1BE]');
+        input.classList.remove('border-slate-700', 'focus:border-[#0A4174]', 'focus:border-[#1D9BF0]');
         input.classList.add('border-rose-500', 'bg-rose-950/20');
         input.focus();
       }
@@ -616,12 +616,12 @@ function openLegalModal(type) {
 
     function highlightQuizCard(radio) {
       document.querySelectorAll('.quiz-opt-card').forEach(c => {
-        c.classList.remove('border-[#18746F]', 'bg-[#1a314b]');
+        c.classList.remove('border-[#0A4174]', 'bg-[#1a314b]');
         c.classList.add('border-transparent');
       });
       const parent = radio.closest('.quiz-opt-card');
       if (parent) {
-        parent.classList.add('border-[#18746F]', 'bg-[#1a314b]');
+        parent.classList.add('border-[#0A4174]', 'bg-[#1a314b]');
         parent.classList.remove('border-transparent');
       }
       quizSelectedGoal = radio.value;

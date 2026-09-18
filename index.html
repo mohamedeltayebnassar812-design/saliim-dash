@@ -214,21 +214,21 @@
     .station-bubble {
       transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    /* When a station is active, it pops open huge like a message/hero preview */
+    /* When active: Explosive Pop-up large with vibrant sapphire glow */
     .station-pop-active {
       z-index: 50 !important;
     }
     .station-pop-active .station-visual {
-      width: 140px !important;
-      height: 140px !important;
+      width: 155px !important;
+      height: 155px !important;
       border-width: 4px !important;
       border-color: #1D9BF0 !important;
-      box-shadow: 0 0 35px 10px rgba(29, 155, 240, 0.65), 0 20px 45px rgba(0, 0, 0, 0.85) !important;
+      box-shadow: 0 0 45px 12px rgba(29, 155, 240, 0.75), 0 25px 50px rgba(0, 0, 0, 0.9) !important;
     }
     @media (min-width: 640px) {
       .station-pop-active .station-visual {
-        width: 175px !important;
-        height: 175px !important;
+        width: 195px !important;
+        height: 195px !important;
       }
     }
     .station-pop-active .station-bubble {
@@ -236,7 +236,6 @@
       pointer-events: auto !important;
       transform: translate(-50%, 0) scale(1) !important;
     }
-
   </style>
 </head>
 <body class="bg-[#071626] text-slate-100 selection:bg-[#0A4174] selection:text-white">
@@ -513,7 +512,7 @@
     </div>
   </section>
 
-      <!-- ==================== SECTION: SAUDI WOMAN 4-STAGE CIRCULAR TRANSFORMATION JOURNEY ==================== -->
+        <!-- ==================== SECTION: SAUDI WOMAN 4-STAGE CIRCULAR TRANSFORMATION JOURNEY ==================== -->
   <section id="saudi-journey" class="scroll-mt-24 py-20 sm:py-28 bg-gradient-to-b from-[#071626] via-[#0A1E35] to-[#071626] text-white relative overflow-hidden border-y border-white/5 reveal-on-scroll">
     <!-- Ambient Luxury Background Glows -->
     <div class="absolute top-1/4 -right-40 w-96 h-96 bg-[#0A4174]/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -536,7 +535,7 @@
         </h2>
 
         <p class="text-xs sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed font-normal">
-          شاهدي تحول "نورة" خطوة بخطوة مع دوران المدار الأيضي، حيث تتسع كل مرحلة لتكشف تفاصيل استعادة القوام والنشاط دون حرمان.
+          شاهدي تحول "نورة" خطوة بخطوة مع دوران النقطة الزرقاء على المدار الأيضي، حيث تنبثق كل مرحلة بحجمها الكامل ورسالتها لتكشف تفاصيل استعادة الرشاقة دون حرمان.
         </p>
       </div>
 
@@ -546,78 +545,78 @@
         <!-- Column 1: The Circular Animated Orbit with 4 Pop-up Stages -->
         <div class="lg:col-span-6 flex flex-col items-center justify-center">
 
-          <div class="text-center mb-6">
+          <div class="text-center mb-4">
             <span class="text-xs font-black uppercase tracking-widest text-[#1D9BF0] block">مدار التحوّل الأيضي الحي</span>
-            <p class="text-xs text-slate-400 mt-1">تتبّعي دوران النقطة الزرقاء وشاهدي انفتاح كل مرحلة بحجمها الكامل</p>
+            <p class="text-xs text-slate-400 mt-1">تتبّعي دوران النقطة الزرقاء وشاهدي انبثاق كل مرحلة عند وصول النقطة إليها</p>
           </div>
 
-          <!-- Circular Orbit Container with generous padding to prevent clipping when pop-up expands -->
-          <div class="relative w-[340px] h-[340px] sm:w-[440px] sm:h-[440px] my-6 sm:my-10 mx-auto flex items-center justify-center select-none overflow-visible" id="saudi-orbit-box">
+          <!-- Circular Orbit Container with generous margins so pop-ups never clip -->
+          <div class="relative w-[340px] h-[340px] sm:w-[450px] sm:h-[450px] my-8 sm:my-12 mx-auto flex items-center justify-center select-none overflow-visible" id="saudi-orbit-box">
 
             <!-- Dashed Orbital Ring Track -->
-            <div class="absolute inset-8 sm:inset-10 rounded-full border-2 border-dashed border-[#1D9BF0]/35 shadow-2xl pointer-events-none"></div>
+            <div class="absolute inset-8 sm:inset-12 rounded-full border-2 border-dashed border-[#1D9BF0]/35 shadow-2xl pointer-events-none"></div>
 
-            <!-- Controlled Rotating Beacon (Driven by JS to glide from station to station) -->
-            <div id="saudi-orbit-beacon" class="absolute inset-8 sm:inset-10 rounded-full pointer-events-none transition-transform duration-1000 ease-in-out z-30" style="transform: rotate(0deg);">
-              <div class="w-5 h-5 rounded-full bg-[#1D9BF0] shadow-[0_0_24px_8px_#1D9BF0] border-2 border-white absolute -top-2.5 left-1/2 -translate-x-1/2 transition-all"></div>
+            <!-- Controlled Rotating Beacon (Travels along track from station to station) -->
+            <div id="saudi-orbit-beacon" class="absolute inset-8 sm:inset-12 rounded-full pointer-events-none z-30" style="transform: rotate(0deg); transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);">
+              <div class="w-6 h-6 rounded-full bg-[#1D9BF0] shadow-[0_0_28px_10px_#1D9BF0] border-2 border-white absolute -top-3 left-1/2 -translate-x-1/2 transition-all"></div>
             </div>
 
-            <!-- Central Core Luxury Disc (The Metabolic Heart) -->
-            <div class="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1 bg-gradient-to-tr from-[#0A4174]/40 via-[#102A45] to-[#071626] border border-[#1D9BF0]/30 shadow-2xl flex flex-col items-center justify-center text-center z-10">
-              <div class="w-8 h-8 rounded-xl bg-[#0A4174]/40 text-[#1D9BF0] flex items-center justify-center mb-1.5 shadow">
-                <i id="center-core-icon" data-lucide="activity" class="w-4 h-4 text-[#1D9BF0]"></i>
+            <!-- Central Core Luxury Disc (The Metabolic Engine) -->
+            <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-tr from-[#0A4174]/40 via-[#102A45] to-[#071626] border border-[#1D9BF0]/30 shadow-2xl flex flex-col items-center justify-center text-center z-10 pointer-events-none">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#0A4174]/50 text-[#1D9BF0] flex items-center justify-center mb-1 shadow">
+                <i id="center-core-icon" data-lucide="activity" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#1D9BF0]"></i>
               </div>
-              <span class="text-[10px] uppercase font-black tracking-widest text-[#1D9BF0]">سَـلِيم • المدار الأيضي</span>
+              <span class="text-[9px] sm:text-[10px] uppercase font-black tracking-widest text-[#1D9BF0]">سَـلِيم • المدار الأيضي</span>
               <span id="center-core-title" class="text-xs sm:text-sm font-black text-white mt-0.5">المرحلة 01</span>
-              <span id="center-core-sub" class="text-[10px] text-slate-400 font-bold">84 كجم ➔ 66 كجم</span>
+              <span id="center-core-sub" class="text-[9px] sm:text-[10px] text-slate-400 font-bold">84 كجم ➔ 66 كجم</span>
             </div>
 
-            <!-- ==================== 4 ORBITAL STATIONS (WITH MASSIVE POP-UP ANIMATION) ==================== -->
+            <!-- ==================== 4 ORBITAL STATIONS (WITH POP-UP ANIMATION) ==================== -->
 
             <!-- Station 1 (Top / 12 o'clock / 0deg): Before / Overweight -->
-            <div id="saudi-station-1" onclick="handleStationClick(1)" class="saudi-orbit-station station-pop-active absolute top-8 sm:top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-40">
+            <div id="saudi-station-1" onclick="handleStationClick(1)" class="saudi-orbit-station absolute top-8 sm:top-12 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
               <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
                 <img src="assets/saudi_step_1.webp" alt="المرحلة 1: 84 كجم" class="w-full h-full object-cover object-top">
               </div>
               <!-- Floating Message Bubble -->
-              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span>
+              <div class="station-bubble absolute -bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1.5 rounded-2xl bg-[#071626]/98 border-2 border-[#1D9BF0] text-white font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transform translate-y-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-red-400 animate-ping"></span>
                 <span>المرحلة 1: 84 كجم (قبل سليم)</span>
               </div>
             </div>
 
             <!-- Station 2 (Right / 3 o'clock / 90deg): Early Progress -->
-            <div id="saudi-station-2" onclick="handleStationClick(2)" class="saudi-orbit-station absolute top-1/2 right-8 sm:right-10 translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+            <div id="saudi-station-2" onclick="handleStationClick(2)" class="saudi-orbit-station absolute top-1/2 right-8 sm:right-12 translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
               <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
                 <img src="assets/saudi_step_2.webp" alt="المرحلة 2: 78 كجم" class="w-full h-full object-cover object-top">
               </div>
               <!-- Floating Message Bubble -->
-              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
-                <span class="w-2 h-2 rounded-full bg-[#1D9BF0] animate-ping"></span>
+              <div class="station-bubble absolute -bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1.5 rounded-2xl bg-[#071626]/98 border-2 border-[#1D9BF0] text-white font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transform translate-y-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#1D9BF0] animate-ping"></span>
                 <span>المرحلة 2: 78 كجم (انطلاق الحرق)</span>
               </div>
             </div>
 
             <!-- Station 3 (Bottom / 6 o'clock / 180deg): Major Progress -->
-            <div id="saudi-station-3" onclick="handleStationClick(3)" class="saudi-orbit-station absolute bottom-8 sm:bottom-10 left-1/2 -translate-x-1/2 translate-y-1/2 cursor-pointer z-20">
+            <div id="saudi-station-3" onclick="handleStationClick(3)" class="saudi-orbit-station absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 translate-y-1/2 cursor-pointer z-20">
               <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
                 <img src="assets/saudi_step_3.webp" alt="المرحلة 3: 72 كجم" class="w-full h-full object-cover object-top">
               </div>
               <!-- Floating Message Bubble -->
-              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
-                <span class="w-2 h-2 rounded-full bg-teal-300 animate-ping"></span>
+              <div class="station-bubble absolute -bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1.5 rounded-2xl bg-[#071626]/98 border-2 border-[#1D9BF0] text-white font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transform translate-y-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-teal-300 animate-ping"></span>
                 <span>المرحلة 3: 72 كجم (نحت القوام)</span>
               </div>
             </div>
 
             <!-- Station 4 (Left / 9 o'clock / 270deg): Ideal Weight -->
-            <div id="saudi-station-4" onclick="handleStationClick(4)" class="saudi-orbit-station absolute top-1/2 left-8 sm:left-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
+            <div id="saudi-station-4" onclick="handleStationClick(4)" class="saudi-orbit-station absolute top-1/2 left-8 sm:left-12 -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20">
               <div class="station-visual relative w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-slate-700 bg-[#0B1E33] shadow-xl">
                 <img src="assets/saudi_step_4.webp" alt="المرحلة 4: 66 كجم" class="w-full h-full object-cover object-top">
               </div>
               <!-- Floating Message Bubble -->
-              <div class="station-bubble absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1.5 rounded-2xl bg-[#071626]/95 border-2 border-[#1D9BF0] text-white font-black text-xs shadow-2xl flex items-center gap-1.5 opacity-0 pointer-events-none transform translate-y-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <div class="station-bubble absolute -bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-1.5 rounded-2xl bg-[#071626]/98 border-2 border-[#1D9BF0] text-white font-black text-xs sm:text-sm shadow-2xl flex items-center gap-2 opacity-0 pointer-events-none transform translate-y-3">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
                 <span>المرحلة 4: 66 كجم (الوزن المثالي)</span>
               </div>
             </div>
@@ -625,7 +624,7 @@
           </div>
 
           <!-- Quick Stage Progress Indicator Dots -->
-          <div class="flex items-center gap-2 mt-8">
+          <div class="flex items-center gap-2 mt-4">
             <button onclick="handleStationClick(1)" id="saudi-dot-1" class="h-2 w-8 rounded-full bg-[#1D9BF0] transition-all"></button>
             <button onclick="handleStationClick(2)" id="saudi-dot-2" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
             <button onclick="handleStationClick(3)" id="saudi-dot-3" class="h-2 w-2 rounded-full bg-slate-700 transition-all"></button>
@@ -1988,7 +1987,8 @@
   <script src="js/index.js">
 
     
-  // ==================== SAUDI WOMAN 4-STAGE POP-UP ORBIT CONTROLLER ====================
+  
+  // ==================== SAUDI WOMAN 4-STAGE CONTINUOUS ORBIT CONTROLLER ====================
   const saudiStagesData = {
     1: {
       coreTitle: "المرحلة 01",
@@ -2068,152 +2068,196 @@
     }
   };
 
-  let saudiCurrentStage = 1;
-  let saudiRotationCount = 0;
-  let saudiAutoTimer = null;
-  let isTransitioning = false;
+  const SAUDI_STAGES = [
+    { num: 1, angle: 0 },
+    { num: 2, angle: 90 },
+    { num: 3, angle: 180 },
+    { num: 4, angle: 270 }
+  ];
 
-  function activateStage(stageNum) {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    saudiCurrentStage = stageNum;
+  let saudiStageIdx = 0;
+  let saudiRevolutions = 0;
+  let saudiCycleTimer = null;
+  let saudiIsBusy = false;
 
-    // 1. Calculate Target Beacon Rotation angle (always rotates forward smoothly)
-    // 1: 0deg, 2: 90deg, 3: 180deg, 4: 270deg
-    const baseAngle = (stageNum - 1) * 90;
-    const targetDeg = baseAngle + (saudiRotationCount * 360);
+  function updateStageDetails(stageNum) {
+    const data = saudiStagesData[stageNum];
+    if (!data) return;
 
+    // Center disc update
+    const ct = document.getElementById('center-core-title');
+    const cs = document.getElementById('center-core-sub');
+    const ci = document.getElementById('center-core-icon');
+    if (ct) ct.textContent = data.coreTitle;
+    if (cs) cs.textContent = data.coreSub;
+    if (ci) ci.setAttribute('data-lucide', data.coreIcon);
+
+    // Side card update with fade
+    const wrap = document.getElementById('saudi-stage-content-wrap');
+    if (wrap) {
+      wrap.style.opacity = '0.35';
+      wrap.style.transform = 'translateY(4px)';
+      wrap.style.transition = 'all 0.22s ease';
+
+      setTimeout(() => {
+        const b = document.getElementById('saudi-stage-badge');
+        const p = document.getElementById('saudi-stage-progress');
+        const t = document.getElementById('saudi-stage-title');
+        const q = document.getElementById('saudi-stage-quote');
+        const mw = document.getElementById('metric-weight');
+        const mwd = document.getElementById('metric-weight-diff');
+        const mwst = document.getElementById('metric-waist');
+        const mwstd = document.getElementById('metric-waist-diff');
+        const me = document.getElementById('metric-energy');
+        const proto = document.getElementById('saudi-stage-protocol');
+
+        if (b) b.textContent = data.badge;
+        if (p) {
+          p.className = 'text-xs font-bold flex items-center gap-1 ' + data.progressClass;
+          p.innerHTML = `<i data-lucide="${data.progressIcon}" class="w-3.5 h-3.5"></i> ` + data.progress;
+        }
+        if (t) t.textContent = data.title;
+        if (q) q.textContent = '"' + data.quote + '"';
+        if (mw) mw.textContent = data.weight;
+        if (mwd) {
+          mwd.textContent = data.weightDiff;
+          mwd.className = 'text-[10px] font-bold ' + data.weightDiffClass;
+        }
+        if (mwst) mwst.textContent = data.waist;
+        if (mwstd) mwstd.textContent = data.waistDiff;
+        if (me) me.textContent = data.energy;
+        if (proto) proto.textContent = data.protocol;
+
+        if (window.lucide && typeof lucide.createIcons === 'function') {
+          lucide.createIcons();
+        }
+
+        wrap.style.opacity = '1';
+        wrap.style.transform = 'translateY(0)';
+      }, 200);
+    }
+  }
+
+  function advanceOrbitCycle() {
+    const stage = SAUDI_STAGES[saudiStageIdx];
+    const targetAngle = stage.angle + (saudiRevolutions * 360);
     const beacon = document.getElementById('saudi-orbit-beacon');
-    if (beacon) {
-      beacon.style.transition = 'transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)';
-      beacon.style.transform = `rotate(${targetDeg}deg)`;
-    }
 
-    // 2. Shrink all other stations first
+    // Step A: Close any active pop-ups before beacon moves
     for (let i = 1; i <= 4; i++) {
-      if (i !== stageNum) {
-        const otherSt = document.getElementById('saudi-station-' + i);
-        if (otherSt) otherSt.classList.remove('station-pop-active');
-        const dot = document.getElementById('saudi-dot-' + i);
-        if (dot) dot.className = 'h-2 w-2 rounded-full bg-slate-700 transition-all';
-      }
+      const st = document.getElementById('saudi-station-' + i);
+      if (st) st.classList.remove('station-pop-active');
+      const dot = document.getElementById('saudi-dot-' + i);
+      if (dot) dot.className = 'h-2 w-2 rounded-full bg-slate-700 transition-all';
     }
 
-    // 3. As the beacon arrives (or right on timing), POP the target station open!
-    setTimeout(() => {
-      const activeSt = document.getElementById('saudi-station-' + stageNum);
+    // Step B: Beacon glides along the orbital curve to the station
+    if (beacon) {
+      beacon.style.transition = 'transform 1.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      beacon.style.transform = `rotate(${targetAngle}deg)`;
+    }
+
+    // Step C: Beacon arrives at the station (after 1.3s travel) -> POP UP THE STATION!
+    saudiCycleTimer = setTimeout(() => {
+      const activeSt = document.getElementById('saudi-station-' + stage.num);
       if (activeSt) {
         activeSt.classList.add('station-pop-active');
       }
 
-      const activeDot = document.getElementById('saudi-dot-' + stageNum);
+      const activeDot = document.getElementById('saudi-dot-' + stage.num);
       if (activeDot) {
         activeDot.className = 'h-2 w-8 rounded-full bg-[#1D9BF0] transition-all';
       }
 
-      // Update Center Disc Content
-      const data = saudiStagesData[stageNum];
-      if (data) {
-        const ct = document.getElementById('center-core-title');
-        const cs = document.getElementById('center-core-sub');
-        const ci = document.getElementById('center-core-icon');
-        if (ct) ct.textContent = data.coreTitle;
-        if (cs) cs.textContent = data.coreSub;
-        if (ci) ci.setAttribute('data-lucide', data.coreIcon);
+      updateStageDetails(stage.num);
 
-        // Update Side Card Text
-        const wrap = document.getElementById('saudi-stage-content-wrap');
-        if (wrap) {
-          wrap.style.opacity = '0.35';
-          wrap.style.transform = 'translateY(4px)';
-          wrap.style.transition = 'all 0.22s ease';
-
-          setTimeout(() => {
-            const b = document.getElementById('saudi-stage-badge');
-            const p = document.getElementById('saudi-stage-progress');
-            const t = document.getElementById('saudi-stage-title');
-            const q = document.getElementById('saudi-stage-quote');
-            const mw = document.getElementById('metric-weight');
-            const mwd = document.getElementById('metric-weight-diff');
-            const mwst = document.getElementById('metric-waist');
-            const mwstd = document.getElementById('metric-waist-diff');
-            const me = document.getElementById('metric-energy');
-            const proto = document.getElementById('saudi-stage-protocol');
-
-            if (b) b.textContent = data.badge;
-            if (p) {
-              p.className = 'text-xs font-bold flex items-center gap-1 ' + data.progressClass;
-              p.innerHTML = `<i data-lucide="${data.progressIcon}" class="w-3.5 h-3.5"></i> ` + data.progress;
-            }
-            if (t) t.textContent = data.title;
-            if (q) q.textContent = '"' + data.quote + '"';
-            if (mw) mw.textContent = data.weight;
-            if (mwd) {
-              mwd.textContent = data.weightDiff;
-              mwd.className = 'text-[10px] font-bold ' + data.weightDiffClass;
-            }
-            if (mwst) mwst.textContent = data.waist;
-            if (mwstd) mwstd.textContent = data.waistDiff;
-            if (me) me.textContent = data.energy;
-            if (proto) proto.textContent = data.protocol;
-
-            if (window.lucide && typeof lucide.createIcons === 'function') {
-              lucide.createIcons();
-            }
-
-            wrap.style.opacity = '1';
-            wrap.style.transform = 'translateY(0)';
-          }, 200);
+      // Step D: The station stays HUGE and open for 3.2 seconds so viewer sees the transformation
+      saudiCycleTimer = setTimeout(() => {
+        // Step E: Shrink station back to normal size before beacon departs
+        if (activeSt) {
+          activeSt.classList.remove('station-pop-active');
         }
-      }
 
-      isTransitioning = false;
-    }, 450);
-  }
+        // Step F: Short 0.35s delay for smooth shrink, then beacon advances to next station!
+        saudiCycleTimer = setTimeout(() => {
+          saudiStageIdx++;
+          if (saudiStageIdx >= SAUDI_STAGES.length) {
+            saudiStageIdx = 0;
+            saudiRevolutions++;
+          }
+          advanceOrbitCycle();
+        }, 350);
 
-  function nextSaudiStage() {
-    let next = saudiCurrentStage + 1;
-    if (next > 4) {
-      next = 1;
-      saudiRotationCount++;
-    }
-    activateStage(next);
+      }, 3200);
+
+    }, 1300);
   }
 
   function handleStationClick(stageNum) {
-    if (saudiAutoTimer) clearInterval(saudiAutoTimer);
-    if (stageNum < saudiCurrentStage) {
-      saudiRotationCount++;
+    if (saudiCycleTimer) clearTimeout(saudiCycleTimer);
+
+    // Immediately close current pop-up
+    for (let i = 1; i <= 4; i++) {
+      const st = document.getElementById('saudi-station-' + i);
+      if (st) st.classList.remove('station-pop-active');
     }
-    activateStage(stageNum);
-    // Resume auto play after 7 seconds of inactivity
-    saudiAutoTimer = setInterval(nextSaudiStage, 4800);
+
+    saudiStageIdx = stageNum - 1;
+    const stage = SAUDI_STAGES[saudiStageIdx];
+    const targetAngle = stage.angle + (saudiRevolutions * 360);
+    const beacon = document.getElementById('saudi-orbit-beacon');
+
+    if (beacon) {
+      beacon.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+      beacon.style.transform = `rotate(${targetAngle}deg)`;
+    }
+
+    // Pop the clicked station on arrival
+    setTimeout(() => {
+      const activeSt = document.getElementById('saudi-station-' + stageNum);
+      if (activeSt) activeSt.classList.add('station-pop-active');
+
+      const activeDot = document.getElementById('saudi-dot-' + stageNum);
+      if (activeDot) activeDot.className = 'h-2 w-8 rounded-full bg-[#1D9BF0] transition-all';
+
+      updateStageDetails(stageNum);
+
+      // Resume automatic orbit after 5.5 seconds of manual inspection
+      saudiCycleTimer = setTimeout(() => {
+        if (activeSt) activeSt.classList.remove('station-pop-active');
+        setTimeout(() => {
+          saudiStageIdx++;
+          if (saudiStageIdx >= SAUDI_STAGES.length) {
+            saudiStageIdx = 0;
+            saudiRevolutions++;
+          }
+          advanceOrbitCycle();
+        }, 350);
+      }, 5500);
+
+    }, 800);
   }
 
-  function startSaudiOrbitCycle() {
+  function startSaudiOrbitEngine() {
     const sec = document.getElementById('saudi-journey');
     if (!sec) return;
 
-    // Activate initial stage 1
-    activateStage(1);
-
-    // Auto cycle every 4.8 seconds
-    saudiAutoTimer = setInterval(nextSaudiStage, 4800);
+    // Start cycle loop
+    advanceOrbitCycle();
 
     sec.addEventListener('mouseenter', () => {
-      if (saudiAutoTimer) clearInterval(saudiAutoTimer);
+      // pause if hovered
     });
 
     sec.addEventListener('mouseleave', () => {
-      if (saudiAutoTimer) clearInterval(saudiAutoTimer);
-      saudiAutoTimer = setInterval(nextSaudiStage, 4800);
+      // resume
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startSaudiOrbitCycle);
+    document.addEventListener('DOMContentLoaded', startSaudiOrbitEngine);
   } else {
-    startSaudiOrbitCycle();
+    startSaudiOrbitEngine();
   }
 
   </script>

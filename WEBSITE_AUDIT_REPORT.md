@@ -175,7 +175,7 @@ const GOOGLE_SHEETS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxVYE6
 | Field | index.html | onboarding-v2.html | Status |
 |-------|------------|-------------------|--------|
 | Full Name | د. أحمد الخطيب | د. أحمد الخطيب | ✅ CONSISTENT |
-| Title | Pharm.D | Not mentioned | ⚠️ PARTIAL |
+| Title |  | Not mentioned | ⚠️ PARTIAL |
 | Followers | +9M | Not mentioned | ℹ️ INFO ONLY |
 | Experience | 15+ سنة | Not mentioned | ℹ️ INFO ONLY |
 | WhatsApp | 201016629916 | 201016629916 | ✅ CONSISTENT |
@@ -251,7 +251,7 @@ Both pages describe 4-step methodology:
 | 9M+ followers | Hero stats badge | ℹ️ NOT VERIFIABLE (would need social media API) |
 | 10,000+ successful cases | Hero stats | ℹ️ NOT VERIFIABLE |
 | 15+ years experience | Hero text | ℹ️ CREDIBLE (professional claim) |
-| Pharm.D qualification | Nav badge | ✅ DISPLAYED (not verified but professional credential) |
+|  qualification | Nav badge | ✅ DISPLAYED (not verified but professional credential) |
 | Real patient testimonials | (If present) | ⚠️ NOT VISIBLE IN PROVIDED CONTENT |
 
 **Recommendation:** Add disclaimer or verification source for follower/case statistics.
@@ -264,7 +264,7 @@ Both pages describe 4-step methodology:
 
 #### **Profile Information (Dr. Ahmed):**
 - ✅ Full name present
-- ✅ Professional title (Pharm.D)
+- ✅ Professional title 
 - ✅ Photo/visual present
 - ✅ Experience level mentioned
 - ✅ Contact information (WhatsApp)

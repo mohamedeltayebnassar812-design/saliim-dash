@@ -377,7 +377,7 @@
 
           <!-- Submit Button -->
           <div class="pt-6 border-t border-slate-800">
-            <button type="submit" id="step-1-btn" class="w-full py-4 px-8 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-sky-500/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+            <button type="submit" id="step-1-btn" class="w-full py-4 px-8 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-white font-black text-base rounded-2xl shadow-xl shadow-sky-500/20 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
               <span>حفظ البيانات ومتابعة حجز المواعيد</span>
               <i data-lucide="arrow-left" class="w-5 h-5"></i>
             </button>
@@ -671,7 +671,7 @@
 
         <!-- WhatsApp VIP CTA -->
         <div class="mt-8 max-w-md mx-auto">
-          <a id="whatsapp-vip-link" href="https://wa.me/201016629916" target="_blank" class="w-full py-4 px-8 bg-sky-500 hover:bg-emerald-600 text-slate-950 font-black text-base rounded-2xl shadow-xl shadow-sky-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5">
+          <a id="whatsapp-vip-link" href="https://wa.me/201016629916" target="_blank" class="w-full py-4 px-8 bg-sky-500 hover:bg-emerald-600 text-white font-black text-base rounded-2xl shadow-xl shadow-sky-500/20 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2.5">
             <i data-lucide="message-circle" class="w-5 h-5"></i>
             <span>الانضمام لمحادثة الواتساب VIP للمشتركين</span>
           </a>
@@ -1184,7 +1184,7 @@
       isNutritionScheduled = true;
       const btn = document.getElementById('advance-to-coach-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-sky-500/20";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-white text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-sky-500/20";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! المتابعة لموعد الكوتش</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
         lucide.createIcons();
       }
@@ -1194,7 +1194,7 @@
       isCoachScheduled = true;
       const btn = document.getElementById('advance-to-step4-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-slate-950 text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#5B9BD5] hover:from-[#187EC5] hover:to-[#326BA8] text-white text-xs font-black rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-cyan-500/20";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>تم الحجز بنجاح! استكمال التفعيل والانضمام</span><i data-lucide="arrow-left" class="w-4 h-4"></i>`;
         lucide.createIcons();
       }
@@ -1339,7 +1339,7 @@
 
     function showBookingAlert(message) {
       const alert = document.createElement('div');
-      alert.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-slate-950 font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-xs sm:text-sm border-2 border-amber-300 animate-bounce';
+      alert.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-white font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-xs sm:text-sm border-2 border-amber-300 animate-bounce';
       alert.innerHTML = `<i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0"></i><span>${message}</span>`;
       document.body.appendChild(alert);
       lucide.createIcons();
@@ -1348,7 +1348,7 @@
 
     function showBookingToast(message) {
       const toast = document.createElement('div');
-      toast.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-slate-950 font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-sm animate-bounce';
+      toast.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-emerald-600 text-white font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-sm animate-bounce';
       toast.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5"></i><span>${message}</span>`;
       document.body.appendChild(toast);
       lucide.createIcons();

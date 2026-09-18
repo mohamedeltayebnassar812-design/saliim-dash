@@ -242,15 +242,15 @@ lucide.createIcons();
       if (stage === 1) {
         s1.classList.remove('hidden');
         if (label) label.innerText = '1. تصوير ومسح الطبق';
-        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p1) p1.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-white font-bold transition-all cursor-pointer';
       } else if (stage === 2) {
         s2.classList.remove('hidden');
         if (label) label.innerText = '2. تحليل كيمياء الوجبة والشبع';
-        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p2) p2.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-white font-bold transition-all cursor-pointer';
       } else if (stage === 3) {
         s3.classList.remove('hidden');
         if (label) label.innerText = '3. المكونات والنسب الدقيقة';
-        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-slate-950 font-bold transition-all cursor-pointer';
+        if (p3) p3.className = 'px-2 py-0.5 rounded border border-[#1D9BF0] bg-[#1D9BF0] text-white font-bold transition-all cursor-pointer';
       }
 
       lucide.createIcons();

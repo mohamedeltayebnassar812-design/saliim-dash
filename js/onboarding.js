@@ -976,7 +976,7 @@
       isNutritionScheduled = true;
       const btn = document.getElementById('advance-to-coach-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-white text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد التغذية! المتابعة للكوتش ←' : 'Nutrition Confirmed! Proceed to Coach →'}</span>`;
         lucide.createIcons();
       }
@@ -986,7 +986,7 @@
       isCoachScheduled = true;
       const btn = document.getElementById('advance-to-step4-btn');
       if (btn) {
-        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-slate-950 text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
+        btn.className = "w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#1D9BF0] to-[#0A4174] hover:from-[#1A8CD8] hover:to-[#07335C] text-white text-xs font-black rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer transform hover:-translate-y-0.5";
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4"></i><span>${currentLang === 'ar' ? 'تم تأكيد موعد الكوتش! تفعيل الحساب ←' : 'Coach Confirmed! Activate Profile →'}</span>`;
         lucide.createIcons();
       }
@@ -1179,7 +1179,7 @@
 
     function showToastAlert(msg) {
       const alert = document.createElement('div');
-      alert.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-slate-950 font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-xs sm:text-sm border-2 border-amber-300 animate-bounce';
+      alert.className = 'fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-white font-bold px-6 py-3.5 rounded-2xl shadow-2xl flex items-center gap-2 text-xs sm:text-sm border-2 border-amber-300 animate-bounce';
       alert.innerHTML = `<i data-lucide="alert-triangle" class="w-5 h-5 flex-shrink-0"></i><span>${msg}</span>`;
       document.body.appendChild(alert);
       lucide.createIcons();

@@ -116,7 +116,7 @@ lucide.createIcons();
     const PACKAGE_PRICES = {
       'healthy': '$69/شهرياً',
       'pro': '$119/شهرياً',
-      'consultation_dr': '$89',
+      'consultation_dr': '$249',
       'app_waitlist': 'مجاني'
     };
 

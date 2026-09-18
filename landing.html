@@ -880,11 +880,11 @@
 
         <div class="flex flex-col sm:items-end gap-3 flex-shrink-0 w-full md:w-auto">
           <div class="flex items-baseline gap-1.5">
-            <span class="text-4xl font-black text-white">$89</span>
+            <span class="text-4xl font-black text-white">$249</span>
             <span class="text-xs text-slate-400 font-normal">/ استشارة واحدة</span>
           </div>
-          <button onclick="openBookingModal('consultation_dr', 'استشارة خاصة مع د. أحمد الخطيب', '$89')" class="w-full md:w-auto px-7 py-3.5 bg-[#1D9BF0] hover:bg-[#1A8CD8] text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-all cursor-pointer">
-            احجز استشارتك مع د. أحمد ($89)
+          <button onclick="openBookingModal('consultation_dr', 'استشارة خاصة مع د. أحمد الخطيب', '$249')" class="w-full md:w-auto px-7 py-3.5 bg-[#1D9BF0] hover:bg-[#1A8CD8] text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-all cursor-pointer">
+            احجز استشارتك مع د. أحمد ($249)
           </button>
         </div>
       </div>
@@ -1157,7 +1157,7 @@
           <select id="package_select" onchange="syncPackagePrice(this.value)" class="w-full bg-[#071626] border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#1D9BF0]">
             <option value="healthy">باقة Healthy - $69 شهرياً</option>
             <option value="pro" selected>باقة Pro المتقدمة - $119 شهرياً (الأكثر طلباً)</option>
-            <option value="consultation_dr">استشارة خاصة مع د. أحمد الخطيب - $89</option>
+            <option value="consultation_dr">استشارة خاصة مع د. أحمد الخطيب - $249</option>
           </select>
         </div>
 
@@ -1180,7 +1180,7 @@
     const PACKAGE_PRICES = {
       'healthy': '$69/شهرياً',
       'pro': '$119/شهرياً',
-      'consultation_dr': '$89'
+      'consultation_dr': '$249'
     };
 
     function openBookingModal(pkgKey = 'pro', pkgTitle = 'باقة Pro المتقدمة', priceText = '$119/شهرياً') {

@@ -7,7 +7,7 @@ const EASYKASH_ENDPOINT = "https://back.easykash.net/api/directpayv1/pay";
 const PACKAGE_PRICES = {
   healthy: { amount: 69, currency: "USD", name: "باقة Healthy ($69)" },
   pro: { amount: 119, currency: "USD", name: "باقة Pro المتقدمة ($119)" },
-  consultation_dr: { amount: 89, currency: "USD", name: "استشارة خاصة مع د. أحمد الخطيب ($89)" }
+  consultation_dr: { amount: 249, currency: "USD", name: "استشارة خاصة مع د. أحمد الخطيب ($249)" }
 };
 
 export default async function handler(req, res) {

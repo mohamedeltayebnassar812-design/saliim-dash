@@ -70,7 +70,7 @@
         opt_select_pkg: "اختر الباقة المناسبة",
         pkg_healthy: "باقة Healthy ($69 شهرياً)",
         pkg_pro: "باقة Pro المتقدمة ($119 شهرياً)",
-        pkg_consultation: "استشارة خاصة مع د. أحمد الخطيب ($89)",
+        pkg_consultation: "استشارة خاصة مع د. أحمد الخطيب ($249)",
         pkg_other: "أخرى / قمت بالتحويل البنكي أو الدفع المباشر",
         sec2_title: "أهدافك ونمط حياتك الغذائي والبدني",
         lbl_goal: "ما هو هدفك الأساسي من الاشتراك؟",
@@ -178,7 +178,7 @@
         opt_select_pkg: "Select Suitable Package",
         pkg_healthy: "Healthy Package ($69/mo)",
         pkg_pro: "Pro Advanced Package ($119/mo)",
-        pkg_consultation: "Private Consultation with Dr. Ahmed El-Khateeb ($89)",
+        pkg_consultation: "Private Consultation with Dr. Ahmed El-Khateeb ($249)",
         pkg_other: "Other / Direct Bank Transfer",
         sec2_title: "Nutrition & Fitness Goals",
         lbl_goal: "What is your primary goal?",
@@ -470,7 +470,7 @@
         rawInput === 'consultation' ||
         rawInput === 'consultation_dr' ||
         rawInput.includes('consult') ||
-        rawInput.includes('89') ||
+        rawInput.includes('249') || rawInput.includes('89') ||
         rawInput.includes('90') ||
         rawInput.includes('استشارة') ||
         rawInput.includes('جلسة') ||

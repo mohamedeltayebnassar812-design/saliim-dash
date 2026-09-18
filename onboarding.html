@@ -617,7 +617,7 @@
               <span id="copy-code-text">نسخ الكود</span>
             </button>
           </div>
-          <p class="text-[11px] text-slate-400">احفظ هذا الكود، فهو مرجعك الطبي في المتابعة، والتحاليل، والبرامج الغذائية والتدريبية.</p>
+          <p class="text-[11px] text-slate-400">احفظ هذا الكود، فهو مرجعك الخاص في متابعة خطتك الغذائية والتدريبية ومواعيدك.</p>
         </div>
 
         <!-- Summary Cards -->
@@ -661,7 +661,7 @@
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#5B9BD5]"></span>
-            <span>إذا كانت لديك تحاليل طبية حديثة، جهزها لمشاركتها مع الأخصائي.</span>
+            <span>إذا كانت لديك أي تفضيلات أو أهداف خاصة، جهزها لمشاركتها مع الأخصائي لتخصيص خطتك بدقة.</span>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#5B9BD5]"></span>
@@ -997,7 +997,7 @@
         target_weight: document.getElementById('client_target_weight').value.trim(),
         package: document.getElementById('client_package').value,
         goal: document.getElementById('client_goal').value,
-        conditions: conditions.length > 0 ? conditions.join(', ') : 'لم يتم تحديد أمراض',
+        conditions: conditions.length > 0 ? conditions.join(', ') : 'نمط حياة صحي',
         medications: mealsCountEl ? mealsCountEl.value : '3 وجبات منتظمة',
         allergies: document.getElementById('client_allergies').value.trim() || 'لا يوجد',
         surgeries: (injuriesEl && injuriesEl.value.trim()) || 'لا توجد إصابات',

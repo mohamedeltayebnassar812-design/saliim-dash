@@ -10,38 +10,93 @@ let pendingAuthEmail = '';
 let resendTimerInterval = null;
 let resendSecondsRemaining = 0;
 
+function parseJwt(token) {
+  try {
+    const base64Url = token.split('.')[1];
+    if (!base64Url) return null;
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.warn("JWT parse note:", e);
+    return null;
+  }
+}
+
 function initSupabaseAuth() {
   try {
     if (window.supabase && typeof window.supabase.createClient === 'function') {
-      supabaseClient = window.supabase.createClient(SUPABASE_AUTH_URL, SUPABASE_ANON_KEY);
+      supabaseClient = window.supabase.createClient(SUPABASE_AUTH_URL, SUPABASE_ANON_KEY, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true
+        }
+      });
+
+      // Listen for auth state changes (OAuth callbacks, Email Confirmation redirects)
+      supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (session && session.user) {
+          setCurrentUser(session.user);
+          if (event === 'SIGNED_IN') {
+            showGlobalToast("مرحباً بك! تم تسجيل الدخول بنجاح في سليم.", "success");
+          }
+        } else if (event === 'SIGNED_OUT') {
+          setCurrentUser(null);
+        }
+      });
     }
   } catch (e) {
     console.warn("Supabase init note:", e.message);
   }
+
   checkInitialSession();
 }
 
 async function checkInitialSession() {
-  // Check URL hash from OAuth or Email Link redirect
+  // 1. Check URL hash from OAuth redirect or Email confirmation link
   if (window.location.hash && (window.location.hash.includes('access_token') || window.location.hash.includes('type='))) {
     const hashStr = window.location.hash.substring(1);
     const params = new URLSearchParams(hashStr);
     const token = params.get('access_token');
-    if (token && supabaseClient) {
-      try {
-        const { data, error } = await supabaseClient.auth.getUser(token);
-        if (data && data.user) {
-          setCurrentUser(data.user);
-          window.history.replaceState(null, '', window.location.pathname);
-          showGlobalToast("تم تأكيد وتفعيل حسابك بنجاح! مرحباً بك في سليم.", "success");
-          return;
-        }
-      } catch (err) {
-        console.error("Auth redirect error:", err);
+    const refreshToken = params.get('refresh_token');
+
+    // Immediately extract user from JWT payload so user is logged in instantly
+    if (token) {
+      const payload = parseJwt(token);
+      if (payload && (payload.email || payload.sub)) {
+        const user = {
+          id: payload.sub,
+          email: payload.email,
+          user_metadata: payload.user_metadata || {},
+          name: payload.user_metadata?.full_name || payload.email?.split('@')[0] || 'المشترك'
+        };
+        setCurrentUser(user);
+        window.history.replaceState(null, '', window.location.pathname);
+        showGlobalToast("تم تأكيد وتفعيل حسابك بنجاح! أهلاً بك في منصة سليم.", "success");
       }
+
+      // Sync session with Supabase client if available
+      if (supabaseClient && refreshToken) {
+        try {
+          const { data } = await supabaseClient.auth.setSession({
+            access_token: token,
+            refresh_token: refreshToken
+          });
+          if (data && data.user) {
+            setCurrentUser(data.user);
+          }
+        } catch (setErr) {
+          console.warn("Set session note:", setErr.message);
+        }
+      }
+      return;
     }
   }
 
+  // 2. Check active Supabase session
   if (supabaseClient) {
     try {
       const { data: { session } } = await supabaseClient.auth.getSession();
@@ -52,6 +107,7 @@ async function checkInitialSession() {
     } catch (e) {}
   }
 
+  // 3. Check persistent localStorage
   const storedUser = localStorage.getItem('saliim_user');
   if (storedUser) {
     try {
@@ -86,7 +142,10 @@ function updateAuthUI() {
     const initial = name.trim().charAt(0).toUpperCase();
 
     loginBtns.forEach(el => el.classList.add('hidden'));
-    userMenus.forEach(el => el.classList.remove('hidden'));
+    userMenus.forEach(el => {
+      el.classList.remove('hidden');
+      el.classList.add('inline-flex');
+    });
     userNames.forEach(el => el.textContent = name);
 
     userAvatars.forEach(el => {
@@ -110,7 +169,10 @@ function updateAuthUI() {
     if (nameEl) nameEl.textContent = name;
   } else {
     loginBtns.forEach(el => el.classList.remove('hidden'));
-    userMenus.forEach(el => el.classList.add('hidden'));
+    userMenus.forEach(el => {
+      el.classList.add('hidden');
+      el.classList.remove('inline-flex');
+    });
   }
 }
 
@@ -244,7 +306,7 @@ function showOtpStep(email) {
     setTimeout(() => otpInput.focus(), 150);
   }
 
-  showAuthAlert("تم إرسال رمز التحقق إلى بريدك الإلكتروني. يرجى إدخال الرمز المكون من 6 أرقام لتفعيل الحساب والدخول.", true);
+  showAuthAlert("تم إرسال رمز التحقق ورابط التفعيل إلى بريدك الإلكتروني. يرجى إدخال الرمز المكون من 6 أرقام لتفعيل حسابك والدخول.", true);
   startResendTimer(60);
 
   if (window.lucide && typeof lucide.createIcons === 'function') {
@@ -389,7 +451,11 @@ async function handleGoogleSignIn() {
       const { data, error } = await supabaseClient.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: window.location.origin
+          redirectTo: window.location.origin,
+          queryParams: {
+            prompt: 'select_account',
+            access_type: 'offline'
+          }
         }
       });
       if (error) throw error;
@@ -400,7 +466,7 @@ async function handleGoogleSignIn() {
     if (btn) btn.classList.remove('opacity-70', 'pointer-events-none');
     
     if (err.message && err.message.includes("provider is not enabled")) {
-      showAuthAlert("تنبيه: مزود Google غير مفعّل حالياً في لوحة تحكم Supabase. يرجى تفعيله من Authentication -> Providers -> Google.");
+      showAuthAlert("ملاحظة: مزود Google غير مفعّل حالياً في لوحة تحكم Supabase. يرجى تفعيله من Authentication -> Providers -> Google.");
     } else {
       showAuthAlert(translateAuthError(err.message));
     }
@@ -443,7 +509,8 @@ async function handleEmailAuth(e) {
           email: email,
           password: password,
           options: {
-            data: { full_name: name || email.split('@')[0] }
+            data: { full_name: name || email.split('@')[0] },
+            emailRedirectTo: window.location.origin
           }
         });
         
@@ -556,13 +623,13 @@ function togglePasswordVisibility() {
 
 function showGlobalToast(msg, type = "info") {
   const toast = document.createElement('div');
-  toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] px-5 py-3 rounded-2xl shadow-2xl text-xs font-bold text-white transition-all transform duration-300 ${type === 'success' ? 'bg-emerald-600' : 'bg-[#0A4174]'}`;
-  toast.textContent = msg;
+  toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] px-6 py-3 rounded-2xl shadow-2xl text-xs font-bold text-white transition-all transform duration-300 flex items-center gap-2 ${type === 'success' ? 'bg-[#0E3D2F] border border-emerald-500/50 text-emerald-200' : 'bg-[#102A45] border border-[#1D9BF0]/40 text-white'}`;
+  toast.innerHTML = `<span class="w-2 h-2 rounded-full ${type === 'success' ? 'bg-emerald-400' : 'bg-[#1D9BF0]'} animate-pulse"></span> <span>${msg}</span>`;
   document.body.appendChild(toast);
   setTimeout(() => {
     toast.style.opacity = '0';
     setTimeout(() => toast.remove(), 400);
-  }, 3500);
+  }, 4000);
 }
 
 window.addEventListener('click', function(e) {

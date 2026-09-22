@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-dir="navy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>سليم — نظام الواجهة والفلو</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500&family=Readex+Pro:wght@200;300;400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════ ١ · كحلي عميق ونحاسي ══════════ */
+:root,[data-dir="navy"]{
+  --base:#F6F8FA; --surface:#FFFFFF; --sunken:#EEF3F7;
+  --ink:#0C2338; --ink-2:#15375B; --ink-3:#1E4874;
+  --accent:#B87333; --accent-l:#D89A5E; --accent-tx:#8F5522; --accent-soft:#F5EDE4;
+  --tx-strong:#0C2338; --tx-body:#44566B; --tx-muted:#5D6E7F; --tx-faint:#637381;
+  --rule:#E2E9EF; --rule-2:#D0DCE5;
+  --tint:#EAF1F6;
+  --d-name:"كحلي ونحاسي";
+}
+/* ══════════ ٢ · أسود وذهبي ══════════ */
+[data-dir="onyx"]{
+  --base:#F7F6F3; --surface:#FFFFFF; --sunken:#EFEDE8;
+  --ink:#0A0A0B; --ink-2:#1A1A1C; --ink-3:#2A2A2D;
+  --accent:#C9A55C; --accent-l:#DCBE82; --accent-tx:#8A6B2E; --accent-soft:#F5EFE1;
+  --tx-strong:#12100D; --tx-body:#4A463E; --tx-muted:#6B665C; --tx-faint:#726C60;
+  --rule:#E5E2DA; --rule-2:#D6D2C8;
+  --tint:#EFEDE6;
+  --d-name:"أسود وذهبي";
+}
+/* ══════════ ٣ · بنّي داكن ورملي ══════════ */
+[data-dir="umber"]{
+  --base:#FAF7F2; --surface:#FFFFFF; --sunken:#F2EBE0;
+  --ink:#1E1205; --ink-2:#3A2614; --ink-3:#54391F;
+  --accent:#B87333; --accent-l:#D6975A; --accent-tx:#8F5522; --accent-soft:#F6ECDE;
+  --tx-strong:#1E1205; --tx-body:#5A4A38; --tx-muted:#75634E; --tx-faint:#7B6950;
+  --rule:#EAE0D2; --rule-2:#DCCFBB;
+  --tint:#F3EADC;
+  --d-name:"بنّي ورملي";
+}
+/* ══════════ الأسطح الداكنة — تقلب الرموز ══════════ */
+.on-dark{
+  --surface:var(--ink); --sunken:var(--ink-2); --base:var(--ink);
+  --tx-strong:#FFFFFF; --tx-body:rgba(255,255,255,.74); --tx-muted:rgba(255,255,255,.52);
+  --tx-faint:rgba(255,255,255,.38); --accent-tx:var(--accent-l);
+  --rule:rgba(255,255,255,.10); --rule-2:rgba(255,255,255,.17);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--accent);color:#fff}
+body{font-family:'Readex Pro',sans-serif;font-weight:300;background:#1A1A1C;color:var(--tx-body);
+  line-height:1.95;font-size:14.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'Alexandria',sans-serif;line-height:1.4;font-weight:300}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select,textarea{font-family:inherit}
+.lat{font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.05em}
+.num{font-family:'Jost',sans-serif;font-weight:300;font-variant-numeric:tabular-nums}
+
+/* ══════════ شريط التحكم العلوي ══════════ */
+.ctl{position:sticky;top:0;z-index:200;background:#0D0D0F;border-bottom:1px solid rgba(255,255,255,.08);padding:9px 0}
+.ctl-in{max-width:1560px;margin:0 auto;padding-inline:18px;display:flex;align-items:center;gap:16px}
+.ctl-t{font-family:'Alexandria';font-weight:200;font-size:14px;color:#fff;white-space:nowrap;letter-spacing:.02em}
+.ctl-t b{font-weight:400;color:var(--accent-l)}
+.steps{display:flex;gap:4px;overflow-x:auto;flex:1;padding-bottom:2px}
+.steps::-webkit-scrollbar{height:3px}
+.steps::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+.stp{font-family:'Readex Pro';font-size:11.5px;font-weight:300;color:rgba(255,255,255,.52);
+  padding:6px 12px;white-space:nowrap;transition:.3s;border:1px solid transparent;letter-spacing:.02em}
+.stp:hover{color:#fff;border-color:rgba(255,255,255,.15)}
+.stp.on{color:var(--ink);background:var(--accent-l);border-color:var(--accent-l);font-weight:400}
+.dirsel{display:flex;gap:3px;background:rgba(255,255,255,.07);padding:3px;flex-shrink:0}
+.dirsel button{font-family:'Readex Pro';font-size:11px;font-weight:400;color:rgba(255,255,255,.6);padding:6px 13px;transition:.3s;white-space:nowrap}
+.dirsel button.on{background:#fff;color:#0D0D0F}
+.dirsel i{display:inline-block;width:9px;height:9px;margin-inline-end:6px;vertical-align:-1px}
+
+/* ══════════ إطار العرض ══════════ */
+.stage{max-width:1560px;margin:0 auto;padding:20px 18px 40px}
+.note{display:flex;align-items:center;gap:11px;margin-bottom:12px;flex-wrap:wrap}
+.note b{font-family:'Jost';font-size:10px;font-weight:400;letter-spacing:.24em;color:#0D0D0F;background:var(--accent-l);padding:5px 12px}
+.note span{font-size:12.5px;color:rgba(255,255,255,.5)}
+.screen{display:none}.screen.active{display:block;animation:in .4s ease}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.app{background:var(--base);overflow:hidden;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);transition:background .45s}
+
+/* ══════════ هيكل التطبيق: جانبية داكنة + منطقة فاتحة ══════════ */
+.shell{display:grid;grid-template-columns:238px 1fr;min-height:660px}
+.side{background:var(--ink);display:flex;flex-direction:column;transition:background .45s}
+.side .brand{padding:26px 22px 22px;border-bottom:1px solid rgba(255,255,255,.08)}
+.side .brand h1{font-family:'Alexandria';font-size:21px;font-weight:200;color:#fff;letter-spacing:.01em}
+.side .brand span{font-size:10.5px;color:rgba(255,255,255,.42);letter-spacing:.06em}
+.snav{padding:16px 12px;flex:1}
+.snav-l{font-family:'Jost';font-size:9px;letter-spacing:.26em;color:rgba(255,255,255,.3);padding:14px 12px 8px}
+.snav a{display:flex;align-items:center;gap:12px;padding:10px 12px;font-size:13px;font-weight:300;
+  color:rgba(255,255,255,.62);transition:.28s;position:relative}
+.snav a:hover{color:#fff;background:rgba(255,255,255,.05)}
+.snav a.on{color:#fff;background:rgba(255,255,255,.07)}
+.snav a.on::before{content:'';position:absolute;inset-inline-end:0;top:0;bottom:0;width:2px;background:var(--accent-l)}
+.snav svg{opacity:.75;flex-shrink:0}
+.suser{padding:16px 20px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:11px}
+.suser .av{width:34px;height:34px;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;
+  font-family:'Alexandria';font-weight:300;font-size:13px;color:#fff;flex-shrink:0}
+.suser b{display:block;font-size:12.5px;font-weight:400;color:#fff}
+.suser span{font-size:10.5px;color:rgba(255,255,255,.42)}
+.main{display:flex;flex-direction:column;min-width:0}
+.topbar{background:var(--surface);border-bottom:1px solid var(--rule);padding:15px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.topbar h2{font-size:17px;font-weight:300;color:var(--tx-strong)}
+.topbar p{font-size:12px;color:var(--tx-muted)}
+.body{padding:28px;flex:1;background:var(--base)}
+
+/* ══════════ عناصر ══════════ */
+.btn{font-family:'Readex Pro';font-weight:400;font-size:13.5px;padding:11px 24px;display:inline-flex;
+  align-items:center;justify-content:center;gap:8px;transition:.28s;letter-spacing:.01em;border:1px solid transparent}
+.bp{background:var(--ink);color:#fff}
+.bp:hover{background:var(--ink-2)}
+.ba{background:var(--accent);color:#fff}
+.ba:hover{background:var(--accent-tx)}
+.bo{background:transparent;color:var(--tx-strong);border-color:var(--rule-2)}
+.bo:hover{border-color:var(--accent);color:var(--accent-tx)}
+.bsm{padding:8px 16px;font-size:12.5px}
+.bw{width:100%}
+.card{background:var(--surface);border:1px solid var(--rule);padding:24px;transition:.3s}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.kick{font-family:'Jost';font-size:9.5px;letter-spacing:.28em;color:var(--accent-tx);margin-bottom:11px;display:block}
+.h-sec{font-size:22px;font-weight:200;color:var(--tx-strong);margin-bottom:7px;letter-spacing:-.01em}
+.p-sec{font-size:13.5px;color:var(--tx-muted);margin-bottom:22px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:400;padding:4px 11px;
+  letter-spacing:.06em;border:1px solid}
+.pk-ok{background:var(--accent-soft);color:var(--accent-tx);border-color:var(--rule-2)}
+.pk-n{background:var(--sunken);color:var(--tx-muted);border-color:var(--rule)}
+.pk-d{background:var(--ink);color:#fff;border-color:var(--ink)}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:11.5px;font-weight:400;margin-bottom:6px;color:var(--tx-muted);letter-spacing:.04em}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1px solid var(--rule-2);
+  background:var(--sunken);font-size:14px;font-weight:300;color:var(--tx-strong);transition:.25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:var(--surface)}
+.field .hint{font-size:11px;color:var(--tx-faint);margin-top:5px}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{background:var(--sunken);padding:12px 14px;text-align:right;font-family:'Jost';font-size:9.5px;
+  font-weight:400;color:var(--tx-muted);border-bottom:1px solid var(--rule-2);letter-spacing:.2em;white-space:nowrap}
+.tbl th.ar{font-family:'Readex Pro';letter-spacing:.08em;font-size:11px}
+.tbl td{padding:13px 14px;border-bottom:1px solid var(--rule);color:var(--tx-body);font-weight:300;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr.flag{background:var(--accent-soft)}
+.alert{display:flex;gap:11px;padding:13px 16px;align-items:flex-start;font-size:13px;margin-bottom:14px;border:1px solid}
+.alert b{display:block;font-weight:400;margin-bottom:1px;color:var(--tx-strong)}
+.al-i{background:var(--tint);border-color:var(--rule-2);color:var(--tx-body)}
+.al-a{background:var(--accent-soft);border-color:var(--rule-2);color:var(--tx-body)}
+.al-d{background:var(--ink);border-color:var(--ink);color:rgba(255,255,255,.75)}
+.al-d b{color:#fff}
+
+/* شريط أرقام داكن — تطعيم */
+.band{background:var(--ink);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-bottom:20px;transition:background .45s}
+.band>div{background:var(--ink);padding:22px 20px}
+.band .v{font-family:'Jost';font-size:30px;font-weight:200;color:#fff;line-height:1;margin-bottom:7px}
+.band .v em{font-style:normal;font-size:14px;color:var(--accent-l)}
+.band .k{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.05em}
+
+/* ══════════ الباقات ══════════ */
+.pk{background:var(--surface);border:1px solid var(--rule);padding:28px 24px;position:relative;cursor:pointer;transition:.3s}
+.pk:hover{border-color:var(--accent);transform:translateY(-3px)}
+.pk.sel{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.pk.feat{background:var(--ink);border-color:var(--ink)}
+.pk.feat h3,.pk.feat .price{color:#fff}
+.pk.feat .sub,.pk.feat .per{color:rgba(255,255,255,.5)}
+.pk.feat .feat-l li{color:rgba(255,255,255,.72)}
+.pk.feat .tagp{background:var(--accent-l);color:var(--ink)}
+.tagp{position:absolute;top:0;inset-inline-start:24px;transform:translateY(-50%);font-family:'Jost';
+  font-size:9px;letter-spacing:.2em;background:var(--ink);color:#fff;padding:5px 13px}
+.pk h3{font-size:19px;font-weight:300;color:var(--tx-strong);margin-bottom:3px}
+.pk .sub{font-size:11.5px;color:var(--tx-faint);letter-spacing:.05em;margin-bottom:20px}
+.pk .price{font-family:'Jost';font-size:40px;font-weight:200;color:var(--tx-strong);line-height:1}
+.pk .price small{font-size:13px;font-weight:300;color:var(--tx-faint)}
+.pk .per{font-size:11.5px;color:var(--tx-faint);margin-bottom:20px}
+.smap{display:flex;gap:3px;margin-bottom:20px;flex-wrap:wrap}
+.smap i{width:22px;height:22px;display:grid;place-items:center;font-style:normal;font-family:'Jost';font-size:9px;font-weight:400}
+.sm-n{background:var(--accent-soft);color:var(--accent-tx)}
+.sm-c{background:var(--sunken);color:var(--tx-muted)}
+.pk.feat .sm-n{background:var(--accent);color:#fff}
+.pk.feat .sm-c{background:rgba(255,255,255,.14);color:rgba(255,255,255,.8)}
+.feat-l{list-style:none;margin-bottom:22px}
+.feat-l li{display:flex;gap:9px;font-size:12.5px;padding:5px 0;color:var(--tx-body)}
+.feat-l i{font-style:normal;color:var(--accent);flex-shrink:0}
+
+/* ══════════ الجدولة ══════════ */
+.opt{border:1px solid var(--rule-2);padding:18px;cursor:pointer;transition:.28s;display:flex;gap:13px;background:var(--surface)}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{border-color:var(--ink);background:var(--tint)}
+.opt .ic{width:38px;height:38px;background:var(--ink);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.opt h4{font-size:14px;font-weight:400;color:var(--tx-strong);margin-bottom:2px}
+.opt p{font-size:12px;color:var(--tx-muted)}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:18px}
+.day{border:1px solid var(--rule-2);padding:11px 4px;text-align:center;cursor:pointer;transition:.25s;background:var(--surface)}
+.day:hover{border-color:var(--accent)}
+.day.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+.day.off{opacity:.3;cursor:not-allowed;background:var(--sunken)}
+.day b{display:block;font-size:12.5px;font-weight:400}
+.day span{font-family:'Jost';font-size:9px;letter-spacing:.1em;opacity:.65}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.slot{border:1px solid var(--rule-2);padding:9px 4px;text-align:center;cursor:pointer;font-family:'Jost';
+  font-size:12.5px;font-weight:300;background:var(--surface);color:var(--tx-strong);transition:.25s}
+.slot:hover{border-color:var(--accent)}
+.slot.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+.slot.off{opacity:.28;cursor:not-allowed;text-decoration:line-through;background:var(--sunken)}
+.spec{display:flex;gap:12px;align-items:center;border:1px solid var(--rule-2);padding:14px;background:var(--surface)}
+.spec.sel{border-color:var(--ink)}
+.spec .av{width:42px;height:42px;background:var(--ink);color:#fff;display:grid;place-items:center;
+  font-family:'Alexandria';font-weight:300;font-size:15px;flex-shrink:0}
+.spec b{display:block;font-size:13.5px;font-weight:400;color:var(--tx-strong)}
+.spec span{font-size:11.5px;color:var(--tx-muted)}
+.sdots{display:flex;gap:9px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+.sd{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--tx-faint)}
+.sd i{width:20px;height:20px;border:1px solid var(--rule-2);display:grid;place-items:center;
+  font-family:'Jost';font-style:normal;font-size:9px;flex-shrink:0}
+.sd.done{color:var(--accent-tx)} .sd.done i{background:var(--accent);border-color:var(--accent);color:#fff}
+.sd.now{color:var(--tx-strong)} .sd.now i{background:var(--ink);border-color:var(--ink);color:#fff}
+.arw{color:var(--rule-2)}
+
+/* ══════════ اللايف — سطح تركيز داكن ══════════ */
+.live{display:grid;grid-template-columns:1.6fr 1fr;min-height:620px}
+.vstage{background:var(--ink);display:flex;flex-direction:column;padding:18px;gap:14px;transition:background .45s}
+.vmain{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  display:grid;place-items:center;position:relative}
+.vav{width:90px;height:90px;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center;
+  font-family:'Alexandria';font-weight:200;font-size:30px;color:#fff}
+.vname{position:absolute;bottom:16px;inset-inline-start:16px;color:#fff;font-size:12px;font-weight:300}
+.vname span{display:block;font-size:10.5px;color:rgba(255,255,255,.45)}
+.vself{position:absolute;bottom:16px;inset-inline-end:16px;width:112px;height:74px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:grid;place-items:center}
+.rec{position:absolute;top:16px;inset-inline-start:16px;display:flex;align-items:center;gap:8px;
+  font-family:'Jost';font-size:9.5px;letter-spacing:.18em;color:var(--accent-l)}
+.rec i{width:6px;height:6px;border-radius:50%;background:var(--accent-l);animation:bl 1.5s infinite}
+@keyframes bl{50%{opacity:.2}}
+.vctrl{display:flex;justify-content:center;gap:8px}
+.vb{width:42px;height:42px;border:1px solid rgba(255,255,255,.16);color:#fff;display:grid;place-items:center;transition:.28s}
+.vb:hover{background:rgba(255,255,255,.1)}
+.vb.end{width:auto;padding:0 22px;background:var(--accent);border-color:var(--accent);
+  font-family:'Readex Pro';font-size:12.5px;font-weight:400;gap:8px}
+.vb.end:hover{background:var(--accent-tx)}
+.panel{background:var(--surface);border-inline-start:1px solid var(--rule);display:flex;flex-direction:column;min-width:0}
+.tabs{display:flex;border-bottom:1px solid var(--rule);background:var(--sunken)}
+.tab{flex:1;padding:13px 6px;font-size:11.5px;font-weight:400;color:var(--tx-muted);
+  border-bottom:2px solid transparent;transition:.28s}
+.tab.on{color:var(--tx-strong);border-bottom-color:var(--accent);background:var(--surface)}
+.pane{display:none;padding:20px;overflow-y:auto;max-height:520px}.pane.on{display:block}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:13px}
+.dl dt{color:var(--tx-faint);font-weight:300;font-size:12px}
+.dl dd{color:var(--tx-strong);font-weight:400}
+.trl{display:flex;gap:10px;margin-bottom:12px;font-size:12.5px}
+.trl b{font-size:11px;font-weight:400;flex-shrink:0;width:56px;color:var(--accent-tx)}
+.trl.c b{color:var(--tx-muted)}
+.trl p{color:var(--tx-body);background:var(--sunken);padding:8px 12px;flex:1;font-weight:300}
+.typ{display:inline-flex;gap:3px}.typ i{width:4px;height:4px;border-radius:50%;background:var(--tx-faint);animation:tp 1.2s infinite}
+.typ i:nth-child(2){animation-delay:.2s}.typ i:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+/* ══════════ AI ══════════ */
+.aihd{background:var(--ink);color:#fff;padding:24px 26px;transition:background .45s}
+.aihd h3{font-size:17px;font-weight:300;color:#fff;margin-bottom:4px}
+.aihd p{font-size:12px;color:rgba(255,255,255,.5)}
+.aied{width:100%;border:1px solid var(--rule-2);background:var(--sunken);padding:10px 12px;
+  font-family:inherit;font-size:13px;font-weight:300;color:var(--tx-strong);resize:vertical;min-height:70px}
+.aied:focus{outline:none;border-color:var(--accent);background:var(--surface)}
+.aitx{font-size:13px;color:var(--tx-body);font-weight:300;line-height:1.95}
+.pgb{height:5px;background:var(--sunken);overflow:hidden}
+.pgb i{display:block;height:100%;background:var(--accent)}
+
+/* الصفحة العامة */
+.pub-hero{background:var(--ink);padding:70px 48px;position:relative;overflow:hidden;transition:background .45s}
+.pub-hero::after{content:'';position:absolute;top:-120px;inset-inline-start:-80px;width:460px;height:460px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 66%)}
+.pub-hero .in{position:relative;z-index:2;max-width:640px}
+.pub-hero h1{font-size:44px;font-weight:200;color:#fff;line-height:1.24;margin-bottom:18px;letter-spacing:-.02em}
+.pub-hero h1 em{font-style:normal;color:var(--accent-l);font-weight:100}
+.pub-hero p{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;max-width:46ch}
+.pnav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;
+  background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08);transition:background .45s}
+.pnav .lg{font-family:'Alexandria';font-size:20px;font-weight:200;color:#fff}
+.pnav a{font-size:13px;font-weight:300;color:rgba(255,255,255,.6);margin-inline-start:24px;transition:.25s}
+.pnav a:hover{color:#fff}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:620px}
+.sp-art{background:var(--ink);padding:52px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;transition:background .45s}
+.sp-art::after{content:'';position:absolute;bottom:-140px;inset-inline-end:-100px;width:420px;height:420px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--accent) 20%,transparent),transparent 68%)}
+.sp-art .in{position:relative;z-index:2}
+.sp-art h2{font-size:30px;font-weight:200;color:#fff;margin-bottom:14px;letter-spacing:-.015em}
+.sp-art p{font-size:14px;color:rgba(255,255,255,.6);max-width:34ch}
+.soc{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;
+  border:1px solid var(--rule-2);background:var(--surface);font-size:13.5px;font-weight:400;
+  color:var(--tx-strong);transition:.25s;margin-bottom:9px}
+.soc:hover{border-color:var(--accent)}
+.divd{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--tx-faint);font-size:11px;letter-spacing:.1em}
+.divd::before,.divd::after{content:'';flex:1;height:1px;background:var(--rule)}
+
+@media(max-width:1080px){.shell{grid-template-columns:1fr}.side{display:none}
+ .live,.split{grid-template-columns:1fr}.g3,.g2{grid-template-columns:1fr}
+ .pub-hero,.pnav,.sp-art{padding:34px 22px}.pub-hero h1{font-size:30px}
+ .days{grid-template-columns:repeat(4,1fr)}.body{padding:18px}}
+@media(max-width:620px){.r2,.r3{grid-template-columns:1fr}.band{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="ctl">
+ <div class="ctl-in">
+  <div class="ctl-t"><b>سليم</b> · نظام الواجهة</div>
+  <div class="steps" id="steps"></div>
+  <div class="dirsel">
+   <button data-d="navy" class="on"><i style="background:#0C2338"></i>كحلي</button>
+   <button data-d="onyx"><i style="background:#0A0A0B"></i>أسود</button>
+   <button data-d="umber"><i style="background:#1E1205"></i>بنّي</button>
+  </div>
+ </div>
+</div>
+
+<div class="stage">
+
+<!-- ═══ ١ · الصفحة العامة ═══ -->
+<div class="screen active" id="s1">
+ <div class="note"><b>01 / PUBLIC</b><span>الواجهة التعريفية — تطعيم غامق كامل</span></div>
+ <div class="app">
+  <div class="pnav"><div class="lg">سليم</div>
+   <div><a>الرئيسية</a><a>الباقات</a><a>عن سليم</a><a>تواصل</a></div>
+   <button class="btn ba bsm" onclick="go(2)">ابدأ رحلتك</button></div>
+  <div class="pub-hero"><div class="in">
+   <span class="pill pk-d" style="margin-bottom:20px;border-color:rgba(255,255,255,.2)">✦ أكثر من <span class="num">12,400</span> رحلة مكتملة</span>
+   <h1>مش دايت حرمان.<br><em>رحلة تفهم فيها جسمك</em></h1>
+   <p>جلسات مباشرة مع أخصائي تغذية وكوتش رياضي بالتناوب كل أسبوع — وخطة تتعدّل معك لا عليك.</p>
+   <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn ba" onclick="go(2)">ابدأ الآن</button>
+    <button class="btn bo" style="color:#fff;border-color:rgba(255,255,255,.28)" onclick="go(3)">استعرض الباقات</button></div>
+  </div></div>
+  <div class="body" style="padding:34px 48px">
+   <div class="grid g3">
+    <div class="card"><span class="kick">NUTRITION</span><h4 style="font-size:16px;font-weight:300;color:var(--tx-strong);margin-bottom:6px">خطة تغذية مرنة</h4>
+     <p style="font-size:13px;color:var(--tx-muted)">مبنية على أكلك المعتاد وميزانيتك ووقتك — لا قائمة جاهزة منسوخة.</p></div>
+    <div class="card"><span class="kick">COACHING</span><h4 style="font-size:16px;font-weight:300;color:var(--tx-strong);margin-bottom:6px">لايف كوتشينج</h4>
+     <p style="font-size:13px;color:var(--tx-muted)">جلسات على العادات والدافع والعقبات الحقيقية التي توقفك.</p></div>
+    <div class="card"><span class="kick">TRACKING</span><h4 style="font-size:16px;font-weight:300;color:var(--tx-strong);margin-bottom:6px">متابعة بالأرقام</h4>
+     <p style="font-size:13px;color:var(--tx-muted)">قياسات ومؤشرات أسبوعية — ترى تقدّمك بدل أن تحزره.</p></div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!-- ═══ ٢ · الدخول ═══ -->
+<div class="screen" id="s2">
+ <div class="note"><b>02 / AUTH</b><span>تسجيل الدخول — جوجل · آبل · بريد</span></div>
+ <div class="app"><div class="split">
+  <div class="sp-art"><div class="in">
+   <div style="font-family:Alexandria;font-size:30px;font-weight:200;color:#fff;margin-bottom:26px">سليم</div>
+   <h2>رحلتك تبدأ من هنا</h2>
+   <p>سجّل دخولك وابدأ أول جلسة مع أخصائي التغذية خلال أيام.</p>
+  </div></div>
+  <div class="body" style="display:flex;align-items:center;padding:48px">
+   <div style="max-width:360px;margin:0 auto;width:100%">
+    <span class="kick">CREATE ACCOUNT</span>
+    <h2 class="h-sec">إنشاء حساب</h2>
+    <p class="p-sec">لديك حساب؟ <span style="color:var(--accent-tx)">سجّل دخول</span></p>
+    <button class="soc"><svg width="17" height="17" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.65l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0012 23z"/><path fill="#FBBC05" d="M5.84 14.09a6.6 6.6 0 010-4.18V7.07H2.18a11 11 0 000 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 00-9.82 6.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>المتابعة بحساب Google</button>
+    <button class="soc"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.74 2.21 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.71.71 2.87.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53zM14.9 5.6c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.32-.56.65-1.05 1.7-.92 2.7.98.08 1.98-.5 2.58-1.23z"/></svg>المتابعة بحساب Apple</button>
+    <div class="divd">OR</div>
+    <div class="r2"><div class="field"><label>الاسم الأول</label><input value="أحمد"></div>
+     <div class="field"><label>الاسم الأخير</label><input value="محمود"></div></div>
+    <div class="field"><label>البريد الإلكتروني</label><input class="lat" value="ahmed@example.com" dir="ltr" style="text-align:left"></div>
+    <div class="field"><label>رقم الواتساب</label><input class="lat" value="+20 101 234 5678" dir="ltr" style="text-align:left"></div>
+    <button class="btn bp bw" onclick="go(3)">إنشاء الحساب</button>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٣ · الباقات ═══ -->
+<div class="screen" id="s3">
+ <div class="note"><b>03 / PACKAGES</b><span>القائمة الجانبية الغامقة + منطقة عمل فاتحة</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side3"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>الباقات</h2><p>جلسة أسبوعياً بالتناوب بين أخصائي التغذية والكوتش</p></div></div>
+   <div class="body">
+    <div class="alert al-d"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/></svg>
+     <div><b>الجلسة الأولى <span class="num">30</span> دقيقة</b>تقييم شامل مع أخصائي التغذية — وباقي الجلسات <span class="num">15</span> دقيقة متابعة.</div></div>
+    <div class="grid g3" id="pkgs"></div>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٤ · الدفع ═══ -->
+<div class="screen" id="s4">
+ <div class="note"><b>04 / CHECKOUT</b><span>الدفع قبل اختيار الجدول</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side4"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>إتمام الاشتراك</h2><p>بعد الدفع تختار مواعيدك مباشرة</p></div></div>
+   <div class="body"><div class="grid g2">
+    <div class="card">
+     <span class="kick">PAYMENT</span>
+     <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap">
+      <button class="btn bo bsm" style="border-color:var(--ink);color:var(--tx-strong)">بطاقة</button>
+      <button class="btn bo bsm">محفظة</button><button class="btn bo bsm">تحويل بنكي</button></div>
+     <div class="field"><label>رقم البطاقة</label><input class="lat" value="4242 4242 4242 4242" dir="ltr" style="text-align:left"></div>
+     <div class="r2"><div class="field"><label>تاريخ الانتهاء</label><input class="lat" value="12 / 28" dir="ltr" style="text-align:left"></div>
+      <div class="field"><label>CVC</label><input class="lat" value="•••" dir="ltr" style="text-align:left"></div></div>
+     <div class="field"><label>الاسم على البطاقة</label><input class="lat" value="AHMED MAHMOUD" dir="ltr" style="text-align:left"></div>
+     <button class="btn bp bw" onclick="go(5)">ادفع <span class="num" id="payAmt">4,200</span> ج.م</button>
+    </div>
+    <div class="card" style="height:fit-content" id="orderSum"></div>
+   </div></div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٥ · الجدولة ═══ -->
+<div class="screen" id="s5">
+ <div class="note"><b>05 / SCHEDULING</b><span>اختيار الموعد — الجدول يتولّد تلقائياً</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side5"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>جدولة الجلسات</h2><p>يوم ووقت ثابت كل أسبوع</p></div>
+    <span class="pill pk-ok">✓ تم الدفع</span></div>
+   <div class="body">
+    <div class="sdots">
+     <div class="sd done"><i>✓</i>الدفع</div><span class="arw">←</span>
+     <div class="sd now"><i>2</i>اختيار الموعد</div><span class="arw">←</span>
+     <div class="sd"><i>3</i>تأكيد الجدول</div></div>
+
+    <div class="grid g2" style="margin-bottom:18px">
+     <div class="opt sel" id="optA" onclick="pickMode('A')">
+      <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
+      <div><h4>أقرب أخصائي متاح</h4><p>النظام يختار أقرب موعد متاح</p></div></div>
+     <div class="opt" id="optB" onclick="pickMode('B')">
+      <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="18"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <div><h4>أحدّد وقتاً يناسبني</h4><p>اختر اليوم والساعة ونعرض المتاحين</p></div></div>
+    </div>
+
+    <div id="paneB" style="display:none">
+     <div class="card" style="margin-bottom:18px">
+      <span class="kick">STEP 01 — DAY</span><div class="days" id="days"></div>
+      <span class="kick">STEP 02 — TIME</span><div class="slots" id="slots"></div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:18px">
+     <span class="kick">ASSIGNED SPECIALISTS</span>
+     <p style="font-size:12.5px;color:var(--tx-muted);margin-bottom:16px">المختصون المتاحون في <b style="color:var(--tx-strong);font-weight:400" id="slotLabel">الثلاثاء 7:00 م</b></p>
+     <div class="grid g2" id="specs"></div></div>
+
+    <div class="card" style="padding:0">
+     <div style="padding:18px 22px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+      <div><span class="kick">FULL SCHEDULE</span><p style="font-size:12.5px;color:var(--tx-muted)" id="schedNote"></p></div>
+      <span class="pill pk-ok" id="conflictBadge"></span></div>
+     <div style="overflow-x:auto"><table class="tbl" id="schedTbl"></table></div>
+     <div style="padding:16px 22px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <p style="font-size:12px;color:var(--tx-faint)">يمكن ترحيل الوقت داخل نفس اليوم فقط</p>
+      <button class="btn bp" onclick="go(6)">أكّد الجدول</button></div>
+    </div>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٦ · لوحة العميل ═══ -->
+<div class="screen" id="s6">
+ <div class="note"><b>06 / DASHBOARD</b><span>شريط أرقام غامق كتطعيم فوق منطقة فاتحة</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side6"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>لوحتي</h2><p>الجلسة القادمة والتقدّم</p></div><span class="pill pk-ok">الاشتراك نشط</span></div>
+   <div class="body">
+    <div class="band">
+     <div><div class="v" id="b1">0 <em>/ 8</em></div><div class="k">جلسة مكتملة</div></div>
+     <div><div class="v">94 <em>كجم</em></div><div class="k">الوزن الحالي · المستهدف 80</div></div>
+     <div><div class="v">12 <em>أكتوبر</em></div><div class="k">الجلسة القادمة</div></div>
+    </div>
+    <div class="grid g2" style="margin-bottom:18px">
+     <div class="card" style="border-color:var(--ink)">
+      <span class="kick">NEXT SESSION</span>
+      <div style="display:flex;gap:14px;align-items:center;margin-bottom:18px">
+       <div style="width:52px;height:52px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:Alexandria;font-weight:200;font-size:18px">س</div>
+       <div><h4 style="font-size:16px;font-weight:400;color:var(--tx-strong)">د. سارة عبد الله</h4>
+        <p style="font-size:12px;color:var(--tx-muted)">أخصائية تغذية علاجية</p></div></div>
+      <div class="dl" style="margin-bottom:18px"><dt>التاريخ</dt><dd class="num">الثلاثاء 12 أكتوبر</dd>
+       <dt>الوقت</dt><dd class="num">7:00 م</dd><dt>المدة</dt><dd class="num">30 دقيقة</dd>
+       <dt>النوع</dt><dd>تقييم شامل</dd></div>
+      <button class="btn ba bw" onclick="go(7)">ادخل الجلسة</button></div>
+     <div class="card"><span class="kick">PLAN STATUS</span>
+      <h4 style="font-size:16px;font-weight:300;color:var(--tx-strong);margin-bottom:8px">خطتك الحالية</h4>
+      <p style="font-size:13px;color:var(--tx-muted);margin-bottom:18px">تُولَّد بعد الجلسة الأولى مع الأخصائي ويعتمدها قبل وصولها إليك.</p>
+      <div class="pgb" style="margin-bottom:10px"><i style="width:4%"></i></div>
+      <p style="font-size:11.5px;color:var(--tx-faint)">تقدّم الباقة <span class="num">4%</span></p></div>
+    </div>
+    <div class="card" style="padding:0">
+     <div style="padding:16px 22px;border-bottom:1px solid var(--rule)"><span class="kick" style="margin:0">UPCOMING</span></div>
+     <div style="overflow-x:auto"><table class="tbl" id="myTbl"></table></div></div>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٧ · فورم ما قبل الجلسة ═══ -->
+<div class="screen" id="s7">
+ <div class="note"><b>07 / INTAKE</b><span>استمارة — فاتحة بالكامل، لا تطعيم داكن</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side7"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>قبل الجلسة</h2><p>بياناتك تظهر للأخصائي مباشرة</p></div>
+    <span class="pill pk-ok">تبدأ خلال <span class="num">4</span> دقائق</span></div>
+   <div class="body"><div style="max-width:720px">
+    <div class="sdots"><div class="sd now"><i>1</i>بياناتك</div><span class="arw">←</span>
+     <div class="sd"><i>2</i>فحص الكاميرا</div><span class="arw">←</span><div class="sd"><i>3</i>دخول الجلسة</div></div>
+    <div class="card" style="margin-bottom:16px">
+     <span class="kick">REQUIRED</span>
+     <div class="r3"><div class="field"><label>السن</label><input type="number" value="32"></div>
+      <div class="field"><label>الطول (سم)</label><input type="number" value="178"></div>
+      <div class="field"><label>الوزن (كجم)</label><input type="number" value="94"></div></div>
+     <div class="r2"><div class="field"><label>الجنس</label><select><option>ذكر</option><option>أنثى</option></select></div>
+      <div class="field"><label>الوزن المستهدف (كجم)</label><input type="number" value="80"></div></div></div>
+    <div class="card" style="margin-bottom:16px">
+     <span class="kick">LIFESTYLE — يتوسّع تدريجياً</span>
+     <div class="r2"><div class="field"><label>مستوى النشاط</label><select><option>خامل</option><option selected>نشاط خفيف</option><option>متوسط</option><option>عالٍ</option></select></div>
+      <div class="field"><label>عدد الوجبات</label><select><option>2</option><option selected>3</option><option>4+</option></select></div></div>
+     <div class="r2"><div class="field"><label>ساعات النوم</label><select><option>أقل من 5</option><option selected>6 – 7</option><option>8+</option></select></div>
+      <div class="field"><label>مكان التمرين</label><select><option>منزل</option><option selected>جيم</option><option>خارجي</option></select></div></div>
+     <div class="field"><label>أمراض مزمنة أو أدوية</label><textarea rows="2">لا يوجد</textarea></div>
+     <div class="field"><label>حساسية أو أطعمة تتجنّبها</label><textarea rows="2">حساسية من المكسرات</textarea></div></div>
+    <button class="btn bp bw" onclick="go(8)">احفظ وادخل الجلسة</button>
+   </div></div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٨ · اللايف — العميل ═══ -->
+<div class="screen" id="s8">
+ <div class="note"><b>08 / LIVE — CLIENT</b><span>سطح تركيز غامق + لوحة بيانات فاتحة</span></div>
+ <div class="app"><div class="live">
+  <div class="vstage on-dark">
+   <div class="vmain"><div class="rec"><i></i>RECORDING &amp; TRANSCRIBING</div>
+    <div class="vav">س</div>
+    <div class="vname">د. سارة عبد الله<span>أخصائية تغذية</span></div>
+    <div class="vself"><div style="width:34px;height:34px;border:1px solid rgba(255,255,255,.24);display:grid;place-items:center;font-family:Alexandria;font-weight:200;color:#fff;font-size:12px">أم</div></div></div>
+   <div class="vctrl">
+    <button class="vb"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4"/></svg></button>
+    <button class="vb"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14"/></svg></button>
+    <button class="vb"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="3" width="20" height="14"/><path d="M8 21h8M12 17v4"/></svg></button>
+    <button class="vb end"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M10.7 13.3a11 11 0 005 5l1.7-1.7a1 1 0 011-.2 11 11 0 003.5.6 1 1 0 011 1V21a1 1 0 01-1 1A17 17 0 012 5a1 1 0 011-1h3a1 1 0 011 1 11 11 0 00.6 3.5 1 1 0 01-.3 1z"/></svg>إنهاء</button></div>
+  </div>
+  <div class="panel">
+   <div class="tabs"><button class="tab on" onclick="tab(this,'c1')">بياناتي</button>
+    <button class="tab" onclick="tab(this,'c2')">الشات</button><button class="tab" onclick="tab(this,'c3')">الجلسة</button></div>
+   <div class="pane on" id="c1"><span class="kick">SUBMITTED DATA</span>
+    <dl class="dl"><dt>السن</dt><dd class="num">32</dd><dt>الطول</dt><dd class="num">178 سم</dd>
+     <dt>الوزن</dt><dd class="num">94 كجم</dd><dt>المستهدف</dt><dd class="num">80 كجم</dd>
+     <dt>مؤشر الكتلة</dt><dd class="num">29.7</dd><dt>النشاط</dt><dd>خفيف</dd>
+     <dt>النوم</dt><dd class="num">6 – 7 س</dd><dt>الحساسية</dt><dd>مكسرات</dd></dl></div>
+   <div class="pane" id="c2"><p style="font-size:13px;color:var(--tx-faint)">لا توجد رسائل بعد.</p></div>
+   <div class="pane" id="c3"><span class="kick">SESSION</span>
+    <dl class="dl"><dt>النوع</dt><dd>تقييم شامل</dd><dt>المدة</dt><dd class="num">30 دقيقة</dd>
+     <dt>الجلسة</dt><dd class="num">1 / 8</dd><dt>التالية</dt><dd>كابتن عمر · <span class="num">19 أكتوبر</span></dd></dl></div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ٩ · اللايف — الأخصائي ═══ -->
+<div class="screen" id="s9">
+ <div class="note"><b>09 / LIVE — SPECIALIST</b><span>بيانات العميل + نموذج الجلسة + تفريغ حي</span></div>
+ <div class="app"><div class="live">
+  <div class="vstage on-dark">
+   <div class="vmain"><div class="rec"><i></i>LIVE TRANSCRIPTION</div>
+    <div class="vav">أم</div>
+    <div class="vname">أحمد محمود<span>العميل · الجلسة 1 من 8</span></div>
+    <div class="vself"><div style="width:34px;height:34px;border:1px solid rgba(255,255,255,.24);display:grid;place-items:center;font-family:Alexandria;font-weight:200;color:#fff;font-size:12px">س</div></div></div>
+   <div class="vctrl">
+    <button class="vb"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4"/></svg></button>
+    <button class="vb"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14"/></svg></button>
+    <button class="vb end" onclick="go(10)">إنهاء وتوليد التقرير</button></div>
+  </div>
+  <div class="panel">
+   <div class="tabs"><button class="tab on" onclick="tab(this,'d1')">بيانات العميل</button>
+    <button class="tab" onclick="tab(this,'d2')">نموذج الجلسة</button><button class="tab" onclick="tab(this,'d3')">التفريغ الحي</button></div>
+   <div class="pane on" id="d1">
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--rule)">
+     <div style="width:44px;height:44px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:Alexandria;font-weight:200;font-size:15px">أم</div>
+     <div><b style="font-size:14.5px;font-weight:400;color:var(--tx-strong)">أحمد محمود</b>
+      <div style="font-size:11.5px;color:var(--tx-muted)"><span class="num">32</span> سنة · ذكر · القاهرة</div></div></div>
+    <dl class="dl"><dt>الطول</dt><dd class="num">178 سم</dd><dt>الوزن</dt><dd class="num">94 كجم</dd>
+     <dt>المستهدف</dt><dd class="num">80 كجم</dd><dt>BMI</dt><dd><span class="pill pk-ok"><span class="num">29.7</span> زيادة</span></dd>
+     <dt>النشاط</dt><dd>خفيف</dd><dt>الوجبات</dt><dd class="num">3 يومياً</dd>
+     <dt>النوم</dt><dd class="num">6 – 7 س</dd><dt>التمرين</dt><dd>جيم</dd>
+     <dt>أمراض</dt><dd>لا يوجد</dd><dt>حساسية</dt><dd style="color:var(--accent-tx)">مكسرات</dd></dl></div>
+   <div class="pane" id="d2">
+    <div class="field"><label>الشكوى الرئيسية</label><textarea rows="2">زيادة وزن تدريجية آخر سنتين + خمول بعد الغداء</textarea></div>
+    <div class="r2"><div class="field"><label>محيط الخصر (سم)</label><input type="number" value="104"></div>
+     <div class="field"><label>نسبة الدهون %</label><input type="number" value="31"></div></div>
+    <div class="field"><label>نمط الأكل الحالي</label><textarea rows="2">وجبتان كبيرتان + سناكس متأخرة، شرب ماء قليل</textarea></div>
+    <div class="field"><label>ملاحظات الأخصائي</label><textarea rows="3">مقاومة إنسولين محتملة — يحتاج تحليل HbA1c</textarea></div>
+    <button class="btn bo bw bsm">حفظ النموذج</button></div>
+   <div class="pane" id="d3">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+     <span class="pill pk-ok">● LIVE</span><span class="num" style="font-size:11.5px;color:var(--tx-faint)">12:40</span></div>
+    <div id="transcript"></div>
+    <div class="trl"><b></b><p><span class="typ"><i></i><i></i><i></i></span></p></div></div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ١٠ · معالجة AI ═══ -->
+<div class="screen" id="s10">
+ <div class="note"><b>10 / AI PROCESSING</b><span>إرسال التفريغ والبيانات للتحليل</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side10"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>تحليل الجلسة</h2><p>معالجة آلية للتفريغ والبيانات</p></div></div>
+   <div class="body" style="display:flex;align-items:center;justify-content:center;padding:60px 28px">
+    <div style="max-width:440px;width:100%">
+     <div style="width:74px;height:74px;background:var(--ink);display:grid;place-items:center;margin:0 auto 26px">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--accent-l)" stroke-width="1.2" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6-6.3 4.6L7.9 13.8 2 9.4h7.6z"/></svg></div>
+     <h2 class="h-sec" style="text-align:center">جارٍ تحليل الجلسة</h2>
+     <p class="p-sec" style="text-align:center">يُرسل التفريغ الكامل مع بيانات العميل ونموذج الجلسة بصيغة منظّمة.</p>
+     <div id="aiSteps" style="margin-bottom:26px"></div>
+     <button class="btn bp bw" onclick="go(11)">استعرض النتائج</button></div>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+<!-- ═══ ١١ · نتائج AI ═══ -->
+<div class="screen" id="s11">
+ <div class="note"><b>11 / AI REVIEW</b><span>جدول قابل للتحرير — فاتح بالكامل</span></div>
+ <div class="app"><div class="shell">
+  <aside class="side" id="side11"></aside>
+  <div class="main">
+   <div class="topbar"><div><h2>مراجعة التقرير</h2><p>لا شيء يصل للعميل قبل اعتمادك</p></div>
+    <span class="pill pk-ok" id="apprPill">0 / 6 معتمد</span></div>
+   <div class="body">
+    <div class="aihd"><h3>✦ تقرير مُولَّد بالذكاء الاصطناعي</h3>
+     <p>أحمد محمود · الجلسة <span class="num">1 / 8</span> · <span class="num">12 أكتوبر</span> · مدة التفريغ <span class="num">28:14</span></p></div>
+    <div style="background:var(--surface);border:1px solid var(--rule);border-top:none">
+     <div style="overflow-x:auto"><table class="tbl" id="aiTbl"></table></div>
+     <div style="padding:16px 22px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <p style="font-size:12px;color:var(--tx-faint)" id="apprNote"></p>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+       <button class="btn bo bsm" onclick="approveAll()">اعتماد الكل</button>
+       <button class="btn bp bsm" onclick="publish()">اعتماد وإرسال</button></div></div>
+    </div>
+   </div>
+  </div>
+ </div></div>
+</div>
+
+</div>
+
+<script>
+/* ═════════ بيانات ═════════ */
+const PKGS=[
+ {id:'p4',n:'باقة البداية',s:'شهر واحد',sess:4,price:'2,400',per:'600 ج.م / جلسة',
+  feat:['تقييم شامل 30 دقيقة','جلستا أخصائي تغذية','جلستا كوتش رياضي','خطة تغذية وتمرين','دعم واتساب'],feat_:0},
+ {id:'p8',n:'باقة التحوّل',s:'شهران',sess:8,price:'4,200',per:'525 ج.م / جلسة',
+  feat:['تقييم شامل 30 دقيقة','4 جلسات أخصائي تغذية','4 جلسات كوتش رياضي','تعديل الخطة كل أسبوعين','تقارير تقدّم بالأرقام','دعم أولوية'],feat_:1},
+ {id:'p12',n:'باقة الالتزام',s:'ثلاثة شهور',sess:12,price:'5,700',per:'475 ج.م / جلسة',
+  feat:['تقييم شامل 30 دقيقة','6 جلسات أخصائي تغذية','6 جلسات كوتش رياضي','تعديل أسبوعي للخطة','تحليل صور التقدّم','جلسة ختامية مجانية'],feat_:0}
+];
+const DAYS=['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+const DAY_OFF=[6];
+const TIMES=['10:00 ص','11:00 ص','12:00 م','1:00 م','4:00 م','5:00 م','6:00 م','7:00 م','8:00 م','9:00 م'];
+const OFF=['12:00 م','5:00 م'];
+const NUTRI={n:'د. سارة عبد الله',t:'أخصائية تغذية علاجية',i:'س'};
+const COACH={n:'كابتن عمر فؤاد',t:'كوتش لياقة ومقاومة',i:'ع'};
+let st={pkg:'p8',mode:'A',day:3,time:'7:00 م',sched:[]};
+
+/* ═════════ القائمة الجانبية ═════════ */
+const NAV=[
+ {g:'MAIN',items:[['لوحتي',6,'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z'],['جلساتي',5,'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z'],['خطتي',11,'M9 11l3 3 8-8M20 12v7a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h9']]},
+ {g:'ACCOUNT',items:[['الباقات',3,'M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z'],['المدفوعات',4,'M2 6h20v12H2zM2 10h20'],['بياناتي',7,'M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 100 8 4 4 0 000-8z']]}
+];
+function sidebar(active){
+  const nav=NAV.map(s=>`<div class="snav-l">${s.g}</div>`+s.items.map(([lbl,scr,d])=>
+   `<a class="${scr===active?'on':''}" onclick="go(${scr})">
+     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>${lbl}</a>`).join('')).join('');
+  return `<div class="brand"><h1>سليم</h1><span class="lat">NUTRITION &amp; COACHING</span></div>
+   <nav class="snav">${nav}</nav>
+   <div class="suser"><div class="av">أم</div><div><b>أحمد محمود</b><span class="lat">PRO · 8 SESSIONS</span></div></div>`;
+}
+[3,4,5,6,7,10,11].forEach(n=>{const el=document.getElementById('side'+n); if(el) el.innerHTML=sidebar(n)});
+
+/* ═════════ التنقّل ═════════ */
+const SC=[['العامة','01'],['الدخول','02'],['الباقات','03'],['الدفع','04'],['الجدولة','05'],
+ ['اللوحة','06'],['الاستمارة','07'],['لايف · عميل','08'],['لايف · أخصائي','09'],['معالجة AI','10'],['نتائج AI','11']];
+document.getElementById('steps').innerHTML=SC.map((s,i)=>
+ `<button class="stp${i===0?' on':''}" data-i="${i+1}">${s[0]}</button>`).join('');
+document.querySelectorAll('.stp').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+function go(n){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
+ document.querySelectorAll('.stp').forEach(b=>b.classList.toggle('on',+b.dataset.i===n));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(n===9) runTr(); if(n===10) runAi();
+}
+function tab(b,id){const p=b.closest('.panel');
+ p.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+ p.querySelectorAll('.pane').forEach(t=>t.classList.remove('on'));
+ b.classList.add('on');document.getElementById(id).classList.add('on');}
+document.querySelectorAll('.dirsel button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.dirsel button').forEach(x=>x.classList.remove('on'));
+ b.classList.add('on');document.documentElement.setAttribute('data-dir',b.dataset.d);});
+
+/* ═════════ الباقات ═════════ */
+const map=n=>{let h='';for(let i=0;i<n;i++)h+=`<i class="${i%2===0?'sm-n':'sm-c'}">${i%2===0?'N':'C'}</i>`;return h};
+document.getElementById('pkgs').innerHTML=PKGS.map(p=>`
+ <div class="pk${p.feat_?' feat':''}${p.id===st.pkg?' sel':''}" data-p="${p.id}">
+  ${p.feat_?'<span class="tagp">MOST CHOSEN</span>':''}
+  <h3>${p.n}</h3><p class="sub lat">${p.s.toUpperCase()} · ${p.sess} SESSIONS</p>
+  <div class="price">${p.price}<small> ج.م</small></div><p class="per">${p.per}</p>
+  <div class="smap">${map(p.sess)}</div>
+  <ul class="feat-l">${p.feat.map(f=>`<li><i>—</i>${f}</li>`).join('')}</ul>
+  <button class="btn ${p.feat_?'ba':'bo'} bw bsm">اشترك</button></div>`).join('');
+document.querySelectorAll('.pk').forEach(el=>el.onclick=()=>{
+ st.pkg=el.dataset.p;document.querySelectorAll('.pk').forEach(x=>x.classList.remove('sel'));
+ el.classList.add('sel');order();setTimeout(()=>go(4),200);});
+const pkg=()=>PKGS.find(p=>p.id===st.pkg);
+function order(){const p=pkg();
+ document.getElementById('payAmt').textContent=p.price;
+ document.getElementById('orderSum').innerHTML=`<span class="kick">ORDER SUMMARY</span>
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+   <h4 style="font-size:17px;font-weight:300;color:var(--tx-strong)">${p.n}</h4>
+   <span class="num" style="font-size:20px;color:var(--tx-strong)">${p.price}</span></div>
+  <p class="lat" style="font-size:11px;color:var(--tx-faint);margin-bottom:18px">${p.s.toUpperCase()} · ${p.sess} SESSIONS</p>
+  <div class="smap">${map(p.sess)}</div>
+  <dl class="dl" style="margin:18px 0;padding:18px 0;border-block:1px solid var(--rule)">
+   <dt>الجلسة الأولى</dt><dd class="num">30 دقيقة</dd><dt>باقي الجلسات</dt><dd class="num">15 دقيقة</dd>
+   <dt>التكرار</dt><dd>أسبوعياً بالتناوب</dd><dt>أخصائي / كوتش</dt><dd class="num">${p.sess/2} / ${p.sess/2}</dd></dl>
+  <div style="display:flex;justify-content:space-between;align-items:baseline">
+   <span style="font-size:13px;color:var(--tx-muted)">الإجمالي</span>
+   <span class="num" style="font-size:26px;color:var(--tx-strong)">${p.price} <small style="font-size:12px">ج.م</small></span></div>`;
+ document.getElementById('b1').innerHTML=`0 <em>/ ${p.sess}</em>`;}
+
+/* ═════════ الجدولة ═════════ */
+function pickMode(m){st.mode=m;
+ optA.classList.toggle('sel',m==='A');optB.classList.toggle('sel',m==='B');
+ paneB.style.display=m==='B'?'block':'none';
+ if(m==='A'){st.day=3;st.time='7:00 م';} all();}
+function bDays(){document.getElementById('days').innerHTML=DAYS.map((d,i)=>{
+  const o=DAY_OFF.includes(i);
+  return `<div class="day${o?' off':''}${i===st.day&&!o?' sel':''}" data-d="${i}"><b>${d}</b><span>${o?'CLOSED':'OPEN'}</span></div>`;}).join('');
+ document.querySelectorAll('.day').forEach(el=>el.onclick=()=>{
+  if(el.classList.contains('off'))return;st.day=+el.dataset.d;all();});}
+function bSlots(){document.getElementById('slots').innerHTML=TIMES.map(t=>{
+  const o=OFF.includes(t);
+  return `<div class="slot${o?' off':''}${t===st.time&&!o?' sel':''}" data-t="${t}">${t}</div>`;}).join('');
+ document.querySelectorAll('.slot').forEach(el=>el.onclick=()=>{
+  if(el.classList.contains('off'))return;st.time=el.dataset.t;all();});}
+function bSpecs(){document.getElementById('slotLabel').textContent=`${DAYS[st.day]} ${st.time}`;
+ document.getElementById('specs').innerHTML=`
+  <div class="spec sel"><div class="av">${NUTRI.i}</div><div style="flex:1"><b>${NUTRI.n}</b><span>${NUTRI.t}</span></div><span class="pill pk-ok">أخصائي</span></div>
+  <div class="spec sel"><div class="av">${COACH.i}</div><div style="flex:1"><b>${COACH.n}</b><span>${COACH.t}</span></div><span class="pill pk-n">كوتش</span></div>`;}
+function shift(t){let i=TIMES.indexOf(t)+1;while(i<TIMES.length&&OFF.includes(TIMES[i]))i++;return TIMES[i]||TIMES[TIMES.indexOf(t)-1];}
+function bSched(){const p=pkg();const r=[];let d=12;
+ for(let i=0;i<p.sess;i++){const nu=i%2===0,cf=(i===2);
+  r.push({i:i+1,date:`${d} أكتوبر`,nu,who:nu?NUTRI:COACH,time:cf?shift(st.time):st.time,dur:i===0?'30':'15',cf});d+=7;}
+ st.sched=r;
+ document.getElementById('schedNote').innerHTML=`<span class="num">${p.sess}</span> جلسات · كل ${DAYS[st.day]} <span class="num">${st.time}</span>`;
+ document.getElementById('schedTbl').innerHTML=
+  `<thead><tr><th>#</th><th class="ar">التاريخ</th><th class="ar">النوع</th><th class="ar">المختص</th><th class="ar">الوقت</th><th class="ar">المدة</th><th class="ar">الحالة</th><th></th></tr></thead><tbody>`+
+  r.map(x=>`<tr class="${x.cf?'flag':''}">
+   <td class="num">${x.i}</td><td class="num">${x.date}</td>
+   <td><span class="pill ${x.nu?'pk-ok':'pk-n'}">${x.nu?'أخصائي':'كوتش'}</span></td>
+   <td>${x.who.n}</td><td class="num" style="color:var(--tx-strong)">${x.time}</td><td class="num">${x.dur} د</td>
+   <td>${x.cf?'<span class="pill pk-ok">مُرحَّل</span>':'<span class="pill pk-n">✓ متاح</span>'}</td>
+   <td>${x.cf?`<button class="btn bo bsm" onclick="shiftRow(${x.i})">غيّر الوقت</button>`:''}</td></tr>`).join('')+'</tbody>';
+ badge();bMy();}
+function badge(){const c=st.sched.filter(x=>x.cf).length;const b=document.getElementById('conflictBadge');
+ b.style.display=c?'inline-flex':'none';b.innerHTML=`<span class="num">${c}</span> جلسة تحتاج تعديل`;}
+function shiftRow(i){const r=st.sched.find(x=>x.i===i);if(!r)return;
+ let k=TIMES.indexOf(r.time)+1;while(k<TIMES.length&&OFF.includes(TIMES[k]))k++;if(k>=TIMES.length)k=0;
+ r.time=TIMES[k];r.cf=false;
+ const tr=document.getElementById('schedTbl').querySelectorAll('tbody tr')[i-1];
+ tr.classList.remove('flag');
+ tr.querySelectorAll('td')[4].innerHTML=r.time;
+ tr.querySelectorAll('td')[6].innerHTML='<span class="pill pk-n">✓ متاح</span>';
+ tr.querySelectorAll('td')[7].innerHTML='';badge();bMy();}
+function bMy(){document.getElementById('myTbl').innerHTML=
+ `<thead><tr><th>#</th><th class="ar">التاريخ</th><th class="ar">النوع</th><th class="ar">المختص</th><th class="ar">الوقت</th><th class="ar">المدة</th><th></th></tr></thead><tbody>`+
+ st.sched.slice(0,5).map(x=>`<tr><td class="num">${x.i}</td><td class="num">${x.date}</td>
+  <td><span class="pill ${x.nu?'pk-ok':'pk-n'}">${x.nu?'أخصائي':'كوتش'}</span></td><td>${x.who.n}</td>
+  <td class="num" style="color:var(--tx-strong)">${x.time}</td><td class="num">${x.dur} د</td>
+  <td>${x.i===1?'<button class="btn ba bsm" onclick="go(7)">ادخل</button>':'<span class="pill pk-n">قريباً</span>'}</td></tr>`).join('')+'</tbody>';}
+function all(){bDays();bSlots();bSpecs();bSched();}
+
+/* ═════════ التفريغ ═════════ */
+const L=[['د','طب قُل لي، متى تشعر بالجوع أكثر خلال اليوم؟'],['ع','بعد الغداء مباشرة، وبالليل قبل النوم.'],
+ ['د','والغداء ماذا يحتوي عادة؟'],['ع','أرز أبيض ومكرونة غالباً، والبروتين قليل.'],
+ ['د','هذا يفسّر الخمول والجوع السريع — حمل نشوي عالٍ بلا بروتين كافٍ.'],
+ ['ع','وأشرب ماء قليلاً، حوالي لتر يومياً.'],['د','سنعمل على توزيع البروتين وزيادة الماء تدريجياً.']];
+let tt;
+function runTr(){const b=document.getElementById('transcript');b.innerHTML='';clearTimeout(tt);let i=0;
+ (function a(){if(i>=L.length)return;const[w,t]=L[i];
+  b.insertAdjacentHTML('beforeend',`<div class="trl ${w==='د'?'':'c'}"><b>${w==='د'?'د. سارة':'أحمد'}</b><p>${t}</p></div>`);
+  i++;tt=setTimeout(a,1100);})();}
+
+/* ═════════ خطوات AI ═════════ */
+const AS=['تجميع التفريغ الصوتي','ضم بيانات العميل ونموذج الجلسة','تنسيق الطلب بالصيغة المعتمدة',
+ 'إرسال للنموذج وتحليل الحالة','استقبال التشخيص والتوصيات','تجهيز الجدول للمراجعة'];
+function runAi(){const b=document.getElementById('aiSteps');
+ b.innerHTML=AS.map((s,i)=>`<div style="display:flex;gap:12px;align-items:center;padding:9px 0;opacity:.28;transition:.5s" id="ai${i}">
+  <span id="aid${i}" class="num" style="width:22px;height:22px;border:1px solid var(--rule-2);display:grid;place-items:center;font-size:10px;flex-shrink:0">${i+1}</span>
+  <span style="font-size:13px">${s}</span></div>`).join('');
+ AS.forEach((_,i)=>setTimeout(()=>{const r=document.getElementById('ai'+i);if(!r)return;r.style.opacity=1;
+  document.getElementById('aid'+i).outerHTML=`<span style="width:22px;height:22px;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:11px;flex-shrink:0">✓</span>`;},420*(i+1)));}
+
+/* ═════════ نتائج AI ═════════ */
+const R=[
+ {k:'التشخيص المبدئي',v:'نمط غذائي عالي النشويات مع نقص بروتين واضح، مصحوب بقلّة شرب الماء وقلّة النوم. الأعراض (خمول بعد الغداء وجوع ليلي) متوافقة مع تذبذب سكر الدم ومقاومة إنسولين مبكرة محتملة.'},
+ {k:'المؤشرات الحيوية',v:'مؤشر كتلة الجسم 29.7 (زيادة وزن) · محيط خصر 104 سم (فوق الحد الآمن للذكور 102) · نسبة دهون 31% (مرتفعة).'},
+ {k:'السعرات المستهدفة',v:'1980 سعراً يومياً (عجز 500) — بروتين 150 جم · كربوهيدرات 180 جم · دهون 65 جم.'},
+ {k:'خطة التغذية',v:'توزيع البروتين على 4 وجبات · استبدال الأرز الأبيض بالبنّي تدريجياً · وجبة بروتين قبل النوم لكسر الجوع الليلي · رفع الماء من لتر إلى 2.5 لتر خلال أسبوعين.'},
+ {k:'خطة التمرين',v:'3 أيام مقاومة (دفع / سحب / أرجل) + يومان كارديو خفيف 25 دقيقة · بدء تدريجي بوزن الجسم أول أسبوعين.'},
+ {k:'تحاليل مطلوبة',v:'HbA1c · إنسولين صائم · فيتامين د · وظائف الغدة الدرقية. تنبيه: العميل لديه حساسية مكسرات — استُبعدت كل مصادرها من الخطة.'}];
+let ok_=new Set();
+function bAi(){document.getElementById('aiTbl').innerHTML=
+ `<thead><tr><th class="ar">البند</th><th class="ar">المحتوى المقترح</th><th class="ar">الإجراء</th></tr></thead><tbody>`+
+ R.map((r,i)=>`<tr id="air${i}"><td style="width:140px;vertical-align:top;color:var(--tx-strong)">${r.k}</td>
+  <td style="vertical-align:top"><div class="aitx" id="aiv${i}">${r.v}</div>
+   <textarea class="aied" id="aie${i}" style="display:none">${r.v}</textarea></td>
+  <td style="width:160px;white-space:nowrap;vertical-align:top">
+   <button class="btn bo bsm" onclick="ok(${i})" id="aiok${i}">اعتماد</button>
+   <button class="btn bo bsm" onclick="ed(${i})" id="aied_${i}">تعديل</button></td></tr>`).join('')+'</tbody>';}
+function ok(i){const e=document.getElementById('aie'+i),v=document.getElementById('aiv'+i);
+ if(e.style.display!=='none'){v.textContent=e.value;e.style.display='none';v.style.display='block';}
+ ok_.add(i);document.getElementById('air'+i).style.background='var(--accent-soft)';
+ document.getElementById('aiok'+i).outerHTML='<span class="pill pk-ok">✓ معتمد</span>';
+ document.getElementById('aied_'+i).style.display='none';note();}
+function ed(i){const e=document.getElementById('aie'+i),v=document.getElementById('aiv'+i);
+ v.style.display='none';e.style.display='block';e.focus();
+ document.getElementById('aiok'+i).textContent='حفظ واعتماد';}
+function approveAll(){R.forEach((_,i)=>{if(!ok_.has(i))ok(i)});}
+function note(){document.getElementById('apprNote').innerHTML=`<span class="num">${ok_.size}</span> من <span class="num">${R.length}</span> بنود معتمدة`;
+ document.getElementById('apprPill').innerHTML=`<span class="num">${ok_.size} / ${R.length}</span> معتمد`;}
+function publish(){approveAll();alert('تم اعتماد التقرير وإرساله للعميل ✓');}
+
+order();all();bAi();note();
+</script>
+</body>
+</html>

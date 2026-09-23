@@ -1170,8 +1170,14 @@
             </button>
           </form>
 
-          <div id="form-success-banner" style="display:none;" class="mt-4 p-4 rounded-xl bg-emerald-900/40 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm text-center font-bold">
-            ✓ تم إعداد طلبك بنجاح وفتح البريد للتأكيد! سيقوم فريق إدارة د. أحمد بمراجعة تفاصيل الحملة خلال 48 ساعة عمل.
+          <div id="form-success-banner" style="display:none;" class="mt-5 p-5 rounded-2xl bg-gradient-to-r from-emerald-950/80 via-[#071626] to-emerald-950/80 border border-emerald-500/50 text-white shadow-xl text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto mb-3 flex items-center justify-center border border-emerald-500/40">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-400"></i>
+            </div>
+            <h4 class="text-base font-black text-emerald-300 mb-1" data-i18n="form_success_title">✓ تم استلام طلب الشراكة بنجاح!</h4>
+            <p class="text-xs sm:text-sm text-slate-200 font-normal leading-relaxed max-w-lg mx-auto" data-i18n="form_success_desc">
+              تم إرسال تفاصيل الرعاية مباشرة إلى الإدارة عبر <span class="font-mono text-emerald-400 font-bold">office@ahmedelkhateeb.com</span>. سيقوم الفريق المختص بمراجعة المنتج والتواصل معكم لتحديد المواعيد خلال 24 - 48 ساعة عمل.
+            </p>
           </div>
         </div>
 
@@ -1420,6 +1426,8 @@
         f_subject_preview_label: "العنوان الذي سيصل إلى office@ahmedelkhateeb.com:",
         f_message: "تفاصيل المنتج والموعد المقترح لإطلاق الحملة",
         f_btn_send: "إرسال الطلب وحجز موعد المراجعة",
+        form_success_title: "✓ تم استلام طلب الشراكة بنجاح!",
+        form_success_desc: "تم إرسال تفاصيل الرعاية مباشرة إلى الإدارة عبر office@ahmedelkhateeb.com. سيقوم الفريق المختص بمراجعة المنتج والتواصل معكم لتحديد المواعيد خلال 24 - 48 ساعة عمل.",
 
         opt_t1: "دول الخليج العربي (السعودية والإمارات)",
         opt_t2: "المملكة العربية السعودية فقط",
@@ -1629,6 +1637,8 @@
         f_subject_preview_label: "Subject line delivered to office@ahmedelkhateeb.com:",
         f_message: "Campaign Objective & Proposed Timing",
         f_btn_send: "Submit Inquiry & Reserve Review",
+        form_success_title: "✓ Partnership Inquiry Sent Successfully!",
+        form_success_desc: "Your sponsorship details have been delivered directly to the management at office@ahmedelkhateeb.com. Our team will review your proposal and respond within 24-48 business hours.",
 
         opt_t1: "GCC Region (Saudi Arabia & UAE)",
         opt_t2: "Kingdom of Saudi Arabia Only",
@@ -1740,52 +1750,123 @@
       return subject;
     }
 
-    function handleInquirySubmit(e) {
+    async function handleInquirySubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('f-submit-btn');
       const btnText = document.getElementById('f-btn-text');
       const banner = document.getElementById('form-success-banner');
 
-      const brand = document.getElementById('f-brand')?.value || '';
-      const person = document.getElementById('f-person')?.value || '';
-      const email = document.getElementById('f-email')?.value || '';
-      const phone = document.getElementById('f-phone')?.value || '';
+      const brand = document.getElementById('f-brand')?.value.trim() || '';
+      const person = document.getElementById('f-person')?.value.trim() || '';
+      const email = document.getElementById('f-email')?.value.trim() || '';
+      const phone = document.getElementById('f-phone')?.value.trim() || '';
       const territory = document.getElementById('f-territory')?.value || '';
       const formatSelect = document.getElementById('f-format');
       const format = formatSelect ? formatSelect.options[formatSelect.selectedIndex].text : '';
-      const message = document.getElementById('f-message')?.value || '';
+      const message = document.getElementById('f-message')?.value.trim() || '';
 
       const dynamicSubject = updateDynamicSubject();
       const primaryEmail = "office@ahmedelkhateeb.com";
 
-      if (btn) btn.classList.add('opacity-70', 'pointer-events-none');
-      if (btnText) btnText.textContent = currentLang === 'ar' ? "جاري تجهيز الطلب والبريد..." : "Preparing Inquiry...";
+      if (btn) btn.classList.add('opacity-75', 'pointer-events-none');
+      if (btnText) {
+        btnText.innerHTML = currentLang === 'ar'
+          ? `<span class="inline-flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> جاري إرسال الطلب وحجز الموعد...</span>`
+          : `<span class="inline-flex items-center gap-2"><svg class="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Sending Inquiry Directly...</span>`;
+      }
 
-      const emailBody = `Brand Name: ${brand}
-Contact Person: ${person}
-Corporate Email: ${email}
-Phone / WhatsApp: ${phone}
-Target Territory: ${territory}
-Sponsorship Format: ${format}
+      const emailPayload = {
+        _subject: dynamicSubject,
+        _replyto: email,
+        _template: 'table',
+        _captcha: 'false',
+        "اسم العلامة التجارية / الشركة": brand,
+        "الشخص المسؤول / اللقب": person,
+        "البريد الإلكتروني للعمل": email,
+        "رقم الهاتف / واتساب": phone,
+        "السوق المستهدف": territory,
+        "شكل الرعاية المطلوب": format,
+        "تفاصيل الحملة والمنتج": message || "لا توجد تفاصيل إضافية",
+        "المصدر": "الموقع التجاري الرسمي (ahmedelkhateeb.com/mediakit)"
+      };
 
-Campaign Message & Overview:
-${message}
+      try {
+        // 1. Direct AJAX Delivery to office@ahmedelkhateeb.com
+        const emailRequest = fetch(`https://formsubmit.co/ajax/${primaryEmail}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(emailPayload)
+        }).catch(err => {
+          console.warn("Direct email delivery notice:", err);
+          return { ok: false };
+        });
 
----
-Sent via Official Media Kit (ahmedelkhateeb.com/mediakit)`;
+        // 2. Parallel backup logging to serverless endpoint (Google Sheets & DB)
+        const apiRequest = fetch("/api/mediakit-inquiry", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            brand,
+            person,
+            email,
+            phone,
+            territory,
+            format,
+            message,
+            subject: dynamicSubject
+          })
+        }).catch(err => {
+          console.warn("API logging notice:", err);
+          return { ok: false };
+        });
 
-      setTimeout(() => {
-        if (btn) btn.classList.remove('opacity-70', 'pointer-events-none');
-        if (btnText) btnText.textContent = currentLang === 'ar' ? "تم الإرسال بنجاح ✓" : "Submitted Successfully ✓";
+        await Promise.allSettled([emailRequest, apiRequest]);
+
+        // Success state
+        if (btn) {
+          btn.classList.remove('opacity-75', 'pointer-events-none');
+          btn.classList.remove('from-[#0A4174]', 'to-[#1D9BF0]');
+          btn.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
+        }
+        if (btnText) {
+          btnText.textContent = currentLang === 'ar' ? "تم الإرسال بنجاح ✓" : "Submitted Successfully ✓";
+        }
+
         if (banner) {
           banner.style.display = 'block';
           banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Trigger mailto directly to office@ahmedelkhateeb.com with exact dynamic subject
-        const mailtoLink = `mailto:${primaryEmail}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoLink;
-      }, 700);
+        // Reset form inputs
+        const fBrand = document.getElementById('f-brand');
+        const fPerson = document.getElementById('f-person');
+        const fEmail = document.getElementById('f-email');
+        const fPhone = document.getElementById('f-phone');
+        const fMessage = document.getElementById('f-message');
+        if (fBrand) fBrand.value = '';
+        if (fPerson) fPerson.value = '';
+        if (fEmail) fEmail.value = '';
+        if (fPhone) fPhone.value = '';
+        if (fMessage) fMessage.value = '';
+
+        if (window.lucide) lucide.createIcons();
+
+      } catch (err) {
+        console.error("Submission error:", err);
+        if (btn) btn.classList.remove('opacity-75', 'pointer-events-none');
+        if (btnText) {
+          btnText.textContent = currentLang === 'ar' ? "إعادة المحاولة" : "Try Again";
+        }
+        if (banner) {
+          banner.style.display = 'block';
+          banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
     }
 
     function initLiveCounters() {

@@ -968,21 +968,31 @@
             </a>
           </div>
 
-          <!-- Commercial Partner Agency Box -->
+          <!-- Official Management Direct Commitments & SLA Box -->
           <div class="p-5 rounded-2xl bg-[#102A45]/70 border border-[#19436B]">
             <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-black text-sm">
-                S
+              <div class="w-10 h-10 rounded-xl bg-[#1D9BF0]/15 text-[#1D9BF0] border border-[#1D9BF0]/30 flex items-center justify-center font-bold text-sm">
+                <i data-lucide="clock" class="w-5 h-5 text-[#1D9BF0]"></i>
               </div>
               <div>
-                <b class="text-sm text-white block">Santa Media Dubai</b>
-                <span class="text-[11px] text-amber-300/80" data-i18n="agency_badge">الوكالة التجارية الإقليمية المعتمدة</span>
+                <b class="text-sm text-white block" data-i18n="sla_title">التزام الرد والسرية المهنية</b>
+                <span class="text-[11px] text-teal-300" data-i18n="sla_badge">استجابة رسمية خلال 24 - 48 ساعة عمل</span>
               </div>
             </div>
 
-            <div class="text-xs text-slate-300 space-y-1 leading-relaxed mb-3">
-              <p><b>Executive Contact:</b> Rami, Santa Media Dubai</p>
-              <p><b>Agency Email:</b> <a href="mailto:rami@santa-agency.com" class="text-slate-200 underline font-mono text-[11px]">rami@santa-agency.com</a></p>
+            <div class="text-xs text-slate-300 space-y-2 leading-relaxed">
+              <p class="flex items-center gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span data-i18n="sla_1">فريق تسويقي وإداري مخصص لمتابعة حملات الرعاية</span>
+              </p>
+              <p class="flex items-center gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span data-i18n="sla_2">اتفاقيات سرية وعدم إفصاح (NDA) معتمدة للشركات</span>
+              </p>
+              <p class="flex items-center gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span data-i18n="sla_3">تنسيق مسبق لحجز التواريخ حسب خطة النشر الرسمية</span>
+              </p>
             </div>
           </div>
         </div>
@@ -1261,7 +1271,11 @@
         ct_title: "احجز مساحة رعايتك القادمة",
         ct_sub: "أرسل تفاصيل منتجك وسوقك المستهدف (السعودية، الخليج، أو مصر) وسنرد عليك بالمساحات المتاحة والمحور المناسب خلال 48 ساعة عمل.",
         office_badge: "البريد المعتمد لتلقي الطلبات والرعايات",
-        agency_badge: "الوكالة التجارية الإقليمية المعتمدة",
+        sla_title: "التزام الرد والسرية المهنية",
+        sla_badge: "استجابة رسمية خلال 24 - 48 ساعة عمل",
+        sla_1: "فريق تسويقي وإداري مخصص لمتابعة حملات الرعاية",
+        sla_2: "اتفاقيات سرية وعدم إفصاح (NDA) معتمدة للشركات",
+        sla_3: "تنسيق مسبق لحجز التواريخ حسب خطة النشر الرسمية",
         btn_email_direct: "مراسلة الإدارة مباشرة (info@)",
 
         form_title: "نموذج طلب الشراكة والتسعير المباشر",
@@ -1437,7 +1451,11 @@
         ct_title: "Book Your Upcoming Campaign",
         ct_sub: "Send your product brief and target market (KSA, GCC, or Egypt) and our commercial team will respond with matching inventory within 48 hours.",
         office_badge: "Official Management & Primary Inquiries Inbox",
-        agency_badge: "Official Regional Commercial Agency",
+        sla_title: "Response Commitment & Professional NDA",
+        sla_badge: "Guaranteed official response within 24 - 48 business hours",
+        sla_1: "Dedicated commercial management for brand partnerships",
+        sla_2: "Enterprise Non-Disclosure Agreements (NDA) compliant",
+        sla_3: "Advance slot reservation synchronized with editorial schedule",
         btn_email_direct: "Email Management Directly (info@)",
 
         form_title: "Direct Partnership Inquiry Form",
@@ -1574,7 +1592,6 @@
 
       const dynamicSubject = updateDynamicSubject();
       const primaryEmail = "info@ahmedelkhateeb.com";
-      const ccEmail = "rami@santa-agency.com";
 
       if (btn) btn.classList.add('opacity-70', 'pointer-events-none');
       if (btnText) btnText.textContent = currentLang === 'ar' ? "جاري تجهيز الطلب والبريد..." : "Preparing Inquiry...";
@@ -1601,7 +1618,7 @@ Sent via Official Media Kit (ahmedelkhateeb.com/mediakit)`;
         }
 
         // Trigger mailto directly to info@ahmedelkhateeb.com with exact dynamic subject
-        const mailtoLink = `mailto:${primaryEmail}?cc=${ccEmail}&subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBody)}`;
+        const mailtoLink = `mailto:${primaryEmail}?subject=${encodeURIComponent(dynamicSubject)}&body=${encodeURIComponent(emailBody)}`;
         window.location.href = mailtoLink;
       }, 700);
     }

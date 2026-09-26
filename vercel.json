@@ -1,8 +1,5 @@
+{
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/mediakit2", "destination": "/mediakit-2.html" },
-    { "source": "/mediakit-2", "destination": "/mediakit-2.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",

@@ -22,17 +22,21 @@
 
   <style>
     :root {
-      --aeon-bg-dark: #221C18;
-      --aeon-bg-surface: #2E2621;
-      --aeon-taupe-dark: #3E342D;
-      --aeon-taupe-medium: #5D5046;
-      --aeon-taupe-light: #7E6E62;
-      --aeon-sand: #EAE3DC;
-      --aeon-cream: #F7F3EF;
-      --aeon-gold: #C9A882;
-      --aeon-gold-light: #E2CFB4;
-      --aeon-gold-dark: #A68157;
-      --aeon-espresso: #1B1512;
+      --brand-bg: #FFFFFF;
+      --brand-bg-alt: #F8FAF9;
+      --brand-surface: #FFFFFF;
+      --brand-surface-muted: #F1F5F2;
+      --brand-emerald-dark: #064E3B;
+      --brand-emerald-700: #047857;
+      --brand-emerald-600: #059669;
+      --brand-emerald-500: #10B981;
+      --brand-emerald-light: #34D399;
+      --brand-emerald-tint: #ECFDF5;
+      --brand-text-strong: #0F172A;
+      --brand-text-body: #334155;
+      --brand-text-muted: #64748B;
+      --brand-border: #E2E8F0;
+      --brand-border-emerald: rgba(16, 185, 129, 0.22);
     }
 
     html {
@@ -47,12 +51,12 @@
 
     body {
       font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: var(--aeon-bg-dark);
+      background-color: #FFFFFF;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(201, 168, 130, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 65%, rgba(126, 110, 98, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 90%, rgba(201, 168, 130, 0.06) 0%, transparent 45%);
-      color: #FAF6F2;
+        radial-gradient(circle at 12% 12%, rgba(16, 185, 129, 0.045) 0%, transparent 45%),
+        radial-gradient(circle at 88% 35%, rgba(5, 150, 105, 0.035) 0%, transparent 50%),
+        radial-gradient(circle at 50% 88%, rgba(16, 185, 129, 0.04) 0%, transparent 45%);
+      color: #1E293B;
       overflow-x: hidden;
       margin: 0;
       padding: 0;
@@ -106,10 +110,10 @@
     }
 
     .gold-glow {
-      box-shadow: 0 0 50px -5px rgba(201, 168, 130, 0.35);
+      box-shadow: 0 10px 40px -5px rgba(16, 185, 129, 0.15);
     }
     .gold-border {
-      border: 1px solid rgba(201, 168, 130, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
 
     .num-font {
@@ -117,16 +121,12 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* ========================================================
-       MOTIONS & ANIMATIONS SYSTEM (BETWEEN & INSIDE SECTIONS)
-       ======================================================== */
-
-    /* 1. Between Sections: Moving Light Beam Divider */
+    /* 1. Between Sections: Moving Light Beam Divider (Emerald & Mint) */
     .aeon-beam-divider {
       position: relative;
       width: 100%;
       height: 1px;
-      background: rgba(201, 168, 130, 0.16);
+      background: rgba(16, 185, 129, 0.15);
       overflow: hidden;
       margin: 0;
       z-index: 10;
@@ -138,7 +138,7 @@
       left: -40%;
       width: 40%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(226, 207, 180, 0.95), #C9A882, transparent);
+      background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.9), #059669, transparent);
       animation: beamSweep 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
     @keyframes beamSweep {
@@ -150,15 +150,15 @@
     .ambient-glow-orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(90px);
+      filter: blur(100px);
       pointer-events: none;
       z-index: 0;
       animation: ambientBreathe 9s ease-in-out infinite alternate;
     }
     @keyframes ambientBreathe {
-      0% { transform: translateY(0) scale(1); opacity: 0.18; }
-      50% { transform: translateY(-30px) scale(1.15); opacity: 0.35; }
-      100% { transform: translateY(15px) scale(0.95); opacity: 0.22; }
+      0% { transform: translateY(0) scale(1); opacity: 0.25; }
+      50% { transform: translateY(-30px) scale(1.15); opacity: 0.45; }
+      100% { transform: translateY(15px) scale(0.95); opacity: 0.3; }
     }
 
     /* 3. Floating Micro-Interactions (Floating Badges & Tags) */
@@ -173,14 +173,15 @@
       50% { transform: translateY(-6px); }
     }
 
-    /* 4. Card Shimmer & Gloss Reflection on Hover */
+    /* 4. Card Shimmer & Gloss Reflection on Hover (Light & Clean) */
     .card-glass {
       position: relative;
-      background: rgba(51, 42, 35, 0.72);
+      background: #FFFFFF;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(201, 168, 130, 0.22);
+      border: 1px solid rgba(16, 185, 129, 0.16);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px -2px rgba(15, 81, 50, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
       overflow: hidden;
     }
     .card-glass::after {
@@ -190,7 +191,7 @@
       left: -60%;
       width: 220%;
       height: 220%;
-      background: linear-gradient(60deg, transparent 40%, rgba(201, 168, 130, 0.12) 50%, transparent 60%);
+      background: linear-gradient(60deg, transparent 40%, rgba(16, 185, 129, 0.08) 50%, transparent 60%);
       transform: translateX(-100%);
       transition: transform 0.8s ease;
       pointer-events: none;
@@ -199,10 +200,10 @@
       transform: translateX(100%);
     }
     .card-glass:hover {
-      border-color: rgba(201, 168, 130, 0.6);
-      background: rgba(62, 52, 44, 0.88);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.65), 0 0 35px -8px rgba(201, 168, 130, 0.3);
+      border-color: rgba(5, 150, 105, 0.45);
+      background: #FFFFFF;
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px -10px rgba(15, 81, 50, 0.12), 0 0 25px -5px rgba(16, 185, 129, 0.15);
     }
 
     /* 5. Scroll-triggered Reveal Animations */
@@ -241,7 +242,7 @@
       overflow: hidden;
       border-radius: 16px;
       aspect-ratio: 16 / 9;
-      background: #1E1814;
+      background: #F1F5F9;
     }
     .video-thumb-img {
       width: 100%;
@@ -255,38 +256,38 @@
     .play-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(27, 21, 18, 0.45);
+      background: rgba(15, 23, 42, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: background 0.3s ease;
     }
     .video-card:hover .play-overlay {
-      background: rgba(27, 21, 18, 0.2);
+      background: rgba(15, 23, 42, 0.1);
     }
     .play-btn-circle {
       position: relative;
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #B38E65 0%, #C9A882 100%);
-      color: #1E1712;
+      background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+      color: #FFFFFF;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 24px -4px rgba(201, 168, 130, 0.5);
+      box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.5);
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
     .video-card:hover .play-btn-circle {
       transform: scale(1.15);
-      box-shadow: 0 12px 30px -4px rgba(201, 168, 130, 0.75);
+      box-shadow: 0 12px 30px -4px rgba(16, 185, 129, 0.75);
     }
     .video-card:hover .play-btn-circle::before {
       content: '';
       position: absolute;
       inset: -6px;
       border-radius: 50%;
-      border: 1px solid rgba(201, 168, 130, 0.6);
+      border: 1px solid rgba(16, 185, 129, 0.6);
       animation: playHalo 1.8s ease-out infinite;
     }
     @keyframes playHalo {
@@ -295,108 +296,109 @@
     }
 
     .live-badge-glow {
-      animation: pulseGold 2.2s infinite;
+      animation: pulseEmerald 2.2s infinite;
     }
-    @keyframes pulseGold {
+    @keyframes pulseEmerald {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.65; transform: scale(1.04); }
+      50% { opacity: 0.75; transform: scale(1.04); }
     }
 
     /* Luxury Pill Button */
     .btn-aeon-gold {
-      background: linear-gradient(135deg, #A68157 0%, #C9A882 50%, #DECBAB 100%);
-      color: #1F1915;
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #FFFFFF;
       font-weight: 700;
       border-radius: 9999px;
-      box-shadow: 0 10px 25px -5px rgba(201, 168, 130, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.35);
       transition: all 0.3s ease;
     }
     .btn-aeon-gold:hover {
-      background: linear-gradient(135deg, #B89063 0%, #D8B792 50%, #ECE0CA 100%);
-      box-shadow: 0 14px 32px -4px rgba(201, 168, 130, 0.65);
+      background: linear-gradient(135deg, #047857 0%, #065F46 100%);
+      box-shadow: 0 14px 32px -4px rgba(5, 150, 105, 0.5);
       transform: translateY(-2px);
     }
 
     .btn-aeon-taupe {
-      background: rgba(93, 80, 70, 0.7);
-      border: 1px solid rgba(201, 168, 130, 0.35);
-      color: #FAF6F2;
+      background: #FFFFFF;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #0F172A;
       border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
       transition: all 0.3s ease;
     }
     .btn-aeon-taupe:hover {
-      background: rgba(126, 110, 98, 0.9);
-      border-color: rgba(201, 168, 130, 0.7);
-      color: #FFFFFF;
+      background: #F0FDF4;
+      border-color: #059669;
+      color: #064E3B;
       transform: translateY(-2px);
     }
 
     /* Subtle luxury divider */
     .aeon-divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(201, 168, 130, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.25), transparent);
     }
 </style>
 </head>
-<body class="bg-[#221C18] text-slate-100 selection:bg-[#A68157] selection:text-white">
+<body class="bg-white text-slate-800 selection:bg-emerald-600 selection:text-white">
 
   <!-- Dynamic Luxury Scroll Progress Indicator -->
-  <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#A68157] via-[#C9A882] to-[#E2CFB4] z-[70] origin-left pointer-events-none transition-transform duration-100" style="transform: scaleX(0);"></div>
+  <div id="scroll-progress" class="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 z-[70] origin-left pointer-events-none transition-transform duration-100" style="transform: scaleX(0);"></div>
 
   <!-- ==================== 1. TOP TICKER ANNOUNCEMENT ==================== -->
-  <aside class="bg-gradient-to-r from-[#352C25] via-[#2E2621] to-[#221C18] border-b border-[#C9A882]/30 py-2 px-4 text-center sticky top-0 z-50 backdrop-blur-md bg-opacity-95 no-print">
+  <aside class="bg-emerald-950 border-b border-emerald-800/80 py-2 px-4 text-center sticky top-0 z-50 backdrop-blur-md bg-opacity-95 text-emerald-100 no-print">
     <div class="responsive-container flex items-center justify-between gap-2 text-xs sm:text-sm font-bold">
       <div class="flex items-center gap-2">
-        <span class="px-2.5 py-0.5 rounded-full bg-[#C9A882]/20 text-[#C9A882] border border-[#C9A882]/40 text-[11px] font-black">
-          MEDIA KIT 2026 <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#C9A882]/20 border border-[#C9A882]/40 text-[#E2CFB4] text-[10px] font-bold uppercase mr-2 ml-2">AEON LUXURY EDITION • النسخة الفاخرة</span>
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-800/60 text-emerald-300 border border-emerald-600/50 text-[11px] font-black">
+          MEDIA KIT 2026 <span class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-100/60 border border-emerald-300/80 text-emerald-300 text-[10px] font-bold uppercase mr-2 ml-2">AEON LUXURY EDITION • النسخة الفاخرة</span>
         </span>
         <span data-i18n="top_bar_text">الميثاق الإعلامي والشراكات الاستراتيجية لـ د. أحمد الخطيب</span>
       </div>
 
       <div class="flex items-center gap-3">
         <!-- Direct Email Pill -->
-        <a href="mailto:office@ahmedelkhateeb.com" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-[#E2CFB4] hover:text-white transition-colors">
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-[#C9A882]"></i>
+        <a href="mailto:office@ahmedelkhateeb.com" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-emerald-300 hover:text-emerald-700 transition-colors">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-emerald-600"></i>
           <span class="num-font font-medium">office@ahmedelkhateeb.com</span>
         </a>
 
         <!-- Language Switcher Toggle -->
-        <div class="inline-flex rounded-lg bg-[#221C18] p-1 border border-[#C9A882]/25">
-          <button id="lang-ar-btn" onclick="switchLanguage('ar')" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-[#A68157] text-white shadow-sm">عربي</button>
-          <button id="lang-en-btn" onclick="switchLanguage('en')" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-[#B5A89E] hover:text-white">EN</button>
+        <div class="inline-flex rounded-lg bg-white p-1 border border-emerald-200/70">
+          <button id="lang-ar-btn" onclick="switchLanguage('ar')" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-emerald-600 text-white shadow-sm">عربي</button>
+          <button id="lang-en-btn" onclick="switchLanguage('en')" class="px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-slate-500 hover:text-emerald-700">EN</button>
         </div>
       </div>
     </div>
   </aside>
 
   <!-- ==================== 2. MAIN NAVIGATION HEADER (DARK GLASS) ==================== -->
-  <nav class="border-b border-[#C9A882]/20 bg-[#221C18]/90 backdrop-blur-md sticky top-[37px] z-40 no-print">
+  <nav class="border-b border-slate-200/80 bg-white/95 backdrop-blur-md sticky top-[37px] z-40 shadow-sm no-print">
     <div class="responsive-container py-3.5 flex items-center justify-between">
       
       <!-- Brand Logo & Name (Exact match with index.html) -->
       <a href="https://ahmedelkhateeb.com" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#8F6D44] to-[#A68157] text-white font-black text-sm flex items-center justify-center shadow-lg shadow-[#A68157]/30 group-hover:scale-105 transition-transform" id="brand-logo-text">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-700 to-emerald-500 text-white font-black text-sm flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform" id="brand-logo-text">
           د.أ
         </div>
         <div>
-          <span class="font-bold text-xl text-white block leading-none" data-i18n="nav_dr_title">د. أحمد الخطيب</span>
-          <span class="text-xs text-[#B5A89E] font-medium" data-i18n="nav_dr_subtitle">فارماكولوجي • Pharmacology</span>
+          <span class="font-bold text-xl text-slate-900 block leading-none" data-i18n="nav_dr_title">د. أحمد الخطيب</span>
+          <span class="text-xs text-emerald-700 font-medium" data-i18n="nav_dr_subtitle">فارماكولوجي • Pharmacology</span>
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-[#D8CEC6]">
-        <a href="#hero" class="hover:text-[#C9A882] transition-colors" data-i18n="nav_who">عن د. أحمد</a>
-        <a href="#stats" class="hover:text-[#C9A882] transition-colors flex items-center gap-1.5 text-[#C9A882] font-bold"><i data-lucide="activity" class="w-3.5 h-3.5"></i> <span data-i18n="nav_stats">الأرقام والقنوات الحية</span></a>
-        <a href="#videos" class="hover:text-[#C9A882] transition-colors" data-i18n="nav_videos">أعلى المشاهدات</a>
-        <a href="#verticals" class="hover:text-[#C9A882] transition-colors" data-i18n="nav_verticals">المحاور الطبية</a>
-        <a href="#packages" class="hover:text-[#C9A882] transition-colors text-amber-300 font-bold" data-i18n="nav_packages">باقات الرعاية</a>
-        <a href="#safety" class="hover:text-[#C9A882] transition-colors" data-i18n="nav_safety">المعايير والأمان</a>
+      <div class="hidden lg:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-600">
+        <a href="#hero" class="hover:text-emerald-600 transition-colors" data-i18n="nav_who">عن د. أحمد</a>
+        <a href="#stats" class="hover:text-emerald-600 transition-colors flex items-center gap-1.5 text-emerald-600 font-bold"><i data-lucide="activity" class="w-3.5 h-3.5"></i> <span data-i18n="nav_stats">الأرقام والقنوات الحية</span></a>
+        <a href="#videos" class="hover:text-emerald-600 transition-colors" data-i18n="nav_videos">أعلى المشاهدات</a>
+        <a href="#verticals" class="hover:text-emerald-600 transition-colors" data-i18n="nav_verticals">المحاور الطبية</a>
+        <a href="#packages" class="hover:text-emerald-600 transition-colors text-amber-300 font-bold" data-i18n="nav_packages">باقات الرعاية</a>
+        <a href="#safety" class="hover:text-emerald-600 transition-colors" data-i18n="nav_safety">المعايير والأمان</a>
       </div>
 
       <!-- Action Button & Mobile Menu Toggle -->
       <div class="flex items-center gap-3">
-        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#A68157] to-[#C9A882] hover:from-[#8F6D44] hover:to-[#A68157] text-white font-black text-xs sm:text-sm shadow-md shadow-[#A68157]/25 active:scale-95 transition-all">
+        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-black text-xs sm:text-sm shadow-md shadow-emerald-600/20 active:scale-95 transition-all">
           <span data-i18n="nav_cta">شراكة حصرية</span>
           <i data-lucide="sparkles" class="w-4 h-4"></i>
         </a>
@@ -406,10 +408,10 @@
   </nav>
 
   <!-- ==================== SECTION 1: HERO (DARK CINEMATIC) ==================== -->
-  <section id="hero" class="pt-10 pb-14 sm:py-16 lg:py-20 relative overflow-hidden bg-[#221C18]">
+  <section id="hero" class="pt-10 pb-14 sm:py-16 lg:py-20 relative overflow-hidden bg-gradient-to-b from-[#F4FDF7] via-white to-white">
     <!-- Ambient Floating Light Orbs -->
-    <div class="ambient-glow-orb w-96 h-96 bg-[#C9A882]/15 -top-10 -right-10"></div>
-    <div class="ambient-glow-orb w-80 h-80 bg-[#5D5046]/25 -bottom-10 -left-10"></div>
+    <div class="ambient-glow-orb w-96 h-96 bg-emerald-200/35 -top-10 -right-10"></div>
+    <div class="ambient-glow-orb w-80 h-80 bg-emerald-100/40 -bottom-10 -left-10"></div>
 
     <div class="responsive-container relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -417,47 +419,47 @@
         <!-- Text Column -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-right reveal-item">
           
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3E342D] border border-[#5D5046] text-[#C9A882] text-xs sm:text-sm font-bold shadow-inner motion-float">
-            <i data-lucide="shield-check" class="w-4 h-4 text-[#C9A882]"></i>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs sm:text-sm font-bold shadow-inner motion-float">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
             <span data-i18n="hero_badge">صيدلي وباحث • مؤسس فارماكولوجي</span>
           </div>
 
           <div class="space-y-3">
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-semibold luxury-serif text-[#FAF6F2] leading-[1.35] sm:leading-[1.3]">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-semibold luxury-serif text-slate-900 leading-[1.35] sm:leading-[1.3]">
               <span data-i18n="hero_t1">حيث تلتقي الرصانة الصيدلانية..</span> <br/>
-              <span class="inline-block mt-2 font-semibold bg-gradient-to-l from-[#A68157] via-[#C9A882] to-[#E2CFB4] bg-clip-text text-transparent italic" data-i18n="hero_t2">
+              <span class="inline-block mt-2 font-semibold bg-gradient-to-l from-emerald-700 via-emerald-600 to-teal-500 bg-clip-text text-transparent italic" data-i18n="hero_t2">
                 بالهيبة والتأثير العربي الخالد.
               </span>
             </h1>
           </div>
 
-          <p class="text-sm sm:text-base lg:text-lg text-[#F2EDE8] leading-relaxed font-normal max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
+          <p class="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed font-normal max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
             يقدم د. أحمد الخطيب نموذجاً استثنائياً يجمع بين الرصانة الصيدلانية الأكاديمية والتبسيط الممتع للجمهور العربي في مصر والسعودية والخليج، بقاعدة جماهيرية تتخطى 8.4 مليون متابع واعي وأكثر من 135 مليون مشاهدة على يوتيوب وحده.
           </p>
 
           <!-- Official Channel Bio Quote -->
-          <div class="p-4 sm:p-5 rounded-3xl bg-[#3E342D]/80 border-r-4 sm:border-r-4 border-l-0 rtl:border-r-[#C9A882] ltr:border-l-[#C9A882] ltr:border-r-0 border-y-0 border border-white/5 text-right ltr:text-left text-xs sm:text-sm text-[#D8CEC6] leading-relaxed italic">
+          <div class="p-4 sm:p-5 rounded-3xl bg-emerald-50/70 border-r-4 sm:border-r-4 border-l-0 rtl:border-r-emerald-600 ltr:border-l-emerald-600 ltr:border-r-0 border-y-0 border border-emerald-200/60 text-right ltr:text-left text-xs sm:text-sm text-slate-700 shadow-sm leading-relaxed italic">
             <span data-i18n="channel_bio_text">«الثقة الطبية لا تُشترى، بل تُبنى عبر سنوات من البحث العلمي الرصين والوفاء لصحة المشاهد.. عندما نختار شريكاً، فنحن نضع مصداقيتنا وتاريخنا بجانب اسمه لنصنع معاً قصة نجاح تليق بوعي المجتمع العربي.»</span>
           </div>
 
           <!-- Hero Action CTAs -->
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-[#A68157] to-[#C9A882] hover:from-[#8F6D44] hover:to-[#A68157] text-white font-bold text-sm sm:text-base rounded-3xl shadow-xl shadow-[#A68157]/30 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5">
+            <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold text-sm sm:text-base rounded-3xl shadow-xl shadow-[#A68157]/30 flex items-center justify-center gap-2.5 transition-all transform hover:-translate-y-0.5">
               <i data-lucide="mail" class="w-4 h-4"></i>
               <span data-i18n="hero_cta_book">طلب شراكة استراتيجية</span>
             </a>
-            <a href="#packages" class="w-full sm:w-auto px-6 py-3.5 bg-[#2E2621] hover:bg-[#3E342D] text-[#F2EDE8] font-bold text-sm sm:text-base rounded-3xl border border-[#5D5046] flex items-center justify-center gap-2 transition-all">
-              <i data-lucide="layers" class="w-4 h-4 text-[#C9A882]"></i>
+            <a href="#packages" class="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-emerald-50/50 text-slate-800 font-bold text-sm sm:text-base rounded-3xl border border-slate-200 hover:border-emerald-300 shadow-sm flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="layers" class="w-4 h-4 text-emerald-600"></i>
               <span data-i18n="hero_cta_formats">فلسفة التعاون والمحاور</span>
             </a>
           </div>
 
-          <div class="flex items-center justify-center lg:justify-start gap-3 text-xs text-[#B5A89E] pt-1 flex-wrap">
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="pill_1">أمان ومراجعة صيدلانية</span></span>
+          <div class="flex items-center justify-center lg:justify-start gap-3 text-xs text-slate-500 pt-1 flex-wrap">
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="pill_1">أمان ومراجعة صيدلانية</span></span>
             <span>•</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="pill_2">انتشار قيادي في مصر والخليج</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="pill_2">انتشار قيادي في مصر والخليج</span></span>
             <span>•</span>
-            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="pill_3">مساحات محدودة شهرياً</span></span>
+            <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="pill_3">مساحات محدودة شهرياً</span></span>
           </div>
 
         </div>
@@ -465,25 +467,25 @@
         <!-- Hero Studio Portrait Column (Matches index.html) -->
         <div class="lg:col-span-5 flex justify-center reveal-scale">
           <div class="relative w-full max-w-[360px] sm:max-w-[420px]">
-            <div class="absolute -inset-2 bg-gradient-to-r from-[#A68157]/40 to-[#221C18] rounded-[38px] blur-2xl opacity-70"></div>
+            <div class="absolute -inset-2 bg-gradient-to-r from-emerald-400/25 to-emerald-600/10 rounded-[38px] blur-2xl opacity-70"></div>
             
-            <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden border-2 border-[#5D5046] shadow-2xl gold-glow bg-[#3E342D]">
+            <div class="relative aspect-[4/5] rounded-[32px] overflow-hidden border-2 border-emerald-200 shadow-xl gold-glow bg-white">
               <img src="assets/dr_hero_aeon.webp" alt="د. أحمد الخطيب" class="w-full h-full object-cover object-top">
               
-              <div class="absolute inset-0 bg-gradient-to-t from-[#221C18] via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
               
               <!-- Bottom Floating Badge with Float Motion -->
-              <div class="absolute bottom-4 inset-x-4 p-4 rounded-3xl bg-[#221C18]/90 backdrop-blur-md border border-[#5D5046] flex items-center justify-between motion-float">
+              <div class="absolute bottom-4 inset-x-4 p-4 rounded-3xl bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-lg flex items-center justify-between motion-float">
                 <div>
                   <div class="flex items-center gap-1.5">
-                    <span class="font-bold text-white text-sm" data-i18n="portrait_name">د. أحمد الخطيب</span>
-                    <i data-lucide="badge-check" class="w-4 h-4 text-[#C9A882]"></i>
+                    <span class="font-bold text-slate-900 text-sm" data-i18n="portrait_name">د. أحمد الخطيب</span>
+                    <i data-lucide="badge-check" class="w-4 h-4 text-emerald-600"></i>
                   </div>
-                  <p class="text-[11px] text-[#D8CEC6] font-medium mt-0.5" data-i18n="portrait_desc">صيدلي وباحث ومؤسس فارماكولوجي</p>
+                  <p class="text-[11px] text-emerald-700 font-medium mt-0.5" data-i18n="portrait_desc">صيدلي وباحث ومؤسس فارماكولوجي</p>
                 </div>
                 <div class="text-right ltr:text-left">
-                  <span class="num-font text-xl font-bold text-[#C9A882] block leading-none">+8.4M</span>
-                  <span class="text-[10px] text-[#B5A89E] font-medium" data-i18n="portrait_total_aud">إجمالي الجمهور</span>
+                  <span class="num-font text-xl font-bold text-emerald-600 block leading-none">+8.4M</span>
+                  <span class="text-[10px] text-slate-500 font-medium" data-i18n="portrait_total_aud">إجمالي الجمهور</span>
                 </div>
               </div>
             </div>
@@ -497,14 +499,14 @@
         
         <!-- Live Header Badge -->
         <div class="flex items-center justify-between gap-3 mb-4 px-1">
-          <div class="inline-flex items-center gap-2 text-xs font-bold text-[#D8CEC6]">
+          <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-600">
             <span class="relative flex h-2.5 w-2.5">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
             <span class="text-white" data-i18n="live_hub_title">المنصات والأرقام الحية الموثقة (انقر على أي منصة للزيارة المباشرة)</span>
           </div>
-          <span class="text-[11px] text-[#C9A882] font-semibold hidden sm:inline-flex items-center gap-1.5" data-i18n="live_hub_hint">
+          <span class="text-[11px] text-emerald-600 font-semibold hidden sm:inline-flex items-center gap-1.5" data-i18n="live_hub_hint">
             <i data-lucide="mouse-pointer-click" class="w-3.5 h-3.5"></i> روابط حية مباشرة
           </span>
         </div>
@@ -513,92 +515,92 @@
         <div class="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
           
           <!-- 1. YouTube -->
-          <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb" target="_blank" rel="noopener noreferrer" class="group bg-[#3E342D]/90 hover:bg-[#2E2621] border border-[#5D5046] hover:border-red-500/60 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-1">
+          <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb" target="_blank" rel="noopener noreferrer" class="group bg-white shadow-sm border-slate-200 hover:bg-white border border-slate-200 hover:border-red-500/60 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-red-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-1">
             <div class="flex items-center justify-between mb-2">
               <div class="w-8 h-8 rounded-lg bg-red-600/20 text-red-500 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-red-400 group-hover:text-white transition-colors">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-red-400 group-hover:text-emerald-700 transition-colors">
                 <span>YouTube</span>
                 <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
               </span>
             </div>
             <div>
-              <div class="text-2xl sm:text-4xl font-black text-white group-hover:text-red-400 transition-colors leading-none num-font live-counter" data-target="4.00" data-decimals="2" data-suffix="M">0.00M</div>
-              <div class="text-xs sm:text-sm text-[#F2EDE8] mt-2 font-bold" data-i18n="stat_yt_title">مشترك يوتيوب</div>
-              <div class="text-[11px] text-[#B5A89E] mt-1 font-medium" data-i18n="stat_yt_sub">297 حلقة علمية مسجلة</div>
+              <div class="text-2xl sm:text-4xl font-black text-slate-900 group-hover:text-red-600 transition-colors leading-none num-font live-counter" data-target="4.00" data-decimals="2" data-suffix="M">0.00M</div>
+              <div class="text-xs sm:text-sm text-slate-800 mt-2 font-bold" data-i18n="stat_yt_title">مشترك يوتيوب</div>
+              <div class="text-[11px] text-slate-500 mt-1 font-medium" data-i18n="stat_yt_sub">297 حلقة علمية مسجلة</div>
             </div>
           </a>
 
           <!-- 2. YouTube Total Views -->
-          <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb/videos" target="_blank" rel="noopener noreferrer" class="group bg-[#3E342D]/90 hover:bg-[#2E2621] border border-[#5D5046] hover:border-[#C9A882]/30 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-[#C9A882]/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-2">
+          <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb/videos" target="_blank" rel="noopener noreferrer" class="group bg-white shadow-sm border-slate-200 hover:bg-white border border-slate-200 hover:border-emerald-200/80 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-[#C9A882]/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-2">
             <div class="flex items-center justify-between mb-2">
-              <div class="w-8 h-8 rounded-lg bg-[#A68157] text-[#C9A882] flex items-center justify-center">
-                <i data-lucide="flame" class="w-4 h-4 text-[#C9A882]"></i>
+              <div class="w-8 h-8 rounded-lg bg-emerald-600 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="flame" class="w-4 h-4 text-emerald-600"></i>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#E2CFB4] group-hover:text-white transition-colors">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-300 group-hover:text-emerald-700 transition-colors">
                 <span>Views</span>
                 <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
               </span>
             </div>
             <div>
-              <div class="text-2xl sm:text-4xl font-black text-[#E2CFB4] group-hover:text-white transition-colors leading-none num-font live-counter" data-target="135.4" data-decimals="0" data-prefix="+" data-suffix="M">+0M</div>
-              <div class="text-xs sm:text-sm text-[#F2EDE8] mt-2 font-bold" data-i18n="stat_views_title">مشاهدة يوتيوب</div>
-              <div class="text-[11px] text-[#B5A89E] mt-1 font-medium num-font">135,428,784+</div>
+              <div class="text-2xl sm:text-4xl font-black text-emerald-300 group-hover:text-emerald-700 transition-colors leading-none num-font live-counter" data-target="135.4" data-decimals="0" data-prefix="+" data-suffix="M">+0M</div>
+              <div class="text-xs sm:text-sm text-slate-800 mt-2 font-bold" data-i18n="stat_views_title">مشاهدة يوتيوب</div>
+              <div class="text-[11px] text-slate-500 mt-1 font-medium num-font">135,428,784+</div>
             </div>
           </a>
 
           <!-- 3. Facebook -->
-          <a href="https://www.facebook.com/AhmedElkhaateeb" target="_blank" rel="noopener noreferrer" class="group bg-[#3E342D]/90 hover:bg-[#2E2621] border border-[#5D5046] hover:border-[#C9A882]/30 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-3">
+          <a href="https://www.facebook.com/AhmedElkhaateeb" target="_blank" rel="noopener noreferrer" class="group bg-white shadow-sm border-slate-200 hover:bg-white border border-slate-200 hover:border-emerald-200/80 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-blue-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-3">
             <div class="flex items-center justify-between mb-2">
-              <div class="w-8 h-8 rounded-lg bg-[#A68157] text-[#C9A882] flex items-center justify-center">
+              <div class="w-8 h-8 rounded-lg bg-emerald-600 text-emerald-600 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#C9A882] group-hover:text-white transition-colors">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-600 group-hover:text-emerald-700 transition-colors">
                 <span>Facebook</span>
                 <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
               </span>
             </div>
             <div>
-              <div class="text-2xl sm:text-4xl font-black text-[#C9A882] group-hover:text-[#E2CFB4] transition-colors leading-none num-font live-counter" data-target="3.92" data-decimals="1" data-suffix="M">0.0M</div>
-              <div class="text-xs sm:text-sm text-[#F2EDE8] mt-2 font-bold" data-i18n="stat_fb_title">متابع فيسبوك</div>
-              <div class="text-[11px] text-[#B5A89E] mt-1 font-medium" data-i18n="stat_fb_sub">تفاعل ونقاشات نشطة</div>
+              <div class="text-2xl sm:text-4xl font-black text-emerald-600 group-hover:text-emerald-300 transition-colors leading-none num-font live-counter" data-target="3.92" data-decimals="1" data-suffix="M">0.0M</div>
+              <div class="text-xs sm:text-sm text-slate-800 mt-2 font-bold" data-i18n="stat_fb_title">متابع فيسبوك</div>
+              <div class="text-[11px] text-slate-500 mt-1 font-medium" data-i18n="stat_fb_sub">تفاعل ونقاشات نشطة</div>
             </div>
           </a>
 
           <!-- 4. Instagram -->
-          <a href="https://www.instagram.com/drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="group bg-[#3E342D]/90 hover:bg-[#2E2621] border border-[#5D5046] hover:border-pink-500/60 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-4">
+          <a href="https://www.instagram.com/drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="group bg-white shadow-sm border-slate-200 hover:bg-white border border-slate-200 hover:border-pink-500/60 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-600/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-4">
             <div class="flex items-center justify-between mb-2">
               <div class="w-8 h-8 rounded-lg bg-pink-600/20 text-pink-500 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-pink-400 group-hover:text-white transition-colors">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-pink-400 group-hover:text-emerald-700 transition-colors">
                 <span>Instagram</span>
                 <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
               </span>
             </div>
             <div>
-              <div class="text-2xl sm:text-4xl font-black text-pink-400 group-hover:text-white transition-colors leading-none num-font live-counter" data-target="498" data-decimals="0" data-suffix="K">0K</div>
-              <div class="text-xs sm:text-sm text-[#F2EDE8] mt-2 font-bold" data-i18n="stat_ig_title">إنستغرام (موثق)</div>
-              <div class="text-[11px] text-[#B5A89E] mt-1 font-medium" data-i18n="stat_ig_sub">أعلى ريلز 22 مليون</div>
+              <div class="text-2xl sm:text-4xl font-black text-pink-400 group-hover:text-emerald-700 transition-colors leading-none num-font live-counter" data-target="498" data-decimals="0" data-suffix="K">0K</div>
+              <div class="text-xs sm:text-sm text-slate-800 mt-2 font-bold" data-i18n="stat_ig_title">إنستغرام (موثق)</div>
+              <div class="text-[11px] text-slate-500 mt-1 font-medium" data-i18n="stat_ig_sub">أعلى ريلز 22 مليون</div>
             </div>
           </a>
 
           <!-- 5. TikTok -->
-          <a href="https://www.tiktok.com/@drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="col-span-2 lg:col-span-1 group bg-[#3E342D]/90 hover:bg-[#2E2621] border border-[#5D5046] hover:border-[#C9A882]/30 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-5">
+          <a href="https://www.tiktok.com/@drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="col-span-2 lg:col-span-1 group bg-white shadow-sm border-slate-200 hover:bg-white border border-slate-200 hover:border-emerald-200/80 rounded-3xl p-4 sm:p-5 text-center transform hover:-translate-y-1.5 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 flex flex-col justify-between cursor-pointer relative overflow-hidden reveal-item delay-5">
             <div class="flex items-center justify-between mb-2">
               <div class="w-8 h-8 rounded-lg bg-slate-800 text-white flex items-center justify-center">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
               </div>
-              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#D8CEC6] group-hover:text-[#C9A882] transition-colors">
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-slate-600 group-hover:text-emerald-600 transition-colors">
                 <span>TikTok</span>
                 <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
               </span>
             </div>
             <div>
-              <div class="text-2xl sm:text-4xl font-black text-slate-100 group-hover:text-[#E2CFB4] transition-colors leading-none num-font live-counter" data-target="456" data-decimals="0" data-suffix="K">0K</div>
-              <div class="text-xs sm:text-sm text-[#F2EDE8] mt-2 font-bold" data-i18n="stat_tt_title">متابع تيك توك</div>
-              <div class="text-[11px] text-[#B5A89E] mt-1 font-medium" data-i18n="stat_tt_sub">اكتشاف سريع للشباب</div>
+              <div class="text-2xl sm:text-4xl font-black text-slate-100 group-hover:text-emerald-300 transition-colors leading-none num-font live-counter" data-target="456" data-decimals="0" data-suffix="K">0K</div>
+              <div class="text-xs sm:text-sm text-slate-800 mt-2 font-bold" data-i18n="stat_tt_title">متابع تيك توك</div>
+              <div class="text-[11px] text-slate-500 mt-1 font-medium" data-i18n="stat_tt_sub">اكتشاف سريع للشباب</div>
             </div>
           </a>
 
@@ -606,20 +608,20 @@
 
         <!-- Secondary Platforms Bar: LinkedIn & X (Twitter) -->
         <div class="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs">
-          <a href="https://www.linkedin.com/in/ahmedelkhateeb1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#3E342D]/80 hover:bg-[#A68157] border border-[#5D5046] hover:border-[#C9A882]/30 text-[#D8CEC6] hover:text-white transition-all group shadow-sm">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="text-[#C9A882]"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <a href="https://www.linkedin.com/in/ahmedelkhateeb1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-sm border-slate-200 hover:bg-emerald-600 border border-slate-200 hover:border-emerald-200/80 text-slate-600 hover:text-emerald-700 transition-all group shadow-sm">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="text-emerald-600"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             <span class="font-bold text-white">LinkedIn:</span>
-            <span class="text-[#B5A89E] group-hover:text-[#F2EDE8] num-font">ahmedelkhateeb1</span>
-            <span class="text-[10px] text-[#E2CFB4]" data-i18n="li_tag">(الشبكة المهنية)</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-[#C9A882]"></i>
+            <span class="text-slate-500 group-hover:text-slate-800 num-font">ahmedelkhateeb1</span>
+            <span class="text-[10px] text-emerald-300" data-i18n="li_tag">(الشبكة المهنية)</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-emerald-600"></i>
           </a>
 
-          <a href="https://x.com/PharmaDrAhmed" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#3E342D]/80 hover:bg-[#A68157] border border-[#5D5046] hover:border-slate-400/50 text-[#D8CEC6] hover:text-white transition-all group shadow-sm">
+          <a href="https://x.com/PharmaDrAhmed" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-sm border-slate-200 hover:bg-emerald-600 border border-slate-200 hover:border-slate-400/50 text-slate-600 hover:text-emerald-700 transition-all group shadow-sm">
             <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" class="text-white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             <span class="font-bold text-white">X (Twitter):</span>
-            <span class="text-[#B5A89E] group-hover:text-[#F2EDE8] num-font">@PharmaDrAhmed</span>
-            <span class="text-[10px] text-[#D8CEC6]" data-i18n="x_tag">(التواصل الخليجي)</span>
-            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-[#D8CEC6]"></i>
+            <span class="text-slate-500 group-hover:text-slate-800 num-font">@PharmaDrAhmed</span>
+            <span class="text-[10px] text-slate-600" data-i18n="x_tag">(التواصل الخليجي)</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-600"></i>
           </a>
         </div>
 
@@ -632,21 +634,21 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== LUXURY SECTION: THE PARTNERSHIP PILLARS (AEON INSPIRED) ==================== -->
-  <section id="partnership-value" class="py-20 sm:py-28 relative overflow-hidden bg-gradient-to-b from-[#221C18] via-[#2A231E] to-[#221C18]">
+  <section id="partnership-value" class="py-20 sm:py-28 relative overflow-hidden bg-gradient-to-b from-white via-[#F8FAF9] to-white">
     <!-- Ambient Floating Light Orb -->
-    <div class="ambient-glow-orb w-96 h-96 bg-[#C9A882]/12 top-1/4 -right-16"></div>
+    <div class="ambient-glow-orb w-96 h-96 bg-emerald-100/40 top-1/4 -right-16"></div>
 
     <div class="responsive-container relative z-10">
       
       <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20 reveal-item">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3E342D] border border-[#C9A882]/30 text-[#C9A882] text-xs font-bold uppercase mb-4 motion-float">
-          <i data-lucide="gem" class="w-3.5 h-3.5 text-[#C9A882]"></i>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-emerald-200/80 text-emerald-600 text-xs font-bold uppercase mb-4 motion-float">
+          <i data-lucide="gem" class="w-3.5 h-3.5 text-emerald-600"></i>
           <span data-i18n="value_badge">القيمة الاستثنائية للشريك • PARTNER VALUE ARCHITECTURE</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold luxury-serif text-[#FAF6F2] leading-snug sm:leading-tight mb-4" data-i18n="value_title">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-semibold luxury-serif text-slate-900 leading-snug sm:leading-tight mb-4" data-i18n="value_title">
           ماذا يعني أن ترتبط علامتكم التجارية بصوت د. أحمد الخطيب؟
         </h2>
-        <p class="text-xs sm:text-sm lg:text-base text-[#D8CEC6] font-normal leading-relaxed" data-i18n="value_sub">
+        <p class="text-xs sm:text-sm lg:text-base text-slate-600 font-normal leading-relaxed" data-i18n="value_sub">
           في عصر يعاني فيه قطاع المكملات والرعاية الصحية من فوضى الإعلانات العابرة، يبحث صُنّاع القرار وكبار المعلنين عن مرجعية صلبة تحمي استثماراتهم وتمنح منتجاتهم حصانة علمية وقوة شرائية لا تُنافس.
         </p>
       </div>
@@ -654,68 +656,68 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Pillar 1 -->
-        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-[#C9A882]/60 transition-all reveal-item delay-1">
+        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-emerald-500/60 transition-all reveal-item delay-1">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-[#A68157]/20 border border-[#C9A882]/30 text-[#C9A882] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-200/80 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="award" class="w-6 h-6"></i>
             </div>
             <h3 class="text-base sm:text-lg font-bold text-white mb-2 luxury-serif leading-snug" data-i18n="val_1_t">اكتساب الشرعية الصيدلانية</h3>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="val_1_d">
+            <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="val_1_d">
               حين يحلل صيدلي معتمد تركيبة منتجك بيولوجياً، يتحول الشراء من مجرد رغبة تسويقية إلى ضرورة وقائية واستثمار صحي حقيقي في ذهن المريض والمستهلك.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-[#C9A882]/15 text-[11px] text-[#C9A882] font-semibold flex items-center gap-1.5">
+          <div class="pt-6 mt-6 border-t border-slate-200 text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
             <span>Borrowed Clinical Authority</span>
             <i data-lucide="check" class="w-3.5 h-3.5"></i>
           </div>
         </div>
 
         <!-- Pillar 2 -->
-        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-[#C9A882]/60 transition-all reveal-item delay-2">
+        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-emerald-500/60 transition-all reveal-item delay-2">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-[#A68157]/20 border border-[#C9A882]/30 text-[#C9A882] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-200/80 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="trending-up" class="w-6 h-6"></i>
             </div>
             <h3 class="text-base sm:text-lg font-bold text-white mb-2 luxury-serif leading-snug" data-i18n="val_2_t">تأثير نفاد الرفوف (Shelf Velocity)</h3>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="val_2_d">
+            <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="val_2_d">
               سجلت حلقات د. أحمد عن (المغنيسيوم جلايسينات، وأوميجا 3، وحساسية الإنسولين) طلباً قياسياً في سلاسل الصيدليات الكبرى بالرياض ودبي فور إذاعتها.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-[#C9A882]/15 text-[11px] text-[#C9A882] font-semibold flex items-center gap-1.5">
+          <div class="pt-6 mt-6 border-t border-slate-200 text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
             <span>High Intent Pharmacy Conversion</span>
             <i data-lucide="check" class="w-3.5 h-3.5"></i>
           </div>
         </div>
 
         <!-- Pillar 3 -->
-        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-[#C9A882]/60 transition-all reveal-item delay-3">
+        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-emerald-500/60 transition-all reveal-item delay-3">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-[#A68157]/20 border border-[#C9A882]/30 text-[#C9A882] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-200/80 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="shield-check" class="w-6 h-6"></i>
             </div>
             <h3 class="text-base sm:text-lg font-bold text-white mb-2 luxury-serif leading-snug" data-i18n="val_3_t">أمان تنظيمي مطلق (Zero Friction)</h3>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="val_3_d">
+            <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="val_3_d">
               فريق د. أحمد يصيغ الرسائل الترويجية بدقة مطابقة للوائح هيئة الغذاء والدواء السعودية (SFDA) والجهات المعنية، مما يمنح إدارتكم القانونية راحة تامة.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-[#C9A882]/15 text-[11px] text-[#C9A882] font-semibold flex items-center gap-1.5">
+          <div class="pt-6 mt-6 border-t border-slate-200 text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
             <span>SFDA & Regulatory Compliant</span>
             <i data-lucide="check" class="w-3.5 h-3.5"></i>
           </div>
         </div>
 
         <!-- Pillar 4 -->
-        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-[#C9A882]/60 transition-all reveal-item delay-4">
+        <div class="card-glass rounded-3xl p-7 flex flex-col justify-between group hover:border-emerald-500/60 transition-all reveal-item delay-4">
           <div>
-            <div class="w-12 h-12 rounded-2xl bg-[#A68157]/20 border border-[#C9A882]/30 text-[#C9A882] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-600/20 border border-emerald-200/80 text-emerald-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <i data-lucide="sparkles" class="w-6 h-6"></i>
             </div>
             <h3 class="text-base sm:text-lg font-bold text-white mb-2 luxury-serif leading-snug" data-i18n="val_4_t">ندرة مقصودة وحصرية تامة</h3>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="val_4_d">
+            <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="val_4_d">
               لحماية هيبة ومصداقية المحتوى، نعتمد بحد أقصى شريكين إلى 3 شركاء شهرياً فقط، مع حظر كامل لأي منافسين في نفس الفئة لضمان هيمنة علامتكم.
             </p>
           </div>
-          <div class="pt-6 mt-6 border-t border-[#C9A882]/15 text-[11px] text-[#C9A882] font-semibold flex items-center gap-1.5">
+          <div class="pt-6 mt-6 border-t border-slate-200 text-[11px] text-emerald-600 font-semibold flex items-center gap-1.5">
             <span>Category Exclusivity Premium</span>
             <i data-lucide="check" class="w-3.5 h-3.5"></i>
           </div>
@@ -730,16 +732,16 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== SECTION 3: TOP 6 EVERGREEN VIDEOS WITH DIRECT LINKS & THUMBNAILS ==================== -->
-  <section id="videos" class="py-14 sm:py-20 bg-[#221C18]">
+  <section id="videos" class="py-14 sm:py-20 bg-white">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 reveal-item">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3E342D] text-amber-300 text-xs font-bold border border-[#5D5046] mb-3 motion-float">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-amber-300 text-xs font-bold border border-slate-200 mb-3 motion-float">
           <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i>
           <span data-i18n="vid_badge">حلقات التغذية والمكملات الفيروسية — أحدث المشاهدات</span>
         </div>
         <h2 class="text-2xl sm:text-4xl font-bold text-white" data-i18n="vid_title">أعلى حلقات التغذية والمكملات مشاهدة (الأشهر الأخيرة)</h2>
-        <p class="text-xs sm:text-sm text-[#D8CEC6] mt-2 font-normal" data-i18n="vid_sub">حلقات حديثة ومتخصصة حصرياً في التغذية العلاجية، مقاومة الإنسولين، الصيام، والمكملات حققت انتشاراً فيروسياً حقيقياً.</p>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 font-normal" data-i18n="vid_sub">حلقات حديثة ومتخصصة حصرياً في التغذية العلاجية، مقاومة الإنسولين، الصيام، والمكملات حققت انتشاراً فيروسياً حقيقياً.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -756,9 +758,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">559K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v1_title">كل اللي تخلصوا من مقاومة الإنسولين عملوا إيه؟ 10 أسرار تنهيها للأبد (بالتجربة العملية)</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v1_title">كل اللي تخلصوا من مقاومة الإنسولين عملوا إيه؟ 10 أسرار تنهيها للأبد (بالتجربة العملية)</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -776,9 +778,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">446K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v2_title">أسرع طريقة لتقليص الدهون الحشوية (بالتجربة العملية)</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v2_title">أسرع طريقة لتقليص الدهون الحشوية (بالتجربة العملية)</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -796,9 +798,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">255K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v3_title">معجزة الصيام المتقطع لإنقاص الوزن في شهر! (طريقة مُعدلة أقوي 10 أضعاف ✓ )</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v3_title">معجزة الصيام المتقطع لإنقاص الوزن في شهر! (طريقة مُعدلة أقوي 10 أضعاف ✓ )</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -816,9 +818,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">212K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v4_title">هل (البيض - الدجاج - الخبز - الخضار) مسمم فعلاً؟ الحقيقة العلمية لكل خلافات التغذية</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v4_title">هل (البيض - الدجاج - الخبز - الخضار) مسمم فعلاً؟ الحقيقة العلمية لكل خلافات التغذية</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -836,9 +838,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">169K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v5_title">أفضل كولاجين لتقوية العظام والمفاصل ونضارة بشرتك؟ (آخر الأبحاث والمكملات)</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v5_title">أفضل كولاجين لتقوية العظام والمفاصل ونضارة بشرتك؟ (آخر الأبحاث والمكملات)</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -856,9 +858,9 @@
               </div>
               <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-sm text-[11px] font-bold text-white num-font">85K+ مشاهدة</span>
             </div>
-            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors" data-i18n="v6_title">كل اللي خس وزن كبير عمل إيه؟ 8 خطوات لإجبار جسدك لحرق الدهون سريعاً</h3>
+            <h3 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors" data-i18n="v6_title">كل اللي خس وزن كبير عمل إيه؟ 8 خطوات لإجبار جسدك لحرق الدهون سريعاً</h3>
           </div>
-          <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+          <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
             <span data-i18n="btn_watch_direct">مشاهدة الفيديو على يوتيوب</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
           </div>
@@ -867,17 +869,17 @@
       </div>
 
       <!-- ==================== SUB-SECTION: INSTAGRAM TOP REELS ==================== -->
-      <div class="mt-16 pt-12 border-t border-[#C9A882]/20">
+      <div class="mt-16 pt-12 border-t border-emerald-200/60">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 reveal-item">
           <div>
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-amber-500/20 border border-pink-500/30 text-pink-300 text-xs font-bold mb-2 motion-float">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="text-pink-400 shrink-0"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               <span data-i18n="ig_reels_badge">ريلز إنستغرام التغذوية — الوصول المليوني الفيروسي</span>
             </div>
-            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-[#FAF6F2] leading-snug" data-i18n="ig_reels_title">أقوى مقاطع الريلز انتشاراً في التغذية والمكملات</h3>
-            <p class="text-xs sm:text-sm text-[#D8CEC6] mt-1 font-normal" data-i18n="ig_reels_sub">مقاطع مركزة حصدت ملايين المشاهدات ومئات آلاف الإعجابات والتفاعلات المباشرة حول التغذية وصحة الهضم والمكملات.</p>
+            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-slate-900 leading-snug" data-i18n="ig_reels_title">أقوى مقاطع الريلز انتشاراً في التغذية والمكملات</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal" data-i18n="ig_reels_sub">مقاطع مركزة حصدت ملايين المشاهدات ومئات آلاف الإعجابات والتفاعلات المباشرة حول التغذية وصحة الهضم والمكملات.</p>
           </div>
-          <a href="https://www.instagram.com/drahmedelkhateeb/reels/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5D5046]/80 via-[#7E6E62]/80 to-[#A68157]/80 hover:from-[#833AB4]/40 hover:to-[#FCB045]/40 border border-pink-500/30 text-white text-xs font-bold transition-all shadow-md shrink-0">
+          <a href="https://www.instagram.com/drahmedelkhateeb/reels/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5D5046]/80 via-[#7E6E62]/80 to-[#A68157]/80 hover:from-[#833AB4]/40 hover:to-[#FCB045]/40 border border-pink-500/30 text-slate-900 text-xs font-bold transition-all shadow-md shrink-0">
             <span data-i18n="btn_all_ig_reels">استعراض كافة ريلز إنستغرام</span>
             <i data-lucide="arrow-up-right" class="w-4 h-4 text-pink-400"></i>
           </a>
@@ -888,7 +890,7 @@
           <!-- Instagram Reel 1 (Habba Noor Stomach / Digestion) -->
           <a href="https://www.instagram.com/reel/DVOYc6PCAM4/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-amber-500/20 hover:border-amber-500/50 transition-all reveal-item delay-1">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-amber-950/50 via-[#2E2621] to-purple-950 aspect-[16/10] flex items-center justify-center border border-amber-500/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-900 via-slate-900 to-purple-950 aspect-[16/10] flex items-center justify-center border border-amber-500/20">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
                   <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#FD1D1D] to-[#FCB045] text-white flex items-center justify-center shadow-lg shadow-amber-600/40 group-hover:scale-110 transition-transform">
@@ -901,9 +903,9 @@
                 </span>
               </div>
               <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-amber-300 transition-colors mb-2" data-i18n="ig3_title">رحلة إلى داخل معدتك: أسرار حموضة المعدة وعلاج الارتجاع والهضم</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="ig3_desc">رحلة تشريحية صيدلانية داخل المعدة حققت انتشاراً فيروسياً فائقاً بأكثر من 153 ألف إعجاب و2,600 تعليق حول صحة الهضم والامتصاص.</p>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="ig3_desc">رحلة تشريحية صيدلانية داخل المعدة حققت انتشاراً فيروسياً فائقاً بأكثر من 153 ألف إعجاب و2,600 تعليق حول صحة الهضم والامتصاص.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-pink-400 font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-pink-400 font-bold">
               <span data-i18n="btn_watch_ig">مشاهدة الريلز على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
@@ -912,7 +914,7 @@
           <!-- Instagram Reel 2 (Magnesium Glycinate) -->
           <a href="https://www.instagram.com/reel/DS3CbxAiFoi/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-purple-500/20 hover:border-purple-500/50 transition-all reveal-item delay-2">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-indigo-950 via-[#2E2621] to-purple-950 aspect-[16/10] flex items-center justify-center border border-purple-500/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-950 aspect-[16/10] flex items-center justify-center border border-purple-500/20">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
                   <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#833AB4] to-[#FD1D1D] text-white flex items-center justify-center shadow-lg shadow-purple-600/40 group-hover:scale-110 transition-transform">
@@ -925,9 +927,9 @@
                 </span>
               </div>
               <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-purple-300 transition-colors mb-2" data-i18n="ig2_title">المغنسيوم جلايسينات: متى تتناوله؟ وكيف يعالج الأرق واسترخاء الأعصاب؟</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="ig2_desc">شرح صيدلاني مبسط لنوع المغنيسيوم الأفضل للراحة العصبية وجودة النوم حصد تفاعلاً قياسياً ومشاركات واسعة.</p>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="ig2_desc">شرح صيدلاني مبسط لنوع المغنيسيوم الأفضل للراحة العصبية وجودة النوم حصد تفاعلاً قياسياً ومشاركات واسعة.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-pink-400 font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-pink-400 font-bold">
               <span data-i18n="btn_watch_ig">مشاهدة الريلز على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
@@ -936,7 +938,7 @@
           <!-- Instagram Reel 3 (Insulin & Belly Fat) -->
           <a href="https://www.instagram.com/reel/DbgDyT7Ic2x/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-pink-500/20 hover:border-pink-500/50 transition-all reveal-item delay-3">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-purple-950 via-[#2E2621] to-pink-950 aspect-[16/10] flex items-center justify-center border border-pink-500/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-purple-900 via-slate-900 to-pink-950 aspect-[16/10] flex items-center justify-center border border-pink-500/20">
                 <div class="absolute inset-0 bg-cover bg-center opacity-35 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
                   <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#833AB4] to-[#FD1D1D] text-white flex items-center justify-center shadow-lg shadow-pink-600/40 group-hover:scale-110 transition-transform">
@@ -949,9 +951,9 @@
                 </span>
               </div>
               <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-pink-400 transition-colors mb-2" data-i18n="ig1_title">أول تغيير يحصل في جسمك لما تبدأ تخسر دهون الكرش وتضبط الإنسولين</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="ig1_desc">بروتوكول أيضي سريع يفكك التحولات البيولوجية التي تحدث عند انخفاض مقاومة الإنسولين وبدء حرق الدهون المخزنة.</p>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="ig1_desc">بروتوكول أيضي سريع يفكك التحولات البيولوجية التي تحدث عند انخفاض مقاومة الإنسولين وبدء حرق الدهون المخزنة.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-pink-400 font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-pink-400 font-bold">
               <span data-i18n="btn_watch_ig">مشاهدة الريلز على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
@@ -961,91 +963,91 @@
       </div>
 
       <!-- ==================== SUB-SECTION: FACEBOOK TOP VIDEOS ==================== -->
-      <div class="mt-16 pt-12 border-t border-[#C9A882]/20">
+      <div class="mt-16 pt-12 border-t border-emerald-200/60">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 reveal-item">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#A68157] border border-[#C9A882]/30 text-[#E2CFB4] text-xs font-bold mb-2 motion-float">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="text-[#C9A882] shrink-0"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-600 border border-emerald-200/80 text-emerald-300 text-xs font-bold mb-2 motion-float">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" class="text-emerald-600 shrink-0"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
               <span data-i18n="fb_vids_badge">فيديوهات فيسبوك التغذوية — التفاعل والوصول الموثق</span>
             </div>
-            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-[#FAF6F2] leading-snug" data-i18n="fb_vids_title">أقوى فيديوهات التغذية والدهون الحشوية على فيسبوك</h3>
-            <p class="text-xs sm:text-sm text-[#D8CEC6] mt-1 font-normal" data-i18n="fb_vids_sub">حلقات تثقيفية مركزة تخطت مئات آلاف المشاهدات الحقيقية بمشاركات ونقاشات مجتمعية نشطة لجمهور د. أحمد على فيسبوك.</p>
+            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-slate-900 leading-snug" data-i18n="fb_vids_title">أقوى فيديوهات التغذية والدهون الحشوية على فيسبوك</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal" data-i18n="fb_vids_sub">حلقات تثقيفية مركزة تخطت مئات آلاف المشاهدات الحقيقية بمشاركات ونقاشات مجتمعية نشطة لجمهور د. أحمد على فيسبوك.</p>
           </div>
-          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#A68157]/20 hover:bg-[#A68157]/30 border border-[#C9A882]/40 text-white text-xs font-bold transition-all shadow-md shrink-0">
+          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-300/80 text-slate-900 text-xs font-bold transition-all shadow-md shrink-0">
             <span data-i18n="btn_all_fb_vids">استعراض كافة فيديوهات فيسبوك</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#C9A882]"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-emerald-600"></i>
           </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <!-- Facebook Video 1: Belly Shapes -->
-          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1377976077822249/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/30 hover:border-[#C9A882]/60 transition-all reveal-item delay-1">
+          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1377976077822249/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/80 hover:border-emerald-500/60 transition-all reveal-item delay-1">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#352C25] via-[#2E2621] to-[#A68157] aspect-[16/10] flex items-center justify-center border border-[#C9A882]/30">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/60 aspect-[16/10] flex items-center justify-center border border-emerald-200/80">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-12 h-12 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg shadow-teal-600/40 group-hover:scale-110 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-teal-600/40 group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
                   </div>
                 </div>
-                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-[#A68157] text-[11px] font-black text-white shadow-md num-font">337,000+ مشاهدة</span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#C9A882] font-bold flex items-center gap-1">
-                  <i data-lucide="activity" class="w-3 h-3 text-[#C9A882]"></i> تشخيص الكرش
+                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-emerald-600 text-[11px] font-black text-white shadow-md num-font">337,000+ مشاهدة</span>
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-600 font-bold flex items-center gap-1">
+                  <i data-lucide="activity" class="w-3 h-3 text-emerald-600"></i> تشخيص الكرش
                 </span>
               </div>
-              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="fb2_title">ماذا يخبرك شكل بطنك عن صحتك الداخلية؟ 6 اشكال بداية من الانتفاخ الي أخطر نوع</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="fb2_desc">تفكيك طبي لأنواع البطن (الكرش النحيف، كرش التوتر والكورتيزول، كرش الانتفاخ والـ FODMAP، والدهون الحشوية).</p>
+              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="fb2_title">ماذا يخبرك شكل بطنك عن صحتك الداخلية؟ 6 اشكال بداية من الانتفاخ الي أخطر نوع</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="fb2_desc">تفكيك طبي لأنواع البطن (الكرش النحيف، كرش التوتر والكورتيزول، كرش الانتفاخ والـ FODMAP، والدهون الحشوية).</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_watch_fb">مشاهدة الفيديو على فيسبوك</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </a>
 
           <!-- Facebook Video 2: Visceral Fat Circle -->
-          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1847741039725527/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/30 hover:border-[#C9A882]/60 transition-all reveal-item delay-2">
+          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1847741039725527/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/80 hover:border-emerald-500/60 transition-all reveal-item delay-2">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#352C25] via-[#2E2621] to-[#A68157] aspect-[16/10] flex items-center justify-center border border-[#C9A882]/30">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/60 aspect-[16/10] flex items-center justify-center border border-emerald-200/80">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-12 h-12 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg shadow-sky-600/40 group-hover:scale-110 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-sky-600/40 group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
                   </div>
                 </div>
-                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-[#A68157] text-[11px] font-black text-white shadow-md num-font">222,000+ مشاهدة</span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
-                  <i data-lucide="shield" class="w-3 h-3 text-[#C9A882]"></i> دهون حشوية
+                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-emerald-600 text-[11px] font-black text-white shadow-md num-font">222,000+ مشاهدة</span>
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
+                  <i data-lucide="shield" class="w-3 h-3 text-emerald-600"></i> دهون حشوية
                 </span>
               </div>
-              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#E2CFB4] transition-colors mb-2" data-i18n="fb3_title">أسرع طريقة لتقليص الدهون الحشوية (بالتجربة العملية ودائرة الـ 100%)</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="fb3_desc">رحلة علمية لتفكيك دائرة التخلص من الدهون الأحشائية المحيطة بالأعضاء الحيوية ودور الصيام والمغنيسيوم.</p>
+              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-300 transition-colors mb-2" data-i18n="fb3_title">أسرع طريقة لتقليص الدهون الحشوية (بالتجربة العملية ودائرة الـ 100%)</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="fb3_desc">رحلة علمية لتفكيك دائرة التخلص من الدهون الأحشائية المحيطة بالأعضاء الحيوية ودور الصيام والمغنيسيوم.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_watch_fb">مشاهدة الفيديو على فيسبوك</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </a>
 
           <!-- Facebook Video 3: 8 Steps Fat Burning -->
-          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1606922324437224/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/30 hover:border-[#C9A882]/60 transition-all reveal-item delay-3">
+          <a href="https://www.facebook.com/AhmedElkhaateeb/videos/1606922324437224/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/80 hover:border-emerald-500/60 transition-all reveal-item delay-3">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#352C25] via-[#2E2621] to-[#A68157] aspect-[16/10] flex items-center justify-center border border-[#C9A882]/30">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50 via-white to-emerald-100/60 aspect-[16/10] flex items-center justify-center border border-emerald-200/80">
                 <div class="absolute inset-0 bg-cover bg-center opacity-35 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-12 h-12 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg shadow-blue-600/40 group-hover:scale-110 transition-transform">
+                  <div class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/40 group-hover:scale-110 transition-transform">
                     <i data-lucide="play" class="w-5 h-5 fill-current ml-0.5"></i>
                   </div>
                 </div>
-                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-[#A68157] text-[11px] font-black text-white shadow-md num-font">108,000+ مشاهدة</span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
-                  <i data-lucide="trending-up" class="w-3 h-3 text-[#C9A882]"></i> حرق الدهون
+                <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-emerald-600 text-[11px] font-black text-white shadow-md num-font">108,000+ مشاهدة</span>
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
+                  <i data-lucide="trending-up" class="w-3 h-3 text-emerald-600"></i> حرق الدهون
                 </span>
               </div>
-              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="fb1_title">كل اللي خس وزن كبير عمل إيه؟ 8 خطوات لإجبار جسدك علي حرق الدهون سريعاً</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="fb1_desc">شرح تفصيلي للخطوات الحقيقية لتحفيز الأيض وإجبار الجسم على استهلاك مخازن الدهون بدلاً من تخزينها.</p>
+              <h4 class="text-sm sm:text-base font-bold text-white leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="fb1_title">كل اللي خس وزن كبير عمل إيه؟ 8 خطوات لإجبار جسدك علي حرق الدهون سريعاً</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="fb1_desc">شرح تفصيلي للخطوات الحقيقية لتحفيز الأيض وإجبار الجسم على استهلاك مخازن الدهون بدلاً من تخزينها.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_watch_fb">مشاهدة الفيديو على فيسبوك</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
@@ -1055,127 +1057,127 @@
       </div>
 
       <!-- ==================== SUB-SECTION: INSTAGRAM VIRAL CAROUSELS ==================== -->
-      <div class="mt-16 pt-12 border-t border-[#C9A882]/20">
+      <div class="mt-16 pt-12 border-t border-emerald-200/60">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 reveal-item">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 via-pink-500/20 to-purple-500/20 border border-[#C9A882]/30 text-[#E2CFB4] text-xs font-bold mb-2 motion-float">
-              <i data-lucide="layers" class="w-3.5 h-3.5 text-[#C9A882]"></i>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/20 via-pink-500/20 to-purple-500/20 border border-emerald-200/80 text-emerald-300 text-xs font-bold mb-2 motion-float">
+              <i data-lucide="layers" class="w-3.5 h-3.5 text-emerald-600"></i>
               <span data-i18n="ig_carousels_badge">كاروسيل إنستغرام التغذوي — المحتوى التعليمي الفيروسي</span>
             </div>
-            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-[#FAF6F2] leading-snug" data-i18n="ig_carousels_title">أقوى منشورات الكاروسيل انتشاراً وحفظاً (Carousels)</h3>
-            <p class="text-xs sm:text-sm text-[#D8CEC6] mt-1 font-normal" data-i18n="ig_carousels_sub">سلاسل تثقيفية متعددة الشرائح متخصصة حصرياً في التغذية والصيام وثبات الوزن، حققت أعلى معدلات حفظ (Saves) ومشاركة على إنستغرام في الأشهر الأخيرة.</p>
+            <h3 class="text-xl sm:text-3xl font-bold luxury-serif text-slate-900 leading-snug" data-i18n="ig_carousels_title">أقوى منشورات الكاروسيل انتشاراً وحفظاً (Carousels)</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1 font-normal" data-i18n="ig_carousels_sub">سلاسل تثقيفية متعددة الشرائح متخصصة حصرياً في التغذية والصيام وثبات الوزن، حققت أعلى معدلات حفظ (Saves) ومشاركة على إنستغرام في الأشهر الأخيرة.</p>
           </div>
-          <a href="https://www.instagram.com/drahmedelkhateeb/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5D5046]/80 via-[#7E6E62]/80 to-[#A68157]/80 hover:from-[#833AB4]/40 hover:to-[#FCB045]/40 border border-[#C9A882]/30 text-white text-xs font-bold transition-all shadow-md shrink-0">
+          <a href="https://www.instagram.com/drahmedelkhateeb/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#5D5046]/80 via-[#7E6E62]/80 to-[#A68157]/80 hover:from-[#833AB4]/40 hover:to-[#FCB045]/40 border border-emerald-200/80 text-slate-900 text-xs font-bold transition-all shadow-md shrink-0">
             <span data-i18n="btn_all_ig_posts">زيارة حساب إنستغرام</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 text-[#C9A882]"></i>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-emerald-600"></i>
           </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           
           <!-- Carousel 1: Dcq6zgoiI3W (Weight Plateau) -->
-          <a href="https://www.instagram.com/p/Dcq6zgoiI3W/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/20 hover:border-[#C9A882]/50 transition-all reveal-item delay-1">
+          <a href="https://www.instagram.com/p/Dcq6zgoiI3W/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/60 hover:border-emerald-400 transition-all reveal-item delay-1">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#2E2621] via-[#3E342D] to-[#1F1916] aspect-[4/3] flex items-center justify-center border border-[#C9A882]/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50/80 via-white to-slate-100 aspect-[4/3] flex items-center justify-center border border-emerald-200/60">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-11 h-11 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div class="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="layers" class="w-5 h-5"></i>
                   </div>
                 </div>
                 <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-[10px] font-bold text-white shadow-md flex items-center gap-1">
                   <i data-lucide="layers" class="w-3 h-3"></i> شرائح متعددة
                 </span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
-                  <i data-lucide="bookmark" class="w-3 h-3 text-[#C9A882]"></i> أعلى حفظ
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
+                  <i data-lucide="bookmark" class="w-3 h-3 text-emerald-600"></i> أعلى حفظ
                 </span>
               </div>
-              <div class="text-[11px] text-[#C9A882] font-semibold mb-1" data-i18n="c1_cat">ثبات الوزن وحرق الدهون</div>
-              <h4 class="text-sm font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="c1_title">كاروسيل: ثبات الوزن ووهم الميزان (أرقى نتيجة مش فشل)</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="c1_desc">دليل بصري من عدة شرائح يشرح لماذا ثبات الرقم على الميزان قد يكون علامة على إعادة تشكيل الجسم وخسارة الدهون وليس ثبات الحرق.</p>
+              <div class="text-[11px] text-emerald-600 font-semibold mb-1" data-i18n="c1_cat">ثبات الوزن وحرق الدهون</div>
+              <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="c1_title">كاروسيل: ثبات الوزن ووهم الميزان (أرقى نتيجة مش فشل)</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="c1_desc">دليل بصري من عدة شرائح يشرح لماذا ثبات الرقم على الميزان قد يكون علامة على إعادة تشكيل الجسم وخسارة الدهون وليس ثبات الحرق.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_view_carousel">تصفح الكاروسيل على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </a>
 
           <!-- Carousel 2: DcjDc3qCNRn (Midnight Hunger) -->
-          <a href="https://www.instagram.com/p/DcjDc3qCNRn/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/20 hover:border-[#C9A882]/50 transition-all reveal-item delay-2">
+          <a href="https://www.instagram.com/p/DcjDc3qCNRn/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/60 hover:border-emerald-400 transition-all reveal-item delay-2">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#2E2621] via-[#3E342D] to-[#1F1916] aspect-[4/3] flex items-center justify-center border border-[#C9A882]/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50/80 via-white to-slate-100 aspect-[4/3] flex items-center justify-center border border-emerald-200/60">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-11 h-11 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div class="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="layers" class="w-5 h-5"></i>
                   </div>
                 </div>
                 <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-[10px] font-bold text-white shadow-md flex items-center gap-1">
                   <i data-lucide="layers" class="w-3 h-3"></i> شرائح متعددة
                 </span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
                   <i data-lucide="moon" class="w-3 h-3 text-amber-400"></i> جوع الليل
                 </span>
               </div>
-              <div class="text-[11px] text-[#C9A882] font-semibold mb-1" data-i18n="c2_cat">الشهية والهرمونات</div>
-              <h4 class="text-sm font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="c2_title">كاروسيل: جوع الليل المفاجئ وكيف تفرق بينه وبين الجوع الحقيقي</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="c2_desc">شرح بصري تفصيلي لكيمياء الدوبامين والكورتيزول وراء نوبات الأكل المتأخر وحلول صيدلانية عملية للسيطرة عليها.</p>
+              <div class="text-[11px] text-emerald-600 font-semibold mb-1" data-i18n="c2_cat">الشهية والهرمونات</div>
+              <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="c2_title">كاروسيل: جوع الليل المفاجئ وكيف تفرق بينه وبين الجوع الحقيقي</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="c2_desc">شرح بصري تفصيلي لكيمياء الدوبامين والكورتيزول وراء نوبات الأكل المتأخر وحلول صيدلانية عملية للسيطرة عليها.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_view_carousel">تصفح الكاروسيل على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </a>
 
           <!-- Carousel 3: Db_XrtniP9m (Meal Timing & Dates) -->
-          <a href="https://www.instagram.com/p/Db_XrtniP9m/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/20 hover:border-[#C9A882]/50 transition-all reveal-item delay-3">
+          <a href="https://www.instagram.com/p/Db_XrtniP9m/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/60 hover:border-emerald-400 transition-all reveal-item delay-3">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#2E2621] via-[#3E342D] to-[#1F1916] aspect-[4/3] flex items-center justify-center border border-[#C9A882]/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50/80 via-white to-slate-100 aspect-[4/3] flex items-center justify-center border border-emerald-200/60">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-11 h-11 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div class="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="layers" class="w-5 h-5"></i>
                   </div>
                 </div>
                 <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-[10px] font-bold text-white shadow-md flex items-center gap-1">
                   <i data-lucide="layers" class="w-3 h-3"></i> شرائح متعددة
                 </span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
-                  <i data-lucide="clock" class="w-3 h-3 text-[#C9A882]"></i> توقيت الوجبات
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-emerald-600"></i> توقيت الوجبات
                 </span>
               </div>
-              <div class="text-[11px] text-[#C9A882] font-semibold mb-1" data-i18n="c3_cat">التغذية الدوائية</div>
-              <h4 class="text-sm font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="c3_title">كاروسيل: خرافات توقيت الأكل والتمر والحقيقة العلمية</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="c3_desc">تفكيك علمي صيدلاني لخرافات مواعيد الأكل الشائعة وتأثيرها على استقرار سكر الدم ونوافذ الامتصاص اليومية.</p>
+              <div class="text-[11px] text-emerald-600 font-semibold mb-1" data-i18n="c3_cat">التغذية الدوائية</div>
+              <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="c3_title">كاروسيل: خرافات توقيت الأكل والتمر والحقيقة العلمية</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="c3_desc">تفكيك علمي صيدلاني لخرافات مواعيد الأكل الشائعة وتأثيرها على استقرار سكر الدم ونوافذ الامتصاص اليومية.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_view_carousel">تصفح الكاروسيل على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
           </a>
 
           <!-- Carousel 4: DcypfDTiE8y (23 Hours Fat Burn Protocol) -->
-          <a href="https://www.instagram.com/p/DcypfDTiE8y/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-[#C9A882]/20 hover:border-[#C9A882]/50 transition-all reveal-item delay-4">
+          <a href="https://www.instagram.com/p/DcypfDTiE8y/" target="_blank" rel="noopener noreferrer" class="card-glass rounded-3xl p-5 flex flex-col justify-between video-card group border-emerald-200/60 hover:border-emerald-400 transition-all reveal-item delay-4">
             <div>
-              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-[#2E2621] via-[#3E342D] to-[#1F1916] aspect-[4/3] flex items-center justify-center border border-[#C9A882]/20">
+              <div class="relative rounded-xl overflow-hidden mb-4 bg-gradient-to-br from-emerald-50/80 via-white to-slate-100 aspect-[4/3] flex items-center justify-center border border-emerald-200/60">
                 <div class="absolute inset-0 bg-cover bg-center opacity-30 group-hover:scale-105 transition-transform duration-500" style="background-image: url('assets/dr_hero_aeon.webp');"></div>
                 <div class="play-overlay">
-                  <div class="w-11 h-11 rounded-full bg-[#A68157] text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <div class="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <i data-lucide="layers" class="w-5 h-5"></i>
                   </div>
                 </div>
                 <span class="absolute top-2.5 right-2.5 rtl:right-2.5 ltr:left-2.5 px-2.5 py-1 rounded-md bg-gradient-to-r from-pink-600 to-purple-600 text-[10px] font-bold text-white shadow-md flex items-center gap-1">
                   <i data-lucide="layers" class="w-3 h-3"></i> شرائح متعددة
                 </span>
-                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-[#E2CFB4] font-bold flex items-center gap-1">
+                <span class="absolute bottom-2.5 left-2.5 rtl:left-2.5 ltr:right-2.5 px-2 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] text-emerald-300 font-bold flex items-center gap-1">
                   <i data-lucide="flame" class="w-3 h-3 text-red-400"></i> حرق يومي
                 </span>
               </div>
-              <div class="text-[11px] text-[#C9A882] font-semibold mb-1" data-i18n="c4_cat">الأيض والصحة الخلوية</div>
-              <h4 class="text-sm font-bold text-white leading-snug group-hover:text-[#C9A882] transition-colors mb-2" data-i18n="c4_title">كاروسيل: استراتيجية الـ 23 ساعة وحرق الدهون اليومي</h4>
-              <p class="text-xs text-[#D8CEC6] font-normal leading-relaxed" data-i18n="c4_desc">عادات يومية بسيطة تضبط إيقاع الأيض في الـ 23 ساعة المتبقية من اليوم لتعزيز صحة القلب والوزن ونقاء الذهن.</p>
+              <div class="text-[11px] text-emerald-600 font-semibold mb-1" data-i18n="c4_cat">الأيض والصحة الخلوية</div>
+              <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-emerald-600 transition-colors mb-2" data-i18n="c4_title">كاروسيل: استراتيجية الـ 23 ساعة وحرق الدهون اليومي</h4>
+              <p class="text-xs text-slate-600 font-normal leading-relaxed" data-i18n="c4_desc">عادات يومية بسيطة تضبط إيقاع الأيض في الـ 23 ساعة المتبقية من اليوم لتعزيز صحة القلب والوزن ونقاء الذهن.</p>
             </div>
-            <div class="mt-4 pt-3 border-t border-[#C9A882]/20 flex items-center justify-between text-xs text-[#C9A882] font-bold">
+            <div class="mt-4 pt-3 border-t border-emerald-200/60 flex items-center justify-between text-xs text-emerald-600 font-bold">
               <span data-i18n="btn_view_carousel">تصفح الكاروسيل على إنستغرام</span>
               <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
             </div>
@@ -1191,57 +1193,57 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== SECTION 4: CONTENT VERTICALS ==================== -->
-  <section id="verticals" class="py-14 sm:py-20 bg-[#2E2621]">
+  <section id="verticals" class="py-14 sm:py-20 bg-[#F8FAF9]">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 reveal-item">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3E342D] text-[#C9A882] text-xs font-bold border border-[#5D5046] mb-3 motion-float">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-emerald-600 text-xs font-bold border border-slate-200 mb-3 motion-float">
           <i data-lucide="compass" class="w-3.5 h-3.5"></i>
           <span data-i18n="vert_badge">المحاور المعتمدة</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white" data-i18n="vert_title">المجالات الطبية التي يناسبها ظهور منتجك</h2>
-        <p class="text-xs sm:text-sm text-[#D8CEC6] mt-2 font-normal" data-i18n="vert_sub">نربط الرعاية بالبيئة التي يتوقعها المشاهد بشكل طبيعي: المكمل مع الصحة الأيضية، ومنتجات الراحة في حلقات جودة النوم.</p>
+        <h2 class="text-2xl sm:text-4xl font-bold text-slate-900" data-i18n="vert_title">المجالات الطبية التي يناسبها ظهور منتجك</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 font-normal" data-i18n="vert_sub">نربط الرعاية بالبيئة التي يتوقعها المشاهد بشكل طبيعي: المكمل مع الصحة الأيضية، ومنتجات الراحة في حلقات جودة النوم.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
         <div class="card-glass rounded-3xl p-5 text-center reveal-item delay-1">
-          <div class="w-12 h-12 rounded-xl bg-[#A68157]/30 text-[#C9A882] flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-600 flex items-center justify-center mx-auto mb-3">
             <i data-lucide="pill" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-sm font-bold text-white mb-1" data-i18n="vcard_1_title">المكملات والفيتامينات</h3>
-          <p class="text-[11px] text-[#D8CEC6] leading-relaxed font-normal" data-i18n="vcard_1_desc">شرح علمي للمكونات والجرعات الصحيحة والآمنة وتجنب النواقص.</p>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="vcard_1_title">المكملات والفيتامينات</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed font-normal" data-i18n="vcard_1_desc">شرح علمي للمكونات والجرعات الصحيحة والآمنة وتجنب النواقص.</p>
         </div>
 
         <div class="card-glass rounded-3xl p-5 text-center reveal-item delay-2">
-          <div class="w-12 h-12 rounded-xl bg-[#A68157]/30 text-[#C9A882] flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-600 flex items-center justify-center mx-auto mb-3">
             <i data-lucide="activity" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-sm font-bold text-white mb-1" data-i18n="vcard_2_title">مقاومة الأنسولين والحرق</h3>
-          <p class="text-[11px] text-[#D8CEC6] leading-relaxed font-normal" data-i18n="vcard_2_desc">شرح آليات ثبات الوزن واستعادة كفاءة الميتابوليزم.</p>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="vcard_2_title">مقاومة الأنسولين والحرق</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed font-normal" data-i18n="vcard_2_desc">شرح آليات ثبات الوزن واستعادة كفاءة الميتابوليزم.</p>
         </div>
 
         <div class="card-glass rounded-3xl p-5 text-center reveal-item delay-3">
-          <div class="w-12 h-12 rounded-xl bg-[#A68157]/30 text-[#C9A882] flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-600 flex items-center justify-center mx-auto mb-3">
             <i data-lucide="timer" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-sm font-bold text-white mb-1" data-i18n="vcard_3_title">الصيام المتقطع</h3>
-          <p class="text-[11px] text-[#D8CEC6] leading-relaxed font-normal" data-i18n="vcard_3_desc">بروتوكولات الصيام والمواقيت المثالية لتحفيز الحرق.</p>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="vcard_3_title">الصيام المتقطع</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed font-normal" data-i18n="vcard_3_desc">بروتوكولات الصيام والمواقيت المثالية لتحفيز الحرق.</p>
         </div>
 
         <div class="card-glass rounded-3xl p-5 text-center reveal-item delay-4">
-          <div class="w-12 h-12 rounded-xl bg-[#A68157]/30 text-[#C9A882] flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-emerald-600 flex items-center justify-center mx-auto mb-3">
             <i data-lucide="heart-pulse" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-sm font-bold text-white mb-1" data-i18n="vcard_4_title">صحة الهضم والقولون</h3>
-          <p class="text-[11px] text-[#D8CEC6] leading-relaxed font-normal" data-i18n="vcard_4_desc">الميكروبيوم وعلاج الانتفاخات وراحة الجهاز الهضمي.</p>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="vcard_4_title">صحة الهضم والقولون</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed font-normal" data-i18n="vcard_4_desc">الميكروبيوم وعلاج الانتفاخات وراحة الجهاز الهضمي.</p>
         </div>
 
         <div class="col-span-2 md:col-span-1 card-glass rounded-3xl p-5 text-center reveal-item delay-5">
-          <div class="w-12 h-12 rounded-xl bg-[#A68157]/30 text-indigo-400 flex items-center justify-center mx-auto mb-3">
+          <div class="w-12 h-12 rounded-xl bg-emerald-600/30 text-indigo-400 flex items-center justify-center mx-auto mb-3">
             <i data-lucide="moon" class="w-6 h-6"></i>
           </div>
-          <h3 class="text-sm font-bold text-white mb-1" data-i18n="vcard_5_title">جودة النوم والاسترخاء</h3>
-          <p class="text-[11px] text-[#D8CEC6] leading-relaxed font-normal" data-i18n="vcard_5_desc">خفض الكورتيزول والمنتجات الداعمة للنوم العميق.</p>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" data-i18n="vcard_5_title">جودة النوم والاسترخاء</h3>
+          <p class="text-[11px] text-slate-600 leading-relaxed font-normal" data-i18n="vcard_5_desc">خفض الكورتيزول والمنتجات الداعمة للنوم العميق.</p>
         </div>
       </div>
 
@@ -1252,16 +1254,16 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== SECTION 5: COMMERCIAL INTEGRATION FORMATS ==================== -->
-  <section id="packages" class="py-14 sm:py-20 bg-[#221C18]">
+  <section id="packages" class="py-14 sm:py-20 bg-white">
     <div class="responsive-container">
       
       <div class="text-center max-w-3xl mx-auto mb-12 reveal-item">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3E342D] text-amber-300 text-xs font-bold border border-[#5D5046] mb-3 motion-float">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-amber-300 text-xs font-bold border border-slate-200 mb-3 motion-float">
           <i data-lucide="package-check" class="w-3.5 h-3.5 text-amber-400"></i>
           <span data-i18n="fmt_badge">باقات الشراكة التجارية والرعاية</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-bold text-white" data-i18n="fmt_title">5 أشكال للتعاون التجاري والرعاية</h2>
-        <p class="text-xs sm:text-sm text-[#D8CEC6] mt-2 font-normal" data-i18n="fmt_sub">عند اختيارك لأي باقة سيتم توجيه طلبك مباشرة إلى البريد الرسمي مع ضبط عنوان الرسالة باسم الباقة المختارة.</p>
+        <h2 class="text-2xl sm:text-4xl font-bold text-slate-900" data-i18n="fmt_title">5 أشكال للتعاون التجاري والرعاية</h2>
+        <p class="text-xs sm:text-sm text-slate-600 mt-2 font-normal" data-i18n="fmt_sub">عند اختيارك لأي باقة سيتم توجيه طلبك مباشرة إلى البريد الرسمي مع ضبط عنوان الرسالة باسم الباقة المختارة.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -1269,36 +1271,36 @@
         <!-- Format A -->
         <div class="card-glass rounded-3xl p-6 flex flex-col justify-between reveal-item delay-1">
           <div>
-            <div class="w-10 h-10 rounded-xl bg-[#A68157] text-white font-bold text-lg flex items-center justify-center mb-4">A</div>
-            <h3 class="text-lg font-bold text-white" data-i18n="fa_title">فقرة مدمجة في حلقة يوتيوب</h3>
-            <div class="text-[11px] text-[#C9A882] font-bold num-font mb-3" data-i18n="fa_time">IN-VIDEO READ • 60 - 90 SECONDS</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="fa_desc">فقرة إعلانية مدمجة بسلاسة داخل حلقة يوتيوب طويلة بصوت د. أحمد، مع ربط علمي يخدم موضوع الحلقة.</p>
-            <ul class="space-y-2 text-xs text-[#F2EDE8] mb-6 font-normal">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fa_f1">تضمين الرابط والتعليق المثبت</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fa_f2">بقاء الفيديو دائماً (Evergreen)</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fa_f3">تقارير إحصائية كاملة للأداء</span></li>
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4">A</div>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="fa_title">فقرة مدمجة في حلقة يوتيوب</h3>
+            <div class="text-[11px] text-emerald-600 font-bold num-font mb-3" data-i18n="fa_time">IN-VIDEO READ • 60 - 90 SECONDS</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="fa_desc">فقرة إعلانية مدمجة بسلاسة داخل حلقة يوتيوب طويلة بصوت د. أحمد، مع ربط علمي يخدم موضوع الحلقة.</p>
+            <ul class="space-y-2 text-xs text-slate-800 mb-6 font-normal">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fa_f1">تضمين الرابط والتعليق المثبت</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fa_f2">بقاء الفيديو دائماً (Evergreen)</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fa_f3">تقارير إحصائية كاملة للأداء</span></li>
             </ul>
           </div>
-          <button onclick="selectPackageAndScroll('Format A: In-video read (60-90s)', 'باقة A: فقرة مدمجة في يوتيوب (60-90 ثانية)')" class="w-full py-2.5 px-4 rounded-xl bg-[#A68157] hover:bg-[#8F6D44] text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Format A: In-video read (60-90s)', 'باقة A: فقرة مدمجة في يوتيوب (60-90 ثانية)')" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-800 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_choose_fmt">طلب تسعير هذه الباقة</span>
           </button>
         </div>
 
         <!-- Format B (Featured) -->
-        <div class="card-glass rounded-3xl p-6 flex flex-col justify-between border-2 border-[#C9A882]/50 relative shadow-xl reveal-item delay-2">
-          <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#A68157] to-[#C9A882] text-white text-[10px] font-bold uppercase">الأكثر طلباً وتأثيراً</span>
+        <div class="card-glass rounded-3xl p-6 flex flex-col justify-between border-2 border-emerald-400 relative shadow-xl reveal-item delay-2">
+          <span class="absolute -top-3 right-6 rtl:right-6 ltr:left-6 px-3 py-0.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-700 text-white text-[10px] font-bold uppercase">الأكثر طلباً وتأثيراً</span>
           <div>
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#A68157] to-[#C9A882] text-white font-bold text-lg flex items-center justify-center mb-4">B</div>
-            <h3 class="text-lg font-bold text-white" data-i18n="fb_title">فقرة مخصصة وموسعة</h3>
-            <div class="text-[11px] text-[#E2CFB4] font-bold num-font mb-3" data-i18n="fb_time">DEDICATED SEGMENT • 2.5 - 3 MINUTES</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="fb_desc">مساحة أكبر لشرح فوائد المنتج ودراساته الطبية، مع تفكيك المكونات وتقديم نصائح للاستخدام الأمثل.</p>
-            <ul class="space-y-2 text-xs text-[#F2EDE8] mb-6 font-normal">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fb_f1">مراجعة صيدلانية للأوراق العلمية</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fb_f2">إمكانية وضع اسم المنتج في العنوان</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fb_f3">عرض كامل للمنتج وطريقة استخدامه</span></li>
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-700 text-white font-bold text-lg flex items-center justify-center mb-4">B</div>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="fb_title">فقرة مخصصة وموسعة</h3>
+            <div class="text-[11px] text-emerald-300 font-bold num-font mb-3" data-i18n="fb_time">DEDICATED SEGMENT • 2.5 - 3 MINUTES</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="fb_desc">مساحة أكبر لشرح فوائد المنتج ودراساته الطبية، مع تفكيك المكونات وتقديم نصائح للاستخدام الأمثل.</p>
+            <ul class="space-y-2 text-xs text-slate-800 mb-6 font-normal">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fb_f1">مراجعة صيدلانية للأوراق العلمية</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fb_f2">إمكانية وضع اسم المنتج في العنوان</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fb_f3">عرض كامل للمنتج وطريقة استخدامه</span></li>
             </ul>
           </div>
-          <button onclick="selectPackageAndScroll('Format B: Dedicated segment (2.5-3 min)', 'باقة B: فقرة مخصصة وموسعة (2.5-3 دقائق)')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#A68157] to-[#C9A882] hover:from-[#8F6D44] hover:to-[#A68157] text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Format B: Dedicated segment (2.5-3 min)', 'باقة B: فقرة مخصصة وموسعة (2.5-3 دقائق)')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_choose_fmt">طلب تسعير هذه الباقة</span>
           </button>
         </div>
@@ -1306,17 +1308,17 @@
         <!-- Format C -->
         <div class="card-glass rounded-3xl p-6 flex flex-col justify-between reveal-item delay-3">
           <div>
-            <div class="w-10 h-10 rounded-xl bg-[#A68157] text-white font-bold text-lg flex items-center justify-center mb-4">A</div>
-            <h3 class="text-lg font-bold text-white" data-i18n="fc_title">باقة المقاطع القصيرة (Shorts)</h3>
-            <div class="text-[11px] text-[#C9A882] font-bold num-font mb-3" data-i18n="fc_time">SHORTS PACK • 4 PLACEMENTS</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="fc_desc">باقة من 4 مقاطع فيديو قصيرة ومكثفة تركز على ميزة أو حل طبي محدد، مثالية للحملات سريعة الانتشار.</p>
-            <ul class="space-y-2 text-xs text-[#F2EDE8] mb-6 font-normal">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fc_f1">نشر مجدول عبر يوتيوب شورتس</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fc_f2">تكرار الرسالة لترسيخ الوعي</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fc_f3">صيغة تناسب الجوال والريلز</span></li>
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4">A</div>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="fc_title">باقة المقاطع القصيرة (Shorts)</h3>
+            <div class="text-[11px] text-emerald-600 font-bold num-font mb-3" data-i18n="fc_time">SHORTS PACK • 4 PLACEMENTS</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="fc_desc">باقة من 4 مقاطع فيديو قصيرة ومكثفة تركز على ميزة أو حل طبي محدد، مثالية للحملات سريعة الانتشار.</p>
+            <ul class="space-y-2 text-xs text-slate-800 mb-6 font-normal">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fc_f1">نشر مجدول عبر يوتيوب شورتس</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fc_f2">تكرار الرسالة لترسيخ الوعي</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fc_f3">صيغة تناسب الجوال والريلز</span></li>
             </ul>
           </div>
-          <button onclick="selectPackageAndScroll('Format C: Shorts pack of 4', 'باقة C: حزمة شورتس وريلز (4 مقاطع)')" class="w-full py-2.5 px-4 rounded-xl bg-[#A68157] hover:bg-[#8F6D44] text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Format C: Shorts pack of 4', 'باقة C: حزمة شورتس وريلز (4 مقاطع)')" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-800 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_choose_fmt">طلب تسعير هذه الباقة</span>
           </button>
         </div>
@@ -1324,17 +1326,17 @@
         <!-- Format D -->
         <div class="card-glass rounded-3xl p-6 flex flex-col justify-between reveal-item delay-4">
           <div>
-            <div class="w-10 h-10 rounded-xl bg-[#A68157] text-white font-bold text-lg flex items-center justify-center mb-4">D</div>
-            <h3 class="text-lg font-bold text-white" data-i18n="fd_title">باقة إنستغرام وتيك توك</h3>
-            <div class="text-[11px] text-[#C9A882] font-bold num-font mb-3" data-i18n="fd_time">IG &amp; TIKTOK BUNDLE • REELS + STORIES</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="fd_desc">مزيج من مقاطع ريلز وتيك توك وسلسلة ستوريز تفاعلية، موجهة للفئات الباحثة عن التسوق والشراء المباشر.</p>
-            <ul class="space-y-2 text-xs text-[#F2EDE8] mb-6 font-normal">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fd_f1">ستوريز مع روابط تسوق مباشرة</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fd_f2">تثبيت الريلز في الصفحة الرسمية</span></li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-[#C9A882]"></i> <span data-i18n="fd_f3">تفاعل مباشر مع تعليقات المشتركين</span></li>
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white font-bold text-lg flex items-center justify-center mb-4">D</div>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="fd_title">باقة إنستغرام وتيك توك</h3>
+            <div class="text-[11px] text-emerald-600 font-bold num-font mb-3" data-i18n="fd_time">IG &amp; TIKTOK BUNDLE • REELS + STORIES</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="fd_desc">مزيج من مقاطع ريلز وتيك توك وسلسلة ستوريز تفاعلية، موجهة للفئات الباحثة عن التسوق والشراء المباشر.</p>
+            <ul class="space-y-2 text-xs text-slate-800 mb-6 font-normal">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fd_f1">ستوريز مع روابط تسوق مباشرة</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fd_f2">تثبيت الريلز في الصفحة الرسمية</span></li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> <span data-i18n="fd_f3">تفاعل مباشر مع تعليقات المشتركين</span></li>
             </ul>
           </div>
-          <button onclick="selectPackageAndScroll('Format D: IG & TikTok bundle', 'باقة D: باقة إنستغرام وتيك توك متكاملة')" class="w-full py-2.5 px-4 rounded-xl bg-[#A68157] hover:bg-[#8F6D44] text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Format D: IG & TikTok bundle', 'باقة D: باقة إنستغرام وتيك توك متكاملة')" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-800 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_choose_fmt">طلب تسعير هذه الباقة</span>
           </button>
         </div>
@@ -1343,31 +1345,31 @@
         <div class="card-glass rounded-3xl p-6 flex flex-col justify-between reveal-item delay-5">
           <div>
             <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-500 text-white font-bold text-lg flex items-center justify-center mb-4">E</div>
-            <h3 class="text-lg font-bold text-white" data-i18n="fe_title">باقة السفير الحصري</h3>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="fe_title">باقة السفير الحصري</h3>
             <div class="text-[11px] text-amber-300 font-bold num-font mb-3" data-i18n="fe_time">BRAND AMBASSADOR • MULTI-MONTH</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="fe_desc">شراكة استراتيجية ممتدة لعدة أشهر مع حصرية تصنيف كاملة، تجمع بين الفيديوهات الطويلة والقصيرة وحضور المعارض.</p>
-            <ul class="space-y-2 text-xs text-[#F2EDE8] mb-6 font-normal">
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="fe_desc">شراكة استراتيجية ممتدة لعدة أشهر مع حصرية تصنيف كاملة، تجمع بين الفيديوهات الطويلة والقصيرة وحضور المعارض.</p>
+            <ul class="space-y-2 text-xs text-slate-800 mb-6 font-normal">
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> <span data-i18n="fe_f1">حصرية تامة في فئة المنتج</span></li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> <span data-i18n="fe_f2">حضور ومشاركات في الفعاليات</span></li>
               <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> <span data-i18n="fe_f3">حقوق استخدام الصور والحملات</span></li>
             </ul>
           </div>
-          <button onclick="selectPackageAndScroll('Format E: Ambassador package', 'باقة E: سفير للعلامة التجارية (طويلة الأمد)')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Format E: Ambassador package', 'باقة E: سفير للعلامة التجارية (طويلة الأمد)')" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-700 hover:to-amber-600 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_choose_fmt">طلب تسعير هذه الباقة</span>
           </button>
         </div>
 
         <!-- Pilot Callout -->
-        <div class="card-glass rounded-3xl p-6 flex flex-col justify-between bg-gradient-to-br from-[#A68157]/40 to-[#221C18] reveal-item delay-5">
+        <div class="card-glass rounded-3xl p-6 flex flex-col justify-between bg-gradient-to-br from-emerald-400/25 to-emerald-600/10 reveal-item delay-5">
           <div>
-            <div class="w-10 h-10 rounded-xl bg-[#A68157] text-[#C9A882] flex items-center justify-center mb-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-600 text-emerald-600 flex items-center justify-center mb-4">
               <i data-lucide="rocket" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-lg font-bold text-white" data-i18n="pilot_title">إمكانية البدء بحملة تجريبية (Pilot)</h3>
-            <div class="text-[11px] text-[#C9A882] font-bold num-font mb-3">SINGLE BENCHMARK CAMPAIGN</div>
-            <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-6" data-i18n="pilot_desc">تتيح إدارة د. أحمد للشركات الكبرى إمكانية بدء التعاون بحلقة واحدة كـ Pilot لقياس الأداء والمبيعات قبل الالتزام بباقات طويلة الأجل.</p>
+            <h3 class="text-lg font-bold text-slate-900" data-i18n="pilot_title">إمكانية البدء بحملة تجريبية (Pilot)</h3>
+            <div class="text-[11px] text-emerald-600 font-bold num-font mb-3">SINGLE BENCHMARK CAMPAIGN</div>
+            <p class="text-xs text-slate-600 leading-relaxed font-normal mb-6" data-i18n="pilot_desc">تتيح إدارة د. أحمد للشركات الكبرى إمكانية بدء التعاون بحلقة واحدة كـ Pilot لقياس الأداء والمبيعات قبل الالتزام بباقات طويلة الأجل.</p>
           </div>
-          <button onclick="selectPackageAndScroll('Pilot campaign', 'حملة تجريبية (Pilot Campaign)')" class="w-full py-2.5 px-4 rounded-xl bg-[#A68157] hover:bg-[#A68157] text-white text-xs font-bold transition-all shadow-md">
+          <button onclick="selectPackageAndScroll('Pilot campaign', 'حملة تجريبية (Pilot Campaign)')" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-600 text-slate-900 text-xs font-bold transition-all shadow-md">
             <span data-i18n="btn_req_pilot">تنسيق حملة تجريبية</span>
           </button>
         </div>
@@ -1381,64 +1383,64 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== SECTION 6: BRAND INTEGRITY & SAFETY ==================== -->
-  <section id="safety" class="py-14 sm:py-20 bg-[#2E2621]">
+  <section id="safety" class="py-14 sm:py-20 bg-[#F8FAF9]">
     <div class="responsive-container">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <div class="lg:col-span-7 space-y-4 reveal-item">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3E342D] text-[#C9A882] text-xs font-bold border border-[#5D5046] motion-float">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-emerald-600 text-xs font-bold border border-slate-200 motion-float">
             <i data-lucide="shield" class="w-3.5 h-3.5"></i>
             <span data-i18n="safe_badge">الأمان الطبي والنزاهة</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white" data-i18n="safe_title">لماذا توافق الفرق القانونية والطبية على الرعاية؟</h2>
-          <p class="text-xs sm:text-sm text-[#D8CEC6] leading-relaxed font-normal" data-i18n="safe_sub">أنت لا تستأجر وصولاً مجرداً، بل تستعير مصداقية بدرجة صيدلانية موثوقة تحافظ على أمانك وأمان المشاهدين.</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900" data-i18n="safe_title">لماذا توافق الفرق القانونية والطبية على الرعاية؟</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="safe_sub">أنت لا تستأجر وصولاً مجرداً، بل تستعير مصداقية بدرجة صيدلانية موثوقة تحافظ على أمانك وأمان المشاهدين.</p>
 
           <div class="space-y-3 pt-2">
-            <div class="p-4 rounded-xl bg-[#3E342D]/80 border border-white/5 flex gap-3.5">
-              <span class="w-7 h-7 rounded-lg bg-[#A68157] text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">1</span>
+            <div class="p-4 rounded-xl bg-white shadow-sm border-slate-200 border border-slate-200 flex gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">1</span>
               <div>
-                <h4 class="text-sm font-bold text-white mb-0.5" data-i18n="safe_1_t">مراجعة صيدلانية دقيقة للأدلة العلمية</h4>
-                <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="safe_1_d">تخضع كافة ادعاءات المنتج لمراجعة مسبقة، ويتم استبعاد أي ادعاء غير مدعوم بدراسات أو خارج النطاق الصيدلاني المعتمد.</p>
+                <h4 class="text-sm font-bold text-slate-900 mb-0.5" data-i18n="safe_1_t">مراجعة صيدلانية دقيقة للأدلة العلمية</h4>
+                <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="safe_1_d">تخضع كافة ادعاءات المنتج لمراجعة مسبقة، ويتم استبعاد أي ادعاء غير مدعوم بدراسات أو خارج النطاق الصيدلاني المعتمد.</p>
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#3E342D]/80 border border-white/5 flex gap-3.5">
-              <span class="w-7 h-7 rounded-lg bg-[#A68157] text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">2</span>
+            <div class="p-4 rounded-xl bg-white shadow-sm border-slate-200 border border-slate-200 flex gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">2</span>
               <div>
-                <h4 class="text-sm font-bold text-white mb-0.5" data-i18n="safe_2_t">معاينة واعتماد مسبق من الراعي</h4>
-                <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="safe_2_d">يستلم الراعي مسودة ومراجعة واضحة للفقرة الإعلانية والادعاءات والإفصاحات القانونية قبل رفع الحلقة للنشر.</p>
+                <h4 class="text-sm font-bold text-slate-900 mb-0.5" data-i18n="safe_2_t">معاينة واعتماد مسبق من الراعي</h4>
+                <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="safe_2_d">يستلم الراعي مسودة ومراجعة واضحة للفقرة الإعلانية والادعاءات والإفصاحات القانونية قبل رفع الحلقة للنشر.</p>
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#3E342D]/80 border border-white/5 flex gap-3.5">
-              <span class="w-7 h-7 rounded-lg bg-[#A68157] text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">3</span>
+            <div class="p-4 rounded-xl bg-white shadow-sm border-slate-200 border border-slate-200 flex gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">3</span>
               <div>
-                <h4 class="text-sm font-bold text-white mb-0.5" data-i18n="safe_3_t">استقلالية القرار الطبي والتحريري</h4>
-                <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="safe_3_d">يحتفظ د. أحمد بالحق المهني في رفض أي منتج أو تموضع لا يخدم مصلحة الجمهور أو يتعارض مع الأدلة الطبية.</p>
+                <h4 class="text-sm font-bold text-slate-900 mb-0.5" data-i18n="safe_3_t">استقلالية القرار الطبي والتحريري</h4>
+                <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="safe_3_d">يحتفظ د. أحمد بالحق المهني في رفض أي منتج أو تموضع لا يخدم مصلحة الجمهور أو يتعارض مع الأدلة الطبية.</p>
               </div>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#3E342D]/80 border border-white/5 flex gap-3.5">
-              <span class="w-7 h-7 rounded-lg bg-[#A68157] text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">4</span>
+            <div class="p-4 rounded-xl bg-white shadow-sm border-slate-200 border border-slate-200 flex gap-3.5">
+              <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 num-font">4</span>
               <div>
-                <h4 class="text-sm font-bold text-white mb-0.5" data-i18n="safe_4_t">شفافية الإفصاح والامتثال التنظيمي</h4>
-                <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal" data-i18n="safe_4_d">يتم الإفصاح عن الشراكات المدفوعة وفقاً للوائح الإعلانية في الإمارات والسعودية ومصر وقواعد منصات التواصل.</p>
+                <h4 class="text-sm font-bold text-slate-900 mb-0.5" data-i18n="safe_4_t">شفافية الإفصاح والامتثال التنظيمي</h4>
+                <p class="text-xs text-slate-600 leading-relaxed font-normal" data-i18n="safe_4_d">يتم الإفصاح عن الشراكات المدفوعة وفقاً للوائح الإعلانية في الإمارات والسعودية ومصر وقواعد منصات التواصل.</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Excluded Categories Box -->
-        <div class="lg:col-span-5 p-6 rounded-3xl bg-gradient-to-br from-red-950/30 to-[#3E342D] border border-red-500/30 reveal-item delay-2">
+        <div class="lg:col-span-5 p-6 rounded-3xl bg-gradient-to-br from-red-50/60 via-white to-white border border-red-200 reveal-item delay-2">
           <div class="inline-flex items-center gap-1.5 text-xs font-bold text-red-400 mb-3">
             <i data-lucide="ban" class="w-4 h-4"></i>
             <span data-i18n="ex_badge">فئات مستبعدة تماماً من الرعاية</span>
           </div>
-          <h3 class="text-base font-bold text-white mb-2" data-i18n="ex_title">مجالات لا نقبل الترويج لها:</h3>
-          <p class="text-xs text-[#D8CEC6] leading-relaxed font-normal mb-4" data-i18n="ex_desc">لحماية مصداقية القناة واستقلالية المحتوى الطبي ورصانته العلمية، يتم رفض طلبات الرعاية للمجالات التالية:</p>
+          <h3 class="text-base font-bold text-red-900 mb-2" data-i18n="ex_title">مجالات لا نقبل الترويج لها:</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal mb-4" data-i18n="ex_desc">لحماية مصداقية القناة واستقلالية المحتوى الطبي ورصانته العلمية، يتم رفض طلبات الرعاية للمجالات التالية:</p>
 
-          <ul class="space-y-3 text-xs text-[#F2EDE8] font-normal">
+          <ul class="space-y-3 text-xs text-slate-800 font-normal">
             <li class="flex items-center gap-2.5 p-2.5 rounded-lg bg-red-900/20 border border-red-500/20">
               <i data-lucide="x" class="w-4 h-4 text-red-400 flex-shrink-0"></i>
               <span data-i18n="ex_1">شركات تجهيز وتوصيل وجبات الدايت (Meal-delivery)</span>
@@ -1463,10 +1465,10 @@
   <div class="aeon-beam-divider"></div>
 
   <!-- ==================== SECTION 7: CONTACT & PARTNERSHIP INQUIRY FORM ==================== -->
-  <section id="contact" class="py-14 sm:py-20 relative overflow-hidden bg-[#221C18]">
+  <section id="contact" class="py-14 sm:py-20 relative overflow-hidden bg-gradient-to-b from-[#F4FDF7] to-white">
     <!-- Ambient Floating Light Orb -->
-    <div class="ambient-glow-orb w-96 h-96 bg-[#C9A882]/15 -bottom-10 -right-10"></div>
-    <div class="ambient-glow-orb w-80 h-80 bg-[#5D5046]/20 top-10 -left-10"></div>
+    <div class="ambient-glow-orb w-96 h-96 bg-emerald-50 -bottom-10 -right-10"></div>
+    <div class="ambient-glow-orb w-80 h-80 bg-emerald-50/50 top-10 -left-10"></div>
 
     <div class="responsive-container relative z-10">
       
@@ -1474,61 +1476,61 @@
         
         <!-- Left: Agency & Management Info -->
         <div class="lg:col-span-5 space-y-4 reveal-item">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3E342D] text-[#C9A882] text-xs font-bold border border-[#5D5046] motion-float">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-emerald-600 text-xs font-bold border border-slate-200 motion-float">
             <i data-lucide="send" class="w-3.5 h-3.5"></i>
             <span data-i18n="ct_badge">التواصل التجاري المباشر</span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white" data-i18n="ct_title">احجز مساحة رعايتك القادمة</h2>
-          <p class="text-xs sm:text-sm text-[#D8CEC6] leading-relaxed font-normal" data-i18n="ct_sub">
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900" data-i18n="ct_title">احجز مساحة رعايتك القادمة</h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal" data-i18n="ct_sub">
             أرسل تفاصيل منتجك وسوقك المستهدف (السعودية، الخليج، أو مصر) وسنرد عليك بالمساحات المتاحة والمحور المناسب خلال 48 ساعة عمل.
           </p>
 
           <!-- Direct Official Platform Office (Primary) -->
-          <div class="p-5 rounded-3xl bg-[#3E342D] border-2 border-[#C9A882]/40 shadow-lg">
+          <div class="p-5 rounded-3xl bg-white border-2 border-emerald-300/80 shadow-lg">
             <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#8F6D44] to-[#A68157] text-white flex items-center justify-center font-bold text-base shadow-md">
-                <i data-lucide="mail-check" class="w-5 h-5 text-[#C9A882]"></i>
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-700 to-[#A68157] text-white flex items-center justify-center font-bold text-base shadow-md">
+                <i data-lucide="mail-check" class="w-5 h-5 text-emerald-600"></i>
               </div>
               <div>
-                <b class="text-sm text-white block">مكتب إدارة د. أحمد الخطيب الرسمي</b>
-                <span class="text-[11px] text-[#E2CFB4]" data-i18n="office_badge">البريد المعتمد لتلقي الطلبات والرعايات</span>
+                <b class="text-sm text-slate-900 block">مكتب إدارة د. أحمد الخطيب الرسمي</b>
+                <span class="text-[11px] text-emerald-300" data-i18n="office_badge">البريد المعتمد لتلقي الطلبات والرعايات</span>
               </div>
             </div>
 
-            <div class="text-xs text-[#D8CEC6] space-y-1.5 leading-relaxed mb-4">
-              <p><b>Official Email:</b> <a href="mailto:office@ahmedelkhateeb.com" class="text-white hover:text-[#C9A882] underline font-bold num-font">office@ahmedelkhateeb.com</a></p>
-              <p><b>Web Platform:</b> <a href="https://ahmedelkhateeb.com" target="_blank" class="text-[#C9A882] hover:underline num-font">ahmedelkhateeb.com</a></p>
+            <div class="text-xs text-slate-600 space-y-1.5 leading-relaxed mb-4">
+              <p><b>Official Email:</b> <a href="mailto:office@ahmedelkhateeb.com" class="text-emerald-700 hover:text-emerald-800 underline font-bold num-font">office@ahmedelkhateeb.com</a></p>
+              <p><b>Web Platform:</b> <a href="https://ahmedelkhateeb.com" target="_blank" class="text-emerald-600 hover:underline num-font">ahmedelkhateeb.com</a></p>
             </div>
 
-            <a href="mailto:office@ahmedelkhateeb.com?subject=Commercial%20Partnership%20Inquiry%20-%20Dr.%20Ahmed%20El%20Khateeb" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#A68157] to-[#C9A882] hover:from-[#8F6D44] hover:to-[#A68157] text-white text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-md">
+            <a href="mailto:office@ahmedelkhateeb.com?subject=Commercial%20Partnership%20Inquiry%20-%20Dr.%20Ahmed%20El%20Khateeb" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-slate-900 text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-md">
               <i data-lucide="mail" class="w-3.5 h-3.5"></i>
               <span data-i18n="btn_email_direct">مراسلة الإدارة مباشرة (office@)</span>
             </a>
           </div>
 
           <!-- Official Management Direct Commitments & SLA Box -->
-          <div class="p-5 rounded-3xl bg-[#3E342D]/70 border border-[#5D5046]">
+          <div class="p-5 rounded-3xl bg-white shadow-sm border-slate-200 border border-slate-200">
             <div class="flex items-center gap-3 mb-3">
-              <div class="w-10 h-10 rounded-xl bg-[#C9A882]/15 text-[#C9A882] border border-[#C9A882]/30 flex items-center justify-center font-bold text-sm">
-                <i data-lucide="clock" class="w-5 h-5 text-[#C9A882]"></i>
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200/80 flex items-center justify-center font-bold text-sm">
+                <i data-lucide="clock" class="w-5 h-5 text-emerald-600"></i>
               </div>
               <div>
-                <b class="text-sm text-white block" data-i18n="sla_title">التزام الرد والسرية المهنية</b>
-                <span class="text-[11px] text-[#C9A882]" data-i18n="sla_badge">استجابة رسمية خلال 24 - 48 ساعة عمل</span>
+                <b class="text-sm text-slate-900 block" data-i18n="sla_title">التزام الرد والسرية المهنية</b>
+                <span class="text-[11px] text-emerald-600" data-i18n="sla_badge">استجابة رسمية خلال 24 - 48 ساعة عمل</span>
               </div>
             </div>
 
-            <div class="text-xs text-[#D8CEC6] space-y-2 leading-relaxed font-normal">
+            <div class="text-xs text-slate-600 space-y-2 leading-relaxed font-normal">
               <p class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-[#C9A882] shrink-0"></i>
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
                 <span data-i18n="sla_1">فريق تسويقي وإداري مخصص لمتابعة حملات الرعاية</span>
               </p>
               <p class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-[#C9A882] shrink-0"></i>
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
                 <span data-i18n="sla_2">اتفاقيات سرية وعدم إفصاح (NDA) معتمدة للشركات</span>
               </p>
               <p class="flex items-center gap-2">
-                <i data-lucide="check-circle" class="w-4 h-4 text-[#C9A882] shrink-0"></i>
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
                 <span data-i18n="sla_3">تنسيق مسبق لحجز التواريخ حسب خطة النشر الرسمية</span>
               </p>
             </div>
@@ -1537,36 +1539,36 @@
 
         <!-- Right: Interactive Inquiry Form with Dynamic Subject -->
         <div class="lg:col-span-7 card-glass rounded-3xl p-6 sm:p-8 reveal-item delay-1">
-          <h3 class="text-lg sm:text-xl font-bold text-white mb-2" data-i18n="form_title">نموذج طلب الشراكة والتسعير المباشر</h3>
-          <p class="text-xs text-[#D8CEC6] mb-6 font-normal" data-i18n="form_sub">املأ النموذج وسيتم توجيه طلبك مباشرة إلى office@ahmedelkhateeb.com بعنوان مخصص بنفس اسم الباقة المختارة.</p>
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2" data-i18n="form_title">نموذج طلب الشراكة والتسعير المباشر</h3>
+          <p class="text-xs text-slate-600 mb-6 font-normal" data-i18n="form_sub">املأ النموذج وسيتم توجيه طلبك مباشرة إلى office@ahmedelkhateeb.com بعنوان مخصص بنفس اسم الباقة المختارة.</p>
 
           <form id="mediakit-inquiry-form" onsubmit="handleInquirySubmit(event)" class="space-y-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_brand">اسم العلامة التجارية / المنتج *</label>
-                <input type="text" id="f-brand" required oninput="updateDynamicSubject()" class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] focus:ring-1 focus:ring-[#C9A882] transition-colors" placeholder="اسم الشركة أو المنتج">
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_brand">اسم العلامة التجارية / المنتج *</label>
+                <input type="text" id="f-brand" required oninput="updateDynamicSubject()" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-[#C9A882] transition-colors" placeholder="اسم الشركة أو المنتج">
               </div>
               <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_person">اسم المسؤول / اللقب *</label>
-                <input type="text" id="f-person" required class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] focus:ring-1 focus:ring-[#C9A882] transition-colors" placeholder="اسمك الكريم">
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_email">البريد الإلكتروني للعمل *</label>
-                <input type="email" id="f-email" required class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] focus:ring-1 focus:ring-[#C9A882] transition-colors ltr:text-left" placeholder="name@company.com" dir="ltr">
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_phone">رقم الهاتف / واتساب *</label>
-                <input type="tel" id="f-phone" required class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] focus:ring-1 focus:ring-[#C9A882] transition-colors ltr:text-left" placeholder="+971 / +966 / +20" dir="ltr">
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_person">اسم المسؤول / اللقب *</label>
+                <input type="text" id="f-person" required class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-[#C9A882] transition-colors" placeholder="اسمك الكريم">
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_territory">السوق والجمهور المستهدف</label>
-                <select id="f-territory" class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] transition-colors">
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_email">البريد الإلكتروني للعمل *</label>
+                <input type="email" id="f-email" required class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-[#C9A882] transition-colors ltr:text-left" placeholder="name@company.com" dir="ltr">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_phone">رقم الهاتف / واتساب *</label>
+                <input type="tel" id="f-phone" required class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-[#C9A882] transition-colors ltr:text-left" placeholder="+971 / +966 / +20" dir="ltr">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_territory">السوق والجمهور المستهدف</label>
+                <select id="f-territory" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors">
                   <option value="دول الخليج العربي (السعودية والإمارات)" data-i18n="opt_t1">دول الخليج العربي (السعودية والإمارات)</option>
                   <option value="المملكة العربية السعودية فقط" data-i18n="opt_t2">المملكة العربية السعودية فقط</option>
                   <option value="جمهورية مصر العربية" data-i18n="opt_t3">جمهورية مصر العربية</option>
@@ -1575,8 +1577,8 @@
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_format">شكل الرعاية المطلوب (يحدد عنوان الرسالة) *</label>
-                <select id="f-format" onchange="updateDynamicSubject()" class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] transition-colors font-bold text-[#C9A882]">
+                <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_format">شكل الرعاية المطلوب (يحدد عنوان الرسالة) *</label>
+                <select id="f-format" onchange="updateDynamicSubject()" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors font-bold text-emerald-600">
                   <option value="باقة A: فقرة مدمجة في يوتيوب (60-90 ثانية)" data-i18n="opt_f1">باقة A: فقرة مدمجة في يوتيوب (60-90 ثانية)</option>
                   <option value="باقة B: فقرة مخصصة وموسعة (2.5-3 دقائق)" data-i18n="opt_f2">باقة B: فقرة مخصصة وموسعة (2.5-3 دقائق)</option>
                   <option value="باقة C: حزمة شورتس وريلز (4 مقاطع)" data-i18n="opt_f3">باقة C: حزمة شورتس وريلز (4 مقاطع)</option>
@@ -1588,30 +1590,30 @@
             </div>
 
             <!-- Real-time Subject Preview Indicator -->
-            <div class="p-3 rounded-xl bg-[#221C18] border border-[#C9A882]/20 text-xs">
-              <span class="text-[#B5A89E] font-bold block mb-1" data-i18n="f_subject_preview_label">العنوان الذي سيصل إلى office@ahmedelkhateeb.com:</span>
+            <div class="p-3 rounded-xl bg-white border border-emerald-200/60 text-xs">
+              <span class="text-slate-500 font-bold block mb-1" data-i18n="f_subject_preview_label">العنوان الذي سيصل إلى office@ahmedelkhateeb.com:</span>
               <span id="subject-preview-text" class="text-amber-300 font-mono font-medium block">شراكة حصرية - باقة A: فقرة مدمجة في يوتيوب (60-90 ثانية)</span>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-[#D8CEC6] mb-1.5" data-i18n="f_message">تفاصيل المنتج والموعد المقترح لإطلاق الحملة</label>
-              <textarea id="f-message" rows="3" class="w-full px-4 py-3 rounded-xl bg-[#221C18] border border-[#5D5046] text-white text-xs sm:text-sm focus:outline-none focus:border-[#C9A882] transition-colors" placeholder="اذكر نبذة عن المنتج والمزايا والموعد المفضل..."></textarea>
+              <label class="block text-xs font-bold text-slate-600 mb-1.5" data-i18n="f_message">تفاصيل المنتج والموعد المقترح لإطلاق الحملة</label>
+              <textarea id="f-message" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors" placeholder="اذكر نبذة عن المنتج والمزايا والموعد المفضل..."></textarea>
             </div>
 
-            <button type="submit" id="f-submit-btn" class="w-full py-4 px-6 rounded-3xl bg-gradient-to-r from-[#A68157] to-[#C9A882] hover:from-[#8F6D44] hover:to-[#A68157] text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-[#A68157]/30 active:scale-95 transition-all">
+            <button type="submit" id="f-submit-btn" class="w-full py-4 px-6 rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-xl shadow-[#A68157]/30 active:scale-95 transition-all">
               <span id="f-btn-text" data-i18n="f_btn_send">إرسال الطلب وحجز موعد المراجعة</span>
               <i data-lucide="arrow-left" class="w-4 h-4 rtl:block ltr:hidden"></i>
               <i data-lucide="arrow-right" class="w-4 h-4 ltr:block rtl:hidden"></i>
             </button>
           </form>
 
-          <div id="form-success-banner" style="display:none;" class="mt-5 p-5 rounded-3xl bg-gradient-to-r from-emerald-950/80 via-[#221C18] to-emerald-950/80 border border-emerald-500/50 text-white shadow-xl text-center">
-            <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-[#C9A882] mx-auto mb-3 flex items-center justify-center border border-emerald-500/40">
-              <i data-lucide="check-circle-2" class="w-6 h-6 text-[#C9A882]"></i>
+          <div id="form-success-banner" style="display:none;" class="mt-5 p-5 rounded-3xl bg-gradient-to-r from-emerald-50 via-white to-emerald-50 border-2 border-emerald-500 text-slate-900 shadow-xl text-center">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-600 mx-auto mb-3 flex items-center justify-center border border-emerald-500/40">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-600"></i>
             </div>
-            <h4 class="text-base font-black text-[#E2CFB4] mb-1" data-i18n="form_success_title">✓ تم استلام طلب الشراكة بنجاح!</h4>
-            <p class="text-xs sm:text-sm text-[#F2EDE8] font-normal leading-relaxed max-w-lg mx-auto" data-i18n="form_success_desc">
-              تم إرسال تفاصيل الرعاية مباشرة إلى الإدارة عبر <span class="font-mono text-[#C9A882] font-bold">office@ahmedelkhateeb.com</span>. سيقوم الفريق المختص بمراجعة المنتج والتواصل معكم لتحديد المواعيد خلال 24 - 48 ساعة عمل.
+            <h4 class="text-base font-black text-emerald-300 mb-1" data-i18n="form_success_title">✓ تم استلام طلب الشراكة بنجاح!</h4>
+            <p class="text-xs sm:text-sm text-slate-800 font-normal leading-relaxed max-w-lg mx-auto" data-i18n="form_success_desc">
+              تم إرسال تفاصيل الرعاية مباشرة إلى الإدارة عبر <span class="font-mono text-emerald-600 font-bold">office@ahmedelkhateeb.com</span>. سيقوم الفريق المختص بمراجعة المنتج والتواصل معكم لتحديد المواعيد خلال 24 - 48 ساعة عمل.
             </p>
           </div>
         </div>
@@ -1623,36 +1625,36 @@
 
   <!-- ==================== FOOTER (DARK CLEAN) ==================== -->
   <div class="aeon-beam-divider"></div>
-  <footer class="py-10 bg-[#181310] border-t border-[#C9A882]/20 text-xs text-[#B5A89E] no-print">
+  <footer class="py-10 bg-white border-t border-slate-200 text-xs text-slate-500 no-print">
     <div class="responsive-container flex flex-col md:flex-row items-center justify-between gap-6">
       
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#8F6D44] to-[#A68157] text-white font-black text-sm flex items-center justify-center shadow-md" id="footer-logo-text">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-700 to-[#A68157] text-white font-black text-sm flex items-center justify-center shadow-md" id="footer-logo-text">
           د.أ
         </div>
         <div>
-          <p class="font-bold text-white text-sm">Dr. Ahmed El Khateeb (فارماكولوجي)</p>
-          <p class="text-[11px] text-[#B5A89E]">Official Media Kit © 2026 • Primary Email: <a href="mailto:office@ahmedelkhateeb.com" class="text-[#C9A882] underline num-font">office@ahmedelkhateeb.com</a></p>
+          <p class="font-bold text-slate-900 text-sm">Dr. Ahmed El Khateeb (فارماكولوجي)</p>
+          <p class="text-[11px] text-slate-500">Official Media Kit © 2026 • Primary Email: <a href="mailto:office@ahmedelkhateeb.com" class="text-emerald-600 underline num-font">office@ahmedelkhateeb.com</a></p>
         </div>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="YouTube">
+        <a href="https://www.youtube.com/@Dr_Ahmed_elkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="YouTube">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         </a>
-        <a href="https://www.facebook.com/AhmedElkhaateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="Facebook">
+        <a href="https://www.facebook.com/AhmedElkhaateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="Facebook">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
-        <a href="https://www.instagram.com/drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="Instagram">
+        <a href="https://www.instagram.com/drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="Instagram">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://www.tiktok.com/@drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="TikTok">
+        <a href="https://www.tiktok.com/@drahmedelkhateeb" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="TikTok">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/ahmedelkhateeb1" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/ahmedelkhateeb1" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="LinkedIn">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         </a>
-        <a href="https://x.com/PharmaDrAhmed" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-[#3E342D] hover:bg-[#A68157] text-[#F2EDE8] hover:text-white transition-colors" title="X (Twitter)">
+        <a href="https://x.com/PharmaDrAhmed" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg bg-white hover:bg-emerald-600 text-slate-800 hover:text-emerald-700 transition-colors" title="X (Twitter)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
       </div>
@@ -2172,11 +2174,11 @@
       const enBtn = document.getElementById('lang-en-btn');
       if (arBtn && enBtn) {
         if (lang === 'ar') {
-          arBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-[#A68157] text-white shadow-sm";
-          enBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-[#B5A89E] hover:text-white";
+          arBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-emerald-600 text-white shadow-sm";
+          enBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-slate-500 hover:text-emerald-700";
         } else {
-          enBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-[#A68157] text-white shadow-sm";
-          arBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-[#B5A89E] hover:text-white";
+          enBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all bg-emerald-600 text-white shadow-sm";
+          arBtn.className = "px-2.5 py-0.5 rounded-md text-[11px] font-bold transition-all text-slate-500 hover:text-emerald-700";
         }
       }
 
@@ -2336,7 +2338,7 @@
         // Success state
         if (btn) {
           btn.classList.remove('opacity-75', 'pointer-events-none');
-          btn.classList.remove('from-[#A68157]', 'to-[#C9A882]');
+          btn.classList.remove('from-emerald-600', 'to-emerald-700');
           btn.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
         }
         if (btnText) {

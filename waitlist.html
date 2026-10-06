@@ -622,6 +622,29 @@
     // Google Sheets Webhook Fallback (اختياري كنسخة احتياطية)
     const GOOGLE_SHEETS_WEBHOOK_URL = ''; // مثال: https://script.google.com/macros/s/XXXXX/exec
 
+    // Traffic Source Detection (UTM tags or Referrer)
+    function detectTrafficSource() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const src = urlParams.get('src') || urlParams.get('source') || urlParams.get('utm_source');
+        if (src) return src.toLowerCase().trim();
+
+        const ref = (document.referrer || '').toLowerCase();
+        if (!ref) return 'direct';
+        if (ref.includes('instagram.com')) return 'instagram';
+        if (ref.includes('youtube.com') || ref.includes('youtu.be')) return 'youtube';
+        if (ref.includes('tiktok.com')) return 'tiktok';
+        if (ref.includes('facebook.com') || ref.includes('fb.me')) return 'facebook';
+        if (ref.includes('twitter.com') || ref.includes('x.com') || ref.includes('t.co')) return 'twitter';
+        if (ref.includes('t.me') || ref.includes('telegram')) return 'telegram';
+        if (ref.includes('snapchat.com')) return 'snapchat';
+        if (ref.includes('google.com')) return 'google';
+        return 'other';
+      } catch (e) {
+        return 'direct';
+      }
+    }
+
     function handleFormSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('userName').value.trim();
@@ -645,6 +668,7 @@
 
       // Pre-evaluate profile to save complete diagnostic info
       const profile = evaluateDiagnosticProfile(name);
+      const trafficSource = detectTrafficSource();
 
       const leadPayload = {
         name: quizState.name,
@@ -659,6 +683,7 @@
         diet_history: quizState.diet_history,
         lifestyle_need: quizState.lifestyle_need,
         discountCode: 'WAHET30',
+        source: trafficSource,
         submittedAt: new Date().toISOString()
       };
 
@@ -692,10 +717,11 @@
               insulin_sign: leadPayload.insulin_sign,
               diet_history: leadPayload.diet_history,
               lifestyle_need: leadPayload.lifestyle_need,
-              discount_code: 'WAHET30'
+              discount_code: 'WAHET30',
+              source: leadPayload.source
             })
           }).then(res => {
-            if (res.ok) console.log('Lead securely saved to Supabase Cloud DB ✅ (HTTP ' + res.status + ')');
+            if (res.ok) console.log('Lead securely saved to Supabase Cloud DB ✅ (HTTP ' + res.status + ') [Src: ' + trafficSource + ']');
             else console.warn('Supabase insert status notice:', res.status);
           }).catch(err => console.warn('Supabase fetch notice:', err));
         } catch (e) {}

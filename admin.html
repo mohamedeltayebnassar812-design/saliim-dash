@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة القيادة والمتابعة المركزية | واحة نور • د. أحمد الخطيب</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310B981'><circle cx='12' cy='12' r='10'/></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              dark: '#022c22'
+            },
+            accent: {
+              gold: '#D97706',
+              amber: '#F59E0B'
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #030712;
+      color: #f8fafc;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0b1329;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#030712] text-slate-100 flex flex-col antialiased selection:bg-emerald-500/30 selection:text-emerald-300">
+
+  <!-- =========================================================================
+       1. SECURITY LOCK SCREEN (PIN REQUIRED)
+       ========================================================================= -->
+  <div id="pinLockModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900 border border-slate-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-6 relative overflow-hidden">
+      <div class="absolute -top-16 -right-16 w-36 h-36 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none"></div>
+      
+      <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto shadow-lg shadow-emerald-500/20">
+        <i data-lucide="shield-check" class="w-8 h-8"></i>
+      </div>
+
+      <div class="space-y-1.5">
+        <h2 class="text-xl sm:text-2xl font-black text-white">لوحة تحكم واحة نور السرية</h2>
+        <p class="text-xs text-slate-400">خاصة بالدكتور أحمد الخطيب وفريق الإدارة فقط</p>
+      </div>
+
+      <form id="pinForm" onsubmit="verifyPin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">أدخل الرقم السري للوصول (PIN):</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="adminPinInput" 
+              placeholder="••••" 
+              maxlength="10"
+              autocomplete="current-password"
+              class="w-full h-14 text-center text-2xl font-mono tracking-widest rounded-xl bg-slate-950 border border-slate-700 text-white outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 transition"
+              required
+              autofocus
+            >
+          </div>
+          <p id="pinErrorMsg" class="text-xs text-rose-400 mt-2 hidden font-bold">الرقم السري غير صحيح، يرجى المحاولة ثانية.</p>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-sm shadow-xl shadow-emerald-500/25 transition flex items-center justify-center gap-2"
+        >
+          <i data-lucide="unlock" class="w-4 h-4"></i>
+          <span>فتح لوحة القيادة 🔓</span>
+        </button>
+
+        <p class="text-[11px] text-slate-500">الرمز الافتراضي: <span class="font-mono text-slate-400 font-bold">2026</span></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN DASHBOARD CONTENT (UNLOCKED)
+       ========================================================================= -->
+  <div id="mainDashboard" class="hidden flex-1 flex flex-col">
+    
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        
+        <!-- Brand & Title -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-black text-white leading-tight">واحة نور | غرفة القيادة والتحليلات</h1>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hidden sm:inline-flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                قاعدة البيانات متصلة لايف
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">د. أحمد الخطيب • متابعة المشتركين وتحويلات المنصات</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex items-center gap-2.5">
+          <button 
+            onclick="fetchLeadsData()" 
+            id="refreshBtn" 
+            class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-xs text-slate-200 font-bold flex items-center gap-1.5 transition"
+            title="تحديث البيانات"
+          >
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">تحديث فوري</span>
+          </button>
+
+          <button 
+            onclick="exportToCSV()" 
+            class="px-3.5 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 font-bold text-xs flex items-center gap-1.5 transition shadow-lg shadow-emerald-500/10"
+            title="تحميل شيت إكسل"
+          >
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>تصدير Excel (CSV)</span>
+          </button>
+
+          <button 
+            onclick="lockDashboard()" 
+            class="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition"
+            title="قفل الشاشة"
+          >
+            <i data-lucide="lock" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-6 flex-1">
+
+      <!-- Alert / Instruction Banner for SQL RPC (Shown if needed) -->
+      <div id="rpcNoticeBanner" class="hidden p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-300 space-y-2 text-xs">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2 font-bold text-sm text-amber-200">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+            <span>خطوة أمان أخيرة لتفعيل القراءة من Supabase بنجاح:</span>
+          </div>
+          <button onclick="document.getElementById('rpcNoticeBanner').classList.add('hidden')" class="text-slate-400 hover:text-white">✕</button>
+        </div>
+        <p class="text-slate-300 leading-relaxed">
+          نظراً لأن قاعدة بياناتك مفعل عليها جدار الأمان (RLS)، لكي تتمكن اللوحة من عرض المسجلين بالـ PIN، افتح <strong>SQL Editor</strong> في Supabase وشغل هذا الكود البسيط (مرة واحدة فقط):
+        </p>
+        <div class="bg-black/60 p-3 rounded-xl font-mono text-[11px] text-amber-200 border border-amber-500/20 overflow-x-auto flex items-center justify-between gap-2">
+          <code>create or replace function get_admin_leads(admin_pin text) returns setof waitlist_leads language plpgsql security definer as $$ begin if admin_pin = '2026' then return query select * from waitlist_leads order by created_at desc; else raise exception 'Unauthorized'; end if; end; $$;</code>
+          <button onclick="copySqlCode()" class="shrink-0 px-2.5 py-1 bg-amber-500 text-black font-black rounded text-[10px] hover:bg-amber-400 transition">نسخ الكود 📋</button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           TOP KPIS (5 STAT CARDS)
+           ========================================================================= -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        
+        <!-- Total Leads -->
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">إجمالي المشتركين</span>
+            <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-black text-white" id="statTotalLeads">--</div>
+          <div class="text-[10px] text-emerald-400 mt-1 flex items-center gap-1 font-semibold">
+            <i data-lucide="trending-up" class="w-3 h-3"></i>
+            <span>في القائمة الذهبية</span>
+          </div>
+        </div>
+
+        <!-- Today's Leads -->
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">مسجلو اليوم</span>
+            <i data-lucide="calendar" class="w-4 h-4 text-sky-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-black text-white" id="statTodayLeads">--</div>
+          <div class="text-[10px] text-sky-400 mt-1 font-semibold">آخر 24 ساعة</div>
+        </div>
+
+        <!-- Top Platform -->
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">المنصة الأولى</span>
+            <i data-lucide="share-2" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div class="text-lg sm:text-xl font-black text-white truncate" id="statTopSource">--</div>
+          <div class="text-[10px] text-purple-400 mt-1 font-semibold" id="statTopSourcePercent">أعلى مصدر زيارات</div>
+        </div>
+
+        <!-- Top Diagnosis -->
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">التشخيص السائد</span>
+            <i data-lucide="activity" class="w-4 h-4 text-rose-400"></i>
+          </div>
+          <div class="text-base sm:text-lg font-black text-white truncate" id="statTopDiagnosis">--</div>
+          <div class="text-[10px] text-rose-400 mt-1 font-semibold" id="statTopDiagnosisCount">الأكثر طلباً للحلول</div>
+        </div>
+
+        <!-- Top Country -->
+        <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 relative overflow-hidden col-span-2 sm:col-span-1">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">أعلى دولة</span>
+            <i data-lucide="globe" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div class="text-lg sm:text-xl font-black text-white truncate" id="statTopCountry">--</div>
+          <div class="text-[10px] text-amber-400 mt-1 font-semibold" id="statTopCountryPercent">أعلى كثافة جغرافية</div>
+        </div>
+
+      </div>
+
+      <!-- =========================================================================
+           ANALYTICS BREAKDOWN CHARTS (PLATFORM & DIAGNOSIS & COUNTRY)
+           ========================================================================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        
+        <!-- Platform Breakdown Card -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+            <div class="flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-purple-400"></i>
+              <h3 class="text-xs font-bold text-white">توزيع مصادر الزيارات (Platforms)</h3>
+            </div>
+            <span class="text-[11px] text-slate-500 font-mono">UTM / Referrer</span>
+          </div>
+          <div id="sourcesBarsContainer" class="space-y-2.5 pt-1">
+            <!-- Dynamically populated -->
+            <p class="text-xs text-slate-500 text-center py-4">جاري تحليل المنصات...</p>
+          </div>
+        </div>
+
+        <!-- Diagnosis Breakdown Card -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+            <div class="flex items-center gap-2">
+              <i data-lucide="heart-pulse" class="w-4 h-4 text-rose-400"></i>
+              <h3 class="text-xs font-bold text-white">توزيع الحالات والتشخيص الأيضي</h3>
+            </div>
+            <span class="text-[11px] text-slate-500 font-mono">Personas</span>
+          </div>
+          <div id="diagnosesBarsContainer" class="space-y-2.5 pt-1">
+            <!-- Dynamically populated -->
+            <p class="text-xs text-slate-500 text-center py-4">جاري تحليل التشخيصات...</p>
+          </div>
+        </div>
+
+        <!-- Geographic Breakdown Card -->
+        <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+            <div class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-amber-400"></i>
+              <h3 class="text-xs font-bold text-white">التوزيع الجغرافي والدول</h3>
+            </div>
+            <span class="text-[11px] text-slate-500 font-mono">Geography</span>
+          </div>
+          <div id="countriesBarsContainer" class="space-y-2.5 pt-1">
+            <!-- Dynamically populated -->
+            <p class="text-xs text-slate-500 text-center py-4">جاري تحليل الدول...</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =========================================================================
+           SEARCH & FILTERS TOOLBAR
+           ========================================================================= -->
+      <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          
+          <!-- Search input -->
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5 pointer-events-none"></i>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="filterTable()" 
+              placeholder="بحث بالاسم، رقم التليفون، أو الإيميل..." 
+              class="w-full h-11 rounded-xl bg-slate-950 border border-slate-700 pr-10 pl-4 text-xs text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition"
+            >
+          </div>
+
+          <!-- Platform Filter -->
+          <div class="w-full sm:w-44">
+            <select 
+              id="filterPlatform" 
+              onchange="filterTable()" 
+              class="w-full h-11 rounded-xl bg-slate-950 border border-slate-700 px-3 text-xs text-white outline-none focus:border-emerald-500 transition cursor-pointer"
+            >
+              <option value="ALL">كل المنصات 🌐</option>
+              <option value="instagram">Instagram 📸</option>
+              <option value="youtube">YouTube 🎥</option>
+              <option value="tiktok">TikTok 🎵</option>
+              <option value="facebook">Facebook 📘</option>
+              <option value="direct">Direct / أخرى 🔗</option>
+            </select>
+          </div>
+
+          <!-- Diagnosis Filter -->
+          <div class="w-full sm:w-56">
+            <select 
+              id="filterDiagnosis" 
+              onchange="filterTable()" 
+              class="w-full h-11 rounded-xl bg-slate-950 border border-slate-700 px-3 text-xs text-white outline-none focus:border-emerald-500 transition cursor-pointer"
+            >
+              <option value="ALL">كل التشخيصات الأيضية 🩺</option>
+              <option value="insulin">مقاومة إنسولين ودهون حشوية</option>
+              <option value="yoyo">تأقلم الأيض ودايت اليويو</option>
+              <option value="cortisol">اضطراب كورتيزول ونهم ليلي</option>
+              <option value="hormonal">ملف هرموني وتكيس مبايض</option>
+              <option value="reset">مؤشر أيضي متوازن (عام)</option>
+            </select>
+          </div>
+
+          <!-- Country Filter -->
+          <div class="w-full sm:w-40">
+            <select 
+              id="filterCountry" 
+              onchange="filterTable()" 
+              class="w-full h-11 rounded-xl bg-slate-950 border border-slate-700 px-3 text-xs text-white outline-none focus:border-emerald-500 transition cursor-pointer"
+            >
+              <option value="ALL">كل الدول 🌍</option>
+              <option value="EG">🇪🇬 مصر</option>
+              <option value="SA">🇸🇦 السعودية</option>
+              <option value="AE">🇦🇪 الإمارات</option>
+              <option value="KW">🇰🇼 الكويت</option>
+              <option value="QA">🇶🇦 قطر</option>
+              <option value="OM">🇴🇲 عمان</option>
+              <option value="BH">🇧🇭 البحرين</option>
+              <option value="OTHER">دول أخرى</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-slate-400 pt-1">
+          <div>
+            <span>المعروض حالياً: </span>
+            <strong id="filteredCount" class="text-white font-mono font-bold">0</strong>
+            <span> من إجمالي </span>
+            <strong id="totalCountBadge" class="text-white font-mono font-bold">0</strong>
+            <span> مشترك</span>
+          </div>
+          <div class="text-slate-500">
+            ترتيب: الأحدث أولاً ⏱️
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           DATA TABLE (INTERACTIVE LEADS LIST)
+           ========================================================================= -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-right text-xs">
+            
+            <!-- Table Header -->
+            <thead class="bg-slate-950/90 border-b border-slate-800 text-slate-400 font-bold">
+              <tr>
+                <th class="py-3.5 px-4 w-12 text-center">#</th>
+                <th class="py-3.5 px-4">تاريخ ووقت التسجيل</th>
+                <th class="py-3.5 px-4">اسم العميل</th>
+                <th class="py-3.5 px-4">الدولة</th>
+                <th class="py-3.5 px-4">رقم التليفون</th>
+                <th class="py-3.5 px-4">البريد الإلكتروني</th>
+                <th class="py-3.5 px-4">المنصة (Source)</th>
+                <th class="py-3.5 px-4">التشخيص الأيضي</th>
+                <th class="py-3.5 px-4 text-center">كود الخصم</th>
+                <th class="py-3.5 px-4 text-center">مراسلة واتساب</th>
+              </tr>
+            </thead>
+
+            <!-- Table Body -->
+            <tbody id="leadsTableBody" class="divide-y divide-slate-800/60 font-medium">
+              <tr>
+                <td colspan="10" class="py-12 text-center text-slate-500">
+                  <div class="flex flex-col items-center justify-center gap-2">
+                    <i data-lucide="loader" class="w-6 h-6 animate-spin text-emerald-400"></i>
+                    <span>جاري تحميل بيانات المشتركين من Supabase...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/60 py-4 text-center text-xs text-slate-500 mt-auto">
+      <p>واحة نور (Wahet Nour) • نظام إدارة المشتركين والتحليلات الأيضية © 2026 د. أحمد الخطيب</p>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================================
+       JAVASCRIPT LOGIC & SUPABASE INTEGRATION
+       ========================================================================= -->
+  <script>
+    lucide.createIcons();
+
+    // Configuration
+    const SUPABASE_URL = 'https://jmoooxwpcmyuwmsqwevg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_pdJ6w4vu9Mrc0jwUQzmYRg_nML7hDjT';
+    const MASTER_PIN = '2026';
+
+    let allLeads = [];
+    let currentAdminPin = '';
+
+    // Check saved session
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedPin = sessionStorage.getItem('wahetnor_admin_pin');
+      if (savedPin === MASTER_PIN) {
+        currentAdminPin = savedPin;
+        unlockDashboard();
+      }
+    });
+
+    function verifyPin(e) {
+      e.preventDefault();
+      const input = document.getElementById('adminPinInput').value.trim();
+      const err = document.getElementById('pinErrorMsg');
+
+      if (input === MASTER_PIN) {
+        err.classList.add('hidden');
+        currentAdminPin = input;
+        sessionStorage.setItem('wahetnor_admin_pin', input);
+        unlockDashboard();
+      } else {
+        err.classList.remove('hidden');
+        document.getElementById('adminPinInput').value = '';
+        document.getElementById('adminPinInput').focus();
+      }
+    }
+
+    function lockDashboard() {
+      sessionStorage.removeItem('wahetnor_admin_pin');
+      document.getElementById('mainDashboard').classList.add('hidden');
+      document.getElementById('pinLockModal').classList.remove('hidden');
+      document.getElementById('adminPinInput').value = '';
+      lucide.createIcons();
+    }
+
+    function unlockDashboard() {
+      document.getElementById('pinLockModal').classList.add('hidden');
+      document.getElementById('mainDashboard').classList.remove('hidden');
+      lucide.createIcons();
+      fetchLeadsData();
+    }
+
+    // Fetch Leads from Supabase (RPC first, then REST fallback, then Local)
+    async function fetchLeadsData() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      if (refreshBtn) refreshBtn.classList.add('opacity-50', 'pointer-events-none');
+
+      try {
+        let fetchedLeads = [];
+
+        // Attempt 1: Call RPC get_admin_leads(admin_pin)
+        try {
+          const rpcRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_admin_leads`, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ admin_pin: currentAdminPin || MASTER_PIN })
+          });
+
+          if (rpcRes.ok) {
+            fetchedLeads = await rpcRes.json();
+            console.log('Fetched via RPC successfully:', fetchedLeads.length);
+          } else {
+            console.warn('RPC not configured yet (HTTP ' + rpcRes.status + ') - trying direct REST');
+            document.getElementById('rpcNoticeBanner').classList.remove('hidden');
+          }
+        } catch (rpcErr) {
+          console.warn('RPC call failed:', rpcErr);
+        }
+
+        // Attempt 2: If RPC didn't return rows, try direct REST query
+        if (!fetchedLeads || fetchedLeads.length === 0) {
+          const restRes = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_leads?select=*&order=created_at.desc`, {
+            method: 'GET',
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+          });
+
+          if (restRes.ok) {
+            const json = await restRes.json();
+            if (Array.isArray(json) && json.length > 0) {
+              fetchedLeads = json;
+            }
+          }
+        }
+
+        // Attempt 3: Merge with locally stored leads if any
+        try {
+          const localLeads = JSON.parse(localStorage.getItem('wahetnor_waitlist_leads') || '[]');
+          if (localLeads.length > 0) {
+            // Normalize local leads format
+            const normalizedLocal = localLeads.map(l => ({
+              id: 'local-' + Math.random().toString(36).substring(2, 7),
+              created_at: l.submittedAt || new Date().toISOString(),
+              name: l.name,
+              country: l.country,
+              phone: l.phone,
+              email: l.email,
+              diagnosis_title: l.diagnosisTitle || l.diagnosis,
+              insulin_score: l.insulinScore,
+              metabolic_rate: l.metabolicRate,
+              source: l.source || 'direct',
+              discount_code: l.discountCode || 'WAHET30'
+            }));
+
+            // Combine and avoid duplicates by phone
+            const existingPhones = new Set(fetchedLeads.map(item => item.phone));
+            normalizedLocal.forEach(item => {
+              if (!existingPhones.has(item.phone)) {
+                fetchedLeads.push(item);
+                existingPhones.add(item.phone);
+              }
+            });
+          }
+        } catch (localErr) {}
+
+        allLeads = fetchedLeads || [];
+        updateDashboardView(allLeads);
+
+      } catch (err) {
+        console.error('Fatal fetch error:', err);
+      } finally {
+        if (refreshBtn) refreshBtn.classList.remove('opacity-50', 'pointer-events-none');
+        lucide.createIcons();
+      }
+    }
+
+    // Update Analytics, Charts, and Table
+    function updateDashboardView(leads) {
+      document.getElementById('statTotalLeads').innerText = leads.length;
+      document.getElementById('totalCountBadge').innerText = leads.length;
+
+      // 1. Calculate Today's Leads
+      const now = new Date();
+      const oneDayMs = 24 * 60 * 60 * 1000;
+      const todayCount = leads.filter(l => {
+        const d = new Date(l.created_at);
+        return (now - d) < oneDayMs;
+      }).length;
+      document.getElementById('statTodayLeads').innerText = todayCount;
+
+      // 2. Calculate Platform Distribution
+      const platformCounts = {};
+      leads.forEach(l => {
+        const src = (l.source || 'direct').toLowerCase();
+        platformCounts[src] = (platformCounts[src] || 0) + 1;
+      });
+
+      let topPlatform = '--';
+      let topPlatformCount = 0;
+      for (const [src, count] of Object.entries(platformCounts)) {
+        if (count > topPlatformCount) {
+          topPlatformCount = count;
+          topPlatform = src;
+        }
+      }
+      document.getElementById('statTopSource').innerText = formatPlatformName(topPlatform);
+      document.getElementById('statTopSourcePercent').innerText = leads.length > 0 
+        ? `${Math.round((topPlatformCount / leads.length) * 100)}% من المشتركين` 
+        : 'أعلى مصدر زيارات';
+
+      renderSourcesChart(platformCounts, leads.length);
+
+      // 3. Calculate Diagnosis Distribution
+      const diagCounts = {};
+      leads.forEach(l => {
+        const title = l.diagnosis_title || 'مقاومة إنسولين';
+        const key = getDiagnosisCategory(title);
+        diagCounts[key] = (diagCounts[key] || 0) + 1;
+      });
+
+      let topDiagKey = 'insulin';
+      let topDiagCount = 0;
+      for (const [key, count] of Object.entries(diagCounts)) {
+        if (count > topDiagCount) {
+          topDiagCount = count;
+          topDiagKey = key;
+        }
+      }
+      document.getElementById('statTopDiagnosis').innerText = getDiagnosisLabel(topDiagKey);
+      document.getElementById('statTopDiagnosisCount').innerText = `${topDiagCount} حالة (${leads.length > 0 ? Math.round((topDiagCount/leads.length)*100) : 0}%)`;
+      renderDiagnosesChart(diagCounts, leads.length);
+
+      // 4. Calculate Country Distribution
+      const countryCounts = {};
+      leads.forEach(l => {
+        const c = l.country || 'EG';
+        countryCounts[c] = (countryCounts[c] || 0) + 1;
+      });
+
+      let topCountryCode = 'EG';
+      let topCountryCount = 0;
+      for (const [c, count] of Object.entries(countryCounts)) {
+        if (count > topCountryCount) {
+          topCountryCount = count;
+          topCountryCode = c;
+        }
+      }
+      document.getElementById('statTopCountry').innerText = formatCountryName(topCountryCode);
+      document.getElementById('statTopCountryPercent').innerText = `${topCountryCount} مشترك (${leads.length > 0 ? Math.round((topCountryCount/leads.length)*100) : 0}%)`;
+      renderCountriesChart(countryCounts, leads.length);
+
+      // 5. Render Table
+      filterTable();
+    }
+
+    // Render Source Bars
+    function renderSourcesChart(counts, total) {
+      const container = document.getElementById('sourcesBarsContainer');
+      if (total === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-500 py-3 text-center">لا توجد بيانات بعد</p>';
+        return;
+      }
+
+      const sourcesList = [
+        { key: 'instagram', label: 'إنستغرام (Instagram)', color: 'bg-gradient-to-r from-pink-500 to-rose-500' },
+        { key: 'youtube', label: 'يوتيوب (YouTube)', color: 'bg-red-500' },
+        { key: 'tiktok', label: 'تيك توك (TikTok)', color: 'bg-sky-400' },
+        { key: 'facebook', label: 'فيسبوك (Facebook)', color: 'bg-blue-600' },
+        { key: 'direct', label: 'مباشر / أخرى (Direct)', color: 'bg-emerald-500' }
+      ];
+
+      let html = '';
+      sourcesList.forEach(item => {
+        const count = counts[item.key] || 0;
+        const pct = Math.round((count / total) * 100);
+        html += `
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-300 font-bold">${item.label}</span>
+              <span class="font-mono text-slate-400">${count} (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full rounded-full ${item.color} transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    // Render Diagnosis Bars
+    function renderDiagnosesChart(counts, total) {
+      const container = document.getElementById('diagnosesBarsContainer');
+      if (total === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-500 py-3 text-center">لا توجد بيانات بعد</p>';
+        return;
+      }
+
+      const diagList = [
+        { key: 'insulin', label: 'مقاومة إنسولين ودهون حشوية', color: 'bg-rose-500' },
+        { key: 'yoyo', label: 'تأقلم الأيض ودايت اليويو', color: 'bg-amber-500' },
+        { key: 'cortisol', label: 'كورتيزول ونهم عصبي ليلي', color: 'bg-purple-500' },
+        { key: 'hormonal', label: 'هرموني وتكيس مبايض', color: 'bg-indigo-500' },
+        { key: 'reset', label: 'مؤشر متوازن (استجابة سريعة)', color: 'bg-emerald-500' }
+      ];
+
+      let html = '';
+      diagList.forEach(item => {
+        const count = counts[item.key] || 0;
+        const pct = Math.round((count / total) * 100);
+        html += `
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-300 font-bold truncate max-w-[190px]">${item.label}</span>
+              <span class="font-mono text-slate-400">${count} (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full rounded-full ${item.color} transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    // Render Countries Bars
+    function renderCountriesChart(counts, total) {
+      const container = document.getElementById('countriesBarsContainer');
+      if (total === 0) {
+        container.innerHTML = '<p class="text-xs text-slate-500 py-3 text-center">لا توجد بيانات بعد</p>';
+        return;
+      }
+
+      const countryList = [
+        { code: 'EG', label: '🇪🇬 مصر' },
+        { code: 'SA', label: '🇸🇦 المملكة العربية السعودية' },
+        { code: 'AE', label: '🇦🇪 الإمارات العربية المتحدة' },
+        { code: 'KW', label: '🇰🇼 الكويت' },
+        { code: 'QA', label: '🇶🇦 قطر' },
+        { code: 'OTHER', label: '🌍 دول أخرى' }
+      ];
+
+      let html = '';
+      countryList.forEach(item => {
+        let count = 0;
+        if (item.code === 'OTHER') {
+          for (const [c, cnt] of Object.entries(counts)) {
+            if (!['EG','SA','AE','KW','QA'].includes(c)) count += cnt;
+          }
+        } else {
+          count = counts[item.code] || 0;
+        }
+        const pct = Math.round((count / total) * 100);
+        html += `
+          <div class="space-y-1">
+            <div class="flex items-center justify-between text-[11px]">
+              <span class="text-slate-300 font-bold">${item.label}</span>
+              <span class="font-mono text-slate-400">${count} (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full rounded-full bg-amber-500 transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    // Filter Table based on Search and Dropdowns
+    function filterTable() {
+      const search = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      const filterPlatform = document.getElementById('filterPlatform').value;
+      const filterDiagnosis = document.getElementById('filterDiagnosis').value;
+      const filterCountry = document.getElementById('filterCountry').value;
+
+      const filtered = allLeads.filter(lead => {
+        // Search filter
+        if (search) {
+          const name = (lead.name || '').toLowerCase();
+          const phone = (lead.phone || '').toLowerCase();
+          const email = (lead.email || '').toLowerCase();
+          const diag = (lead.diagnosis_title || '').toLowerCase();
+          if (!name.includes(search) && !phone.includes(search) && !email.includes(search) && !diag.includes(search)) {
+            return false;
+          }
+        }
+
+        // Platform filter
+        if (filterPlatform !== 'ALL') {
+          const src = (lead.source || 'direct').toLowerCase();
+          if (filterPlatform === 'direct') {
+            if (['instagram','youtube','tiktok','facebook'].includes(src)) return false;
+          } else if (src !== filterPlatform) {
+            return false;
+          }
+        }
+
+        // Diagnosis filter
+        if (filterDiagnosis !== 'ALL') {
+          const diagCat = getDiagnosisCategory(lead.diagnosis_title || '');
+          if (diagCat !== filterDiagnosis) return false;
+        }
+
+        // Country filter
+        if (filterCountry !== 'ALL') {
+          const c = lead.country || 'EG';
+          if (filterCountry === 'OTHER') {
+            if (['EG','SA','AE','KW','QA','OM','BH'].includes(c)) return false;
+          } else if (c !== filterCountry) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+
+      document.getElementById('filteredCount').innerText = filtered.length;
+      renderTableRows(filtered);
+    }
+
+    // Render Table Rows
+    function renderTableRows(leads) {
+      const tbody = document.getElementById('leadsTableBody');
+      if (leads.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="10" class="py-12 text-center text-slate-500">
+              <div class="flex flex-col items-center justify-center gap-1.5">
+                <i data-lucide="inbox" class="w-8 h-8 text-slate-600"></i>
+                <span class="text-sm font-bold text-slate-400">لا توجد نتائج تطابق خيارات البحث الحالية</span>
+                <span class="text-xs text-slate-600">جرب مسح معايير الفلترة أو تحديث البيانات.</span>
+              </div>
+            </td>
+          </tr>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      let html = '';
+      leads.forEach((l, index) => {
+        const formattedDate = formatDateArabic(l.created_at);
+        const platformBadge = getPlatformBadge(l.source || 'direct');
+        const diagBadge = getDiagnosisBadge(l.diagnosis_title || '');
+        const waLink = generateWhatsAppLink(l);
+
+        html += `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3.5 px-4 text-center font-mono text-slate-500">${index + 1}</td>
+            <td class="py-3.5 px-4 text-[11px] font-mono text-slate-400 whitespace-nowrap">${formattedDate}</td>
+            <td class="py-3.5 px-4 font-bold text-white whitespace-nowrap">${escapeHtml(l.name || 'عميل')}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap">${formatCountryName(l.country || 'EG')}</td>
+            <td class="py-3.5 px-4 font-mono font-bold text-emerald-400 whitespace-nowrap">
+              <div class="flex items-center gap-1.5">
+                <span>${escapeHtml(l.phone || '')}</span>
+                <button onclick="copyToClipboard('${escapeHtml(l.phone || '')}')" title="نسخ الرقم" class="text-slate-500 hover:text-white transition">
+                  <i data-lucide="copy" class="w-3 h-3"></i>
+                </button>
+              </div>
+            </td>
+            <td class="py-3.5 px-4 text-slate-300 font-mono text-[11px] whitespace-nowrap">${escapeHtml(l.email || '')}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap">${platformBadge}</td>
+            <td class="py-3.5 px-4 whitespace-nowrap">${diagBadge}</td>
+            <td class="py-3.5 px-4 text-center">
+              <span class="font-mono font-black text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded text-[10px]">
+                ${escapeHtml(l.discount_code || 'WAHET30')}
+              </span>
+            </td>
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              <a 
+                href="${waLink}" 
+                target="_blank" 
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#25D366]/20 hover:bg-[#25D366] text-[#25D366] hover:text-white border border-[#25D366]/40 text-xs font-bold transition shadow-sm"
+              >
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                <span>مراسلة 📲</span>
+              </a>
+            </td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    // WhatsApp Message Generator
+    function generateWhatsAppLink(lead) {
+      const cleanPhone = (lead.phone || '').replace(/[^0-9]/g, '');
+      const firstName = (lead.name || '').split(' ')[0] || lead.name;
+      const diag = lead.diagnosis_title || 'التشخيص الأيضي الخاص بك';
+
+      const text = encodeURIComponent(
+        `أهلاً أستاذ/ة ${firstName} 👋\nمعك فريق د. أحمد الخطيب من منصة واحة نور 🌱\nسعداء بانضمامك للقائمة الذهبية! بخصوص تقييمك الأيضي: [${diag}]\nتم تفعيل كود الخصم (WAHET30) الخاص بك. هل تود أن نساعدك في أي استفسار قبل انطلاق التسجيل؟`
+      );
+
+      // Add country code if not present
+      let phoneWithCode = cleanPhone;
+      if (cleanPhone.startsWith('01') && cleanPhone.length === 11) {
+        phoneWithCode = '2' + cleanPhone; // Egypt
+      } else if (cleanPhone.startsWith('05') && cleanPhone.length === 10) {
+        phoneWithCode = '966' + cleanPhone.substring(1); // Saudi Arabia
+      }
+
+      return `https://wa.me/${phoneWithCode}?text=${text}`;
+    }
+
+    // Export to Excel / CSV with UTF-8 BOM
+    function exportToCSV() {
+      if (!allLeads || allLeads.length === 0) {
+        alert('لا توجد بيانات متاحة للتصدير حالياً.');
+        return;
+      }
+
+      const headers = [
+        'ID',
+        'تاريخ ووقت التسجيل',
+        'الاسم',
+        'الدولة',
+        'رقم التليفون',
+        'البريد الإلكتروني',
+        'المنصة (Source)',
+        'التشخيص الأيضي',
+        'مؤشر الإنسولين',
+        'سرعة الأيض',
+        'كود الخصم'
+      ];
+
+      const rows = allLeads.map((l, idx) => [
+        idx + 1,
+        `"${new Date(l.created_at).toLocaleString('ar-EG')}"`,
+        `"${(l.name || '').replace(/"/g, '""')}"`,
+        `"${formatCountryName(l.country || '')}"`,
+        `"'\t${l.phone || ''}"`, // preserve leading zero in excel
+        `"${l.email || ''}"`,
+        `"${l.source || 'direct'}"`,
+        `"${(l.diagnosis_title || '').replace(/"/g, '""')}"`,
+        `"${l.insulin_score || ''}"`,
+        `"${l.metabolic_rate || ''}"`,
+        `"${l.discount_code || 'WAHET30'}"`
+      ]);
+
+      const csvContent = '\uFEFF' + [headers.join(','), ...rows.map(r => r.join(','))].join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', `wahetnor_leads_${new Date().toISOString().slice(0,10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Helpers
+    function getDiagnosisCategory(title) {
+      title = (title || '').toLowerCase();
+      if (title.includes('إنسولين') || title.includes('حشوية') || title.includes('insulin')) return 'insulin';
+      if (title.includes('يويو') || title.includes('تأقلم') || title.includes('damage') || title.includes('حرمان')) return 'yoyo';
+      if (title.includes('كورتيزول') || title.includes('نهم') || title.includes('stress') || title.includes('ليلي')) return 'cortisol';
+      if (title.includes('هرموني') || title.includes('تكيس') || title.includes('غدة') || title.includes('pcos')) return 'hormonal';
+      return 'reset';
+    }
+
+    function getDiagnosisLabel(cat) {
+      const labels = {
+        insulin: 'مقاومة الإنسولين والبطن',
+        yoyo: 'تأقلم الأيض ودايت اليويو',
+        cortisol: 'الكورتيزول والنهم الليلي',
+        hormonal: 'الملف الهرموني والتكيس',
+        reset: 'المؤشر الأيضي المتوازن'
+      };
+      return labels[cat] || 'مقاومة الإنسولين';
+    }
+
+    function getDiagnosisBadge(title) {
+      const cat = getDiagnosisCategory(title);
+      if (cat === 'insulin') {
+        return `<span class="px-2.5 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-[11px] font-bold">مقاومة إنسولين 🩸</span>`;
+      } else if (cat === 'yoyo') {
+        return `<span class="px-2.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[11px] font-bold">تأقلم الأيض (يويو) ⚡</span>`;
+      } else if (cat === 'cortisol') {
+        return `<span class="px-2.5 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-[11px] font-bold">كورتيزول ونهم ليلي 🌙</span>`;
+      } else if (cat === 'hormonal') {
+        return `<span class="px-2.5 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-[11px] font-bold">هرموني وتكيس مبايض 🌸</span>`;
+      }
+      return `<span class="px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-[11px] font-bold">أيضي متوازن 🌱</span>`;
+    }
+
+    function getPlatformBadge(source) {
+      source = (source || 'direct').toLowerCase();
+      if (source.includes('instagram')) {
+        return `<span class="px-2.5 py-0.5 rounded-md bg-pink-500/20 text-pink-300 border border-pink-500/30 text-[10px] font-bold">Instagram 📸</span>`;
+      } else if (source.includes('youtube')) {
+        return `<span class="px-2.5 py-0.5 rounded-md bg-red-500/20 text-red-300 border border-red-500/30 text-[10px] font-bold">YouTube 🎥</span>`;
+      } else if (source.includes('tiktok')) {
+        return `<span class="px-2.5 py-0.5 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-bold">TikTok 🎵</span>`;
+      } else if (source.includes('facebook')) {
+        return `<span class="px-2.5 py-0.5 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[10px] font-bold">Facebook 📘</span>`;
+      }
+      return `<span class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 text-[10px] font-bold">Direct / مباشر 🔗</span>`;
+    }
+
+    function formatPlatformName(src) {
+      src = (src || '').toLowerCase();
+      if (src.includes('instagram')) return 'إنستغرام (Instagram)';
+      if (src.includes('youtube')) return 'يوتيوب (YouTube)';
+      if (src.includes('tiktok')) return 'تيك توك (TikTok)';
+      if (src.includes('facebook')) return 'فيسبوك (Facebook)';
+      return 'مباشر (Direct)';
+    }
+
+    function formatCountryName(code) {
+      const map = {
+        EG: '🇪🇬 مصر',
+        SA: '🇸🇦 السعودية',
+        AE: '🇦🇪 الإمارات',
+        KW: '🇰🇼 الكويت',
+        QA: '🇶🇦 قطر',
+        OM: '🇴🇲 عمان',
+        BH: '🇧🇭 البحرين',
+        JO: '🇯🇴 الأردن',
+        IQ: '🇮🇶 العراق',
+        GLOBAL: '🌍 أخرى'
+      };
+      return map[code] || code || '🇪🇬 مصر';
+    }
+
+    function formatDateArabic(isoString) {
+      if (!isoString) return '--';
+      try {
+        const d = new Date(isoString);
+        return d.toLocaleDateString('ar-EG', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      } catch (e) {
+        return isoString;
+      }
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+      alert('تم نسخ الرقم: ' + text);
+    }
+
+    function copySqlCode() {
+      const sql = "create or replace function get_admin_leads(admin_pin text) returns setof waitlist_leads language plpgsql security definer as $$ begin if admin_pin = '2026' then return query select * from waitlist_leads order by created_at desc; else raise exception 'Unauthorized'; end if; end; $$;";
+      navigator.clipboard.writeText(sql);
+      alert('تم نسخ كود الـ SQL بنجاح! الصقه في SQL Editor في Supabase واضغط Run.');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]);
+    }
+  </script>
+</body>
+</html>

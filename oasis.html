@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>واحة نور | الاستشفاء الأيضي الشامل والتحرر العصبي • د. أحمد الخطيب</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="واحة نور | الاستشفاء الأيضي الشامل • د. أحمد الخطيب">
+  <meta name="description" content="ملاذك العلمي والنفسي لاستعادة توازن الهرمونات، كسر مقاومة الأنسولين، والتحرر التام من هوس الدايت والتوتر العصبي مع د. أحمد الخطيب.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    :root {
+      --bg-dark: #040A12;
+      --bg-card: #0A1626;
+      --cyan-accent: #06B6D4;
+      --emerald-accent: #10B981;
+      --amber-accent: #F59E0B;
+      --ease-motioname: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: #E2E8F0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+    }
+
+    /* Ambient Glows */
+    .radial-glow-cyan {
+      background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(4, 10, 18, 0) 70%);
+    }
+
+    .radial-glow-emerald {
+      background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.12) 0%, rgba(4, 10, 18, 0) 70%);
+    }
+
+    /* Shimmer Pass */
+    .btn-shimmer-pass {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer-pass::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(255,255,255,0.25), transparent);
+      transform: rotate(25deg) translateY(-100%);
+      animation: shimmerLoop 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes shimmerLoop {
+      0%, 70% { transform: rotate(25deg) translateY(-100%); }
+      100% { transform: rotate(25deg) translateY(100%); }
+    }
+
+    /* Anxiety Jitter Animation */
+    @keyframes jitter {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(1px, -1px); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+      100% { transform: translate(0, 0); }
+    }
+    .anxiety-jitter {
+      animation: jitter 0.25s infinite ease-in-out;
+    }
+
+    /* Card 3D Perspective */
+    .spatial-deck {
+      perspective: 1200px;
+    }
+    .spatial-card {
+      transition: all 0.5s var(--ease-motioname);
+      transform-style: preserve-3d;
+    }
+
+    /* Smooth Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #040A12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #152B44;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06B6D4;
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-500/30 selection:text-cyan-200">
+
+  <!-- ==================== TOP ANNOUNCEMENT BANNER ==================== -->
+  <aside aria-label="شريط الإعلان الترحيبي" class="bg-gradient-to-r from-[#040A12] via-[#0D243A] to-[#040A12] border-b border-cyan-500/20 py-2.5 px-4 text-center text-xs sm:text-sm text-cyan-200 flex items-center justify-center gap-2 relative z-50">
+    <span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span class="font-medium">التجربة البصرية المتقدمة • <strong>واحة نور</strong> بالرؤية الحيوية الجديدة لدكتور أحمد الخطيب</span>
+    <a href="#architect" class="underline decoration-cyan-400 font-bold hover:text-white transition-colors mr-2">صمم واحتك الخاصة ←</a>
+  </aside>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-[#040A12]/90 backdrop-blur-xl border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-500 to-emerald-500 p-0.5 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#040A12] rounded-[14px] flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5 text-cyan-400"></i>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl font-black tracking-tight text-white">واحة نُـور</span>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">V2 EXPERIENCE</span>
+          </div>
+          <span class="text-[11px] text-slate-400 block -mt-0.5">الاستشفاء الأيضي • د. أحمد الخطيب</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="#biomarker" class="hover:text-cyan-400 transition-colors">البصمة الحيوية</a>
+        <a href="#circadian" class="hover:text-cyan-400 transition-colors">ساعة الـ 24 ساعة</a>
+        <a href="#cell-lens" class="hover:text-cyan-400 transition-colors">الشفاء الخلوي</a>
+        <a href="#deconstructed" class="hover:text-cyan-400 transition-colors">تفكيك الطبق</a>
+        <a href="#mind-freedom" class="hover:text-cyan-400 transition-colors">التحرر النفسي</a>
+        <a href="#clinical-dossier" class="hover:text-cyan-400 transition-colors">الأدلة السريرية</a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-3">
+        <a href="#architect" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-emerald-500 hover:brightness-110 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-cyan-500/20 transition-all btn-shimmer-pass">
+          فصل برنامجك المخصص
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+  <!-- ==================== 1. HERO: LIVING BIOMARKER & HARMONIC RESONANCE ==================== -->
+  <section id="biomarker" class="relative pt-16 pb-24 sm:pt-24 sm:pb-32 overflow-hidden border-b border-white/5">
+    <!-- Ambient Radial Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] radial-glow-cyan pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Text Column -->
+        <div class="lg:col-span-7 space-y-6 text-right">
+          
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-xs font-bold">
+            <i data-lucide="activity" class="w-4 h-4 text-emerald-400 animate-pulse"></i>
+            <span>الجيل الجديد من الاستشفاء الأيضي والنفسي</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.25]">
+            لم يكن جسدك يوماً بحاجة إلى تجويع.. <br/>
+            <span class="bg-gradient-to-l from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent">
+              كان بحاجة فقط لاستعادة نغمته الحيوية الأصلية
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal">
+            في واحة نور، نوقف الصراع الدامي مع الميزان والسعرات. نعيد ضبط هرمونات الجوع والتوتر من جذورها، ليعود جسدك إلى طبيعته الفطرية: حارق للدهون، هادئ الأعصاب، ومليء بالطاقة الحقيقية.
+          </p>
+
+          <!-- Interactive Mode Switcher for Biomarker -->
+          <div class="pt-4 flex flex-wrap items-center gap-4">
+            <span class="text-xs font-bold text-slate-400">جرب التبديل بين الحالتين الحركيتين:</span>
+            <div class="inline-flex p-1 rounded-2xl bg-[#0B1829] border border-white/10">
+              <button id="btn-mode-chaos" onclick="setWaveMode('chaos')" class="px-4 py-2 rounded-xl text-xs font-bold transition-all text-red-400 hover:text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-red-500"></span>
+                نمط التوتر والحرمان (القديم)
+              </button>
+              <button id="btn-mode-coherent" onclick="setWaveMode('coherent')" class="px-4 py-2 rounded-xl text-xs font-black transition-all bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-slate-950"></span>
+                نمط استشفاء واحة نور
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-xl">
+            <div class="p-3.5 rounded-2xl bg-[#091524] border border-white/5">
+              <span class="text-[11px] font-bold text-slate-400 block">مرونة الميتوكوندريا</span>
+              <span id="metric-mito" class="text-lg sm:text-xl font-black text-emerald-400 mt-0.5 block">98.4%</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#091524] border border-white/5">
+              <span class="text-[11px] font-bold text-slate-400 block">نغمة العصب الحائر</span>
+              <span id="metric-vagus" class="text-lg sm:text-xl font-black text-cyan-300 mt-0.5 block">متناغمة (Optimal)</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-[#091524] border border-white/5">
+              <span class="text-[11px] font-bold text-slate-400 block">حالة الشبع الهرموني</span>
+              <span id="metric-satiety" class="text-lg sm:text-xl font-black text-amber-400 mt-0.5 block">مستقرة لـ 6h</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Visual Column: Living Canvas Waveform Core -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-[460px] aspect-square rounded-[36px] bg-[#071322] border-2 border-cyan-500/30 p-4 shadow-2xl shadow-cyan-950/50 flex flex-col items-center justify-between overflow-hidden">
+            
+            <!-- Radial Pulse Aura -->
+            <div id="core-aura" class="absolute inset-0 bg-gradient-to-b from-cyan-500/10 via-emerald-500/5 to-transparent transition-opacity duration-700 pointer-events-none"></div>
+
+            <!-- Top Header of Card -->
+            <div class="w-full flex items-center justify-between z-10 px-2 pt-2">
+              <div class="flex items-center gap-2">
+                <span id="core-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="core-title" class="text-xs font-black text-emerald-300">الانسجام البيولوجي الحي (Resonant State)</span>
+              </div>
+              <span id="core-freq" class="text-[10px] font-mono font-bold text-slate-400 bg-black/40 px-2 py-0.5 rounded-md border border-white/10">0.14 Hz • Vagal Calm</span>
+            </div>
+
+            <!-- Canvas Center -->
+            <div class="relative w-full h-[260px] flex items-center justify-center my-auto">
+              <canvas id="metabolicWaveCanvas" width="420" height="260" class="w-full h-full"></canvas>
+            </div>
+
+            <!-- Bottom Status Bar -->
+            <div class="w-full z-10 bg-[#0A1A2E]/80 backdrop-blur-md rounded-2xl p-3 border border-white/10 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                <span id="core-status-text" class="text-slate-200 font-bold">إيقاف تخزين الدهون القسري التلقائي</span>
+              </div>
+              <span class="text-[11px] text-cyan-400 font-black">نشط الآن</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 2. CIRCADIAN 24H ARC: THE HORMONE CLOCK ==================== -->
+  <section id="circadian" class="py-20 sm:py-32 bg-[#050D17] relative overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold">
+          <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
+          <span>محاكاة الـ 24 ساعة في جسدك</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+          قوس الساعة البيولوجية: <br/>
+          <span class="bg-gradient-to-l from-amber-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+            أين يفشل الدايت التقليدي، وكيف تشفيك واحة نور؟
+          </span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          حرك المقبض الزمني عبر ساعات اليوم لترى الاختلاف الفارق في نشاطك، كورتيزولك، وجوعك بين الإرهاق القديم والاستشفاء المتجدد.
+        </p>
+      </div>
+
+      <!-- Time Scrubber Component -->
+      <div class="max-w-4xl mx-auto bg-[#071526] border border-cyan-500/20 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+        
+        <!-- Interactive Slider Control -->
+        <div class="space-y-4 mb-8">
+          <div class="flex items-center justify-between text-xs sm:text-sm font-bold text-slate-300">
+            <span class="flex items-center gap-1.5 text-amber-400">
+              <i data-lucide="sunrise" class="w-4 h-4"></i>
+              07:00 ص (الصباح)
+            </span>
+            <span class="flex items-center gap-1.5 text-cyan-300">
+              <i data-lucide="sun" class="w-4 h-4"></i>
+              03:00 م (الظهيرة)
+            </span>
+            <span class="flex items-center gap-1.5 text-indigo-400">
+              <i data-lucide="moon" class="w-4 h-4"></i>
+              10:00 م (المساء)
+            </span>
+          </div>
+
+          <!-- Slider Track -->
+          <input type="range" id="circadianSlider" min="0" max="2" step="1" value="1" 
+                 oninput="updateCircadianStage(this.value)"
+                 class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400 transition-all">
+        </div>
+
+        <!-- Dynamic Content Card -->
+        <div id="circadian-card" class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-500">
+          
+          <!-- Old Way Box (Disrupted) -->
+          <div class="p-6 rounded-2xl bg-red-950/20 border border-red-800/40 space-y-4 text-right">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-red-500/20 text-red-300 text-xs font-bold flex items-center gap-1">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i>
+                دايت الحرمان والتوتر
+              </span>
+              <span id="old-time-badge" class="text-xs font-mono text-red-400 font-bold">03:00 عصراً</span>
+            </div>
+            <h3 id="old-title" class="text-lg font-black text-white">انهيار الطاقة وخمول ما بعد الغداء</h3>
+            <p id="old-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              هبوط حاد في جلوكوز الدم نتيجة وجبة غير متوازنة، يتبعه اندفاع جارف نحو السكريات والكافيين للمقاومة، وارتفاع هرمون الكورتيزول لتعويض نقص الطاقة.
+            </p>
+            <div class="pt-2 border-t border-red-900/30 flex items-center justify-between text-xs text-red-300">
+              <span>حالة الكورتيزول:</span>
+              <strong id="old-cortisol" class="font-black">مرتفع ومضطرب (High Stress)</strong>
+            </div>
+          </div>
+
+          <!-- Wahet Nour Way Box (Restored) -->
+          <div class="p-6 rounded-2xl bg-cyan-950/30 border border-cyan-500/40 space-y-4 text-right">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold flex items-center gap-1">
+                <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+                بروتوكول واحة نور
+              </span>
+              <span id="new-time-badge" class="text-xs font-mono text-cyan-300 font-bold">03:00 عصراً</span>
+            </div>
+            <h3 id="new-title" class="text-lg font-black text-white">صفاء ذهني وطاقة متقدة مستمرة</h3>
+            <p id="new-desc" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+              تثبيت منحنى الجلوكوز بوجبة مشبعة ذكية؛ الجسم يعتمد على حرق الدهون الطبيعي، طاقة صافية متصلة بدون أدنى خمول وبدون حاجة لمنبهات إضافية.
+            </p>
+            <div class="pt-2 border-t border-cyan-800/30 flex items-center justify-between text-xs text-emerald-300">
+              <span>حساسية الأنسولين:</span>
+              <strong id="new-insulin" class="font-black">مثالية والشبع ممتد</strong>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. CELLULAR REJUVENATION LENS ==================== -->
+  <section id="cell-lens" class="py-20 sm:py-32 bg-[#040A12] relative overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Text Explainer -->
+        <div class="lg:col-span-6 space-y-6 text-right">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950/60 border border-teal-500/30 text-teal-300 text-xs font-bold">
+            <i data-lucide="microscope" class="w-4 h-4 text-teal-400"></i>
+            <span>مجهر الشفاء الخلوي • العمق العلمي</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+            ماذا يحدث لخلاياك عندما نكسر <br/>
+            <span class="bg-gradient-to-l from-teal-300 via-cyan-300 to-emerald-300 bg-clip-text text-transparent">
+              مقاومة الأنسولين بيولوجياً؟
+            </span>
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+            الدهون العنيدة ليست دهوناً لا تستطيع حرقها؛ هي دهون محبوسة خلف أقفال خلوية مغلقة بفعل الالتهاب المزمن. عندما نعيد حساسية المستقبلات، تفتح الخلية بواباتها وتتحول الدهون إلى طاقة نظيفة.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-[#081626] border border-white/5">
+              <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="key" class="w-4 h-4"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-200">
+                <strong>المفتاح الهرموني:</strong> الأنسولين لم يعد يصرخ على أبواب الخلية بمستويات سامة، بل يهمس بنعومة فتستجيب فوراً.
+              </p>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3.5 rounded-xl bg-[#081626] border border-white/5">
+              <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-200">
+                <strong>انبعاث الـ ATP:</strong> الميتوكوندريا تستعيد كفاءتها لحرق الأحماض الدهنية كوقود أساسي، لتشعر بالخفة والنشاط تلقائياً.
+              </p>
+            </div>
+          </div>
+
+          <button onclick="triggerCellRejuvenation()" class="px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:brightness-110 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-teal-500/20 transition-all flex items-center gap-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>اضغط لمحاكاة فك القفل الخلوي الآن</span>
+          </button>
+        </div>
+
+        <!-- Right: Interactive Graphic Simulation -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-[440px] aspect-square rounded-[36px] bg-[#071424] border-2 border-teal-500/30 p-6 flex flex-col items-center justify-center shadow-2xl relative overflow-hidden">
+            
+            <!-- Cell Aura -->
+            <div id="cell-aura" class="absolute inset-8 rounded-full bg-teal-500/10 blur-2xl transition-all duration-700"></div>
+
+            <!-- The Cell Body -->
+            <div id="cell-body" class="relative w-56 h-56 rounded-full border-4 border-dashed border-teal-400/60 bg-gradient-to-tr from-[#0B253D] to-[#0D3659] flex items-center justify-center shadow-inner transition-all duration-700">
+              
+              <!-- Visceral Fat Droplets Inside -->
+              <div id="fat-droplet-1" class="absolute w-8 h-8 rounded-full bg-amber-500/70 blur-[1px] transition-all duration-500 top-10 left-12"></div>
+              <div id="fat-droplet-2" class="absolute w-10 h-10 rounded-full bg-amber-500/60 blur-[1px] transition-all duration-500 bottom-12 right-10"></div>
+              <div id="fat-droplet-3" class="absolute w-7 h-7 rounded-full bg-amber-500/50 blur-[1px] transition-all duration-500 top-16 right-14"></div>
+
+              <!-- Mitochondria Core -->
+              <div class="relative z-10 text-center space-y-1">
+                <i data-lucide="cpu" class="w-10 h-10 text-cyan-300 mx-auto animate-pulse"></i>
+                <span id="cell-state-label" class="text-xs font-black text-white block">مستقبلات نشطة</span>
+                <span id="energy-label" class="text-[10px] text-teal-300 font-mono">طاقة حيوية ATP عالية</span>
+              </div>
+
+              <!-- Receptor Port -->
+              <div id="receptor-port" class="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-teal-400 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-500">
+                <i data-lucide="unlock" class="w-4 h-4 text-slate-950"></i>
+              </div>
+
+            </div>
+
+            <!-- Status Caption -->
+            <div class="mt-8 text-center space-y-1 z-10">
+              <span id="cell-msg" class="text-xs sm:text-sm font-bold text-slate-200 block">
+                ✓ البوابة الخلوية مفتوحة • حرق الدهون يعمل بكفاءة فطرية
+              </span>
+              <span class="text-[11px] text-teal-400 font-medium">استجابة هرمونية فورية دون جوع</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. DECONSTRUCTED FEAST: ARABIC PLATE LAB ==================== -->
+  <section id="deconstructed" class="py-20 sm:py-32 bg-[#050D17] relative overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
+          <i data-lucide="utensils" class="w-4 h-4 text-emerald-400"></i>
+          <span>تفكيك الطبق الشرقي • وداعاً للمسلوق والكئيب</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+          طاولة التفكيك التوليفي: <br/>
+          <span class="bg-gradient-to-l from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
+            أطباق بيتنا المشبعة تصبح سلاحك الأقوى للاستشفاء
+          </span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          في واحة نور لا نمنعك من لحم الخروف، ولا من طواجن المطبخ العربي الغنية؛ بل نعيد هندستها كيميائياً لتخدم هرمونات الشبع واستقرار الإنسولين.
+        </p>
+      </div>
+
+      <!-- Exploded Layers Interactive Deck -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+        
+        <!-- Left Visual: Plate Image with Floating Pins -->
+        <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-[420px] rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl bg-[#091728] group">
+            <img src="assets/meal_after_saliim.webp" alt="طبق واحة نور المشبع" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-[#040A12] via-transparent to-transparent"></div>
+            
+            <!-- Pin 1: Protein -->
+            <button onclick="selectPlateLayer('protein')" class="absolute top-1/4 right-8 px-3 py-1.5 rounded-full bg-[#040A12]/90 backdrop-blur-md border border-emerald-400/50 text-emerald-300 text-xs font-bold shadow-lg hover:scale-110 transition-transform flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              طبقة الشبع المستدام
+            </button>
+
+            <!-- Pin 2: Healthy Fats -->
+            <button onclick="selectPlateLayer('fats')" class="absolute bottom-16 left-8 px-3 py-1.5 rounded-full bg-[#040A12]/90 backdrop-blur-md border border-cyan-400/50 text-cyan-300 text-xs font-bold shadow-lg hover:scale-110 transition-transform flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              استقرار الجلوكوز
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Exploded Layer Details -->
+        <div class="lg:col-span-6 space-y-4 text-right">
+          
+          <!-- Layer 1 Tab -->
+          <div id="tab-layer-protein" onclick="selectPlateLayer('protein')" class="p-5 rounded-2xl bg-[#0A1A2E] border-2 border-emerald-500/50 cursor-pointer transition-all space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-emerald-400 flex items-center gap-1.5">
+                <i data-lucide="shield" class="w-4 h-4"></i>
+                الطبقة الأولى: بروتين عالي الجودة مشبع
+              </span>
+              <span class="text-[11px] font-bold text-slate-400">تثبيط الجريلين 6h</span>
+            </div>
+            <h4 class="text-base font-black text-white">لحوم طازجة، أسماك مشوية، ودواجن متبلة بذكاء</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تحفز هرمونات PYY و GLP-1 الطبيعية لتبعث إشارة شبع حقيقية لمركز الشهية في المخ، لتنسى رغبة النقرشة العشوائية نهائياً.
+            </p>
+          </div>
+
+          <!-- Layer 2 Tab -->
+          <div id="tab-layer-fats" onclick="selectPlateLayer('fats')" class="p-5 rounded-2xl bg-[#081525] border border-white/10 hover:border-cyan-500/40 cursor-pointer transition-all space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-cyan-400 flex items-center gap-1.5">
+                <i data-lucide="droplet" class="w-4 h-4"></i>
+                الطبقة الثانية: دهون صحية نقية غير مهدرجة
+              </span>
+              <span class="text-[11px] font-bold text-slate-400">Zero Insulin Spike</span>
+            </div>
+            <h4 class="text-base font-black text-white">زيت زيتون بكر، أفوكادو، طحينة سمسم صافية</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تمنح طاقة مستقرة بطيئة الاحتراق دون أن ترفع إفراز الأنسولين بمقدار واحد، مما يبقي مسار حرق الدهون مفتوحاً بلا انقطاع.
+            </p>
+          </div>
+
+          <!-- Layer 3 Tab -->
+          <div id="tab-layer-fiber" onclick="selectPlateLayer('fiber')" class="p-5 rounded-2xl bg-[#081525] border border-white/10 hover:border-amber-500/40 cursor-pointer transition-all space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-amber-400 flex items-center gap-1.5">
+                <i data-lucide="leaf" class="w-4 h-4"></i>
+                الطبقة الثالثة: مصفوفة الألياف ومضادات الالتهاب
+              </span>
+              <span class="text-[11px] font-bold text-slate-400">تغذية الميكروبيوم</span>
+            </div>
+            <h4 class="text-base font-black text-white">خضار ورقية، أعشاب جبلية، وتوابل مضادة للأكسدة</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تهدئ بطانة الأمعاء، تقضي على الانتفاخات، وتمنحك هضم مريح وخصر منكمش دون غازات أو ثقل مزعج.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. MENTAL FREEDOM SPECTRUM ==================== -->
+  <section id="mind-freedom" class="py-20 sm:py-32 bg-[#040A12] relative overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold">
+          <i data-lucide="heart" class="w-4 h-4 text-cyan-400"></i>
+          <span>الشفاء النفسي والتحرر من عقدة الذنب</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+          مرآة التحرر النفسي: <br/>
+          <span class="bg-gradient-to-l from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent">
+            من قفص الحرمان وجلد الذات إلى السكينة المطلقة
+          </span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          أكبر عائق أمام ثبات وزنك لم يكن الأكل يوماً؛ كان التوتر، الخوف من المناسبات، واللوم المستمر في المرآة. شاهد التحول الشعوري الذي تصنعه واحة نور في روحك قبل جسدك.
+        </p>
+      </div>
+
+      <!-- Scrubber Interaction for State Shift -->
+      <div class="max-w-3xl mx-auto bg-[#071526] border border-cyan-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative">
+        
+        <!-- Toggle Control -->
+        <div class="flex items-center justify-center gap-4 mb-8">
+          <button id="btn-mind-cage" onclick="setMindState('cage')" class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-red-950/40 text-red-300 border border-red-800/40 transition-all flex items-center gap-2">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            قفص الدايت وجلد الذات
+          </button>
+          
+          <button id="btn-mind-oasis" onclick="setMindState('oasis')" class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2">
+            <i data-lucide="smile" class="w-4 h-4"></i>
+            سكينة واحة نور
+          </button>
+        </div>
+
+        <!-- Dynamic Emotional Card -->
+        <div id="mind-card" class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#091D33] to-[#061424] border border-cyan-500/30 text-right space-y-4 transition-all duration-700">
+          
+          <div class="flex items-center justify-between">
+            <span id="mind-badge" class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold">
+              الحالة الشعورية: أمان بيولوجي وتصالح
+            </span>
+            <span id="mind-icon" class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center">
+              <i data-lucide="feather" class="w-4 h-4"></i>
+            </span>
+          </div>
+
+          <h3 id="mind-headline" class="text-xl sm:text-2xl font-black text-white leading-relaxed">
+            "أجلس في عزائم أهلي ومناسبات أحبابي دون خوف أو حرج.. آكل بمتعة وعقلي هادئ تماماً."
+          </h3>
+
+          <p id="mind-paragraph" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            اختفى وسواس حساب كل جرام وحبة تمر. أصبح الميزان مجرد رقم عابر، وملابسي تتسع بأناقة كل أسبوع لأن جسدي لم يعد خائفاً، بل يشعر بالأمان الكامل للتخلي عن مخازن الدهون العنيدة.
+          </p>
+
+          <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+            <span>مستوى هرمون الكورتيزول:</span>
+            <strong id="mind-metric" class="text-emerald-400 font-bold font-mono">طبيعي ومريح (Nervous Balance)</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. SPATIAL CLINICAL DOSSIER: REAL LAB CASES ==================== -->
+  <section id="clinical-dossier" class="py-20 sm:py-32 bg-[#050D17] relative overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold">
+          <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+          <span>إضبارة الأدلة السريرية والتحاليل المخبرية</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+          ملف الحالات الحقيقية بالأرقام: <br/>
+          <span class="bg-gradient-to-l from-cyan-300 via-teal-300 to-emerald-300 bg-clip-text text-transparent">
+            أرقام تحاليل لا تكذب ونتائج مثبتة بالدليل الطبي
+          </span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          انقر لتقليب الحالات السريرية في الإضبارة لمشاهدة تحسن تحاليل الدم ومحيط الخصر قبل وبعد واحة نور.
+        </p>
+      </div>
+
+      <!-- Dossier Interactive Deck -->
+      <div class="max-w-4xl mx-auto spatial-deck">
+        
+        <!-- Case Selector Buttons -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 mb-8 flex-wrap">
+          <button onclick="loadDossierCase(1)" id="dossier-tab-1" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-black bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md transition-all">
+            الحالة 01: د. ريم (تكيس مبايض و-19 كجم)
+          </button>
+          <button onclick="loadDossierCase(2)" id="dossier-tab-2" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-[#0A1A2E] text-slate-300 border border-white/10 hover:border-cyan-400 transition-all">
+            الحالة 02: م. فيصل (تراكمي سكر ودهون كبد)
+          </button>
+          <button onclick="loadDossierCase(3)" id="dossier-tab-3" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-[#0A1A2E] text-slate-300 border border-white/10 hover:border-cyan-400 transition-all">
+            الحالة 03: نورة (ثبات وزن وسنوات عبايات فضفاضة)
+          </button>
+        </div>
+
+        <!-- The Active Dossier Card -->
+        <div id="dossier-card" class="spatial-card p-6 sm:p-10 rounded-3xl bg-[#08182B] border-2 border-cyan-500/40 shadow-2xl space-y-6 text-right">
+          
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+            <div>
+              <span id="case-badge" class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold">
+                ملف طبي سريري رقم #WN-8492
+              </span>
+              <h3 id="case-name" class="text-xl sm:text-2xl font-black text-white mt-2">
+                د. ريم • 34 سنة • طبيبة باطنية
+              </h3>
+            </div>
+            <div class="text-left sm:text-right">
+              <span class="text-xs text-slate-400 block font-bold">إجمالي مدة الاستشفاء:</span>
+              <strong id="case-duration" class="text-sm font-black text-emerald-400">14 أسبوعاً فقط</strong>
+            </div>
+          </div>
+
+          <!-- Lab Test Metrics Comparison Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            
+            <div class="p-3.5 rounded-2xl bg-[#040C17] border border-white/5">
+              <span class="text-[11px] text-slate-400 block font-bold">مقاومة الأنسولين (HOMA-IR)</span>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span id="case-homa" class="text-base sm:text-lg font-black text-emerald-400">1.1 (طبيعي)</span>
+              </div>
+              <span id="case-homa-prev" class="text-[10px] text-red-400 font-bold block mt-0.5">كانت: 4.4 (شديدة)</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#040C17] border border-white/5">
+              <span class="text-[11px] text-slate-400 block font-bold">السكر التراكمي (HbA1c)</span>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span id="case-a1c" class="text-base sm:text-lg font-black text-emerald-400">5.1%</span>
+              </div>
+              <span id="case-a1c-prev" class="text-[10px] text-red-400 font-bold block mt-0.5">كان: 6.2%</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#040C17] border border-white/5">
+              <span class="text-[11px] text-slate-400 block font-bold">نزول الوزن الصافي</span>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span id="case-weight" class="text-base sm:text-lg font-black text-cyan-300">-19 كجم</span>
+              </div>
+              <span id="case-weight-prev" class="text-[10px] text-emerald-400 font-bold block mt-0.5">ثبات دائم دون ارتداد</span>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-[#040C17] border border-white/5">
+              <span class="text-[11px] text-slate-400 block font-bold">انكماش محيط الخصر</span>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span id="case-waist" class="text-base sm:text-lg font-black text-amber-400">-21 سم</span>
+              </div>
+              <span class="text-[10px] text-slate-400 font-bold block mt-0.5">تخلص تام من دهون البطن</span>
+            </div>
+
+          </div>
+
+          <!-- Doctor's Quote / Clinical Note -->
+          <div class="p-4 rounded-2xl bg-cyan-950/30 border border-cyan-800/40 text-xs sm:text-sm text-slate-200 leading-relaxed">
+            <strong class="text-cyan-300 block mb-1">التقرير السريري لدكتور أحمد الخطيب:</strong>
+            <p id="case-note">
+              "حالة د. ريم أثبتت أن زيادة الوزن لم تكن يوماً قلة انضباط، بل كانت صرخة استغاثة من هرمونات المبيض ومقاومة الأنسولين. بمجرد رفع الإجهاد وتطبيق بروتوكول واحة نور، انتظمت دورتها وتراجع الوزن تلقائياً وبلا رجعة."
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. BESPOKE OASIS ARCHITECT: PLAN CONFIGURATOR ==================== -->
+  <section id="architect" class="py-20 sm:py-32 bg-[#040A12] relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-emerald-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold">
+          <i data-lucide="sliders" class="w-4 h-4 text-emerald-400"></i>
+          <span>مهندس واحتك الخاصة • تفصيل حسب حياتك</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white">
+          صمم باقتك الاستشفائية الخاصة: <br/>
+          <span class="bg-gradient-to-l from-cyan-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent">
+            برنامج يناسب دوامك وظروفك دون تجديد إجباري
+          </span>
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+          أجب عن 3 محددات سريعة ليقوم نظامنا باقتراح الباقة الأنسب لجسمك وميزانيتك فورياً.
+        </p>
+      </div>
+
+      <!-- Configurator Console -->
+      <div class="max-w-3xl mx-auto bg-[#071626] border-2 border-cyan-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 text-right">
+        
+        <!-- Step 1: Routine -->
+        <div class="space-y-3">
+          <label class="text-xs sm:text-sm font-bold text-slate-200 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs">1</span>
+            طبيعة روتينك وساعات يومك:
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button type="button" onclick="selectConfig('routine', 'desk', this)" class="config-btn p-3.5 rounded-xl bg-[#091E33] border border-cyan-500/40 text-xs font-bold text-white text-right hover:border-cyan-400 transition-all active-config">
+              مكتبي / قليل الحركة
+            </button>
+            <button type="button" onclick="selectConfig('routine', 'busy', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              ساعات عمل طويلة ومزدحمة
+            </button>
+            <button type="button" onclick="selectConfig('routine', 'family', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              روتين عائلي والتزامات بيت
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Biological Hurdle -->
+        <div class="space-y-3">
+          <label class="text-xs sm:text-sm font-bold text-slate-200 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs">2</span>
+            التحدي الأكبر الذي يرهقك:
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button type="button" onclick="selectConfig('hurdle', 'insulin', this)" class="config-btn p-3.5 rounded-xl bg-[#091E33] border border-cyan-500/40 text-xs font-bold text-white text-right hover:border-cyan-400 transition-all active-config">
+              مقاومة أنسولين وثبات وزن
+            </button>
+            <button type="button" onclick="selectConfig('hurdle', 'craving', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              شراهة سكريات وتوتر عصبي
+            </button>
+            <button type="button" onclick="selectConfig('hurdle', 'energy', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              خمول صباحي وثقل بالجسم
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Support Level -->
+        <div class="space-y-3">
+          <label class="text-xs sm:text-sm font-bold text-slate-200 flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs">3</span>
+            مستوى المتابعة المفضل لديك:
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button type="button" onclick="selectConfig('support', 'healthy', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              متابعة شهرية هادئة ($69)
+            </button>
+            <button type="button" onclick="selectConfig('support', 'pro', this)" class="config-btn p-3.5 rounded-xl bg-[#091E33] border border-cyan-500/40 text-xs font-bold text-white text-right hover:border-cyan-400 transition-all active-config">
+              رفيق كوتشينج يومي متقدم ($119)
+            </button>
+            <button type="button" onclick="selectConfig('support', 'vip', this)" class="config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all">
+              إشراف د. أحمد الفردي 1:1 ($249)
+            </button>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div id="architect-result" class="p-6 rounded-2xl bg-gradient-to-r from-[#0B253D] to-[#0A1C2E] border-2 border-cyan-400 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-cyan-300 uppercase tracking-wider block">الباقة الموصى بها لك:</span>
+              <h4 id="rec-plan-title" class="text-xl sm:text-2xl font-black text-white mt-0.5">باقة Pro المتقدمة (الأكثر اكتمالاً)</h4>
+            </div>
+            <div class="text-left">
+              <span id="rec-plan-price" class="text-2xl sm:text-3xl font-black text-emerald-400">$119</span>
+              <span class="text-[11px] text-slate-400 block">شهرياً • دفعة واحدة</span>
+            </div>
+          </div>
+
+          <p id="rec-plan-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            الخيار الأمثل لروتينك؛ تشمل خطة مخصصة 100% لأكلات بيتك، شات يومي مباشر مع الكوتش، مكالمات تقييم أسبوعية، ومتابعة دقيقة لكسر مقاومة الأنسولين خطوة بخطوة.
+          </p>
+
+          <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="text-xs text-slate-400 flex items-center gap-1.5">
+              <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+              بدون أي خصم تلقائي أو تجديد إجباري نهائياً
+            </span>
+            <button onclick="openBookingFromArchitect()" class="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 hover:brightness-110 text-slate-950 font-black text-xs sm:text-sm shadow-xl shadow-cyan-500/20 transition-all btn-shimmer-pass">
+              تأكيد وحجز الباقة الآن ←
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  </main>
+
+  <!-- ==================== BOOKING MODAL ==================== -->
+  <div id="bookingModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-lg bg-[#071626] border-2 border-cyan-500/40 rounded-3xl p-6 sm:p-8 space-y-6 text-right relative shadow-2xl">
+      
+      <button onclick="closeBookingModal()" class="absolute top-5 left-5 text-slate-400 hover:text-white p-2">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div>
+        <span class="text-xs font-bold text-cyan-400">واحة نور • تأكيد رفيق رحلتك</span>
+        <h3 id="modalPlanTitle" class="text-xl sm:text-2xl font-black text-white mt-1">باقة Pro المتقدمة</h3>
+        <p class="text-xs text-slate-400 mt-1">املأ بياناتك ليتواصل معك فريق د. أحمد الخطيب لتفعيل اشتراكك وبدء تقييمك الطبي فوراً.</p>
+      </div>
+
+      <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+        <div>
+          <label class="text-xs font-bold text-slate-300 block mb-1">الاسم الكريم:</label>
+          <input type="text" id="custName" required placeholder="مثال: نورة العتيبي" class="w-full px-4 py-3 bg-[#0A1A2E] border border-white/10 rounded-xl text-white font-medium text-xs sm:text-sm focus:border-cyan-400 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-300 block mb-1">رقم الواتساب (مع مفتاح الدولة):</label>
+          <input type="tel" id="custPhone" required placeholder="مثال: +966 50 123 4567" class="w-full px-4 py-3 bg-[#0A1A2E] border border-white/10 rounded-xl text-white font-medium text-xs sm:text-sm focus:border-cyan-400 focus:outline-none text-left" dir="ltr">
+        </div>
+
+        <div>
+          <label class="text-xs font-bold text-slate-300 block mb-1">البريد الإلكتروني:</label>
+          <input type="email" id="custEmail" required placeholder="name@example.com" class="w-full px-4 py-3 bg-[#0A1A2E] border border-white/10 rounded-xl text-white font-medium text-xs sm:text-sm focus:border-cyan-400 focus:outline-none text-left" dir="ltr">
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 hover:brightness-110 text-slate-950 font-black text-sm shadow-xl shadow-cyan-500/20 transition-all">
+          إتمام الحجز والتواصل فوراً
+        </button>
+      </form>
+
+      <p class="text-[11px] text-center text-slate-400">
+        🔒 معلوماتك الطبية والشخصية مشفرة ومحفوظة بسرية تامة.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#03070E] border-t border-white/10 py-12 text-slate-400 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="flex items-center justify-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+        <span class="font-black text-white text-base">واحة نور • مع د. أحمد الخطيب</span>
+      </div>
+      <p class="max-w-xl mx-auto text-xs text-slate-500 leading-relaxed">
+        جميع الحقوق محفوظة © 2026 د. أحمد الخطيب. منصة واحة نور مصممة للاستشفاء الأيضي ونمط الحياة المستدام المبني على أحدث الدلائل العلمية والطبية.
+      </p>
+      <div class="flex items-center justify-center gap-6 text-xs text-slate-400 pt-2">
+        <a href="https://www.ahmedelkhateeb.com" class="hover:text-cyan-400">الرئيسية</a>
+        <span>•</span>
+        <a href="https://www.ahmedelkhateeb.com/wahet-nour" class="hover:text-cyan-400">النسخة السابقة</a>
+        <span>•</span>
+        <a href="#architect" class="hover:text-cyan-400">الاشتراك المخصص</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide && typeof lucide.createIcons === 'function') {
+        lucide.createIcons();
+      }
+      initWaveCanvas();
+    });
+
+    // 1. BIOMARKER CANVAS SIMULATION
+    let waveMode = 'coherent';
+    let waveTime = 0;
+    const canvas = document.getElementById('metabolicWaveCanvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+
+    function initWaveCanvas() {
+      if (!canvas || !ctx) return;
+      function animateWave() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const w = canvas.width;
+        const h = canvas.height;
+        const midY = h / 2;
+
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+
+        if (waveMode === 'coherent') {
+          // Lush harmonic sine resonance
+          ctx.strokeStyle = '#06B6D4';
+          for (let x = 0; x < w; x++) {
+            const y1 = Math.sin((x * 0.02) + waveTime) * 32;
+            const y2 = Math.sin((x * 0.04) + (waveTime * 1.5)) * 14;
+            const y = midY + y1 + y2;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          // Second Emerald Harmony Line
+          ctx.beginPath();
+          ctx.lineWidth = 1.5;
+          ctx.strokeStyle = '#10B981';
+          for (let x = 0; x < w; x++) {
+            const y = midY + Math.sin((x * 0.015) + (waveTime * 0.8)) * 40;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+
+          waveTime += 0.035;
+        } else {
+          // Jagged Anxiety / Calorie Stress Jitter
+          ctx.strokeStyle = '#EF4444';
+          for (let x = 0; x < w; x++) {
+            const noise = (Math.random() - 0.5) * 35;
+            const y = midY + Math.sin((x * 0.05) + (waveTime * 2.5)) * 20 + noise;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+          waveTime += 0.08;
+        }
+
+        requestAnimationFrame(animateWave);
+      }
+      animateWave();
+    }
+
+    function setWaveMode(mode) {
+      waveMode = mode;
+      const btnChaos = document.getElementById('btn-mode-chaos');
+      const btnCoherent = document.getElementById('btn-mode-coherent');
+      const dot = document.getElementById('core-dot');
+      const title = document.getElementById('core-title');
+      const freq = document.getElementById('core-freq');
+      const statusText = document.getElementById('core-status-text');
+      const mito = document.getElementById('metric-mito');
+      const vagus = document.getElementById('metric-vagus');
+
+      if (mode === 'coherent') {
+        if (btnCoherent) btnCoherent.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md flex items-center gap-1.5';
+        if (btnChaos) btnChaos.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all text-red-400 hover:text-white flex items-center gap-1.5';
+        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse';
+        if (title) { title.textContent = 'الانسجام البيولوجي الحي (Resonant State)'; title.className = 'text-xs font-black text-emerald-300'; }
+        if (freq) freq.textContent = '0.14 Hz • Vagal Calm';
+        if (statusText) statusText.textContent = 'إيقاف تخزين الدهون القسري التلقائي';
+        if (mito) { mito.textContent = '98.4%'; mito.className = 'text-lg sm:text-xl font-black text-emerald-400 mt-0.5 block'; }
+        if (vagus) vagus.textContent = 'متناغمة (Optimal)';
+      } else {
+        if (btnChaos) btnChaos.className = 'px-4 py-2 rounded-xl text-xs font-black transition-all bg-red-600 text-white shadow-md flex items-center gap-1.5';
+        if (btnCoherent) btnCoherent.className = 'px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5';
+        if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-red-500 animate-ping';
+        if (title) { title.textContent = 'تشتت كورتيزولي ومقاومة حرق (Stress State)'; title.className = 'text-xs font-black text-red-400'; }
+        if (freq) freq.textContent = '0.48 Hz • Cortisol Spike';
+        if (statusText) statusText.textContent = 'الجسم في وضع النجاة وتخزين الدهون الحشوية';
+        if (mito) { mito.textContent = '38.2%'; mito.className = 'text-lg sm:text-xl font-black text-red-400 mt-0.5 block'; }
+        if (vagus) vagus.textContent = 'منخفضة ومضطربة';
+      }
+    }
+
+    // 2. CIRCADIAN TIMELINE DATA
+    const CIRCADIAN_STAGES = [
+      {
+        oldTime: '07:00 صباحاً',
+        oldTitle: 'استيقاظ ثقيل وإرهاق الرنين المكرر',
+        oldDesc: 'استيقاظ بجسد محتقن وخمول شديد، وحاجة يائسة للكافيين والسكريات لبدء اليوم بسبب اضطراب الميلاتونين وارتفاع سكر الدم الفجري.',
+        oldCortisol: 'كورتيزول شاحب ومرتبك',
+        newTime: '07:00 صباحاً',
+        newTitle: 'استيقاظ خفيف بنشاط طبيعي تلقائي',
+        newDesc: 'استيقاظ فوري بنشاط ذاتي قبل المنبه؛ خفة ملحوظة في المعدة وانعدام الانتفاخ الصباحي بفضل نوم عميق وترميم خلوي ناجح.',
+        newInsulin: 'استقرار تام وسكر دم متزن'
+      },
+      {
+        oldTime: '03:00 عصراً',
+        oldTitle: 'انهيار الطاقة وخمول ما بعد الغداء',
+        oldDesc: 'هبوط حاد في جلوكوز الدم نتيجة وجبة غير متوازنة، يتبعه اندفاع جارف نحو السكريات والكافيين للمقاومة، وارتفاع هرمون الكورتيزول لتعويض نقص الطاقة.',
+        oldCortisol: 'مرتفع ومضطرب (High Stress)',
+        newTime: '03:00 عصراً',
+        newTitle: 'صفاء ذهني وطاقة متقدة مستمرة',
+        newDesc: 'تثبيت منحنى الجلوكوز بوجبة مشبعة ذكية؛ الجسم يعتمد على حرق الدهون الطبيعي، طاقة صافية متصلة بدون أدنى خمول وبدون حاجة لمنبهات إضافية.',
+        newInsulin: 'مثالية والشبع ممتد'
+      },
+      {
+        oldTime: '10:00 مساءً',
+        oldTitle: 'سهر متوتر وشراهة الثلاجة الليلية',
+        oldDesc: 'ارتفاع الكورتيزول بدلاً من الميلاتونين يمنع النوم، ورغبة قهرية في الأكل والتسالي ليلاً لتهدئة الجهاز العصبي المرهق.',
+        oldCortisol: 'أرق كورتيزولي وجوع عاطفي',
+        newTime: '10:00 مساءً',
+        newTitle: 'استرخاء عميق ونوم هادئ مغناطيسي',
+        newDesc: 'انخفاض تلقائي للكورتيزول وتدفق الميلاتونين الطبيعي؛ ذهاب للنوم براحة بال وشبع تام دون أي تفكير في الطعام حتى الصباح.',
+        newInsulin: 'صيام ليلي طبيعي مريح'
+      }
+    ];
+
+    function updateCircadianStage(idx) {
+      const stage = CIRCADIAN_STAGES[idx];
+      if (!stage) return;
+
+      const oldTimeBadge = document.getElementById('old-time-badge');
+      const oldTitle = document.getElementById('old-title');
+      const oldDesc = document.getElementById('old-desc');
+      const oldCortisol = document.getElementById('old-cortisol');
+
+      const newTimeBadge = document.getElementById('new-time-badge');
+      const newTitle = document.getElementById('new-title');
+      const newDesc = document.getElementById('new-desc');
+      const newInsulin = document.getElementById('new-insulin');
+
+      if (oldTimeBadge) oldTimeBadge.textContent = stage.oldTime;
+      if (oldTitle) oldTitle.textContent = stage.oldTitle;
+      if (oldDesc) oldDesc.textContent = stage.oldDesc;
+      if (oldCortisol) oldCortisol.textContent = stage.oldCortisol;
+
+      if (newTimeBadge) newTimeBadge.textContent = stage.newTime;
+      if (newTitle) newTitle.textContent = stage.newTitle;
+      if (newDesc) newDesc.textContent = stage.newDesc;
+      if (newInsulin) newInsulin.textContent = stage.newInsulin;
+    }
+
+    // 3. CELL REJUVENATION TRIGGER
+    let cellUnlocked = true;
+    function triggerCellRejuvenation() {
+      const port = document.getElementById('receptor-port');
+      const body = document.getElementById('cell-body');
+      const aura = document.getElementById('cell-aura');
+      const fat1 = document.getElementById('fat-droplet-1');
+      const fat2 = document.getElementById('fat-droplet-2');
+      const fat3 = document.getElementById('fat-droplet-3');
+      const label = document.getElementById('cell-state-label');
+      const msg = document.getElementById('cell-msg');
+
+      if (cellUnlocked) {
+        // Show Locked / Inflamed State
+        if (port) {
+          port.className = 'absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-red-500 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-500';
+          port.innerHTML = '<i data-lucide="lock" class="w-4 h-4 text-white"></i>';
+        }
+        if (body) body.className = 'relative w-56 h-56 rounded-full border-4 border-dashed border-red-500/70 bg-gradient-to-tr from-[#250B14] to-[#380E1C] flex items-center justify-center shadow-inner transition-all duration-700';
+        if (aura) aura.className = 'absolute inset-8 rounded-full bg-red-500/10 blur-2xl transition-all duration-700';
+        if (fat1) { fat1.style.opacity = '1'; fat1.style.transform = 'scale(1.4)'; }
+        if (fat2) { fat2.style.opacity = '1'; fat2.style.transform = 'scale(1.4)'; }
+        if (fat3) { fat3.style.opacity = '1'; fat3.style.transform = 'scale(1.4)'; }
+        if (label) label.textContent = 'مستقبلات محتقنة بالالتهاب';
+        if (msg) msg.textContent = '✕ البوابات مغلقة • تراكم الدهون الحشوية وصعوبة الحرق';
+        cellUnlocked = false;
+      } else {
+        // Rejuvenate & Unlock State
+        if (port) {
+          port.className = 'absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-teal-400 border-2 border-white shadow-lg flex items-center justify-center transition-all duration-500';
+          port.innerHTML = '<i data-lucide="unlock" class="w-4 h-4 text-slate-950"></i>';
+        }
+        if (body) body.className = 'relative w-56 h-56 rounded-full border-4 border-dashed border-teal-400/60 bg-gradient-to-tr from-[#0B253D] to-[#0D3659] flex items-center justify-center shadow-inner transition-all duration-700';
+        if (aura) aura.className = 'absolute inset-8 rounded-full bg-teal-500/10 blur-2xl transition-all duration-700';
+        if (fat1) { fat1.style.opacity = '0.2'; fat1.style.transform = 'scale(0.6)'; }
+        if (fat2) { fat2.style.opacity = '0.2'; fat2.style.transform = 'scale(0.6)'; }
+        if (fat3) { fat3.style.opacity = '0.2'; fat3.style.transform = 'scale(0.6)'; }
+        if (label) label.textContent = 'مستقبلات نشطة';
+        if (msg) msg.textContent = '✓ تم فك القفل بنجاح • حرق الدهون يعمل بكفاءة فطرية كاملة';
+        cellUnlocked = true;
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // 4. DECONSTRUCTED FEAST TABS
+    function selectPlateLayer(layer) {
+      const tabProtein = document.getElementById('tab-layer-protein');
+      const tabFats = document.getElementById('tab-layer-fats');
+      const tabFiber = document.getElementById('tab-layer-fiber');
+
+      [tabProtein, tabFats, tabFiber].forEach(t => {
+        if (t) t.className = 'p-5 rounded-2xl bg-[#081525] border border-white/10 hover:border-cyan-500/40 cursor-pointer transition-all space-y-2';
+      });
+
+      if (layer === 'protein' && tabProtein) {
+        tabProtein.className = 'p-5 rounded-2xl bg-[#0A1A2E] border-2 border-emerald-500/50 cursor-pointer transition-all space-y-2';
+      } else if (layer === 'fats' && tabFats) {
+        tabFats.className = 'p-5 rounded-2xl bg-[#0A1A2E] border-2 border-cyan-500/50 cursor-pointer transition-all space-y-2';
+      } else if (layer === 'fiber' && tabFiber) {
+        tabFiber.className = 'p-5 rounded-2xl bg-[#0A1A2E] border-2 border-amber-500/50 cursor-pointer transition-all space-y-2';
+      }
+    }
+
+    // 5. MENTAL FREEDOM STATE SWITCHER
+    function setMindState(state) {
+      const btnCage = document.getElementById('btn-mind-cage');
+      const btnOasis = document.getElementById('btn-mind-oasis');
+      const badge = document.getElementById('mind-badge');
+      const icon = document.getElementById('mind-icon');
+      const headline = document.getElementById('mind-headline');
+      const p = document.getElementById('mind-paragraph');
+      const metric = document.getElementById('mind-metric');
+
+      if (state === 'oasis') {
+        if (btnOasis) btnOasis.className = 'px-5 py-2.5 rounded-full text-xs sm:text-sm font-black bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2';
+        if (btnCage) btnCage.className = 'px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-[#091524] text-slate-400 border border-white/10 transition-all flex items-center gap-2';
+        if (badge) { badge.textContent = 'الحالة الشعورية: أمان بيولوجي وتصالح'; badge.className = 'px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold'; }
+        if (icon) icon.className = 'w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center';
+        if (headline) headline.textContent = '"أجلس في عزائم أهلي ومناسبات أحبابي دون خوف أو حرج.. آكل بمتعة وعقلي هادئ تماماً."';
+        if (p) p.textContent = 'اختفى وسواس حساب كل جرام وحبة تمر. أصبح الميزان مجرد رقم عابر، وملابسي تتسع بأناقة كل أسبوع لأن جسدي لم يعد خائفاً، بل يشعر بالأمان الكامل للتخلي عن مخازن الدهون العنيدة.';
+        if (metric) { metric.textContent = 'طبيعي ومريح (Nervous Balance)'; metric.className = 'text-emerald-400 font-bold font-mono'; }
+      } else {
+        if (btnCage) btnCage.className = 'px-5 py-2.5 rounded-full text-xs sm:text-sm font-black bg-red-600 text-white shadow-lg transition-all flex items-center gap-2';
+        if (btnOasis) btnOasis.className = 'px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold bg-[#091524] text-slate-400 border border-white/10 transition-all flex items-center gap-2';
+        if (badge) { badge.textContent = 'الحالة الشعورية: وسواس السعرات وجلد الذات'; badge.className = 'px-3 py-1 rounded-full bg-red-500/20 text-red-300 text-xs font-bold'; }
+        if (icon) icon.className = 'w-8 h-8 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center';
+        if (headline) headline.textContent = '"أخاف من كل لقمة، أحرم نفسي طوال الأسبوع ثم أنفجر في نهاية الأسبوع بلوم مرير لنفسي."';
+        if (p) p.textContent = 'خوف دائم من النظر في المرآة، ارتداء العبايات الواسعة للهروب من تعليقات الناس، وشعور مؤلم بالعجز وكأن جسدي يعاندني عمداً رغم كل تضحياتي.';
+        if (metric) { metric.textContent = 'مرتفع جداً (Chronic Fight-or-Flight)'; metric.className = 'text-red-400 font-bold font-mono'; }
+      }
+    }
+
+    // 6. DOSSIER CASE SELECTOR
+    const DOSSIER_CASES = {
+      1: {
+        badge: 'ملف طبي سريري رقم #WN-8492',
+        name: 'د. ريم • 34 سنة • طبيبة باطنية',
+        duration: '14 أسبوعاً فقط',
+        homa: '1.1 (طبيعي)',
+        homaPrev: 'كانت: 4.4 (شديدة)',
+        a1c: '5.1%',
+        a1cPrev: 'كان: 6.2%',
+        weight: '-19 كجم',
+        waist: '-21 سم',
+        note: '"حالة د. ريم أثبتت أن زيادة الوزن لم تكن يوماً قلة انضباط، بل كانت صرخة استغاثة من هرمونات المبيض ومقاومة الأنسولين. بمجرد رفع الإجهاد وتطبيق بروتوكول واحة نور، انتظمت دورتها وتراجع الوزن تلقائياً وبلا رجعة."'
+      },
+      2: {
+        badge: 'ملف طبي سريري رقم #WN-9104',
+        name: 'م. فيصل • 42 سنة • مهندس مشاريع',
+        duration: '12 أسبوعاً فقط',
+        homa: '1.3 (مثالي)',
+        homaPrev: 'كانت: 5.2 (مرحلة ما قبل السكري)',
+        a1c: '5.2%',
+        a1cPrev: 'كان: 6.8%',
+        weight: '-16 كجم',
+        waist: '-18 سم',
+        note: '"فيصل كان يعاني من كبد دهني وتراكم دهون الحزام العنيدة وصداع ما بعد الغداء. خلال 3 أشهر تخلص من دهون الكبد تماماً وعادت إنزيمات الكبد ومستوى السكر التراكمي للوضع السليم دون حرمان."'
+      },
+      3: {
+        badge: 'ملف طبي سريري رقم #WN-7321',
+        name: 'نورة • 29 سنة • معلمة',
+        duration: '16 أسبوعاً فقط',
+        homa: '0.9 (ممتاز)',
+        homaPrev: 'كانت: 3.8',
+        a1c: '4.9%',
+        a1cPrev: 'كان: 5.9%',
+        weight: '-18 كجم (الوزن المثالي)',
+        waist: '-24 سم',
+        note: '"نورة كانت تختبئ خلف العبايات الواسعة لسنوات بعد ولادتين متتاليتين. اليوم ترتدي مقاساتها المفضلة بثقة كاملة وصحتها في أوج إشراقتها وسلامها النفسي الداخلي."'
+      }
+    };
+
+    function loadDossierCase(id) {
+      const data = DOSSIER_CASES[id];
+      if (!data) return;
+
+      for (let i = 1; i <= 3; i++) {
+        const tab = document.getElementById('dossier-tab-' + i);
+        if (tab) {
+          if (i === id) tab.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-black bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 shadow-md transition-all';
+          else tab.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-[#0A1A2E] text-slate-300 border border-white/10 hover:border-cyan-400 transition-all';
+        }
+      }
+
+      const card = document.getElementById('dossier-card');
+      if (card) {
+        card.style.opacity = '0.4';
+        card.style.transform = 'translateY(6px)';
+        setTimeout(() => {
+          document.getElementById('case-badge').textContent = data.badge;
+          document.getElementById('case-name').textContent = data.name;
+          document.getElementById('case-duration').textContent = data.duration;
+          document.getElementById('case-homa').textContent = data.homa;
+          document.getElementById('case-homa-prev').textContent = data.homaPrev;
+          document.getElementById('case-a1c').textContent = data.a1c;
+          document.getElementById('case-a1c-prev').textContent = data.a1cPrev;
+          document.getElementById('case-weight').textContent = data.weight;
+          document.getElementById('case-waist').textContent = data.waist;
+          document.getElementById('case-note').textContent = data.note;
+
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 150);
+      }
+    }
+
+    // 7. BESPOKE ARCHITECT CONFIGURATOR
+    let configState = {
+      routine: 'desk',
+      hurdle: 'insulin',
+      support: 'pro'
+    };
+
+    function selectConfig(category, val, btn) {
+      configState[category] = val;
+      const parent = btn.parentElement;
+      parent.querySelectorAll('.config-btn').forEach(b => {
+        b.className = 'config-btn p-3.5 rounded-xl bg-[#061220] border border-white/10 text-xs font-bold text-slate-300 text-right hover:border-cyan-400 transition-all';
+      });
+      btn.className = 'config-btn p-3.5 rounded-xl bg-[#091E33] border border-cyan-500/40 text-xs font-bold text-white text-right hover:border-cyan-400 transition-all active-config';
+      recalcArchitectPlan();
+    }
+
+    function recalcArchitectPlan() {
+      const title = document.getElementById('rec-plan-title');
+      const price = document.getElementById('rec-plan-price');
+      const desc = document.getElementById('rec-plan-desc');
+
+      if (configState.support === 'vip') {
+        if (title) title.textContent = 'باقة الاستشارة الخاصة الفردية مع د. أحمد الخطيب (1:1 VIP)';
+        if (price) price.textContent = '$249';
+        if (desc) desc.textContent = 'تشمل جلسة استشارية خاصة ومباشرة 1:1 مع د. أحمد الخطيب بالصوت والصورة، مراجعة ملفك الطبي الشامل، مع اشتراك باقة Pro لمدة شهر كامل مجاناً لضمان التنفيذ السليم.';
+      } else if (configState.support === 'healthy') {
+        if (title) title.textContent = 'باقة Healthy الأساسية (الخطوة الأولى للاتزان)';
+        if (price) price.textContent = '$69';
+        if (desc) desc.textContent = 'تشمل خطة تغذية مخصصة لروتينك، 4 متابعات تقييم شهرية منتظمة مع الأخصائي، ومكالمة أسبوعية لصوتك لتثبيت العادات دون إرهاق.';
+      } else {
+        if (title) title.textContent = 'باقة Pro المتقدمة (الأكثر اكتمالاً وطلباً)';
+        if (price) price.textContent = '$119';
+        if (desc) desc.textContent = 'الخيار الأقوى؛ تشمل خطة مخصصة 100% لأكلات بيتك، شات يومي مباشر مع الكوتش، مكالمات تقييم أسبوعية، ومتابعة دقيقة لكسر مقاومة الأنسولين خطوة بخطوة.';
+      }
+    }
+
+    // BOOKING MODAL HANDLERS
+    function openBookingFromArchitect() {
+      const modal = document.getElementById('bookingModal');
+      const title = document.getElementById('modalPlanTitle');
+      const recTitle = document.getElementById('rec-plan-title');
+      if (title && recTitle) title.textContent = recTitle.textContent;
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeBookingModal() {
+      const modal = document.getElementById('bookingModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function handleBookingSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const plan = document.getElementById('modalPlanTitle').textContent;
+
+      alert(`شكراً لك ${name}! تم تسجيل طلبك بنجاح لـ [${plan}]. سيتواصل معك فريق واحة نور ودكتور أحمد الخطيب عبر الواتساب (${phone}) لتأكيد بياناتك وبدء تقييمك.`);
+      closeBookingModal();
+    }
+  </script>
+</body>
+</html>

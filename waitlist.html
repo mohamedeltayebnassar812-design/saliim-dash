@@ -18,6 +18,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Supabase JS Client CDN (Enterprise Cloud Database) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <script>
     tailwind.config = {
@@ -603,9 +605,22 @@
     }
 
     // =========================================================================
-    // GOOGLE SHEETS WEBHOOK INTEGRATION
-    // ضع رابط الـ Web App الخاص بـ Google Apps Script هنا ليتم ترحيل البيانات للشيت فوراً
+    // SUPABASE CLOUD DATABASE CONFIGURATION (الخيار الثاني: الأفضل تقنياً وأماناً)
+    // ضع بيانات مشروعك في Supabase هنا ليتم حفظ الليدز في قاعدة بيانات PostgreSQL فوراً
     // =========================================================================
+    const SUPABASE_URL = ''; // مثال: https://xyzcompany.supabase.co
+    const SUPABASE_ANON_KEY = ''; // الـ anon public key المتاح في Dashboard المشروع
+
+    let supabaseClient = null;
+    try {
+      if (typeof window.supabase !== 'undefined' && SUPABASE_URL && SUPABASE_ANON_KEY) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch (e) {
+      console.warn('Supabase initialization handled:', e);
+    }
+
+    // Google Sheets Webhook Fallback (اختياري كنسخة احتياطية)
     const GOOGLE_SHEETS_WEBHOOK_URL = ''; // مثال: https://script.google.com/macros/s/XXXXX/exec
 
     function handleFormSubmit(e) {
@@ -655,7 +670,30 @@
         localStorage.setItem('wahetnor_waitlist_leads', JSON.stringify(leads));
       } catch (err) {}
 
-      // 2. Google Sheets Webhook (Non-blocking background fire)
+      // 2. Supabase Cloud DB Insert (Non-blocking & Enterprise Secure)
+      if (supabaseClient) {
+        try {
+          supabaseClient.from('waitlist_leads').insert([{
+            name: leadPayload.name,
+            country: leadPayload.country,
+            phone: leadPayload.phone,
+            email: leadPayload.email,
+            diagnosis_title: leadPayload.diagnosisTitle,
+            insulin_score: leadPayload.insulinScore,
+            metabolic_rate: leadPayload.metabolicRate,
+            fat_loc: leadPayload.fat_loc,
+            insulin_sign: leadPayload.insulin_sign,
+            diet_history: leadPayload.diet_history,
+            lifestyle_need: leadPayload.lifestyle_need,
+            discount_code: 'WAHET30'
+          }]).then(({ error }) => {
+            if (error) console.warn('Supabase sync notice:', error.message);
+            else console.log('Lead securely saved to Supabase Cloud DB ✅');
+          }).catch(err => console.warn('Supabase network error:', err));
+        } catch (e) {}
+      }
+
+      // 3. Google Sheets Webhook (اختياري كنسخة إضافية)
       if (GOOGLE_SHEETS_WEBHOOK_URL && GOOGLE_SHEETS_WEBHOOK_URL.startsWith('http')) {
         try {
           fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
@@ -667,7 +705,7 @@
         } catch (err) {}
       }
 
-      // 3. Smooth render transition
+      // 4. Smooth render transition
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'عرض نتيجتي وتفعيل الخصم فوراً 🚀';

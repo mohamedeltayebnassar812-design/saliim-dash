@@ -123,15 +123,15 @@
     <div class="glass-card rounded-3xl p-6 sm:p-9 shadow-2xl relative">
 
       <!-- =========================================================================
-           QUESTION 1: FAT DISTRIBUTION
+           QUESTION 1: FAT DISTRIBUTION & METABOLIC SHAPE
            ========================================================================= -->
       <div id="qBlock1" class="quiz-step space-y-6">
         <div class="space-y-2 text-right">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 text-xs font-bold">
-            <span>سؤال 1 / 4</span>
+            <span>سؤال 1 / 4 • نمط توزيع الدهون</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">أين تتركز النسبة الأكبر من الدهون والوزن الزائد في جسمك؟</h2>
-          <p class="text-xs sm:text-sm text-slate-400">اختر الوصف الأدق لملاحظتك:</p>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">أين تتركز المشكلة والدهون العنيدة التي تزعجك في مظهرك وجسمك؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">هذا السؤال يحدد نوع الدهون (حشوية هرمونية أم تحت الجلد):</p>
         </div>
 
         <div class="space-y-3">
@@ -139,41 +139,44 @@
             <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
             <div>
               <div class="text-sm font-bold text-white flex items-center gap-2">
-                <span>تتركز في الكرش والبطن السفلية ومحيط الخصر</span>
-                <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">علامة مقاومة إنسولين</span>
+                <span>تتركز في الكرش والبطن السفلية ومحيط الخصر مع بروز واضح</span>
+                <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">دهون حشوية ومقاومة إنسولين</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">جسمي ينحف من أطرافي ووجهي وتبقى البطن ثابتة وبارزة.</div>
+              <div class="text-xs text-slate-400 mt-1">جسمي ينحف من أطرافي ووجهي وتظل البطن ثابتة، وتسبب لي إحراجاً في الملابس.</div>
             </div>
           </button>
 
           <button type="button" onclick="recordAnswer('fat_loc', 'uniform', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
             <div>
-              <div class="text-sm font-bold text-white">موزعة بشكل متساوٍ في كافة أنحاء الجسم</div>
-              <div class="text-xs text-slate-400 mt-1">زيادة عامة في الوزن الإجمالي مع امتلاء موزع.</div>
+              <div class="text-sm font-bold text-white">زيادة وزن عامة في كافة أنحاء الجسم وتكتل دهني شامل</div>
+              <div class="text-xs text-slate-400 mt-1">تراكم وزن مستمر على مر الشهور بسبب العادات الغذائية وغياب خطة واضحة.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('fat_loc', 'lower', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('fat_loc', 'lower_hormonal', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
             <div>
-              <div class="text-sm font-bold text-white">تتركز في الأرداف والأفخاذ (الجزء السفلي)</div>
-              <div class="text-xs text-slate-400 mt-1">طبيعة هرمونية أنثوية أو وراثية مع بطن مشدودة نسبياً.</div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>تتركز في الجزء السفلي (الأرداف والأفخاذ) مع احتباس سوائل</span>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full">طبيعة هرمونية أو غدة</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">صعوبة شديدة في تنزيل مقاسات الجزء السفلي رغم بذل مجهود في المشي والرياضة.</div>
             </div>
           </button>
         </div>
       </div>
 
       <!-- =========================================================================
-           QUESTION 2: METABOLIC CRASH & CRAVINGS
+           QUESTION 2: INSULIN, ENERGY & CRAVINGS
            ========================================================================= -->
       <div id="qBlock2" class="quiz-step hidden space-y-6">
         <div class="space-y-2 text-right">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/25 text-sky-400 text-xs font-bold">
-            <span>سؤال 2 / 4</span>
+            <span>سؤال 2 / 4 • إشارات الأيض والسكر</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ماذا يحدث لمستويات طاقتك وشهيتك بعد وجبة الغداء أو النشويات؟</h2>
-          <p class="text-xs sm:text-sm text-slate-400">هذا السؤال يكشف استجابة البنكرياس والإنسولين:</p>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ماذا يحدث لمستويات طاقتك وشهيتك بعد وجبات الطعام أو خلال اليوم؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">هذا السؤال يكشف حساسية خلاياك للإنسولين وهرمونات التوتر:</p>
         </div>
 
         <div class="space-y-3">
@@ -181,26 +184,29 @@
             <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
             <div>
               <div class="text-sm font-bold text-white flex items-center gap-2">
-                <span>هبوط وخمول شديد ورغبة ملحة بالنوم، تتبعها رغبة بالسكريات</span>
-                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">هبوط سكر ارتدادي</span>
+                <span>هبوط وخمول شديد ونعاس بعد الغداء، يعقبه رغبة قوية في السكريات</span>
+                <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">علامة مقاومة إنسولين مؤكدة</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">أشعر أن طاقتي انسحبت تماماً بعد الأكل بساعة وأحتاج شاي محلى أو حلوى.</div>
+              <div class="text-xs text-slate-400 mt-1">طاقتي تنهار تماماً بعد النشويات وأشعر أنني بحاجة ملحة لقهوة بسكر أو حلوى لأستفيق.</div>
             </div>
           </button>
 
           <button type="button" onclick="recordAnswer('insulin_sign', 'night_hunger', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
             <div>
-              <div class="text-sm font-bold text-white">طاقة عادية نهاراً، لكن جوع مسائي شرس ونهم ليلي</div>
-              <div class="text-xs text-slate-400 mt-1">ألتزم طوال النهار وأفقد السيطرة تماماً أمام الثلاجة ليلاً.</div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>التزام ممتاز نهاراً، لكن انفجار شهية ونهم ليلي متأخر قبل النوم</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">اضطراب كورتيزول وتوتر</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">ضغط اليوم والمسؤوليات يجعلني أفرغ توتري في الأكل ليلاً أمام الشاشة.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('insulin_sign', 'stable', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('insulin_sign', 'slow_burn', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
             <div>
-              <div class="text-sm font-bold text-white">مستويات طاقتي مستقرة ولا أشعر بخمول غير مبرر</div>
-              <div class="text-xs text-slate-400 mt-1">مشكلتي الأساسية في كميات الطعام وليس هبوط الطاقة.</div>
+              <div class="text-sm font-bold text-white">طاقتي عادية لكن حرق جسمي بطيء جداً وثابت رغم قلة الأكل</div>
+              <div class="text-xs text-slate-400 mt-1">أشعر أن أي لقمة بسيطة تتحول لدهون فوراً وكأن ماكينة الحرق متوقفة تماماً.</div>
             </div>
           </button>
         </div>
@@ -214,15 +220,15 @@
       </div>
 
       <!-- =========================================================================
-           QUESTION 3: DIET HISTORY & YO-YO REBOUND
+           QUESTION 3: DIET TRAUMA & YO-YO CYCLES
            ========================================================================= -->
       <div id="qBlock3" class="quiz-step hidden space-y-6">
         <div class="space-y-2 text-right">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/25 text-purple-400 text-xs font-bold">
-            <span>سؤال 3 / 4</span>
+            <span>سؤال 3 / 4 • تجارب الدايت السابقة</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">كيف كانت تجربتك السابقة مع محاولات التخسيس؟</h2>
-          <p class="text-xs sm:text-sm text-slate-400">لتحديد سرعة حرقك الأيضي الحالي:</p>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ما هي أكبر مشكلة عانيت منها في محاولات الرجيم السابقة؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">لتشخيص حالة الأيض الدفاعي (Metabolic Damage):</p>
         </div>
 
         <div class="space-y-3">
@@ -230,26 +236,29 @@
             <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
             <div>
               <div class="text-sm font-bold text-white flex items-center gap-2">
-                <span>جربت دايت قاسي/حرمان وخسيت.. ولكن رجع وزني أضعاف</span>
+                <span>جربت دايت قاسي/حرمان (كيتو، تجويع، صيام) وخسيت ثم رجع وزني أضعاف</span>
                 <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">تأثير اليويو (Yo-Yo)</span>
               </div>
-              <div class="text-xs text-slate-400 mt-1">حرمت نفسي من النشويات والدهون ثم انهرت وزاد وزني بسرعة.</div>
+              <div class="text-xs text-slate-400 mt-1">خسرت عضلات وتباطأ حرقي، وبمجرد عودتي للأكل الطبيعي تضاعف حجم البطن والدهون.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('diet_history', 'stubborn_plateau', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('diet_history', 'social_isolation', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
             <div>
-              <div class="text-sm font-bold text-white">وزني ثابت منذ فترة طويلة رغم أني آكل قليلاً جداً</div>
-              <div class="text-xs text-slate-400 mt-1">جسمي دخل في حالة تأقلم دفاعية (بطء في الحرق الأيضي).</div>
+              <div class="text-sm font-bold text-white">العزلة الاجتماعية وصعوبة الالتزام بأكل خاص بعيداً عن أكل البيت والأسرة</div>
+              <div class="text-xs text-slate-400 mt-1">تعبت من سلق الفراخ وحساب الجرامات، ولا أستطيع تناول وجباتي مع أسرتي في العزومات.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('diet_history', 'first_time', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('diet_history', 'hormonal_medical', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
             <div>
-              <div class="text-sm font-bold text-white">هذه أول مرة أقرر فيها بدء برنامج صحي منظم ومدروس</div>
-              <div class="text-xs text-slate-400 mt-1">أبحث عن منهجية صحية صحيحة من البداية بدون أخطاء وتجارب عشوائية.</div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>لدي ظروف طبية خاصة (تكيس مبايض / كبد دهني / خمول غدة / كوليسترول)</span>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full">تحتاج إشراف متخصص</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">الأنظمة التجارية العشوائية لم تناسب حالتي الصحية وأبحث عن إشراف علمي موثوق.</div>
             </div>
           </button>
         </div>
@@ -263,42 +272,42 @@
       </div>
 
       <!-- =========================================================================
-           QUESTION 4: BIGGEST OBSTACLE & COACHING PREFERENCE
+           QUESTION 4: SUSTAINABILITY & LIFESTYLE NEED
            ========================================================================= -->
       <div id="qBlock4" class="quiz-step hidden space-y-6">
         <div class="space-y-2 text-right">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 text-xs font-bold">
-            <span>سؤال 4 / 4</span>
+            <span>سؤال 4 / 4 • نمط الحياة والاستمرارية</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ما هو العائق الأكبر الذي يمنعك من الاستمرار في أي نظام صحي؟</h2>
-          <p class="text-xs sm:text-sm text-slate-400">لتحديد نظام المتابعة الأنسب لطبيعة حياتك:</p>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ما الذي تحتاجه حقاً لتضمن وصولك لهدفك هذه المرة دون أي انتكاسة؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">لتحديد بروتوكول واحة نور الأكثر فاعلية لحياتك:</p>
         </div>
 
         <div class="space-y-3">
-          <button type="button" onclick="recordAnswer('obstacle', 'motivation_community', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('lifestyle_need', 'flexibility_8020', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
             <div>
-              <div class="text-sm font-bold text-white">أفقد الحماس بمفردي وأحتاج مجتمعاً وتحدياً مشتركاً يحمسني</div>
-              <div class="text-xs text-slate-400 mt-1">روح المجموعة واللايف الأسبوعي والمنافسة الإيجابية تصنع فارقاً معي.</div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>نظام تغذية مرن (80/20) يسمح لي بأكل البيت المفضل بدون حرمان أو جوع</span>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">منهجية واحة نور الأساسية</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">أريد أن أخس دهون وأصل لوزني المثالي دون أن أشعر أنني في سجن أو رجيم مؤقت.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('obstacle', 'busy_need_1on1', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+          <button type="button" onclick="recordAnswer('lifestyle_need', 'daily_coaching', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
             <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
             <div>
-              <div class="text-sm font-bold text-white">يومي مزدحم جداً وأحتاج كوتشاً يتابعني شخصياً 1:1 ويضبط أكلي يومياً</div>
-              <div class="text-xs text-slate-400 mt-1">أحتاج خطة مفصلة على جدولي وشات مستمر يجيب على كل تفصيلة.</div>
+              <div class="text-sm font-bold text-white">متابعة يومية وكوتش في جيبي يتابع التزامي ويمنعني من التراجع</div>
+              <div class="text-xs text-slate-400 mt-1">مشكلتي ليست في معرفة المعلومة بل في الاستمرارية والمساءلة اليومية الداعمة.</div>
             </div>
           </button>
 
-          <button type="button" onclick="recordAnswer('obstacle', 'complex_health_vip', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
-            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
+          <button type="button" onclick="recordAnswer('lifestyle_need', 'psychological_habits', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
             <div>
-              <div class="text-sm font-bold text-white flex items-center gap-2">
-                <span>حالتي تتطلب إشرافاً دقيقاً مع د. أحمد الخطيب شخصياً وتحليل فحوصاتي</span>
-                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">باقة النخبة VIP</span>
-              </div>
-              <div class="text-xs text-slate-400 mt-1">أبحث عن أعلى مستوى من الرعاية الطبية المباشرة ومكالمات زووم خاصة.</div>
+              <div class="text-sm font-bold text-white">تغيير حقيقي لعاداتي والتخلص من تأنيب الضمير وعلاقتي المعقدة مع الأكل</div>
+              <div class="text-xs text-slate-400 mt-1">أريد أن أتصالح مع جسدي وأبني أسلوب حياة يدوم معي لسنوات قادمة.</div>
             </div>
           </button>
         </div>
@@ -406,6 +415,12 @@
           >
             <span>عرض نتيجتي وتفعيل الخصم فوراً 🚀</span>
           </button>
+          <div class="pt-2 flex justify-start">
+            <button type="button" onclick="backToStep(4)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition">
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              <span>العودة للسؤال السابق</span>
+            </button>
+          </div>
         </form>
       </div>
 
@@ -419,11 +434,12 @@
           <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-2 shadow-lg shadow-emerald-500/20">
             <i data-lucide="activity" class="w-7 h-7"></i>
           </div>
-          <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block">
-            التقرير الأيضي الخاص بـ: <span id="resName" class="text-white font-black">--</span>
-          </span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400">
+            <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+            <span>التقرير الأيضي الخاص بـ: <span id="resName" class="text-white font-black">--</span></span>
+          </div>
           <h2 class="text-2xl sm:text-3xl font-black text-white" id="resDiagnosisTitle">مؤشر مقاومة إنسولين وبطء أيضي ناتج عن حميات الحرمان</h2>
-          <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto" id="resDiagnosisDesc">
+          <p class="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed pt-1" id="resDiagnosisDesc">
             إجاباتك تشير إلى أن دهون البطن لديك عنيدة بسبب فرط إفراز الإنسولين واضطراب الأيض الدفاعي، وعلاجها يتطلب إعادة برمجة الحرق بقاعدة 80/20 وليس تجويع نفسك.
           </p>
         </div>
@@ -431,16 +447,16 @@
         <!-- 3 Diagnostic Score Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1">مؤشر حساسية الإنسولين</div>
-            <div class="text-base font-extrabold text-rose-400" id="resInsulinScore">مرتفع (يحتاج ضبط)</div>
+            <div class="text-[11px] text-slate-400 mb-1" id="resCardLabel1">مؤشر حساسية الإنسولين</div>
+            <div class="text-base font-extrabold text-rose-400" id="resInsulinScore">مقاومة مرتفعة ⚠️</div>
           </div>
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1">سرعة الحرق والأيض</div>
-            <div class="text-base font-extrabold text-amber-400" id="resMetabolicRate">متباطئ (تأقلم دفاعي)</div>
+            <div class="text-[11px] text-slate-400 mb-1" id="resCardLabel2">سرعة الحرق والأيض</div>
+            <div class="text-base font-extrabold text-amber-400" id="resMetabolicRate">محاصر في وضع التخزين</div>
           </div>
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1">نسبة النجاح المتوقعة</div>
-            <div class="text-base font-extrabold text-emerald-400">94% مع واحة نور</div>
+            <div class="text-[11px] text-slate-400 mb-1">نسبة الاستجابة المتوقعة</div>
+            <div class="text-base font-extrabold text-emerald-400" id="resSuccessRate">96% مع بروتوكول واحة نور</div>
           </div>
         </div>
 
@@ -471,12 +487,12 @@
 
           <div class="bg-black/40 rounded-xl p-3 border border-amber-500/20 flex flex-wrap items-center justify-between gap-2 text-xs">
             <div>
-              <span class="text-slate-400">كود الخصم المربوط بإيميلك:</span>
+              <span class="text-slate-400">كود الخصم المربوط ببياناتك:</span>
               <span class="font-mono font-black text-amber-400 text-sm mr-1">WAHET30</span>
             </div>
             <div class="text-emerald-400 font-bold flex items-center gap-1">
               <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-              <span>محفوظ ومسجل بإيميلك بنجاح ✅</span>
+              <span id="resLeadConfirmed">مسجل بنجاح برقمك وإيميلك ✅</span>
             </div>
           </div>
 
@@ -496,6 +512,11 @@
           <p class="text-[11px] text-slate-400">
             سنرسل لك رابط التسجيل المبكر والخصم على إيميلك وواتساب قبل إتاحته للجمهور بـ 24 ساعة.
           </p>
+          <div class="pt-2">
+            <button type="button" onclick="resetQuiz()" class="text-xs text-slate-500 hover:text-slate-300 underline transition">
+              🔄 إعادة الفحص الأيضي بإجابات أخرى
+            </button>
+          </div>
         </div>
 
       </div>
@@ -519,9 +540,10 @@
       fat_loc: 'belly',
       insulin_sign: 'severe_crash',
       diet_history: 'starved_rebounded',
-      obstacle: 'motivation_community',
+      lifestyle_need: 'flexibility_8020',
       name: '',
       country: 'EG',
+      phone: '',
       email: ''
     };
 
@@ -545,7 +567,7 @@
         updateProgress(3, 'السؤال 3 من 4: تجارب الدايت السابقة والحرق', 60);
       } else if (nextStepIndex === 4) {
         document.getElementById('qBlock4').classList.remove('hidden');
-        updateProgress(4, 'السؤال 4 من 4: أسلوب الحياة ونظام المتابعة الأنسب', 80);
+        updateProgress(4, 'السؤال 4 من 4: نمط الحياة والاستمرارية', 80);
       } else if (nextStepIndex === 5) {
         document.getElementById('qBlock5').classList.remove('hidden');
         updateProgress(5, 'الخطوة الأخيرة: إدخال البيانات لتثبيت الخصم', 95);
@@ -567,9 +589,17 @@
       } else if (stepIndex === 3) {
         document.getElementById('qBlock3').classList.remove('hidden');
         updateProgress(3, 'السؤال 3 من 4: تجارب الدايت السابقة والحرق', 60);
+      } else if (stepIndex === 4) {
+        document.getElementById('qBlock4').classList.remove('hidden');
+        updateProgress(4, 'السؤال 4 من 4: نمط الحياة والاستمرارية', 80);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       lucide.createIcons();
+    }
+
+    function resetQuiz() {
+      document.getElementById('quizProgressContainer').classList.remove('hidden');
+      backToStep(1);
     }
 
     function handleFormSubmit(e) {
@@ -607,8 +637,10 @@
 
       // Calculate & Render Result
       setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'عرض نتيجتي وتفعيل الخصم فوراً 🚀';
         renderPersonalizedResult();
-      }, 700);
+      }, 600);
     }
 
     function renderPersonalizedResult() {
@@ -616,29 +648,88 @@
       document.getElementById('quizProgressContainer').classList.add('hidden');
       document.getElementById('qBlockResult').classList.remove('hidden');
 
-      // Set user's first name
+      // Set user's name
       const firstName = quizState.name.split(' ')[0] || quizState.name;
       document.getElementById('resName').innerText = quizState.name;
+      document.getElementById('resLeadConfirmed').innerText = `مسجل لـ ${quizState.phone} ✅`;
 
-      // Personalized Diagnosis Logic
-      let diagnosisTitle = 'مؤشر مقاومة إنسولين وبطء أيضي ناتج عن حميات الحرمان';
-      let diagnosisDesc = `يا ${firstName}، إجاباتك تشير إلى أن دهون البطن لديك عنيدة بسبب فرط إفراز الإنسولين واضطراب الأيض الدفاعي الناتج عن تجارب التجويع السابقة. جسمك لا يحتاج حرماناً إضافياً بل يحتاج إعادة برمجة الحرق بقاعدة 80/20.`;
+      // Diagnostic Profiles Engine (4 Specific Profiles from Marketing Strategy)
+      let title = '';
+      let desc = '';
+      let insulinScore = '';
+      let insulinClass = '';
+      let metabolicRate = '';
+      let metabolicClass = '';
+      let successRate = '96% مع بروتوكول واحة نور';
 
-      if (quizState.fat_loc === 'uniform' && quizState.insulin_sign === 'stable') {
-        diagnosisTitle = 'حالة زيادة وزن عامة مع استقرار في حساسية الإنسولين';
-        diagnosisDesc = `يا ${firstName}، وضعك الأيضي جيد جداً وقابل للاستجابة السريعة! تحتاج فقط لضبط عادات الأكل والكميات والتغذية المرنة بدون الحاجة لأي حميات معقدة.`;
-        document.getElementById('resInsulinScore').innerText = 'طبيعي ومستقر';
-        document.getElementById('resInsulinScore').className = 'text-base font-extrabold text-emerald-400';
-        document.getElementById('resMetabolicRate').innerText = 'جيد (يحتاج تنشيط)';
-        document.getElementById('resMetabolicRate').className = 'text-base font-extrabold text-sky-400';
+      // Profile 4: Hormonal / PCOS / Thyroid Condition
+      if (quizState.fat_loc === 'lower_hormonal' || quizState.diet_history === 'hormonal_medical') {
+        title = 'الملف الهرموني والالتهابي الخاص (Hormonal & Anti-Inflammatory Profile)';
+        desc = `يا ${firstName}، إجاباتك تدل على أن عناد نزول الوزن لديك مرتبط بمسارات هرمونية والتهابية خلوية واحتباس سوائل (مثل تكيس المبايض، كسل الغدة الدرقية، أو حساسية الإستروجين). تقليل السعرات العشوائي والرياضة القاسية تفشل مع حالتك لأنها تزيد الالتهابات. ما تحتاجه هو «بروتوكول تغذية مضاد للالتهاب» بإشراف الصيدلي د. أحمد الخطيب، يهدئ التهاب الأنسجة ويعيد توازن الهرمونات ويحرر الدهون بأمان.`;
+        insulinScore = 'حساسية هرمونية نسيجية';
+        insulinClass = 'text-base font-extrabold text-purple-400';
+        metabolicRate = 'محكوم بالنشاط الهرموني';
+        metabolicClass = 'text-base font-extrabold text-amber-400';
+        successRate = '94% مع التغذية المضادة للالتهاب';
+      }
+      // Profile 2: Metabolic Adaptation & Yo-Yo Diet Damage
+      else if (quizState.diet_history === 'starved_rebounded' || quizState.insulin_sign === 'slow_burn') {
+        title = 'حالة تأقلم الأيض الدفاعي (Metabolic Damage) وتأثير دايت اليويو';
+        desc = `يا ${firstName}، جسمك حالياً في حالة «استنفار دفاعي ضد التجويع»! حميات الحرمان السابقة تسببت في هبوط معدل الأيض الأساسي (BMR) وفقدان جزء من الكتلة العضلية، فأصبح جسمك يخزن أي وجبة على شكل دهون خوفاً من المجاعة القادمة. الحل العلمي الحاسم ليس حرماناً جديداً، بل تقنية «الدايت العكسي (Reverse Dieting)» المعتمدة في واحة نور، لإنعاش ماكينة الحرق ومضاعفة معدل الأيض تدريجياً دون زيادة وزن.`;
+        insulinScore = 'متذبذب (بحاجة استقرار)';
+        insulinClass = 'text-base font-extrabold text-amber-400';
+        metabolicRate = 'متباطئ دفاعياً (Metabolic Slowdown)';
+        metabolicClass = 'text-base font-extrabold text-rose-400';
+        successRate = '93% مع إعادة التأهيل الأيضي';
+      }
+      // Profile 3: Cortisol & Night/Emotional Eating
+      else if (quizState.insulin_sign === 'night_hunger' || quizState.lifestyle_need === 'psychological_habits') {
+        title = 'اضطراب كورتيزول الإجهاد والنهم العصبي/الليلي (Cortisol & Stress Eating)';
+        desc = `يا ${firstName}، التزامك نهاراً يؤكد أن إرادتك ممتازة، لكن المشكلة هرمونية وعصبية بحتة! ضغوط اليوم ترفع هرمون الكورتيزول، ومع هبوط الطاقة ليلاً، يطلق الدماغ إشارات استغاثة ملحة لطلب الدوبامين والسكريات للتخلص من التوتر. الرجيم التقليدي يزيد التوتر ويفشل تماماً معك. في واحة نور، نعتمد بروتوكول ضبط هرمونات الشبع المسائية وإعادة توازن كيمياء الدماغ لإنهاء النهم الليلي وكسر تأنيب الضمير للأبد.`;
+        insulinScore = 'مستقر نهاراً / مضطرب ليلاً';
+        insulinClass = 'text-base font-extrabold text-amber-400';
+        metabolicRate = 'مثبط بواسطة هرمون التوتر';
+        metabolicClass = 'text-base font-extrabold text-amber-400';
+        successRate = '95% مع ضبط كيمياء الشبع';
+      }
+      // Profile 5: General Weight Gain with Good Metabolic Potential
+      else if (quizState.fat_loc === 'uniform' && quizState.insulin_sign !== 'slow_burn') {
+        title = 'مؤشر أيضي متوازن قابل للاستجابة السريعة (Metabolic Reset)';
+        desc = `يا ${firstName}، وضعك الأيضي ممتاز ومبشر جداً! ليس لديك مقاومة إنسولين حادة أو تلف أيضي مزمن، بل المشكلة تكمن في غياب هيكلية غذائية مستدامة وتراكم العادات العشوائية. جسمك مؤهل للاستجابة السريعة جداً والنزول في المقاسات من الأسابيع الأولى بمجرد تطبيق قاعدة 80/20 وضبط الكميات بدون أي تعقيد.`;
+        insulinScore = 'طبيعي ومستقر ✅';
+        insulinClass = 'text-base font-extrabold text-emerald-400';
+        metabolicRate = 'جيد (يحتاج تنشيط)';
+        metabolicClass = 'text-base font-extrabold text-sky-400';
+        successRate = '97% مع واحة نور';
+      }
+      // Profile 1: Insulin Resistance & Visceral Belly Fat (Default / Most Common)
+      else {
+        title = 'متلازمة مقاومة الإنسولين وتخزين الدهون الحشوية العنيدة';
+        desc = `يا ${firstName}، إجاباتك تؤكد أن المشكلة الأساسية ليست كثرة أكل، بل هي «مقاومة خلاياك للإنسولين»! عند تناول أي نشويات، يفرز جسمك جرعات إنسولين عالية تمنع حرق الدهون وتحبسها داخل خلايا البطن والكرش، مسببة خمولاً بعد الأكل وشهية مستمرة للسكريات. في واحة نور، نستخدم تقنية توقيت المغذيات وقاعدة 80/20 لإعادة حساسية الإنسولين لوضعها الطبيعي وحرق دهون البطن دون حرمانك من أكل البيت.`;
+        insulinScore = 'مقاومة مرتفعة ⚠️';
+        insulinClass = 'text-base font-extrabold text-rose-400';
+        metabolicRate = 'محاصر في وضع التخزين (Blocked)';
+        metabolicClass = 'text-base font-extrabold text-amber-400';
+        successRate = '96% مع بروتوكول 80/20';
       }
 
-      document.getElementById('resDiagnosisTitle').innerText = diagnosisTitle;
-      document.getElementById('resDiagnosisDesc').innerText = diagnosisDesc;
+      // Populate DOM Elements
+      document.getElementById('resDiagnosisTitle').innerText = title;
+      document.getElementById('resDiagnosisDesc').innerText = desc;
+      
+      const elInsulin = document.getElementById('resInsulinScore');
+      elInsulin.innerText = insulinScore;
+      elInsulin.className = insulinClass;
+
+      const elMetabolic = document.getElementById('resMetabolicRate');
+      elMetabolic.innerText = metabolicRate;
+      elMetabolic.className = metabolicClass;
+
+      document.getElementById('resSuccessRate').innerText = successRate;
 
       // WhatsApp Button Pre-filled Message
       const waMessage = encodeURIComponent(
-        `مرحباً د. أحمد وفريق واحة نور 🌱\nأنا ${quizState.name} (تليفوني: ${quizState.phone})، أتممت فحص الأيض بنجاح.\nأؤكد تثبيت كود الخصم (WAHET30) بخصم 30% لمدة 24 ساعة فور فتح باب التسجيل الرسمي!`
+        `مرحباً د. أحمد وفريق واحة نور 🌱\nأنا ${quizState.name} (تليفوني: ${quizState.phone} | ${quizState.country})\nتشخيصي الأيضي: [${title}]\nأؤكد تثبيت كود الخصم (WAHET30) بخصم 30% لمدة 24 ساعة فور فتح باب الحجز الرسمي!`
       );
       document.getElementById('whatsappResultBtn').href = `https://wa.me/201027150116?text=${waMessage}`;
 

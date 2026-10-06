@@ -606,10 +606,9 @@
 
     // =========================================================================
     // SUPABASE CLOUD DATABASE CONFIGURATION (الخيار الثاني: الأفضل تقنياً وأماناً)
-    // ضع بيانات مشروعك في Supabase هنا ليتم حفظ الليدز في قاعدة بيانات PostgreSQL فوراً
     // =========================================================================
-    const SUPABASE_URL = ''; // مثال: https://xyzcompany.supabase.co
-    const SUPABASE_ANON_KEY = ''; // الـ anon public key المتاح في Dashboard المشروع
+    const SUPABASE_URL = 'https://jmoooxwpcmyuwmsqwevg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_pdJ6w4vu9Mrc0jwUQzmYRg_nML7hDjT';
 
     let supabaseClient = null;
     try {
@@ -670,26 +669,35 @@
         localStorage.setItem('wahetnor_waitlist_leads', JSON.stringify(leads));
       } catch (err) {}
 
-      // 2. Supabase Cloud DB Insert (Non-blocking & Enterprise Secure)
-      if (supabaseClient) {
+      // 2. Supabase Cloud DB Insert (Direct native REST API + Client fallback)
+      if (SUPABASE_URL && SUPABASE_ANON_KEY) {
         try {
-          supabaseClient.from('waitlist_leads').insert([{
-            name: leadPayload.name,
-            country: leadPayload.country,
-            phone: leadPayload.phone,
-            email: leadPayload.email,
-            diagnosis_title: leadPayload.diagnosisTitle,
-            insulin_score: leadPayload.insulinScore,
-            metabolic_rate: leadPayload.metabolicRate,
-            fat_loc: leadPayload.fat_loc,
-            insulin_sign: leadPayload.insulin_sign,
-            diet_history: leadPayload.diet_history,
-            lifestyle_need: leadPayload.lifestyle_need,
-            discount_code: 'WAHET30'
-          }]).then(({ error }) => {
-            if (error) console.warn('Supabase sync notice:', error.message);
-            else console.log('Lead securely saved to Supabase Cloud DB ✅');
-          }).catch(err => console.warn('Supabase network error:', err));
+          fetch(`${SUPABASE_URL}/rest/v1/waitlist_leads`, {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'Content-Type': 'application/json',
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+              name: leadPayload.name,
+              country: leadPayload.country,
+              phone: leadPayload.phone,
+              email: leadPayload.email,
+              diagnosis_title: leadPayload.diagnosisTitle,
+              insulin_score: leadPayload.insulinScore,
+              metabolic_rate: leadPayload.metabolicRate,
+              fat_loc: leadPayload.fat_loc,
+              insulin_sign: leadPayload.insulin_sign,
+              diet_history: leadPayload.diet_history,
+              lifestyle_need: leadPayload.lifestyle_need,
+              discount_code: 'WAHET30'
+            })
+          }).then(res => {
+            if (res.ok) console.log('Lead securely saved to Supabase Cloud DB ✅ (HTTP ' + res.status + ')');
+            else console.warn('Supabase insert status notice:', res.status);
+          }).catch(err => console.warn('Supabase fetch notice:', err));
         } catch (e) {}
       }
 

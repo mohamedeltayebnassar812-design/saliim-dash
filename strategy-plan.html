@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خطة الأعمال والاستراتيجية التسويقية الشاملة | واحة نور (د. أحمد الخطيب)</title>
+  <meta name="description" content="العرض الاستراتيجي المتكامل من مدير التسويق إلى د. أحمد الخطيب — استراتيجية البيزنس والتسويق لمنصة واحة نور (wahetnor.com).">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js for Financial Projections -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ECFDF5',
+              100: '#D1FAE5',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46',
+              900: '#064E3B',
+              dark: '#022C22'
+            },
+            accent: {
+              gold: '#D97706',
+              amber: '#F59E0B'
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: normal !important;
+      background-color: #F8FAF9;
+      color: #0F172A;
+      overflow-x: hidden;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .gradient-hero {
+      background: radial-gradient(130% 100% at 50% 0%, #064E3B 0%, #022C22 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #10B981;
+      border-radius: 999px;
+    }
+    .badge-glow {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .glass-card { border: 1px solid #ccc !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+
+  <!-- Presentation Control Bar (Sticky Top) -->
+  <header class="no-print sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 lg:px-8 py-3.5 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-800 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i data-lucide="compass" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-slate-900 text-lg tracking-tight">واحة نور</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 font-semibold border border-brand-200">wahetnor.com</span>
+          </div>
+          <p class="text-xs text-slate-500 hidden sm:block">الملف الاستراتيجي وخطة الأعمال التنفيذية — إعداد: مدير التسويق</p>
+        </div>
+      </div>
+
+      <!-- Quick Section Jump Navigation -->
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-slate-600">
+        <a href="#summary" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">التشخيص</a>
+        <a href="#business-model" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">البيزنس</a>
+        <a href="#frameworks" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">الأطر التسويقية</a>
+        <a href="#competitors" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">المنافسون</a>
+        <a href="#launch-15" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">خطة الـ 15 يوم</a>
+        <a href="#calculator" class="px-3 py-1.5 rounded-lg hover:text-brand-700 hover:bg-brand-50/70 transition">محاكي الأرباح</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>طباعة التقرير</span>
+        </button>
+        <a href="#calculator" class="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-lg shadow-sm shadow-brand-600/30 transition">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          <span>حاسبة الإيرادات</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section (Executive Briefing) -->
+  <section class="gradient-hero text-white relative overflow-hidden py-16 lg:py-24 px-4 lg:px-8">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto relative z-10">
+      
+      <!-- Tag / Header Badge -->
+      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-900/70 border border-emerald-500/30 text-emerald-300 text-xs font-semibold mb-6">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>تقرير تنفيذي وسري للغاية — خاص بـ د. أحمد الخطيب</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-8 space-y-4">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
+            خطة التحول الرقمي لمنظومة <br>
+            <span class="text-emerald-400 underline decoration-emerald-500/40 underline-offset-8">«واحة نور» (Wahet Nour)</span>
+          </h1>
+          <p class="text-emerald-100/90 text-base sm:text-lg leading-relaxed max-w-3xl font-light">
+            استراتيجية هندسية متكاملة لتحويل قاعدة المتابعين البالغة <strong class="text-white font-bold">9 ملايين متابع</strong> من مشاهدات مجانية عابرة، إلى <strong class="text-white font-bold">شركة صحة رقمية مستدامة (Health-Tech Platform)</strong> تحقق إيرادات متكررة وتبني أثراً صحياً حقيقياً بدون حرمان.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4 text-xs font-medium text-emerald-200">
+            <div class="flex items-center gap-1.5 bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-800">
+              <i data-lucide="user-check" class="w-4 h-4 text-emerald-400"></i>
+              <span>إعداد: مدير التسويق الرقمي</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-800">
+              <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
+              <span>النطاق المعتمد: wahetnor.com</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-emerald-950/60 px-3 py-1.5 rounded-lg border border-emerald-800">
+              <i data-lucide="calendar" class="w-4 h-4 text-emerald-400"></i>
+              <span>تاريخ التجهيز: أكتوبر 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric KPI Cards at a glance -->
+        <div class="lg:col-span-4 bg-emerald-950/60 rounded-2xl border border-emerald-700/40 p-6 backdrop-blur-md space-y-4">
+          <div class="text-xs font-semibold text-emerald-300 uppercase tracking-wider">الأصول الرقمية غير المستغلة:</div>
+          
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-800/60">
+              <div class="text-2xl font-black text-white">8.7M+</div>
+              <div class="text-[11px] text-emerald-300">إجمالي المتابعين</div>
+            </div>
+            <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-800/60">
+              <div class="text-2xl font-black text-emerald-300">6.1B</div>
+              <div class="text-[11px] text-emerald-300">ظهور رقمي (Impressions)</div>
+            </div>
+            <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-800/60">
+              <div class="text-2xl font-black text-amber-400">0$</div>
+              <div class="text-[11px] text-emerald-300">عائد المتابعات السابق</div>
+            </div>
+            <div class="bg-emerald-900/40 p-3 rounded-xl border border-emerald-800/60">
+              <div class="text-2xl font-black text-emerald-400">$35K+</div>
+              <div class="text-[11px] text-emerald-300">مستهدف الإطلاق الأول</div>
+            </div>
+          </div>
+
+          <div class="text-[11px] text-emerald-200/80 leading-relaxed pt-1 border-t border-emerald-800/40">
+            💡 هدف هذه الخطة هو سد الفجوة بين المشاهدات الضخمة والإيراد المالي المنظم.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="max-w-6xl mx-auto px-4 lg:px-8 py-12 space-y-16">
+
+    <!-- Section 1: Situational Diagnosis & Root Causes -->
+    <section id="summary" class="scroll-mt-24 space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">1</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">التشخيص الاستراتيجي: أين نحن ولماذا لم نحول الـ 9M لعملاء؟</h2>
+          <p class="text-sm text-slate-500">تحليل صريح وموضوعي لنقاط القوة والضعف في المرحلة السابقة</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Defect 1 -->
+        <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
+            <i data-lucide="eye" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">1. فخ "المشاهدات مقابل المعالج"</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            الخوارزميات كانت تعتمد على العناوين الصادمة والمعلومات العامة (فيتامينات، تجاعيد، مشروبات). المشاهد كان يشاهد "الفضول والمعلومة المجانية"، ولم يُربط ببرنامج علاجي شخصي مع د. أحمد كقائد رحلة تحول.
+          </p>
+        </div>
+
+        <!-- Defect 2 -->
+        <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center mb-4">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">2. التشتت الموضوعي للجمهور</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            التنقل بين الشعر والمفاصل والتغذية جذب شرائح متباينة جداً ذات قدرات شرائية غير واضحة. تركيز الشهور الأخيرة على "التخسيس والأيض والكرش" هو البداية الصحيحة التي سنبني عليها العرض الرئيسي الموحد.
+          </p>
+        </div>
+
+        <!-- Defect 3 -->
+        <div class="glass-card p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
+            <i data-lucide="badge-percent" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mb-2">3. غياب منظومة التحويل والبيع</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            حتى الآن، لم تكن هناك صفحة هبوط، ولا بوابة دفع، ولا استمارة حجز، ولا باقة محددة. عندما كان المتابع يسأل "عايزين نتابع معاك"، لم يكن هناك رابط مالي مباشر لشراء الخدمة فورياً.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Section 2: Master Business Model & Value Ladder -->
+    <section id="business-model" class="scroll-mt-24 space-y-8">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">2</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">هندسة البيزنس وسُلّم القيمة والتسعير الجغرافي</h2>
+          <p class="text-sm text-slate-500">كيف نحل معضلة القوة الشرائية بين مصر والخليج دون الإضرار بقيمة البراند؟</p>
+        </div>
+      </div>
+
+      <!-- Value Ladder Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Tier 1: Flagship Challenge -->
+        <div class="glass-card rounded-2xl border-2 border-brand-500 p-6 flex flex-col justify-between relative shadow-lg shadow-brand-500/10">
+          <div class="absolute -top-3.5 right-6 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            المحرك الجماهيري (Volume)
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-brand-700 font-semibold text-xs mt-2">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>المنتج الأساسي الأوسع انتشاراً</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">تحدي واحة نور 60 يوماً</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              تحدي جماعي تفاعلي يبدأ بدفعات شهرية. يشمل خطة التغذية المرنة 80/20، تمارين، شات الدعم الجماعي، ولايف أسبوعي مجمع من د. أحمد.
+            </p>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر مصر (EGP):</span>
+                <span class="font-bold text-brand-700 text-sm">1,500 ج.م <span class="text-[10px] text-slate-400 font-normal">(أو 1,200 حجز مبكر)</span></span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر الخليج / الدولي:</span>
+                <span class="font-bold text-slate-800 text-sm">$69 دولار <span class="text-[10px] text-slate-400 font-normal">(≈ 250 درهم/ريال)</span></span>
+              </div>
+            </div>
+
+            <ul class="text-xs text-slate-600 space-y-2 pt-2 border-t border-slate-100">
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> وصول فوري لمنصة الموقع والتطبيق</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> مئات/آلاف المشتركين شهرياً</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> تشغيل شبه آلي دون استنزاف وقتك</li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center text-xs text-slate-400 font-medium">
+            يستهدف: 80% من المشتركين الجدد
+          </div>
+        </div>
+
+        <!-- Tier 2: 1-on-1 Team Coaching -->
+        <div class="glass-card rounded-2xl border border-slate-200 p-6 flex flex-col justify-between shadow-sm hover:border-slate-300 transition">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-slate-500 font-semibold text-xs">
+              <i data-lucide="user-check" class="w-4 h-4 text-emerald-600"></i>
+              <span>المستوى المتوسط (Customized)</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">متابعة فردية خاصة (فريق واحة نور)</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              متابعة شخصية 100% يشرف عليها أخصائي تغذية معتمد من فريق د. أحمد تحت إشرافك المباشر، بشات يومي وتعديل أسبوعي للقياسات.
+            </p>
+
+            <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200/80 space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر مصر (EGP):</span>
+                <span class="font-bold text-slate-800 text-sm">3,800 ج.م / شهر</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر الخليج / الدولي:</span>
+                <span class="font-bold text-slate-800 text-sm">$140 دولار <span class="text-[10px] text-slate-400 font-normal">(≈ 500 درهم/ريال)</span></span>
+              </div>
+            </div>
+
+            <ul class="text-xs text-slate-600 space-y-2 pt-2 border-t border-slate-100">
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> جدول مفصل ومخصص تماماً</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> شات يومي مع الأخصائي</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-brand-500"></i> تقييم أسبوعي للوزن والمقاسات</li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center text-xs text-slate-400 font-medium">
+            يستهدف: 15% من طالبي الخصوصية
+          </div>
+        </div>
+
+        <!-- Tier 3: VIP Executive with Dr. Ahmed -->
+        <div class="glass-card rounded-2xl border border-amber-300/80 bg-gradient-to-b from-amber-50/20 to-white p-6 flex flex-col justify-between shadow-sm hover:border-amber-400 transition">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-amber-700 font-semibold text-xs">
+              <i data-lucide="crown" class="w-4 h-4 text-amber-500"></i>
+              <span>خدمة النخبة (High-Ticket VIP)</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">باقة النخبة (مع د. أحمد شخصياً)</h3>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              رعاية استشارية عليا مباشرة منك (15 إلى 20 مقعداً شهرياً فقط)، لرجال وسيدات الأعمال في الخليج ومصر، تشمل مكالمات Zoom وتحليل تحاليل متقدم.
+            </p>
+
+            <div class="bg-amber-50/60 p-3.5 rounded-xl border border-amber-200/80 space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر مصر (EGP):</span>
+                <span class="font-bold text-slate-900 text-sm">16,000 ج.م / شهر</span>
+              </div>
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-500">سعر الخليج / الدولي:</span>
+                <span class="font-bold text-amber-700 text-sm">$450 - $500 دولار / شهر</span>
+              </div>
+            </div>
+
+            <ul class="text-xs text-slate-600 space-y-2 pt-2 border-t border-amber-100">
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600"></i> مكالمة Zoom 45 دقيقة معك</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600"></i> واتساب خاص وتوجيه مباشر</li>
+              <li class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-amber-600"></i> أولوية قصوى ودعم نفسي صحي</li>
+            </ul>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100 text-center text-xs text-amber-700 font-bold">
+            مقاعد نادرة (Scarcity): 15 عميل فقط
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legal & Regulatory Shield -->
+      <div class="bg-slate-900 text-white rounded-2xl p-6 lg:p-8 space-y-4">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+          <span>الدرع القانوني والتنفيذي الحامي لمنصة واحة نور (Legal Protection Architecture)</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300 leading-relaxed">
+          <div class="space-y-1.5 border-r border-slate-800 pr-4">
+            <strong class="text-white text-sm block">1. تصنيف الخدمة دولياً</strong>
+            تصنيف الخدمة رسمياً: <em>«استشارات وتدريب تعديل نمط الحياة والعادات والتغذية الرياضية (Lifestyle & Habit Coaching)»</em> استناداً لشهادات PN1 و SCOPE، دون المساس بتشخيص الأمراض العضوية أو كتابة روشتات دوائية.
+          </div>
+          <div class="space-y-1.5 border-r border-slate-800 pr-4">
+            <strong class="text-white text-sm block">2. إقرار إخلاء المسؤولية الطبي</strong>
+            إلزام كل عميل بتوقيع إلكتروني واستمارة فحص (Intake Form) تقر بأن البرنامج تدريب تثقيفي وليس بديلاً عن الطبيب السريري للأمراض المزمنة، مع سياسة استرداد مشروطة واضحة تحميك من البلاغات الكيدية.
+          </div>
+          <div class="space-y-1.5">
+            <strong class="text-white text-sm block">3. المظلة المالية في دبي</strong>
+            استثمار رخصتك الإعلامية في دبي ميديا سيتي (License No. 102905) وتأسيس الكيان الرقمي في Freezone، مما يجعل بوابات الدفع الدولية خاضعة للقانون الإماراتي المعفي من تعقيدات السوق المحلي.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 3: The Four Strategic Frameworks (Detailed Application) -->
+    <section id="frameworks" class="scroll-mt-24 space-y-8">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">3</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">تطبيق الأطر الاستراتيجية الأربعة (Marketing Frameworks)</h2>
+          <p class="text-sm text-slate-500">تحليل علمي دقيق يربط القيمة برحلة العميل الكاملة</p>
+        </div>
+      </div>
+
+      <!-- Tabs Navigation -->
+      <div class="flex border-b border-slate-200 text-sm font-semibold text-slate-500 overflow-x-auto gap-2 custom-scrollbar">
+        <button onclick="switchTab('tab-vp')" id="btn-tab-vp" class="tab-btn px-4 py-2.5 border-b-2 border-brand-600 text-brand-700 whitespace-nowrap">
+          قيمة العرض (Value Proposition)
+        </button>
+        <button onclick="switchTab('tab-sostac')" id="btn-tab-sostac" class="tab-btn px-4 py-2.5 border-b-2 border-transparent hover:text-slate-800 whitespace-nowrap">
+          إطار SOSTAC الاستراتيجي
+        </button>
+        <button onclick="switchTab('tab-race')" id="btn-tab-race" class="tab-btn px-4 py-2.5 border-b-2 border-transparent hover:text-slate-800 whitespace-nowrap">
+          خريطة رحلة العميل (RACE Model)
+        </button>
+      </div>
+
+      <!-- Tab Content: Value Proposition -->
+      <div id="tab-vp" class="tab-content space-y-6">
+        <div class="glass-card p-6 lg:p-8 rounded-2xl border border-slate-200">
+          <div class="max-w-3xl space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">The Official Value Proposition</span>
+            <blockquote class="text-lg lg:text-xl font-bold text-slate-900 leading-snug border-r-4 border-brand-500 pr-4">
+              «لكل من أتعبته دوامة دايت الحرمان وفقدان الإرادة؛ منصة "واحة نور" تمنحك المرافقة اليومية ونظام التغذية المرن المبني على علوم الأيض الحديثة مع د. أحمد الخطيب وفريقه، لتستعيد رشاقتك وطاقتك بدون جوع أو كآبة، لأننا لا نبيعك ورقة دايت.. بل نسير معك خطوة بخطوة في رحلة تغيير عاداتك للأبد.»
+            </blockquote>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 pt-8 border-t border-slate-100">
+            <div class="bg-rose-50/50 p-5 rounded-xl border border-rose-100 space-y-2">
+              <h4 class="font-bold text-rose-800 text-sm flex items-center gap-2">
+                <i data-lucide="alert-circle" class="w-4 h-4"></i> آلام العميل الجوهرية (Customer Pains)
+              </h4>
+              <ul class="text-xs text-rose-700/90 space-y-1.5 list-disc list-inside leading-relaxed">
+                <li>الجوع المستمر والصداع والإرهاق من الرجيمات القاسية.</li>
+                <li>العزلة الاجتماعية في العزومات والمناسبات العائلية.</li>
+                <li>عودة الوزن بسرعة بعد التوقف مع دهون عنيدة في الكرش.</li>
+                <li>الشعور بالذنب والوحدة لعدم وجود سند ومتابع يومي.</li>
+              </ul>
+            </div>
+
+            <div class="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100 space-y-2">
+              <h4 class="font-bold text-brand-800 text-sm flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> الحلول الحصرية في واحة نور (Gain Relievers)
+              </h4>
+              <ul class="text-xs text-brand-700/90 space-y-1.5 list-disc list-inside leading-relaxed">
+                <li>قاعدة 80/20: 80% أكل صحي مغذي و20% مرونة لأكلات البيت المفضلة.</li>
+                <li>ضبط حساسية الإنسولين لعلاج الجذور بدلاً من تجويع الجسم.</li>
+                <li>مرافقة يومية داخل التطبيق تكسر حاجز الخوف والانتكاسة.</li>
+                <li>مجتمع محفز يشاركك نفس التحديات بنفس الأهداف.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: SOSTAC -->
+      <div id="tab-sostac" class="tab-content hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">S - Situational Analysis</span>
+            <h4 class="font-bold text-slate-900 text-sm">أين نحن الآن؟</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              امتلاك أصل إعلامي كاسح (9M متابع) وثقة طبية عالية، مع فجوة تجارية (0$ تحويل) تم علاجها الآن بتأسيس منصة wahetnor.com.
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">O - Objectives (SMART)</span>
+            <h4 class="font-bold text-slate-900 text-sm">أهداف الـ 90 يوماً</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              جمع 10,000 lead في قائمة الانتظار، إغلاق أول 500-750 مشترك في التحدي، وملء 15 مقعد VIP بإيراد إجمالي يتجاوز 40,000$.
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">S - Strategy</span>
+            <h4 class="font-bold text-slate-900 text-sm">كيف سنصل للأهداف؟</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              استراتيجية العرض الموحد (Hero Offer: خسارة الكرش ومقاومة الإنسولين)، التسعير المزدوج بالجنيه والدولار، وإطلاق نظام الدفعات المغلقة (FOMO).
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">T - Tactics</span>
+            <h4 class="font-bold text-slate-900 text-sm">التكتيكات المتبعة</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              اختبار قياس الأيض التفاعلي المجاني، فيديوهات الجسر العاطفية، حملات أتمتة الواتساب، وخصم 40% لأول 100 مسجل فقط.
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">A - Actions</span>
+            <h4 class="font-bold text-slate-900 text-sm">من ينفذ ومتى؟</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              د. أحمد (تصوير المحتوى واللايف الأسبوعي)، المطور (تجهيز الموقع والبوابات في 15 يوماً)، وفريق المتابعة (فحص الاستمارات والشات).
+            </p>
+          </div>
+
+          <div class="glass-card p-5 rounded-xl border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-600">C - Control</span>
+            <h4 class="font-bold text-slate-900 text-sm">الرقابة والقياس</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              متابعة يومية لمعدل التحويل (Conversion Rate)، تكلفة العميل (CAC=0$ حالياً)، ونسبة التزام المشتركين في التحدي (Target: 85%+).
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tab Content: RACE -->
+      <div id="tab-race" class="tab-content hidden space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          
+          <div class="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 font-bold flex items-center justify-center text-xs">R</div>
+            <h4 class="font-bold text-slate-900 text-sm">1. الوصول (Reach)</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              استثمار قنوات يوتيوب وفيسبوك لنشر فيديوهات وسلاسل ريلز بعنوان: «كبسولة واحة نور» عن مقاومة الإنسولين وثبات الوزن.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-brand-600 font-bold flex items-center justify-center text-xs">A</div>
+            <h4 class="font-bold text-slate-900 text-sm">2. التفاعل (Act)</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              توجيه المشاهدين لرابط البايو لإجراء اختبار مقاومة الإنسولين على wahetnor.com والتسجيل في قائمة الانتظار برقم الواتساب.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 font-bold flex items-center justify-center text-xs">C</div>
+            <h4 class="font-bold text-slate-900 text-sm">3. التحويل (Convert)</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              فتح التسجيل لمدة 72 ساعة بخصم مبكر، وتفعيل الدفع السلس (فودافون كاش لمصر، وApple Pay للخليج) عبر رسائل الواتساب الفورية.
+            </p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-slate-200 space-y-2">
+            <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 font-bold flex items-center justify-center text-xs">E</div>
+            <h4 class="font-bold text-slate-900 text-sm">4. الولاء (Engage)</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              مجتمع التحدي التفاعلي، لوحة الشرف الأسبوعية، وبرنامج إحالة يمنح أسبوعين مجاناً لكل من يجلب صديقاً في الدفعة القادمة.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 4: Competitor Intelligence & The White Space -->
+    <section id="competitors" class="scroll-mt-24 space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">4</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">خارطة المنافسين والمساحة الشاغرة (Competitive Intelligence)</h2>
+          <p class="text-sm text-slate-500">أين يتفوق د. أحمد الخطيب ومنصة واحة نور على الجميع؟</p>
+        </div>
+      </div>
+
+      <!-- Comparison Matrix Table -->
+      <div class="glass-card rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-xs">
+            <thead class="bg-slate-50 text-slate-700 border-b border-slate-200 font-bold">
+              <tr>
+                <th class="p-3.5">المنافس</th>
+                <th class="p-3.5">النموذج التجاري</th>
+                <th class="p-3.5">نقطة القوة</th>
+                <th class="p-3.5">الثغرة القاتلة لديه</th>
+                <th class="p-3.5 text-brand-700 font-extrabold bg-brand-50/70">فرصة «واحة نور» لاكتساحه</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              
+              <tr class="hover:bg-slate-50/50 transition">
+                <td class="p-3.5 font-bold text-slate-900">د. كريم علي (فكر تاني)</td>
+                <td class="p-3.5 text-slate-600">استشارات Zoom فاخرة + مكملات</td>
+                <td class="p-3.5 text-emerald-600">براند فخم جداً وأسعار عالية باليورو</td>
+                <td class="p-3.5 text-rose-600">الصرامة والتطرف (منع النشويات تماماً) ولا حلول رخيصة</td>
+                <td class="p-3.5 font-semibold text-brand-800 bg-brand-50/30">نحن نقدم <strong>المرونة بدون حرمان</strong> وتحديات ميسرة للجميع.</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/50 transition">
+                <td class="p-3.5 font-bold text-slate-900">د. وعد أمين (تطبيق Wilde)</td>
+                <td class="p-3.5 text-slate-600">تطبيق بتحديات شهرية (~1300 ج)</td>
+                <td class="p-3.5 text-emerald-600">مجتمع تفاعلي نسائي نشط وسعر سهل</td>
+                <td class="p-3.5 text-rose-600">محصورة في شريحة السيدات وتفقد قطاع الرجال والشباب</td>
+                <td class="p-3.5 font-semibold text-brand-800 bg-brand-50/30">واحة نور تستهدف <strong>الجنسين (رجال وسيدات)</strong> بقاعدة جماهيرية أضخم بـ 4 أضعاف.</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/50 transition">
+                <td class="p-3.5 font-bold text-slate-900">د. محمد الغندور</td>
+                <td class="p-3.5 text-slate-600">يوتيوب + واتساب وعيادة السعودية</td>
+                <td class="p-3.5 text-emerald-600">حضور شعبي قوي جداً في السعودية ومصر</td>
+                <td class="p-3.5 text-rose-600">أنظمة دايت كلاسيكية غير مستدامة (رجيم البيض والتمر) ولا يوجد تطبيق</td>
+                <td class="p-3.5 font-semibold text-brand-800 bg-brand-50/30">واحة نور تقدم <strong>منهجية علمية معتمدة دولياً (PN1/SCOPE)</strong> ومنصة تقنية ذكية.</td>
+              </tr>
+
+              <tr class="hover:bg-slate-50/50 transition">
+                <td class="p-3.5 font-bold text-slate-900">د. نيللي شمس</td>
+                <td class="p-3.5 text-slate-600">عيادات ورقية + متابعة واتساب</td>
+                <td class="p-3.5 text-emerald-600">ثقة طبية رصينة وتركيز على العادات</td>
+                <td class="p-3.5 text-rose-600">إدارة يدوية عبر الواتساب محدودة الطاقة الاستيعابية</td>
+                <td class="p-3.5 font-semibold text-brand-800 bg-brand-50/30">واحة نور تستوعب <strong>الآلاف آلياً</strong> عبر الموقع والتطبيق بتجربة مستخدم فاخرة.</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 5: The 15-Day Pre-Launch Playbook -->
+    <section id="launch-15" class="scroll-mt-24 space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">5</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">خارطة طريق الـ 15 يوماً القادمة (Launch Runway)</h2>
+          <p class="text-sm text-slate-500">ماذا سنفعل بالضبط يوماً بيوم حتى فتح باب التسجيل الرسمي؟</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Phase 1 -->
+        <div class="glass-card p-6 rounded-2xl border-t-4 border-slate-700 space-y-4">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">الأيام (1 - 5)</div>
+          <h3 class="text-lg font-bold text-slate-900">المرحلة 1: كسر القناعات وتحريك الرغبة</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            الهدف: إيقاظ الجمهور وإقناعهم بأن الدايت التقليدي فاشل وأن الحل يكمن في تصحيح هرمون الإنسولين والأيض.
+          </p>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-2">
+            <div>🎥 <strong>فيديو 1:</strong> "ليه كل ما تخس بترجع أطخن؟ حقيقة هرمونات الحرق التي يخفونها عنك".</div>
+            <div>🎥 <strong>فيديو 2:</strong> قصة شخصية من د. أحمد: "لماذا قررت إيقاف الأنظمة التقليدية وبناء واحة نور؟"</div>
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="glass-card p-6 rounded-2xl border-t-4 border-brand-500 space-y-4 shadow-sm">
+          <div class="text-xs font-bold text-brand-600 uppercase tracking-wider">الأيام (6 - 11)</div>
+          <h3 class="text-lg font-bold text-slate-900">المرحلة 2: تدشين قائمة الانتظار واختبار الأيض</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            الهدف: جمع آلاف الأرقام والإيميلات على wahetnor.com قبل إطلاق البيع الفعلي.
+          </p>
+          <div class="bg-emerald-50/60 p-3 rounded-xl border border-emerald-200 text-xs text-brand-900 space-y-2">
+            <div>🧪 <strong>اختبار الموقع:</strong> "احسب درجة مقاومة الإنسولين وحرق الدهون في 60 ثانية مجاناً".</div>
+            <div>🎁 <strong>الحافز:</strong> خصم حصري 40% لأول 100 مشترك ينضمون لقائمة الانتظار.</div>
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="glass-card p-6 rounded-2xl border-t-4 border-amber-500 space-y-4 shadow-sm">
+          <div class="text-xs font-bold text-amber-600 uppercase tracking-wider">الأيام (12 - 15)</div>
+          <h3 class="text-lg font-bold text-slate-900">المرحلة 3: فتح الحجز بنظام الندرة (FOMO)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            الهدف: إغلاق المبيعات السريعة وحشد المشتركين خلال نافذة زمنية محددة.
+          </p>
+          <div class="bg-amber-50/60 p-3 rounded-xl border border-amber-200 text-xs text-amber-900 space-y-2">
+            <div>🔒 <strong>يوم 12:</strong> فتح التسجيل المبكر لقائمة الانتظار عبر الواتساب فقط لمدة 24 ساعة.</div>
+            <div>🚀 <strong>يوم 13 - 15:</strong> إعلان فتح الباب للعامة لمدة 72 ساعة فقط ثم إغلاق التسجيل لبدء الدفعة.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Section 6: Interactive Revenue Calculator & Financial Projections -->
+    <section id="calculator" class="scroll-mt-24 space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm">6</span>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">محاكي الأرباح التفاعلي للإطلاق الأول (Financial Simulator)</h2>
+          <p class="text-sm text-slate-500">حرّك الأرقام لتشاهد الإيراد المتوقع في أول 30 يوماً من الترافيك العضوي</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column -->
+        <div class="lg:col-span-6 glass-card p-6 lg:p-8 rounded-2xl border border-slate-200 space-y-6">
+          <h3 class="font-bold text-slate-900 text-base">متغيرات الإطلاق الأول:</h3>
+
+          <!-- Slider 1: Egypt Cohort Members -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-700">مشتركو التحدي من مصر (1,200 ج.م):</span>
+              <span id="val-egypt" class="text-brand-700 font-bold text-sm">400 مشترك</span>
+            </div>
+            <input type="range" id="slider-egypt" min="100" max="1500" step="50" value="400" 
+              class="w-full accent-brand-600 cursor-pointer" oninput="calculateRevenue()">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>100</span>
+              <span>متحفظ (400)</span>
+              <span>1,500</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Gulf Cohort Members -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-700">مشتركو التحدي من الخليج ($69 دولار):</span>
+              <span id="val-gulf" class="text-brand-700 font-bold text-sm">150 مشترك</span>
+            </div>
+            <input type="range" id="slider-gulf" min="30" max="600" step="10" value="150" 
+              class="w-full accent-brand-600 cursor-pointer" oninput="calculateRevenue()">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>30</span>
+              <span>متحفظ (150)</span>
+              <span>600</span>
+            </div>
+          </div>
+
+          <!-- Slider 3: VIP Clients with Dr. Ahmed -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-700">عملاء النخبة VIP مع د. أحمد ($450 دولار):</span>
+              <span id="val-vip" class="text-amber-700 font-bold text-sm">15 عميل</span>
+            </div>
+            <input type="range" id="slider-vip" min="5" max="25" step="1" value="15" 
+              class="w-full accent-amber-500 cursor-pointer" oninput="calculateRevenue()">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>5</span>
+              <span>الحد الأقصى الموصى به (15-20)</span>
+              <span>25</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-500 leading-relaxed">
+            📌 الحسابات مبنية على سعر صرف تقديري للدولار = 48.5 جنيه مصري، مع صفر تكاليف إعلانية (0$ Ad-Spend).
+          </div>
+        </div>
+
+        <!-- Output Cards Column -->
+        <div class="lg:col-span-6 space-y-4">
+          
+          <div class="bg-gradient-to-br from-brand-900 to-brand-700 text-white p-6 lg:p-8 rounded-2xl shadow-xl shadow-brand-900/20 space-y-4">
+            <div class="text-xs font-semibold text-emerald-300 uppercase tracking-wider">الإيراد الإجمالي الصافي المتوقع (الشهر الأول):</div>
+            
+            <div class="space-y-1">
+              <div class="text-4xl lg:text-5xl font-black text-white" id="total-usd">$30,600</div>
+              <div class="text-lg font-bold text-emerald-200" id="total-egp">≈ 1,484,100 جنيه مصري</div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 pt-4 border-t border-emerald-600/60 text-xs">
+              <div>
+                <div class="text-emerald-300 text-[10px]">تحدي مصر</div>
+                <div class="font-bold text-white text-sm" id="sub-egypt">480,000 ج</div>
+              </div>
+              <div>
+                <div class="text-emerald-300 text-[10px]">تحدي الخليج</div>
+                <div class="font-bold text-white text-sm" id="sub-gulf">$10,350</div>
+              </div>
+              <div>
+                <div class="text-emerald-300 text-[10px]">باقة الـ VIP</div>
+                <div class="font-bold text-amber-300 text-sm" id="sub-vip">$6,750</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit Economics Breakdown -->
+          <div class="glass-card p-6 rounded-2xl border border-slate-200 space-y-3">
+            <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-brand-600"></i> اقتصاديات الوحدة وهوامش الربح
+            </h4>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-500">عمولات بوابات الدفع (Stripe/Paymob):</span>
+                <span class="font-semibold text-slate-800">~ 3% إلى 4%</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-500">تكلفة أخصائيي الدعم والإشراف (فريق التغذية):</span>
+                <span class="font-semibold text-slate-800">~ 10% إلى 12%</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-slate-100">
+                <span class="text-slate-500">تكاليف السيرفرات والتسويق المدفوع:</span>
+                <span class="font-semibold text-slate-800">0$ (ترافيك عضوي 100%)</span>
+              </div>
+              <div class="flex justify-between py-1 text-brand-700 font-bold text-sm">
+                <span>صافي هامش الربح التشغيلي:</span>
+                <span>تتجاوز 84% 🚀</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Section 7: Marketing Manager's Final Call to Action -->
+    <section class="glass-card rounded-2xl p-8 lg:p-10 border-2 border-brand-500/80 bg-gradient-to-b from-brand-50/40 to-white space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-xl">
+          <i data-lucide="check-check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-xl lg:text-2xl font-black text-slate-900">توصية المدير التسويقي الختامية لدكتور أحمد الخطيب</h3>
+          <p class="text-xs text-slate-500">القرار الاستراتيجي للبدء الفوري اليوم</p>
+        </div>
+      </div>
+
+      <div class="text-sm text-slate-700 leading-relaxed space-y-3">
+        <p>
+          يا دكتور أحمد، الأرقام لا تكذب؛ أنت تجلس على <strong>منجم ذهب رقمي غير مستغل</strong>. الجمهور يثق بك، ويبحث عن إشرافك، والساحة بين دكاترة التجويع ومدربي الواتساب غير المؤهلين شاغرة تماماً لاسم <strong>«واحة نور»</strong>.
+        </p>
+        <p>
+          التأخير لم يعد في صالحنا؛ كل يوم يمر دون وجود صفحة هبوط هو إهدار لترافيك عضوي بمئات الآلاف من الزيارات. خطتنا التنفيذية واضحة، المخاطر محيدة بنسبة 100% عبر عقود الإشراف في دبي وشروط الخدمة، ونموذج التسعير يضمن دخول ملايين الجنيهات من مصر مع آلاف الدولارات من الخليج بالتوازي.
+        </p>
+      </div>
+
+      <div class="pt-4 border-t border-brand-200 flex flex-wrap items-center justify-between gap-4">
+        <div class="text-xs text-slate-500">
+          <strong>الخطوة القادمة فوراً:</strong> اعتماد نصوص صفحة الهبوط لـ <code class="bg-white px-2 py-1 rounded border border-slate-300 text-brand-700">wahetnor.com</code> وتسليمها للمبرمج للانتهاء منها خلال 15 يوماً.
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md shadow-brand-600/30 transition">
+            العودة لأعلى التقرير ⬆
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white py-8 px-4 text-center text-xs text-slate-400 space-y-2">
+    <p>تم إعداد وتطوير هذا العرض الاستراتيجي بواسطة مدير التسويق الرقمي — جميع الحقوق محفوظة لـ د. أحمد الخطيب © 2026</p>
+    <p class="text-[11px] text-slate-400">واحة نور | Wahet Nour — https://wahetnor.com/</p>
+  </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Tab Switching Function
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-brand-600', 'text-brand-700');
+        btn.classList.add('border-transparent');
+      });
+
+      document.getElementById(tabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent');
+        activeBtn.classList.add('border-brand-600', 'text-brand-700');
+      }
+    }
+
+    // Revenue Simulator Logic
+    function calculateRevenue() {
+      const egyptCount = parseInt(document.getElementById('slider-egypt').value);
+      const gulfCount = parseInt(document.getElementById('slider-gulf').value);
+      const vipCount = parseInt(document.getElementById('slider-vip').value);
+
+      document.getElementById('val-egypt').innerText = egyptCount + ' مشترك';
+      document.getElementById('val-gulf').innerText = gulfCount + ' مشترك';
+      document.getElementById('val-vip').innerText = vipCount + ' عميل';
+
+      const egyptRevEgp = egyptCount * 1200;
+      const gulfRevUsd = gulfCount * 69;
+      const vipRevUsd = vipCount * 450;
+
+      const rate = 48.5; // EGP to USD rate
+      const totalRevUsd = Math.round((egyptRevEgp / rate) + gulfRevUsd + vipRevUsd);
+      const totalRevEgp = Math.round(totalRevUsd * rate);
+
+      document.getElementById('sub-egypt').innerText = egyptRevEgp.toLocaleString('en-US') + ' ج';
+      document.getElementById('sub-gulf').innerText = '$' + gulfRevUsd.toLocaleString('en-US');
+      document.getElementById('sub-vip').innerText = '$' + vipRevUsd.toLocaleString('en-US');
+
+      document.getElementById('total-usd').innerText = '$' + totalRevUsd.toLocaleString('en-US');
+      document.getElementById('total-egp').innerText = '≈ ' + totalRevEgp.toLocaleString('en-US') + ' جنيه مصري';
+    }
+
+    // Run initial calculation on load
+    calculateRevenue();
+  </script>
+
+</body>
+</html>

@@ -431,35 +431,94 @@
            ========================================================================= -->
       <div id="qBlockResult" class="quiz-step hidden space-y-6 text-right">
         
-        <!-- Result Header -->
-        <div class="text-center space-y-2 border-b border-slate-700/80 pb-5">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-2 shadow-lg shadow-emerald-500/20">
-            <i data-lucide="activity" class="w-7 h-7"></i>
-          </div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400">
-            <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
-            <span>التقرير الأيضي الخاص بـ: <span id="resName" class="text-white font-black">--</span></span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white" id="resDiagnosisTitle">مؤشر مقاومة إنسولين وبطء أيضي ناتج عن حميات الحرمان</h2>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed pt-1" id="resDiagnosisDesc">
-            إجاباتك تشير إلى أن دهون البطن لديك عنيدة بسبب فرط إفراز الإنسولين واضطراب الأيض الدفاعي، وعلاجها يتطلب إعادة برمجة الحرق بقاعدة 80/20 وليس تجويع نفسك.
-          </p>
-        </div>
+        <!-- LUXURY MEDICAL REPORT CARD (SIMPLE, VISUAL & BITE-SIZED) -->
+        <div class="rounded-3xl bg-slate-900/90 border border-emerald-500/30 p-5 sm:p-7 shadow-2xl space-y-5 text-right relative overflow-hidden">
+          
+          <!-- Top Glow Accent -->
+          <div class="absolute -top-12 -left-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        <!-- 3 Diagnostic Score Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1" id="resCardLabel1">مؤشر حساسية الإنسولين</div>
-            <div class="text-base font-extrabold text-rose-400" id="resInsulinScore">مقاومة مرتفعة ⚠️</div>
+          <!-- Header Badge & Patient Info -->
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4 relative z-10">
+            <div class="flex items-center gap-2.5">
+              <div class="w-11 h-11 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-black shadow-lg shadow-emerald-500/10">
+                <i data-lucide="file-badge" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="text-[11px] text-slate-400">ملف الفحص الأيضي الخاص بـ:</div>
+                <div class="text-base font-black text-white" id="resName">--</div>
+              </div>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>قابل للعلاج بنسبة 96%</span>
+            </span>
           </div>
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1" id="resCardLabel2">سرعة الحرق والأيض</div>
-            <div class="text-base font-extrabold text-amber-400" id="resMetabolicRate">محاصر في وضع التخزين</div>
+
+          <!-- Diagnosis Title Box -->
+          <div class="space-y-1 relative z-10">
+            <div class="text-[11px] font-extrabold text-amber-400 uppercase tracking-wider flex items-center gap-1">
+              <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
+              <span>التشخيص الأيضي الأساسي:</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-white leading-snug" id="resDiagnosisTitle">
+              متلازمة مقاومة الإنسولين وتخزين الدهون الحشوية
+            </h2>
           </div>
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
-            <div class="text-[11px] text-slate-400 mb-1">نسبة الاستجابة المتوقعة</div>
-            <div class="text-base font-extrabold text-emerald-400" id="resSuccessRate">96% مع بروتوكول واحة نور</div>
+
+          <!-- 3 Clear Bite-Sized Diagnostic Pillars -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1 relative z-10">
+            
+            <!-- Pillar 1: Root Cause -->
+            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-right space-y-2">
+              <div class="flex items-center gap-2 text-rose-400 font-extrabold text-xs">
+                <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0"></i>
+                <span>ما يحدث في جسمك:</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium" id="resProblemBrief">
+                خلاياك تقاوم الإنسولين، فيفرز البنكرياس كميات مضاعفة تحبس الدهون داخل البطن والكرش وتسبب خمولاً بعد الأكل.
+              </p>
+            </div>
+
+            <!-- Pillar 2: Fatal Mistake -->
+            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-right space-y-2">
+              <div class="flex items-center gap-2 text-amber-400 font-extrabold text-xs">
+                <i data-lucide="x-octagon" class="w-4 h-4 shrink-0"></i>
+                <span>احذر هذا الخطأ:</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium" id="resMistakeBrief">
+                قطع النشويات تماماً أو التجويع القاسي؛ هذا يرفع هرمونات التوتر ويجبر جسمك على التمسك بدهون البطن أكثر.
+              </p>
+            </div>
+
+            <!-- Pillar 3: Solution -->
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 text-right space-y-2">
+              <div class="flex items-center gap-2 text-emerald-400 font-extrabold text-xs">
+                <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                <span>الحل في واحة نور:</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium" id="resSolutionBrief">
+                هندسة توقيت الوجبات وقاعدة 80/20 الذكية لتحرير دهون البطن وإعادة حساسية الإنسولين بأكل البيت دون حرمان.
+              </p>
+            </div>
+
           </div>
+
+          <!-- 3 Diagnostic Metric Badges -->
+          <div class="grid grid-cols-3 gap-2.5 pt-2 text-center border-t border-slate-800 relative z-10">
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div class="text-[10px] text-slate-400 mb-1">حساسية الإنسولين</div>
+              <div class="text-xs sm:text-sm font-black text-rose-400" id="resInsulinScore">مقاومة مرتفعة ⚠️</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div class="text-[10px] text-slate-400 mb-1">سرعة الحرق والأيض</div>
+              <div class="text-xs sm:text-sm font-black text-amber-400" id="resMetabolicRate">محاصر في وضع التخزين</div>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-800">
+              <div class="text-[10px] text-slate-400 mb-1">نسبة الاستجابة المتوقعة</div>
+              <div class="text-xs sm:text-sm font-black text-emerald-400" id="resSuccessRate">96% استجابة مؤكدة</div>
+            </div>
+          </div>
+
         </div>
 
         <!-- =========================================================================
@@ -751,7 +810,9 @@
       const firstName = (userName || quizState.name || '').split(' ')[0] || (userName || quizState.name || 'عزيزي/عزيزتي');
 
       let title = '';
-      let desc = '';
+      let problemBrief = '';
+      let mistakeBrief = '';
+      let solutionBrief = '';
       let insulinScore = '';
       let insulinClass = '';
       let metabolicRate = '';
@@ -760,56 +821,66 @@
 
       // Profile 4: Hormonal / PCOS / Thyroid Condition
       if (quizState.fat_loc === 'lower_hormonal' || quizState.diet_history === 'hormonal_medical') {
-        title = 'الملف الهرموني والالتهابي الخاص (Hormonal & Anti-Inflammatory Profile)';
-        desc = `يا ${firstName}، إجاباتك تدل على أن عناد نزول الوزن لديك مرتبط بمسارات هرمونية والتهابية خلوية واحتباس سوائل (مثل تكيس المبايض، كسل الغدة الدرقية، أو حساسية الإستروجين). تقليل السعرات العشوائي والرياضة القاسية تفشل مع حالتك لأنها تزيد الالتهابات. ما تحتاجه هو «بروتوكول تغذية مضاد للالتهاب» بإشراف الصيدلي د. أحمد الخطيب، يهدئ التهاب الأنسجة ويعيد توازن الهرمونات ويحرر الدهون بأمان.`;
+        title = 'الملف الهرموني والالتهابي الخاص (تكيس مبايض / خمول غدة / احتباس سوائل)';
+        problemBrief = `عناد نزول الوزن في الجزء السفلي لديك ناتج عن مسارات التهابية خلوية واحتباس سوائل وتذبذب هرموني (مثل تكيس المبايض أو كسل الغدة الدرقية).`;
+        mistakeBrief = `الرياضة الشاقة العنيفة أو تقليل السعرات الحاد؛ هذا يجهد الغدد ويزيد الالتهابات ويعطل نزول الوزن تماماً.`;
+        solutionBrief = `بروتوكول تغذية مضاد للالتهاب بإشراف الصيدلي د. أحمد الخطيب، لتهدئة الأنسجة وموازنة الهرمونات وتحرير الدهون العنيدة بأمان تام.`;
         insulinScore = 'حساسية هرمونية نسيجية';
-        insulinClass = 'text-base font-extrabold text-purple-400';
+        insulinClass = 'text-xs sm:text-sm font-black text-purple-400';
         metabolicRate = 'محكوم بالنشاط الهرموني';
-        metabolicClass = 'text-base font-extrabold text-amber-400';
+        metabolicClass = 'text-xs sm:text-sm font-black text-amber-400';
         successRate = '94% مع التغذية المضادة للالتهاب';
       }
       // Profile 2: Metabolic Adaptation & Yo-Yo Diet Damage
       else if (quizState.diet_history === 'starved_rebounded' || quizState.insulin_sign === 'slow_burn') {
-        title = 'حالة تأقلم الأيض الدفاعي (Metabolic Damage) وتأثير دايت اليويو';
-        desc = `يا ${firstName}، جسمك حالياً في حالة «استنفار دفاعي ضد التجويع»! حميات الحرمان السابقة تسببت في هبوط معدل الأيض الأساسي (BMR) وفقدان جزء من الكتلة العضلية، فأصبح جسمك يخزن أي وجبة على شكل دهون خوفاً من المجاعة القادمة. الحل العلمي الحاسم ليس حرماناً جديداً، بل تقنية «الدايت العكسي (Reverse Dieting)» المعتمدة في واحة نور، لإنعاش ماكينة الحرق ومضاعفة معدل الأيض تدريجياً دون زيادة وزن.`;
+        title = 'تأقلم الأيض الدفاعي (Metabolic Damage) وتأثير دايت اليويو';
+        problemBrief = `جسمك دخل في وضع "المجاعة الدفاعية" بسبب حميات الحرمان السابقة؛ خفّض سرعة حرقه وهدم جزءاً من عضلاتك، فأصبح يخزن أي وجبة عادية فوراً خوفاً من المجاعة.`;
+        mistakeBrief = `الدخول في رجيم قاسي جديد؛ هذا سيزيد تدمير ماكينة الحرق ويجعل ارتداد وزنك بعد التوقف أسرع وأعنف من المرات السابقة.`;
+        solutionBrief = `تقنية "الدايت العكسي (Reverse Dieting)" لإنعاش ماكينة الحرق ومضاعفة معدل الأيض تدريجياً وبناء عادات تدوم لسنوات دون زيادة جرام واحد.`;
         insulinScore = 'متذبذب (بحاجة استقرار)';
-        insulinClass = 'text-base font-extrabold text-amber-400';
-        metabolicRate = 'متباطئ دفاعياً (Metabolic Slowdown)';
-        metabolicClass = 'text-base font-extrabold text-rose-400';
+        insulinClass = 'text-xs sm:text-sm font-black text-amber-400';
+        metabolicRate = 'متباطئ دفاعياً (Slowdown)';
+        metabolicClass = 'text-xs sm:text-sm font-black text-rose-400';
         successRate = '93% مع إعادة التأهيل الأيضي';
       }
       // Profile 3: Cortisol & Night/Emotional Eating
       else if (quizState.insulin_sign === 'night_hunger' || quizState.lifestyle_need === 'psychological_habits') {
-        title = 'اضطراب كورتيزول الإجهاد والنهم العصبي/الليلي (Cortisol & Stress Eating)';
-        desc = `يا ${firstName}، التزامك نهاراً يؤكد أن إرادتك ممتازة، لكن المشكلة هرمونية وعصبية بحتة! ضغوط اليوم ترفع هرمون الكورتيزول، ومع هبوط الطاقة ليلاً، يطلق الدماغ إشارات استغاثة ملحة لطلب الدوبامين والسكريات للتخلص من التوتر. الرجيم التقليدي يزيد التوتر ويفشل تماماً معك. في واحة نور، نعتمد بروتوكول ضبط هرمونات الشبع المسائية وإعادة توازن كيمياء الدماغ لإنهاء النهم الليلي وكسر تأنيب الضمير للأبد.`;
+        title = 'اضطراب كورتيزول الإجهاد والنهم العصبي/الليلي (Stress Eating)';
+        problemBrief = `التزامك نهاراً يثبت قوة إرادتك، لكن ضغوط اليوم ترفع هرمون الكورتيزول، فيرسل دماغك إشارات استغاثة ملحة ليلاً لطلب السكريات والدوبامين لتفريغ التوتر.`;
+        mistakeBrief = `تأنيب الضمير ومحاولة إجبار نفسك على الصبر؛ المشكلة هرمونية وعصبية وليست ضعف إرادة، والدايت التقليدي الحارم يزيد توترك ويفشل معك.`;
+        solutionBrief = `بروتوكول ضبط هرمونات الشبع المسائية وإعادة توازن كيمياء الدماغ لتناول وجبات مشبعة تنهي النهم الليلي وتجعلك تنام مرتاح البال.`;
         insulinScore = 'مستقر نهاراً / مضطرب ليلاً';
-        insulinClass = 'text-base font-extrabold text-amber-400';
+        insulinClass = 'text-xs sm:text-sm font-black text-amber-400';
         metabolicRate = 'مثبط بواسطة هرمون التوتر';
-        metabolicClass = 'text-base font-extrabold text-amber-400';
+        metabolicClass = 'text-xs sm:text-sm font-black text-amber-400';
         successRate = '95% مع ضبط كيمياء الشبع';
       }
       // Profile 5: General Weight Gain with Good Metabolic Potential
       else if (quizState.fat_loc === 'uniform' && quizState.insulin_sign !== 'slow_burn') {
         title = 'مؤشر أيضي متوازن قابل للاستجابة السريعة (Metabolic Reset)';
-        desc = `يا ${firstName}، وضعك الأيضي ممتاز ومبشر جداً! ليس لديك مقاومة إنسولين حادة أو تلف أيضي مزمن، بل المشكلة تكمن في غياب هيكلية غذائية مستدامة وتراكم العادات العشوائية. جسمك مؤهل للاستجابة السريعة جداً والنزول في المقاسات من الأسابيع الأولى بمجرد تطبيق قاعدة 80/20 وضبط الكميات بدون أي تعقيد.`;
+        problemBrief = `وضعك الأيضي ممتاز ومبشر جداً! ليس لديك مقاومة إنسولين حادة أو تلف أيضي، بل مجرد تراكم عادات عشوائية وغياب نظام غذائي واضح ومستمر.`;
+        mistakeBrief = `تصعيب الأمور والبحث عن حميات تجارية معقدة تنفرك من الالتزام وتجعلك تستسلم مبكراً.`;
+        solutionBrief = `تنظيم كميات ونوعيات طعامك بقاعدة 80/20 المرنة، وستشهد تغيراً سريعاً وملموساً في مقاساتك ونشاطك من الأسابيع الأولى.`;
         insulinScore = 'طبيعي ومستقر ✅';
-        insulinClass = 'text-base font-extrabold text-emerald-400';
+        insulinClass = 'text-xs sm:text-sm font-black text-emerald-400';
         metabolicRate = 'جيد (يحتاج تنشيط)';
-        metabolicClass = 'text-base font-extrabold text-sky-400';
+        metabolicClass = 'text-xs sm:text-sm font-black text-sky-400';
         successRate = '97% مع واحة نور';
       }
       // Profile 1: Insulin Resistance & Visceral Belly Fat (Default / Most Common)
       else {
         title = 'متلازمة مقاومة الإنسولين وتخزين الدهون الحشوية العنيدة';
-        desc = `يا ${firstName}، إجاباتك تؤكد أن المشكلة الأساسية ليست كثرة أكل، بل هي «مقاومة خلاياك للإنسولين»! عند تناول أي نشويات، يفرز جسمك جرعات إنسولين عالية تمنع حرق الدهون وتحبسها داخل خلايا البطن والكرش، مسببة خمولاً بعد الأكل وشهية مستمرة للسكريات. في واحة نور، نستخدم تقنية توقيت المغذيات وقاعدة 80/20 لإعادة حساسية الإنسولين لوضعها الطبيعي وحرق دهون البطن دون حرمانك من أكل البيت.`;
+        problemBrief = `خلاياك تقاوم الإنسولين، فيفرز البنكرياس كميات مضاعفة تحبس الدهون داخل البطن والكرش وتمنع حرقها، وتسبب خمولاً بعد الأكل وشهية مستمرة للنشويات.`;
+        mistakeBrief = `قطع النشويات تماماً أو التجويع القاسي؛ هذا يرفع هرمونات التوتر ويجبر جسمك على التمسك بدهون البطن أكثر عند العودة للأكل الطبيعي.`;
+        solutionBrief = `هندسة توقيت الوجبات وقاعدة 80/20 الذكية لتحرير دهون البطن وإعادة حساسية الإنسولين لوضعها الطبيعي بأكل البيت دون حرمان.`;
         insulinScore = 'مقاومة مرتفعة ⚠️';
-        insulinClass = 'text-base font-extrabold text-rose-400';
-        metabolicRate = 'محاصر في وضع التخزين (Blocked)';
-        metabolicClass = 'text-base font-extrabold text-amber-400';
+        insulinClass = 'text-xs sm:text-sm font-black text-rose-400';
+        metabolicRate = 'محاصر في وضع التخزين';
+        metabolicClass = 'text-xs sm:text-sm font-black text-amber-400';
         successRate = '96% مع بروتوكول 80/20';
       }
 
-      return { title, desc, insulinScore, insulinClass, metabolicRate, metabolicClass, successRate };
+      return { title, problemBrief, mistakeBrief, solutionBrief, insulinScore, insulinClass, metabolicRate, metabolicClass, successRate };
     }
 
     function renderPersonalizedResult(profile) {
@@ -827,7 +898,9 @@
 
       // Populate DOM Elements from computed profile
       document.getElementById('resDiagnosisTitle').innerText = profile.title;
-      document.getElementById('resDiagnosisDesc').innerText = profile.desc;
+      document.getElementById('resProblemBrief').innerText = profile.problemBrief;
+      document.getElementById('resMistakeBrief').innerText = profile.mistakeBrief;
+      document.getElementById('resSolutionBrief').innerText = profile.solutionBrief;
       
       const elInsulin = document.getElementById('resInsulinScore');
       elInsulin.innerText = profile.insulinScore;

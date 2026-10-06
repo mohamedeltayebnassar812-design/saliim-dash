@@ -1,6 +1,6 @@
 /**
- * Saliim Platform - Shared Utilities & Helpers
- * Dr. Ahmed Elkhateeb (Saliim)
+ * Wahet Nour Platform - Shared Utilities & Helpers
+ * Dr. Ahmed Elkhateeb (Wahet Nour)
  */
 
 // Google Sheets Unified Webhook URL

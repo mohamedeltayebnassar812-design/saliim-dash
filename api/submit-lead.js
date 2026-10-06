@@ -119,7 +119,7 @@ export default async function handler(req, res) {
 
     const clientRecord = {
       id: clientId,
-      full_name: fullName || "مشترك سليم",
+      full_name: fullName || "مشترك واحة نور",
       phone: phone || "",
       email: email,
       age: isNaN(age) ? null : age,

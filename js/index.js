@@ -1,6 +1,6 @@
 /**
- * Saliim Platform - Main Landing Page Script
- * Dr. Ahmed Elkhateeb (Saliim)
+ * Wahet Nour Platform - Main Landing Page Script
+ * Dr. Ahmed Elkhateeb (Wahet Nour)
  */
 lucide.createIcons();
 
@@ -122,14 +122,14 @@ lucide.createIcons();
 
     function openBookingModal(pkgKey = 'pro', pkgTitle = 'باقة Pro المتقدمة', priceText = '$119/شهرياً') {
       try {
-        localStorage.setItem('saliim_selected_package', pkgKey);
-        sessionStorage.setItem('saliim_selected_package', pkgKey);
-        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+        localStorage.setItem('wahetnor_selected_package', pkgKey);
+        sessionStorage.setItem('wahetnor_selected_package', pkgKey);
+        document.cookie = `wahetnor_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
       } catch(e) {}
       try {
-        localStorage.setItem('saliim_selected_package', pkgKey);
-        sessionStorage.setItem('saliim_selected_package', pkgKey);
-        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+        localStorage.setItem('wahetnor_selected_package', pkgKey);
+        sessionStorage.setItem('wahetnor_selected_package', pkgKey);
+        document.cookie = `wahetnor_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
       } catch(e) {}
       const modal = document.getElementById('booking-modal');
       const select = document.getElementById('package_select');
@@ -158,9 +158,9 @@ lucide.createIcons();
 
     function syncPackagePrice(val) {
       try {
-        localStorage.setItem('saliim_selected_package', val);
-        sessionStorage.setItem('saliim_selected_package', val);
-        document.cookie = `saliim_selected_package=${encodeURIComponent(val)}; path=/; max-age=604800`;
+        localStorage.setItem('wahetnor_selected_package', val);
+        sessionStorage.setItem('wahetnor_selected_package', val);
+        document.cookie = `wahetnor_selected_package=${encodeURIComponent(val)}; path=/; max-age=604800`;
       } catch(e) {}
       const priceEl = document.getElementById('summary_price');
       if (priceEl && PACKAGE_PRICES[val]) {
@@ -313,7 +313,7 @@ lucide.createIcons();
     }
 
     // 6. Form Submission & Payment Link Redirect
-    const CHECKOUT_REDIRECT_URL = "https://buy.stripe.com/test_placeholder_saliim_199";
+    const CHECKOUT_REDIRECT_URL = "https://buy.stripe.com/test_placeholder_wahetnor_199";
 
     
     // Country Code & Phone Inline Validation Helpers
@@ -446,17 +446,17 @@ lucide.createIcons();
 
       // Save lead details locally so Onboarding submits ONE comprehensive row in Google Sheets
       try {
-        sessionStorage.setItem('saliim_lead_name', name);
-        sessionStorage.setItem('saliim_lead_phone', fullPhone);
-        sessionStorage.setItem('saliim_lead_goal', goal);
-        sessionStorage.setItem('saliim_lead_pkg', pkgName);
+        sessionStorage.setItem('wahetnor_lead_name', name);
+        sessionStorage.setItem('wahetnor_lead_phone', fullPhone);
+        sessionStorage.setItem('wahetnor_lead_goal', goal);
+        sessionStorage.setItem('wahetnor_lead_pkg', pkgName);
       } catch(e) {}
 
             const pkgKey = pkgSelect.value || 'pro';
       try {
-        localStorage.setItem('saliim_selected_package', pkgKey);
-        sessionStorage.setItem('saliim_selected_package', pkgKey);
-        document.cookie = `saliim_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
+        localStorage.setItem('wahetnor_selected_package', pkgKey);
+        sessionStorage.setItem('wahetnor_selected_package', pkgKey);
+        document.cookie = `wahetnor_selected_package=${encodeURIComponent(pkgKey)}; path=/; max-age=604800`;
       } catch(e) {}
 
       const params = new URLSearchParams({

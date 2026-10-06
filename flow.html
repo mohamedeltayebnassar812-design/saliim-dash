@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>سليم — نظام الواجهة والفلو</title>
+<title>واحة نور — نظام الواجهة والفلو</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500&family=Readex+Pro:wght@200;300;400;500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -305,7 +305,7 @@ input,select,textarea{font-family:inherit}
 
 <div class="ctl">
  <div class="ctl-in">
-  <div class="ctl-t"><b>سليم</b> · نظام الواجهة</div>
+  <div class="ctl-t"><b>واحة نور</b> · نظام الواجهة</div>
   <div class="steps" id="steps"></div>
   <div class="dirsel">
    <button data-d="navy" class="on"><i style="background:#0C2338"></i>كحلي</button>
@@ -321,8 +321,8 @@ input,select,textarea{font-family:inherit}
 <div class="screen active" id="s1">
  <div class="note"><b>01 / PUBLIC</b><span>الواجهة التعريفية — تطعيم غامق كامل</span></div>
  <div class="app">
-  <div class="pnav"><div class="lg">سليم</div>
-   <div><a>الرئيسية</a><a>الباقات</a><a>عن سليم</a><a>تواصل</a></div>
+  <div class="pnav"><div class="lg">واحة نور</div>
+   <div><a>الرئيسية</a><a>الباقات</a><a>عن واحة نور</a><a>تواصل</a></div>
    <button class="btn ba bsm" onclick="go(2)">ابدأ رحلتك</button></div>
   <div class="pub-hero"><div class="in">
    <span class="pill pk-d" style="margin-bottom:20px;border-color:rgba(255,255,255,.2)">✦ أكثر من <span class="num">12,400</span> رحلة مكتملة</span>
@@ -350,7 +350,7 @@ input,select,textarea{font-family:inherit}
  <div class="note"><b>02 / AUTH</b><span>تسجيل الدخول — جوجل · آبل · بريد</span></div>
  <div class="app"><div class="split">
   <div class="sp-art"><div class="in">
-   <div style="font-family:Alexandria;font-size:30px;font-weight:200;color:#fff;margin-bottom:26px">سليم</div>
+   <div style="font-family:Alexandria;font-size:30px;font-weight:200;color:#fff;margin-bottom:26px">واحة نور</div>
    <h2>رحلتك تبدأ من هنا</h2>
    <p>سجّل دخولك وابدأ أول جلسة مع أخصائي التغذية خلال أيام.</p>
   </div></div>
@@ -678,7 +678,7 @@ function sidebar(active){
   const nav=NAV.map(s=>`<div class="snav-l">${s.g}</div>`+s.items.map(([lbl,scr,d])=>
    `<a class="${scr===active?'on':''}" onclick="go(${scr})">
      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="${d}"/></svg>${lbl}</a>`).join('')).join('');
-  return `<div class="brand"><h1>سليم</h1><span class="lat">NUTRITION &amp; COACHING</span></div>
+  return `<div class="brand"><h1>واحة نور</h1><span class="lat">NUTRITION &amp; COACHING</span></div>
    <nav class="snav">${nav}</nav>
    <div class="suser"><div class="av">أم</div><div><b>أحمد محمود</b><span class="lat">PRO · 8 SESSIONS</span></div></div>`;
 }

@@ -1,6 +1,6 @@
 /**
- * Saliim Platform - Unified Tailwind CSS Configuration
- * Dr. Ahmed Elkhateeb (Saliim)
+ * Wahet Nour Platform - Unified Tailwind CSS Configuration
+ * Dr. Ahmed Elkhateeb (Wahet Nour)
  */
 tailwind.config = {
   darkMode: 'class',

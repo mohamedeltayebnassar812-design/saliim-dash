@@ -1,6 +1,6 @@
 /**
- * Saliim Platform - Onboarding & Scheduling Funnel Script
- * Dr. Ahmed Elkhateeb (Saliim)
+ * Wahet Nour Platform - Onboarding & Scheduling Funnel Script
+ * Dr. Ahmed Elkhateeb (Wahet Nour)
  */
 // ==========================================================
     // 1. CONFIGURATION & STATE
@@ -38,7 +38,7 @@
     // ==========================================================
     const translations = {
       ar: {
-        header_brand: "منصة سليم",
+        header_brand: "منصة واحة نور",
         header_dr: "| د. أحمد الخطيب",
         header_sub: "بوابة استقبال وتفعيل اشتراكات المشتركين VIP",
         btn_support: "المساعدة والدعم",
@@ -52,7 +52,7 @@
         badge_step4_m: "التفعيل",
         step1_tag: "الخطوة 1 من 4",
         step1_title: "تسجيل بياناتك وأهداف التغذية واللياقة",
-        step1_desc: "أهلاً بك في عائلة سليم! لنتمكن من تفصيل خطتك الغذائية وبرنامج التمارين الرياضية المناسب لروتينك بدقة، يرجى استكمال البيانات التالية.",
+        step1_desc: "أهلاً بك في عائلة واحة نور! لنتمكن من تفصيل خطتك الغذائية وبرنامج التمارين الرياضية المناسب لروتينك بدقة، يرجى استكمال البيانات التالية.",
         sec1_title: "البيانات الشخصية والأساسية",
         lbl_name: "الاسم ثلاثي أو رباعي",
         lbl_phone: "رقم الواتساب مع كود الدولة",
@@ -130,23 +130,23 @@
         btn_lock_step4: "خطوة التفعيل مقفولة حتى تحديد موعد الكوتش",
         btn_advance_step4: "تأكيد موعد الكوتش وتفعيل الاشتراك ←",
         step4_tag: "تم تفعيل ملفك بنجاح!",
-        step4_welcome: "أهلاً بك رسمياً في عائلة سليم،",
+        step4_welcome: "أهلاً بك رسمياً في عائلة واحة نور،",
         step4_desc: "تم استلام بياناتك وتفضيلاتك وحفظ كافة مواعيدك بنجاح. أخصائي التغذية والكوتش وفريق د. أحمد الخطيب بانتظارك لمرافقتك في رحلة التحول الصحي.",
-        lbl_vip_code: "كود المشترك المعتمد في منصة سليم",
+        lbl_vip_code: "كود المشترك المعتمد في منصة واحة نور",
         btn_copy_code: "نسخ الكود",
         card_nutrition_title: "موعد أخصائي التغذية",
         card_coach_title: "موعد الكوتش الرياضي",
         btn_join_wa: "الانضمام لمحادثة الواتساب VIP للمشتركين",
-        msg_wa_hint: "اضغط للتواصل المباشر مع فريق سليم المخصص للمتابعة",
-        btn_home: "العودة إلى الصفحة الرئيسية لمنصة سليم",
+        msg_wa_hint: "اضغط للتواصل المباشر مع فريق واحة نور المخصص للمتابعة",
+        btn_home: "العودة إلى الصفحة الرئيسية لمنصة واحة نور",
         footer_copy: "جميع الحقوق محفوظة ©",
-        footer_brand: "منصة سليم (Saliim) - د. أحمد الخطيب",
+        footer_brand: "منصة واحة نور (Wahet Nour) - د. أحمد الخطيب",
         nav_packages: "الباقات",
         nav_faq: "الأسئلة الشائعة",
         nav_support: "الدعم الطبي"
       },
       en: {
-        header_brand: "Saliim Platform",
+        header_brand: "Wahet Nour Platform",
         header_dr: "| Dr. Ahmed El-Khateeb",
         header_sub: "VIP Client Intake & Onboarding Portal",
         btn_support: "Support & Help",
@@ -160,7 +160,7 @@
         badge_step4_m: "Activation",
         step1_tag: "Step 1 of 4",
         step1_title: "Nutrition & Fitness Goals Profile",
-        step1_desc: "Welcome to the Saliim family! To help us tailor your healthy nutrition and fitness plan with the highest precision, please fill out your profile below.",
+        step1_desc: "Welcome to the Wahet Nour family! To help us tailor your healthy nutrition and fitness plan with the highest precision, please fill out your profile below.",
         sec1_title: "Personal Information",
         lbl_name: "Full Name",
         lbl_phone: "WhatsApp Number (with Country Code)",
@@ -233,17 +233,17 @@
         btn_lock_step4: "Activation step is locked until Coach slot is chosen",
         btn_advance_step4: "Confirm Coach Slot & Activate Profile →",
         step4_tag: "Your Profile is Fully Activated!",
-        step4_welcome: "Welcome officially to Saliim Family,",
+        step4_welcome: "Welcome officially to Wahet Nour Family,",
         step4_desc: "Your onboarding intake and booked sessions are confirmed. Dr. Ahmed El-Khateeb and your care team are ready to guide you.",
-        lbl_vip_code: "Official Saliim VIP Client Code",
+        lbl_vip_code: "Official Wahet Nour VIP Client Code",
         btn_copy_code: "Copy Code",
         card_nutrition_title: "Healthy Nutrition Session",
         card_coach_title: "Fitness Coach Session",
         btn_join_wa: "Join VIP Members WhatsApp Chat",
-        msg_wa_hint: "Tap to connect directly with your dedicated Saliim follow-up team",
-        btn_home: "Return to Saliim Homepage",
+        msg_wa_hint: "Tap to connect directly with your dedicated Wahet Nour follow-up team",
+        btn_home: "Return to Wahet Nour Homepage",
         footer_copy: "All Rights Reserved ©",
-        footer_brand: "Saliim Platform - Dr. Ahmed El-Khateeb",
+        footer_brand: "Wahet Nour Platform - Dr. Ahmed El-Khateeb",
         nav_packages: "Packages",
         nav_faq: "FAQ",
         nav_support: "Support"
@@ -332,18 +332,18 @@
       document.getElementById('year').textContent = new Date().getFullYear();
 
       // Clear any previous session lock to ensure fresh onboarding starts at Step 1
-      sessionStorage.removeItem('saliim_nutrition_scheduled');
-      sessionStorage.removeItem('saliim_coach_scheduled');
-      sessionStorage.removeItem('saliim_nutrition_time');
-      sessionStorage.removeItem('saliim_coach_time');
+      sessionStorage.removeItem('wahetnor_nutrition_scheduled');
+      sessionStorage.removeItem('wahetnor_coach_scheduled');
+      sessionStorage.removeItem('wahetnor_nutrition_time');
+      sessionStorage.removeItem('wahetnor_coach_time');
 
       
       // Read incoming parameters and auto-fill ALL previous user inputs
       const urlParams = new URLSearchParams(window.location.search);
-      const prevName = urlParams.get('name') || sessionStorage.getItem('saliim_lead_name') || localStorage.getItem('saliim_user_name') || '';
-      const prevPhone = urlParams.get('phone') || sessionStorage.getItem('saliim_lead_phone') || localStorage.getItem('saliim_user_phone') || '';
-      const prevEmail = urlParams.get('email') || sessionStorage.getItem('saliim_lead_email') || localStorage.getItem('saliim_user_email') || '';
-      const prevGoal = urlParams.get('goal') || sessionStorage.getItem('saliim_lead_goal') || '';
+      const prevName = urlParams.get('name') || sessionStorage.getItem('wahetnor_lead_name') || localStorage.getItem('wahetnor_user_name') || '';
+      const prevPhone = urlParams.get('phone') || sessionStorage.getItem('wahetnor_lead_phone') || localStorage.getItem('wahetnor_user_phone') || '';
+      const prevEmail = urlParams.get('email') || sessionStorage.getItem('wahetnor_lead_email') || localStorage.getItem('wahetnor_user_email') || '';
+      const prevGoal = urlParams.get('goal') || sessionStorage.getItem('wahetnor_lead_goal') || '';
 
       if (prevName && document.getElementById('client_name')) document.getElementById('client_name').value = prevName;
       if (prevPhone) setPhoneAndCountryCode(prevPhone);
@@ -416,10 +416,10 @@
 
       // 2. Add fallback sources: sessionStorage, localStorage, cookie
       try {
-        rawSources.push(sessionStorage.getItem('saliim_selected_package'));
-        rawSources.push(localStorage.getItem('saliim_selected_package'));
-        rawSources.push(sessionStorage.getItem('saliim_package'));
-        rawSources.push(localStorage.getItem('saliim_package'));
+        rawSources.push(sessionStorage.getItem('wahetnor_selected_package'));
+        rawSources.push(localStorage.getItem('wahetnor_selected_package'));
+        rawSources.push(sessionStorage.getItem('wahetnor_package'));
+        rawSources.push(localStorage.getItem('wahetnor_package'));
       } catch(e) {}
 
       // Parse cookies
@@ -427,7 +427,7 @@
         const cookies = document.cookie.split(';');
         for (let c of cookies) {
           const [k, v] = c.trim().split('=');
-          if (k === 'saliim_selected_package' && v) {
+          if (k === 'wahetnor_selected_package' && v) {
             rawSources.push(decodeURIComponent(v));
           }
         }
@@ -523,16 +523,16 @@
 
         // Persist back to storage
         try {
-          localStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
-          sessionStorage.setItem('saliim_selected_package', pkgSelect.options[targetIndex].value);
+          localStorage.setItem('wahetnor_selected_package', pkgSelect.options[targetIndex].value);
+          sessionStorage.setItem('wahetnor_selected_package', pkgSelect.options[targetIndex].value);
         } catch(e) {}
       }
 
       // Keep updated if user manually changes
       pkgSelect.addEventListener('change', () => {
         try {
-          localStorage.setItem('saliim_selected_package', pkgSelect.value);
-          sessionStorage.setItem('saliim_selected_package', pkgSelect.value);
+          localStorage.setItem('wahetnor_selected_package', pkgSelect.value);
+          sessionStorage.setItem('wahetnor_selected_package', pkgSelect.value);
         } catch(e) {}
       });
     }
@@ -717,14 +717,14 @@
 
       // Save for auto-fill in browser storage
       try {
-        localStorage.setItem('saliim_user_name', document.getElementById('client_name').value.trim());
-        localStorage.setItem('saliim_user_phone', rawPhone);
-        localStorage.setItem('saliim_user_email', document.getElementById('client_email').value.trim());
+        localStorage.setItem('wahetnor_user_name', document.getElementById('client_name').value.trim());
+        localStorage.setItem('wahetnor_user_phone', rawPhone);
+        localStorage.setItem('wahetnor_user_email', document.getElementById('client_email').value.trim());
       } catch(err) {}
 
       // Fresh unique prestigious code
       const freshCode = generateNewClientCode();
-      sessionStorage.setItem('saliim_active_code', freshCode);
+      sessionStorage.setItem('wahetnor_active_code', freshCode);
 
       const workoutPlaceEl = document.getElementById('client_workout_place');
       const mealsCountEl = document.getElementById('client_meals_count');
@@ -828,7 +828,7 @@
     // Update slots in sheet
     function updateBookingSlotsInGoogleSheets() {
       if (!GOOGLE_SHEETS_WEBAPP_URL) return;
-      const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
+      const clientCode = clientProfile.client_code || sessionStorage.getItem('wahetnor_active_code');
       if (!clientCode) return;
 
       // Update existing record with appointments
@@ -873,13 +873,13 @@
       url.searchParams.set('background_color', '0E2530');
       url.searchParams.set('text_color', 'ffffff');
       url.searchParams.set('primary_color', primaryColor);
-      url.searchParams.set('embed_domain', window.location.host || 'ahmedelkhateeb.com');
+      url.searchParams.set('embed_domain', window.location.host || 'wahetnor.com');
       url.searchParams.set('embed_type', 'Inline');
 
       const clientName = clientProfile.name || document.getElementById('client_name')?.value?.trim();
       const clientEmail = clientProfile.email || document.getElementById('client_email')?.value?.trim();
       const clientPhone = clientProfile.phone || document.getElementById('client_phone')?.value?.trim();
-      const clientCode = clientProfile.client_code || sessionStorage.getItem('saliim_active_code');
+      const clientCode = clientProfile.client_code || sessionStorage.getItem('wahetnor_active_code');
 
       if (clientName) {
         const displayName = clientCode ? `${clientName} (${clientCode})` : clientName;
@@ -1116,7 +1116,7 @@
       } else if (step === 4) {
         document.getElementById('final-client-name').innerText = clientProfile.name || (currentLang === 'ar' ? 'عزيزي المشترك' : 'Valued Client');
         
-        let codeToShow = clientProfile.client_code || sessionStorage.getItem('saliim_active_code') || generateNewClientCode();
+        let codeToShow = clientProfile.client_code || sessionStorage.getItem('wahetnor_active_code') || generateNewClientCode();
         clientProfile.client_code = codeToShow;
         document.getElementById('display-client-code').innerText = codeToShow;
 
@@ -1127,14 +1127,14 @@
         let waMsg = "";
         if (currentLang === 'ar') {
           waMsg = encodeURIComponent(
-            `مرحباً د. أحمد الخطيب وفريق سليم 🌿
+            `مرحباً د. أحمد الخطيب وفريق واحة نور 🌿
 
 ` +
-            `أنا المشترك: ${clientProfile.name || 'مشترك سليم'}
+            `أنا المشترك: ${clientProfile.name || 'مشترك واحة نور'}
 ` +
             `كود المشترك الطبي الخاص بي: ${codeToShow}
 ` +
-            `الباقة: ${clientProfile.package || 'سليم VIP'}
+            `الباقة: ${clientProfile.package || 'واحة نور VIP'}
 ` +
             `موعد التغذية: ${clientProfile.nutrition_slot}
 ` +
@@ -1145,14 +1145,14 @@
           );
         } else {
           waMsg = encodeURIComponent(
-            `Hello Dr. Ahmed El-Khateeb & Saliim Team 🌿
+            `Hello Dr. Ahmed El-Khateeb & Wahet Nour Team 🌿
 
 ` +
-            `Client Name: ${clientProfile.name || 'Saliim Member'}
+            `Client Name: ${clientProfile.name || 'Wahet Nour Member'}
 ` +
-            `Saliim VIP Client Code: ${codeToShow}
+            `Wahet Nour VIP Client Code: ${codeToShow}
 ` +
-            `Package: ${clientProfile.package || 'Saliim VIP'}
+            `Package: ${clientProfile.package || 'Wahet Nour VIP'}
 ` +
             `Nutrition Session: ${clientProfile.nutrition_slot}
 ` +

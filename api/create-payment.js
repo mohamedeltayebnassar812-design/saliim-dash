@@ -1,5 +1,5 @@
 // Vercel Serverless Function: /api/create-payment
-// EasyKash DirectPay Integration for Dr. Ahmed Elkhateeb (Saliim)
+// EasyKash DirectPay Integration for Dr. Ahmed Elkhateeb (Wahet Nour)
 
 const EASYKASH_API_KEY = process.env.EASYKASH_API_KEY || "8pwvua3plgp41tix";
 const EASYKASH_ENDPOINT = "https://back.easykash.net/api/directpayv1/pay";
@@ -31,7 +31,7 @@ export default async function handler(req, res) {
     }
 
     const selectedPkg = PACKAGE_PRICES[pkg] || PACKAGE_PRICES["pro"];
-    const siteHost = host || "https://ahmedelkhateeb.com";
+    const siteHost = host || "https://wahetnor.com";
     const cleanPhone = phone.replace(/[^\d+]/g, "");
     const customerRef = Math.floor(100000 + Math.random() * 900000);
 

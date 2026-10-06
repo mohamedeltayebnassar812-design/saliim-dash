@@ -169,6 +169,12 @@
             >
               احجز مقعدك في القائمة الذهبية واحصل على الخصم 🚀
             </button>
+            <div style="text-align:center;margin-top:8px;">
+              <a href="waitlist.html" style="font-size:11.5px;color:#34D399;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">
+                <span>أو افتح استمارة التشخيص وتحديد الباقة المفصلة</span>
+                <span>←</span>
+              </a>
+            </div>
           </form>
 
           <div id="waitlistSuccess" style="display:none;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:14px;padding:16px;text-align:center;color:#34D399;font-size:13px;line-height:1.6;margin-top:12px;">

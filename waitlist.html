@@ -602,6 +602,12 @@
       backToStep(1);
     }
 
+    // =========================================================================
+    // GOOGLE SHEETS WEBHOOK INTEGRATION
+    // ضع رابط الـ Web App الخاص بـ Google Apps Script هنا ليتم ترحيل البيانات للشيت فوراً
+    // =========================================================================
+    const GOOGLE_SHEETS_WEBHOOK_URL = ''; // مثال: https://script.google.com/macros/s/XXXXX/exec
+
     function handleFormSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('userName').value.trim();
@@ -623,37 +629,55 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = 'جاري تحليل إجاباتك وإصدار تقرير الأيض...';
 
-      // Save lead locally
+      // Pre-evaluate profile to save complete diagnostic info
+      const profile = evaluateDiagnosticProfile(name);
+
+      const leadPayload = {
+        name: quizState.name,
+        country: quizState.country,
+        phone: quizState.phone,
+        email: quizState.email,
+        diagnosisTitle: profile.title,
+        insulinScore: profile.insulinScore,
+        metabolicRate: profile.metabolicRate,
+        fat_loc: quizState.fat_loc,
+        insulin_sign: quizState.insulin_sign,
+        diet_history: quizState.diet_history,
+        lifestyle_need: quizState.lifestyle_need,
+        discountCode: 'WAHET30',
+        submittedAt: new Date().toISOString()
+      };
+
+      // 1. Local backup (Zero data loss guarantee)
       try {
         const leads = JSON.parse(localStorage.getItem('wahetnor_waitlist_leads') || '[]');
-        leads.push({
-          ...quizState,
-          discount: '30%',
-          discountCode: 'WAHET30',
-          submittedAt: new Date().toISOString()
-        });
+        leads.push(leadPayload);
         localStorage.setItem('wahetnor_waitlist_leads', JSON.stringify(leads));
       } catch (err) {}
 
-      // Calculate & Render Result
+      // 2. Google Sheets Webhook (Non-blocking background fire)
+      if (GOOGLE_SHEETS_WEBHOOK_URL && GOOGLE_SHEETS_WEBHOOK_URL.startsWith('http')) {
+        try {
+          fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(leadPayload)
+          }).catch(err => console.log('Sheets dispatch background notice:', err));
+        } catch (err) {}
+      }
+
+      // 3. Smooth render transition
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'عرض نتيجتي وتفعيل الخصم فوراً 🚀';
-        renderPersonalizedResult();
-      }, 600);
+        renderPersonalizedResult(profile);
+      }, 500);
     }
 
-    function renderPersonalizedResult() {
-      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
-      document.getElementById('quizProgressContainer').classList.add('hidden');
-      document.getElementById('qBlockResult').classList.remove('hidden');
+    function evaluateDiagnosticProfile(userName) {
+      const firstName = (userName || quizState.name || '').split(' ')[0] || (userName || quizState.name || 'عزيزي/عزيزتي');
 
-      // Set user's name
-      const firstName = quizState.name.split(' ')[0] || quizState.name;
-      document.getElementById('resName').innerText = quizState.name;
-      document.getElementById('resLeadConfirmed').innerText = `مسجل لـ ${quizState.phone} ✅`;
-
-      // Diagnostic Profiles Engine (4 Specific Profiles from Marketing Strategy)
       let title = '';
       let desc = '';
       let insulinScore = '';
@@ -713,19 +737,35 @@
         successRate = '96% مع بروتوكول 80/20';
       }
 
-      // Populate DOM Elements
-      document.getElementById('resDiagnosisTitle').innerText = title;
-      document.getElementById('resDiagnosisDesc').innerText = desc;
+      return { title, desc, insulinScore, insulinClass, metabolicRate, metabolicClass, successRate };
+    }
+
+    function renderPersonalizedResult(profile) {
+      if (!profile) {
+        profile = evaluateDiagnosticProfile(quizState.name);
+      }
+
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      document.getElementById('quizProgressContainer').classList.add('hidden');
+      document.getElementById('qBlockResult').classList.remove('hidden');
+
+      // Set user's name & confirmation tag
+      document.getElementById('resName').innerText = quizState.name;
+      document.getElementById('resLeadConfirmed').innerText = `مسجل لـ ${quizState.phone} ✅`;
+
+      // Populate DOM Elements from computed profile
+      document.getElementById('resDiagnosisTitle').innerText = profile.title;
+      document.getElementById('resDiagnosisDesc').innerText = profile.desc;
       
       const elInsulin = document.getElementById('resInsulinScore');
-      elInsulin.innerText = insulinScore;
-      elInsulin.className = insulinClass;
+      elInsulin.innerText = profile.insulinScore;
+      elInsulin.className = profile.insulinClass;
 
       const elMetabolic = document.getElementById('resMetabolicRate');
-      elMetabolic.innerText = metabolicRate;
-      elMetabolic.className = metabolicClass;
+      elMetabolic.innerText = profile.metabolicRate;
+      elMetabolic.className = profile.metabolicClass;
 
-      document.getElementById('resSuccessRate').innerText = successRate;
+      document.getElementById('resSuccessRate').innerText = profile.successRate;
 
       // WhatsApp Button Pre-filled Message
       const waMessage = encodeURIComponent(

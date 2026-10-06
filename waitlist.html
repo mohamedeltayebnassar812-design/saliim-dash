@@ -364,7 +364,22 @@
             </div>
           </div>
 
-          <!-- 3. Email -->
+          <!-- 3. Phone (Without country code) -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">رقم التليفون (بدون مفتاح الدولة):</label>
+            <div class="relative">
+              <i data-lucide="phone" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
+              <input 
+                type="tel" 
+                id="userPhone" 
+                required 
+                placeholder="مثال: 01012345678 أو 0501234567" 
+                class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition text-right direction-ltr"
+              >
+            </div>
+          </div>
+
+          <!-- 4. Email -->
           <div>
             <label class="block text-xs font-bold text-slate-300 mb-1.5">البريد الإلكتروني (لاستلام التقرير ورابط التفعيل):</label>
             <div class="relative">
@@ -389,13 +404,13 @@
             id="submitQuizBtn"
             class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/30 transition flex items-center justify-center gap-2 mt-2"
           >
-            <span>عرض نتيجتي وخطة المتابعة المقترحة فوراً 🚀</span>
+            <span>عرض نتيجتي وتفعيل الخصم فوراً 🚀</span>
           </button>
         </form>
       </div>
 
       <!-- =========================================================================
-           STEP 6: INSTANT RESULT & RECOMMENDED COACHING & 30% DISCOUNT PASS
+           STEP 6: INSTANT RESULT & 30% DISCOUNT PASS
            ========================================================================= -->
       <div id="qBlockResult" class="quiz-step hidden space-y-6 text-right">
         
@@ -426,66 +441,6 @@
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
             <div class="text-[11px] text-slate-400 mb-1">نسبة النجاح المتوقعة</div>
             <div class="text-base font-extrabold text-emerald-400">94% مع واحة نور</div>
-          </div>
-        </div>
-
-        <!-- Recommended Coaching System Section -->
-        <div class="space-y-3 pt-2">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
-              <i data-lucide="compass" class="w-4 h-4 text-emerald-400"></i>
-              <span>نظام المتابعة الأنسب لحالتك (بناءً على إجاباتك):</span>
-            </h3>
-            <span class="text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/20">
-              توصية د. أحمد
-            </span>
-          </div>
-
-          <!-- 3 Coaching Systems Comparison with Highlighted One -->
-          <div class="grid grid-cols-1 gap-3" id="coachingCardsContainer">
-            
-            <!-- Tier 1: Group Cohort -->
-            <div id="cardCohort" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2 font-bold text-white text-sm">
-                  <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">👥</span>
-                  <span>1. المتابعة الجماعية (تحدي واحة نور 60 يوماً)</span>
-                </div>
-                <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">الأكثر توفيراً وحماساً</span>
-              </div>
-              <p class="text-xs text-slate-400 leading-relaxed pr-8">
-                برنامج التحدي الجماعي الأكبر: خطة تغذية 80/20 مرنة، تمارين بالمنزل/الجيم، مجتمع تفاعلي محفز، وبث مباشر أسبوعي للأسئلة مع د. أحمد الخطيب.
-              </p>
-            </div>
-
-            <!-- Tier 2: 1-on-1 Team Coaching -->
-            <div id="cardTeam1on1" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2 font-bold text-white text-sm">
-                  <span class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs">🩺</span>
-                  <span>2. المتابعة الشخصية (1:1 مع أخصائي من فريق د. أحمد)</span>
-                </div>
-                <span class="text-[10px] text-sky-300 bg-sky-500/15 px-2 py-0.5 rounded border border-sky-500/25">خصوصية ومتابعة يومية</span>
-              </div>
-              <p class="text-xs text-slate-400 leading-relaxed pr-8">
-                أخصائي تغذية معتمد يتابعك شخصياً عبر شات يومي، جدول مخصص 100% لروتينك وظروفك، وتعديل أسبوعي للقياسات لضمان نزول دهون البطن.
-              </p>
-            </div>
-
-            <!-- Tier 3: VIP with Dr. Ahmed Directly -->
-            <div id="cardVipAhmed" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2 font-bold text-amber-300 text-sm">
-                  <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">👑</span>
-                  <span>3. المتابعة المباشرة مع د. أحمد الخطيب شخصياً (VIP)</span>
-                </div>
-                <span class="text-[10px] text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded border border-amber-500/25">15 مقعد شهرياً فقط</span>
-              </div>
-              <p class="text-xs text-slate-400 leading-relaxed pr-8">
-                رعاية خاصة ومباشرة من د. أحمد: جلسة تقييم وتخطيط 45 دقيقة عبر Zoom، قراءة تفصيلية لتحاليل الدم والفيتامينات، ومتابعة هاتفية دورية.
-              </p>
-            </div>
-
           </div>
         </div>
 
@@ -621,15 +576,17 @@
       e.preventDefault();
       const name = document.getElementById('userName').value.trim();
       const country = document.getElementById('userCountry').value;
+      const phone = document.getElementById('userPhone').value.trim();
       const email = document.getElementById('userEmail').value.trim();
 
-      if (!name || !email) {
-        alert('يرجى ملء جميع البيانات لإصدار تقريرك بدقة.');
+      if (!name || !phone || !email) {
+        alert('يرجى ملء جميع البيانات (الاسم، البلد، التليفون، والإيميل) لإصدار تقريرك بدقة.');
         return;
       }
 
       quizState.name = name;
       quizState.country = country;
+      quizState.phone = phone;
       quizState.email = email;
 
       const submitBtn = document.getElementById('submitQuizBtn');
@@ -679,34 +636,9 @@
       document.getElementById('resDiagnosisTitle').innerText = diagnosisTitle;
       document.getElementById('resDiagnosisDesc').innerText = diagnosisDesc;
 
-      // Highlight Recommended Coaching System
-      const cardCohort = document.getElementById('cardCohort');
-      const cardTeam = document.getElementById('cardTeam1on1');
-      const cardVip = document.getElementById('cardVipAhmed');
-
-      [cardCohort, cardTeam, cardVip].forEach(c => {
-        c.className = 'p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all opacity-70';
-      });
-
-      let recommendedSystem = 'المتابعة الجماعية (تحدي 60 يوماً)';
-
-      if (quizState.obstacle === 'complex_health_vip') {
-        cardVip.className = 'p-5 rounded-2xl bg-amber-500/10 border-2 border-amber-400 space-y-2 relative transition-all shadow-xl shadow-amber-500/15';
-        cardVip.querySelector('.text-slate-400').classList.remove('text-slate-400');
-        recommendedSystem = 'المتابعة المباشرة مع د. أحمد الخطيب شخصياً (VIP)';
-      } else if (quizState.obstacle === 'busy_need_1on1') {
-        cardTeam.className = 'p-5 rounded-2xl bg-sky-500/10 border-2 border-sky-400 space-y-2 relative transition-all shadow-xl shadow-sky-500/15';
-        cardTeam.querySelector('.text-slate-400').classList.remove('text-slate-400');
-        recommendedSystem = 'المتابعة الشخصية 1:1 مع أخصائي الفريق';
-      } else {
-        cardCohort.className = 'p-5 rounded-2xl bg-emerald-500/10 border-2 border-emerald-400 space-y-2 relative transition-all shadow-xl shadow-emerald-500/15';
-        cardCohort.querySelector('.text-slate-400').classList.remove('text-slate-400');
-        recommendedSystem = 'المتابعة الجماعية (تحدي واحة نور 60 يوماً)';
-      }
-
       // WhatsApp Button Pre-filled Message
       const waMessage = encodeURIComponent(
-        `مرحباً د. أحمد وفريق واحة نور 🌱\nأنا ${quizState.name}، أتممت فحص الأيض بنجاح.\nالنظام الأنسب لحالتي: ${recommendedSystem}.\nأؤكد تثبيت كود الخصم (WAHET30) بخصم 30% لمدة 24 ساعة فور فتح باب التسجيل!`
+        `مرحباً د. أحمد وفريق واحة نور 🌱\nأنا ${quizState.name} (تليفوني: ${quizState.phone})، أتممت فحص الأيض بنجاح.\nأؤكد تثبيت كود الخصم (WAHET30) بخصم 30% لمدة 24 ساعة فور فتح باب التسجيل الرسمي!`
       );
       document.getElementById('whatsappResultBtn').href = `https://wa.me/201027150116?text=${waMessage}`;
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>القائمة الذهبية | واحة نور • د. أحمد الخطيب</title>
-  <meta name="description" content="سجل بياناتك في القائمة الذهبية الحصرية لمنظومة واحة نور مع د. أحمد الخطيب، واحصل على خصم 40% وأولوية حجز المقاعد قبل الإطلاق الرسمي.">
+  <title>اختبار فحص الأيض والقائمة الذهبية | واحة نور • د. أحمد الخطيب</title>
+  <meta name="description" content="اختبر كفاءة حرقك ومؤشر مقاومة الإنسولين في دقيقة واحدة، واحصل على تقييمك المخصص وخصم 30% عند فتح التسجيل في واحة نور مع د. أحمد الخطيب.">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310B981'><circle cx='12' cy='12' r='10'/></svg>">
@@ -12,7 +12,7 @@
   <!-- Google Fonts: IBM Plex Sans Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -40,8 +40,7 @@
             }
           },
           fontFamily: {
-            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+            arabic: ['"IBM Plex Sans Arabic"', 'Cairo', 'sans-serif']
           }
         }
       }
@@ -50,370 +49,501 @@
 
   <style>
     body {
-      font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at 50% 15%, #0A2540 0%, #030F1C 65%, #020812 100%);
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 50% 12%, #0A2540 0%, #030F1C 60%, #020812 100%);
       color: #F8FAFC;
       min-height: 100vh;
       overflow-x: hidden;
     }
     .glass-card {
-      background: rgba(10, 28, 48, 0.85);
+      background: rgba(10, 28, 48, 0.88);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(16, 185, 129, 0.25);
+      border: 1px solid rgba(16, 185, 129, 0.28);
     }
-    .option-card {
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    .quiz-option {
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .option-card:hover {
-      border-color: rgba(16, 185, 129, 0.6);
+    .quiz-option:hover {
+      border-color: rgba(16, 185, 129, 0.7);
+      background: rgba(16, 185, 129, 0.08);
       transform: translateY(-2px);
     }
-    .option-card.selected {
+    .quiz-option.active {
       border-color: #10B981;
-      background: rgba(16, 185, 129, 0.12);
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.16);
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.2);
     }
-    .step-indicator {
-      transition: all 0.3s ease;
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); opacity: 0.95; }
+      50% { transform: scale(1.03); opacity: 1; }
     }
-    .step-indicator.active {
-      background: #10B981;
-      color: #FFF;
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
-    }
-    .step-indicator.done {
-      background: #047857;
-      color: #A7F3D0;
+    .badge-pulse {
+      animation: pulseSoft 3s ease-in-out infinite;
     }
   </style>
 </head>
 <body class="flex flex-col justify-between py-6 px-4 sm:px-6">
 
   <!-- Ambient Glow -->
-  <div class="fixed top-12 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
-  <!-- Header -->
-  <header class="max-w-2xl mx-auto w-full flex items-center justify-between pb-6 border-b border-slate-800/80 relative z-10">
-    <a href="index.html" class="flex items-center gap-3">
+  <!-- Header (From Bio Link) -->
+  <header class="max-w-2xl mx-auto w-full flex items-center justify-between pb-5 border-b border-slate-800/80 relative z-10">
+    <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-900 via-brand-700 to-brand-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20 border border-white/20">
-        <i data-lucide="compass" class="w-5 h-5"></i>
+        <i data-lucide="sparkles" class="w-5 h-5 text-amber-300"></i>
       </div>
       <div>
         <div class="text-base font-extrabold text-white leading-tight">واحة نور</div>
-        <div class="text-[11px] text-slate-400 font-medium">د. أحمد الخطيب</div>
+        <div class="text-[11px] text-slate-400 font-medium">د. أحمد الخطيب • استشاري التغذية</div>
       </div>
-    </a>
+    </div>
 
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
       <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-      <span>القائمة الذهبية (متبقي 64 مقعداً)</span>
+      <span>فحص الأيض والقائمة الذهبية</span>
     </div>
   </header>
 
-  <!-- Main Container -->
+  <!-- Main Interactive Container -->
   <main class="max-w-2xl mx-auto w-full my-auto py-8 relative z-10">
 
-    <!-- Progress Indicator -->
-    <div class="mb-8" id="progressBarContainer">
-      <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-3 px-2">
-        <span id="stepTitleText">الخطوة 1 من 3: تحديد هدفك الصحي</span>
-        <span id="stepPercentText" class="text-emerald-400">33%</span>
+    <!-- Progress Tracker -->
+    <div id="quizProgressContainer" class="mb-6">
+      <div class="flex items-center justify-between text-xs font-bold text-slate-400 mb-2.5 px-2">
+        <span id="quizStepLabel">السؤال 1 من 4: طبيعة توزيع الدهون</span>
+        <span id="quizStepPercent" class="text-emerald-400 font-mono">20%</span>
       </div>
-      <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-        <div id="progressBar" class="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all duration-300 w-1/3"></div>
+      <div class="w-full h-2 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/50">
+        <div id="quizProgressBar" class="h-full bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400 rounded-full transition-all duration-300" style="width: 20%;"></div>
       </div>
     </div>
 
-    <!-- Application Form Card -->
-    <div class="glass-card rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+    <!-- Application Card -->
+    <div class="glass-card rounded-3xl p-6 sm:p-9 shadow-2xl relative">
 
-      <form id="waitlistAppForm" onsubmit="return false;">
-
-        <!-- ==================== STEP 1: HEALTH GOAL & PAIN POINTS ==================== -->
-        <div id="step1" class="form-step space-y-6">
-          <div class="text-center sm:text-right space-y-2">
-            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block">
-              التشخيص الأولي
-            </span>
-            <h2 class="text-xl sm:text-2xl font-black text-white">ما هو التحدي الصحي الأكبر الذي تواجهه حالياً؟</h2>
-            <p class="text-xs sm:text-sm text-slate-400">اختر المشكلة الأساسية التي ترغب في علاجها جذرياً مع د. أحمد:</p>
+      <!-- =========================================================================
+           QUESTION 1: FAT DISTRIBUTION
+           ========================================================================= -->
+      <div id="qBlock1" class="quiz-step space-y-6">
+        <div class="space-y-2 text-right">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 text-emerald-400 text-xs font-bold">
+            <span>سؤال 1 / 4</span>
           </div>
-
-          <div class="grid grid-cols-1 gap-3">
-            
-            <label class="option-card cursor-pointer p-4 rounded-2xl bg-slate-900/60 border border-slate-700 flex items-start gap-3.5" onclick="selectOption('goal', this)">
-              <input type="radio" name="goal" value="belly_fat" class="mt-1 accent-emerald-500">
-              <div>
-                <div class="text-sm font-bold text-white flex items-center gap-2">
-                  <span>دهون الكرش والبطن السفلية العنيدة</span>
-                  <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full font-normal">الأكثر شيوعاً</span>
-                </div>
-                <div class="text-xs text-slate-400 mt-1 leading-relaxed">جسمي ينحف من كل مكان إلا منطقة البطن، وثبات وزني يسبب لي إحباطاً مستمراً.</div>
-              </div>
-            </label>
-
-            <label class="option-card cursor-pointer p-4 rounded-2xl bg-slate-900/60 border border-slate-700 flex items-start gap-3.5" onclick="selectOption('goal', this)">
-              <input type="radio" name="goal" value="insulin_resistance" class="mt-1 accent-emerald-500">
-              <div>
-                <div class="text-sm font-bold text-white">مقاومة الإنسولين والخمول بعد الأكل</div>
-                <div class="text-xs text-slate-400 mt-1 leading-relaxed">رغبة شديدة بالسكريات والنشويات، مع هبوط طاقة ونعاس شديد بعد وجبة الغداء.</div>
-              </div>
-            </label>
-
-            <label class="option-card cursor-pointer p-4 rounded-2xl bg-slate-900/60 border border-slate-700 flex items-start gap-3.5" onclick="selectOption('goal', this)">
-              <input type="radio" name="goal" value="yo_yo_dieting" class="mt-1 accent-emerald-500">
-              <div>
-                <div class="text-sm font-bold text-white">تعبت من دايت الحرمان ورجوع الوزن سريعاً</div>
-                <div class="text-xs text-slate-400 mt-1 leading-relaxed">أريد نظاماً مرناً (80/20) أستطيع الاستمرار عليه مدى الحياة بدون جوع أو عزلة عن أكل البيت.</div>
-              </div>
-            </label>
-
-            <label class="option-card cursor-pointer p-4 rounded-2xl bg-slate-900/60 border border-slate-700 flex items-start gap-3.5" onclick="selectOption('goal', this)">
-              <input type="radio" name="goal" value="hormonal_health" class="mt-1 accent-emerald-500">
-              <div>
-                <div class="text-sm font-bold text-white">تكيس المبايض / خمول الغدة / تحسين التحاليل</div>
-                <div class="text-xs text-slate-400 mt-1 leading-relaxed">أبحث عن تغذية علاجية مبنية على الفحوصات والعلوم الطبية تحت إشراف معتمد.</div>
-              </div>
-            </label>
-
-          </div>
-
-          <div class="pt-4 flex justify-end">
-            <button type="button" onclick="nextStep(2)" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 transition flex items-center justify-center gap-2">
-              <span>المتابعة للخطوة التالية</span>
-              <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            </button>
-          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">أين تتركز النسبة الأكبر من الدهون والوزن الزائد في جسمك؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">اختر الوصف الأدق لملاحظتك:</p>
         </div>
 
-        <!-- ==================== STEP 2: COUNTRY & PREFERRED TIER ==================== -->
-        <div id="step2" class="form-step hidden space-y-6">
-          <div class="text-center sm:text-right space-y-2">
-            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20 inline-block">
-              التخصيص والتسعير
-            </span>
-            <h2 class="text-xl sm:text-2xl font-black text-white">أين تقيم، وأي باقة تناسب تطلعاتك؟</h2>
-            <p class="text-xs sm:text-sm text-slate-400">لتحديد العملة المخصصة لك وتجهيز كود الخصم الفوري:</p>
-          </div>
-
-          <!-- Country Selection -->
-          <div class="space-y-2">
-            <label class="block text-xs font-bold text-slate-300">بلد الإقامة الحالي:</label>
-            <select id="userCountry" class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 px-4 text-sm text-white outline-none focus:border-emerald-500 transition">
-              <option value="EG" selected>🇪🇬 مصر (الدفع بالجنيه المصري عبر فوري وباي موب وفودافون كاش)</option>
-              <option value="SA">🇸🇦 المملكة العربية السعودية (بالريال السعودي - مدى وفيزا وتابي)</option>
-              <option value="AE">🇦🇪 الإمارات العربية المتحدة (بالدرهم - Apple Pay و بطاقات بنكية)</option>
-              <option value="KW">🇰🇼 الكويت (بالدينار الكويتي / K-Net)</option>
-              <option value="QA">🇶🇦 قطر</option>
-              <option value="OM">🇴🇲 سلطنة عمان</option>
-              <option value="BH">🇧🇭 البحرين</option>
-              <option value="GLOBAL">🌍 دولة أخرى / مغترب في أوروبا وأمريكا</option>
-            </select>
-          </div>
-
-          <!-- Package Intent -->
-          <div class="space-y-2 pt-2">
-            <label class="block text-xs font-bold text-slate-300">الباقة الأكثر اهتماماً بها عند فتح الحجز:</label>
-            <div class="grid grid-cols-1 gap-2.5">
-              
-              <label class="option-card cursor-pointer p-3.5 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-between" onclick="selectOption('package', this)">
-                <div class="flex items-center gap-3">
-                  <input type="radio" name="package" value="cohort_60" checked class="accent-emerald-500">
-                  <div>
-                    <div class="text-xs sm:text-sm font-bold text-white">تحدي واحة نور 60 يوماً (البرنامج الجماعي الأكبر)</div>
-                    <div class="text-[11px] text-slate-400">تغذية 80/20 + مجتمع تفاعلي + لايف أسبوعي مع د. أحمد</div>
-                  </div>
-                </div>
-                <span class="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20 whitespace-nowrap">
-                  خصم 40%
-                </span>
-              </label>
-
-              <label class="option-card cursor-pointer p-3.5 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-between" onclick="selectOption('package', this)">
-                <div class="flex items-center gap-3">
-                  <input type="radio" name="package" value="team_coaching" class="accent-emerald-500">
-                  <div>
-                    <div class="text-xs sm:text-sm font-bold text-white">متابعة خاصة 1:1 مع أخصائي من فريق د. أحمد</div>
-                    <div class="text-[11px] text-slate-400">جدول مخصص وشات يومي وتعديل أسبوعي للقياسات</div>
-                  </div>
-                </div>
-                <span class="text-[11px] font-bold text-slate-300 bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700 whitespace-nowrap">
-                  شخصية 100%
-                </span>
-              </label>
-
-              <label class="option-card cursor-pointer p-3.5 rounded-xl bg-slate-900/60 border border-slate-700 flex items-center justify-between" onclick="selectOption('package', this)">
-                <div class="flex items-center gap-3">
-                  <input type="radio" name="package" value="vip_ahmed" class="accent-emerald-500">
-                  <div>
-                    <div class="text-xs sm:text-sm font-bold text-amber-300">باقة النخبة VIP (مباشرة مع د. أحمد شخصياً)</div>
-                    <div class="text-[11px] text-slate-400">مكالمات Zoom وتحليل فحوصات دم دورية (15 مقعد شهرياً)</div>
-                  </div>
-                </div>
-                <span class="text-[11px] font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20 whitespace-nowrap">
-                  مقاعد نادرة
-                </span>
-              </label>
-
+        <div class="space-y-3">
+          <button type="button" onclick="recordAnswer('fat_loc', 'belly', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
+            <div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>تتركز في الكرش والبطن السفلية ومحيط الخصر</span>
+                <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">علامة مقاومة إنسولين</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">جسمي ينحف من أطرافي ووجهي وتبقى البطن ثابتة وبارزة.</div>
             </div>
-          </div>
+          </button>
 
-          <div class="pt-4 flex items-center justify-between gap-3">
-            <button type="button" onclick="nextStep(1)" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition">
-              رجوع
-            </button>
-            <button type="button" onclick="nextStep(3)" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 transition flex items-center gap-2">
-              <span>تأكيد البيانات والتواصل</span>
-              <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            </button>
+          <button type="button" onclick="recordAnswer('fat_loc', 'uniform', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
+            <div>
+              <div class="text-sm font-bold text-white">موزعة بشكل متساوٍ في كافة أنحاء الجسم</div>
+              <div class="text-xs text-slate-400 mt-1">زيادة عامة في الوزن الإجمالي مع امتلاء موزع.</div>
+            </div>
+          </button>
+
+          <button type="button" onclick="recordAnswer('fat_loc', 'lower', 2)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
+            <div>
+              <div class="text-sm font-bold text-white">تتركز في الأرداف والأفخاذ (الجزء السفلي)</div>
+              <div class="text-xs text-slate-400 mt-1">طبيعة هرمونية أنثوية أو وراثية مع بطن مشدودة نسبياً.</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           QUESTION 2: METABOLIC CRASH & CRAVINGS
+           ========================================================================= -->
+      <div id="qBlock2" class="quiz-step hidden space-y-6">
+        <div class="space-y-2 text-right">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/25 text-sky-400 text-xs font-bold">
+            <span>سؤال 2 / 4</span>
           </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ماذا يحدث لمستويات طاقتك وشهيتك بعد وجبة الغداء أو النشويات؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">هذا السؤال يكشف استجابة البنكرياس والإنسولين:</p>
         </div>
 
-        <!-- ==================== STEP 3: CONTACT & CONFIRMATION ==================== -->
-        <div id="step3" class="form-step hidden space-y-6">
-          <div class="text-center sm:text-right space-y-2">
-            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block">
-              الخطوة الأخيرة
-            </span>
-            <h2 class="text-xl sm:text-2xl font-black text-white">أدخل بياناتك لاستلام كود الخصم ورابط الحجز</h2>
-            <p class="text-xs sm:text-sm text-slate-400">سنرسل لك رابط تفعيل العرض السري عبر الواتساب فور فتح الباب:</p>
-          </div>
-
-          <div class="space-y-4">
-            
+        <div class="space-y-3">
+          <button type="button" onclick="recordAnswer('insulin_sign', 'severe_crash', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">الاسم الكريم بالكامل:</label>
-              <div class="relative">
-                <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
-                <input 
-                  type="text" 
-                  id="applicantName" 
-                  required 
-                  placeholder="مثال: د. محمد السعيد"
-                  class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition"
-                >
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>هبوط وخمول شديد ورغبة ملحة بالنوم، تتبعها رغبة بالسكريات</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">هبوط سكر ارتدادي</span>
               </div>
+              <div class="text-xs text-slate-400 mt-1">أشعر أن طاقتي انسحبت تماماً بعد الأكل بساعة وأحتاج شاي محلى أو حلوى.</div>
             </div>
+          </button>
 
+          <button type="button" onclick="recordAnswer('insulin_sign', 'night_hunger', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">رقم الواتساب (مع كود الدولة):</label>
-              <div class="relative">
-                <i data-lucide="phone" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
-                <input 
-                  type="tel" 
-                  id="applicantPhone" 
-                  required 
-                  placeholder="+20 100 000 0000 أو +966 50 000 0000"
-                  class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition text-right direction-ltr"
-                >
-              </div>
-              <p class="text-[11px] text-slate-500 mt-1">تأكد من صحة رقم الواتساب لاستلام كود الخصم الحصري ورابط الدخول المبكر.</p>
+              <div class="text-sm font-bold text-white">طاقة عادية نهاراً، لكن جوع مسائي شرس ونهم ليلي</div>
+              <div class="text-xs text-slate-400 mt-1">ألتزم طوال النهار وأفقد السيطرة تماماً أمام الثلاجة ليلاً.</div>
             </div>
+          </button>
 
+          <button type="button" onclick="recordAnswer('insulin_sign', 'stable', 3)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
             <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">البريد الإلكتروني (اختياري لتأكيد الحجز):</label>
-              <div class="relative">
-                <i data-lucide="mail" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
-                <input 
-                  type="email" 
-                  id="applicantEmail" 
-                  placeholder="name@example.com"
-                  class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition text-right direction-ltr"
-                >
-              </div>
+              <div class="text-sm font-bold text-white">مستويات طاقتي مستقرة ولا أشعر بخمول غير مبرر</div>
+              <div class="text-xs text-slate-400 mt-1">مشكلتي الأساسية في كميات الطعام وليس هبوط الطاقة.</div>
             </div>
-
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 flex items-start gap-2.5">
-            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 mt-0.5 shrink-0"></i>
-            <span>بياناتك محمية بسرية تامة وتخضع لسياسة الخصوصية لمنظومة واحة نور. لا نرسل أي رسائل مزعجة أو دعائية خارج البرنامج.</span>
-          </div>
-
-          <div class="pt-2 flex items-center justify-between gap-3">
-            <button type="button" onclick="nextStep(2)" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition">
-              رجوع
-            </button>
-            <button 
-              type="button" 
-              id="submitApplicationBtn"
-              onclick="submitApplication()" 
-              class="flex-1 py-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/30 transition flex items-center justify-center gap-2"
-            >
-              <span>انضم للقائمة الذهبية الآن واحجز خصمك (40%) 🚀</span>
-            </button>
-          </div>
+          </button>
         </div>
 
-        <!-- ==================== STEP 4: SUCCESS & TICKET VIEW ==================== -->
-        <div id="stepSuccess" class="form-step hidden space-y-6 text-center">
+        <div class="pt-2 flex justify-start">
+          <button type="button" onclick="backToStep(1)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition">
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <span>العودة للسؤال السابق</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           QUESTION 3: DIET HISTORY & YO-YO REBOUND
+           ========================================================================= -->
+      <div id="qBlock3" class="quiz-step hidden space-y-6">
+        <div class="space-y-2 text-right">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/15 border border-purple-500/25 text-purple-400 text-xs font-bold">
+            <span>سؤال 3 / 4</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">كيف كانت تجربتك السابقة مع محاولات التخسيس؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">لتحديد سرعة حرقك الأيضي الحالي:</p>
+        </div>
+
+        <div class="space-y-3">
+          <button type="button" onclick="recordAnswer('diet_history', 'starved_rebounded', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
+            <div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>جربت دايت قاسي/حرمان وخسيت.. ولكن رجع وزني أضعاف</span>
+                <span class="text-[10px] bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">تأثير اليويو (Yo-Yo)</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">حرمت نفسي من النشويات والدهون ثم انهرت وزاد وزني بسرعة.</div>
+            </div>
+          </button>
+
+          <button type="button" onclick="recordAnswer('diet_history', 'stubborn_plateau', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
+            <div>
+              <div class="text-sm font-bold text-white">وزني ثابت منذ فترة طويلة رغم أني آكل قليلاً جداً</div>
+              <div class="text-xs text-slate-400 mt-1">جسمي دخل في حالة تأقلم دفاعية (بطء في الحرق الأيضي).</div>
+            </div>
+          </button>
+
+          <button type="button" onclick="recordAnswer('diet_history', 'first_time', 4)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
+            <div>
+              <div class="text-sm font-bold text-white">هذه أول مرة أقرر فيها بدء برنامج صحي منظم ومدروس</div>
+              <div class="text-xs text-slate-400 mt-1">أبحث عن منهجية صحية صحيحة من البداية بدون أخطاء وتجارب عشوائية.</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="pt-2 flex justify-start">
+          <button type="button" onclick="backToStep(2)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition">
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <span>العودة للسؤال السابق</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           QUESTION 4: BIGGEST OBSTACLE & COACHING PREFERENCE
+           ========================================================================= -->
+      <div id="qBlock4" class="quiz-step hidden space-y-6">
+        <div class="space-y-2 text-right">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 text-amber-400 text-xs font-bold">
+            <span>سؤال 4 / 4</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">ما هو العائق الأكبر الذي يمنعك من الاستمرار في أي نظام صحي؟</h2>
+          <p class="text-xs sm:text-sm text-slate-400">لتحديد نظام المتابعة الأنسب لطبيعة حياتك:</p>
+        </div>
+
+        <div class="space-y-3">
+          <button type="button" onclick="recordAnswer('obstacle', 'motivation_community', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">أ</span>
+            <div>
+              <div class="text-sm font-bold text-white">أفقد الحماس بمفردي وأحتاج مجتمعاً وتحدياً مشتركاً يحمسني</div>
+              <div class="text-xs text-slate-400 mt-1">روح المجموعة واللايف الأسبوعي والمنافسة الإيجابية تصنع فارقاً معي.</div>
+            </div>
+          </button>
+
+          <button type="button" onclick="recordAnswer('obstacle', 'busy_need_1on1', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-slate-800 text-slate-300 border border-slate-600 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ب</span>
+            <div>
+              <div class="text-sm font-bold text-white">يومي مزدحم جداً وأحتاج كوتشاً يتابعني شخصياً 1:1 ويضبط أكلي يومياً</div>
+              <div class="text-xs text-slate-400 mt-1">أحتاج خطة مفصلة على جدولي وشات مستمر يجيب على كل تفصيلة.</div>
+            </div>
+          </button>
+
+          <button type="button" onclick="recordAnswer('obstacle', 'complex_health_vip', 5)" class="quiz-option w-full p-4 rounded-2xl bg-slate-900/60 border border-slate-700/90 text-right flex items-start gap-3.5">
+            <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">ج</span>
+            <div>
+              <div class="text-sm font-bold text-white flex items-center gap-2">
+                <span>حالتي تتطلب إشرافاً دقيقاً مع د. أحمد الخطيب شخصياً وتحليل فحوصاتي</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full">باقة النخبة VIP</span>
+              </div>
+              <div class="text-xs text-slate-400 mt-1">أبحث عن أعلى مستوى من الرعاية الطبية المباشرة ومكالمات زووم خاصة.</div>
+            </div>
+          </button>
+        </div>
+
+        <div class="pt-2 flex justify-start">
+          <button type="button" onclick="backToStep(3)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 transition">
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <span>العودة للسؤال السابق</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- =========================================================================
+           STEP 5: SIMPLE WAITLIST FORM (الاسم - البلد دروب داون - الإيميل)
+           ========================================================================= -->
+      <div id="qBlock5" class="quiz-step hidden space-y-6">
+        <div class="text-center sm:text-right space-y-2">
+          <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block">
+            اكتمل التشخيص الأيضي بنجاح ✅
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black text-white leading-snug">أدخل بياناتك لعرض تقريرك فوراً وتثبيت خصمك</h2>
+          <p class="text-xs sm:text-sm text-slate-400">فقط 3 بيانات بسيطة لعرض نتيجتك وحفظ مقعدك في القائمة الذهبية:</p>
+        </div>
+
+        <form id="simpleWaitlistForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
           
-          <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center text-white mx-auto shadow-xl shadow-emerald-500/30 border border-white/20">
-            <i data-lucide="check" class="w-8 h-8"></i>
+          <!-- 1. Name -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">الاسم الكريم:</label>
+            <div class="relative">
+              <i data-lucide="user" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
+              <input 
+                type="text" 
+                id="userName" 
+                required 
+                placeholder="اكتب اسمك الكريم..." 
+                class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition"
+              >
+            </div>
+          </div>
+
+          <!-- 2. Country (Dropdown) -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">البلد (اختر من القائمة):</label>
+            <div class="relative">
+              <i data-lucide="globe" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5 pointer-events-none"></i>
+              <select 
+                id="userCountry" 
+                required 
+                class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white outline-none focus:border-emerald-500 transition cursor-pointer"
+              >
+                <option value="EG" selected>🇪🇬 مصر (Egypt)</option>
+                <option value="SA">🇸🇦 المملكة العربية السعودية (Saudi Arabia)</option>
+                <option value="AE">🇦🇪 الإمارات العربية المتحدة (UAE)</option>
+                <option value="KW">🇰🇼 الكويت (Kuwait)</option>
+                <option value="QA">🇶🇦 قطر (Qatar)</option>
+                <option value="OM">🇴🇲 سلطنة عمان (Oman)</option>
+                <option value="BH">🇧🇭 البحرين (Bahrain)</option>
+                <option value="JO">🇯🇴 الأردن (Jordan)</option>
+                <option value="IQ">🇮🇶 العراق (Iraq)</option>
+                <option value="GLOBAL">🌍 أمريكا / كندا / أوروبا / دولة أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 3. Email -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">البريد الإلكتروني (لاستلام التقرير ورابط التفعيل):</label>
+            <div class="relative">
+              <i data-lucide="mail" class="w-4 h-4 text-slate-500 absolute top-1/2 -translate-y-1/2 right-3.5"></i>
+              <input 
+                type="email" 
+                id="userEmail" 
+                required 
+                placeholder="name@example.com" 
+                class="w-full h-12 rounded-xl bg-slate-900 border border-slate-700 pr-10 pl-4 text-sm text-white placeholder-slate-500 outline-none focus:border-emerald-500 transition text-right direction-ltr"
+              >
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-300 flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span>بياناتك محفوظة بسرية تامة وتستخدم فقط لتفعيل كود الخصم الحصري (30%).</span>
+          </div>
+
+          <button 
+            type="submit" 
+            id="submitQuizBtn"
+            class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-emerald-500/30 transition flex items-center justify-center gap-2 mt-2"
+          >
+            <span>عرض نتيجتي وخطة المتابعة المقترحة فوراً 🚀</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- =========================================================================
+           STEP 6: INSTANT RESULT & RECOMMENDED COACHING & 30% DISCOUNT PASS
+           ========================================================================= -->
+      <div id="qBlockResult" class="quiz-step hidden space-y-6 text-right">
+        
+        <!-- Result Header -->
+        <div class="text-center space-y-2 border-b border-slate-700/80 pb-5">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-2 shadow-lg shadow-emerald-500/20">
+            <i data-lucide="activity" class="w-7 h-7"></i>
+          </div>
+          <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20 inline-block">
+            التقرير الأيضي الخاص بـ: <span id="resName" class="text-white font-black">--</span>
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white" id="resDiagnosisTitle">مؤشر مقاومة إنسولين وبطء أيضي ناتج عن حميات الحرمان</h2>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto" id="resDiagnosisDesc">
+            إجاباتك تشير إلى أن دهون البطن لديك عنيدة بسبب فرط إفراز الإنسولين واضطراب الأيض الدفاعي، وعلاجها يتطلب إعادة برمجة الحرق بقاعدة 80/20 وليس تجويع نفسك.
+          </p>
+        </div>
+
+        <!-- 3 Diagnostic Score Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+            <div class="text-[11px] text-slate-400 mb-1">مؤشر حساسية الإنسولين</div>
+            <div class="text-base font-extrabold text-rose-400" id="resInsulinScore">مرتفع (يحتاج ضبط)</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+            <div class="text-[11px] text-slate-400 mb-1">سرعة الحرق والأيض</div>
+            <div class="text-base font-extrabold text-amber-400" id="resMetabolicRate">متباطئ (تأقلم دفاعي)</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80">
+            <div class="text-[11px] text-slate-400 mb-1">نسبة النجاح المتوقعة</div>
+            <div class="text-base font-extrabold text-emerald-400">94% مع واحة نور</div>
+          </div>
+        </div>
+
+        <!-- Recommended Coaching System Section -->
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+              <i data-lucide="compass" class="w-4 h-4 text-emerald-400"></i>
+              <span>نظام المتابعة الأنسب لحالتك (بناءً على إجاباتك):</span>
+            </h3>
+            <span class="text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-md border border-emerald-500/20">
+              توصية د. أحمد
+            </span>
+          </div>
+
+          <!-- 3 Coaching Systems Comparison with Highlighted One -->
+          <div class="grid grid-cols-1 gap-3" id="coachingCardsContainer">
+            
+            <!-- Tier 1: Group Cohort -->
+            <div id="cardCohort" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 font-bold text-white text-sm">
+                  <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">👥</span>
+                  <span>1. المتابعة الجماعية (تحدي واحة نور 60 يوماً)</span>
+                </div>
+                <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">الأكثر توفيراً وحماساً</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed pr-8">
+                برنامج التحدي الجماعي الأكبر: خطة تغذية 80/20 مرنة، تمارين بالمنزل/الجيم، مجتمع تفاعلي محفز، وبث مباشر أسبوعي للأسئلة مع د. أحمد الخطيب.
+              </p>
+            </div>
+
+            <!-- Tier 2: 1-on-1 Team Coaching -->
+            <div id="cardTeam1on1" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 font-bold text-white text-sm">
+                  <span class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs">🩺</span>
+                  <span>2. المتابعة الشخصية (1:1 مع أخصائي من فريق د. أحمد)</span>
+                </div>
+                <span class="text-[10px] text-sky-300 bg-sky-500/15 px-2 py-0.5 rounded border border-sky-500/25">خصوصية ومتابعة يومية</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed pr-8">
+                أخصائي تغذية معتمد يتابعك شخصياً عبر شات يومي، جدول مخصص 100% لروتينك وظروفك، وتعديل أسبوعي للقياسات لضمان نزول دهون البطن.
+              </p>
+            </div>
+
+            <!-- Tier 3: VIP with Dr. Ahmed Directly -->
+            <div id="cardVipAhmed" class="p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2 font-bold text-amber-300 text-sm">
+                  <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs">👑</span>
+                  <span>3. المتابعة المباشرة مع د. أحمد الخطيب شخصياً (VIP)</span>
+                </div>
+                <span class="text-[10px] text-amber-300 bg-amber-500/15 px-2 py-0.5 rounded border border-amber-500/25">15 مقعد شهرياً فقط</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed pr-8">
+                رعاية خاصة ومباشرة من د. أحمد: جلسة تقييم وتخطيط 45 دقيقة عبر Zoom، قراءة تفصيلية لتحاليل الدم والفيتامينات، ومتابعة هاتفية دورية.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- =========================================================================
+             THE 30% DISCOUNT TICKET (FOR 24 HOURS UPON CART OPENING)
+             ========================================================================= -->
+        <div class="bg-gradient-to-br from-amber-950/40 via-slate-900 to-emerald-950/40 border-2 border-amber-400/60 rounded-3xl p-6 sm:p-7 relative overflow-hidden shadow-2xl space-y-4">
+          
+          <div class="flex items-center justify-between border-b border-amber-500/30 pb-3">
+            <div class="flex items-center gap-2">
+              <i data-lucide="gift" class="w-5 h-5 text-amber-400"></i>
+              <span class="text-xs font-black text-white">بطاقة الخصم الحصري لأعضاء القائمة الذهبية</span>
+            </div>
+            <span class="text-xs font-mono font-black text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
+              صالح لمدة 24 ساعة فقط ⏳
+            </span>
           </div>
 
           <div class="space-y-2">
-            <h2 class="text-2xl sm:text-3xl font-black text-white">مبروك يا <span id="confirmedName" class="text-emerald-400">بطل</span>! 🎉</h2>
-            <p class="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-              تم تثبيت مقعدك في <strong class="text-white">القائمة الذهبية المسبقة</strong> لتحدي واحة نور مع د. أحمد الخطيب.
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl sm:text-4xl font-black text-amber-400">خصم 30%</span>
+              <span class="text-xs font-bold text-slate-300">على الانضمام عند فتح باب الحجز الرسمي</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              تهانينا! بصفتك من المبادرين الذين أتموا فحص الأيض، تم تثبيت <strong>خصم 30%</strong> خاص بك وسيتم تفعيله لمدة <strong>24 ساعة فقط</strong> من لحظة فتح التسجيل لضمان أولوية مقعدك قبل العامة.
             </p>
           </div>
 
-          <!-- Digital VIP Pass Card -->
-          <div class="bg-gradient-to-br from-slate-900 via-[#0A2540] to-brand-900 border-2 border-emerald-500/40 rounded-2xl p-6 text-right relative overflow-hidden shadow-2xl space-y-4">
-            
-            <div class="flex items-center justify-between border-b border-slate-700/80 pb-3">
-              <div class="flex items-center gap-2">
-                <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
-                <span class="text-xs font-bold text-white">بطاقة العضوية الذهبية (Early Bird VIP Pass)</span>
-              </div>
-              <span id="ticketNumber" class="text-xs font-mono font-bold text-emerald-400">#WN-2026</span>
+          <div class="bg-black/40 rounded-xl p-3 border border-amber-500/20 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div>
+              <span class="text-slate-400">كود الخصم المربوط بإيميلك:</span>
+              <span class="font-mono font-black text-amber-400 text-sm mr-1">WAHET30</span>
             </div>
-
-            <div class="grid grid-cols-2 gap-4 text-xs">
-              <div>
-                <span class="text-slate-400 block text-[10px]">الاسم:</span>
-                <strong id="cardName" class="text-white font-bold text-sm block truncate">--</strong>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">رقم الواتساب:</span>
-                <strong id="cardPhone" class="text-emerald-300 font-mono text-sm block truncate" dir="ltr">--</strong>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">البرنامج المختار:</span>
-                <strong id="cardPackage" class="text-white font-bold block truncate">تحدي 60 يوماً</strong>
-              </div>
-              <div>
-                <span class="text-slate-400 block text-[10px]">كود الخصم المحفوظ:</span>
-                <strong class="text-amber-400 font-mono font-bold text-sm bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20 inline-block">WAHET40 (-40%)</strong>
-              </div>
+            <div class="text-emerald-400 font-bold flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+              <span>محفوظ ومسجل بإيميلك بنجاح ✅</span>
             </div>
-
-            <div class="pt-2 border-t border-slate-700/60 text-[11px] text-slate-400 flex items-center justify-between">
-              <span>منصة واحة نور • د. أحمد الخطيب</span>
-              <span class="text-emerald-400 font-bold">الحالة: مؤكد ومحجوز ✅</span>
-            </div>
-          </div>
-
-          <!-- Direct WhatsApp Confirmation Button -->
-          <div class="space-y-3 pt-2">
-            <a 
-              id="whatsappDirectLink" 
-              href="#" 
-              target="_blank" 
-              class="w-full py-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-sm sm:text-base shadow-xl shadow-[#25D366]/25 transition flex items-center justify-center gap-2.5"
-            >
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-              <span>تأكيد حجزي عبر الواتساب مع الفريق فوراً 📲</span>
-            </a>
-            <p class="text-xs text-slate-400">
-              بالضغط على الزر، سيتم فتح محادثة واتساب جاهزة لتأكيد تسجيلك واستلام الإشعار قبل فتح الحجز العام بـ 24 ساعة.
-            </p>
           </div>
 
         </div>
 
-      </form>
+        <!-- WhatsApp Instant Alert Confirmation Button -->
+        <div class="space-y-2 pt-2 text-center">
+          <a 
+            id="whatsappResultBtn" 
+            href="#" 
+            target="_blank" 
+            class="w-full py-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-extrabold text-sm sm:text-base shadow-xl shadow-[#25D366]/25 transition flex items-center justify-center gap-2.5"
+          >
+            <i data-lucide="message-circle" class="w-5 h-5"></i>
+            <span>تأكيد استلام كود الخصم (30%) عبر الواتساب فوراً 📲</span>
+          </a>
+          <p class="text-[11px] text-slate-400">
+            سنرسل لك رابط التسجيل المبكر والخصم على إيميلك وواتساب قبل إتاحته للجمهور بـ 24 ساعة.
+          </p>
+        </div>
+
+      </div>
 
     </div>
 
@@ -425,122 +555,163 @@
     <p class="text-[10px] text-slate-600 mt-1">Dubai Media City Freezone License No. 102905 • wahetnor.com</p>
   </footer>
 
-  <!-- Application Logic -->
+  <!-- Quiz & Flow Logic -->
   <script>
     lucide.createIcons();
 
-    let currentStep = 1;
-    let selectedGoal = 'belly_fat';
-    let selectedPackage = 'cohort_60';
+    // User Answers State
+    const quizState = {
+      fat_loc: 'belly',
+      insulin_sign: 'severe_crash',
+      diet_history: 'starved_rebounded',
+      obstacle: 'motivation_community',
+      name: '',
+      country: 'EG',
+      email: ''
+    };
 
-    function selectOption(group, element) {
-      const parent = element.closest('.form-step');
-      parent.querySelectorAll(`input[name="${group}"]`).forEach(input => {
-        input.closest('.option-card').classList.remove('selected');
-      });
-      element.classList.add('selected');
-      const radio = element.querySelector(`input[name="${group}"]`);
-      if (radio) {
-        radio.checked = true;
-        if (group === 'goal') selectedGoal = radio.value;
-        if (group === 'package') selectedPackage = radio.value;
-      }
+    function updateProgress(step, label, percent) {
+      document.getElementById('quizStepLabel').innerText = label;
+      document.getElementById('quizStepPercent').innerText = percent + '%';
+      document.getElementById('quizProgressBar').style.width = percent + '%';
     }
 
-    function nextStep(step) {
-      currentStep = step;
-      document.querySelectorAll('.form-step').forEach(el => el.classList.add('hidden'));
+    function recordAnswer(questionKey, answerValue, nextStepIndex) {
+      quizState[questionKey] = answerValue;
 
-      if (step === 1) {
-        document.getElementById('step1').classList.remove('hidden');
-        document.getElementById('stepTitleText').innerText = 'الخطوة 1 من 3: تحديد هدفك الصحي';
-        document.getElementById('stepPercentText').innerText = '33%';
-        document.getElementById('progressBar').style.width = '33%';
-      } else if (step === 2) {
-        document.getElementById('step2').classList.remove('hidden');
-        document.getElementById('stepTitleText').innerText = 'الخطوة 2 من 3: اختيار الدولة والباقة';
-        document.getElementById('stepPercentText').innerText = '66%';
-        document.getElementById('progressBar').style.width = '66%';
-      } else if (step === 3) {
-        document.getElementById('step3').classList.remove('hidden');
-        document.getElementById('stepTitleText').innerText = 'الخطوة 3 من 3: تأكيد التواصل والخصم';
-        document.getElementById('stepPercentText').innerText = '90%';
-        document.getElementById('progressBar').style.width = '90%';
+      // Hide all quiz steps
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+
+      if (nextStepIndex === 2) {
+        document.getElementById('qBlock2').classList.remove('hidden');
+        updateProgress(2, 'السؤال 2 من 4: هبوط الطاقة وإشارات الأيض', 40);
+      } else if (nextStepIndex === 3) {
+        document.getElementById('qBlock3').classList.remove('hidden');
+        updateProgress(3, 'السؤال 3 من 4: تجارب الدايت السابقة والحرق', 60);
+      } else if (nextStepIndex === 4) {
+        document.getElementById('qBlock4').classList.remove('hidden');
+        updateProgress(4, 'السؤال 4 من 4: أسلوب الحياة ونظام المتابعة الأنسب', 80);
+      } else if (nextStepIndex === 5) {
+        document.getElementById('qBlock5').classList.remove('hidden');
+        updateProgress(5, 'الخطوة الأخيرة: إدخال البيانات لتثبيت الخصم', 95);
+        document.getElementById('userName').focus();
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
       lucide.createIcons();
     }
 
-    function submitApplication() {
-      const name = document.getElementById('applicantName').value.trim();
-      const phone = document.getElementById('applicantPhone').value.trim();
-      const email = document.getElementById('applicantEmail').value.trim();
+    function backToStep(stepIndex) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      if (stepIndex === 1) {
+        document.getElementById('qBlock1').classList.remove('hidden');
+        updateProgress(1, 'السؤال 1 من 4: طبيعة توزيع الدهون', 20);
+      } else if (stepIndex === 2) {
+        document.getElementById('qBlock2').classList.remove('hidden');
+        updateProgress(2, 'السؤال 2 من 4: هبوط الطاقة وإشارات الأيض', 40);
+      } else if (stepIndex === 3) {
+        document.getElementById('qBlock3').classList.remove('hidden');
+        updateProgress(3, 'السؤال 3 من 4: تجارب الدايت السابقة والحرق', 60);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('userName').value.trim();
       const country = document.getElementById('userCountry').value;
+      const email = document.getElementById('userEmail').value.trim();
 
-      if (!name) {
-        alert('يرجى كتابة الاسم الكريم للمتابعة.');
-        document.getElementById('applicantName').focus();
-        return;
-      }
-      if (!phone || phone.length < 8) {
-        alert('يرجى كتابة رقم الواتساب صحيحاً لاستلام كود الخصم.');
-        document.getElementById('applicantPhone').focus();
+      if (!name || !email) {
+        alert('يرجى ملء جميع البيانات لإصدار تقريرك بدقة.');
         return;
       }
 
-      const submitBtn = document.getElementById('submitApplicationBtn');
+      quizState.name = name;
+      quizState.country = country;
+      quizState.email = email;
+
+      const submitBtn = document.getElementById('submitQuizBtn');
       submitBtn.disabled = true;
-      submitBtn.innerHTML = 'جاري تسجيل مقعدك الذهبي...';
+      submitBtn.innerHTML = 'جاري تحليل إجاباتك وإصدار تقرير الأيض...';
 
-      // Generate Ticket Number
-      const randNum = Math.floor(1000 + Math.random() * 9000);
-      const ticketId = `#WN-${randNum}`;
-
-      const leadData = {
-        name,
-        phone,
-        email,
-        country,
-        goal: selectedGoal,
-        package: selectedPackage,
-        ticketId,
-        discountCode: 'WAHET40',
-        createdAt: new Date().toISOString()
-      };
-
-      // Save to localStorage
+      // Save lead locally
       try {
-        const existingLeads = JSON.parse(localStorage.getItem('wahetnor_waitlist_leads') || '[]');
-        existingLeads.push(leadData);
-        localStorage.setItem('wahetnor_waitlist_leads', JSON.stringify(existingLeads));
-      } catch (e) {}
+        const leads = JSON.parse(localStorage.getItem('wahetnor_waitlist_leads') || '[]');
+        leads.push({
+          ...quizState,
+          discount: '30%',
+          discountCode: 'WAHET30',
+          submittedAt: new Date().toISOString()
+        });
+        localStorage.setItem('wahetnor_waitlist_leads', JSON.stringify(leads));
+      } catch (err) {}
 
-      // Render Success Card
-      document.getElementById('confirmedName').innerText = name.split(' ')[0] || name;
-      document.getElementById('cardName').innerText = name;
-      document.getElementById('cardPhone').innerText = phone;
-      document.getElementById('ticketNumber').innerText = ticketId;
-
-      let packageLabel = 'تحدي واحة نور 60 يوماً';
-      if (selectedPackage === 'team_coaching') packageLabel = 'متابعة خاصة 1:1 مع الأخصائي';
-      if (selectedPackage === 'vip_ahmed') packageLabel = 'باقة النخبة VIP مع د. أحمد';
-      document.getElementById('cardPackage').innerText = packageLabel;
-
-      // WhatsApp Direct Link Construction
-      const whatsappMsg = encodeURIComponent(
-        `أهلاً د. أحمد وفريق واحة نور 🌱\nأنا ${name}، سجلت في القائمة الذهبية بالرقم (${ticketId}).\nهدفي: ${selectedGoal}، والبرنامج المختار: ${packageLabel}.\nأؤكد رغبتي بتفعيل خصم 40% (كود: WAHET40) فور فتح باب الحجز!`
-      );
-      // Wahet Nour Official WhatsApp
-      document.getElementById('whatsappDirectLink').href = `https://wa.me/201027150116?text=${whatsappMsg}`;
-
+      // Calculate & Render Result
       setTimeout(() => {
-        document.querySelectorAll('.form-step').forEach(el => el.classList.add('hidden'));
-        document.getElementById('progressBarContainer').classList.add('hidden');
-        document.getElementById('stepSuccess').classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        lucide.createIcons();
-      }, 600);
+        renderPersonalizedResult();
+      }, 700);
+    }
+
+    function renderPersonalizedResult() {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      document.getElementById('quizProgressContainer').classList.add('hidden');
+      document.getElementById('qBlockResult').classList.remove('hidden');
+
+      // Set user's first name
+      const firstName = quizState.name.split(' ')[0] || quizState.name;
+      document.getElementById('resName').innerText = quizState.name;
+
+      // Personalized Diagnosis Logic
+      let diagnosisTitle = 'مؤشر مقاومة إنسولين وبطء أيضي ناتج عن حميات الحرمان';
+      let diagnosisDesc = `يا ${firstName}، إجاباتك تشير إلى أن دهون البطن لديك عنيدة بسبب فرط إفراز الإنسولين واضطراب الأيض الدفاعي الناتج عن تجارب التجويع السابقة. جسمك لا يحتاج حرماناً إضافياً بل يحتاج إعادة برمجة الحرق بقاعدة 80/20.`;
+
+      if (quizState.fat_loc === 'uniform' && quizState.insulin_sign === 'stable') {
+        diagnosisTitle = 'حالة زيادة وزن عامة مع استقرار في حساسية الإنسولين';
+        diagnosisDesc = `يا ${firstName}، وضعك الأيضي جيد جداً وقابل للاستجابة السريعة! تحتاج فقط لضبط عادات الأكل والكميات والتغذية المرنة بدون الحاجة لأي حميات معقدة.`;
+        document.getElementById('resInsulinScore').innerText = 'طبيعي ومستقر';
+        document.getElementById('resInsulinScore').className = 'text-base font-extrabold text-emerald-400';
+        document.getElementById('resMetabolicRate').innerText = 'جيد (يحتاج تنشيط)';
+        document.getElementById('resMetabolicRate').className = 'text-base font-extrabold text-sky-400';
+      }
+
+      document.getElementById('resDiagnosisTitle').innerText = diagnosisTitle;
+      document.getElementById('resDiagnosisDesc').innerText = diagnosisDesc;
+
+      // Highlight Recommended Coaching System
+      const cardCohort = document.getElementById('cardCohort');
+      const cardTeam = document.getElementById('cardTeam1on1');
+      const cardVip = document.getElementById('cardVipAhmed');
+
+      [cardCohort, cardTeam, cardVip].forEach(c => {
+        c.className = 'p-4 rounded-2xl bg-slate-900/80 border border-slate-700 space-y-2 relative transition-all opacity-70';
+      });
+
+      let recommendedSystem = 'المتابعة الجماعية (تحدي 60 يوماً)';
+
+      if (quizState.obstacle === 'complex_health_vip') {
+        cardVip.className = 'p-5 rounded-2xl bg-amber-500/10 border-2 border-amber-400 space-y-2 relative transition-all shadow-xl shadow-amber-500/15';
+        cardVip.querySelector('.text-slate-400').classList.remove('text-slate-400');
+        recommendedSystem = 'المتابعة المباشرة مع د. أحمد الخطيب شخصياً (VIP)';
+      } else if (quizState.obstacle === 'busy_need_1on1') {
+        cardTeam.className = 'p-5 rounded-2xl bg-sky-500/10 border-2 border-sky-400 space-y-2 relative transition-all shadow-xl shadow-sky-500/15';
+        cardTeam.querySelector('.text-slate-400').classList.remove('text-slate-400');
+        recommendedSystem = 'المتابعة الشخصية 1:1 مع أخصائي الفريق';
+      } else {
+        cardCohort.className = 'p-5 rounded-2xl bg-emerald-500/10 border-2 border-emerald-400 space-y-2 relative transition-all shadow-xl shadow-emerald-500/15';
+        cardCohort.querySelector('.text-slate-400').classList.remove('text-slate-400');
+        recommendedSystem = 'المتابعة الجماعية (تحدي واحة نور 60 يوماً)';
+      }
+
+      // WhatsApp Button Pre-filled Message
+      const waMessage = encodeURIComponent(
+        `مرحباً د. أحمد وفريق واحة نور 🌱\nأنا ${quizState.name}، أتممت فحص الأيض بنجاح.\nالنظام الأنسب لحالتي: ${recommendedSystem}.\nأؤكد تثبيت كود الخصم (WAHET30) بخصم 30% لمدة 24 ساعة فور فتح باب التسجيل!`
+      );
+      document.getElementById('whatsappResultBtn').href = `https://wa.me/201027150116?text=${waMessage}`;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
     }
   </script>
 </body>

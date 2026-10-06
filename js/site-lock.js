@@ -134,48 +134,24 @@
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
             <div style="font-size:14px;font-weight:800;color:#FFFFFF;display:flex;align-items:center;gap:6px;">
               <span>🎁</span>
-              <span>انضم للقائمة الذهبية المسبقة</span>
+              <span>فحص الأيض والقائمة الذهبية المسبقة</span>
             </div>
             <span style="font-size:11px;font-weight:700;color:#F59E0B;background:rgba(245,158,11,0.12);padding:3px 10px;border-radius:8px;border:1px solid rgba(245,158,11,0.25);">
-              خصم 40% لأول 500 مشترك
+              خصم 30% لمدة 24 ساعة
             </span>
           </div>
 
-          <form id="waitlistForm" onsubmit="return false;" style="display:flex;flex-direction:column;gap:12px;">
-            <div>
-              <input 
-                id="waitlistName" 
-                type="text" 
-                placeholder="الاسم الكريم..." 
-                required
-                style="width:100%;height:48px;background:#06182B;border:1.5px solid #1E3A5F;border-radius:12px;padding:0 16px;font-size:13.5px;color:#FFFFFF;outline:none;box-sizing:border-box;transition:border-color 0.2s;"
-              >
-            </div>
-            <div>
-              <input 
-                id="waitlistPhone" 
-                type="tel" 
-                placeholder="رقم الواتساب (مع كود الدولة مثل +20 أو +966)..." 
-                required
-                style="width:100%;height:48px;background:#06182B;border:1.5px solid #1E3A5F;border-radius:12px;padding:0 16px;font-size:13.5px;color:#FFFFFF;outline:none;box-sizing:border-box;direction:ltr;text-align:right;transition:border-color 0.2s;"
-              >
-            </div>
+          <p style="font-size:12.5px;color:#94A3B8;line-height:1.7;margin:0 0 16px;">
+            أجب عن 4 أسئلة سريعة لتشخيص كفاءة حرقك ومؤشر مقاومة الإنسولين، وسجل بياناتك لمعرفة نظام المتابعة الأنسب لك وتثبيت كود الخصم الحصري (30%) عند فتح باب التسجيل الرسمي.
+          </p>
 
-            <button 
-              id="waitlistSubmitBtn"
-              type="submit" 
-              class="tap-scale"
-              style="width:100%;height:50px;background:linear-gradient(135deg, #059669 0%, #10B981 100%);border:none;border-radius:12px;font-size:14px;font-weight:800;color:#FFFFFF;cursor:pointer;box-shadow:0 10px 20px rgba(16,185,129,0.3);transition:all 0.2s;margin-top:4px;"
-            >
-              احجز مقعدك في القائمة الذهبية واحصل على الخصم 🚀
-            </button>
-            <div style="text-align:center;margin-top:8px;">
-              <a href="waitlist.html" style="font-size:11.5px;color:#34D399;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:4px;">
-                <span>أو افتح استمارة التشخيص وتحديد الباقة المفصلة</span>
-                <span>←</span>
-              </a>
-            </div>
-          </form>
+          <a 
+            href="waitlist.html" 
+            class="tap-scale"
+            style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;background:linear-gradient(135deg, #059669 0%, #10B981 100%);border:none;border-radius:14px;font-size:14px;font-weight:800;color:#FFFFFF;text-decoration:none;box-shadow:0 10px 25px rgba(16,185,129,0.35);transition:all 0.2s;box-sizing:border-box;"
+          >
+            <span>ابدأ فحص الأيض وسجل في القائمة الذهبية 🚀</span>
+          </a>
 
           <div id="waitlistSuccess" style="display:none;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);border-radius:14px;padding:16px;text-align:center;color:#34D399;font-size:13px;line-height:1.6;margin-top:12px;">
             🎉 <strong>أهلاً بك في واحة نور!</strong><br>

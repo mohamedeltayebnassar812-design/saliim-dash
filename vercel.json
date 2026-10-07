@@ -1,5 +1,12 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/strategy",
+      "destination": "/strategy-plan",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

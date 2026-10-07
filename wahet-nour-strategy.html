@@ -208,7 +208,7 @@
               <span class="w-7 h-7 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-xs font-mono font-bold">02</span>
               <div>
                 <h5 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors">مفهوم التسويق الرقمي والتسعير الجغرافي</h5>
-                <span class="text-[11px] text-slate-400 block -mt-0.5">مصر (1,200 ج) vs الخليج ($69) • درع دبي ميديا سيتي (رخصة 102905)</span>
+                <span class="text-[11px] text-slate-400 block -mt-0.5">مصر (1,699 ج) vs الخليج ($49) • درع دبي ميديا سيتي (رخصة 102905)</span>
               </div>
             </div>
             <div class="w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
@@ -222,7 +222,7 @@
               <span class="w-7 h-7 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center text-xs font-mono font-bold">03</span>
               <div>
                 <h5 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors">إطار عمل التسويق (Marketing Framework)</h5>
-                <span class="text-[11px] text-slate-400 block -mt-0.5">سُلّم المنتجات: تحدي 60 يوماً ($69) • متابعة الفريق ($140) • النخبة VIP ($450)</span>
+                <span class="text-[11px] text-slate-400 block -mt-0.5">سُلّم المنتجات: تحدي 60 يوماً ($49/1699ج) • باقة التغذية ($79/4000ج) • 1:1 VIP ($399/15000ج)</span>
               </div>
             </div>
             <div class="w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all">
@@ -361,57 +361,132 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Controls Column -->
+        <!-- Controls Column: All Packages from 0 clients -->
         <div class="lg:col-span-6 p-6 sm:p-8 rounded-3xl bg-[#091A2E] border border-cyan-500/20 space-y-6">
-          <h4 class="font-bold text-white text-base">حرّك المتغيرات لتشاهد الإيراد الصافي:</h4>
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-white text-base">متغيرات الإطلاق الأول (من 0 عميل):</h4>
+            <button type="button" onclick="resetCalculatorToZero()" class="text-xs text-emerald-400 hover:underline font-bold">تصفير الكل (0 عميل)</button>
+          </div>
 
-          <!-- Slider 1: Egypt Members -->
-          <div class="space-y-2">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-slate-300">مشتركو التحدي من مصر (1,200 ج.م):</span>
-              <span id="val-egypt" class="text-emerald-400 font-mono text-sm">400 مشترك</span>
+          <!-- Group 1: Challenge Package -->
+          <div class="p-4 rounded-2xl bg-[#061220] border border-white/5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                <i data-lucide="flame" class="w-3.5 h-3.5 text-emerald-400"></i>
+                1. باقة التحدي 60 يوماً (Challenge)
+              </span>
+              <span class="text-[11px] font-bold text-slate-400 font-mono">1,699 ج / $49</span>
             </div>
-            <input type="range" id="slider-egypt" min="100" max="1500" step="50" value="400" 
-              class="w-full accent-emerald-400 cursor-pointer" oninput="calculateRevenue()">
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>100</span>
-              <span>متحفظ (400)</span>
-              <span>1,500</span>
+
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">مشتركو مصر (1,699 ج.م):</span>
+                <span id="val-challenge-eg" class="text-emerald-400 font-mono text-sm">200 مشترك</span>
+              </div>
+              <input type="range" id="slider-challenge-eg" min="0" max="1000" step="5" value="200" 
+                class="w-full accent-emerald-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>200</span>
+                <span>1,000</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">مشتركو خارج مصر ($49 دولار):</span>
+                <span id="val-challenge-gulf" class="text-emerald-400 font-mono text-sm">100 مشترك</span>
+              </div>
+              <input type="range" id="slider-challenge-gulf" min="0" max="500" step="5" value="100" 
+                class="w-full accent-emerald-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>100</span>
+                <span>500</span>
+              </div>
             </div>
           </div>
 
-          <!-- Slider 2: Gulf Members -->
-          <div class="space-y-2">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-slate-300">مشتركو التحدي من الخليج ($69 دولار):</span>
-              <span id="val-gulf" class="text-cyan-300 font-mono text-sm">150 مشترك</span>
+          <!-- Group 2: Nutrition / Team Coaching Package -->
+          <div class="p-4 rounded-2xl bg-[#061220] border border-white/5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                <i data-lucide="users" class="w-3.5 h-3.5 text-cyan-400"></i>
+                2. باقة التغذية والمتابعة (فريق د. أحمد)
+              </span>
+              <span class="text-[11px] font-bold text-slate-400 font-mono">4,000 ج / $79</span>
             </div>
-            <input type="range" id="slider-gulf" min="30" max="600" step="10" value="150" 
-              class="w-full accent-cyan-400 cursor-pointer" oninput="calculateRevenue()">
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>30</span>
-              <span>متحفظ (150)</span>
-              <span>600</span>
+
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">مشتركو مصر (4,000 ج.م):</span>
+                <span id="val-nutrition-eg" class="text-cyan-300 font-mono text-sm">25 مشترك</span>
+              </div>
+              <input type="range" id="slider-nutrition-eg" min="0" max="250" step="5" value="25" 
+                class="w-full accent-cyan-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>25</span>
+                <span>250</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">مشتركو خارج مصر ($79 دولار):</span>
+                <span id="val-nutrition-gulf" class="text-cyan-300 font-mono text-sm">35 مشترك</span>
+              </div>
+              <input type="range" id="slider-nutrition-gulf" min="0" max="250" step="5" value="35" 
+                class="w-full accent-cyan-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>35</span>
+                <span>250</span>
+              </div>
             </div>
           </div>
 
-          <!-- Slider 3: VIP Clients -->
-          <div class="space-y-2">
-            <div class="flex justify-between text-xs font-bold">
-              <span class="text-slate-300">عملاء النخبة VIP مع د. أحمد ($450 دولار):</span>
-              <span id="val-vip" class="text-amber-300 font-mono text-sm">15 عميل</span>
+          <!-- Group 3: VIP Executive 1:1 Package -->
+          <div class="p-4 rounded-2xl bg-[#061220] border border-amber-500/30 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400"></i>
+                3. باقة النخبة 1:1 (مع د. أحمد شخصياً)
+              </span>
+              <span class="text-[11px] font-bold text-amber-400 font-mono">15,000 ج / $399</span>
             </div>
-            <input type="range" id="slider-vip" min="5" max="25" step="1" value="15" 
-              class="w-full accent-amber-400 cursor-pointer" oninput="calculateRevenue()">
-            <div class="flex justify-between text-[10px] text-slate-500">
-              <span>5</span>
-              <span>الحد الأقصى (15 - 20)</span>
-              <span>25</span>
+
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">عملاء مصر (15,000 ج.م):</span>
+                <span id="val-vip-eg" class="text-amber-300 font-mono text-sm">5 عملاء</span>
+              </div>
+              <input type="range" id="slider-vip-eg" min="0" max="30" step="1" value="5" 
+                class="w-full accent-amber-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>5</span>
+                <span>30 (نادر)</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5 pt-1">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="text-slate-300">عملاء خارج مصر ($399 دولار):</span>
+                <span id="val-vip-gulf" class="text-amber-300 font-mono text-sm">10 عملاء</span>
+              </div>
+              <input type="range" id="slider-vip-gulf" min="0" max="30" step="1" value="10" 
+                class="w-full accent-amber-400 cursor-pointer" oninput="calculateRevenue()">
+              <div class="flex justify-between text-[10px] text-slate-500">
+                <span>0</span>
+                <span>10</span>
+                <span>30 (نادر)</span>
+              </div>
             </div>
           </div>
 
           <div class="p-3.5 bg-[#061220] rounded-xl border border-white/5 text-[11px] text-slate-400 leading-relaxed">
-            📌 الحسابات مبنية على سعر صرف تقديري للدولار = 48.5 جنيه مصري، وصفر تكاليف إعلانية (0$ Ad-Spend) اعتماداً على جمهور د. أحمد الحالي (8.7M متابع).
+            📌 الحسابات لحظية وتبدأ من <strong>0 عميل</strong> بأي تشكيلة تختارها، وسعر الصرف التقديري للدولار = 48.5 جنيه مصري، وصفر تكاليف إعلانية (0$ Ad-Spend).
           </div>
         </div>
 
@@ -419,25 +494,29 @@
         <div class="lg:col-span-6 space-y-4">
           
           <div class="bg-gradient-to-br from-[#0B2A3D] to-[#081C2B] text-white p-6 sm:p-8 rounded-3xl border-2 border-emerald-400 shadow-2xl space-y-4">
-            <span class="text-xs font-bold text-emerald-300 uppercase tracking-wider block">الإيراد الإجمالي الصافي المتوقع (الشهر الأول):</span>
+            <div class="flex justify-between items-center text-xs font-bold text-emerald-300">
+              <span class="uppercase tracking-wider">الإيراد الإجمالي الصافي المتوقع (الشهر الأول):</span>
+              <span id="total-clients-count" class="bg-emerald-950 px-2.5 py-1 rounded-full text-white font-mono">375 مشترك إجمالي</span>
+            </div>
             
             <div class="space-y-1">
-              <div class="text-4xl sm:text-5xl font-black text-white" id="total-usd">$30,600</div>
-              <div class="text-lg font-bold text-emerald-300" id="total-egp">≈ 1,484,100 جنيه مصري</div>
+              <div class="text-4xl sm:text-5xl font-black text-white" id="total-usd">$23,380</div>
+              <div class="text-lg font-bold text-emerald-300" id="total-egp">≈ 1,133,930 جنيه مصري</div>
             </div>
 
+            <!-- Subtotals Grid across all 3 packages -->
             <div class="grid grid-cols-3 gap-2 pt-4 border-t border-emerald-600/40 text-xs">
-              <div class="bg-[#05111D] p-3 rounded-xl">
-                <span class="text-slate-400 text-[10px] block">تحدي مصر</span>
-                <strong class="font-bold text-white text-sm" id="sub-egypt">480,000 ج</strong>
+              <div class="bg-[#05111D] p-2.5 rounded-xl border border-emerald-600/30">
+                <div class="text-emerald-300 text-[10px] font-bold">1. إجمالي التحدي</div>
+                <div class="font-bold text-white text-[11px] mt-0.5" id="sub-challenge">339,800 ج + $4,900</div>
               </div>
-              <div class="bg-[#05111D] p-3 rounded-xl">
-                <span class="text-slate-400 text-[10px] block">تحدي الخليج</span>
-                <strong class="font-bold text-cyan-300 text-sm" id="sub-gulf">$10,350</strong>
+              <div class="bg-[#05111D] p-2.5 rounded-xl border border-cyan-600/30">
+                <div class="text-cyan-300 text-[10px] font-bold">2. إجمالي التغذية</div>
+                <div class="font-bold text-white text-[11px] mt-0.5" id="sub-nutrition">100,000 ج + $2,765</div>
               </div>
-              <div class="bg-[#05111D] p-3 rounded-xl">
-                <span class="text-slate-400 text-[10px] block">باقة الـ VIP</span>
-                <strong class="font-bold text-amber-300 text-sm" id="sub-vip">$6,750</strong>
+              <div class="bg-[#05111D] p-2.5 rounded-xl border border-amber-600/30">
+                <div class="text-amber-300 text-[10px] font-bold">3. إجمالي 1:1 VIP</div>
+                <div class="font-bold text-amber-300 text-[11px] mt-0.5" id="sub-vip">75,000 ج + $3,990</div>
               </div>
             </div>
           </div>
@@ -448,6 +527,29 @@
               <i data-lucide="pie-chart" class="w-4 h-4 text-emerald-400"></i>
               <span>اقتصاديات الوحدة وهوامش الربح التشغيلية</span>
             </h5>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">عمولات بوابات الدفع (Stripe / Paymob):</span>
+                <span class="font-bold text-slate-200">~ 3% إلى 4%</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">تكلفة أخصائيي الدعم والإشراف:</span>
+                <span class="font-bold text-slate-200">~ 10% إلى 12%</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">تكاليف السيرفرات والإعلانات المدفوعة:</span>
+                <span class="font-bold text-emerald-400">0$ (ترافيك عضوي 100%)</span>
+              </div>
+              <div class="flex justify-between py-1 text-emerald-400 font-bold text-sm">
+                <span>صافي هامش الربح التشغيلي:</span>
+                <span>تتجاوز 84% 🚀</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
             <div class="space-y-2 text-xs">
               <div class="flex justify-between py-1 border-b border-white/5">
                 <span class="text-slate-400">عمولات بوابات الدفع (Stripe / Paymob):</span>
@@ -556,8 +658,8 @@
           <div class="space-y-3">
             <p><strong>التسعير الجغرافي المزدوج (Geo-Pricing):</strong></p>
             <ul class="space-y-1 list-disc list-inside">
-              <li><strong>مصر (EGP):</strong> بوابات دفع Paymob وإنستاباي بـ 1,200 ج.م مبكر (1,500 ج رسمي).</li>
-              <li><strong>الخليج والدولي (USD):</strong> عبر Stripe و Apple Pay بـ $69 دولار (≈ 250 ريال/درهم).</li>
+              <li><strong>مصر (EGP):</strong> بوابات دفع Paymob وإنستاباي بـ 1,699 ج.م لباقة التحدي.</li>
+              <li><strong>الخليج والدولي (USD):</strong> عبر Stripe و Apple Pay بـ $49 دولار لباقة التحدي.</li>
             </ul>
             <p><strong>الدرع القانوني في دبي:</strong> استثمار رخصة دبي ميديا سيتي (License No. 102905 كـ Social Media Influencer) وربط الحسابات البنكية بها لتفادي أي احتكاك محلي داخل مصر، مع إقرار إخلاء مسؤولية طبي إلزامي.</p>
           </div>
@@ -571,15 +673,15 @@
           <div class="space-y-3">
             <div class="p-3 bg-[#061220] rounded-xl border border-white/5">
               <strong class="text-emerald-400 block">1. تحدي واحة نور 60 يوماً (Volume):</strong>
-              <span>1,200 ج.م في مصر / $69 بالخليج (يستوعب 80% من المشتركين آلياً بنظام الدفعات).</span>
+              <span>1,699 ج.م في مصر / $49 بالخليج (يستوعب 80% من المشتركين آلياً بنظام الدفعات).</span>
             </div>
             <div class="p-3 bg-[#061220] rounded-xl border border-white/5">
               <strong class="text-cyan-400 block">2. متابعة خاصة مع أخصائيي الفريق:</strong>
-              <span>3,800 ج.م في مصر / $140 بالخليج بشات يومي ومكالمات دورية.</span>
+              <span>4,000 ج.م في مصر / $79 بالخليج بشات يومي ومكالمات دورية.</span>
             </div>
             <div class="p-3 bg-[#061220] rounded-xl border border-white/5">
               <strong class="text-amber-400 block">3. باقة النخبة VIP مع د. أحمد شخصياً:</strong>
-              <span>16,000 ج.م في مصر / $450 - $500 بالخليج (15 إلى 20 مقعداً فقط شهرياً).</span>
+              <span>15,000 ج.م في مصر / $399 بالخليج (15 إلى 20 مقعداً فقط شهرياً).</span>
             </div>
           </div>
         `
@@ -630,11 +732,11 @@
       7: {
         badge: "المحور 07 • الأهداف والماليات",
         title: "الأهداف التسويقية والمالية للشهر الأول",
-        sub: "مستهدف $30,600 إلى $35,000+ وهامش ربح 84%",
+        sub: "مستهدف $23,000 إلى $35,000+ وهامش ربح 84%",
         content: `
           <div class="space-y-3">
-            <p><strong>الإيراد الصافي المتوقع:</strong> $30,600 إلى $35,000+ دولار (≈ 1.5 مليون جنيه مصري).</p>
-            <p><strong>التوزيع:</strong> 400 مشترك من مصر (480 ألف ج) + 150 من الخليج ($10,350) + 15 عميل VIP ($6,750).</p>
+            <p><strong>الإيراد الصافي المتوقع:</strong> إيراد مستهدف يبدأ من $23,380+ دولار (≈ 1.13 مليون جنيه مصري) بالتوزيع الافتراضي.</p>
+            <p><strong>التوزيع:</strong> 200 مشترك مصر (1,699 ج) + 100 مشترك خارج مصر ($49) + باقات التغذية والمتابعة + نخبة VIP.</p>
             <p><strong>اقتصاديات الوحدة:</strong> تكاليف الإعلانات 0$ (ترافيك عضوي 100%) وهامش الربح التشغيلي يتجاوز 84%.</p>
           </div>
         `
@@ -685,30 +787,74 @@
       document.getElementById('detail-modal').classList.add('hidden');
     }
 
-    // 3. REVENUE SIMULATOR LOGIC
+    // 3. REVENUE SIMULATOR LOGIC (All 6 Packages starting from 0)
     function calculateRevenue() {
-      const egyptCount = parseInt(document.getElementById('slider-egypt').value);
-      const gulfCount = parseInt(document.getElementById('slider-gulf').value);
-      const vipCount = parseInt(document.getElementById('slider-vip').value);
+      const chEg = parseInt(document.getElementById('slider-challenge-eg')?.value || 0);
+      const chGulf = parseInt(document.getElementById('slider-challenge-gulf')?.value || 0);
+      const nutEg = parseInt(document.getElementById('slider-nutrition-eg')?.value || 0);
+      const nutGulf = parseInt(document.getElementById('slider-nutrition-gulf')?.value || 0);
+      const vipEg = parseInt(document.getElementById('slider-vip-eg')?.value || 0);
+      const vipGulf = parseInt(document.getElementById('slider-vip-gulf')?.value || 0);
 
-      document.getElementById('val-egypt').innerText = egyptCount + ' مشترك';
-      document.getElementById('val-gulf').innerText = gulfCount + ' مشترك';
-      document.getElementById('val-vip').innerText = vipCount + ' عميل';
+      document.getElementById('val-challenge-eg').innerText = chEg + ' مشترك';
+      document.getElementById('val-challenge-gulf').innerText = chGulf + ' مشترك';
+      document.getElementById('val-nutrition-eg').innerText = nutEg + ' مشترك';
+      document.getElementById('val-nutrition-gulf').innerText = nutGulf + ' مشترك';
+      document.getElementById('val-vip-eg').innerText = vipEg + ' عميل';
+      document.getElementById('val-vip-gulf').innerText = vipGulf + ' عميل';
 
-      const egyptRevEgp = egyptCount * 1200;
-      const gulfRevUsd = gulfCount * 69;
-      const vipRevUsd = vipCount * 450;
+      const totalClients = chEg + chGulf + nutEg + nutGulf + vipEg + vipGulf;
+      const clientsEl = document.getElementById('total-clients-count');
+      if (clientsEl) clientsEl.innerText = totalClients + ' مشترك إجمالي';
 
-      const rate = 48.5; // EGP to USD
-      const totalRevUsd = Math.round((egyptRevEgp / rate) + gulfRevUsd + vipRevUsd);
-      const totalRevEgp = Math.round(totalRevUsd * rate);
+      // Price Constants requested by user
+      const PRICE_CHALLENGE_EG = 1699;
+      const PRICE_CHALLENGE_GULF = 49;
+      const PRICE_NUTRITION_EG = 4000;
+      const PRICE_NUTRITION_GULF = 79;
+      const PRICE_VIP_EG = 15000;
+      const PRICE_VIP_GULF = 399;
 
-      document.getElementById('sub-egypt').innerText = egyptRevEgp.toLocaleString('en-US') + ' ج';
-      document.getElementById('sub-gulf').innerText = '$' + gulfRevUsd.toLocaleString('en-US');
-      document.getElementById('sub-vip').innerText = '$' + vipRevUsd.toLocaleString('en-US');
+      const rate = 48.5; // EGP to USD rate
 
-      document.getElementById('total-usd').innerText = '$' + totalRevUsd.toLocaleString('en-US');
-      document.getElementById('total-egp').innerText = '≈ ' + totalRevEgp.toLocaleString('en-US') + ' جنيه مصري';
+      // Subtotals
+      const revChallengeEg = chEg * PRICE_CHALLENGE_EG;
+      const revChallengeGulf = chGulf * PRICE_CHALLENGE_GULF;
+
+      const revNutritionEg = nutEg * PRICE_NUTRITION_EG;
+      const revNutritionGulf = nutGulf * PRICE_NUTRITION_GULF;
+
+      const revVipEg = vipEg * PRICE_VIP_EG;
+      const revVipGulf = vipGulf * PRICE_VIP_GULF;
+
+      // Totals
+      const totalRevEgp = revChallengeEg + revNutritionEg + revVipEg;
+      const totalRevUsdDirect = revChallengeGulf + revNutritionGulf + revVipGulf;
+
+      const totalCombinedUsd = Math.round((totalRevEgp / rate) + totalRevUsdDirect);
+      const totalCombinedEgp = Math.round(totalRevEgp + (totalRevUsdDirect * rate));
+
+      // Display Subtotals
+      const subChEl = document.getElementById('sub-challenge');
+      if (subChEl) subChEl.innerText = revChallengeEg.toLocaleString('en-US') + ' ج + $' + revChallengeGulf.toLocaleString('en-US');
+
+      const subNutEl = document.getElementById('sub-nutrition');
+      if (subNutEl) subNutEl.innerText = revNutritionEg.toLocaleString('en-US') + ' ج + $' + revNutritionGulf.toLocaleString('en-US');
+
+      const subVipEl = document.getElementById('sub-vip');
+      if (subVipEl) subVipEl.innerText = revVipEg.toLocaleString('en-US') + ' ج + $' + revVipGulf.toLocaleString('en-US');
+
+      // Display Combined Totals
+      document.getElementById('total-usd').innerText = '$' + totalCombinedUsd.toLocaleString('en-US');
+      document.getElementById('total-egp').innerText = '≈ ' + totalCombinedEgp.toLocaleString('en-US') + ' جنيه مصري';
+    }
+
+    function resetCalculatorToZero() {
+      ['slider-challenge-eg', 'slider-challenge-gulf', 'slider-nutrition-eg', 'slider-nutrition-gulf', 'slider-vip-eg', 'slider-vip-gulf'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = 0;
+      });
+      calculateRevenue();
     }
 
     // Run initial calculation

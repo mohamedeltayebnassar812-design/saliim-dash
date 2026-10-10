@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة القيادة والدليل التشغيلي الشامل (Operations Command Center) | واحة نور</title>
+  <meta name="description" content="الدليل التشغيلي الميداني الشامل ومحاكي الطاقة الاستيعابية والرواتب لمنصة وتطبيق واحة نور — د. أحمد الخطيب.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#ECFDF5',
+              100: '#D1FAE5',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065F46',
+              900: '#064E3B',
+              dark: '#022C22'
+            },
+            accent: {
+              gold: '#D97706',
+              amber: '#F59E0B'
+            }
+          },
+          fontFamily: {
+            arabic: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #081524;
+      color: #E2E8F0;
+      overflow-x: hidden;
+    }
+    .glass-card {
+      background: rgba(13, 29, 49, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card-light {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #10B981;
+      border-radius: 999px;
+    }
+    .tab-active {
+      background-color: #059669 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    }
+    .pulse-glow {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.25);
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .glass-card { border: 1px solid #ccc !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-500 selection:text-white">
+
+  <!-- ==================== HEADER (Sticky Ops Control Bar) ==================== -->
+  <header class="no-print sticky top-0 z-50 bg-[#061220]/95 backdrop-blur-md border-b border-white/10 px-4 lg:px-8 py-3.5 transition-all shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i data-lucide="activity" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-white text-lg tracking-tight">واحة نور</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/30">Operations Command Center</span>
+          </div>
+          <p class="text-[11px] text-slate-400 hidden sm:block">الدليل التشغيلي الميداني ومحاكي الطاقة الاستيعابية والرواتب — إشراف مدير التشغيل</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center gap-2.5">
+        <a href="/strategy-plan" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition">
+          <i data-lucide="compass" class="w-4 h-4 text-emerald-400"></i>
+          <span class="hidden md:inline">الخطة الاستراتيجية</span>
+        </a>
+        <button onclick="window.print()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">طباعة الدليل</span>
+        </button>
+        <a href="#salary-simulator" class="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-brand-600 hover:bg-brand-500 rounded-lg shadow-sm shadow-brand-600/30 transition">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          <span>محاكي الرواتب والأرباح</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION (Ops Briefing) ==================== -->
+  <section class="relative overflow-hidden py-12 px-4 lg:px-8 bg-gradient-to-b from-[#0B1E33] via-[#081524] to-[#081524] border-b border-white/5">
+    <div class="max-w-7xl mx-auto space-y-6 relative z-10">
+      
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>المخطط التشغيلي الشامل — من اليوم وحتى نهاية الشهر الأول</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-8 space-y-4">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
+            غرفة العمليات المركزية <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">الشيفتات، الطاقة الاستيعابية، والفيتشرز</span>
+          </h1>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl font-light">
+            دليلك الإجرائي كـ <strong class="text-white font-bold">مدير تشغيل (Operations Manager)</strong> لإدارة الستاف (2 أخصائيي تغذية + كوتش + موديريتور)، تشغيل المنصة والتطبيق، ومتابعة رحلة العميل من أول كليك وحتى التخرج وتجديد الاشتراكات، مع مراقبة مؤشرات الأرباح ومصاريف الرواتب لحظياً.
+          </p>
+        </div>
+
+        <!-- Live Operations Metrics Snapshot -->
+        <div class="lg:col-span-4 glass-card rounded-2xl p-5 border border-white/10 space-y-3">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center justify-between">
+            <span>مستهدفات الدفعة الأولى:</span>
+            <span class="text-[10px] text-slate-400">سعة آمنة 100%</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+              <div class="text-xl font-black text-emerald-400" id="hero-target-ch">300</div>
+              <div class="text-[10px] text-slate-300">باقة التحدي</div>
+            </div>
+            <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+              <div class="text-xl font-black text-sky-400" id="hero-target-nut">30</div>
+              <div class="text-[10px] text-slate-300">متابعة خاصة</div>
+            </div>
+            <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+              <div class="text-xl font-black text-amber-400" id="hero-target-vip">3 - 5</div>
+              <div class="text-[10px] text-slate-300">نخبة VIP</div>
+            </div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-300 flex items-center justify-between">
+            <span>تغطية الشيفتات اليومية:</span>
+            <span class="font-bold">13 ساعة متصلة (9ص - 10م)</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== NAVIGATION TABS ==================== -->
+  <section class="no-print sticky top-[65px] z-40 bg-[#061220] border-b border-white/10 px-4 py-2.5 shadow-md">
+    <div class="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto custom-scrollbar">
+      <button onclick="scrollToSection('sec-flow')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10 transition whitespace-nowrap flex items-center gap-1.5">
+        <i data-lucide="git-branch" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>1. فلو رحلة العميل</span>
+      </button>
+      <button onclick="scrollToSection('sec-features')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10 transition whitespace-nowrap flex items-center gap-1.5">
+        <i data-lucide="smartphone" class="w-3.5 h-3.5 text-cyan-400"></i>
+        <span>2. فيتشرز التطبيق الذكية</span>
+      </button>
+      <button onclick="scrollToSection('sec-shifts')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10 transition whitespace-nowrap flex items-center gap-1.5">
+        <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span>3. جدول وشيفتات الستاف</span>
+      </button>
+      <button onclick="scrollToSection('sec-capacity')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10 transition whitespace-nowrap flex items-center gap-1.5">
+        <i data-lucide="gauge" class="w-3.5 h-3.5 text-rose-400"></i>
+        <span>4. محاكي الطاقة الاستيعابية</span>
+      </button>
+      <button onclick="scrollToSection('sec-comparison')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10 transition whitespace-nowrap flex items-center gap-1.5">
+        <i data-lucide="scale" class="w-3.5 h-3.5 text-purple-400"></i>
+        <span>5. مقارنة واحة نور ضد Wilde</span>
+      </button>
+      <button onclick="scrollToSection('sec-salaries')" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-brand-600 text-white transition whitespace-nowrap flex items-center gap-1.5 shadow-sm shadow-brand-600/30">
+        <i data-lucide="dollar-sign" class="w-3.5 h-3.5"></i>
+        <span>6. حاسبة الرواتب وصافي الأرباح</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="max-w-7xl mx-auto px-4 lg:px-8 py-10 space-y-16">
+
+    <!-- ==================== SECTION 1: MASTER CUSTOMER FLOW ==================== -->
+    <section id="sec-flow" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold mb-2">
+          <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+          <span>المحور الأول: هندسة مسارات العملاء (End-to-End Customer Flow)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">رحلة العميل من أول كليك حتى ختام الشهر الأول</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">تتبع المسار الإجرائي خطوة بخطوة لكل باقة من باقات واحة نور الثلاث.</p>
+      </div>
+
+      <!-- Flow Architecture Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Path 1: Challenge -->
+        <div class="glass-card rounded-2xl p-6 border-t-4 border-emerald-500 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">المحرك الجماهيري</span>
+              <span class="text-xs font-mono text-slate-300">1,699 ج / شهر</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">1. باقة التحدي 60 يوماً (300 عميل)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              مسار جماعي شبه مؤتمت يستوعب 85% من المشتركين عبر التطبيق والكوميونيتي.
+            </p>
+
+            <!-- Steps Checklist -->
+            <div class="space-y-2 text-xs text-slate-300 pt-2 border-t border-white/5">
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                <span><strong>الدفع:</strong> سداد 1,699 ج قسط أول واستلام رابط الحساب فوراً.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                <span><strong>التسكين:</strong> ملء استمارة الأيض واستلام قوالب الوجبات وقائمة السوبرماركت.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                <span><strong>المعايشة:</strong> زر الصيام المتقطع + تصوير الوجبة بالكاميرا + الاستمارة المسائية.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">4</span>
+                <span><strong>اللايف:</strong> سيشن مجمع أسبوعي (60 دقيقة) بالتناوب بين الأخصائي والكوتش.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">5</span>
+                <span><strong>نهاية الشهر 1:</strong> رفع القياسات وسداد قسط الشهر الثاني (1,699 ج).</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-white/5 text-[11px] text-slate-400 text-center">
+            إشراف: أخصائي التغذية 2 (مسائي) + الموديريتور
+          </div>
+        </div>
+
+        <!-- Path 2: Team Coaching Private -->
+        <div class="glass-card rounded-2xl p-6 border-t-4 border-sky-500 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-md">متابعة فردية خاصة</span>
+              <span class="text-xs font-mono text-slate-300">4,000 ج / شهر</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">2. باقة التغذية والمتابعة (30 عميلاً)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              رعاية متناوبة مكثفة مع دكتور التغذية والكوتش دون استنزاف وقت د. أحمد.
+            </p>
+
+            <!-- Steps Checklist -->
+            <div class="space-y-2 text-xs text-slate-300 pt-2 border-t border-white/5">
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                <span><strong>الأونبوردنج:</strong> حجز ميتينج 1:1 مع التغذية (30د) ثم مع الكوتش (20د).</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                <span><strong>الخطة المخصصة:</strong> تصميم جدول أكل وجدول تمارين مخصصين 100%.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                <span><strong>المتابعة المتناوبة:</strong> مكالمة 15 دقيقة أسبوعياً (أسبوع تغذية / أسبوع كوتش).</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">4</span>
+                <span><strong>الشات اليومي:</strong> شات واتساب 1:1 متاح طوال الشهر مع أخصائي 1.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">5</span>
+                <span><strong>الأسيسمنت:</strong> تقرير شامل للمقاسات وعرض تجديد الشهر الثاني.</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-white/5 text-[11px] text-slate-400 text-center">
+            إشراف: أخصائي التغذية 1 (صباحي) + الكوتش الرياضي
+          </div>
+        </div>
+
+        <!-- Path 3: VIP Executive -->
+        <div class="glass-card rounded-2xl p-6 border-t-4 border-amber-500 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-md">خدمة النخبة VIP</span>
+              <span class="text-xs font-mono text-amber-300">15,000 ج / $399</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">3. باقة النخبة 1:1 (3 إلى 5 عملاء)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              رعاية عليا ومباشرة من د. أحمد الخطيب شخصياً لرجال وسيدات الأعمال.
+            </p>
+
+            <!-- Steps Checklist -->
+            <div class="space-y-2 text-xs text-slate-300 pt-2 border-t border-white/5">
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">1</span>
+                <span><strong>التنسيق الخاص:</strong> اتصال مباشر من مدير التشغيل لترتيب الملف الطبي.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">2</span>
+                <span><strong>جلسة التشخيص الكبرى:</strong> مكالمة زووم خاصة 45 دقيقة مع د. أحمد.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">3</span>
+                <span><strong>الخطة الطبية:</strong> صياغة بروتوكول علاجي وتغذوي بيده شخصياً.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">4</span>
+                <span><strong>المتابعة الأسبوعية:</strong> مكالمة زووم أسبوعية خاصة + شات VIP فوري.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">5</span>
+                <span><strong>الاستقرار:</strong> تجديد ربع سنوي أو سنوي مستمر.</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-2.5 rounded-xl bg-white/5 text-[11px] text-amber-300/80 text-center font-semibold">
+            إشراف: د. أحمد الخطيب شخصياً + متابعة مدير التشغيل
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: APP & PLATFORM FEATURE SPECS ==================== -->
+    <section id="sec-features" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-2">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+          <span>المحور الثاني: هندسة فيتشرز التطبيق والمنصة (App & Platform Specs)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">المواصفات البرمجية للأدوات التفاعلية المطلوبة للتطبيق</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">تحديد آليات عمل عداد الصيام، كاميرا فحص الأطباق، والاستمارة المسائية اليومية.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Feature 1: Fasting Engine Demo -->
+        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <i data-lucide="moon" class="w-4 h-4 text-emerald-400"></i>
+              <span>1. زر وعداد الصيام الذكي</span>
+            </h3>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono">Fasting Engine</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            زر تفاعلي يضغطه العميل عند بدء الصيام، يسجل التوقيت تلقائياً ويبث إشعارات بيولوجية عند إتمام 12 و 14 و 16 ساعة صيام.
+          </p>
+
+          <!-- Interactive Fasting Demo Widget -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-emerald-500/30 text-center space-y-3">
+            <div id="fasting-timer-display" class="text-3xl font-black text-emerald-400 font-mono">14:28:10</div>
+            <div id="fasting-stage-badge" class="text-xs text-amber-300 font-semibold bg-amber-950/60 py-1 px-2.5 rounded-full inline-block border border-amber-500/30">
+              🔥 مرحلة حرق دهون الكرش والخواصر
+            </div>
+            <div class="pt-2">
+              <button id="fasting-toggle-btn" onclick="toggleFastingDemo()" class="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md shadow-emerald-600/30">
+                كسر الصيام وتناول الوجبة 🍽️
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Meal Photo Logger Demo -->
+        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <i data-lucide="camera" class="w-4 h-4 text-cyan-400"></i>
+              <span>2. كاميرا فحص وتقييم الوجبات</span>
+            </h3>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-400 font-mono">Plate Audit</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            العميل يصور طبقه بالكاميرا، لتظهر فوراً في لوحة أخصائي الشيفت الحالي ليمنحها تقييماً سريعاً مع تعليق تصحيحي.
+          </p>
+
+          <!-- Interactive Plate Audit Demo -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-cyan-500/30 space-y-3 text-xs">
+            <div class="flex items-center justify-between text-slate-300">
+              <span>طبق الغداء (غداء الدفعة 18):</span>
+              <span class="font-mono text-[10px] text-slate-400">14:15 PM</span>
+            </div>
+            <div class="h-20 bg-slate-800 rounded-lg flex items-center justify-center border border-dashed border-slate-700 text-slate-400 gap-2">
+              <i data-lucide="image" class="w-5 h-5 text-cyan-400"></i>
+              <span>[صورة: سلمون + خضار ورقي + أرز كينوا]</span>
+            </div>
+            <div class="flex items-center gap-1.5 pt-1">
+              <span class="text-[10px] text-slate-400">تقييم الأخصائي:</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold text-[11px]">🟢 مناسب ومثالي (80/20)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: Evening Accountability Form Demo -->
+        <div class="glass-card rounded-2xl p-6 border border-white/10 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4 text-amber-400"></i>
+              <span>3. الاستمارة المسائية للمحاسبة</span>
+            </h3>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono">Daily Check-in</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            استمارة سريعة في 45 ثانية يومياً بين 8م و 11:30م تحسب مؤشر الالتزام اليومي (Daily Score %) وتكشف حالات الانتكاسة مبكراً.
+          </p>
+
+          <!-- Evening Form Micro Items -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-amber-500/30 space-y-2 text-xs">
+            <div class="flex justify-between items-center text-slate-300">
+              <span>شرب الماء اليومي:</span>
+              <span class="font-bold text-emerald-400">3 لتر 💧</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-300">
+              <span>تحقيق ساعات الصيام:</span>
+              <span class="font-bold text-emerald-400">16 ساعة كاملة ✅</span>
+            </div>
+            <div class="flex justify-between items-center text-slate-300">
+              <span>مستوى النشاط والمشي:</span>
+              <span class="font-bold text-amber-400">8,500 خطوة 👟</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center">
+              <span class="text-[11px] text-slate-400">مؤشر التزام اليوم:</span>
+              <span class="text-sm font-black text-emerald-400 font-mono">95% (ممتاز)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: STAFF SHIFTS & CAPACITY STRESS-TEST ==================== -->
+    <section id="sec-shifts" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold mb-2">
+          <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+          <span>المحور الثالث: هندسة الشيفتات ونظام التسليم اليومي (Shift Architecture)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">جدول تغطية الستاف (9 ص – 10 م) وساعة التسليم المشتركة</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">توزيع أخصائيي التغذية والكوتش بالساعة لضمان جودة الخدمة دون إرهاق الفريق.</p>
+      </div>
+
+      <!-- Shift Breakdown Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        
+        <!-- Shift 1: Nutri 1 -->
+        <div class="glass-card rounded-2xl p-5 border-r-4 border-emerald-500 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-emerald-400">أخصائي التغذية 1</span>
+            <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-slate-400">شيفت صباحي</span>
+          </div>
+          <div class="text-xl font-mono font-black text-white">09:00 ص – 03:00 ع</div>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-white/5">
+            <p>• متفرغ لباقة الـ 4,000 ج (30 عميلاً).</p>
+            <p>• إجراء مكالمات الـ 15 دقيقة المجدولة.</p>
+            <p>• الرد على شات المتابعة الفردية 1:1.</p>
+          </div>
+        </div>
+
+        <!-- Shift 2: Nutri 2 -->
+        <div class="glass-card rounded-2xl p-5 border-r-4 border-sky-500 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-sky-400">أخصائي التغذية 2</span>
+            <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-slate-400">شيفت مسائي</span>
+          </div>
+          <div class="text-xl font-mono font-black text-white">02:00 ظ – 10:00 م</div>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-white/5">
+            <p>• متفرغ لباقة التحدي (300 عميل).</p>
+            <p>• فحص وتقييم صور الأطباق المرفوعة.</p>
+            <p>• تقديم اللايف التغذوي الأسبوعي المجمع.</p>
+          </div>
+        </div>
+
+        <!-- Shift 3: Coach -->
+        <div class="glass-card rounded-2xl p-5 border-r-4 border-amber-500 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-amber-400">الكوتش الرياضي</span>
+            <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-slate-400">شيفت شامل مرن</span>
+          </div>
+          <div class="text-xl font-mono font-black text-white">12:00 ظ – 10:00 م</div>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-white/5">
+            <p>• مكالمات الـ 15 دقيقة (في أسبوع الرياضة).</p>
+            <p>• الرد على استفسارات وتعديل التمارين.</p>
+            <p>• تقديم لايف تصحيح الحركة لمشتركي التحدي.</p>
+          </div>
+        </div>
+
+        <!-- Handover Hour -->
+        <div class="glass-card rounded-2xl p-5 border-r-4 border-purple-500 bg-purple-950/20 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-purple-400">ساعة التسليم الموحدة</span>
+            <span class="text-[10px] bg-purple-500/20 px-2 py-0.5 rounded text-purple-300">اجتماع Handover</span>
+          </div>
+          <div class="text-xl font-mono font-black text-purple-300">02:00 ظ – 03:00 ع</div>
+          <div class="text-xs text-slate-300 space-y-1 pt-2 border-t border-white/5">
+            <p>• تسليم الحالات الحرجة بين أخصائي 1 و 2.</p>
+            <p>• مراجعة تحديثات شيت CRM المشترك.</p>
+            <p>• ضمان عدم إهمال أي رسالة معلقة.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: CAPACITY STRESS-TEST SIMULATOR ==================== -->
+    <section id="sec-capacity" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-rose-500/10 text-rose-400 text-xs font-bold mb-2">
+          <i data-lucide="gauge" class="w-3.5 h-3.5"></i>
+          <span>المحور الرابع: محاكي الطاقة الاستيعابية ونقطة الانكسار (Capacity Stress-Test)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">متى يتحمل فريقنا ومتى ينكسر السيستم ونحتاج توظيفاً جديداً؟</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">حرّك المؤشرات لتشاهد أثر زيادة المشتركين على ساعات عمل الستاف وحالة الأمان التشغيلي لحظياً.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column -->
+        <div class="lg:col-span-6 glass-card p-6 rounded-2xl border border-white/10 space-y-6">
+          <h3 class="font-bold text-white text-sm flex items-center justify-between">
+            <span>تعديل أعداد المشتركين بالمحاكي:</span>
+            <button onclick="resetCapacityDefaults()" class="text-xs text-emerald-400 hover:underline">إعادة للهدف الافتراضي (300/30)</button>
+          </h3>
+
+          <!-- Slider 1: Challenge -->
+          <div class="space-y-2 p-4 rounded-xl bg-white/5 border border-white/5">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-300">مشتركو باقة التحدي (Challenge):</span>
+              <span id="cap-val-ch" class="text-emerald-400 font-mono text-sm">300 مشترك</span>
+            </div>
+            <input type="range" id="cap-slider-ch" min="50" max="800" step="10" value="300" 
+              class="w-full accent-emerald-400 cursor-pointer" oninput="calculateCapacityLoad()">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>50 (هادئ)</span>
+              <span>300 (المستهدف)</span>
+              <span>800 (ضغط كاسح)</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Team Coaching Private -->
+          <div class="space-y-2 p-4 rounded-xl bg-white/5 border border-white/5">
+            <div class="flex justify-between text-xs font-bold">
+              <span class="text-slate-300">عملاء المتابعة الخاصة (باقة الـ 4,000 ج):</span>
+              <span id="cap-val-nut" class="text-sky-400 font-mono text-sm">30 عميلاً</span>
+            </div>
+            <input type="range" id="cap-slider-nut" min="5" max="100" step="1" value="30" 
+              class="w-full accent-sky-400 cursor-pointer" oninput="calculateCapacityLoad()">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>5 (بداية)</span>
+              <span>30 (المستهدف)</span>
+              <span>100 (اختناق)</span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-slate-900/60 rounded-xl border border-white/5 text-xs text-slate-400 leading-relaxed">
+            💡 <strong>معيار الضغط:</strong> الأخصائي الأول والكوتش يتأثران بعدد عملاء باقة الـ 4,000 ج (بسبب مكالمات الـ 15 دقيقة)، بينما الأخصائي الثاني يتأثر بعدد مشتركي التحدي (بسبب فحص صور الوجبات وشات الكوميونيتي).
+          </div>
+        </div>
+
+        <!-- Output Gauge Column -->
+        <div class="lg:col-span-6 space-y-4">
+          
+          <!-- Status Banner -->
+          <div id="capacity-status-card" class="p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/30 text-white space-y-3 transition-all">
+            <div class="flex justify-between items-center text-xs font-bold">
+              <span class="uppercase tracking-wider">مؤشر السلامة التشغيلية (System Health):</span>
+              <span id="capacity-badge" class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono">🟢 المنطقة الخضراء (أمان تام)</span>
+            </div>
+            <div id="capacity-title" class="text-2xl font-black text-white">الستاف الحالي كافٍ بنسبة 100% وبأريحية تامة</div>
+            <p id="capacity-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+              ساعات العمل موزعة بتوازن ممتاز دون أي ضغط أو احتراق، وجودة الردود والمكالمات في قمة مستواها.
+            </p>
+          </div>
+
+          <!-- Workload Breakdown Cards -->
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="glass-card p-4 rounded-xl border border-white/5 space-y-1">
+              <span class="text-slate-400 block text-[11px]">حمل أخصائي 1 (الصباحي):</span>
+              <span id="cap-load-n1" class="text-lg font-black text-sky-400 font-mono">3.5 ساعة / يوم</span>
+              <span class="text-[10px] text-slate-400 block">(من أصل شيفت 6 ساعات)</span>
+            </div>
+            <div class="glass-card p-4 rounded-xl border border-white/5 space-y-1">
+              <span class="text-slate-400 block text-[11px]">حمل الكوتش الرياضي:</span>
+              <span id="cap-load-coach" class="text-lg font-black text-amber-400 font-mono">3.0 ساعة / يوم</span>
+              <span class="text-[10px] text-slate-400 block">(من أصل شيفت 10 ساعات)</span>
+            </div>
+            <div class="glass-card p-4 rounded-xl border border-white/5 space-y-1">
+              <span class="text-slate-400 block text-[11px]">حمل أخصائي 2 (المسائي):</span>
+              <span id="cap-load-n2" class="text-lg font-black text-emerald-400 font-mono">4.5 ساعة / يوم</span>
+              <span class="text-[10px] text-slate-400 block">(من أصل شيفت 8 ساعات)</span>
+            </div>
+            <div class="glass-card p-4 rounded-xl border border-white/5 space-y-1">
+              <span class="text-slate-400 block text-[11px]">قرار التوظيف الموصى به:</span>
+              <span id="cap-hiring-decision" class="text-xs font-bold text-emerald-400">لا حاجة لتوظيف حالياً ✅</span>
+              <span class="text-[10px] text-slate-400 block">فريق الـ 4 الأساسي كافٍ</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: COMPARATIVE AUDIT (WAHET NOUR VS WILDE) ==================== -->
+    <section id="sec-comparison" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-bold mb-2">
+          <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+          <span>المحور الخامس: مقارنة تشريحية: واحة نور vs تطبيق Wilde (د. وعد أمين)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">أين نتطابق مع نموذج د. وعد وأين نتفوق عليها بمراحل؟</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">تشريح المميزات والعيوب الاستراتيجية والتشغيلية بين البرنامجين.</p>
+      </div>
+
+      <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-xs">
+            <thead class="bg-white/5 text-slate-300 border-b border-white/10 font-bold">
+              <tr>
+                <th class="p-4">وجه المقارنة</th>
+                <th class="p-4 text-rose-300">تطبيق Wilde (دكتورة وعد أمين)</th>
+                <th class="p-4 text-emerald-300 bg-emerald-500/10">واحة نور (دكتور أحمد الخطيب)</th>
+                <th class="p-4">الميزة التنافسية والتقييم</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5 text-slate-300">
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">الجمهور المستهدف</td>
+                <td class="p-4 text-rose-300">إناث فقط (إقصاء تام للرجال).</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">رجال وسيدات وعائلات معاً.</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 سوق أضخم بـ 4 أضعاف واشتراك الزوجين.</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">فلسفة التغذية</td>
+                <td class="p-4 text-rose-300">لوكارب وصيام صارم (حرمان مستتر).</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">المرونة التغذوية 80/20 وتناول أكل البيت.</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 استدامة حقيقية وانعدام تام لخطر الانتكاسة.</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">سُلّم الباقات والتسعير</td>
+                <td class="p-4 text-rose-300">باقة جماعية واحدة فقط (~49$ / 1,500 ج).</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">سُلّم ثلاثي: (1,699 ج / 4,000 ج / 15,000 ج).</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 تعظيم متوسط قيمة العميل (AOV) وأرباح الخليج.</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">المتابعة الفردية 1:1</td>
+                <td class="p-4 text-rose-300">منعدمة نهائياً (شات مجمع وردود معلبة).</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">مكالمات 1:1 أسبوعية متناوبة (15 دقيقة).</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 رعاية إنسانية راقية تبرر السعر الأعلى.</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">ساعات تغطية الستاف</td>
+                <td class="p-4 text-rose-300">شيفت عام غير منضبط والردود تتأخر طويلاً.</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">شيفتان متداخلان محددتان بالساعة (9ص - 10م).</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 سرعة رد قياسية واحتواء فوري لأي تعثر.</td>
+              </tr>
+              <tr class="hover:bg-white/5 transition">
+                <td class="p-4 font-bold text-white">أدوات المتابعة اليومية</td>
+                <td class="p-4 text-rose-300">جداول وجبات وشات جماعي فقط.</td>
+                <td class="p-4 text-emerald-300 bg-emerald-500/5 font-semibold">عداد صيام + تصوير الوجبات + استمارة مسائية.</td>
+                <td class="p-4 text-emerald-400 font-bold">🏆 أعلى معدل التزام ومحاسبة ذاتية (Accountability).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: INTERACTIVE SALARY & PROFIT SIMULATOR ==================== -->
+    <section id="sec-salaries" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-bold mb-2">
+          <i data-lucide="dollar-sign" class="w-3.5 h-3.5"></i>
+          <span>المحور السادس: حاسبة الرواتب وصافي الأرباح التفاعلية (Profit & Payroll Simulator)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">حساب صافي الأرباح بعد خصم رواتب كل موظف وعمولات الدفع</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">عدّل رواتب الموظفين وأعداد المشتركين لتشاهد صافي الربح وهامش الربحية يتحدث لحظياً.</p>
+      </div>
+
+      <div id="salary-simulator" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Salaries Input Table Column -->
+        <div class="lg:col-span-7 glass-card p-6 rounded-2xl border border-white/10 space-y-6">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+              <span>جدول رواتب الستاف التقديرية (قابلة للتعديل المباشر):</span>
+            </h3>
+            <span class="text-[11px] text-slate-400">القيم بالجنيه المصري (EGP)</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            
+            <!-- Row 1: Nutri 1 -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">1. أخصائي التغذية 1 (صباحي - باقة الـ 4,000 ج)</span>
+                <span class="text-[10px] text-slate-400">شيفت 6 ساعات (9ص - 3ع) ومتابعة 30 عميلاً</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-n1" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Nutri 2 -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">2. أخصائي التغذية 2 (مسائي - باقة التحدي)</span>
+                <span class="text-[10px] text-slate-400">شيفت 8 ساعات (2ظ - 10م) وفحص الأطباق واللايف</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-n2" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 3: Coach -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">3. الكوتش الرياضي (شامل - تمارين ومكالمات)</span>
+                <span class="text-[10px] text-slate-400">شيفت 10 ساعات مرنة ومكالمات الـ 15 دقيقة</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-coach" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 4: Moderator -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">4. الموديريتور / الكاستمر كير المدمج</span>
+                <span class="text-[10px] text-slate-400">خدمة العملاء، الجدولة، ومساعدة إتمام الدفع</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-mod" value="6000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 5: Developer -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">5. المبرمج (صيانة المنصة والتطبيق والأتمتة)</span>
+                <span class="text-[10px] text-slate-400">خوادم Vercel، بوابات الدفع، و WhatsApp API</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-dev" value="10000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 6: Media Team -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5">
+              <div>
+                <span class="font-bold text-white block">6. فريق الميديا والمونتاج (Media Team)</span>
+                <span class="text-[10px] text-slate-400">مونتاج الريلز، اليوتيوب، والمواد الإعلانية</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-media" value="12000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+            <!-- Row 7: Ops Manager -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/20">
+              <div>
+                <span class="font-bold text-emerald-300 block">7. مدير التشغيل (أنت - Ops Manager)</span>
+                <span class="text-[10px] text-slate-400">القيادة التنفيذية وضبط الإيقاع والمبيعات</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <input type="number" id="sal-ops" value="20000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <span class="text-slate-400 text-[11px]">ج.م</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-bold">
+            <span class="text-slate-300">إجمالي فاتورة الرواتب الشهرية (Total Payroll):</span>
+            <span id="total-payroll-display" class="text-emerald-400 font-mono text-base">72,000 ج.م</span>
+          </div>
+        </div>
+
+        <!-- Profit Summary Card Column -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <div class="p-6 lg:p-8 rounded-2xl bg-gradient-to-br from-[#0B2C1F] via-[#071C14] to-[#04110C] border-2 border-emerald-500/60 shadow-2xl space-y-5">
+            <div class="flex justify-between items-center text-xs font-bold text-emerald-300">
+              <span class="uppercase tracking-wider">صافي الربح التشغيلي للشهر الأول:</span>
+              <span id="fin-clients-total" class="bg-emerald-950/80 px-2.5 py-1 rounded-full text-white font-mono border border-emerald-500/30">334 عميلاً</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-4xl lg:text-5xl font-black text-white font-mono" id="fin-net-profit">597,312 ج.م</div>
+              <div class="text-base font-bold text-emerald-400 flex items-center justify-between pt-1">
+                <span id="fin-net-usd">≈ $12,315 دولار</span>
+                <span id="fin-profit-margin" class="bg-emerald-500/20 px-2.5 py-0.5 rounded text-xs border border-emerald-500/40">هامش ربح: 84.2% 🚀</span>
+              </div>
+            </div>
+
+            <!-- Detailed Breakdown Table -->
+            <div class="space-y-2 pt-4 border-t border-emerald-600/30 text-xs text-slate-300">
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">إجمالي الدخل المتوقع (Gross Revenue):</span>
+                <span id="fin-gross-rev" class="font-bold text-white font-mono">709,700 ج.م</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">عمولات بوابات الدفع (Paymob / Stripe ~ 4%):</span>
+                <span id="fin-gateway-fees" class="font-bold text-rose-300 font-mono">- 28,388 ج.م</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">سيرفرات وأتمتة الواتساب والـ SMS:</span>
+                <span id="fin-servers-cost" class="font-bold text-rose-300 font-mono">- 5,000 ج.م</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">إجمالي رواتب الستاف (7 أفراد):</span>
+                <span id="fin-payroll-deduct" class="font-bold text-rose-300 font-mono">- 72,000 ج.م</span>
+              </div>
+              <div class="flex justify-between py-1.5 text-emerald-300 font-bold text-sm bg-emerald-950/60 px-3 rounded-lg border border-emerald-500/20">
+                <span>الربح الصافي النهائي المتبقي:</span>
+                <span id="fin-final-takehome" class="font-mono text-white">597,312 ج.م</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card p-4 rounded-xl border border-white/10 text-xs text-slate-400 leading-relaxed space-y-2">
+            <div class="flex items-center gap-2 font-bold text-white">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+              <span>ملاحظة مدير التشغيل المالية:</span>
+            </div>
+            <p>
+              الحسابات مبنية على قسط الشهر الأول لباقة التحدي (1,699 ج × 300 = 509,700 ج) + باقة المتابعة الخاصة (4,000 ج × 30 = 120,000 ج) + 4 عملاء VIP (60,000 ج + $800 دولاري). في الشهر الثاني، يتكرر قسط التحدي (509,700 ج) وتتجدد باقات المتابعة بتكلفة استحواذ إعلانية صفرية (0$ CAC).
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-white/10 bg-[#040C16] py-10 text-center text-xs text-slate-400 space-y-2">
+    <p>واحة نور | Wahet Nour — غرفة العمليات والدليل التشغيلي الميداني © 2026</p>
+    <div class="flex items-center justify-center gap-4 text-slate-500 pt-1">
+      <a href="/strategy-plan" class="hover:text-emerald-400">الخطة الاستراتيجية</a>
+      <span>•</span>
+      <a href="/" class="hover:text-emerald-400">الرئيسية</a>
+      <span>•</span>
+      <span class="text-emerald-400 font-mono">Operations Command v2.0 Active</span>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ENGINE ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      calculateCapacityLoad();
+      calculateMasterFinances();
+    });
+
+    // Smooth scroll navigation
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Interactive Fasting Demo
+    let fastingActive = true;
+    function toggleFastingDemo() {
+      fastingActive = !fastingActive;
+      const display = document.getElementById('fasting-timer-display');
+      const badge = document.getElementById('fasting-stage-badge');
+      const btn = document.getElementById('fasting-toggle-btn');
+      
+      if (fastingActive) {
+        display.innerText = "14:28:10";
+        badge.innerText = "🔥 مرحلة حرق دهون الكرش والخواصر";
+        badge.className = "text-xs text-amber-300 font-semibold bg-amber-950/60 py-1 px-2.5 rounded-full inline-block border border-amber-500/30";
+        btn.innerText = "كسر الصيام وتناول الوجبة 🍽️";
+        btn.className = "w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md shadow-emerald-600/30";
+      } else {
+        display.innerText = "00:00:00";
+        badge.innerText = "🍽️ نافذة تناول الطعام مفتوحة (8 ساعات)";
+        badge.className = "text-xs text-sky-300 font-semibold bg-sky-950/60 py-1 px-2.5 rounded-full inline-block border border-sky-500/30";
+        btn.innerText = "بدء الصيام الآن 🌙";
+        btn.className = "w-full py-2.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-white font-bold text-xs transition shadow-md";
+      }
+    }
+
+    // Capacity Stress-Test Logic
+    function calculateCapacityLoad() {
+      const chCount = parseInt(document.getElementById('cap-slider-ch').value) || 300;
+      const nutCount = parseInt(document.getElementById('cap-slider-nut').value) || 30;
+
+      document.getElementById('cap-val-ch').innerText = chCount + ' مشترك';
+      document.getElementById('cap-val-nut').innerText = nutCount + ' عميلاً';
+
+      // Load Calculations
+      // N1 handles private coaching calls: 15 min weekly = (nutCount * 15) / 5 days = minutes per day
+      const n1CallHours = ((nutCount * 15) / 60) / 5;
+      const n1ChatHours = Math.min(3, 1 + (nutCount * 0.05));
+      const n1TotalLoad = (n1CallHours + n1ChatHours).toFixed(1);
+
+      // Coach handles private coaching calls (alternating) + video review
+      const coachCallHours = ((nutCount * 15) / 60) / 5;
+      const coachWorkoutHours = Math.min(3.5, 1 + (chCount * 0.005));
+      const coachTotalLoad = (coachCallHours + coachWorkoutHours).toFixed(1);
+
+      // N2 handles challenge photos: ~30 seconds per photo review per day
+      const n2PhotoHours = (chCount * 0.5) / 60; // in hours
+      const n2CommunityHours = Math.min(4, 1.5 + (chCount * 0.005));
+      const n2TotalLoad = (n2PhotoHours + n2CommunityHours).toFixed(1);
+
+      document.getElementById('cap-load-n1').innerText = n1TotalLoad + ' ساعة / يوم';
+      document.getElementById('cap-load-coach').innerText = coachTotalLoad + ' ساعة / يوم';
+      document.getElementById('cap-load-n2').innerText = n2TotalLoad + ' ساعة / يوم';
+
+      // Status Evaluation
+      const statusCard = document.getElementById('capacity-status-card');
+      const badge = document.getElementById('capacity-badge');
+      const title = document.getElementById('capacity-title');
+      const desc = document.getElementById('capacity-desc');
+      const decision = document.getElementById('capacity-hiring-decision');
+
+      if (nutCount <= 35 && chCount <= 350) {
+        // Green Zone
+        statusCard.className = "p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/30 text-white space-y-3 transition-all";
+        badge.className = "px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono";
+        badge.innerText = "🟢 المنطقة الخضراء (أمان تام)";
+        title.innerText = "الستاف الحالي كافٍ بنسبة 100% وبأريحية تامة";
+        desc.innerText = "ساعات العمل موزعة بتوازن ممتاز دون أي ضغط أو احتراق، وجودة الردود والمكالمات في قمة مستواها.";
+        decision.innerText = "لا حاجة لتوظيف حالياً ✅";
+        decision.className = "text-xs font-bold text-emerald-400";
+      } else if (nutCount <= 45 && chCount <= 450) {
+        // Yellow Zone
+        statusCard.className = "p-6 rounded-2xl border-2 border-amber-500 bg-amber-950/30 text-white space-y-3 transition-all";
+        badge.className = "px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono";
+        badge.innerText = "🟡 المنطقة الصفراء (بداية الضغط)";
+        title.innerText = "الشيفت الصباحي ومكالمات الـ 4000ج يقتربان من الحد الأقصى";
+        desc.innerText = "أخصائي 1 يقضي أكثر من 3 ساعات يومياً مكالمات. يجب إسناد بعض مكالمات الجدولة لأخصائي 2 للمساندة.";
+        decision.innerText = "مساندة داخلية بين أخصائي 1 و 2 ⚠️";
+        decision.className = "text-xs font-bold text-amber-400";
+      } else {
+        // Red Zone
+        statusCard.className = "p-6 rounded-2xl border-2 border-rose-500 bg-rose-950/30 text-white space-y-3 transition-all";
+        badge.className = "px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono";
+        badge.innerText = "🔴 منطقة الانكسار والاحتراق (Overload)";
+        title.innerText = "تنبيه إداري: يجب تعيين أخصائي تغذية 3 وكوتش 2 فوراً!";
+        desc.innerText = "تجاوز العملاء سعة الفريق يهدد بتأخر الردود على صور الوجبات وتأجيل مكالمات العملاء مما يضر بالسمعة.";
+        decision.innerText = "توظيف أخصائي 3 + كوتش 2 فوراً 🚨";
+        decision.className = "text-xs font-bold text-rose-400";
+      }
+
+      // Also trigger finance recalculation to stay in sync
+      calculateMasterFinances();
+    }
+
+    function resetCapacityDefaults() {
+      document.getElementById('cap-slider-ch').value = 300;
+      document.getElementById('cap-slider-nut').value = 30;
+      calculateCapacityLoad();
+    }
+
+    // Master Finance & Salary Simulator
+    function calculateMasterFinances() {
+      // 1. Read Salaries
+      const salN1 = parseFloat(document.getElementById('sal-n1').value) || 0;
+      const salN2 = parseFloat(document.getElementById('sal-n2').value) || 0;
+      const salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
+      const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
+      const salDev = parseFloat(document.getElementById('sal-dev').value) || 0;
+      const salMedia = parseFloat(document.getElementById('sal-media').value) || 0;
+      const salOps = parseFloat(document.getElementById('sal-ops').value) || 0;
+
+      const totalPayroll = salN1 + salN2 + salCoach + salMod + salDev + salMedia + salOps;
+      document.getElementById('total-payroll-display').innerText = totalPayroll.toLocaleString('en-US') + ' ج.م';
+      document.getElementById('fin-payroll-deduct').innerText = '- ' + totalPayroll.toLocaleString('en-US') + ' ج.م';
+
+      // 2. Read Client Counts from Capacity sliders
+      const chCount = parseInt(document.getElementById('cap-slider-ch').value) || 300;
+      const nutCount = parseInt(document.getElementById('cap-slider-nut').value) || 30;
+      const vipCount = 4; // default VIP target
+
+      const totalClients = chCount + nutCount + vipCount;
+      document.getElementById('fin-clients-total').innerText = totalClients + ' عميلاً';
+
+      // 3. Revenues (Challenge 1,699/mo + Private 4,000/mo + VIP 15,000/mo)
+      const revChallenge = chCount * 1699;
+      const revPrivate = nutCount * 4000;
+      const revVIP = vipCount * 15000;
+      const grossRevenue = revChallenge + revPrivate + revVIP;
+
+      document.getElementById('fin-gross-rev').innerText = grossRevenue.toLocaleString('en-US') + ' ج.م';
+
+      // 4. Expenses
+      const gatewayFees = Math.round(grossRevenue * 0.04); // 4%
+      const serverCost = 5000; // 5,000 EGP servers & WhatsApp API
+
+      document.getElementById('fin-gateway-fees').innerText = '- ' + gatewayFees.toLocaleString('en-US') + ' ج.م';
+      document.getElementById('fin-servers-cost').innerText = '- ' + serverCost.toLocaleString('en-US') + ' ج.م';
+
+      // 5. Net Profit & Margin
+      const totalExpenses = totalPayroll + gatewayFees + serverCost;
+      const netProfit = Math.round(grossRevenue - totalExpenses);
+      const profitMargin = ((netProfit / grossRevenue) * 100).toFixed(1);
+      const netUSD = Math.round(netProfit / 48.5);
+
+      document.getElementById('fin-net-profit').innerText = netProfit.toLocaleString('en-US') + ' ج.م';
+      document.getElementById('fin-net-usd').innerText = '≈ $' + netUSD.toLocaleString('en-US') + ' دولار';
+      document.getElementById('fin-profit-margin').innerText = 'هامش ربح: ' + profitMargin + '% 🚀';
+      document.getElementById('fin-final-takehome').innerText = netProfit.toLocaleString('en-US') + ' ج.م';
+    }
+  </script>
+
+</body>
+</html>

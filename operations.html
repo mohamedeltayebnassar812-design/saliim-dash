@@ -812,18 +812,6 @@
               </div>
             </div>
 
-            <!-- Row 7: Ops Manager -->
-            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/20">
-              <div>
-                <span class="font-bold text-emerald-300 block">7. مدير التشغيل (أنت - Ops Manager)</span>
-                <span class="text-[10px] text-slate-400">القيادة التنفيذية وضبط الإيقاع والمبيعات</span>
-              </div>
-              <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-ops" value="" placeholder="0" step="1000" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
-                <span class="text-slate-400 text-[11px]">ج.م</span>
-              </div>
-            </div>
-
           </div>
 
           <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-bold">
@@ -868,7 +856,7 @@
                 <span id="fin-ai-cost" class="font-bold text-rose-300 font-mono">- 740 ج.م</span>
               </div>
               <div class="flex justify-between py-1 border-b border-white/5">
-                <span class="text-slate-400">إجمالي رواتب الستاف المدخلة:</span>
+                <span class="text-slate-400">إجمالي رواتب الستاف المدخلة (6 موظفين):</span>
                 <span id="fin-payroll-deduct" class="font-bold text-rose-300 font-mono">- 0 ج.م</span>
               </div>
               <div class="flex justify-between py-1.5 text-emerald-300 font-bold text-sm bg-emerald-950/60 px-3 rounded-lg border border-emerald-500/20">
@@ -884,7 +872,7 @@
               <span>ملاحظة مدير التشغيل المالية:</span>
             </div>
             <p>
-              الحسابات مبنية على قسط الشهر الأول لباقة التحدي (1,699 ج × 300 = 509,700 ج) + باقة المتابعة الخاصة (4,000 ج × 30 = 120,000 ج) + 4 عملاء VIP (60,000 ج + $800 دولاري). في الشهر الثاني، يتكرر قسط التحدي (509,700 ج) وتتجدد باقات المتابعة بتكلفة استحواذ إعلانية صفرية (0$ CAC).
+              تم استبعاد مدير التشغيل من جدول الرواتب التشغيلية ليحتسب صافي الأرباح التشغيلية للمشروع بالكامل (لإتاحة توزيع الأرباح أو نسب الشراكة التنفيذية بحرية). الحسابات تخصم عمولات الدفع (4%)، السيرفرات (5,000 ج)، الذكاء الاصطناعي، ورواتب الـ 6 موظفين التنفيذيين فقط.
             </p>
           </div>
 
@@ -1215,7 +1203,6 @@
       document.getElementById('sal-mod').value = '';
       document.getElementById('sal-dev').value = '';
       document.getElementById('sal-media').value = '';
-      document.getElementById('sal-ops').value = '';
       calculateMasterFinances();
     }
 
@@ -1226,7 +1213,6 @@
       document.getElementById('sal-mod').value = 6000;
       document.getElementById('sal-dev').value = 10000;
       document.getElementById('sal-media').value = 12000;
-      document.getElementById('sal-ops').value = 20000;
       calculateMasterFinances();
     }
 
@@ -1583,16 +1569,15 @@
 
     // Master Finance & Salary Simulator
     function calculateMasterFinances() {
-      // 1. Read Salaries
+      // 1. Read Salaries (6 Core Operational Staff)
       const salN1 = parseFloat(document.getElementById('sal-n1').value) || 0;
       const salN2 = parseFloat(document.getElementById('sal-n2').value) || 0;
       const salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
       const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
       const salDev = parseFloat(document.getElementById('sal-dev').value) || 0;
       const salMedia = parseFloat(document.getElementById('sal-media').value) || 0;
-      const salOps = parseFloat(document.getElementById('sal-ops').value) || 0;
 
-      const totalPayroll = salN1 + salN2 + salCoach + salMod + salDev + salMedia + salOps;
+      const totalPayroll = salN1 + salN2 + salCoach + salMod + salDev + salMedia;
       document.getElementById('total-payroll-display').innerText = totalPayroll.toLocaleString('en-US') + ' ج.م';
       document.getElementById('fin-payroll-deduct').innerText = '- ' + totalPayroll.toLocaleString('en-US') + ' ج.م';
 

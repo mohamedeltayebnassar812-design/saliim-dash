@@ -111,13 +111,21 @@
           <i data-lucide="compass" class="w-4 h-4 text-emerald-400"></i>
           <span class="hidden md:inline">الخطة الاستراتيجية</span>
         </a>
+        <a href="#sec-ai-cost" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-purple-300 bg-purple-950/50 hover:bg-purple-900/60 border border-purple-500/30 rounded-lg transition">
+          <i data-lucide="bot" class="w-3.5 h-3.5 text-purple-400"></i>
+          <span class="hidden lg:inline">تكلفة الذكاء الاصطناعي</span>
+        </a>
+        <a href="#sec-pricing-scenarios" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-amber-300 bg-amber-950/50 hover:bg-amber-900/60 border border-amber-500/30 rounded-lg transition">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span class="hidden sm:inline">سيناريوهات الأسواق الـ 4</span>
+        </a>
         <button onclick="window.print()" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition">
           <i data-lucide="printer" class="w-4 h-4"></i>
           <span class="hidden sm:inline">طباعة الدليل</span>
         </button>
         <a href="#salary-simulator" class="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-brand-600 hover:bg-brand-500 rounded-lg shadow-sm shadow-brand-600/30 transition">
           <i data-lucide="calculator" class="w-4 h-4"></i>
-          <span>محاكي الرواتب والأرباح</span>
+          <span>محاكي الرواتب</span>
         </a>
       </div>
 
@@ -708,12 +716,24 @@
         
         <!-- Salaries Input Table Column -->
         <div class="lg:col-span-7 glass-card p-6 rounded-2xl border border-white/10 space-y-6">
-          <div class="flex items-center justify-between border-b border-white/10 pb-3">
-            <h3 class="font-bold text-white text-sm flex items-center gap-2">
-              <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
-              <span>جدول رواتب الستاف التقديرية (قابلة للتعديل المباشر):</span>
-            </h3>
-            <span class="text-[11px] text-slate-400">القيم بالجنيه المصري (EGP)</span>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-3 gap-3">
+            <div>
+              <h3 class="font-bold text-white text-sm flex items-center gap-2">
+                <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+                <span>جدول رواتب الستاف (أدخل الأرقام لاختبار كافة السيناريوهات):</span>
+              </h3>
+              <p class="text-[11px] text-slate-400 mt-0.5">الحقول فارغة عمداً لتسجيل رواتب فريقك الفعلية بدقة وتجربة كل الاحتمالات</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button type="button" onclick="clearAllSalaries()" class="px-2.5 py-1 rounded-lg bg-rose-950/60 hover:bg-rose-900 border border-rose-500/30 text-rose-300 text-xs font-semibold transition flex items-center gap-1">
+                <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                <span>تصفير الكل</span>
+              </button>
+              <button type="button" onclick="loadDefaultSalaries()" class="px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-500/30 text-emerald-300 text-xs font-semibold transition flex items-center gap-1">
+                <i data-lucide="sparkles" class="w-3 h-3"></i>
+                <span>تعبئة مقترحة</span>
+              </button>
+            </div>
           </div>
 
           <div class="space-y-3 text-xs">
@@ -725,7 +745,7 @@
                 <span class="text-[10px] text-slate-400">شيفت 6 ساعات (9ص - 3ع) ومتابعة 30 عميلاً</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-n1" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-n1" value="" placeholder="0" step="500" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -737,7 +757,7 @@
                 <span class="text-[10px] text-slate-400">شيفت 8 ساعات (2ظ - 10م) وفحص الأطباق واللايف</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-n2" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-n2" value="" placeholder="0" step="500" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -749,7 +769,7 @@
                 <span class="text-[10px] text-slate-400">شيفت 10 ساعات مرنة ومكالمات الـ 15 دقيقة</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-coach" value="8000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-coach" value="" placeholder="0" step="500" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -761,7 +781,7 @@
                 <span class="text-[10px] text-slate-400">خدمة العملاء، الجدولة، ومساعدة إتمام الدفع</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-mod" value="6000" step="500" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-mod" value="" placeholder="0" step="500" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -773,7 +793,7 @@
                 <span class="text-[10px] text-slate-400">خوادم Vercel، بوابات الدفع، و WhatsApp API</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-dev" value="10000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-dev" value="" placeholder="0" step="1000" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -785,7 +805,7 @@
                 <span class="text-[10px] text-slate-400">مونتاج الريلز، اليوتيوب، والمواد الإعلانية</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-media" value="12000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-media" value="" placeholder="0" step="1000" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -797,7 +817,7 @@
                 <span class="text-[10px] text-slate-400">القيادة التنفيذية وضبط الإيقاع والمبيعات</span>
               </div>
               <div class="flex items-center gap-1.5">
-                <input type="number" id="sal-ops" value="20000" step="1000" class="w-24 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-center text-xs" oninput="calculateMasterFinances()">
+                <input type="number" id="sal-ops" value="" placeholder="0" step="1000" class="w-28 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-center text-xs focus:border-emerald-500 focus:outline-none" oninput="calculateMasterFinances()">
                 <span class="text-slate-400 text-[11px]">ج.م</span>
               </div>
             </div>
@@ -805,8 +825,8 @@
           </div>
 
           <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-bold">
-            <span class="text-slate-300">إجمالي فاتورة الرواتب الشهرية (Total Payroll):</span>
-            <span id="total-payroll-display" class="text-emerald-400 font-mono text-base">72,000 ج.م</span>
+            <span class="text-slate-300">إجمالي فاتورة الرواتب الشهرية المدخلة:</span>
+            <span id="total-payroll-display" class="text-emerald-400 font-mono text-base">0 ج.م</span>
           </div>
         </div>
 
@@ -842,12 +862,16 @@
                 <span id="fin-servers-cost" class="font-bold text-rose-300 font-mono">- 5,000 ج.م</span>
               </div>
               <div class="flex justify-between py-1 border-b border-white/5">
-                <span class="text-slate-400">إجمالي رواتب الستاف (7 أفراد):</span>
-                <span id="fin-payroll-deduct" class="font-bold text-rose-300 font-mono">- 72,000 ج.م</span>
+                <span class="text-slate-400">استهلاك الذكاء الاصطناعي وتفريغ المكالمات (AI Agent):</span>
+                <span id="fin-ai-cost" class="font-bold text-rose-300 font-mono">- 740 ج.م</span>
+              </div>
+              <div class="flex justify-between py-1 border-b border-white/5">
+                <span class="text-slate-400">إجمالي رواتب الستاف المدخلة:</span>
+                <span id="fin-payroll-deduct" class="font-bold text-rose-300 font-mono">- 0 ج.م</span>
               </div>
               <div class="flex justify-between py-1.5 text-emerald-300 font-bold text-sm bg-emerald-950/60 px-3 rounded-lg border border-emerald-500/20">
                 <span>الربح الصافي النهائي المتبقي:</span>
-                <span id="fin-final-takehome" class="font-mono text-white">597,312 ج.م</span>
+                <span id="fin-final-takehome" class="font-mono text-white">675,572 ج.م</span>
               </div>
             </div>
           </div>
@@ -867,6 +891,192 @@
       </div>
     </section>
 
+    <!-- ==================== SECTION 6.5: AI CALL TRANSCRIPTION & TOKEN AGENT COST ==================== -->
+    <section id="sec-ai-cost" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-bold mb-2">
+          <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+          <span>محور تكنولوجيا الذكاء الاصطناعي: حاسبة تفريغ المكالمات واستهلاك الـ API (AI Token Economics)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">تحليل تكلفة تفريغ وتلخيص المكالمات الطبية عبر إيجنت الذكاء الاصطناعي</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">تفريغ الصوت (Whisper API) + استخراج وتلخيص خطة المتابعة الطبية (LLM Agent) وحساب التكلفة لكل مكالمة وشهرياً.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Call Rates Comparison Cards -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- 15-Minute Call Card -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-[#0A1626] border border-purple-500/30 space-y-3 relative overflow-hidden">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-purple-400 flex items-center gap-1.5">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>مكالمة ربع ساعة (15 دقيقة)</span>
+                </span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-purple-950 text-purple-300 border border-purple-500/20 font-mono">باقة المتابعة الخاصة</span>
+              </div>
+              <div class="text-2xl font-black text-white font-mono flex items-baseline gap-2">
+                <span>≈ 4.60 ج.م</span>
+                <span class="text-xs text-purple-400 font-normal">($0.095 دولار)</span>
+              </div>
+              <div class="text-[11px] text-slate-400 space-y-1.5 pt-2 border-t border-white/5">
+                <div class="flex justify-between">
+                  <span>تفريغ الصوت (Whisper @ $0.006/د):</span>
+                  <span class="text-white font-mono">$0.090 (4.37 ج.م)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>توكنز التلخيص والاستخراج (~3,500T):</span>
+                  <span class="text-white font-mono">$0.005 (0.24 ج.م)</span>
+                </div>
+                <div class="flex justify-between text-purple-300 font-semibold pt-1 border-t border-white/5">
+                  <span>إجمالي المكالمة الواحدة:</span>
+                  <span class="font-mono text-white">$0.095 (~4.6 ج.م)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 30-Minute Call Card -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-slate-900 to-[#0A1626] border border-sky-500/30 space-y-3 relative overflow-hidden">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+                  <i data-lucide="clock" class="w-4 h-4"></i>
+                  <span>مكالمة نصف ساعة (30 دقيقة)</span>
+                </span>
+                <span class="text-[11px] px-2 py-0.5 rounded-full bg-sky-950 text-sky-300 border border-sky-500/20 font-mono">جلسات VIP د. أحمد</span>
+              </div>
+              <div class="text-2xl font-black text-white font-mono flex items-baseline gap-2">
+                <span>≈ 9.20 ج.م</span>
+                <span class="text-xs text-sky-400 font-normal">($0.190 دولار)</span>
+              </div>
+              <div class="text-[11px] text-slate-400 space-y-1.5 pt-2 border-t border-white/5">
+                <div class="flex justify-between">
+                  <span>تفريغ الصوت (Whisper @ $0.006/د):</span>
+                  <span class="text-white font-mono">$0.180 (8.73 ج.م)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>توكنز التلخيص والاستخراج (~7,000T):</span>
+                  <span class="text-white font-mono">$0.010 (0.48 ج.م)</span>
+                </div>
+                <div class="flex justify-between text-sky-300 font-semibold pt-1 border-t border-white/5">
+                  <span>إجمالي المكالمة الواحدة:</span>
+                  <span class="font-mono text-white">$0.190 (~9.2 ج.م)</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Token Tech Stack Details -->
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-xs text-slate-300 space-y-2">
+            <span class="font-bold text-white flex items-center gap-1.5 text-xs">
+              <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+              <span>كيف يعمل إيجنت التفريغ الطبي (Architecture & Pipeline)؟</span>
+            </span>
+            <p class="text-[11px] text-slate-400 leading-relaxed">
+              1. تنتهي المكالمة على Google Meet / Zoom ويتم إرسال التسجيل الصوتي تلقائياً عبر Webhook.<br>
+              2. يقوم موديل <span class="text-white font-mono font-semibold">OpenAI Whisper</span> بتحويل اللهجة العربية/المصرية إلى نص فائق الدقة.<br>
+              3. يستلم إيجنت الذكاء الاصطناعي (<span class="text-white font-mono font-semibold">Gemini 1.5 Flash</span> أو <span class="text-white font-mono font-semibold">GPT-4o-mini</span>) النص ويستخرج: القياسات الجديدة، الشكاوى الهضمية، التعديلات المقترحة للدايت، والمهام المطلوبة من العميل.<br>
+              4. يُحفظ الملخص تلقائياً في ملف العميل في الداشبورد، ويُرسل إشعار ملخص للعميل على واتساب خلال 3 دقائق من انتهاء المكالمة!
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Monthly Volume Simulator -->
+        <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-white/10 space-y-5">
+          <div class="flex items-center justify-between border-b border-white/10 pb-3">
+            <h3 class="font-bold text-white text-sm flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-purple-400"></i>
+              <span>محاكي حجم المكالمات الشهري:</span>
+            </h3>
+            <span class="text-[11px] text-slate-400">حساب شهري فوري</span>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1.5">
+                <span>عدد مكالمات الـ 15 دقيقة شهرياً (الخاصة):</span>
+                <span id="ai-disp-15" class="text-purple-400 font-bold font-mono">120 مكالمة</span>
+              </div>
+              <input type="range" id="ai-calls-15" min="0" max="300" value="120" step="5" class="w-full accent-purple-500 cursor-pointer" oninput="calculateAICosts()">
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>0</span>
+                <span>120 (30 عميل × 4 أسبوعياً)</span>
+                <span>300</span>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-slate-300 mb-1.5">
+                <span>عدد مكالمات الـ 30 دقيقة شهرياً (VIP):</span>
+                <span id="ai-disp-30" class="text-sky-400 font-bold font-mono">20 مكالمة</span>
+              </div>
+              <input type="range" id="ai-calls-30" min="0" max="60" value="20" step="1" class="w-full accent-sky-500 cursor-pointer" oninput="calculateAICosts()">
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+                <span>0</span>
+                <span>20 (5 عملاء × 4 أسبوعياً)</span>
+                <span>60</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total AI Bill Output -->
+          <div class="p-4 rounded-xl bg-purple-950/40 border border-purple-500/30 space-y-2">
+            <div class="flex justify-between items-center text-xs text-purple-300">
+              <span>إجمالي فاتورة الذكاء الاصطناعي شهرياً:</span>
+              <span id="ai-total-usd" class="font-mono font-bold text-white text-sm">$15.20 دولار</span>
+            </div>
+            <div class="text-2xl font-black text-white font-mono" id="ai-total-egp">
+              ≈ 737 ج.م شهرياً
+            </div>
+            <p class="text-[10px] text-slate-400">
+              * يتم خصم هذا المبلغ تلقائياً في حاسبة صافي الأرباح الرئيسية أعلاه كبند تشغيلي.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: 3 PRICING SCENARIOS ACROSS 4 MARKETS ==================== -->
+    <section id="sec-pricing-scenarios" class="space-y-6 scroll-mt-28">
+      <div class="border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 text-xs font-bold mb-2">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <span>المحور السابع: استراتيجية وسيناريوهات التسعير التنافسية (3 Scenarios Across 4 Key Markets)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-white">3 سيناريوهات للتسعير تنافسية لأسواق (مصر، الخليج، المغرب، الجزائر)</h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">اختر السوق المطلوب لعرض السيناريو الاقتصادي، والمتوازن (الموصى به)، والبريميوم مع تفاصيل بوابات الدفع والقدرة الشرائية.</p>
+      </div>
+
+      <!-- Market Selector Tabs -->
+      <div class="flex flex-wrap items-center gap-2.5 p-2 rounded-2xl bg-white/5 border border-white/10">
+        <button type="button" onclick="setMarketTab('eg')" id="market-btn-eg" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition bg-emerald-600 text-white shadow-md shadow-emerald-600/30">
+          <span>🇪🇬 مصر (EGP)</span>
+        </button>
+        <button type="button" onclick="setMarketTab('gcc')" id="market-btn-gcc" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition text-slate-400 hover:text-white hover:bg-white/5">
+          <span>🇸🇦 الخليج العربي (SAR / USD)</span>
+        </button>
+        <button type="button" onclick="setMarketTab('ma')" id="market-btn-ma" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition text-slate-400 hover:text-white hover:bg-white/5">
+          <span>🇲🇦 المغرب (MAD / USD)</span>
+        </button>
+        <button type="button" onclick="setMarketTab('dz')" id="market-btn-dz" class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition text-slate-400 hover:text-white hover:bg-white/5">
+          <span>🇩🇿 الجزائر (DZD / USD)</span>
+        </button>
+      </div>
+
+      <!-- Scenarios Grid Container -->
+      <div id="market-scenarios-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Rendered Dynamically via JS setMarketTab() -->
+      </div>
+
+      <!-- Payment & Operational Gateways Guide per Market -->
+      <div id="market-gateway-guide" class="p-5 rounded-2xl glass-card border border-white/10 space-y-3">
+        <!-- Rendered Dynamically via JS setMarketTab() -->
+      </div>
+    </section>
+
   </main>
 
   <!-- ==================== FOOTER ==================== -->
@@ -883,11 +1093,13 @@
 
   <!-- ==================== JAVASCRIPT ENGINE ==================== -->
   <script>
-    // Initialize Lucide Icons
+    // Initialize Lucide Icons & Engines
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       calculateCapacityLoad();
+      calculateAICosts();
       calculateMasterFinances();
+      setMarketTab('eg');
     });
 
     // Smooth scroll navigation
@@ -928,18 +1140,15 @@
       document.getElementById('cap-val-nut').innerText = nutCount + ' عميلاً';
 
       // Load Calculations
-      // N1 handles private coaching calls: 15 min weekly = (nutCount * 15) / 5 days = minutes per day
       const n1CallHours = ((nutCount * 15) / 60) / 5;
       const n1ChatHours = Math.min(3, 1 + (nutCount * 0.05));
       const n1TotalLoad = (n1CallHours + n1ChatHours).toFixed(1);
 
-      // Coach handles private coaching calls (alternating) + video review
       const coachCallHours = ((nutCount * 15) / 60) / 5;
       const coachWorkoutHours = Math.min(3.5, 1 + (chCount * 0.005));
       const coachTotalLoad = (coachCallHours + coachWorkoutHours).toFixed(1);
 
-      // N2 handles challenge photos: ~30 seconds per photo review per day
-      const n2PhotoHours = (chCount * 0.5) / 60; // in hours
+      const n2PhotoHours = (chCount * 0.5) / 60;
       const n2CommunityHours = Math.min(4, 1.5 + (chCount * 0.005));
       const n2TotalLoad = (n2PhotoHours + n2CommunityHours).toFixed(1);
 
@@ -955,7 +1164,6 @@
       const decision = document.getElementById('capacity-hiring-decision');
 
       if (nutCount <= 35 && chCount <= 350) {
-        // Green Zone
         statusCard.className = "p-6 rounded-2xl border-2 border-emerald-500 bg-emerald-950/30 text-white space-y-3 transition-all";
         badge.className = "px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-mono";
         badge.innerText = "🟢 المنطقة الخضراء (أمان تام)";
@@ -964,7 +1172,6 @@
         decision.innerText = "لا حاجة لتوظيف حالياً ✅";
         decision.className = "text-xs font-bold text-emerald-400";
       } else if (nutCount <= 45 && chCount <= 450) {
-        // Yellow Zone
         statusCard.className = "p-6 rounded-2xl border-2 border-amber-500 bg-amber-950/30 text-white space-y-3 transition-all";
         badge.className = "px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 font-mono";
         badge.innerText = "🟡 المنطقة الصفراء (بداية الضغط)";
@@ -973,7 +1180,6 @@
         decision.innerText = "مساندة داخلية بين أخصائي 1 و 2 ⚠️";
         decision.className = "text-xs font-bold text-amber-400";
       } else {
-        // Red Zone
         statusCard.className = "p-6 rounded-2xl border-2 border-rose-500 bg-rose-950/30 text-white space-y-3 transition-all";
         badge.className = "px-2.5 py-1 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono";
         badge.innerText = "🔴 منطقة الانكسار والاحتراق (Overload)";
@@ -983,7 +1189,6 @@
         decision.className = "text-xs font-bold text-rose-400";
       }
 
-      // Also trigger finance recalculation to stay in sync
       calculateMasterFinances();
     }
 
@@ -991,6 +1196,380 @@
       document.getElementById('cap-slider-ch').value = 300;
       document.getElementById('cap-slider-nut').value = 30;
       calculateCapacityLoad();
+    }
+
+    // Salary Action Buttons
+    function clearAllSalaries() {
+      document.getElementById('sal-n1').value = '';
+      document.getElementById('sal-n2').value = '';
+      document.getElementById('sal-coach').value = '';
+      document.getElementById('sal-mod').value = '';
+      document.getElementById('sal-dev').value = '';
+      document.getElementById('sal-media').value = '';
+      document.getElementById('sal-ops').value = '';
+      calculateMasterFinances();
+    }
+
+    function loadDefaultSalaries() {
+      document.getElementById('sal-n1').value = 8000;
+      document.getElementById('sal-n2').value = 8000;
+      document.getElementById('sal-coach').value = 8000;
+      document.getElementById('sal-mod').value = 6000;
+      document.getElementById('sal-dev').value = 10000;
+      document.getElementById('sal-media').value = 12000;
+      document.getElementById('sal-ops').value = 20000;
+      calculateMasterFinances();
+    }
+
+    // AI Call Agent Economics Logic
+    let currentAICostEGP = 737;
+    function calculateAICosts() {
+      const calls15 = parseInt(document.getElementById('ai-calls-15').value) || 0;
+      const calls30 = parseInt(document.getElementById('ai-calls-30').value) || 0;
+
+      document.getElementById('ai-disp-15').innerText = calls15 + ' مكالمة';
+      document.getElementById('ai-disp-30').innerText = calls30 + ' مكالمة';
+
+      // 15 min: Whisper ($0.09) + LLM (~$0.005) = $0.095
+      // 30 min: Whisper ($0.18) + LLM (~$0.010) = $0.190
+      const cost15 = calls15 * 0.095;
+      const cost30 = calls30 * 0.190;
+      const totalUSD = cost15 + cost30;
+      currentAICostEGP = Math.round(totalUSD * 48.5);
+
+      document.getElementById('ai-total-usd').innerText = '$' + totalUSD.toFixed(2) + ' دولار';
+      document.getElementById('ai-total-egp').innerText = '≈ ' + currentAICostEGP.toLocaleString('en-US') + ' ج.م شهرياً';
+      
+      const finAiCostEl = document.getElementById('fin-ai-cost');
+      if (finAiCostEl) {
+        finAiCostEl.innerText = '- ' + currentAICostEGP.toLocaleString('en-US') + ' ج.م';
+      }
+
+      calculateMasterFinances();
+    }
+
+    // Multi-Market Pricing Scenarios Data
+    const marketData = {
+      eg: {
+        currency: 'ج.م (EGP)',
+        btnId: 'market-btn-eg',
+        gateways: `
+          <div class="flex items-center gap-2 font-bold text-white text-xs border-b border-white/10 pb-2">
+            <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+            <span>دليل منظومة الدفع في السوق المصري 🇪🇬:</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 pt-1">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">1. بوابات البطاقات والمحافظ:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">Paymob / Fawry Pay لبطاقات فيزا وماستركارد وميزة، بالإضافة إلى فودافون كاش وأورنج كاش بنقرة واحدة.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">2. التحويل اللحظي (InstaPay):</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">تحويلات إنستاباي المباشرة للحساب البنكي بدون أي عمولات خصم (توفير 4% من عمولات بوابات الدفع الإلكتروني).</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">3. خيارات التقسيط (BNPL):</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">تفعيل خيار التقسيط عبر valU أو sympl لدفع باقة التحدي أو المتابعة الخاصة على 3 أو 6 أشهر لتسهيل القرار.</p>
+            </div>
+          </div>
+        `,
+        scenarios: [
+          {
+            tag: '⚡ السيناريو 1: الاقتصادي (اختراق سريع)',
+            tagClass: 'text-amber-400 bg-amber-950/60 border-amber-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '1,299 ج.م',
+            challengeTotal: '2,598 ج.م (شهران)',
+            privateMonthly: '2,999 ج.م',
+            vipMonthly: '9,999 ج.م',
+            highlight: 'خطف عملاء الكوتش ودايت شيت فوراً بأقل حاجز مالي.',
+            analysis: 'يولد كثافة اشتراكات سريعة جداً (+450 مشترك). يتطلب مراقبة كاباسيتي الفريق لتجنب الإرهاق.'
+          },
+          {
+            tag: '💎 السيناريو 2: المتوازن (الموصى به حالياً)',
+            tagClass: 'text-emerald-300 bg-emerald-950/80 border-emerald-500/40',
+            bgBorder: 'border-2 border-emerald-500 bg-gradient-to-b from-[#0B2C1F] to-[#04140D] shadow-xl',
+            btnClass: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 font-bold',
+            challengeMonthly: '1,699 ج.م',
+            challengeTotal: '3,398 ج.م (شهران)',
+            privateMonthly: '4,000 ج.م',
+            vipMonthly: '15,000 ج.م ($399)',
+            highlight: 'المعادلة الذهبية: هامش ربح 85% مع جودة خدمة طبية فائقة.',
+            analysis: 'تموضع مثالي بين التطبيقات العشوائية الرخيصة والعيادات الفردية الباهظة، مع استدامة الرواتب.'
+          },
+          {
+            tag: '👑 السيناريو 3: البريميوم (النخبوي والأعلى ربحاً)',
+            tagClass: 'text-purple-300 bg-purple-950/60 border-purple-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '2,199 ج.م',
+            challengeTotal: '4,398 ج.م (شهران)',
+            privateMonthly: '5,500 ج.م',
+            vipMonthly: '22,000 ج.م',
+            highlight: 'تصفية العملاء النخبويين مع تقديم متابعة أشبه بالكونسيرج الطبي.',
+            analysis: 'يقلل عدد المشتركين بنسبة 25% لكن يرفع قيمة العميل (LTV) ويضمن أريحية تامة للستاف الطبي.'
+          }
+        ]
+      },
+      gcc: {
+        currency: 'ريال سعودي / درهم (SAR / AED)',
+        btnId: 'market-btn-gcc',
+        gateways: `
+          <div class="flex items-center gap-2 font-bold text-white text-xs border-b border-white/10 pb-2">
+            <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+            <span>دليل منظومة الدفع في سوق الخليج العربي 🇸🇦 🇦🇪 🇰🇼 🇶🇦:</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 pt-1">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">1. بطاقات مدى و Apple Pay:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">Apple Pay وبطاقات "مدى" في السعودية تمثل أكثر من 85% من عمليات الشراء الإلكترونية، وتوفيرهما يضاعف معدل التحويل.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">2. بوابات الدفع الموصى بها:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">بوابة MyFatoorah أو Stripe International (عبر شركة بريطانية/إماراتية) مع استقبال المدفوعات بالريال والدينار والدرهم.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">3. عقلية العميل الخليجي:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">العميل الخليجي يربط السعر المرتفع مباشرة بالجودة الطبية. التسعير المنخفض جداً يثير الشك في كفاءة الخدمة لديه.</p>
+            </div>
+          </div>
+        `,
+        scenarios: [
+          {
+            tag: '⚡ السيناريو 1: الاقتصادي (اختراق خليجي)',
+            tagClass: 'text-amber-400 bg-amber-950/60 border-amber-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '299 ر.س (~$80)',
+            challengeTotal: '598 ر.س (شهران)',
+            privateMonthly: '699 ر.س (~$185)',
+            vipMonthly: '1,999 ر.س (~$530)',
+            highlight: 'سعر منافس جداً مقارنة بالعيادات والنوادي الخليجية ($500+ شهرياً).',
+            analysis: 'يجذب المغتربين والشباب الخليجي سريعاً، لكنه أقل من القوة الشرائية المتاحة.'
+          },
+          {
+            tag: '💎 السيناريو 2: المتوازن (الموصى به للخليج)',
+            tagClass: 'text-emerald-300 bg-emerald-950/80 border-emerald-500/40',
+            bgBorder: 'border-2 border-emerald-500 bg-gradient-to-b from-[#0B2C1F] to-[#04140D] shadow-xl',
+            btnClass: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 font-bold',
+            challengeMonthly: '499 ر.س (~$133)',
+            challengeTotal: '998 ر.س (شهران)',
+            privateMonthly: '1,150 ر.س (~$300)',
+            vipMonthly: '2,999 ر.س (~$800)',
+            highlight: 'التسعير الطبيعي في السوق الخليجي للخدمات الطبية والتغذوية المتميزة.',
+            analysis: 'عائد بالعملة الصعبة يرفع صافي أرباح المنصة بنسبة 250% مقارنة بالمشترك المصري بنفس الجهد.'
+          },
+          {
+            tag: '👑 السيناريو 3: البريميوم (النخبوي الخليجي)',
+            tagClass: 'text-purple-300 bg-purple-950/60 border-purple-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '750 ر.س (~$200)',
+            challengeTotal: '1,500 ر.س (شهران)',
+            privateMonthly: '1,750 ر.س (~$465)',
+            vipMonthly: '4,500 ر.س (~$1,200)',
+            highlight: 'مخصص لفئة رجال الأعمال والمدراء التنفيذيين في الرياض ودبي والدوحة.',
+            analysis: 'يقدم جلسات استشارية حصرية لـ د. أحمد الخطيب، وينافس أكبر المستشفيات الخاصة.'
+          }
+        ]
+      },
+      ma: {
+        currency: 'درهم مغربي (MAD)',
+        btnId: 'market-btn-ma',
+        gateways: `
+          <div class="flex items-center gap-2 font-bold text-white text-xs border-b border-white/10 pb-2">
+            <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+            <span>دليل منظومة الدفع في سوق المملكة المغربية 🇲🇦:</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 pt-1">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">1. بوابات البطاقات والـ Dotations:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">البطاقات البنكية المغربية (Visa/Mastercard) مشمولة بنظام Dotation e-commerce للشراء الدولي عبر الإنترنت.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">2. حلول الدفع الرقمية:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">بوابة Stripe أو PayPal بالدرهم المغربي أو ما يعادله بالدولار/اليورو، بالإضافة إلى تحويلات وفاكاش (Wafacash / Western Union).</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">3. السلوك الشرائي المغربي:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">الجمهور المغربي مهتم جداً ببرامج التغذية الصحية ومقاومة الأنسولين ولديه تقدير عالٍ للأطباء المصريين واللغة المشتركة.</p>
+            </div>
+          </div>
+        `,
+        scenarios: [
+          {
+            tag: '⚡ السيناريو 1: الاقتصادي (اختراق المغرب)',
+            tagClass: 'text-amber-400 bg-amber-950/60 border-amber-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '790 درهم (~$78)',
+            challengeTotal: '1,580 درهم (شهران)',
+            privateMonthly: '1,850 درهم (~$185)',
+            vipMonthly: '5,300 درهم (~$530)',
+            highlight: 'تسعير منافس جداً مقارنة بالاستشارات التغذوية في الدار البيضاء والرباط.',
+            analysis: 'سريع الانتشار ويكسر التردد للعميل المتوسط في المغرب.'
+          },
+          {
+            tag: '💎 السيناريو 2: المتوازن (الموصى به للمغرب)',
+            tagClass: 'text-emerald-300 bg-emerald-950/80 border-emerald-500/40',
+            bgBorder: 'border-2 border-emerald-500 bg-gradient-to-b from-[#0B2C1F] to-[#04140D] shadow-xl',
+            btnClass: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 font-bold',
+            challengeMonthly: '1,290 درهم (~$128)',
+            challengeTotal: '2,580 درهم (شهران)',
+            privateMonthly: '2,990 درهم (~$298)',
+            vipMonthly: '7,900 درهم (~$790)',
+            highlight: 'توازن ممتاز بين القيمة العالية والقدرة الشرائية للشريحة المستهدفة.',
+            analysis: 'يحقق أرباحاً ممتازة بالعملة الأجنبية ويغطي تكاليف الاستحواذ الإعلاني بالدرهم.'
+          },
+          {
+            tag: '👑 السيناريو 3: البريميوم (النخبوي المغربي)',
+            tagClass: 'text-purple-300 bg-purple-950/60 border-purple-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '1,950 درهم (~$195)',
+            challengeTotal: '3,900 درهم (شهران)',
+            privateMonthly: '4,500 درهم (~$450)',
+            vipMonthly: '11,900 درهم (~$1,190)',
+            highlight: 'مخصص للطبقات المخملية في المدن الكبرى والجالية المغربية بأوروبا.',
+            analysis: 'تركيز على الجودة النخبوية والخدمة الفردية المباشرة مع استشارات د. أحمد.'
+          }
+        ]
+      },
+      dz: {
+        currency: 'دينار جزائري (DZD) / دولار',
+        btnId: 'market-btn-dz',
+        gateways: `
+          <div class="flex items-center gap-2 font-bold text-white text-xs border-b border-white/10 pb-2">
+            <i data-lucide="credit-card" class="w-4 h-4 text-emerald-400"></i>
+            <span>دليل منظومة الدفع والحلول البديلة لسوق الجزائر 🇩🇿:</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs text-slate-300 pt-1">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">1. بطاقات RedotPay و Paysera:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">الحل الأكثر انتشاراً لدى الشباب الجزائري للشراء عبر الإنترنت هو بطاقات فيزا الرقمية (RedotPay و Paysera و Pyypl) المشحونة باليورو أو الدولار.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">2. حسابات PayPal وحوالات العملة:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">قبول PayPal بالدولار/اليورو، أو توفير منسق محلي لاستلام تحويلات بريدي موب (BaridiMob) وتحويلها لمصر.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+              <span class="font-bold text-emerald-300 block mb-1">3. السعر بالدينار وسعر الصرف الموازي:</span>
+              <p class="text-[11px] text-slate-400 leading-relaxed">يتم حساب السعر بالدينار الجزائري وفق سعر الصرف الشائع (Square Port-Saïd) ليكون مفهوماً وواضحاً للمشترك.</p>
+            </div>
+          </div>
+        `,
+        scenarios: [
+          {
+            tag: '⚡ السيناريو 1: الاقتصادي (اختراق الجزائر)',
+            tagClass: 'text-amber-400 bg-amber-950/60 border-amber-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '12,500 د.ج (~$55)',
+            challengeTotal: '25,000 د.ج (شهران)',
+            privateMonthly: '29,000 د.ج (~$130)',
+            vipMonthly: '85,000 د.ج (~$380)',
+            highlight: 'سعر شعبي في متناول قطاع عريض من الباحثين عن حلول السمنة في الجزائر.',
+            analysis: 'يسهل الدفع عبر شحن بطاقات RedotPay بمبالغ صغيرة تناسب ميزانية المواطن.'
+          },
+          {
+            tag: '💎 السيناريو 2: المتوازن (الموصى به للجزائر)',
+            tagClass: 'text-emerald-300 bg-emerald-950/80 border-emerald-500/40',
+            bgBorder: 'border-2 border-emerald-500 bg-gradient-to-b from-[#0B2C1F] to-[#04140D] shadow-xl',
+            btnClass: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 font-bold',
+            challengeMonthly: '19,500 د.ج (~$88)',
+            challengeTotal: '39,000 د.ج (شهران)',
+            privateMonthly: '45,000 د.ج (~$200)',
+            vipMonthly: '135,000 د.ج (~$600)',
+            highlight: 'يعكس قيمة الإشراف الطبي الشخصي ومكالمات الـ 1:1 مقارنة بالعيادات المحلية.',
+            analysis: 'الخيار الأفضل للشريحة المستقرة مادياً والموظفين والكوادر في الجزائر.'
+          },
+          {
+            tag: '👑 السيناريو 3: البريميوم (النخبوي الجزائري)',
+            tagClass: 'text-purple-300 bg-purple-950/60 border-purple-500/30',
+            bgBorder: 'border-white/10 bg-slate-900/60',
+            btnClass: 'bg-slate-800 text-slate-300',
+            challengeMonthly: '29,000 د.ج (~$130)',
+            challengeTotal: '58,000 د.ج (شهران)',
+            privateMonthly: '69,000 د.ج (~$310)',
+            vipMonthly: '220,000 د.ج (~$1,000)',
+            highlight: 'مخصص للطبقات الميسورة وأصحاب الأعمال والجالية الجزائرية بالخارج (فرنسا/كندا).',
+            analysis: 'يستهدف شريحة محددة تبحث عن استشارات حصرية وتفرغ كامل من د. أحمد الخطيب.'
+          }
+        ]
+      }
+    };
+
+    function setMarketTab(marketKey) {
+      const allKeys = ['eg', 'gcc', 'ma', 'dz'];
+      allKeys.forEach(k => {
+        const btn = document.getElementById(marketData[k].btnId);
+        if (btn) {
+          if (k === marketKey) {
+            btn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition bg-emerald-600 text-white shadow-md shadow-emerald-600/30';
+          } else {
+            btn.className = 'flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs transition text-slate-400 hover:text-white hover:bg-white/5';
+          }
+        }
+      });
+
+      const current = marketData[marketKey];
+      const container = document.getElementById('market-scenarios-container');
+      const guideContainer = document.getElementById('market-gateway-guide');
+
+      let cardsHtml = '';
+      current.scenarios.forEach(sc => {
+        cardsHtml += `
+          <div class="rounded-2xl p-6 ${sc.bgBorder} space-y-5 transition-all">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold px-2.5 py-1 rounded-full border ${sc.tagClass}">${sc.tag}</span>
+            </div>
+
+            <!-- Prices Breakdown -->
+            <div class="space-y-3 pt-2">
+              
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400 font-semibold">باقة التحدي (60 يوماً):</span>
+                  <span class="font-bold text-emerald-400 font-mono text-sm">${sc.challengeMonthly} <span class="text-[10px] font-normal text-slate-400">/شهر</span></span>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-0.5 text-left font-mono">الإجمالي: ${sc.challengeTotal}</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400 font-semibold">باقة المتابعة الخاصة (مع الفريق):</span>
+                  <span class="font-bold text-sky-400 font-mono text-sm">${sc.privateMonthly} <span class="text-[10px] font-normal text-slate-400">/شهر</span></span>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-0.5">مكالمات 1:1 أسبوعية + دايت وتمرين مخصص</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400 font-semibold">باقة VIP د. أحمد الخطيب:</span>
+                  <span class="font-bold text-amber-400 font-mono text-sm">${sc.vipMonthly} <span class="text-[10px] font-normal text-slate-400">/شهر</span></span>
+                </div>
+                <div class="text-[10px] text-slate-500 mt-0.5">متابعة وان تو وان حصرية مباشرة</div>
+              </div>
+
+            </div>
+
+            <!-- Analysis & Verdict -->
+            <div class="space-y-2 pt-2 border-t border-white/10 text-xs">
+              <div class="text-white font-semibold flex items-center gap-1.5">
+                <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>التموضع الاستراتيجي:</span>
+              </div>
+              <p class="text-[11px] text-slate-300 leading-relaxed">${sc.highlight}</p>
+              <p class="text-[10px] text-slate-400 bg-white/5 p-2 rounded-lg leading-relaxed">${sc.analysis}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = cardsHtml;
+      guideContainer.innerHTML = current.gateways;
+      lucide.createIcons();
     }
 
     // Master Finance & Salary Simulator
@@ -1027,12 +1606,17 @@
       // 4. Expenses
       const gatewayFees = Math.round(grossRevenue * 0.04); // 4%
       const serverCost = 5000; // 5,000 EGP servers & WhatsApp API
+      const aiCost = currentAICostEGP || 0;
 
       document.getElementById('fin-gateway-fees').innerText = '- ' + gatewayFees.toLocaleString('en-US') + ' ج.م';
       document.getElementById('fin-servers-cost').innerText = '- ' + serverCost.toLocaleString('en-US') + ' ج.م';
+      const finAiEl = document.getElementById('fin-ai-cost');
+      if (finAiEl) {
+        finAiEl.innerText = '- ' + aiCost.toLocaleString('en-US') + ' ج.م';
+      }
 
       // 5. Net Profit & Margin
-      const totalExpenses = totalPayroll + gatewayFees + serverCost;
+      const totalExpenses = totalPayroll + gatewayFees + serverCost + aiCost;
       const netProfit = Math.round(grossRevenue - totalExpenses);
       const profitMargin = ((netProfit / grossRevenue) * 100).toFixed(1);
       const netUSD = Math.round(netProfit / 48.5);

@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050E18"/>
+      <stop offset="50%" stop-color="#0B1E33"/>
+      <stop offset="100%" stop-color="#040910"/>
+    </linearGradient>
+
+    <!-- W Ribbon Gradient -->
+    <linearGradient id="wGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="50%" stop-color="#1D9BF0"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
+
+    <!-- N Ribbon Gradient -->
+    <linearGradient id="nGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+
+    <!-- Gold Sunlight Gradient -->
+    <linearGradient id="goldGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FDE047"/>
+    </linearGradient>
+
+    <filter id="glowMonogram" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="900" height="450" rx="24" fill="url(#bgGrad2)"/>
+  <rect width="898" height="448" x="1" y="1" rx="23" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- Ambient Light Backdrops -->
+  <circle cx="280" cy="220" r="140" fill="#1D9BF0" opacity="0.12" filter="blur(50px)"/>
+  <circle cx="380" cy="180" r="120" fill="#10B981" opacity="0.10" filter="blur(50px)"/>
+  <circle cx="340" cy="260" r="80" fill="#F59E0B" opacity="0.12" filter="blur(40px)"/>
+
+  <!-- Type Badge -->
+  <g transform="translate(450, 48)">
+    <rect x="-190" y="-16" width="380" height="32" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1"/>
+    <text text-anchor="middle" y="5" font-family="'Cairo', 'Segoe UI', Tahoma, sans-serif" font-size="12" font-weight="700" fill="#34D399" letter-spacing="2">
+      TYPE 2 • شـعـار الـحـرف أو الاخـتـصـار (LETTERMARK / MONOGRAM)
+    </text>
+  </g>
+
+  <!-- Left Side: Geometric WN Monogram Mark -->
+  <g transform="translate(260, 230)" filter="url(#dropShadow)">
+
+    <!-- Geometric Hexagonal / Diamond Shield Guide (Subtle) -->
+    <polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+
+    <!-- Stroke 1: Left Wing of W (Oasis Leaf Ascent) -->
+    <path d="M -90 40 L -60 -70 C -56 -84, -40 -90, -28 -76 L -5 30" 
+          fill="none" stroke="url(#wGrad)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Stroke 2: Central Interlocking Core (W into N bridge) -->
+    <path d="M -5 30 L 25 -76 C 36 -90, 52 -84, 56 -70 L 90 40" 
+          fill="none" stroke="url(#wGrad)" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Stroke 3: Overlapping N Diagonal (The Light Beam / Nour Ascent) -->
+    <path d="M -20 -70 L 60 70" 
+          fill="none" stroke="url(#nGrad)" stroke-width="22" stroke-linecap="round"/>
+
+    <!-- Stroke 4: Right Upright of N (Metabolic Growth Pillar) -->
+    <path d="M 60 70 L 60 -70" 
+          fill="none" stroke="url(#nGrad)" stroke-width="20" stroke-linecap="round"/>
+
+    <!-- Visual Double Entendre in Negative Space: Solar Seed Core -->
+    <g transform="translate(18, 5)" filter="url(#glowMonogram)">
+      <!-- Radiant Diamond Spark in Negative Space Center -->
+      <path d="M 0 -22 C 0 -10, 8 0, 20 0 C 8 0, 0 10, 0 22 C 0 10, -8 0, -20 0 C -8 0, 0 -10, 0 -22 Z" fill="url(#goldGrad2)"/>
+      <circle cx="0" cy="0" r="5" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Subtle Oasis Droplet Reflection at base of W -->
+    <ellipse cx="-48" cy="65" rx="8" ry="4" fill="#38BDF8" opacity="0.6"/>
+  </g>
+
+  <!-- Vertical Divider Line -->
+  <line x1="430" y1="120" x2="430" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+  <!-- Right Side: Brand Presentation & Monogram Identity -->
+  <g transform="translate(480, 160)">
+    <!-- Monogram Big Title -->
+    <text font-family="'Inter', 'Montserrat', sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="6">
+      W<tspan fill="url(#goldGrad2)">•</tspan>N
+    </text>
+
+    <!-- Arabic Title -->
+    <text y="54" font-family="'Cairo', sans-serif" font-size="34" font-weight="800" fill="#FFFFFF">
+      واحـة نـور
+    </text>
+
+    <!-- English Brand Full Name -->
+    <text y="92" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#38BDF8" letter-spacing="8">
+      WAHET NOUR
+    </text>
+
+    <!-- Philosophy Tagline -->
+    <text y="126" font-family="'Cairo', sans-serif" font-size="14" font-weight="500" fill="#94A3B8">
+      الـهـويـة الـمـونـوجـرامـيـة الـمـخـتـصـرة
+    </text>
+    <text y="152" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#64748B" letter-spacing="2">
+      EXCLUSIVE METABOLIC LIFESTYLE MONOGRAM
+    </text>
+
+    <!-- Badges of Precision Details -->
+    <g transform="translate(0, 185)">
+      <rect x="0" y="0" width="105" height="26" rx="6" fill="rgba(29, 155, 240, 0.15)" stroke="#1D9BF0" stroke-width="0.8"/>
+      <text x="52" y="17" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#38BDF8">
+        W = WAHET
+      </text>
+
+      <rect x="115" y="0" width="95" height="26" rx="6" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="0.8"/>
+      <text x="162" y="17" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#34D399">
+        N = NOUR
+      </text>
+
+      <rect x="220" y="0" width="125" height="26" rx="6" fill="rgba(245, 158, 11, 0.15)" stroke="#F59E0B" stroke-width="0.8"/>
+      <text x="282" y="17" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#FBBF24">
+        ★ VITALITY CORE
+      </text>
+    </g>
+  </g>
+
+  <!-- Concept Technique Badges at Bottom -->
+  <g transform="translate(450, 422)">
+    <text text-anchor="middle" font-family="'Cairo', sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">
+      التكنيك المستخدم: مونوغرام هندسي متشابك (Interlocking Letters) + فراغ سلبي يشع بنواة النور + تورية بصرية للألياف الخلوية
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض شعارات واحة نور • أنواع وتكنيكات الهوية البصرية الـ 7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #050E18;
+      --card-bg: #0A1C2E;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --accent-cyan: #38BDF8;
+      --accent-emerald: #10B981;
+      --accent-gold: #F59E0B;
+      --accent-gold-light: #FDE047;
+      --preview-bg: #071524;
+    }
+
+    body.light-theme {
+      --bg-dark: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --card-border: rgba(0, 0, 0, 0.08);
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --accent-cyan: #0284C7;
+      --accent-emerald: #059669;
+      --accent-gold: #D97706;
+      --preview-bg: #081626; /* keep SVG preview contrast optimal */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.6;
+      padding-bottom: 80px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background: linear-gradient(180deg, rgba(10, 28, 46, 0.95) 0%, rgba(5, 14, 24, 0.9) 100%);
+      border-bottom: 1px solid var(--card-border);
+      padding: 40px 24px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--accent-cyan);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 40%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    body.light-theme h1 {
+      background: linear-gradient(135deg, #0F172A 0%, #1E293B 40%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+
+    .header-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #D97706 100%);
+      color: #000000;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    /* Techniques Bar */
+    .techniques-summary {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .technique-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 14px 16px;
+      border-right: 4px solid var(--accent-cyan);
+    }
+
+    .technique-box:nth-child(2) { border-right-color: var(--accent-emerald); }
+    .technique-box:nth-child(3) { border-right-color: var(--accent-gold); }
+    .technique-box:nth-child(4) { border-right-color: #A855F7; }
+    .technique-box:nth-child(5) { border-right-color: #EC4899; }
+
+    .technique-title {
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .technique-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Grid of 7 Logo Types */
+    .logos-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .logo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .logo-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .logo-card-header {
+      padding: 20px 28px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .logo-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .logo-card-body {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 0;
+    }
+
+    @media (max-width: 900px) {
+      .logo-card-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .logo-preview-pane {
+      background: var(--preview-bg);
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid var(--card-border);
+      position: relative;
+    }
+
+    .logo-preview-pane img,
+    .logo-preview-pane object {
+      width: 100%;
+      max-width: 650px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo-info-pane {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-section {
+      margin-bottom: 20px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-cyan);
+      margin-bottom: 6px;
+    }
+
+    .info-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .techniques-applied {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .tech-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .best-for-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px;
+      border-right: 3px solid var(--accent-gold);
+    }
+
+    .download-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--card-border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: var(--accent-cyan);
+      color: #000000;
+      border-color: var(--accent-cyan);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-pill">
+      <span>✦</span>
+      <span>مـنـظـومـة الـهـويـة الـبـصـريـة الـمـتـكـامـلـة</span>
+    </div>
+    <h1>أنـواع شـعـارات «واحـة نـور» الـسـبـعـة المعتمدة عالمياً</h1>
+    <p class="subtitle">
+      ملفات فيكتور فائقة الدقة (Vector SVG) مخصصة لعلامة واحة نور / د. أحمد الخطيب، مطبقة بأعلى المعايير الاحترافية والتكنيكات الخمسة: التلاعب بالحروف، الفراغ السلبي، الرمزية، الترجمة الحرفية، والتجريد الحركي.
+    </p>
+
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="toggleTheme()">🌓 تبديل النمط (فاتح / داكن)</button>
+      <a href="https://www.ahmedelkhateeb.com/wahet-nour" target="_blank" class="btn btn-primary">🌐 زيارة صفحة الهبوط المباشرة</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Techniques Summary Strip -->
+    <div class="techniques-summary">
+      <div class="technique-box">
+        <div class="technique-title">1. التلاعب بالحروف (Letter Manipulation)</div>
+        <div class="technique-desc">دمج سعفة النماء في حرف الواو وشمس النور المشرقة كنقطة لنون «واحة نور».</div>
+      </div>
+      <div class="technique-box">
+        <div class="technique-title">2. الفراغ السلبي (Negative Space)</div>
+        <div class="technique-desc">توليد شعلة أو قطرة نبع النور في الفراغ الكامن بين الحرفين W و N.</div>
+      </div>
+      <div class="technique-box">
+        <div class="technique-title">3. الترجمة الحرفية (Literal Translation)</div>
+        <div class="technique-desc">تمثيل الواحة بسعف النخيل والنور بشمس الفجر الشارقة وقطرة الماء العذبة.</div>
+      </div>
+      <div class="technique-box">
+        <div class="technique-title">4. التجريد والتدفق (Abstract Flow)</div>
+        <div class="technique-desc">حلقة الموبيوس الميتابوليكية لتدوير الأيض والتجدد الخلوي اللانهائي.</div>
+      </div>
+      <div class="technique-box">
+        <div class="technique-title">5. الرمزية والهالة الملكية (Emblem &amp; Mascot)</div>
+        <div class="technique-desc">سفير الرشاقة «غزال النور» والختم الدائري التنفيذي الفاخر للأكاديمية والشهادات.</div>
+      </div>
+    </div>
+
+    <!-- The 7 Logos Grid -->
+    <div class="logos-grid">
+
+      <!-- 1. WORDMARK -->
+      <article class="logo-card" id="type-1">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع الأول</span>
+            <h2 class="logo-title">شعار الكلمة الكاملة (Wordmark / Logotype)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-cyan); font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_1_Wordmark_Logotype.svg" alt="Wordmark Logotype Wahet Nour">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  الاعتماد بالكامل على رسم تايبوغرافي مخصص لكلمة <strong>«واحة نور»</strong>. تم التلاعب بحرف <strong>«الواو»</strong> ليدمج انحناءة سعفة الواحة الخضراء في عينه، وتصميم نقطة <strong>«النون»</strong> كشمس ذهبية مشرقة (نور الأيض)، مع امتداد طرف حرف <strong>«الراء»</strong> في انطلاقة نماء خضراء صاعدة.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">تلاعب بالحروف (Letter Manipulation)</span>
+                  <span class="tech-tag">الترجمة الحرفية (Literal Translation)</span>
+                  <span class="tech-tag">الرمزية المتدفقة (Symbolism)</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> ترويسات المواقع الإلكترونية، واجهة التطبيق الرئيسية، والمواد الإعلامية المطبوعة التي تتطلب ترسيخ اسم العلامة كتابياً.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_1_Wordmark_Logotype.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_1_Wordmark_Logotype.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. LETTERMARK -->
+      <article class="logo-card" id="type-2">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع الثاني</span>
+            <h2 class="logo-title">شعار الحرف أو الاختصار (Lettermark / Monogram)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-emerald); font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_2_Lettermark_Monogram.svg" alt="Lettermark Monogram WN">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  مونوغرام هندسي متشابك يجمع الحرفين <strong>"W"</strong> و <strong>"N"</strong> (واحة نور). تتداخل أضلاع حرف الـ W الميتابوليكية المرتفعة مع عمود الصعود في حرف الـ N، ليبرز في الفراغ السلبي الداخلي جسد شعلة شمسية ذهبية ساطعة.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">فراغ سلبي (Negative Space)</span>
+                  <span class="tech-tag">تورية بصرية (Visual Double Entendre)</span>
+                  <span class="tech-tag">هندسة متوازية (Isometric Grid)</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> أيقونة تطبيق الجوال (App Icon)، الفافيكون (Favicon)، الأختام المعدنية، الشاشات الذكية، والأزياء الرياضية الخاصة بالبراند.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_2_Lettermark_Monogram.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_2_Lettermark_Monogram.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. PICTORIAL MARK -->
+      <article class="logo-card" id="type-3">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع الثالث</span>
+            <h2 class="logo-title">الشعار الرمزي أو الأيقوني (Pictorial Mark / Brand Mark)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-gold); font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_3_Pictorial_BrandMark.svg" alt="Pictorial Mark Wahet Nour">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  أيقونة مجردة من عناصر الطبيعة الحقيقية: شمس الفجر الذهبية المشرقة بـ 7 أشعة للطاقة الأسبوعية، تحتضنها سعفتا واحة نخيل زمردية رشيقة، تتوسطهما قطرة نبع الواحة السائل النقي. أيقونة يمكن تمييزها بمجرد لمحة بصرية خاطفة.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">ترجمة حرفية (Literal Translation)</span>
+                  <span class="tech-tag">رمزية بصرية (Symbolism)</span>
+                  <span class="tech-tag">أيقونة قابلة للتدرج الصغير (Scalable Mark)</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> بروفايل حسابات التواصل، تغليف المنتجات الصحية، ملصقات عبوات الماء والمكملات الغذائية، وعلامات التوثيق.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_3_Pictorial_BrandMark.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_3_Pictorial_BrandMark.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4. ABSTRACT LOGO MARK -->
+      <article class="logo-card" id="type-4">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع الرابع</span>
+            <h2 class="logo-title">الشعار التجريدي (Abstract Logo Mark)</h2>
+          </div>
+          <span style="font-size: 13px; color: #38BDF8; font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_4_Abstract_LogoMark.svg" alt="Abstract Logo Mark Wahet Nour">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  حلقة لا نهائية (Möbius Helix) تجريدية بالكامل تمثل الدورة الأيضية المستمرة: شريط التنقية والصيام المتقطع (Cyan) يتشابك في حركة دوران ثلاثية الأبعاد مع شريط البناء الخلوي والتغذية (Emerald)، وفي مركزهما تشتعل شرارة الأيض النقي (Solar Spark).
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">تجريد هندسي خالص (Pure Abstraction)</span>
+                  <span class="tech-tag">ديناميكية حركية (Kinetic Flow)</span>
+                  <span class="tech-tag">فلسفة التجدد الخلوي (Autophagy Loop)</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> المنصات التقنية والتطبيقات الذكية، الرسوم المتحركة (Motion Graphics)، وشاشات البداية لمقاطع الفيديو التعليمية.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_4_Abstract_LogoMark.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_4_Abstract_LogoMark.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. MASCOT LOGO -->
+      <article class="logo-card" id="type-5">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع الخامس</span>
+            <h2 class="logo-title">شعار الشخصية والسفير الرياضي (Mascot Logo)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-gold); font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_5_Mascot_Logo.svg" alt="Mascot Logo The Nour Gazelle">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  <strong>«غزال النور - The Nour Gazelle»</strong>: سفير اللياقة والرشاقة المستوحى من غزال الواحة والمها العربي الرياضي. تم تصميمه بأسلوب الأوريجامي والخطوط الفاخرة المتقاطعة (Faceted Heraldry) مع قرون هندسية تنبعث منها أشعة النور ونجمة ذهبية ترمز لليقظة والحدة الذهنية.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">سفير البراند النخبوي (Luxury Mascot)</span>
+                  <span class="tech-tag">تجسيد الرشاقة الأيضية (Agility Symbolism)</span>
+                  <span class="tech-tag">تصميم مضلع عصري (Faceted Vector)</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> تحديات المشتركين المجتمعية (Challenge Badges)، ملابس الكوتشينج، كؤوس الإنجاز، والمحتوى التفاعلي التحفيزي على السوشيال ميديا.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_5_Mascot_Logo.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_5_Mascot_Logo.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6. COMBINATION MARK -->
+      <article class="logo-card" id="type-6">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع السادس</span>
+            <h2 class="logo-title">الشعار التركيبي الرسمي (Combination Mark)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-cyan); font-weight: 700;">الشعار الأساسي • Master Flagship</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_6_Combination_Mark.svg" alt="Combination Mark Wahet Nour">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  التجميع النموذجي الأكثر توازناً واكتمالاً في عالم العلامات التجارية: يدمج الأيقونة الرمزية العلوية المتألقة مع الكتابة التايبوغرافية المعدلة <strong>«واحــة نـــور»</strong> والاسم الإنجليزي <strong>«WAHET NOUR»</strong> في قالب متوازن ومحكم النِسب الذهبية.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">تكامل تايبوغرافي أيقوني (Icon-Type Lockup)</span>
+                  <span class="tech-tag">نِسب متوازنة (Golden Proportions)</span>
+                  <span class="tech-tag">مرونة الفصل والاستخدام المشترك</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> الشعار الرسمي للشركة في كل مكان: بنرات اللاندنج بيج، العقود، التقارير الأيضية الرسمية، والفواتير الرقمية.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_6_Combination_Mark.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_6_Combination_Mark.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7. EMBLEM / SEAL -->
+      <article class="logo-card" id="type-7">
+        <div class="logo-card-header">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="logo-number-badge">النوع السابع</span>
+            <h2 class="logo-title">الشعار الشارة أو الختم الملكي (Emblem / Seal)</h2>
+          </div>
+          <span style="font-size: 13px; color: var(--accent-gold); font-weight: 700;">فيكتور أصلي • SVG</span>
+        </div>
+        <div class="logo-card-body">
+          <div class="logo-preview-pane">
+            <img src="Type_7_Emblem_Seal.svg" alt="Emblem Seal Wahet Nour">
+          </div>
+          <div class="logo-info-pane">
+            <div>
+              <div class="info-section">
+                <div class="info-label">فكرة الشعار وفلسفته</div>
+                <div class="info-text">
+                  شارة دائرية فاخرة تجمع كل تفاصيل الهوية داخل ميدالية تراثية حديثة (Concentric Guilloché Seal): حزام نصي علوي مقوس، إكليل غار من سعف الواحة الزمردية، مونوغرام WN بالوسط، شمس الفجر عند القمة، وخمس نجوم ذهبية ترمز للالتزام والتميز.
+                </div>
+              </div>
+
+              <div class="info-section">
+                <div class="info-label">التكنيكات المطبقة</div>
+                <div class="techniques-applied">
+                  <span class="tech-tag">الاحتواء الكامل (Encapsulation)</span>
+                  <span class="tech-tag">طابع الختم الملكي (Heraldic Prestige)</span>
+                  <span class="tech-tag">أعلى درجات الثقة والموثوقية المؤسسية</span>
+                </div>
+              </div>
+
+              <div class="best-for-box">
+                <strong>أفضل الاستخدامات:</strong> شهادات إتمام التحدي، أختام خطط التغذية المعتمدة، شهادات الضمان، وتواقيع الإيميل الرسمية للقيادة.
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a href="Type_7_Emblem_Seal.svg" download class="download-btn">⬇ تحميل ملف SVG</a>
+              <a href="Type_7_Emblem_Seal.svg" target="_blank" class="download-btn">👁 معاينة بالحجم الكامل</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+    }
+  </script>
+</body>
+</html>

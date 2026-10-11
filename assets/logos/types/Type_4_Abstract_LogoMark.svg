@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040D17"/>
+      <stop offset="50%" stop-color="#091A2C"/>
+      <stop offset="100%" stop-color="#02070D"/>
+    </linearGradient>
+
+    <!-- Ribbon 1: Metabolic Cyan -->
+    <linearGradient id="loopCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="40%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Ribbon 2: Cellular Emerald -->
+    <linearGradient id="loopEmerald" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="60%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#6EE7B7"/>
+    </linearGradient>
+
+    <!-- Ribbon 3: Solar Spark -->
+    <linearGradient id="loopGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+
+    <filter id="abstractGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="loopShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="900" height="450" rx="24" fill="url(#bgGrad4)"/>
+  <rect width="898" height="448" x="1" y="1" rx="23" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- Atmospheric Glow -->
+  <circle cx="270" cy="225" r="130" fill="#0284C7" opacity="0.15" filter="blur(50px)"/>
+  <circle cx="290" cy="205" r="110" fill="#10B981" opacity="0.12" filter="blur(50px)"/>
+
+  <!-- Type Badge -->
+  <g transform="translate(450, 48)">
+    <rect x="-185" y="-16" width="370" height="32" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1"/>
+    <text text-anchor="middle" y="5" font-family="'Cairo', 'Segoe UI', Tahoma, sans-serif" font-size="12" font-weight="700" fill="#38BDF8" letter-spacing="2">
+      TYPE 4 • الـشـعـار الـتـجـريـدي (ABSTRACT LOGO MARK)
+    </text>
+  </g>
+
+  <!-- Left: Abstract Kinetic Möbius Ribbon (Metabolic Regeneration Cycle) -->
+  <g transform="translate(260, 225)" filter="url(#loopShadow)">
+
+    <!-- Background Orbit Track (Subtle Geometric Rings) -->
+    <ellipse cx="0" cy="0" rx="95" ry="95" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" stroke-dasharray="3,8"/>
+    <ellipse cx="0" cy="0" rx="115" ry="55" transform="rotate(-30)" fill="none" stroke="rgba(56,189,248,0.15)" stroke-width="1.2"/>
+
+    <!-- Upper Emerald Vitality Arc (Phase 1: Renewal & Growth) -->
+    <path d="M -75 -45 C -45 -95, 45 -95, 75 -45 C 95 -10, 85 35, 45 65 C 10 90, -35 80, -65 50 C -35 60, 0 65, 30 45 C 60 25, 65 -10, 45 -40 C 25 -70, -45 -70, -75 -45 Z" 
+          fill="url(#loopEmerald)"/>
+
+    <!-- Intersecting Cyan Metabolic Flow Arc (Phase 2: Cleansing & Autophagy) -->
+    <path d="M 75 45 C 45 95, -45 95, -75 45 C -95 10, -85 -35, -45 -65 C -10 -90, 35 -80, 65 -50 C 35 -60, 0 -65, -30 -45 C -60 -25, -65 10, -45 40 C -25 70, 45 70, 75 45 Z" 
+          fill="url(#loopCyan)"/>
+
+    <!-- 3D Overlap Shadow Curve for Möbius Effect -->
+    <path d="M 15 35 C 30 20, 45 0, 45 -25 C 45 -40, 35 -55, 20 -60" 
+          fill="none" stroke="#020810" stroke-width="6" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- Central Radiant Metabolic Fusion Core (Phase 3: Pure Energy / Light) -->
+    <g transform="translate(0, 0)" filter="url(#abstractGlow)">
+      <!-- 4-Point Abstract Dynamic Energy Star -->
+      <path d="M 0 -28 C 0 -10, 10 0, 28 0 C 10 0, 0 10, 0 28 C 0 10, -10 0, -28 0 C -10 0, 0 -10, 0 -28 Z" 
+            fill="url(#loopGold)"/>
+      <circle cx="0" cy="0" r="6" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Kinetic Trailing Energy Nodes -->
+    <circle cx="-82" cy="18" r="4" fill="#38BDF8"/>
+    <circle cx="82" cy="-18" r="4" fill="#34D399"/>
+    <circle cx="52" cy="72" r="3" fill="#F59E0B"/>
+    <circle cx="-52" cy="-72" r="3" fill="#38BDF8" opacity="0.7"/>
+  </g>
+
+  <!-- Vertical Divider Line -->
+  <line x1="430" y1="120" x2="430" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+  <!-- Right Side: Brand Presentation & Rationale -->
+  <g transform="translate(480, 160)">
+    <!-- Arabic Name -->
+    <text font-family="'Cairo', sans-serif" font-size="36" font-weight="800" fill="#FFFFFF">
+      واحـة نـور
+    </text>
+
+    <!-- English Brand Full Name -->
+    <text y="42" font-family="'Inter', sans-serif" font-size="18" font-weight="800" fill="#38BDF8" letter-spacing="8">
+      WAHET NOUR
+    </text>
+
+    <!-- Category -->
+    <text y="80" font-family="'Cairo', sans-serif" font-size="16" font-weight="600" fill="#34D399">
+      الـتـكـويـن الـتـجـريـدي الـحـيـوي (METABOLIC HELIX)
+    </text>
+    <text y="105" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" letter-spacing="3">
+      INFINITE BIO-REGENERATION RIBBON
+    </text>
+
+    <!-- Explanation Points -->
+    <g transform="translate(0, 135)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#0284C7"/>
+      <text x="22" y="12" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#38BDF8">شريط الصيام والتنقية (Cyan):</tspan> دوران الأيض وضبط الإنسولين
+      </text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="38" r="4" fill="#10B981"/>
+      <text x="22" y="42" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#34D399">شريط البناء الخلوي (Emerald):</tspan> التغذية الذكية ونماء الكتلة الحيوية
+      </text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="68" r="4" fill="#F59E0B"/>
+      <text x="22" y="72" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#FBBF24">نواة الطاقة الحرة (Solar Spark):</tspan> توليد الطاقة الذاتية والحيوية المستمرة
+      </text>
+    </g>
+  </g>
+
+  <!-- Concept Technique Badges at Bottom -->
+  <g transform="translate(450, 422)">
+    <text text-anchor="middle" font-family="'Cairo', sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">
+      التكنيك المستخدم: التجريد الهندسي الخالص (Pure Geometric Abstraction) مع حلقة لا نهائية تعبر عن حيوية الجسم المتجددة
+    </text>
+  </g>
+</svg>

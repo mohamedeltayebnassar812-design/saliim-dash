@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040C16"/>
+      <stop offset="50%" stop-color="#091A2D"/>
+      <stop offset="100%" stop-color="#02060C"/>
+    </linearGradient>
+
+    <!-- Seal Metallic Gold Gradient -->
+    <linearGradient id="sealGold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="35%" stop-color="#F59E0B"/>
+      <stop offset="70%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+
+    <!-- Seal Outer Ring Gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+
+    <filter id="sealShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="900" height="450" rx="24" fill="url(#bgGrad7)"/>
+  <rect width="898" height="448" x="1" y="1" rx="23" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+
+  <!-- Ambient Backlight -->
+  <circle cx="260" cy="225" r="140" fill="#F59E0B" opacity="0.10" filter="blur(60px)"/>
+  <circle cx="260" cy="225" r="120" fill="#0284C7" opacity="0.10" filter="blur(50px)"/>
+
+  <!-- Type Badge -->
+  <g transform="translate(450, 48)">
+    <rect x="-195" y="-16" width="390" height="32" rx="16" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(245, 158, 11, 0.35)" stroke-width="1"/>
+    <text text-anchor="middle" y="5" font-family="'Cairo', 'Segoe UI', Tahoma, sans-serif" font-size="12" font-weight="700" fill="#FBBF24" letter-spacing="2">
+      TYPE 7 • شـعـار الـشـارة أو الـخـتـم (EMBLEM / SEAL)
+    </text>
+  </g>
+
+  <!-- Left: Luxury Circular Heritage Seal (All Elements Encapsulated) -->
+  <g transform="translate(260, 225)" filter="url(#sealShadow)">
+
+    <!-- Circular Ring 1: Outermost Beaded Border -->
+    <circle cx="0" cy="0" r="122" fill="none" stroke="url(#sealGold)" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="118" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="2,4"/>
+
+    <!-- Circular Ring 2: Solid Navy Fill with Inner Border -->
+    <circle cx="0" cy="0" r="114" fill="#071829" stroke="url(#sealGold)" stroke-width="1.5"/>
+
+    <!-- Inner Medal Ring -->
+    <circle cx="0" cy="0" r="78" fill="#0A223A" stroke="url(#sealGold)" stroke-width="2"/>
+
+    <!-- Concentric Guilloché Radiating Lines in Inner Disc -->
+    <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(56,189,248,0.12)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Circular Text Path 1 (Top Arc: Arabic) -->
+    <path id="topTextArc" d="M -94 0 A 94 94 0 0 1 94 0" fill="none"/>
+    <text font-family="'Cairo', sans-serif" font-size="12.5" font-weight="800" fill="#FDE047" letter-spacing="1.5">
+      <textPath href="#topTextArc" startOffset="50%" text-anchor="middle">
+        واحــة نـــور • نـمـط حـيـاة وصـحـة أيضـيـة
+      </textPath>
+    </text>
+
+    <!-- Circular Text Path 2 (Bottom Arc: English) -->
+    <path id="bottomTextArc" d="M -96 0 A 96 96 0 0 0 96 0" fill="none"/>
+    <text font-family="'Inter', sans-serif" font-size="10" font-weight="700" fill="#38BDF8" letter-spacing="3.5">
+      <textPath href="#bottomTextArc" startOffset="50%" text-anchor="middle">
+        ★ WAHET NOUR • EST. 2024 ★
+      </textPath>
+    </text>
+
+    <!-- Inner Crest Content (Center Medallion) -->
+    <g transform="translate(0, 0)">
+      <!-- 1. Rising Sun Dawn at Medallion Top -->
+      <g transform="translate(0, -28)">
+        <path d="M -24 0 A 24 24 0 0 1 24 0 Z" fill="url(#sealGold)" filter="url(#goldGlow)"/>
+        <!-- Sun Rays -->
+        <line x1="0" y1="-28" x2="0" y2="-24" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="-15" y1="-24" x2="-12" y2="-20" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="15" y1="-24" x2="12" y2="-20" stroke="#FDE047" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+
+      <!-- 2. Dual Laurel Fronds (Oasis Palm Leaves) Wrapping Inner Medallion -->
+      <g transform="translate(0, 10)">
+        <!-- Left Frond -->
+        <path d="M -5 45 C -25 45, -55 25, -55 -5 C -55 -25, -40 -40, -30 -45" 
+              fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="-52" cy="10" r="3" fill="#34D399"/>
+        <circle cx="-48" cy="-10" r="3" fill="#34D399"/>
+        <circle cx="-35" cy="-30" r="3" fill="#34D399"/>
+
+        <!-- Right Frond -->
+        <path d="M 5 45 C 25 45, 55 25, 55 -5 C 55 -25, 40 -40, 30 -45" 
+              fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="52" cy="10" r="3" fill="#34D399"/>
+        <circle cx="48" cy="-10" r="3" fill="#34D399"/>
+        <circle cx="35" cy="-30" r="3" fill="#34D399"/>
+      </g>
+
+      <!-- 3. Interlocked "WN" Luxury Crest Monogram in Center -->
+      <g transform="translate(0, 8)">
+        <!-- Monogram WN in Crisp Cut -->
+        <text text-anchor="middle" font-family="'Montserrat', 'Inter', sans-serif" font-size="32" font-weight="900" fill="#FFFFFF" letter-spacing="1">
+          WN
+        </text>
+      </g>
+
+      <!-- 4. Five Gold Stars of Excellence at Base -->
+      <g transform="translate(0, 48)">
+        <polygon points="0,-4 1.2,-1 4,0 1.5,1.5 2,4 0,2.5 -2,4 -1.5,1.5 -4,0 -1.2,-1" fill="#FDE047"/>
+        <polygon points="-12,-4 -10.8,-1 -8,0 -10.5,1.5 -10,4 -12,2.5 -14,4 -13.5,1.5 -16,0 -13.2,-1" fill="#FBBF24"/>
+        <polygon points="12,-4 13.2,-1 16,0 13.5,1.5 14,4 12,2.5 10,4 10.5,1.5 8,0 10.8,-1" fill="#FBBF24"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Vertical Divider Line -->
+  <line x1="430" y1="120" x2="430" y2="340" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+  <!-- Right Side: Brand Presentation & Rationale -->
+  <g transform="translate(480, 160)">
+    <!-- Arabic Name -->
+    <text font-family="'Cairo', sans-serif" font-size="36" font-weight="800" fill="#FFFFFF">
+      واحـة نـور
+    </text>
+
+    <!-- English Brand Full Name -->
+    <text y="42" font-family="'Inter', sans-serif" font-size="18" font-weight="800" fill="#FBBF24" letter-spacing="6">
+      WAHET NOUR • OFFICIAL SEAL
+    </text>
+
+    <!-- Category -->
+    <text y="80" font-family="'Cairo', sans-serif" font-size="16" font-weight="600" fill="#38BDF8">
+      الـخـتـم الـتـنـفـيـذي الـفـاخـر (HERITAGE CREST)
+    </text>
+    <text y="105" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#94A3B8" letter-spacing="3">
+      AUTHORITATIVE LIFESTYLE &amp; CLINICAL SEAL
+    </text>
+
+    <!-- Explanation Points -->
+    <g transform="translate(0, 135)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#F59E0B"/>
+      <text x="22" y="12" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#FBBF24">طابع الشارة المكتملة:</tspan> يحتوي كافة عناصر الهوية بداخل إطار دائري مهيب
+      </text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="38" r="4" fill="#10B981"/>
+      <text x="22" y="42" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#34D399">إكليل الواحة والنجوم الخمس:</tspan> رمز الجودة الفائقة، الالتزام، والمتابعة الصارمة
+      </text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="68" r="4" fill="#38BDF8"/>
+      <text x="22" y="72" font-family="'Cairo', sans-serif" font-size="13" fill="#E2E8F0">
+        <tspan font-weight="700" fill="#7DD3FC">مثالي للأختام والشهادات:</tspan> يمنح المشترك إحساساً بالانضمام لأكاديمية صحية نُخبوية
+      </text>
+    </g>
+  </g>
+
+  <!-- Concept Technique Badges at Bottom -->
+  <g transform="translate(450, 422)">
+    <text text-anchor="middle" font-family="'Cairo', sans-serif" font-size="11" fill="rgba(255,255,255,0.45)">
+      التكنيك المستخدم: الشارة أو الختم الملكي (Emblem / Seal) يمنح أعلى درجات الثقة والموثوقية والرسوخ المؤسسي
+    </text>
+  </g>
+</svg>

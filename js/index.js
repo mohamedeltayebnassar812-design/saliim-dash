@@ -114,9 +114,11 @@ lucide.createIcons();
 
     // 5. Booking Modal Logic & Package Sync
     const PACKAGE_PRICES = {
-      'healthy': '$69/شهرياً',
-      'pro': '$119/شهرياً',
-      'consultation_dr': '$249',
+      'challenge': '$49/شهرياً (1,699 ج.م)',
+      'pro': '$119/شهرياً (4,000 ج.م)',
+      'vip': '$249 - $399/شهرياً (15,000 ج.م)',
+      'consultation_dr': '$249 (جلسة 1:1 خاصة)',
+      'healthy': '$49/شهرياً (1,699 ج.م)',
       'app_waitlist': 'مجاني'
     };
 

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>واحة نور | التقييم الأيضي السريع - اكتشف مسارك المخصص بإشراف د. أحمد الخطيب</title>
+  <meta name="description" content="أجب عن 5 أسئلة سريعة لاكتشاف المسار الأنسب لك في واحة نور: مجتمع التحدي الجماعي التفاعلي أو الكوتشينج الخاص الفردي 1-on-1.">
+  <meta name="keywords" content="واحة نور, كويز الصيام المتقطع, تقييم الأيض, دكتور أحمد الخطيب, كوتشينج صحي, مجتمع واحة نور">
+
+  <!-- OpenGraph Meta -->
+  <meta property="og:title" content="واحة نور | التقييم الأيضي السريع - اكتشف مسارك المخصص">
+  <meta property="og:description" content="5 أسئلة سريعة تحدد لك المسار الأنسب لضبط حرق الدهون وتعديل نمط حياتك.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/dr_hero_cutout.webp">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg-dark: #071626;
+      --card-bg: #0B1E33;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #1D9BF0;
+      --accent-cyan-light: #38BDF8;
+      --accent-emerald: #10B981;
+      --accent-gold: #F59E0B;
+      --accent-gold-light: #FDE047;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: var(--bg-dark);
+      color: #F8FAFC;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Glows & Gradients */
+    .cyan-glow {
+      box-shadow: 0 0 50px -10px rgba(29, 155, 240, 0.45);
+    }
+    .emerald-glow {
+      box-shadow: 0 0 50px -10px rgba(16, 185, 129, 0.45);
+    }
+    .gold-glow {
+      box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.45);
+    }
+
+    /* Shimmer Effect for Buttons */
+    @keyframes shimmerPass {
+      0% { transform: translateX(-150%) skewX(-20deg); opacity: 0; }
+      40% { opacity: 0.7; }
+      100% { transform: translateX(250%) skewX(-20deg); opacity: 0; }
+    }
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmerPass 4s ease-in-out infinite;
+    }
+
+    /* Floating animation */
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .floating-card {
+      animation: subtleFloat 6s ease-in-out infinite;
+    }
+
+    /* Quiz Modal Animations */
+    .quiz-overlay {
+      background: rgba(4, 11, 20, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Card Question Transition */
+    .slide-in-right {
+      animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .slide-out-left {
+      animation: slideOutLeft 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px) scale(0.98); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @keyframes slideOutLeft {
+      from { opacity: 1; transform: translateX(0) scale(1); }
+      to { opacity: 0; transform: translateX(-40px) scale(0.98); }
+    }
+
+    /* Pulse Radar Loader */
+    @keyframes radarPulse {
+      0% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+      70% { transform: scale(1.1); opacity: 0.4; box-shadow: 0 0 0 35px rgba(56, 189, 248, 0); }
+      100% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+    }
+    .radar-circle {
+      animation: radarPulse 2s infinite ease-in-out;
+    }
+
+    /* Option Item Hover & Active */
+    .quiz-option {
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .quiz-option:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+      background-color: rgba(29, 155, 240, 0.08);
+      transform: translateY(-2px);
+    }
+    .quiz-option.selected {
+      border-color: #38BDF8;
+      background: linear-gradient(135deg, rgba(29, 155, 240, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
+      box-shadow: 0 0 25px -4px rgba(56, 189, 248, 0.5);
+      transform: scale(0.99);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Background Lighting -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px]"></div>
+    <div class="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute -bottom-40 right-10 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[130px]"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="relative z-40 border-b border-white/5 bg-[#071626]/85 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo Lockup -->
+      <a href="wahet-nour.html" class="flex items-center gap-3 group">
+        <img src="assets/logos/types/Type_6_Combination_Mark.svg" alt="واحة نور" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
+        <a href="wahet-nour.html" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
+        <a href="wahet-nour.html#features" class="hover:text-cyan-400 transition-colors">منظومة الحرق الأيضي</a>
+        <a href="wahet-nour.html#packages" class="hover:text-cyan-400 transition-colors">الباقات والاشتراك</a>
+        <a href="wahet-nour.html#faq" class="hover:text-cyan-400 transition-colors">الأسئلة الشائعة</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-4">
+        <button onclick="openQuizModal()" class="btn-shimmer px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all">
+          ✨ ابدأ التقييم (5 أسئلة)
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN HERO SECTION (Modeled directly after The Fasting Method Hero) -->
+  <main class="relative z-10 pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Column: Copy & Quiz Trigger -->
+        <div class="lg:col-span-7 text-center lg:text-right space-y-6">
+          
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-bold">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <span>بإشراف د. أحمد الخطيب • استشفاء الأيض ونمط الحياة</span>
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.25] tracking-tight">
+            مرحباً بك في <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">واحة نور</span>
+            <br>
+            <span class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-200 mt-2 block">
+              الصيام المتقطع الذكي لاستعادة الحرق الأيضي
+            </span>
+          </h1>
+
+          <!-- Body Description -->
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            خُض تجربة البرنامج الأيضي الأكثر تكاملاً لضبط حساسية الإنسولين، خسارة الدهون العنيدة، وإعادة برمجة علاقتك بالطعام. منظومة متكاملة مدعومة بالنتائج الواقعية، ومُعزَّزة بقوة الكوميونيتي والمتابعة اليومية.
+          </p>
+
+          <!-- Core Call to Action (The Fasting Method Style) -->
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <button onclick="openQuizModal()" class="w-full sm:w-auto btn-shimmer px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 text-white font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 transition-all flex items-center justify-center gap-3">
+              <span>ابدأ التقييم الأيضي الآن (5 أسئلة)</span>
+              <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+            <span class="text-xs text-slate-400">⏱️ يستغرق 60 ثانية فقط • مجاني 100%</span>
+          </div>
+
+          <!-- Value Pillars Row -->
+          <div class="pt-6 grid grid-cols-3 gap-3 border-t border-white/10 text-right">
+            <div>
+              <div class="text-emerald-400 font-extrabold text-lg sm:text-xl">تخصيص كامل</div>
+              <div class="text-xs text-slate-400">لا قوالب جاهزة، نظام مبني على بياناتك</div>
+            </div>
+            <div>
+              <div class="text-cyan-400 font-extrabold text-lg sm:text-xl">متابعة يومية</div>
+              <div class="text-xs text-slate-400">كوتش وتغذية معك داخل الكوميونيتي</div>
+            </div>
+            <div>
+              <div class="text-amber-400 font-extrabold text-lg sm:text-xl">د. أحمد لايف</div>
+              <div class="text-xs text-slate-400">1-2 بث مباشر شهرياً لحل معضلاتك</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Doctor & Community Hero Card -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          
+          <div class="relative w-full max-w-md floating-card">
+            
+            <!-- Glow Frame -->
+            <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-500 via-emerald-500 to-amber-500 opacity-30 blur-xl"></div>
+            
+            <!-- Content Box -->
+            <div class="relative rounded-3xl bg-[#0B1E33] border border-white/10 p-6 overflow-hidden shadow-2xl">
+              
+              <!-- Subtle Background Mosaic -->
+              <div class="absolute inset-0 opacity-15 bg-cover bg-center" style="background-image: url('assets/testimonials_collage.webp'); filter: grayscale(100%);"></div>
+              
+              <div class="relative z-10 flex flex-col items-center text-center">
+                
+                <!-- Doctor Image -->
+                <div class="relative w-64 h-72 sm:w-72 sm:h-80 mb-4 overflow-hidden rounded-2xl border-2 border-cyan-400/30 bg-gradient-to-b from-cyan-900/30 to-[#071626]">
+                  <img src="assets/dr_hero_cutout.webp" alt="د. أحمد الخطيب" class="w-full h-full object-cover object-top filter contrast-105">
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#0B1E33] via-transparent to-transparent"></div>
+                  
+                  <!-- Tag on photo -->
+                  <div class="absolute bottom-3 inset-x-3 bg-[#071626]/90 backdrop-blur-md rounded-xl p-2.5 border border-white/10 text-center">
+                    <div class="text-sm font-black text-white">د. أحمد الخطيب</div>
+                    <div class="text-[11px] font-semibold text-cyan-400">المشرف العام ومؤسس واحة نور</div>
+                  </div>
+                </div>
+
+                <!-- Floating Stats Pill -->
+                <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 flex items-center justify-around text-xs">
+                  <div>
+                    <span class="block font-black text-amber-400 text-base">★ 4.9/5</span>
+                    <span class="text-slate-400 text-[10px]">تقييم المشتركين</span>
+                  </div>
+                  <div class="w-px h-8 bg-white/10"></div>
+                  <div>
+                    <span class="block font-black text-cyan-400 text-base">+12,000</span>
+                    <span class="text-slate-400 text-[10px]">ساعة صيام ناجحة</span>
+                  </div>
+                  <div class="w-px h-8 bg-white/10"></div>
+                  <div>
+                    <span class="block font-black text-emerald-400 text-base">100%</span>
+                    <span class="text-slate-400 text-[10px]">بدون حرمان</span>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- AS SEEN ON / CREDIBILITY BANNER (Matching The Fasting Method) -->
+    <div class="mt-20 border-y border-white/5 bg-[#040E1A]/80 py-8">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <p class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-6">
+          مرتكز على أحدث أبحاث الأيض والصيام المعتمدة دولياً • AS SEEN ON &amp; RESEARCH BACKED
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+          <span class="text-lg font-black tracking-wider text-slate-300">Forbes</span>
+          <span class="text-lg font-serif font-bold text-slate-300">The New York Times</span>
+          <span class="text-xl font-black text-slate-300">CNN</span>
+          <span class="text-lg font-sans font-bold text-slate-300">Bloomberg</span>
+          <span class="text-sm font-mono font-bold text-slate-300">BMJ Journals</span>
+          <span class="text-base font-serif italic text-slate-300">Harvard Health</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- QUICK 3-STEP EXPLAINER (Why Take The Quiz?) -->
+  <section class="py-16 bg-[#061423]/60 relative z-10 border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-black text-white mb-4">
+        كيف يعمل تقييم تحديد المسار الأيضي؟
+      </h2>
+      <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-12">
+        نحن لا نؤمن بالحلول المعلبة. إجاباتك تمكننا من توجيهك إلى البيئة التي تضمن لك الاستمرار بنسبة تفوق 90%.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
+        <!-- Step 1 -->
+        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 font-black flex items-center justify-center mb-4 text-lg">1</div>
+          <h3 class="text-lg font-bold text-white mb-2">5 أسئلة نفسية وأيضية</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">تحدد نمط يومك، قابليتك للالتزام، وحاجتك للدعم الجماعي أو المتابعة الفردية السرية.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-black flex items-center justify-center mb-4 text-lg">2</div>
+          <h3 class="text-lg font-bold text-white mb-2">خوارزمية الفرز الذكية</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">تحليل فوري لمؤشرات الإرادة والوقت لترشيح البيئة الأنسب من برامج واحة نور.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
+          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 font-black flex items-center justify-center mb-4 text-lg">3</div>
+          <h3 class="text-lg font-bold text-white mb-2">التوجيه للباقة المؤهلة</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">إما باقة مجتمع التحدي الجماعي ($49 - $119) أو باقة الكوتشينج الخاص 1:1 ($249 - $399).</p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <button onclick="openQuizModal()" class="px-8 py-3.5 rounded-full bg-cyan-500 text-slate-950 font-black text-sm hover:bg-cyan-400 hover:scale-105 transition-all">
+          ابدأ الكويز الآن مجاناً ↵
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- THE INTERACTIVE 5-QUESTION QUIZ MODAL (FULL EXPERIENCE) -->
+  <!-- ======================================================== -->
+  <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 quiz-overlay opacity-0 pointer-events-none transition-opacity duration-300">
+    
+    <!-- Modal Card Container -->
+    <div class="relative w-full max-w-2xl bg-[#0B1E33] border border-cyan-500/30 rounded-3xl shadow-2xl shadow-cyan-950/60 overflow-hidden text-right flex flex-col max-h-[92vh]">
+      
+      <!-- Modal Header Bar -->
+      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#081728]/90">
+        <div class="flex items-center gap-3">
+          <img src="assets/logos/types/Type_2_Lettermark_Monogram.svg" alt="WN" class="h-8 w-auto">
+          <div>
+            <span class="text-xs font-extrabold text-cyan-400 uppercase tracking-wider block">تقييم المسار الأيضي • WAHET NOUR</span>
+            <span class="text-[11px] text-slate-400" id="stepCounterText">الخطوة التمهيدية</span>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button onclick="closeQuizModal()" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Top Progress Bar (Active when in questions) -->
+      <div id="quizProgressBarContainer" class="w-full bg-slate-800 h-1.5 hidden">
+        <div id="quizProgressBar" class="h-1.5 bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-400 transition-all duration-400" style="width: 20%;"></div>
+      </div>
+
+      <!-- Modal Body (Dynamic Views) -->
+      <div class="p-6 sm:p-8 overflow-y-auto flex-1 relative min-h-[380px] flex flex-col justify-center">
+
+        <!-- ---------------------------------------------------- -->
+        <!-- VIEW 0: WELCOME & START SCREEN (Matches Image 2)      -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewStart" class="text-center space-y-6 relative py-4">
+          
+          <!-- Background Mosaic Overlay in Modal -->
+          <div class="absolute inset-0 -m-8 opacity-10 bg-cover bg-center pointer-events-none" style="background-image: url('assets/testimonials_collage.webp');"></div>
+          
+          <div class="relative z-10">
+            <span class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-3">
+              ✦ اختبار مجاني لتحديد المسار الأنسب
+            </span>
+            
+            <h2 class="text-2xl sm:text-3xl font-black text-white leading-snug">
+              تقييم الصيام المتقطع ونمط الحياة الأيضي
+              <br>
+              <span class="text-cyan-400 text-lg sm:text-xl font-bold">FREE Intermittent Fasting Quiz</span>
+            </h2>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto mt-4">
+              أجب عن هذا التقييم المكوَّن من <strong>5 أسئلة سريعة</strong> لنكتشف معاً كيف تساعدك منظومة واحة نور على بلوغ أهدافك وبناء نمط حياة صحي ومستدام. فور الإجابة، سيتم توجيهك فورياً إلى البرنامج الأكثر مطابقة لطبيعة شخصيتك ووقتك (المجتمع التفاعلي أو الكوتشينج الخاص 1:1).
+            </p>
+
+            <div class="pt-6">
+              <button onclick="startQuizQuestions()" class="btn-shimmer px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-extrabold text-lg shadow-xl shadow-blue-500/30 hover:scale-105 transition-all w-full sm:w-auto">
+                ابدأ التقييم الآن • START
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- VIEW 1: QUESTIONS CONTAINER (Matches Images 3 & 4)   -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewQuestions" class="hidden">
+          
+          <div id="questionSlide" class="slide-in-right space-y-6">
+            
+            <!-- Question Title & Instructions -->
+            <div>
+              <span id="questionCategory" class="text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-1">السؤال 1 من 5</span>
+              <h3 id="questionTitle" class="text-xl sm:text-2xl font-black text-white leading-snug">
+                <!-- Injected via JS -->
+              </h3>
+              <p id="questionSubtitle" class="text-xs sm:text-sm text-slate-400 mt-1">
+                يرجى اختيار الإجابة الأكثر ملاءمة لاحتياجك وطبيعة يومك.
+              </p>
+            </div>
+
+            <!-- Options List (A, B, C) -->
+            <div id="optionsContainer" class="space-y-3 pt-2">
+              <!-- Injected via JS -->
+            </div>
+
+          </div>
+
+          <!-- Bottom Navigation Bar (Back Arrow) -->
+          <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+            <button id="btnPrev" onclick="goToPrevQuestion()" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors disabled:opacity-30 disabled:pointer-events-none">
+              <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <span>السؤال السابق</span>
+            </button>
+            <span class="text-[11px] text-slate-500">اختر إجابتك للانتقال التلقائي السلس</span>
+          </div>
+
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- VIEW 2: SMART METABOLIC CALCULATION / LOADER SCREEN  -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewCalculating" class="hidden text-center py-10 space-y-6">
+          
+          <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full border-4 border-cyan-400/20 border-t-cyan-400 animate-spin"></div>
+            <div class="w-20 h-20 rounded-full bg-cyan-500/10 flex items-center justify-center radar-circle">
+              <span class="text-2xl">⚡</span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-xl font-black text-white">جارٍ تحليل بياناتك وتحديد المسار الأنسب...</h3>
+            <p id="calcStatusText" class="text-sm font-semibold text-cyan-400 animate-pulse">
+              تحليل إجاباتك وعاداتك اليومية...
+            </p>
+          </div>
+
+          <div class="w-48 mx-auto bg-slate-800 rounded-full h-1.5 overflow-hidden">
+            <div id="calcProgressFill" class="bg-gradient-to-r from-cyan-400 to-emerald-400 h-1.5 w-0 transition-all duration-700"></div>
+          </div>
+
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- VIEW 3: OUTCOME A - COMMUNITY & COHORT QUALIFIED     -->
+        <!-- (Matches The Fasting Method /join-our-community/)   -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewOutcomeCommunity" class="hidden space-y-6 slide-in-right text-right">
+          
+          <!-- Qualified Badge -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 to-[#0A223A] border border-emerald-500/40 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 font-black text-xl flex items-center justify-center shrink-0">
+              98%
+            </div>
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">مسارك المثالي المؤهل • PERFECT MATCH</span>
+              <h3 class="text-base sm:text-lg font-black text-white">مجتمع وتحدي واحة نور التفاعلي (Community &amp; Cohort)</h3>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            بناءً على إجاباتك، أفضل بيئة تضمن لك كسر ثبات الوزن والاستمرار هي <strong>البيئة الجماعية الداعمة</strong>. ستحصل على متابعة يومية من فريق الكوتشينج والتغذية، وتتفاعل مع أبطال يشاركونك نفس الرحلة، مع حضور لقاءات د. أحمد المباشرة.
+          </p>
+
+          <!-- Pricing Table (Matching The Fasting Method 3-tier view in Image 5) -->
+          <div class="border border-white/10 rounded-2xl overflow-hidden bg-[#071728]">
+            <div class="grid grid-cols-3 bg-[#0A2035] text-center p-3 text-xs font-black border-b border-white/10">
+              <div class="text-slate-300">الباقة</div>
+              <div class="text-emerald-400">باقة التحدي (شهر)</div>
+              <div class="text-cyan-400">باقة برو (3 شهور) ★</div>
+            </div>
+
+            <div class="divide-y divide-white/5 text-xs text-slate-300 p-2 space-y-1">
+              <div class="grid grid-cols-3 py-2 text-center items-center">
+                <span class="text-right pr-2 font-bold text-white">السعر</span>
+                <span class="font-bold text-emerald-400">$49 USD</span>
+                <span class="font-black text-cyan-400 text-sm">$119 USD</span>
+              </div>
+              <div class="grid grid-cols-3 py-2 text-center items-center">
+                <span class="text-right pr-2">تواجد يومي للكوتش والتغذية</span>
+                <span class="text-emerald-400">✓</span>
+                <span class="text-cyan-400">✓</span>
+              </div>
+              <div class="grid grid-cols-3 py-2 text-center items-center">
+                <span class="text-right pr-2">بث مباشر مع د. أحمد الخطيب</span>
+                <span class="text-slate-400">1 لايف شهرياً</span>
+                <span class="text-cyan-400 font-bold">2 لايف شهرياً</span>
+              </div>
+              <div class="grid grid-cols-3 py-2 text-center items-center">
+                <span class="text-right pr-2">نظام غذائي وعدّاد صيام مخصص</span>
+                <span class="text-emerald-400">✓</span>
+                <span class="text-cyan-400 font-bold">✓ + تحديث شهري</span>
+              </div>
+              <div class="grid grid-cols-3 py-2 text-center items-center">
+                <span class="text-right pr-2">مكتبة التمارين والتأهيل الحركي</span>
+                <span class="text-emerald-400">✓</span>
+                <span class="text-cyan-400">✓ كاملة</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="space-y-3 pt-2">
+            <a href="wahet-nour.html#packages" class="btn-shimmer w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-center text-base shadow-lg shadow-emerald-500/25 block hover:scale-[1.02] transition-transform">
+              🚀 انضم للكوميونيتي وابدأ رحلتك الآن
+            </a>
+            
+            <div class="text-center">
+              <button onclick="switchOutcome('private')" class="text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">
+                هل تفضل متابعة فردية سرية خاصة بالكامل 1-on-1؟ اضغط هنا
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- VIEW 4: OUTCOME B - PRIVATE 1-ON-1 COACHING QUALIFIED -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewOutcomePrivate" class="hidden space-y-6 slide-in-right text-right">
+          
+          <!-- Qualified Badge -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-950/80 to-[#1F1706] border border-amber-500/40 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xl flex items-center justify-center shrink-0">
+              100%
+            </div>
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">مسارك النخبوي المؤهل • VIP ONE-ON-ONE</span>
+              <h3 class="text-base sm:text-lg font-black text-white">الكوتشينج الخاص الفردي (Private Coaching 1:1)</h3>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            بناءً على جدولك المزدحم أو رغبتك في أقصى درجات التركيز، فإن الأنسب لك هو <strong>المرافقة الفردية الخاصة 1-on-1</strong>. خط تواصل مباشر مع الكوتش وأخصائي التغذية، ومتابعة خاصة بإشراف د. أحمد دون تشتت المجموعات العامة.
+          </p>
+
+          <!-- VIP Highlights Box -->
+          <div class="bg-[#091A2C] border border-amber-500/30 rounded-2xl p-4 space-y-3 text-xs">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-400 font-black text-sm">👑</span>
+              <div>
+                <strong class="text-white block font-bold">خط تواصل وتوجيه فردي خاص:</strong>
+                <span class="text-slate-400">محادثة شخصية مباشرة للإجابة على يومياتك وتعديل الوجبات أثناء السفر والعمل.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-amber-400 font-black text-sm">🧬</span>
+              <div>
+                <strong class="text-white block font-bold">تعديل أسبوعي دقيق للخطة:</strong>
+                <span class="text-slate-400">مرونة تامة تتكيف مع استجابة جسمك وتحاليلك دون فرض أي قالب مسبق.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-amber-400 font-black text-sm">🎯</span>
+              <div>
+                <strong class="text-white block font-bold">أولوية الاستشارات مع د. أحمد الخطيب:</strong>
+                <span class="text-slate-400">مراجعة دقيقة لملفك وحل معضلات ثبات الوزن ومقاومة الإنسولين شخصياً.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & CTA -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center justify-between px-2">
+              <span class="text-xs text-slate-400">الاستثمار في الباقة الخاصة:</span>
+              <span class="text-base font-black text-amber-400">$249 - $399 USD</span>
+            </div>
+
+            <a href="wahet-nour.html#packages" class="btn-shimmer w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-300 text-slate-950 font-black text-center text-base shadow-lg shadow-amber-500/25 block hover:scale-[1.02] transition-transform">
+              👑 احجز مقعدك في الكوتشينج الخاص (VIP)
+            </a>
+
+            <div class="text-center">
+              <button onclick="switchOutcome('community')" class="text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">
+                أو استكشف باقات المجتمع وتحدي الـ 30 يوماً ($49 - $119)
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#030910] border-t border-white/5 py-12 relative z-10 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right">
+      <div class="flex items-center gap-3">
+        <img src="assets/logos/types/Type_2_Lettermark_Monogram.svg" alt="WN" class="h-8 w-auto">
+        <span>واحة نور • د. أحمد الخطيب © 2026. جميع الحقوق محفوظة.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="wahet-nour.html" class="hover:text-white transition-colors">الصفحة الرئيسية</a>
+        <a href="wahet-nour.html#packages" class="hover:text-white transition-colors">الباقات المتاحة</a>
+        <button onclick="openQuizModal()" class="text-cyan-400 hover:underline">إعادة التقييم</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT: QUIZ ENGINE & SMOOTH TRANSITION LOGIC        -->
+  <!-- ======================================================== -->
+  <script>
+    // 5 Carefully Crafted Questions
+    const quizQuestions = [
+      {
+        id: 1,
+        title: "ما هو هدفك الأساسي في رحلتك الصحية الحالية؟",
+        subtitle: "حدد الدافع الأكبر الذي تبحث عن تحقيقه خلال الأسابيع القادمة.",
+        options: [
+          { key: "A", text: "كسر ثبات الوزن وتنشيط الحرق عبر الصيام المتقطع ونظام غذائي محسوب.", score: "community" },
+          { key: "B", text: "تنظيم مستويات الطاقة، ضبط الإنسولين، والتخلص من هبوط ما بعد الأكل والخمول.", score: "both" },
+          { key: "C", text: "تغيير شامل لنمط حياتي، تحسين اللياقة والكتلة العضلية، وبناء عادات تدوم للأبد.", score: "private" }
+        ]
+      },
+      {
+        id: 2,
+        title: "كيف تفضل الاطلاع على الخطة والمصادر الغذائية والتمارين؟",
+        subtitle: "اختر أسلوب التعلّم والتطبيق الأنسب لطبيعة استيعابك ووقتك.",
+        options: [
+          { key: "A", text: "أحب مراجعة المصادر والمكتبة بنفسي وتطبيق الإرشادات اليومية خطوة بخطوة.", score: "community" },
+          { key: "B", text: "أريد خطة مفصلة واضحة يضعها لي كوتش متخصص يفهمني ويوجهني بدقة لأصل لهدفي.", score: "private" },
+          { key: "C", text: "أفضل متابعة الدروس والمكتبة في أوقات فراغي المتاحة مع إرشادات مركزة.", score: "both" }
+        ]
+      },
+      {
+        id: 3,
+        title: "ما هو نوع الدعم والبيئة التي تضمن لك الاستمرار وعدم الانقطاع؟",
+        subtitle: "هذا السؤال هو الأكثر حساسية في تحديد نجاحك واستمرارك.",
+        options: [
+          { key: "A", text: "أحتاج التواجد في مجتمع تفاعلي محفز (Community) لأشعر أنني لست وحدي، مع متابعة يومية من كوتشيز وتغذية.", score: "community" },
+          { key: "B", text: "وقتي محدود جداً وأفضل متابعة خاصة فردية 1-on-1 (Private Coaching) سرية ومباشرة دون تشتت المجموعات.", score: "private" },
+          { key: "C", text: "أفضل الجمع بين لقاءات البث المباشر الدورية والدروس، وطرح أسئلتي عند الحاجة فقط.", score: "community" }
+        ]
+      },
+      {
+        id: 4,
+        title: "كم من الوقت تستطيع تخصيصه يومياً للمتابعة والتواصل؟",
+        subtitle: "كن واقعياً بشأن جدول أعمالك اليومي والتزاماتك.",
+        options: [
+          { key: "A", text: "من 10 إلى 20 دقيقة يومياً للتفاعل في الكوميونيتي، تسجيل وجباتي، ومشاركة إنجازاتي.", score: "community" },
+          { key: "B", text: "ليس لدي وقت للمجموعات أو الشات العام؛ أحتاج تواصل مباشر وسريع مع الكوتش في دقائق محددة.", score: "private" },
+          { key: "C", text: "وقتي مرن، وأفضل الدخول في عطلة نهاية الأسبوع لمراجعة تقدمي ومتابعة التوجيهات.", score: "both" }
+        ]
+      },
+      {
+        id: 5,
+        title: "ما هو التحدي الأكبر الذي واجهته في محاولاتك السابقة وكان سبباً في التوقف؟",
+        subtitle: "معرفة العقبة السابقة تضمن لنا ألا نكررها أبداً هذه المرة.",
+        options: [
+          { key: "A", text: "فقدان الحماس والشعور بالملل والوحدة بعد أول أسبوعين (الحاجة لبيئة تحفيز وكوميونيتي دائم).", score: "community" },
+          { key: "B", text: "التمبلتات والأنظمة العامة الجاهزة التي لم تراعِ ظروفي الخاصة (الحاجة لتخصيص دقيق 1-on-1).", score: "private" },
+          { key: "C", text: "نقص الفهم العلمي الدقيق لكيفية التعامل مع ثبات الوزن والجوع أو ضبط الصيام.", score: "both" }
+        ]
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let userAnswers = {};
+    let isTransitioning = false;
+
+    // Open Modal
+    function openQuizModal() {
+      const modal = document.getElementById('quizModal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close Modal
+    function closeQuizModal() {
+      const modal = document.getElementById('quizModal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    // Start Question View
+    function startQuizQuestions() {
+      document.getElementById('viewStart').classList.add('hidden');
+      document.getElementById('quizProgressBarContainer').classList.remove('hidden');
+      document.getElementById('viewQuestions').classList.remove('hidden');
+      currentQuestionIndex = 0;
+      userAnswers = {};
+      renderQuestion(0);
+    }
+
+    // Render Question Slide with Smooth Animation
+    function renderQuestion(index) {
+      const q = quizQuestions[index];
+      const categoryEl = document.getElementById('questionCategory');
+      const titleEl = document.getElementById('questionTitle');
+      const subtitleEl = document.getElementById('questionSubtitle');
+      const optionsContainer = document.getElementById('optionsContainer');
+      const progressBar = document.getElementById('quizProgressBar');
+      const stepCounter = document.getElementById('stepCounterText');
+      const btnPrev = document.getElementById('btnPrev');
+
+      // Update Header & Progress
+      categoryEl.innerText = `السؤال ${q.id} من ${quizQuestions.length}`;
+      titleEl.innerText = q.title;
+      subtitleEl.innerText = q.subtitle;
+      stepCounter.innerText = `السؤال ${q.id} من ${quizQuestions.length}`;
+
+      const progressPct = ((index + 1) / quizQuestions.length) * 100;
+      progressBar.style.width = `${progressPct}%`;
+
+      btnPrev.disabled = (index === 0);
+
+      // Render Options
+      optionsContainer.innerHTML = '';
+      q.options.forEach((opt) => {
+        const isSelected = userAnswers[q.id] === opt.score;
+        const optButton = document.createElement('button');
+        optButton.type = 'button';
+        optButton.className = `quiz-option w-full p-4 sm:p-5 rounded-2xl border border-white/10 bg-[#071728] text-right flex items-center justify-between gap-4 group ${isSelected ? 'selected' : ''}`;
+        
+        optButton.innerHTML = `
+          <div class="flex items-center gap-3.5 sm:gap-4 flex-1">
+            <span class="w-8 h-8 rounded-full border border-cyan-400/40 text-cyan-300 font-bold text-xs flex items-center justify-center shrink-0 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-colors">
+              ${opt.key}
+            </span>
+            <span class="text-xs sm:text-sm font-semibold text-slate-200 group-hover:text-white leading-relaxed">
+              ${opt.text}
+            </span>
+          </div>
+          <div class="w-5 h-5 rounded-full border border-white/20 flex items-center justify-center shrink-0 group-hover:border-cyan-400">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+          </div>
+        `;
+
+        optButton.onclick = () => selectOption(opt.score, optButton);
+        optionsContainer.appendChild(optButton);
+      });
+
+      // Animate In
+      const slide = document.getElementById('questionSlide');
+      slide.classList.remove('slide-out-left');
+      slide.classList.add('slide-in-right');
+    }
+
+    // Select Option & Auto Advance
+    function selectOption(score, buttonEl) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Highlight selected button
+      const allButtons = document.querySelectorAll('.quiz-option');
+      allButtons.forEach(btn => btn.classList.remove('selected'));
+      buttonEl.classList.add('selected');
+
+      // Store response
+      userAnswers[quizQuestions[currentQuestionIndex].id] = score;
+
+      // Animate out after brief pause (320ms)
+      setTimeout(() => {
+        const slide = document.getElementById('questionSlide');
+        slide.classList.remove('slide-in-right');
+        slide.classList.add('slide-out-left');
+
+        setTimeout(() => {
+          if (currentQuestionIndex < quizQuestions.length - 1) {
+            currentQuestionIndex++;
+            renderQuestion(currentQuestionIndex);
+            isTransitioning = false;
+          } else {
+            // Completed all questions -> Go to calculation phase
+            showCalculatingScreen();
+          }
+        }, 220);
+
+      }, 300);
+    }
+
+    // Previous Question Navigation
+    function goToPrevQuestion() {
+      if (currentQuestionIndex > 0 && !isTransitioning) {
+        currentQuestionIndex--;
+        renderQuestion(currentQuestionIndex);
+      }
+    }
+
+    // Calculation Phase Animation
+    function showCalculatingScreen() {
+      document.getElementById('viewQuestions').classList.add('hidden');
+      document.getElementById('quizProgressBarContainer').classList.add('hidden');
+      document.getElementById('viewCalculating').classList.remove('hidden');
+      document.getElementById('stepCounterText').innerText = "تحليل المسار الأيضي";
+
+      const statusText = document.getElementById('calcStatusText');
+      const progressFill = document.getElementById('calcProgressFill');
+
+      setTimeout(() => {
+        progressFill.style.width = '45%';
+        statusText.innerText = "مطابقة مستوى الدعم ومؤشر الاستجابة الأيضية...";
+      }, 700);
+
+      setTimeout(() => {
+        progressFill.style.width = '85%';
+        statusText.innerText = "تحديد المسار الموصى به من فريق د. أحمد الخطيب...";
+      }, 1400);
+
+      setTimeout(() => {
+        progressFill.style.width = '100%';
+        finalizeOutcome();
+      }, 2100);
+    }
+
+    // Finalize Outcome Based on Branching Logic
+    function finalizeOutcome() {
+      document.getElementById('viewCalculating').classList.add('hidden');
+
+      // Count scores
+      let privateScore = 0;
+      let communityScore = 0;
+
+      Object.values(userAnswers).forEach(val => {
+        if (val === 'private') privateScore += 2;
+        else if (val === 'community') communityScore += 2;
+        else {
+          privateScore += 1;
+          communityScore += 1;
+        }
+      });
+
+      // If user clearly prefers 1-on-1 private coaching -> Outcome B, otherwise -> Community Outcome A
+      if (privateScore > communityScore) {
+        document.getElementById('viewOutcomePrivate').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: الكوتشينج الخاص (VIP 1:1)";
+      } else {
+        document.getElementById('viewOutcomeCommunity').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: مجتمع وتحدي واحة نور";
+      }
+    }
+
+    // Allow user to toggle / preview the other outcome
+    function switchOutcome(target) {
+      if (target === 'private') {
+        document.getElementById('viewOutcomeCommunity').classList.add('hidden');
+        document.getElementById('viewOutcomePrivate').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: الكوتشينج الخاص (VIP 1:1)";
+      } else {
+        document.getElementById('viewOutcomePrivate').classList.add('hidden');
+        document.getElementById('viewOutcomeCommunity').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: مجتمع وتحدي واحة نور";
+      }
+    }
+
+    // Check URL parameters: auto open if #quiz or ?start=true
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('start') === 'true' || window.location.hash === '#quiz') {
+        openQuizModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>واحة نور | التقييم الأيضي السريع - اكتشف مسارك المخصص بإشراف د. أحمد الخطيب</title>
-  <meta name="description" content="أجب عن 5 أسئلة سريعة لاكتشاف المسار الأنسب لك في واحة نور: مجتمع التحدي الجماعي التفاعلي أو الكوتشينج الخاص الفردي 1-on-1.">
-  <meta name="keywords" content="واحة نور, كويز الصيام المتقطع, تقييم الأيض, دكتور أحمد الخطيب, كوتشينج صحي, مجتمع واحة نور">
+  <title>واحة نور | تقييم المسار الأيضي المخصص - بإشراف د. أحمد الخطيب</title>
+  <meta name="description" content="لم تكن يوماً قلة إرادة.. بل كان جسدك يطلب الأمان فقط. 5 أسئلة استراتيجية تحدد لك مسارك الأنسب في واحة نور: مجتمع التحدي ($49)، المتابعة المتكاملة برو 1:1 ($119)، أو الرعاية النخبوية VIP مع د. أحمد الخطيب ($249 - $399).">
+  <meta name="keywords" content="واحة نور, دكتور أحمد الخطيب, كويز المسار الأيضي, استشفاء الأيض, باقات واحة نور, كوتشينج صحي, مقاومة الأنسولين, الكورتيزول">
 
   <!-- OpenGraph Meta -->
-  <meta property="og:title" content="واحة نور | التقييم الأيضي السريع - اكتشف مسارك المخصص">
-  <meta property="og:description" content="5 أسئلة سريعة تحدد لك المسار الأنسب لضبط حرق الدهون وتعديل نمط حياتك.">
+  <meta property="og:title" content="واحة نور | تقييم المسار الأيضي المخصص - بإشراف د. أحمد الخطيب">
+  <meta property="og:description" content="لم تكن يوماً قلة إرادة.. 5 أسئلة استراتيجية تحدد باقتك المثالية لاستعادة حرقك الطبيعي.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/dr_hero_cutout.webp">
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     :root {
@@ -58,7 +61,7 @@
       box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.45);
     }
 
-    /* Shimmer Effect for Buttons */
+    /* Shimmer Button Effect */
     @keyframes shimmerPass {
       0% { transform: translateX(-150%) skewX(-20deg); opacity: 0; }
       40% { opacity: 0.7; }
@@ -80,28 +83,28 @@
     }
 
     /* Floating animation */
-    @keyframes subtleFloat {
+    @keyframes gentleFloat {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      50% { transform: translateY(-7px); }
     }
     .floating-card {
-      animation: subtleFloat 6s ease-in-out infinite;
+      animation: gentleFloat 5.5s ease-in-out infinite;
     }
 
-    /* Quiz Modal Animations */
+    /* Quiz Modal Backdrop */
     .quiz-overlay {
-      background: rgba(4, 11, 20, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(4, 11, 20, 0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
-    /* Card Question Transition */
+    /* Question Slide Motions */
     .slide-in-right {
-      animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: slideInRight 0.34s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     .slide-out-left {
-      animation: slideOutLeft 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: slideOutLeft 0.30s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes slideInRight {
@@ -116,9 +119,9 @@
 
     /* Pulse Radar Loader */
     @keyframes radarPulse {
-      0% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
-      70% { transform: scale(1.1); opacity: 0.4; box-shadow: 0 0 0 35px rgba(56, 189, 248, 0); }
-      100% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+      0% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(29, 155, 240, 0.7); }
+      70% { transform: scale(1.1); opacity: 0.4; box-shadow: 0 0 0 35px rgba(29, 155, 240, 0); }
+      100% { transform: scale(0.85); opacity: 0.9; box-shadow: 0 0 0 0 rgba(29, 155, 240, 0); }
     }
     .radar-circle {
       animation: radarPulse 2s infinite ease-in-out;
@@ -134,9 +137,9 @@
       transform: translateY(-2px);
     }
     .quiz-option.selected {
-      border-color: #38BDF8;
-      background: linear-gradient(135deg, rgba(29, 155, 240, 0.2) 0%, rgba(16, 185, 129, 0.15) 100%);
-      box-shadow: 0 0 25px -4px rgba(56, 189, 248, 0.5);
+      border-color: #1D9BF0;
+      background: linear-gradient(135deg, rgba(29, 155, 240, 0.22) 0%, rgba(16, 185, 129, 0.15) 100%);
+      box-shadow: 0 0 25px -4px rgba(29, 155, 240, 0.5);
       transform: scale(0.99);
     }
   </style>
@@ -154,7 +157,7 @@
   <header class="relative z-40 border-b border-white/5 bg-[#071626]/85 backdrop-blur-md sticky top-0">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo Lockup -->
+      <!-- Brand Logo -->
       <a href="wahet-nour.html" class="flex items-center gap-3 group">
         <img src="assets/logos/types/Type_6_Combination_Mark.svg" alt="واحة نور" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
       </a>
@@ -162,22 +165,23 @@
       <!-- Desktop Nav Links -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
         <a href="wahet-nour.html" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
-        <a href="wahet-nour.html#features" class="hover:text-cyan-400 transition-colors">منظومة الحرق الأيضي</a>
-        <a href="wahet-nour.html#packages" class="hover:text-cyan-400 transition-colors">الباقات والاشتراك</a>
-        <a href="wahet-nour.html#faq" class="hover:text-cyan-400 transition-colors">الأسئلة الشائعة</a>
+        <a href="wahet-nour.html#about" class="hover:text-cyan-400 transition-colors">عن د. أحمد الخطيب</a>
+        <a href="wahet-nour.html#team" class="hover:text-cyan-400 transition-colors">فريق الكوتشينج والتغذية</a>
+        <a href="wahet-nour.html#packages" class="hover:text-cyan-400 transition-colors font-bold text-amber-400">الباقات الرسمية</a>
+        <a href="wahet-nour.html#faq" class="hover:text-cyan-400 transition-colors">أسئلة تطمئن قلبك</a>
       </nav>
 
       <!-- Action Button -->
       <div class="flex items-center gap-4">
-        <button onclick="openQuizModal()" class="btn-shimmer px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all">
-          ✨ ابدأ التقييم (5 أسئلة)
+        <button onclick="openQuizModal()" class="btn-shimmer px-5 py-2.5 rounded-full bg-gradient-to-r from-[#0A4174] to-[#1D9BF0] text-white font-bold text-xs sm:text-sm shadow-lg shadow-cyan-500/25 hover:brightness-110 active:scale-95 transition-all">
+          ✨ ابدأ التقييم الأيضي (5 أسئلة)
         </button>
       </div>
 
     </div>
   </header>
 
-  <!-- MAIN HERO SECTION (Modeled directly after The Fasting Method Hero) -->
+  <!-- MAIN HERO SECTION (Our authentic voice & philosophy) -->
   <main class="relative z-10 pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -189,51 +193,51 @@
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-bold">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>بإشراف د. أحمد الخطيب • استشفاء الأيض ونمط الحياة</span>
+            <span>بإشراف د. أحمد الخطيب • استشفاء الأيض ونمط الحياة المتوازن</span>
           </div>
 
           <!-- Main Title -->
           <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.25] tracking-tight">
-            مرحباً بك في <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">واحة نور</span>
+            لم تكن يوماً <span class="text-rose-400">قلة إرادة..</span>
             <br>
-            <span class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-200 mt-2 block">
-              الصيام المتقطع الذكي لاستعادة الحرق الأيضي
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">
+              بل كان جسدك يطلب الأمان فقط
             </span>
           </h1>
 
-          <!-- Body Description -->
-          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-            خُض تجربة البرنامج الأيضي الأكثر تكاملاً لضبط حساسية الإنسولين، خسارة الدهون العنيدة، وإعادة برمجة علاقتك بالطعام. منظومة متكاملة مدعومة بالنتائج الواقعية، ومُعزَّزة بقوة الكوميونيتي والمتابعة اليومية.
+          <!-- Body Description in Wahet Nour Voice -->
+          <p class="text-base sm:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            توقف عن معاقبة نفسك بالجوع ولوم روحك أمام المرآة. في <strong>«واحة نور»</strong>، لا نقدم قوالب جاهزة ولا دايت حرمان؛ بل نفك شفرة لغة هرموناتك (الإنسولين والكورتيزول ولبتين الشبع)، ونعيد تشغيل حرقك الطبيعي بأكل بيتك المشبع.. لنكتشف معاً أي مسار يناسبك بالضبط.
           </p>
 
-          <!-- Core Call to Action (The Fasting Method Style) -->
+          <!-- Core Call to Action -->
           <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <button onclick="openQuizModal()" class="w-full sm:w-auto btn-shimmer px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 text-white font-extrabold text-lg shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-105 transition-all flex items-center justify-center gap-3">
-              <span>ابدأ التقييم الأيضي الآن (5 أسئلة)</span>
+            <button onclick="openQuizModal()" class="w-full sm:w-auto btn-shimmer px-8 py-4 rounded-full bg-gradient-to-r from-[#0A4174] via-[#1D9BF0] to-emerald-500 text-white font-extrabold text-base sm:text-lg shadow-xl shadow-cyan-500/30 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-3">
+              <span>اكتشف باقتك المثالية (5 أسئلة استراتيجية)</span>
               <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </button>
-            <span class="text-xs text-slate-400">⏱️ يستغرق 60 ثانية فقط • مجاني 100%</span>
+            <span class="text-xs text-slate-400">⏱️ يستغرق 60 ثانية • يحدد لك مسارك الأنسب فوراً</span>
           </div>
 
-          <!-- Value Pillars Row -->
-          <div class="pt-6 grid grid-cols-3 gap-3 border-t border-white/10 text-right">
-            <div>
-              <div class="text-emerald-400 font-extrabold text-lg sm:text-xl">تخصيص كامل</div>
-              <div class="text-xs text-slate-400">لا قوالب جاهزة، نظام مبني على بياناتك</div>
+          <!-- 3 Strategic Pathways Preview -->
+          <div class="pt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-white/10 text-right">
+            <div class="bg-[#0B1E33]/70 border border-white/5 p-3 rounded-xl">
+              <div class="text-emerald-400 font-extrabold text-sm sm:text-base">1. مجتمع التحدي ($49)</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">طاقة الكوميونيتي، تشجيع يومي، وخطة مفصلة لأكل بيتك</div>
             </div>
-            <div>
-              <div class="text-cyan-400 font-extrabold text-lg sm:text-xl">متابعة يومية</div>
-              <div class="text-xs text-slate-400">كوتش وتغذية معك داخل الكوميونيتي</div>
+            <div class="bg-[#0B1E33]/70 border border-white/5 p-3 rounded-xl">
+              <div class="text-cyan-400 font-extrabold text-sm sm:text-base">2. متابعة برو 1:1 ($119)</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">أخصائي تغذية وكوتش تأهيل يرافقانك كظلك بشات خاص</div>
             </div>
-            <div>
-              <div class="text-amber-400 font-extrabold text-lg sm:text-xl">د. أحمد لايف</div>
-              <div class="text-xs text-slate-400">1-2 بث مباشر شهرياً لحل معضلاتك</div>
+            <div class="bg-[#0B1E33]/70 border border-white/5 p-3 rounded-xl">
+              <div class="text-amber-400 font-extrabold text-sm sm:text-base">3. رعاية VIP ($249+)</div>
+              <div class="text-[11px] text-slate-400 mt-0.5">خط مباشر وخاص مع د. أحمد الخطيب شخصياً للحالات الدقيقة</div>
             </div>
           </div>
 
         </div>
 
-        <!-- Right Column: Doctor & Community Hero Card -->
+        <!-- Right Column: Doctor & Ecosystem Hero Card -->
         <div class="lg:col-span-5 relative flex justify-center">
           
           <div class="relative w-full max-w-md floating-card">
@@ -244,38 +248,35 @@
             <!-- Content Box -->
             <div class="relative rounded-3xl bg-[#0B1E33] border border-white/10 p-6 overflow-hidden shadow-2xl">
               
-              <!-- Subtle Background Mosaic -->
-              <div class="absolute inset-0 opacity-15 bg-cover bg-center" style="background-image: url('assets/testimonials_collage.webp'); filter: grayscale(100%);"></div>
-              
               <div class="relative z-10 flex flex-col items-center text-center">
                 
                 <!-- Doctor Image -->
                 <div class="relative w-64 h-72 sm:w-72 sm:h-80 mb-4 overflow-hidden rounded-2xl border-2 border-cyan-400/30 bg-gradient-to-b from-cyan-900/30 to-[#071626]">
-                  <img src="assets/dr_hero_cutout.webp" alt="د. أحمد الخطيب" class="w-full h-full object-cover object-top filter contrast-105">
+                  <img src="assets/dr_hero_cutout.webp" alt="د. أحمد الخطيب - واحة نور" class="w-full h-full object-cover object-top filter contrast-105">
                   <div class="absolute inset-0 bg-gradient-to-t from-[#0B1E33] via-transparent to-transparent"></div>
                   
                   <!-- Tag on photo -->
                   <div class="absolute bottom-3 inset-x-3 bg-[#071626]/90 backdrop-blur-md rounded-xl p-2.5 border border-white/10 text-center">
                     <div class="text-sm font-black text-white">د. أحمد الخطيب</div>
-                    <div class="text-[11px] font-semibold text-cyan-400">المشرف العام ومؤسس واحة نور</div>
+                    <div class="text-[11px] font-semibold text-cyan-400">طبيب وباحث في علوم استشفاء الأيض ونمط الحياة</div>
                   </div>
                 </div>
 
                 <!-- Floating Stats Pill -->
                 <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 flex items-center justify-around text-xs">
                   <div>
-                    <span class="block font-black text-amber-400 text-base">★ 4.9/5</span>
-                    <span class="text-slate-400 text-[10px]">تقييم المشتركين</span>
+                    <span class="block font-black text-cyan-400 text-base">+9M</span>
+                    <span class="text-slate-400 text-[10px]">متابع وباحث عن الحقيقة</span>
                   </div>
                   <div class="w-px h-8 bg-white/10"></div>
                   <div>
-                    <span class="block font-black text-cyan-400 text-base">+12,000</span>
-                    <span class="text-slate-400 text-[10px]">ساعة صيام ناجحة</span>
+                    <span class="block font-black text-emerald-400 text-base">+10,000</span>
+                    <span class="text-slate-400 text-[10px]">قصة تحول حقيقية</span>
                   </div>
                   <div class="w-px h-8 bg-white/10"></div>
                   <div>
-                    <span class="block font-black text-emerald-400 text-base">100%</span>
-                    <span class="text-slate-400 text-[10px]">بدون حرمان</span>
+                    <span class="block font-black text-amber-400 text-base">100%</span>
+                    <span class="text-slate-400 text-[10px]">بدون حرمان أو أدوية</span>
                   </div>
                 </div>
 
@@ -291,67 +292,21 @@
 
     </div>
 
-    <!-- AS SEEN ON / CREDIBILITY BANNER (Matching The Fasting Method) -->
+    <!-- VALUE PROPOSITION BAR -->
     <div class="mt-20 border-y border-white/5 bg-[#040E1A]/80 py-8">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <p class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-6">
-          مرتكز على أحدث أبحاث الأيض والصيام المعتمدة دولياً • AS SEEN ON &amp; RESEARCH BACKED
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
-          <span class="text-lg font-black tracking-wider text-slate-300">Forbes</span>
-          <span class="text-lg font-serif font-bold text-slate-300">The New York Times</span>
-          <span class="text-xl font-black text-slate-300">CNN</span>
-          <span class="text-lg font-sans font-bold text-slate-300">Bloomberg</span>
-          <span class="text-sm font-mono font-bold text-slate-300">BMJ Journals</span>
-          <span class="text-base font-serif italic text-slate-300">Harvard Health</span>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm font-bold text-slate-300">
+          <span class="flex items-center gap-2"><span class="text-emerald-400 text-lg">✓</span> خطة تغذية خاصة بك 100% (بدون أي تمبلت مكرر)</span>
+          <span class="flex items-center gap-2"><span class="text-cyan-400 text-lg">✓</span> فريق كوتشينج وتغذية وتأهيل حركي يومي</span>
+          <span class="flex items-center gap-2"><span class="text-amber-400 text-lg">✓</span> لايفات دورية واستشارات مباشرة مع د. أحمد الخطيب</span>
+          <span class="flex items-center gap-2"><span class="text-emerald-400 text-lg">✓</span> أدوات ذكية: عداد الصيام، فاحص الوجبات، ومكتبة التدريب</span>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- QUICK 3-STEP EXPLAINER (Why Take The Quiz?) -->
-  <section class="py-16 bg-[#061423]/60 relative z-10 border-b border-white/5">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h2 class="text-2xl sm:text-3xl font-black text-white mb-4">
-        كيف يعمل تقييم تحديد المسار الأيضي؟
-      </h2>
-      <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-12">
-        نحن لا نؤمن بالحلول المعلبة. إجاباتك تمكننا من توجيهك إلى البيئة التي تضمن لك الاستمرار بنسبة تفوق 90%.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
-        <!-- Step 1 -->
-        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 font-black flex items-center justify-center mb-4 text-lg">1</div>
-          <h3 class="text-lg font-bold text-white mb-2">5 أسئلة نفسية وأيضية</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">تحدد نمط يومك، قابليتك للالتزام، وحاجتك للدعم الجماعي أو المتابعة الفردية السرية.</p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 font-black flex items-center justify-center mb-4 text-lg">2</div>
-          <h3 class="text-lg font-bold text-white mb-2">خوارزمية الفرز الذكية</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">تحليل فوري لمؤشرات الإرادة والوقت لترشيح البيئة الأنسب من برامج واحة نور.</p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="bg-[#0B1E33] border border-white/10 rounded-2xl p-6 relative">
-          <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 font-black flex items-center justify-center mb-4 text-lg">3</div>
-          <h3 class="text-lg font-bold text-white mb-2">التوجيه للباقة المؤهلة</h3>
-          <p class="text-xs text-slate-400 leading-relaxed">إما باقة مجتمع التحدي الجماعي ($49 - $119) أو باقة الكوتشينج الخاص 1:1 ($249 - $399).</p>
-        </div>
-      </div>
-
-      <div class="mt-10">
-        <button onclick="openQuizModal()" class="px-8 py-3.5 rounded-full bg-cyan-500 text-slate-950 font-black text-sm hover:bg-cyan-400 hover:scale-105 transition-all">
-          ابدأ الكويز الآن مجاناً ↵
-        </button>
-      </div>
-    </div>
-  </section>
-
   <!-- ======================================================== -->
-  <!-- THE INTERACTIVE 5-QUESTION QUIZ MODAL (FULL EXPERIENCE) -->
+  <!-- THE STRATEGIC 5-QUESTION QUIZ MODAL                      -->
   <!-- ======================================================== -->
   <div id="quizModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 quiz-overlay opacity-0 pointer-events-none transition-opacity duration-300">
     
@@ -359,11 +314,11 @@
     <div class="relative w-full max-w-2xl bg-[#0B1E33] border border-cyan-500/30 rounded-3xl shadow-2xl shadow-cyan-950/60 overflow-hidden text-right flex flex-col max-h-[92vh]">
       
       <!-- Modal Header Bar -->
-      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#081728]/90">
+      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#081728]/95">
         <div class="flex items-center gap-3">
           <img src="assets/logos/types/Type_2_Lettermark_Monogram.svg" alt="WN" class="h-8 w-auto">
           <div>
-            <span class="text-xs font-extrabold text-cyan-400 uppercase tracking-wider block">تقييم المسار الأيضي • WAHET NOUR</span>
+            <span class="text-xs font-extrabold text-cyan-400 uppercase tracking-wider block">واحة نور • تقييم المسار الأيضي</span>
             <span class="text-[11px] text-slate-400" id="stepCounterText">الخطوة التمهيدية</span>
           </div>
         </div>
@@ -374,47 +329,46 @@
         </button>
       </div>
 
-      <!-- Top Progress Bar (Active when in questions) -->
+      <!-- Top Progress Bar -->
       <div id="quizProgressBarContainer" class="w-full bg-slate-800 h-1.5 hidden">
         <div id="quizProgressBar" class="h-1.5 bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-400 transition-all duration-400" style="width: 20%;"></div>
       </div>
 
-      <!-- Modal Body (Dynamic Views) -->
+      <!-- Modal Body -->
       <div class="p-6 sm:p-8 overflow-y-auto flex-1 relative min-h-[380px] flex flex-col justify-center">
 
         <!-- ---------------------------------------------------- -->
-        <!-- VIEW 0: WELCOME & START SCREEN (Matches Image 2)      -->
+        <!-- VIEW 0: WELCOME & START SCREEN                       -->
         <!-- ---------------------------------------------------- -->
         <div id="viewStart" class="text-center space-y-6 relative py-4">
           
-          <!-- Background Mosaic Overlay in Modal -->
-          <div class="absolute inset-0 -m-8 opacity-10 bg-cover bg-center pointer-events-none" style="background-image: url('assets/testimonials_collage.webp');"></div>
-          
           <div class="relative z-10">
-            <span class="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-3">
-              ✦ اختبار مجاني لتحديد المسار الأنسب
+            <span class="inline-block px-4 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-3">
+              ✦ تقييم مجاني ومخصص في 60 ثانية
             </span>
             
             <h2 class="text-2xl sm:text-3xl font-black text-white leading-snug">
-              تقييم الصيام المتقطع ونمط الحياة الأيضي
+              أين يبدأ استشفاء جسدك واستعادة حرقك؟
               <br>
-              <span class="text-cyan-400 text-lg sm:text-xl font-bold">FREE Intermittent Fasting Quiz</span>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 text-lg sm:text-xl font-bold">
+                5 أسئلة استراتيجية تحدد لك باقتك المثالية بدقة
+              </span>
             </h2>
 
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-lg mx-auto mt-4">
-              أجب عن هذا التقييم المكوَّن من <strong>5 أسئلة سريعة</strong> لنكتشف معاً كيف تساعدك منظومة واحة نور على بلوغ أهدافك وبناء نمط حياة صحي ومستدام. فور الإجابة، سيتم توجيهك فورياً إلى البرنامج الأكثر مطابقة لطبيعة شخصيتك ووقتك (المجتمع التفاعلي أو الكوتشينج الخاص 1:1).
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto mt-4">
+              نحن لا نؤمن بالحلول المعلبة. إجاباتك ستقود خوارزمية الفرز لتوجيهك للمسار الذي يضمن لك الاستمرار بنسبة تفوق 90%: إما <strong>مجتمع التحدي الجماعي ($49)</strong>، أو <strong>المتابعة المتكاملة برو 1:1 مع أخصائي التغذية والكوتش ($119)</strong>، أو <strong>الرعاية النخبوية VIP مع د. أحمد الخطيب شخصياً ($249 - $399)</strong>.
             </p>
 
             <div class="pt-6">
-              <button onclick="startQuizQuestions()" class="btn-shimmer px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-extrabold text-lg shadow-xl shadow-blue-500/30 hover:scale-105 transition-all w-full sm:w-auto">
-                ابدأ التقييم الآن • START
+              <button onclick="startQuizQuestions()" class="btn-shimmer px-10 py-4 rounded-full bg-gradient-to-r from-[#0A4174] via-[#1D9BF0] to-emerald-500 text-white font-extrabold text-base sm:text-lg shadow-xl shadow-cyan-500/30 hover:scale-105 transition-all w-full sm:w-auto">
+                ابدأ التقييم الآن • اكتشف باقتك
               </button>
             </div>
           </div>
         </div>
 
         <!-- ---------------------------------------------------- -->
-        <!-- VIEW 1: QUESTIONS CONTAINER (Matches Images 3 & 4)   -->
+        <!-- VIEW 1: QUESTIONS CONTAINER (Slide in/out)          -->
         <!-- ---------------------------------------------------- -->
         <div id="viewQuestions" class="hidden">
           
@@ -423,11 +377,11 @@
             <!-- Question Title & Instructions -->
             <div>
               <span id="questionCategory" class="text-xs font-bold text-cyan-400 uppercase tracking-wider block mb-1">السؤال 1 من 5</span>
-              <h3 id="questionTitle" class="text-xl sm:text-2xl font-black text-white leading-snug">
+              <h3 id="questionTitle" class="text-lg sm:text-2xl font-black text-white leading-snug">
                 <!-- Injected via JS -->
               </h3>
               <p id="questionSubtitle" class="text-xs sm:text-sm text-slate-400 mt-1">
-                يرجى اختيار الإجابة الأكثر ملاءمة لاحتياجك وطبيعة يومك.
+                اختر الإجابة الأكثر صدقاً وملاءمة لواقعك لتصل لأدق نتيجة.
               </p>
             </div>
 
@@ -438,33 +392,33 @@
 
           </div>
 
-          <!-- Bottom Navigation Bar (Back Arrow) -->
+          <!-- Bottom Navigation Bar -->
           <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
             <button id="btnPrev" onclick="goToPrevQuestion()" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors disabled:opacity-30 disabled:pointer-events-none">
               <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
               <span>السؤال السابق</span>
             </button>
-            <span class="text-[11px] text-slate-500">اختر إجابتك للانتقال التلقائي السلس</span>
+            <span class="text-[11px] text-slate-500">انتقال تلقائي فوري وسلس بمجرد الاختيار</span>
           </div>
 
         </div>
 
         <!-- ---------------------------------------------------- -->
-        <!-- VIEW 2: SMART METABOLIC CALCULATION / LOADER SCREEN  -->
+        <!-- VIEW 2: SMART METABOLIC CALCULATION SCREEN          -->
         <!-- ---------------------------------------------------- -->
         <div id="viewCalculating" class="hidden text-center py-10 space-y-6">
           
           <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
             <div class="absolute inset-0 rounded-full border-4 border-cyan-400/20 border-t-cyan-400 animate-spin"></div>
             <div class="w-20 h-20 rounded-full bg-cyan-500/10 flex items-center justify-center radar-circle">
-              <span class="text-2xl">⚡</span>
+              <span class="text-2xl">🧬</span>
             </div>
           </div>
 
           <div class="space-y-2">
-            <h3 class="text-xl font-black text-white">جارٍ تحليل بياناتك وتحديد المسار الأنسب...</h3>
+            <h3 class="text-xl font-black text-white">جارٍ تحليل بياناتك ومطابقة المسار الأنسب...</h3>
             <p id="calcStatusText" class="text-sm font-semibold text-cyan-400 animate-pulse">
-              تحليل إجاباتك وعاداتك اليومية...
+              تحليل لغة جسدك وهرمونات الحرق...
             </p>
           </div>
 
@@ -475,72 +429,66 @@
         </div>
 
         <!-- ---------------------------------------------------- -->
-        <!-- VIEW 3: OUTCOME A - COMMUNITY & COHORT QUALIFIED     -->
-        <!-- (Matches The Fasting Method /join-our-community/)   -->
+        <!-- OUTCOME 1: COMMUNITY COHORT ($49/MO)                 -->
         <!-- ---------------------------------------------------- -->
         <div id="viewOutcomeCommunity" class="hidden space-y-6 slide-in-right text-right">
           
-          <!-- Qualified Badge -->
+          <!-- Badge -->
           <div class="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/80 to-[#0A223A] border border-emerald-500/40 flex items-center gap-4">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 font-black text-xl flex items-center justify-center shrink-0">
               98%
             </div>
             <div>
-              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">مسارك المثالي المؤهل • PERFECT MATCH</span>
-              <h3 class="text-base sm:text-lg font-black text-white">مجتمع وتحدي واحة نور التفاعلي (Community &amp; Cohort)</h3>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider block">مسارك المثالي المؤهل • COMMUNITY MATCH</span>
+              <h3 class="text-base sm:text-lg font-black text-white">باقة تحدي الواحة ومجتمع الرشاقة ($49/شهرياً)</h3>
             </div>
           </div>
 
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            بناءً على إجاباتك، أفضل بيئة تضمن لك كسر ثبات الوزن والاستمرار هي <strong>البيئة الجماعية الداعمة</strong>. ستحصل على متابعة يومية من فريق الكوتشينج والتغذية، وتتفاعل مع أبطال يشاركونك نفس الرحلة، مع حضور لقاءات د. أحمد المباشرة.
+            إجاباتك أظهرت أن نقطة ضعفك الرئيسية في التجارب السابقة كانت <strong>الملل، وفقدان الحماس بعد أسابيع قليلة، والوحدة</strong>. في مجتمع الواحة، لن تكون وحدك أبداً؛ ستعيش في بيئة تفاعلية محفزة يومياً مع أبطال يمرون بنفس رحلتك، مع تواجد يومي لأخصائي التغذية والكوتش للرد على أسئلتك، وحضور لقاءات البث المباشر مع د. أحمد الخطيب.
           </p>
 
-          <!-- Pricing Table (Matching The Fasting Method 3-tier view in Image 5) -->
-          <div class="border border-white/10 rounded-2xl overflow-hidden bg-[#071728]">
-            <div class="grid grid-cols-3 bg-[#0A2035] text-center p-3 text-xs font-black border-b border-white/10">
-              <div class="text-slate-300">الباقة</div>
-              <div class="text-emerald-400">باقة التحدي (شهر)</div>
-              <div class="text-cyan-400">باقة برو (3 شهور) ★</div>
+          <!-- Core Inclusions -->
+          <div class="bg-[#071728] border border-emerald-500/20 rounded-2xl p-4 space-y-2.5 text-xs text-slate-300">
+            <div class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>نظام غذائي مخصص 100%</strong> يُبنى من أكلات بيتك المفضلة (بدون أي تمبلت مكرر).</span>
             </div>
-
-            <div class="divide-y divide-white/5 text-xs text-slate-300 p-2 space-y-1">
-              <div class="grid grid-cols-3 py-2 text-center items-center">
-                <span class="text-right pr-2 font-bold text-white">السعر</span>
-                <span class="font-bold text-emerald-400">$49 USD</span>
-                <span class="font-black text-cyan-400 text-sm">$119 USD</span>
-              </div>
-              <div class="grid grid-cols-3 py-2 text-center items-center">
-                <span class="text-right pr-2">تواجد يومي للكوتش والتغذية</span>
-                <span class="text-emerald-400">✓</span>
-                <span class="text-cyan-400">✓</span>
-              </div>
-              <div class="grid grid-cols-3 py-2 text-center items-center">
-                <span class="text-right pr-2">بث مباشر مع د. أحمد الخطيب</span>
-                <span class="text-slate-400">1 لايف شهرياً</span>
-                <span class="text-cyan-400 font-bold">2 لايف شهرياً</span>
-              </div>
-              <div class="grid grid-cols-3 py-2 text-center items-center">
-                <span class="text-right pr-2">نظام غذائي وعدّاد صيام مخصص</span>
-                <span class="text-emerald-400">✓</span>
-                <span class="text-cyan-400 font-bold">✓ + تحديث شهري</span>
-              </div>
-              <div class="grid grid-cols-3 py-2 text-center items-center">
-                <span class="text-right pr-2">مكتبة التمارين والتأهيل الحركي</span>
-                <span class="text-emerald-400">✓</span>
-                <span class="text-cyan-400">✓ كاملة</span>
-              </div>
+            <div class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>أخصائي التغذية والكوتش معك يومياً في الكوميونيتي</strong> للرد على استفساراتك وتصحيح وجباتك.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>بث مباشر تفاعلي دوري مع د. أحمد الخطيب</strong> (1-2 شهرياً) لفك ثبات الوزن.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span><strong>برنامج حركي وتدريبي مفصل</strong> تحت إشراف متخصص التأهيل الحركي والبدني.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-emerald-400 font-bold">✓</span>
+              <span>وصول كامل لمنصة واحة نور (عداد الصيام الذكي، مكتبة الوجبات، وحاسبة السوبرماركت).</span>
             </div>
           </div>
 
-          <!-- Action Buttons -->
+          <!-- Price & Action -->
           <div class="space-y-3 pt-2">
+            <div class="flex items-center justify-between px-2">
+              <span class="text-xs text-slate-400">الاستثمار في باقة التحدي:</span>
+              <span class="text-xl font-black text-emerald-400">$49 USD <span class="text-xs font-normal text-slate-400">/ شهرياً</span></span>
+            </div>
+
             <a href="wahet-nour.html#packages" class="btn-shimmer w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-center text-base shadow-lg shadow-emerald-500/25 block hover:scale-[1.02] transition-transform">
-              🚀 انضم للكوميونيتي وابدأ رحلتك الآن
+              🚀 اشترك في باقة التحدي ($49/شهرياً)
             </a>
             
-            <div class="text-center">
-              <button onclick="switchOutcome('private')" class="text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">
-                هل تفضل متابعة فردية سرية خاصة بالكامل 1-on-1؟ اضغط هنا
+            <div class="flex items-center justify-between text-xs text-slate-400 pt-2 px-1">
+              <button onclick="switchOutcome('nutrition_pro')" class="hover:text-cyan-400 underline">
+                تريد مرافقة خاصة 1:1 مع أخصائي التغذية؟ ($119)
+              </button>
+              <button onclick="switchOutcome('vip_doctor')" class="hover:text-amber-400 underline">
+                تريد باقة VIP مع د. أحمد الخطيب؟ ($249+)
               </button>
             </div>
           </div>
@@ -548,64 +496,137 @@
         </div>
 
         <!-- ---------------------------------------------------- -->
-        <!-- VIEW 4: OUTCOME B - PRIVATE 1-ON-1 COACHING QUALIFIED -->
+        <!-- OUTCOME 2: NUTRITION & COACH 1:1 PRO ($119/MO)       -->
         <!-- ---------------------------------------------------- -->
-        <div id="viewOutcomePrivate" class="hidden space-y-6 slide-in-right text-right">
+        <div id="viewOutcomeNutritionPro" class="hidden space-y-6 slide-in-right text-right">
           
-          <!-- Qualified Badge -->
-          <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-950/80 to-[#1F1706] border border-amber-500/40 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xl flex items-center justify-center shrink-0">
-              100%
+          <!-- Badge -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/80 to-[#0A2E4D] border border-cyan-500/50 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 font-black text-xl flex items-center justify-center shrink-0">
+              99%
             </div>
             <div>
-              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">مسارك النخبوي المؤهل • VIP ONE-ON-ONE</span>
-              <h3 class="text-base sm:text-lg font-black text-white">الكوتشينج الخاص الفردي (Private Coaching 1:1)</h3>
+              <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider block">مسارك الموصى به • 1-ON-1 NUTRITION PRO</span>
+              <h3 class="text-base sm:text-lg font-black text-white">باقة المتابعة المتكاملة برو 1:1 ($119/شهرياً)</h3>
             </div>
           </div>
 
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            بناءً على جدولك المزدحم أو رغبتك في أقصى درجات التركيز، فإن الأنسب لك هو <strong>المرافقة الفردية الخاصة 1-on-1</strong>. خط تواصل مباشر مع الكوتش وأخصائي التغذية، ومتابعة خاصة بإشراف د. أحمد دون تشتت المجموعات العامة.
+            إجاباتك أوضحت أنك تحتاج دعماً فردياً خاصاً يرافقك كظلك (أخصائي/أخصائية تغذية معتمدة + كوتش تأهيل حركي) بعيداً عن المجموعات العامة. جدول أسبوعي يتغير بمرونة مع سفرياتك وعملك، ومتابعة مكثفة مرتين أسبوعياً لتقييم وتعديل الوجبات فورياً.
           </p>
 
-          <!-- VIP Highlights Box -->
-          <div class="bg-[#091A2C] border border-amber-500/30 rounded-2xl p-4 space-y-3 text-xs">
-            <div class="flex items-start gap-3">
-              <span class="text-amber-400 font-black text-sm">👑</span>
-              <div>
-                <strong class="text-white block font-bold">خط تواصل وتوجيه فردي خاص:</strong>
-                <span class="text-slate-400">محادثة شخصية مباشرة للإجابة على يومياتك وتعديل الوجبات أثناء السفر والعمل.</span>
-              </div>
+          <!-- Core Inclusions -->
+          <div class="bg-[#071728] border border-cyan-500/30 rounded-2xl p-4 space-y-2.5 text-xs text-slate-200">
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>مرافقة فردية خاصة 1:1</strong> عبر المنصة والواتساب الخاص مع أخصائي التغذية والكوتش.</span>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="text-amber-400 font-black text-sm">🧬</span>
-              <div>
-                <strong class="text-white block font-bold">تعديل أسبوعي دقيق للخطة:</strong>
-                <span class="text-slate-400">مرونة تامة تتكيف مع استجابة جسمك وتحاليلك دون فرض أي قالب مسبق.</span>
-              </div>
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>8 جلسات متابعة شهرية مكثفة (مرتان أسبوعياً)</strong> لتعديل خطة الأكل والتمرين فورياً.</span>
             </div>
-            <div class="flex items-start gap-3">
-              <span class="text-amber-400 font-black text-sm">🎯</span>
-              <div>
-                <strong class="text-white block font-bold">أولوية الاستشارات مع د. أحمد الخطيب:</strong>
-                <span class="text-slate-400">مراجعة دقيقة لملفك وحل معضلات ثبات الوزن ومقاومة الإنسولين شخصياً.</span>
-              </div>
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>مكالمات صوتية توجيهية أسبوعية (تصل إلى 30 دقيقة)</strong> لحل مشاكل السفر والمناسبات.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>أسبوع الاستكشاف (Exploration Week)</strong> لتحديد تفضيلات جسمك ومعدل حرقه بدقة.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span><strong>بث مباشر أسبوعي حصري مع د. أحمد الخطيب</strong> لمتابعة الخطة وتطويرها خطوة بخطوة.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span>مسار مخصص للخصوصية التامة للسيدات بإشراف أخصائيات تغذية معتمدات.</span>
             </div>
           </div>
 
-          <!-- Price & CTA -->
+          <!-- Price & Action -->
           <div class="space-y-3 pt-2">
             <div class="flex items-center justify-between px-2">
-              <span class="text-xs text-slate-400">الاستثمار في الباقة الخاصة:</span>
-              <span class="text-base font-black text-amber-400">$249 - $399 USD</span>
+              <span class="text-xs text-slate-400">الاستثمار في باقة برو المتقدمة:</span>
+              <span class="text-xl font-black text-cyan-400">$119 USD <span class="text-xs font-normal text-slate-400">/ شهرياً</span></span>
+            </div>
+
+            <a href="wahet-nour.html#packages" class="btn-shimmer w-full py-4 rounded-xl bg-gradient-to-r from-[#0A4174] to-[#1D9BF0] text-white font-black text-center text-base shadow-lg shadow-cyan-500/30 block hover:scale-[1.02] transition-transform">
+              🔥 اشترك في باقة برو 1:1 ($119/شهرياً)
+            </a>
+
+            <div class="flex items-center justify-between text-xs text-slate-400 pt-2 px-1">
+              <button onclick="switchOutcome('community')" class="hover:text-emerald-400 underline">
+                تريد باقة المجتمع الاقتصادية؟ ($49)
+              </button>
+              <button onclick="switchOutcome('vip_doctor')" class="hover:text-amber-400 underline">
+                تريد الإشراف المباشر مع د. أحمد الخطيب؟ ($249+)
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ---------------------------------------------------- -->
+        <!-- OUTCOME 3: VIP 1:1 WITH DR. AHMED ($249 - $399/MO)   -->
+        <!-- ---------------------------------------------------- -->
+        <div id="viewOutcomeVIPDoctor" class="hidden space-y-6 slide-in-right text-right">
+          
+          <!-- Badge -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-amber-950/80 to-[#221805] border border-amber-500/50 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 font-black text-xl flex items-center justify-center shrink-0">
+              100%
+            </div>
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider block">مسارك النخبوي المباشر • VIP WITH DR. AHMED</span>
+              <h3 class="text-base sm:text-lg font-black text-white">باقة الرعاية النخبوية VIP 1:1 مع د. أحمد الخطيب</h3>
+            </div>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            إجاباتك كشفت عن وجود <strong>ثبات وزن مستعصٍ، إجهاد هرموني، أو جدول أعمال تنفيذي بالغ الانشغال</strong> يتطلب أعلى درجات السرية والحلول الجذرية. في هذا المسار، يتولى <strong>د. أحمد الخطيب شخصياً</strong> قيادة ملفك الأيضي عبر خط تواصل خاص ومباشر طوال الشهر، وجلسة تخطيط استراتيجية بالفيديو، مع كونسيرج ومتابعة يومية تواكب ظروفك بدقة.
+          </p>
+
+          <!-- Core Inclusions -->
+          <div class="bg-[#071728] border border-amber-500/30 rounded-2xl p-4 space-y-2.5 text-xs text-slate-200">
+            <div class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">👑</span>
+              <span><strong>خط تواصل مباشر وخاص 1:1 مع د. أحمد الخطيب شخصياً</strong> على مدار الشهر.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">👑</span>
+              <span><strong>جلسة تقييم وتخطيط حصرية بالفيديو (45-60 دقيقة)</strong> مع د. أحمد لتنظيم نمط حياتك.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">👑</span>
+              <span><strong>تعديل لحظي للمسار الأيضي</strong> يواكب السفر، الاجتماعات، وضغوط العمل التنفيذي.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">👑</span>
+              <span><strong>كونسيرج ومتابعة يومية خاصة</strong> بإشراف د. أحمد والفريق القيادي لتذليل كل عقبة.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-amber-400 font-bold">👑</span>
+              <span>خصوصية وسرية مطلقة لنخبة المشتركين ورجال الأعمال.</span>
+            </div>
+          </div>
+
+          <!-- Price & Action -->
+          <div class="space-y-3 pt-2">
+            <div class="flex items-center justify-between px-2">
+              <span class="text-xs text-slate-400">الاستثمار في الرعاية النخبوية VIP:</span>
+              <span class="text-xl font-black text-amber-400">$249 - $399 USD <span class="text-xs font-normal text-slate-400">/ شهرياً</span></span>
             </div>
 
             <a href="wahet-nour.html#packages" class="btn-shimmer w-full py-4 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-300 text-slate-950 font-black text-center text-base shadow-lg shadow-amber-500/25 block hover:scale-[1.02] transition-transform">
-              👑 احجز مقعدك في الكوتشينج الخاص (VIP)
+              💎 احجز مقعدك في الرعاية النخبوية VIP مع د. أحمد
             </a>
 
-            <div class="text-center">
-              <button onclick="switchOutcome('community')" class="text-xs text-slate-400 hover:text-cyan-400 underline transition-colors">
-                أو استكشف باقات المجتمع وتحدي الـ 30 يوماً ($49 - $119)
+            <div class="flex items-center justify-between text-xs text-slate-400 pt-2 px-1">
+              <button onclick="switchOutcome('community')" class="hover:text-emerald-400 underline">
+                باقة المجتمع والتحدي ($49)
+              </button>
+              <button onclick="switchOutcome('nutrition_pro')" class="hover:text-cyan-400 underline">
+                باقة المتابعة المتكاملة برو 1:1 ($119)
               </button>
             </div>
           </div>
@@ -634,59 +655,119 @@
   </footer>
 
   <!-- ======================================================== -->
-  <!-- JAVASCRIPT: QUIZ ENGINE & SMOOTH TRANSITION LOGIC        -->
+  <!-- JAVASCRIPT: 5 STRATEGIC QUESTIONS & 3-WAY BRANCHING LOGIC -->
   <!-- ======================================================== -->
   <script>
-    // 5 Carefully Crafted Questions
+    // The 5 Strategic Questions tailored to Wahet Nour's exact 3 tiers
     const quizQuestions = [
       {
         id: 1,
-        title: "ما هو هدفك الأساسي في رحلتك الصحية الحالية؟",
-        subtitle: "حدد الدافع الأكبر الذي تبحث عن تحقيقه خلال الأسابيع القادمة.",
+        title: "أين تكمن المعضلة الحقيقية التي كانت تُفشِل محاولاتك السابقة؟",
+        subtitle: "فهم العقبة الأساسية هو أول خطوة لضمان عدم تكرارها أبداً هذه المرة.",
         options: [
-          { key: "A", text: "كسر ثبات الوزن وتنشيط الحرق عبر الصيام المتقطع ونظام غذائي محسوب.", score: "community" },
-          { key: "B", text: "تنظيم مستويات الطاقة، ضبط الإنسولين، والتخلص من هبوط ما بعد الأكل والخمول.", score: "both" },
-          { key: "C", text: "تغيير شامل لنمط حياتي، تحسين اللياقة والكتلة العضلية، وبناء عادات تدوم للأبد.", score: "private" }
+          { 
+            key: "A", 
+            text: "معضلتي ليست قسوة الدايت، بل الملل وفقدان الحماس بعد أسبوعين والوحدة؛ أحتاج بيئة جماعية وتشجيعاً وتنافساً إيجابياً يبقيني ملتزماً.", 
+            score: "community" 
+          },
+          { 
+            key: "B", 
+            text: "معضلتي في تطبيق النظام على روتين يومي وسفري وعائلتي؛ أحتاج أخصائي تغذية وكوتش يفصلان الأكل على أكلات بيتي ويتابعاني خطوة بخطوة 1:1.", 
+            score: "nutrition_pro" 
+          },
+          { 
+            key: "C", 
+            text: "معضلتي في ثبات وزن مستعصٍ، إجهاد مستمر، لخبطة هرمونات، وتوتر كورتيزول عالي؛ أحتاج إشرافاً علمياً مباشراً من د. أحمد الخطيب شخصياً لفك لغز جسدي.", 
+            score: "vip_doctor" 
+          }
         ]
       },
       {
         id: 2,
-        title: "كيف تفضل الاطلاع على الخطة والمصادر الغذائية والتمارين؟",
-        subtitle: "اختر أسلوب التعلّم والتطبيق الأنسب لطبيعة استيعابك ووقتك.",
+        title: "ما هو شكل المتابعة اليومية الذي يضمن لك أعلى نسبة التزام وراحة نفسية؟",
+        subtitle: "اختر أسلوب التواصل الذي يجعلك تشعر بالأمان والمساندة المستمرة.",
         options: [
-          { key: "A", text: "أحب مراجعة المصادر والمكتبة بنفسي وتطبيق الإرشادات اليومية خطوة بخطوة.", score: "community" },
-          { key: "B", text: "أريد خطة مفصلة واضحة يضعها لي كوتش متخصص يفهمني ويوجهني بدقة لأصل لهدفي.", score: "private" },
-          { key: "C", text: "أفضل متابعة الدروس والمكتبة في أوقات فراغي المتاحة مع إرشادات مركزة.", score: "both" }
+          { 
+            key: "A", 
+            text: "التواجد داخل مجتمع تفاعلي نشط (Community) أشارك فيه وجباتي وأرى تجارب زملائي، مع ردود وتوجيهات يومية من فريق التغذية والكوتشينج.", 
+            score: "community" 
+          },
+          { 
+            key: "B", 
+            text: "محادثة خاصة فردية ومكالمات صوتية 1:1 مع أخصائي/أخصائية التغذية والكوتش، بخصوصية وسرية تامة وبدون أي تشويش مجتمعي.", 
+            score: "nutrition_pro" 
+          },
+          { 
+            key: "C", 
+            text: "خط تواصل شخصي ومباشر 1:1 مع د. أحمد الخطيب ومتابعة كونسيرج خاصة جداً وجلسة استراتيجية بالفيديو لمواكبة مسؤولياتي وضغوطي.", 
+            score: "vip_doctor" 
+          }
         ]
       },
       {
         id: 3,
-        title: "ما هو نوع الدعم والبيئة التي تضمن لك الاستمرار وعدم الانقطاع؟",
-        subtitle: "هذا السؤال هو الأكثر حساسية في تحديد نجاحك واستمرارك.",
+        title: "كيف يتماشى جدول وقتك اليومي مع المتابعة والتواصل؟",
+        subtitle: "كن واقعياً بشأن جدول أعمالك والتزاماتك العائلية والمهنية.",
         options: [
-          { key: "A", text: "أحتاج التواجد في مجتمع تفاعلي محفز (Community) لأشعر أنني لست وحدي، مع متابعة يومية من كوتشيز وتغذية.", score: "community" },
-          { key: "B", text: "وقتي محدود جداً وأفضل متابعة خاصة فردية 1-on-1 (Private Coaching) سرية ومباشرة دون تشتت المجموعات.", score: "private" },
-          { key: "C", text: "أفضل الجمع بين لقاءات البث المباشر الدورية والدروس، وطرح أسئلتي عند الحاجة فقط.", score: "community" }
+          { 
+            key: "A", 
+            text: "وقتي مرن، وأحب تخصيص 10 إلى 15 دقيقة يومياً للتفاعل في الكوميونيتي، تسجيل وجباتي بالتطبيق، وحضور البث المباشر الدوري.", 
+            score: "community" 
+          },
+          { 
+            key: "B", 
+            text: "وقتي متغير ومضغوط نسبياً، وأفضل جلسات تقييم ومكالمات صوتية مركزة مرتين أسبوعياً (8 شهرياً) مع أخصائي التغذية والكوتش.", 
+            score: "nutrition_pro" 
+          },
+          { 
+            key: "C", 
+            text: "وقتي ثمين جداً وأدير مسؤوليات قيادية أو كثير السفر؛ أحتاج حلولاً فورية ومباشرة مع د. أحمد شخصياً دون إهدار دقيقة واحدة.", 
+            score: "vip_doctor" 
+          }
         ]
       },
       {
         id: 4,
-        title: "كم من الوقت تستطيع تخصيصه يومياً للمتابعة والتواصل؟",
-        subtitle: "كن واقعياً بشأن جدول أعمالك اليومي والتزاماتك.",
+        title: "ما هو مستوى التخصيص الغذائي والبدني الذي تحتاجه في هذه المرحلة؟",
+        subtitle: "كل جسد له بصمة استجابة مختلفة عن غيره.",
         options: [
-          { key: "A", text: "من 10 إلى 20 دقيقة يومياً للتفاعل في الكوميونيتي، تسجيل وجباتي، ومشاركة إنجازاتي.", score: "community" },
-          { key: "B", text: "ليس لدي وقت للمجموعات أو الشات العام؛ أحتاج تواصل مباشر وسريع مع الكوتش في دقائق محددة.", score: "private" },
-          { key: "C", text: "وقتي مرن، وأفضل الدخول في عطلة نهاية الأسبوع لمراجعة تقدمي ومتابعة التوجيهات.", score: "both" }
+          { 
+            key: "A", 
+            text: "نظام غذائي مخصص لأكل بيتي وبرنامج حركي مدروس مع عداد الصيام الذكي ومكتبة الوجبات، وأستطيع الالتزام ضمن طاقة المجموعة.", 
+            score: "community" 
+          },
+          { 
+            key: "B", 
+            text: "تدقيق أسبوعي مستمر وتعديل دقيق للأطباق والتمارين وفق استجابة مقاساتي ومرونتي الحركية مع أخصائي التغذية وكوتش التأهيل.", 
+            score: "nutrition_pro" 
+          },
+          { 
+            key: "C", 
+            text: "بروتوكول استشفاء أيضي وهرموني شامل يضعه ويشرف على تفاصيله د. أحمد الخطيب شخصياً لإعادة تشغيل الحرق بأمان تام.", 
+            score: "vip_doctor" 
+          }
         ]
       },
       {
         id: 5,
-        title: "ما هو التحدي الأكبر الذي واجهته في محاولاتك السابقة وكان سبباً في التوقف؟",
-        subtitle: "معرفة العقبة السابقة تضمن لنا ألا نكررها أبداً هذه المرة.",
+        title: "ما هي القيمة الأهم التي تنتظرها من انضمامك لمنظومة «واحة نور»؟",
+        subtitle: "حدد الاستثمار والقيمة التي تبحث عنها لبدء رحلة التحول.",
         options: [
-          { key: "A", text: "فقدان الحماس والشعور بالملل والوحدة بعد أول أسبوعين (الحاجة لبيئة تحفيز وكوميونيتي دائم).", score: "community" },
-          { key: "B", text: "التمبلتات والأنظمة العامة الجاهزة التي لم تراعِ ظروفي الخاصة (الحاجة لتخصيص دقيق 1-on-1).", score: "private" },
-          { key: "C", text: "نقص الفهم العلمي الدقيق لكيفية التعامل مع ثبات الوزن والجوع أو ضبط الصيام.", score: "both" }
+          { 
+            key: "A", 
+            text: "الأمان والتحفيز المجتمعي المستمر ($49/شهرياً): بيئة تدعمني وتكسر عزلتي وتجعل رحلة الرشاقة ممتعة وسهلة.", 
+            score: "community" 
+          },
+          { 
+            key: "B", 
+            text: "المرافقة الفردية والتدريب المركز 1:1 ($119/شهرياً): كوتش وأخصائي تغذية يلازماني كظلي مع أسبوع استكشاف وتقارير أسبوعية.", 
+            score: "nutrition_pro" 
+          },
+          { 
+            key: "C", 
+            text: "الرعاية النخبوية والحل الجذري مع د. أحمد ($249 - $399/شهرياً): الوصول المباشر لخبرة د. أحمد الخطيب لضمان النتيجة مهما كانت صعوبة حالتي.", 
+            score: "vip_doctor" 
+          }
         ]
       }
     ];
@@ -719,7 +800,7 @@
       renderQuestion(0);
     }
 
-    // Render Question Slide with Smooth Animation
+    // Render Question Slide
     function renderQuestion(index) {
       const q = quizQuestions[index];
       const categoryEl = document.getElementById('questionCategory');
@@ -786,7 +867,7 @@
       // Store response
       userAnswers[quizQuestions[currentQuestionIndex].id] = score;
 
-      // Animate out after brief pause (320ms)
+      // Animate out after brief pause (300ms)
       setTimeout(() => {
         const slide = document.getElementById('questionSlide');
         slide.classList.remove('slide-in-right');
@@ -798,7 +879,7 @@
             renderQuestion(currentQuestionIndex);
             isTransitioning = false;
           } else {
-            // Completed all questions -> Go to calculation phase
+            // Completed all questions -> Calculation Phase
             showCalculatingScreen();
           }
         }, 220);
@@ -806,7 +887,7 @@
       }, 300);
     }
 
-    // Previous Question Navigation
+    // Previous Question
     function goToPrevQuestion() {
       if (currentQuestionIndex > 0 && !isTransitioning) {
         currentQuestionIndex--;
@@ -814,7 +895,7 @@
       }
     }
 
-    // Calculation Phase Animation
+    // Calculation Phase
     function showCalculatingScreen() {
       document.getElementById('viewQuestions').classList.add('hidden');
       document.getElementById('quizProgressBarContainer').classList.add('hidden');
@@ -826,12 +907,12 @@
 
       setTimeout(() => {
         progressFill.style.width = '45%';
-        statusText.innerText = "مطابقة مستوى الدعم ومؤشر الاستجابة الأيضية...";
+        statusText.innerText = "مطابقة لغة جسدك ونمط المتابعة اليومية...";
       }, 700);
 
       setTimeout(() => {
         progressFill.style.width = '85%';
-        statusText.innerText = "تحديد المسار الموصى به من فريق د. أحمد الخطيب...";
+        statusText.innerText = "تحديد الباقة الأنسب من باقات واحة نور بإشراف د. أحمد...";
       }, 1400);
 
       setTimeout(() => {
@@ -840,43 +921,55 @@
       }, 2100);
     }
 
-    // Finalize Outcome Based on Branching Logic
+    // Finalize 3-Way Branching
     function finalizeOutcome() {
       document.getElementById('viewCalculating').classList.add('hidden');
 
-      // Count scores
-      let privateScore = 0;
-      let communityScore = 0;
+      // Tally scores
+      let scores = {
+        community: 0,
+        nutrition_pro: 0,
+        vip_doctor: 0
+      };
 
       Object.values(userAnswers).forEach(val => {
-        if (val === 'private') privateScore += 2;
-        else if (val === 'community') communityScore += 2;
-        else {
-          privateScore += 1;
-          communityScore += 1;
+        if (scores[val] !== undefined) {
+          scores[val]++;
         }
       });
 
-      // If user clearly prefers 1-on-1 private coaching -> Outcome B, otherwise -> Community Outcome A
-      if (privateScore > communityScore) {
-        document.getElementById('viewOutcomePrivate').classList.remove('hidden');
-        document.getElementById('stepCounterText').innerText = "تم التأهيل: الكوتشينج الخاص (VIP 1:1)";
-      } else {
-        document.getElementById('viewOutcomeCommunity').classList.remove('hidden');
-        document.getElementById('stepCounterText').innerText = "تم التأهيل: مجتمع وتحدي واحة نور";
+      // Find highest score
+      let highest = 'community';
+      let maxScore = scores.community;
+
+      if (scores.nutrition_pro > maxScore) {
+        highest = 'nutrition_pro';
+        maxScore = scores.nutrition_pro;
       }
+      if (scores.vip_doctor > maxScore) {
+        highest = 'vip_doctor';
+        maxScore = scores.vip_doctor;
+      }
+
+      // Display matching view
+      switchOutcome(highest);
     }
 
-    // Allow user to toggle / preview the other outcome
+    // Switch / Preview between the 3 outcomes
     function switchOutcome(target) {
-      if (target === 'private') {
-        document.getElementById('viewOutcomeCommunity').classList.add('hidden');
-        document.getElementById('viewOutcomePrivate').classList.remove('hidden');
-        document.getElementById('stepCounterText').innerText = "تم التأهيل: الكوتشينج الخاص (VIP 1:1)";
-      } else {
-        document.getElementById('viewOutcomePrivate').classList.add('hidden');
+      document.getElementById('viewOutcomeCommunity').classList.add('hidden');
+      document.getElementById('viewOutcomeNutritionPro').classList.add('hidden');
+      document.getElementById('viewOutcomeVIPDoctor').classList.add('hidden');
+
+      if (target === 'community') {
         document.getElementById('viewOutcomeCommunity').classList.remove('hidden');
-        document.getElementById('stepCounterText').innerText = "تم التأهيل: مجتمع وتحدي واحة نور";
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: باقة التحدي ($49)";
+      } else if (target === 'nutrition_pro') {
+        document.getElementById('viewOutcomeNutritionPro').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: باقة برو 1:1 ($119)";
+      } else if (target === 'vip_doctor') {
+        document.getElementById('viewOutcomeVIPDoctor').classList.remove('hidden');
+        document.getElementById('stepCounterText').innerText = "تم التأهيل: الرعاية النخبوية VIP ($249 - $399)";
       }
     }
 

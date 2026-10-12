@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دراسة المقارنة العالمية المعيارية (Global Benchmarks) | واحة نور - د. أحمد الخطيب</title>
+  <meta name="description" content="تشريح وبحث معمق للمنصات الصحية العالمية الرائدة: The Fasting Method و WildFit و ZOE — من حيث رحلة العميل، التسعير، الكوميونيتي، ونموذج العمل، وتطبيقه في واحة نور.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-dark: #071626;
+      --card-bg: #0B1E33;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent-cyan: #1D9BF0;
+      --accent-cyan-light: #38BDF8;
+      --accent-emerald: #10B981;
+      --accent-gold: #F59E0B;
+      --accent-gold-light: #FDE047;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: var(--bg-dark);
+      color: #E2E8F0;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .glass-card {
+      background: rgba(11, 30, 51, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cyan-glow {
+      box-shadow: 0 0 45px -10px rgba(29, 155, 240, 0.35);
+    }
+    .emerald-glow {
+      box-shadow: 0 0 45px -10px rgba(16, 185, 129, 0.35);
+    }
+    .gold-glow {
+      box-shadow: 0 0 40px -10px rgba(245, 158, 11, 0.35);
+    }
+
+    /* Table styles */
+    .table-container {
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(56, 189, 248, 0.3) rgba(11, 30, 51, 0.5);
+    }
+    .table-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    .table-container::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.4);
+      border-radius: 999px;
+    }
+
+    /* Jump link active */
+    .jump-nav a {
+      transition: all 0.2s ease;
+    }
+    .jump-nav a:hover {
+      background-color: rgba(29, 155, 240, 0.15);
+      color: #38BDF8;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Light Effects -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-cyan-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute -bottom-40 right-10 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px]"></div>
+  </div>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="relative z-40 border-b border-white/10 bg-[#071626]/90 backdrop-blur-md sticky top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="wahet-nour.html" class="flex items-center gap-3 group">
+        <img src="assets/logos/types/Type_6_Combination_Mark.svg" alt="واحة نور" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105">
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
+        <a href="wahet-nour.html" class="hover:text-cyan-400 transition-colors">الرئيسية</a>
+        <a href="wahet-nour-quiz.html" class="hover:text-cyan-400 transition-colors text-cyan-400 font-bold">✨ كويز المسار الأيضي</a>
+        <a href="competitors.html" class="hover:text-cyan-400 transition-colors">المنافسون الإقليميون (SST / Fitstation)</a>
+        <a href="#summary-matrix" class="hover:text-amber-400 transition-colors text-amber-300 font-bold">جدول المقارنة العالمية</a>
+      </nav>
+
+      <!-- Return Button -->
+      <div class="flex items-center gap-3">
+        <a href="wahet-nour.html" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-bold text-slate-200 transition-all flex items-center gap-1.5">
+          <span>العودة للموقع</span>
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative z-10 pt-12 pb-16 border-b border-white/5 bg-gradient-to-b from-[#091D33] to-[#071626]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950 border border-cyan-500/30 text-cyan-400 text-xs font-black">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <span>استخبارات السوق العالمية • GLOBAL BENCHMARKING</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+          دراسة المقارنة المعيارية الشاملة
+          <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300">
+            The Fasting Method • WildFit • ZOE
+          </span>
+        </h1>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+          تشريح استراتيجي مفصل لأنجح ثلاث منصات رقمية عالمية في مجال صحة الأيض، الصيام المتقطع، وسيكولوجيا التغذية؛ لدراسة نماذج عملها، رحلة العميل، استراتيجيات التسعير، أدوات المتابعة والكوميونيتي، وكيف نستثمر أفضل ما فيها لبناء الريادة المطلقة في <strong>«واحة نور / د. أحمد الخطيب»</strong>.
+        </p>
+
+        <!-- Jump Navigation Pills -->
+        <div class="pt-4 flex flex-wrap items-center gap-2 text-xs jump-nav">
+          <a href="#summary-matrix" class="px-3.5 py-2 rounded-xl bg-[#0B1E33] border border-white/10 text-slate-200 font-bold">📊 جدول المقارنة الشامل</a>
+          <a href="#tfm-deepdive" class="px-3.5 py-2 rounded-xl bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 font-bold">1. The Fasting Method</a>
+          <a href="#wildfit-deepdive" class="px-3.5 py-2 rounded-xl bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 font-bold">2. WildFit (Mindvalley)</a>
+          <a href="#zoe-deepdive" class="px-3.5 py-2 rounded-xl bg-purple-950/60 border border-purple-500/30 text-purple-300 font-bold">3. ZOE Personalized Nutrition</a>
+          <a href="#golden-recipe" class="px-3.5 py-2 rounded-xl bg-amber-950/60 border border-amber-500/30 text-amber-300 font-bold">★ الخلطة الذهبية لواحة نور</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 1. EXECUTIVE BENCHMARKING MATRIX (THE COMPARISON TABLE)  -->
+  <!-- ======================================================== -->
+  <section id="summary-matrix" class="py-16 relative z-10 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-right mb-8">
+        <span class="text-xs font-black text-amber-400 uppercase tracking-widest block mb-1">المصفوفة المقارنة السريعة</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">المقارنة الشاملة عبر 8 محاور استراتيجية</h2>
+      </div>
+
+      <div class="glass-card rounded-3xl p-4 sm:p-6 shadow-2xl table-container">
+        <table class="w-full text-right text-xs sm:text-sm text-slate-300 min-w-[850px]">
+          <thead>
+            <tr class="border-b border-white/10 bg-[#071626]/80 text-white font-black text-xs sm:text-sm">
+              <th class="p-4 rounded-r-2xl">المحور</th>
+              <th class="p-4 text-cyan-400">The Fasting Method (TFM)</th>
+              <th class="p-4 text-emerald-400">WildFit (Mindvalley)</th>
+              <th class="p-4 text-purple-400">ZOE Nutrition</th>
+              <th class="p-4 rounded-l-2xl text-amber-400 bg-amber-950/30">واحة نور (مشروعنا) ✦</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <!-- Row 1 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">الموقع والمؤسس</td>
+              <td class="p-4">
+                <a href="https://www.thefastingmethod.com" target="_blank" class="text-cyan-400 underline font-bold">thefastingmethod.com</a>
+                <div class="text-xs text-slate-400 mt-0.5">د. جايسون فونغ + ميغان راموس</div>
+              </td>
+              <td class="p-4">
+                <a href="https://getwildfit.com" target="_blank" class="text-emerald-400 underline font-bold">getwildfit.com</a>
+                <div class="text-xs text-slate-400 mt-0.5">إريك إدميدز (سيكولوجيا الطعام)</div>
+              </td>
+              <td class="p-4">
+                <a href="https://zoe.com" target="_blank" class="text-purple-400 underline font-bold">zoe.com</a>
+                <div class="text-xs text-slate-400 mt-0.5">بروفيسور تيم سبيكتور (علماء هارفارد)</div>
+              </td>
+              <td class="p-4 bg-amber-950/15 font-bold text-amber-300">
+                <a href="https://www.ahmedelkhateeb.com/wahet-nour" target="_blank" class="underline">ahmedelkhateeb.com/wahet-nour</a>
+                <div class="text-xs text-amber-400/80 mt-0.5">د. أحمد الخطيب وفريق الكوتشينج</div>
+              </td>
+            </tr>
+
+            <!-- Row 2 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">الفلسفة والتموضع</td>
+              <td class="p-4">عكس السكري والدهون الحشوية عبر بروتوكولات الصيام المتقطع</td>
+              <td class="p-4">سيكولوجيا الأكل، علم التطور، والتحرر من إدمان السكر دون دايت</td>
+              <td class="p-4">تغذية مخصصة استناداً لميكروبيوم الأمعاء واستجابة سكر الدم</td>
+              <td class="p-4 bg-amber-950/15 font-bold text-white">استشفاء الأيض، فك شفرة الهرمونات (الكورتيزول والإنسولين)، وتأهيل حركي</td>
+            </tr>
+
+            <!-- Row 3 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">الإعداد والـ Onboarding</td>
+              <td class="p-4">كويز من 5 أسئلة + مكالمة استكشافية مجانية (15 دقيقة)</td>
+              <td class="p-4">أسبوع تحضيري كامل (Prep Week)، تنظيف المطبخ، وعقد نفسي</td>
+              <td class="p-4">كيت فحص براز منزلي (Stool Kit) يرسل للمختبر بالبريد</td>
+              <td class="p-4 bg-amber-950/15 font-bold text-emerald-300">كويز 5 أسئلة استراتيجي + استبيان أيضي مخصص 100% لأكل البيت</td>
+            </tr>
+
+            <!-- Row 4 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">المتابعة اليومية والدعم</td>
+              <td class="p-4">كوتشيز متواجدون بالمنتدى + 20+ غرفة زووم أسبوعياً</td>
+              <td class="p-4">كوتش معتمد يتابع الفوج يومياً، يراجع أطباق الوجبات وعصير Alkagizer</td>
+              <td class="p-4">تطبيق ذكي يسجل الوجبات بنقاط (0-100) + كوتش AI وشات أخصائيين</td>
+              <td class="p-4 bg-amber-950/15 font-bold text-cyan-300">فريق كوتشينج وتغذية وتأهيل حركي متواجد يومياً + مسار شات خاص</td>
+            </tr>
+
+            <!-- Row 5 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">حضور الخبير / الطبيب</td>
+              <td class="p-4">لايفات Q&A شهرية لدكتور فونغ + تحديات صيام تقودها ميغان</td>
+              <td class="p-4">فيديوهات يومية مسجلة من إريك + لايف أسبوعي مع الكوتش</td>
+              <td class="p-4">لقاءات AMA دورية لعلماء ZOE وتيم سبيكتور + بودكاست أسبوعي</td>
+              <td class="p-4 bg-amber-950/15 font-bold text-amber-300">1-2 لايف شهرياً في باقة التحدي، أسبوعي في برو، وخط مباشر 1:1 في VIP</td>
+            </tr>
+
+            <!-- Row 6 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">أسعار العضوية والمجتمع</td>
+              <td class="p-4 font-mono font-bold text-white">$45.99/شهر • $114.99/ربع سنوي • $379.99/سنة</td>
+              <td class="p-4 font-mono font-bold text-white">$500 - $899 (تحدي ذاتي) • $49/شهر خريجين</td>
+              <td class="p-4 font-mono font-bold text-white">فحص £149 + اشتراك التطبيق £9.99 - £35/شهر</td>
+              <td class="p-4 bg-amber-950/15 font-mono font-bold text-emerald-400">$49/شهر (التحدي) • $119/شهر (برو 1:1)</td>
+            </tr>
+
+            <!-- Row 7 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">أسعار الكوتشينج الخاص (1:1)</td>
+              <td class="p-4 font-mono text-cyan-300 font-bold">$1,099 إلى $3,199 (لمدة 6 أشهر)</td>
+              <td class="p-4 font-mono text-emerald-300 font-bold">$2,500 إلى $4,500+ (كوتش فردي)</td>
+              <td class="p-4 text-slate-500">لا يوجد كوتشينج فردي مباشر</td>
+              <td class="p-4 bg-amber-950/15 font-mono text-amber-400 font-bold">$249 - $399/شهر (VIP مع د. أحمد الخطيب)</td>
+            </tr>
+
+            <!-- Row 8 -->
+            <tr class="hover:bg-white/[0.02]">
+              <td class="p-4 font-bold text-white bg-white/[0.01]">البنية التقنية (Tech Stack)</td>
+              <td class="p-4">منتدى خاص + زووم + بوابات اشتراك سترايب</td>
+              <td class="p-4">فصول Mindvalley + جروبات خاصة + تطبيق WildFit</td>
+              <td class="p-4">تطبيق أصلي فاخر (iOS/Android) + فاحص باركود + كوتش ذكاء اصطناعي</td>
+              <td class="p-4 bg-amber-950/15 font-bold text-white">موقع ويب متكامل + عداد صيام ذكي + فاحص وجبات + كوميونيتي</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 2. DEEP DIVE: THE FASTING METHOD                         -->
+  <!-- ======================================================== -->
+  <section id="tfm-deepdive" class="py-16 relative z-10 border-b border-white/5 bg-[#08192C]/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-black text-lg">1</span>
+        <div>
+          <span class="text-xs font-black text-cyan-400 uppercase tracking-widest block">التشريح التفصيلي للمنصة الأولى</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">The Fasting Method (د. جايسون فونغ وميغان راموس)</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Philosophy & Core Model -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="brain" class="w-4 h-4 text-cyan-400"></i>
+            الفلسفة ونموذج العمل
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            تأسست المنصة لمعالجة أزمة السمنة ومقاومة الإنسولين علمياً عبر بروتوكولات صيام مدروسة. المعادلة التسويقية للمنصة: <strong>"المعلومة مجانية في كتبنا، ولكن الالتزام والبيئة الحاضنة هي ما يشتري المشترك اشتراكاً من أجله"</strong>.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-cyan-400 block mb-1">الجمهور المستهدف:</strong>
+            مرضى مقاومة الإنسولين، السكري من النوع الثاني، الكبد الدهني، والذين فشلوا في حميات تقليل السعرات الحرارية التقليدية.
+          </div>
+        </div>
+
+        <!-- Onboarding & Intake -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="user-check" class="w-4 h-4 text-cyan-400"></i>
+            آلية الفرز والتهيئة (Onboarding)
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            1. <strong>قمع الكويز (5-Question Quiz):</strong> يفرز العميل فورياً بين مسار العضوية الشهرية ($45.99) أو مسار الكوتشينج الخاص ($1,000+).<br>
+            2. <strong>جلسة التقييم (15-Min Intake Assessment):</strong> مكالمة زووم مجانية مع كوتش معتمد لفهم تاريخ الصيام والأهداف وتوجيهه للباقة الملائمة.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-cyan-400 block mb-1">سر النجاح:</strong>
+            عدم ترك العميل تائهاً بين الباقات؛ الكويز يقوده للباقة المناسبة فوراً.
+          </div>
+        </div>
+
+        <!-- Community & Live Events -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="video" class="w-4 h-4 text-cyan-400"></i>
+            الحضور واللقاءات الحية (Community)
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            • <strong>20+ اجتماع زووم أسبوعياً:</strong> غرف مقسمة للمبتدئين، صيام النساء، ومقاومة الإنسولين يديرها كوتشيز معتمدون.<br>
+            • <strong>تحديات الصيام الشهرية:</strong> تحديات تقودها ميغان راموس شخصياً مع بثوث يومية.<br>
+            • <strong>د. جايسون فونغ:</strong> لا يتابع يومياً، بل يحضر لقاءات Town Hall و Q&A شهرية حصرية.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-cyan-400 block mb-1">هيكل التسعير:</strong>
+            $45.99/شهر • $114.99/ربع سنوي • $379.99/سنة • باقات الكوتشينج من $1,099 إلى $3,199.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. DEEP DIVE: WILDFIT                                    -->
+  <!-- ======================================================== -->
+  <section id="wildfit-deepdive" class="py-16 relative z-10 border-b border-white/5 bg-[#071728]/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black text-lg">2</span>
+        <div>
+          <span class="text-xs font-black text-emerald-400 uppercase tracking-widest block">التشريح التفصيلي للمنصة الثانية</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">WildFit (إريك إدميدز بالتعاون مع Mindvalley)</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Philosophy -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="apple" class="w-4 h-4 text-emerald-400"></i>
+            الفلسفة وسيكولوجيا الطعام
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            تعتمد على دراسة مجتمعات الصيد البدائية وسيكولوجيا الغذاء التطوري. المبدأ الأساسي: <strong>"الحميات القاسية تفشل لأنها تحارب العقل الباطن"</strong>. الهدف هو تفكيك إدمان السكر وبرمجة الدماغ على الشبع الطبيعي بدون ورقة دايت معقدة أو حساب سعرات.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-emerald-400 block mb-1">المراحل الثلاث للـ 90 يوماً:</strong>
+            1. ديتوكس (أسابيع 1-2) • 2. تحول موسمي (أسابيع 3-10) • 3. تثبيت وحرية غذائية (أسابيع 11-13).
+          </div>
+        </div>
+
+        <!-- Cohort Model -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
+            نظام الأفواج والتحضير (Cohort Model)
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            • <strong>لا يبدأ المشترك وحيداً:</strong> الدخول في أفواج تبدأ جميعها في تاريخ محدد.<br>
+            • <strong>الأسبوع التحضيري (Prep Week):</strong> أسبوع كامل لتجهيز المنزل وتنظيف المطبخ من المغريات وتوقيع عقد الالتزام النفسي.<br>
+            • <strong>مشروب Alkagizer:</strong> عصير خضار ورقي مركز يتم إدخاله يومياً لترويض الشهية.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-emerald-400 block mb-1">المتابعة اليومية:</strong>
+            كوتش معتمد يراجع صور الوجبات، ومكالمة زووم جماعية أسبوعية لمناقشة التحديات.
+          </div>
+        </div>
+
+        <!-- Business Engine & Pricing -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="dollar-sign" class="w-4 h-4 text-emerald-400"></i>
+            محرك التسعير وتدريب الكوتشيز
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            • <strong>التحدي الذاتي (Mindvalley):</strong> $500 إلى $899.<br>
+            • <strong>التحدي بمرافقة كوتش ومجموعة:</strong> $1,295 إلى $1,795.<br>
+            • <strong>الكوتشينج الخاص الفردي:</strong> $2,500 إلى $4,500+.<br>
+            • <strong>عضوية الخريجين (Living WildFit):</strong> $49 - $79/شهرياً.<br>
+            • <strong>أكاديمية الكوتشيز:</strong> يدفع المدرب آلاف الدولارات ليصبح كوتشاً معتمداً.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-emerald-400 block mb-1">سر النجاح:</strong>
+            قوة التأثير النفسي للـ Cohort والشعور بالانتماء للقبيلة (The Tribe).
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. DEEP DIVE: ZOE NUTRITION                              -->
+  <!-- ======================================================== -->
+  <section id="zoe-deepdive" class="py-16 relative z-10 border-b border-white/5 bg-[#09182A]/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-black text-lg">3</span>
+        <div>
+          <span class="text-xs font-black text-purple-400 uppercase tracking-widest block">التشريح التفصيلي للمنصة الثالثة</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">ZOE Personalized Nutrition (بروفيسور تيم سبيكتور)</h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Science & Microbiome -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="dna" class="w-4 h-4 text-purple-400"></i>
+            علم الميكروبيوم والتغذية المخصصة
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            الفلسفة: <strong>"لا يوجد طعام صحي للجميع"</strong>. استجابة كل جسم لسكر الدم والدهون تعتمد على ميكروبيوم الأمعاء. يعتمدون على دراسات PREDICT المنشورة في Nature Medicine بمشاركة 35,000+ متطوع.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-purple-400 block mb-1">فحص العينات المنزلي:</strong>
+            يرسل كيت فحص براز منزلي للمختبر لتسلسل الـ DNA للبكتيريا المعوية.
+          </div>
+        </div>
+
+        <!-- App & Micro-Habits -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="smartphone" class="w-4 h-4 text-purple-400"></i>
+            التطبيق الذكي والعادات اليومية
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            • <strong>درجات الأطعمة (ZOE Scores 0-100):</strong> يصور المستخدم أكلته أو يمسح الباركود ليعرف ملائمتها لجسمه.<br>
+            • <strong>تحدي الـ 30 نبتة أسبوعياً:</strong> عداد ذكي يحفز المشترك على تنويع الخضار والمكسرات والبذور.<br>
+            • <strong>كوتش الذكاء الاصطناعي (Ziggie):</strong> يقترح بدائل ذكية وفورية لتحسين درجة الطبق.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-purple-400 block mb-1">الدعم البشري:</strong>
+            شات نصي سريع مع فريق أخصائيي تغذية معتمدين للرد على استفسارات الوجبات.
+          </div>
+        </div>
+
+        <!-- Podcast Engine & Pricing -->
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="mic" class="w-4 h-4 text-purple-400"></i>
+            ماكينة البودكاست وهيكل الأسعار
+          </h3>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            • <strong>بودكاست ZOE Science & Nutrition:</strong> يتابعه الملايين أسبوعياً وهو المولد الأساسي للمبيعات دون الحاجة لإعلانات ممولة تقليدية.<br>
+            • <strong>سعر كيت الفحص:</strong> £149 GBP (~$195 USD) لمرة واحدة.<br>
+            • <strong>اشتراك التطبيق:</strong> التزام سنوي £9.99/شهر (أو £25 - £35 للخطط القصيرة) • في أمريكا: $15.99/شهر.
+          </p>
+          <div class="pt-2 border-t border-white/5 text-xs text-slate-400">
+            <strong class="text-purple-400 block mb-1">سر النجاح:</strong>
+            المصداقية العلمية الطاغية والتحول لعلامة تكنولوجية حيوية راقية.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 5. THE GOLDEN RECIPE FOR WAHET NOUR                      -->
+  <!-- ======================================================== -->
+  <section id="golden-recipe" class="py-16 relative z-10 border-b border-white/5 bg-gradient-to-b from-[#091E33] to-[#050E18]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-12 space-y-3">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-black">
+          الخلطة السحرية لواحة نور • THE COMPETITIVE MOAT
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+          كيف نصنع الريادة المطلقة في «واحة نور»؟
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          نحن لا ننسخ منصة واحدة؛ بل نجمع أفضل ميزات العمالقة الثلاثة في تجربة استثنائية تناسب العميل العربي والمغتربين:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-right">
+        
+        <!-- Pillar 1 -->
+        <div class="bg-[#0B1E33] border-2 border-cyan-500/40 rounded-3xl p-6 space-y-4 cyan-glow">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-black text-xl">1</div>
+          <h3 class="text-lg font-black text-white">من The Fasting Method نأخذ:</h3>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold">✓</span> قمع الكويز السريع (5 أسئلة) لتأهيل وفرز العميل للباقة المناسبة.</li>
+            <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold">✓</span> بروتوكولات الصيام المتقطع الذكية وتحديات الصيام الدورية.</li>
+            <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold">✓</span> الجمع بين متابعة الكوتشيز اليومية واللايفات الدورية لدكتور أحمد الخطيب.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-[#0B1E33] border-2 border-emerald-500/40 rounded-3xl p-6 space-y-4 emerald-glow">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 font-black text-xl">2</div>
+          <h3 class="text-lg font-black text-white">من WildFit نأخذ:</h3>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> سيكولوجيا الغذاء وعلم نفس الشبع وعلاج الأكل العاطفي.</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> قوة تحدي الـ 30 يوماً الجماعي والشعور بـ "القبيلة والبيئة الآمنة".</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> المتابعة اليومية الحثيثة لتسجيل الوجبات وتصحيح العادات.</li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-[#0B1E33] border-2 border-purple-500/40 rounded-3xl p-6 space-y-4 shadow-xl">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center font-black text-xl">3</div>
+          <h3 class="text-lg font-black text-white">من ZOE نأخذ:</h3>
+          <ul class="space-y-2 text-xs text-slate-300">
+            <li class="flex items-start gap-2"><span class="text-purple-400 font-bold">✓</span> أناقة الأدوات التكنولوجية (عداد الصيام وفاحص الوجبات الذكي).</li>
+            <li class="flex items-start gap-2"><span class="text-purple-400 font-bold">✓</span> الرصانة العلمية واللغة الطبية الموثوقة التي تبني الأمان والاطمئنان.</li>
+            <li class="flex items-start gap-2"><span class="text-purple-400 font-bold">✓</span> محتوى البودكاست المعرفي الدوري الذي يغذي الكوميونيتي بالوعي المستمر.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Action Callout -->
+      <div class="mt-14 max-w-2xl mx-auto bg-gradient-to-r from-[#0A2E4D] to-[#0A223A] border border-cyan-500/30 rounded-3xl p-6 text-center space-y-4">
+        <h3 class="text-lg font-black text-white">جاهز لتجربة تطبيق هذه الاستراتيجية في الكويز وصفحة الهبوط؟</h3>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="wahet-nour-quiz.html" class="px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs sm:text-sm hover:scale-105 transition-all">
+            ✨ فتح كويز المسار الأيضي (5 أسئلة)
+          </a>
+          <a href="wahet-nour.html" class="px-6 py-3 rounded-full bg-white/10 text-white font-bold text-xs sm:text-sm hover:bg-white/15 transition-all">
+            استعراض الموقع الرئيسي (واحة نور)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#030910] border-t border-white/5 py-12 relative z-10 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-right">
+      <div class="flex items-center gap-3">
+        <img src="assets/logos/types/Type_2_Lettermark_Monogram.svg" alt="WN" class="h-8 w-auto">
+        <span>واحة نور • د. أحمد الخطيب © 2026. مركز استخبارات الأعمال والبحث الأيضي.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="wahet-nour.html" class="hover:text-white transition-colors">الصفحة الرئيسية</a>
+        <a href="wahet-nour-quiz.html" class="hover:text-white transition-colors">كويز المسار الأيضي</a>
+        <a href="competitors.html" class="hover:text-white transition-colors">المنافسون الإقليميون</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

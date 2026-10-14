@@ -255,8 +255,9 @@
                 <th class="p-3.5 font-bold">المرشحة</th>
                 <th class="p-3.5 font-bold">الراتب المتوقع</th>
                 <th class="p-3.5 font-bold">موعد الجاهزية</th>
-                <th class="p-3.5 font-bold">رقم الهاتف / واتساب</th>
-                <th class="p-3.5 font-bold">ملاحظات الشيفت</th>
+                <th class="p-3.5 font-bold">الجاهزية التقنية</th>
+                <th class="p-3.5 font-bold">الرد على سيناريو العميلة</th>
+                <th class="p-3.5 font-bold">الهاتف</th>
                 <th class="p-3.5 font-bold">توقيت الإرسال</th>
                 <th class="p-3.5 font-bold text-center">الإجراءات</th>
               </tr>
@@ -471,7 +472,25 @@
                   <span class="text-slate-400">الجاهزية:</span>
                   <span class="font-bold text-amber-300 text-[11px]">${match.lifestyle_need || 'غير محدد'}</span>
                 </div>
+                <div class="flex justify-between items-center text-xs border-t border-white/5 pt-1.5">
+                  <span class="text-slate-400">الإنترنت واللابتوب:</span>
+                  <span class="font-bold text-sky-300 text-[10px] truncate max-w-[140px]" title="${match.fat_loc || ''}">
+                    ${match.fat_loc ? (match.fat_loc.includes('بالكامل') ? '✅ جاهزية تامة + طوارئ' : match.fat_loc) : 'غير مسجل'}
+                  </span>
+                </div>
               </div>
+
+              ${match.insulin_sign ? `
+                <div class="text-[11px] bg-rose-950/30 border border-rose-500/30 p-2.5 rounded-xl space-y-1">
+                  <div class="flex items-center gap-1 font-bold text-rose-300 text-[10px]">
+                    <i data-lucide="heart-handshake" class="w-3 h-3 text-rose-400"></i>
+                    <span>نبرة الرد على سيناريو ثبات الوزن:</span>
+                  </div>
+                  <p class="text-slate-200 italic line-clamp-3 leading-relaxed" title="${match.insulin_sign}">
+                    «${match.insulin_sign}»
+                  </p>
+                </div>
+              ` : ''}
 
               <div class="text-[11px] text-slate-300 bg-white/5 p-2.5 rounded-xl border border-white/5 line-clamp-2" title="${match.diet_history || 'لا توجد ملاحظات'}">
                 <span class="text-slate-400 font-bold">ملاحظات:</span> ${match.diet_history || 'لا توجد ملاحظات إضافية'}
@@ -545,7 +564,7 @@
       if (!data || data.length === 0) {
         tbody.innerHTML = `
           <tr>
-            <td colspan="7" class="p-8 text-center text-slate-500">
+            <td colspan="8" class="p-8 text-center text-slate-500">
               لا توجد ردود مسجلة حتى الآن. بمجرد قيام أي مرشحة بملء الاستمارة ستظهر بياناتها فوراً هنا.
             </td>
           </tr>
@@ -560,9 +579,14 @@
             <span>${item.name || 'بدون اسم'}</span>
           </td>
           <td class="p-3.5 font-mono font-bold text-emerald-400">${item.diagnosis_title || '-'}</td>
-          <td class="p-3.5 text-amber-300 font-semibold">${item.lifestyle_need || '-'}</td>
-          <td class="p-3.5 font-mono text-slate-300">${item.phone || '-'}</td>
-          <td class="p-3.5 text-slate-400 max-w-xs truncate" title="${item.diet_history || ''}">${item.diet_history || '-'}</td>
+          <td class="p-3.5 text-amber-300 font-semibold text-[11px]">${item.lifestyle_need || '-'}</td>
+          <td class="p-3.5 text-sky-300 text-[11px] max-w-xs truncate" title="${item.fat_loc || ''}">
+            ${item.fat_loc ? (item.fat_loc.includes('بالكامل') ? '<span class="px-2 py-0.5 rounded bg-sky-950 border border-sky-500/40 text-sky-300 font-semibold">✅ كامل + طوارئ</span>' : item.fat_loc) : '-'}
+          </td>
+          <td class="p-3.5 text-slate-300 text-[11px] max-w-xs truncate italic" title="${item.insulin_sign || ''}">
+            ${item.insulin_sign ? `«${item.insulin_sign}»` : '-'}
+          </td>
+          <td class="p-3.5 font-mono text-slate-300 text-[11px]">${item.phone || '-'}</td>
           <td class="p-3.5 text-slate-400 text-[11px]">${item.created_at ? new Date(item.created_at).toLocaleString('ar-EG') : '-'}</td>
           <td class="p-3.5 text-center">
             <a 
@@ -584,6 +608,8 @@
       const filtered = allResponses.filter(r => 
         (r.name && r.name.toLowerCase().includes(query)) ||
         (r.phone && r.phone.includes(query)) ||
+        (r.fat_loc && r.fat_loc.toLowerCase().includes(query)) ||
+        (r.insulin_sign && r.insulin_sign.toLowerCase().includes(query)) ||
         (r.diet_history && r.diet_history.toLowerCase().includes(query))
       );
       renderTable(filtered);
@@ -594,9 +620,9 @@
         alert('لا توجد بيانات متاحة للتصدير حالياً.');
         return;
       }
-      let csvContent = '\uFEFFالاسم,الراتب المتوقع,موعد الجاهزية,رقم الهاتف,البريد الإلكتروني,ملاحظات الشيفت,تاريخ الإرسال\n';
+      let csvContent = '\uFEFFالاسم,الراتب المتوقع,موعد الجاهزية,الجاهزية التقنية,الرد على سيناريو ثبات الوزن,رقم الهاتف,البريد الإلكتروني,ملاحظات الشيفت,تاريخ الإرسال\n';
       allResponses.forEach(r => {
-        csvContent += `"${r.name || ''}","${r.diagnosis_title || ''}","${r.lifestyle_need || ''}","${r.phone || ''}","${r.email || ''}","${(r.diet_history || '').replace(/"/g, '""')}","${r.created_at || ''}"\n`;
+        csvContent += `"${r.name || ''}","${r.diagnosis_title || ''}","${r.lifestyle_need || ''}","${(r.fat_loc || '').replace(/"/g, '""')}","${(r.insulin_sign || '').replace(/"/g, '""')}","${r.phone || ''}","${r.email || ''}","${(r.diet_history || '').replace(/"/g, '""')}","${r.created_at || ''}"\n`;
       });
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');

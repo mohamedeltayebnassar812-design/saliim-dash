@@ -55,7 +55,7 @@
     <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden" id="form-container">
       
       <div class="mb-6 pb-4 border-b border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        سعدنا جداً بالحديث معكِ في المقابلة اليوم. لاستكمال المفاضلة النهائية بين المرشحات وتحديد ترتيب الشيفتات والتعاقد، يرجى تعبئة الأسئلة الأربعة التالية بدقة:
+        سعدنا جداً بالحديث معكِ في المقابلة اليوم. لاستكمال المفاضلة النهائية بين المرشحات وإتمام التعاقد، يرجى تعبئة الأسئلة التالية بدقة (تستغرق دقيقتين فقط):
       </div>
 
       <form id="moderatorForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
@@ -112,17 +112,56 @@
           </select>
         </div>
 
-        <!-- QUESTION 4: OTHER NOTES -->
+        <!-- QUESTION 4: TECH READINESS & BACKUP -->
         <div>
           <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-black">4</span>
+            <span class="w-6 h-6 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs font-black">4</span>
+            الجاهزية التقنية واستقرار العمل (Tech Setup & Backup) <span class="text-rose-400">*</span>
+          </label>
+          <select 
+            id="techReadiness" 
+            required 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-sky-400 transition-colors"
+          >
+            <option value="" disabled selected>اختاري حالة أجهزتك وشبكة الإنترنت...</option>
+            <option value="متوفر بالكامل (لابتوب/كمبيوتر + إنترنت أرضي مستقر + باقة طوارئ Hotspot جاهزة)">✅ متوفر بالكامل (لابتوب/كمبيوتر + إنترنت أرضي مستقر + باقة طوارئ Hotspot جاهزة)</option>
+            <option value="متوفر لابتوب وإنترنت أرضي فقط (بدون باقة طوارئ حالياً)">⚠️ متوفر لابتوب وإنترنت أرضي فقط (بدون باقة طوارئ حالياً)</option>
+            <option value="أعمل من الهاتف الذكي فقط حالياً">📱 أعمل من الهاتف الذكي فقط حالياً</option>
+          </select>
+          <p class="text-[11px] text-slate-400 mt-1.5">الشيفت يتطلب تواجداً تفاعلياً مستمراً وسرعة استجابة على المنصات دون انقطاع.</p>
+        </div>
+
+        <!-- QUESTION 5: PRACTICAL SCENARIO & TONE OF VOICE -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center text-xs font-black">5</span>
+            اختبار عملي: نبرة واحة نور في التعامل مع المشتركين <span class="text-rose-400">*</span>
+          </label>
+          <div class="bg-slate-950/70 p-3.5 rounded-xl border border-white/5 mb-2 text-xs text-slate-300 leading-relaxed">
+            <span class="font-bold text-cyan-400">سيناريو واقعي:</span> لو عميلة مشتركة كتبت في جروب المتابعة:<br>
+            <em class="text-amber-200">«أنا ملتزمة جداً بنظام الأيض وبقالي أسبوعين وزني ثابت ولا جرام ونفسيتي تعبت جداً وهوقف الاشتراك!»</em><br>
+            <span class="text-slate-400 text-[11px] mt-1 block">اكتبي ردك عليها في سطرين أو ثلاثة بنفس روح ونبرة د. أحمد الخطيب الحانية والمشجعة علمياً ونفسياً:</span>
+          </div>
+          <textarea 
+            id="scenarioAnswer" 
+            required
+            rows="3" 
+            placeholder="اكتبي ردك المباشر هنا بنفس الأسلوب الداعم الذي يشعرها بالأمان والاحتواء..." 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-rose-400 transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <!-- QUESTION 6: OTHER NOTES -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-black">6</span>
             ملاحظات أو استفسارات أخرى تودين إضافتها (اختياري)
           </label>
           <textarea 
             id="otherNotes" 
-            rows="3" 
-            placeholder="أي تفاصيل خاصة بتفضيلك لمواعيد الشيفت (صباحي / مسائي)، أجهزة العمل، أو أي استفسار لإدارة المنظومة..." 
-            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 transition-colors resize-none"
+            rows="2" 
+            placeholder="أي تفاصيل خاصة بتفضيلك للشيفت، أجهزة العمل، أو أي استفسار لإدارة المنظومة..." 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl p-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 transition-colors resize-none"
           ></textarea>
         </div>
 
@@ -243,6 +282,8 @@
       const name = document.getElementById('fullName').value.trim();
       const salary = document.getElementById('expectedSalary').value.trim();
       const availability = document.getElementById('availability').value;
+      const techReadiness = document.getElementById('techReadiness').value;
+      const scenarioAnswer = document.getElementById('scenarioAnswer').value.trim();
       const notes = document.getElementById('otherNotes').value.trim() || 'لا توجد ملاحظات إضافية';
       const phone = document.getElementById('candidatePhone').value.trim();
       const email = document.getElementById('candidateEmail').value.trim();
@@ -261,6 +302,8 @@
         email: email,
         diagnosis_title: salary, // Expected Salary
         lifestyle_need: availability, // Availability
+        fat_loc: techReadiness, // Tech Setup & Backup
+        insulin_sign: scenarioAnswer, // Practical Scenario Reply
         diet_history: notes, // Other notes
         source: 'moderator_candidate',
         discount_code: 'MODERATOR_APP'
@@ -294,6 +337,8 @@
             الاسم: name,
             الراتب_المتوقع: salary,
             الجاهزية: availability,
+            الجاهزية_التقنية: techReadiness,
+            الرد_على_سيناريو_العميلة: scenarioAnswer,
             الهاتف: phone,
             الإيميل: email,
             الملاحظات: notes
@@ -316,6 +361,8 @@
         `📧 *الإيميل:* ${email}\n` +
         `💰 *الراتب المتوقع:* ${salary}\n` +
         `⏰ *موعد الجاهزية للبدء:* ${availability}\n` +
+        `💻 *الجاهزية التقنية:* ${techReadiness}\n` +
+        `💬 *الرد على سيناريو العميلة:* ${scenarioAnswer}\n` +
         `📝 *ملاحظات:* ${notes}`
       );
       document.getElementById('whatsappBackupLink').href = `https://wa.me/${ADMIN_WHATSAPP}?text=${text}`;

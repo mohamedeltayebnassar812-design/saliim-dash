@@ -126,14 +126,44 @@
           ></textarea>
         </div>
 
+        <!-- OPTIONAL CONTACT (PHONE/EMAIL) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-cyan-400"></i>
+              رقم الهاتف / واتساب للتواصل <span class="text-rose-400">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="candidatePhone" 
+              required
+              placeholder="01xxxxxxxxx" 
+              class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+            >
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i>
+              البريد الإلكتروني للتأكيد
+            </label>
+            <input 
+              type="email" 
+              id="candidateEmail" 
+              placeholder="email@example.com" 
+              class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+            >
+          </div>
+        </div>
+
         <!-- SUBMIT BUTTON -->
         <div class="pt-3">
           <button 
             type="submit" 
+            id="submitBtn"
             class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-black text-sm transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
           >
-            <span>إرسال البيانات وتأكيد الرغبة</span>
-            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span id="btnText">إرسال البيانات وتأكيد الرغبة</span>
+            <i data-lucide="check-circle-2" id="btnIcon" class="w-4 h-4"></i>
           </button>
         </div>
 
@@ -144,9 +174,9 @@
         <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
           <i data-lucide="check" class="w-8 h-8"></i>
         </div>
-        <h2 class="text-xl sm:text-2xl font-black text-white">تم استلام بياناتك بنجاح!</h2>
+        <h2 class="text-xl sm:text-2xl font-black text-white">تم استلام بياناتك وحفظها بنجاح!</h2>
         <p class="text-slate-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
-          شكراً لكِ. تم تسجيل إجاباتك لدى فريق العمليات والموارد البشرية في «واحة نور»، وسيتم التواصل معكِ رسمياً غداً لتأكيد القرار النهائي وبدء مرحلة التهيئة (Onboarding).
+          شكراً لكِ. تم تسجيل إجاباتك في قاعدة بيانات فريق العمليات والموارد البشرية في «واحة نور»، وسيتم التواصل معكِ رسمياً غداً لتأكيد القرار النهائي وبدء مرحلة التهيئة (Onboarding).
         </p>
 
         <!-- WHATSAPP BACKUP BUTTON -->
@@ -155,10 +185,10 @@
             id="whatsappBackupLink" 
             href="#" 
             target="_blank" 
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold hover:bg-emerald-600/30 transition-all"
+            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold hover:bg-emerald-600/30 transition-all"
           >
             <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-            <span>تأكيد الإرسال عبر واتساب الإدارة أيضاً</span>
+            <span>تأكيد الإرسال عبر واتساب الإدارة أيضاً 📲</span>
           </a>
         </div>
       </div>
@@ -175,26 +205,122 @@
   <script>
     lucide.createIcons();
 
-    function handleFormSubmit(e) {
+    // Configuration
+    const SUPABASE_URL = 'https://jmoooxwpcmyuwmsqwevg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_pdJ6w4vu9Mrc0jwUQzmYRg_nML7hDjT';
+    const ADMIN_WHATSAPP = '201016629916';
+
+    // Auto fill name or email if passed via URL parameters
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const nameParam = params.get('name') || params.get('candidate');
+      const emailParam = params.get('email');
+      const phoneParam = params.get('phone');
+
+      if (nameParam) {
+        const decoded = decodeURIComponent(nameParam);
+        const nameInput = document.getElementById('fullName');
+        if (nameInput) nameInput.value = decoded;
+      }
+      if (emailParam) {
+        const decodedEmail = decodeURIComponent(emailParam);
+        const emailInput = document.getElementById('candidateEmail');
+        if (emailInput) emailInput.value = decodedEmail;
+      }
+      if (phoneParam) {
+        const phoneInput = document.getElementById('candidatePhone');
+        if (phoneInput) phoneInput.value = phoneParam;
+      }
+    });
+
+    async function handleFormSubmit(e) {
       e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+      
       const name = document.getElementById('fullName').value.trim();
       const salary = document.getElementById('expectedSalary').value.trim();
       const availability = document.getElementById('availability').value;
       const notes = document.getElementById('otherNotes').value.trim() || 'لا توجد ملاحظات إضافية';
+      const phone = document.getElementById('candidatePhone').value.trim();
+      const email = document.getElementById('candidateEmail').value.trim();
 
-      // Format WhatsApp message
+      // UI Loading state
+      submitBtn.disabled = true;
+      btnText.innerText = 'جاري حفظ البيانات في قاعدة البيانات...';
+      btnIcon.setAttribute('data-lucide', 'loader-2');
+      btnIcon.classList.add('animate-spin');
+      lucide.createIcons();
+
+      // 1. Supabase Cloud DB Insert
+      const payload = {
+        name: name,
+        phone: phone,
+        email: email,
+        diagnosis_title: salary, // Expected Salary
+        lifestyle_need: availability, // Availability
+        diet_history: notes, // Other notes
+        source: 'moderator_candidate',
+        discount_code: 'MODERATOR_APP'
+      };
+
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/waitlist_leads`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_ANON_KEY,
+            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn('Supabase post notice:', err);
+      }
+
+      // 2. Email backup via FormSubmit to mindivmindiv@gmail.com
+      try {
+        fetch('https://formsubmit.co/ajax/mindivmindiv@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `استمارة موديراتور جديدة: ${name}`,
+            الاسم: name,
+            الراتب_المتوقع: salary,
+            الجاهزية: availability,
+            الهاتف: phone,
+            الإيميل: email,
+            الملاحظات: notes
+          })
+        }).catch(() => {});
+      } catch (e) {}
+
+      // 3. LocalStorage backup
+      try {
+        const saved = JSON.parse(localStorage.getItem('wahetnor_moderator_candidates') || '[]');
+        saved.push({ ...payload, submitted_at: new Date().toISOString() });
+        localStorage.setItem('wahetnor_moderator_candidates', JSON.stringify(saved));
+      } catch (e) {}
+
+      // 4. WhatsApp Direct Link to Admin
       const text = encodeURIComponent(
         `*استمارة المرشحة لوظيفة Community Moderator • واحة نور*\n\n` +
         `👤 *الاسم:* ${name}\n` +
+        `📞 *الهاتف:* ${phone}\n` +
+        `📧 *الإيميل:* ${email}\n` +
         `💰 *الراتب المتوقع:* ${salary}\n` +
         `⏰ *موعد الجاهزية للبدء:* ${availability}\n` +
         `📝 *ملاحظات:* ${notes}`
       );
+      document.getElementById('whatsappBackupLink').href = `https://wa.me/${ADMIN_WHATSAPP}?text=${text}`;
 
-      // Pre-fill WhatsApp link to HR (or general WhatsApp API)
-      document.getElementById('whatsappBackupLink').href = `https://wa.me/?text=${text}`;
-
-      // Toggle UI to Success
+      // Show Success State
       document.getElementById('moderatorForm').classList.add('hidden');
       document.getElementById('successState').classList.remove('hidden');
       lucide.createIcons();

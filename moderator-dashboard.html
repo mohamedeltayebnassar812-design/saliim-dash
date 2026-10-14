@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة مقارنة ومفاضلة الموديراتور | واحة نور • د. أحمد الخطيب</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #0ea5e9;
+      border-radius: 999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#071626] text-slate-100 flex flex-col antialiased selection:bg-cyan-500 selection:text-white">
+
+  <!-- =========================================================================
+       1. SECURITY PIN LOCK MODAL
+       ========================================================================= -->
+  <div id="pinLockModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 shadow-2xl text-center space-y-6 relative overflow-hidden border border-cyan-500/30">
+      <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 flex items-center justify-center mx-auto shadow-lg shadow-cyan-500/20">
+        <i data-lucide="shield-check" class="w-8 h-8"></i>
+      </div>
+
+      <div class="space-y-1.5">
+        <h2 class="text-xl sm:text-2xl font-black text-white">غرفة تقييم واختيار الموديراتور</h2>
+        <p class="text-xs text-slate-400">لوحة المتابعة والمفاضلة الخاصة بدكتور أحمد الخطيب والإدارة</p>
+      </div>
+
+      <form onsubmit="verifyPin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">أدخل الرقم السري للوصول (PIN):</label>
+          <input 
+            type="password" 
+            id="adminPinInput" 
+            placeholder="••••" 
+            maxlength="10"
+            class="w-full h-14 text-center text-2xl font-mono tracking-widest rounded-xl bg-slate-950 border border-slate-700 text-white outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition"
+            required
+            autofocus
+          >
+          <p id="pinErrorMsg" class="text-xs text-rose-400 mt-2 hidden font-bold">الرقم السري غير صحيح، يرجى المحاولة مجدداً.</p>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-black text-sm shadow-xl transition flex items-center justify-center gap-2"
+        >
+          <i data-lucide="unlock" class="w-4 h-4"></i>
+          <span>فتح غرفة المقارنة 🔓</span>
+        </button>
+        <p class="text-[11px] text-slate-500">الرمز المعتمد: <span class="font-mono text-cyan-400 font-bold">2026</span></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       2. MAIN DASHBOARD CONTENT
+       ========================================================================= -->
+  <div id="mainDashboard" class="hidden flex-1 flex flex-col">
+    
+    <!-- Top Header -->
+    <header class="border-b border-white/10 bg-[#071626]/90 backdrop-blur sticky top-0 z-30">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-black text-white">واحة نور | مفاضلة وتقييم الموديراتور</h1>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 inline-flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                قاعدة البيانات سحابية متصلة
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400">متابعة ردود المرشحات الأربعة • المقارنة الفورية والرواتب المتوقعة</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Refresh -->
+          <button 
+            onclick="fetchCandidates()" 
+            id="refreshBtn" 
+            class="px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 hover:border-cyan-500/50 text-xs text-slate-200 font-bold flex items-center gap-1.5 transition"
+            title="تحديث البيانات فورياً"
+          >
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5" id="refreshIcon"></i>
+            <span class="hidden sm:inline">تحديث فوري</span>
+          </button>
+
+          <!-- Export CSV -->
+          <button 
+            onclick="exportCSV()" 
+            class="px-3.5 py-2 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 font-bold text-xs flex items-center gap-1.5 transition"
+            title="تصدير إلى Excel"
+          >
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>تصدير Excel</span>
+          </button>
+
+          <!-- Form Link -->
+          <a 
+            href="/moderator-form" 
+            target="_blank"
+            class="px-3 py-2 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 border border-cyan-500/40 text-cyan-300 font-bold text-xs flex items-center gap-1.5 transition"
+          >
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span class="hidden md:inline">فتح الاستمارة</span>
+          </a>
+
+          <!-- Back to Admin -->
+          <a 
+            href="/admin" 
+            class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white transition"
+            title="العودة للوحة القيادة العامة"
+          >
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+          </a>
+
+          <!-- Lock -->
+          <button 
+            onclick="lockDashboard()" 
+            class="p-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-400 hover:text-rose-400 transition"
+            title="قفل الشاشة"
+          >
+            <i data-lucide="lock" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 space-y-8 flex-1">
+      
+      <!-- TOP METRIC CARDS -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Total Target -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">المرشحات المستهدفات</span>
+            <i data-lucide="user-check" class="w-4 h-4 text-cyan-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-black text-white">4</div>
+          <p class="text-[10px] text-slate-400 mt-1">أفضل 4 متقدمات بعد المقابلات</p>
+        </div>
+
+        <!-- Received Responses -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">الردود الواصلة لايف</span>
+            <i data-lucide="mail-check" class="w-4 h-4 text-emerald-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-black text-emerald-400" id="statReceivedCount">0 / 4</div>
+          <p class="text-[10px] text-emerald-400/80 mt-1 font-semibold" id="statReceivedPercent">0% تم الاستلام</p>
+        </div>
+
+        <!-- Immediate Readiness -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">جاهزية فورية للبدء</span>
+            <i data-lucide="zap" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div class="text-2xl sm:text-3xl font-black text-amber-300" id="statImmediateReady">0</div>
+          <p class="text-[10px] text-slate-400 mt-1">مستعدة للعمل فوراً من الغد</p>
+        </div>
+
+        <!-- Salary Average / Min -->
+        <div class="glass-card rounded-2xl p-4 sm:p-5 relative overflow-hidden">
+          <div class="flex items-center justify-between text-slate-400 mb-2">
+            <span class="text-xs font-bold">متوسط الرواتب المطلوبة</span>
+            <i data-lucide="dollar-sign" class="w-4 h-4 text-purple-400"></i>
+          </div>
+          <div class="text-xl sm:text-2xl font-black text-white" id="statAvgSalary">في انتظار الردود</div>
+          <p class="text-[10px] text-purple-400 mt-1">تحليل تلقائي مع وصول الاستمارات</p>
+        </div>
+
+      </div>
+
+      <!-- SECTION 1: THE 4 TARGET CANDIDATE BENCHMARK CARDS -->
+      <div class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-black text-white flex items-center gap-2">
+              <i data-lucide="sliders" class="w-5 h-5 text-cyan-400"></i>
+              <span>بطاقات المرشحات الأربعة والمفاضلة المباشرة</span>
+            </h2>
+            <p class="text-xs text-slate-400">متابعة وصول الرد لكل مرشحة بالاسم ومقارنة تفاصيلها واتخاذ القرار</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="targetCardsContainer">
+          <!-- Dynamically populated or pre-set -->
+        </div>
+      </div>
+
+      <!-- SECTION 2: FULL DATA TABLE & LOG -->
+      <div class="glass-card rounded-3xl p-6 space-y-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
+              <span>سجل الاستمارات الواصلة لقاعدة البيانات</span>
+            </h3>
+            <p class="text-xs text-slate-400">جميع البيانات الواردة مباشرة من استمارة المرشحات مع التوقيت الدقيق</p>
+          </div>
+
+          <div class="w-full sm:w-64">
+            <input 
+              type="text" 
+              id="tableSearchInput" 
+              oninput="filterTable()" 
+              placeholder="بحث بالاسم أو الهاتف..." 
+              class="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+            >
+          </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="overflow-x-auto custom-scrollbar border border-white/5 rounded-2xl">
+          <table class="w-full text-right text-xs">
+            <thead class="bg-slate-950/60 text-slate-400 border-b border-white/10">
+              <tr>
+                <th class="p-3.5 font-bold">المرشحة</th>
+                <th class="p-3.5 font-bold">الراتب المتوقع</th>
+                <th class="p-3.5 font-bold">موعد الجاهزية</th>
+                <th class="p-3.5 font-bold">رقم الهاتف / واتساب</th>
+                <th class="p-3.5 font-bold">ملاحظات الشيفت</th>
+                <th class="p-3.5 font-bold">توقيت الإرسال</th>
+                <th class="p-3.5 font-bold text-center">الإجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="candidatesTableBody" class="divide-y divide-white/5 text-slate-200">
+              <tr>
+                <td colspan="7" class="p-8 text-center text-slate-500">
+                  <div class="flex flex-col items-center gap-2">
+                    <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-cyan-400"></i>
+                    <span>جاري جلب البيانات من Supabase...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const SUPABASE_URL = 'https://jmoooxwpcmyuwmsqwevg.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_pdJ6w4vu9Mrc0jwUQzmYRg_nML7hDjT';
+    const MASTER_PIN = '2026';
+
+    // The Top 4 Candidates preset targets (excluding Farah)
+    const TARGET_CANDIDATES = [
+      {
+        id: 'fatma',
+        name: 'فاطمة عبد الواحد',
+        email: 'fabdelwahed40@gmail.com',
+        phone: '01004128549',
+        role: 'أخصائية اجتماعية ودعم نفسي'
+      },
+      {
+        id: 'tasneem',
+        name: 'تسنيم نبيل',
+        email: 'tasneemnabil26@gmail.com',
+        phone: '01026362547',
+        role: 'إدارة مجتمعات ودعم عملاء'
+      },
+      {
+        id: 'sama',
+        name: 'سما مصطفى',
+        email: 'samaaadel71@gmail.com',
+        phone: '01027376785',
+        role: 'خدمة عملاء ومبيعات'
+      },
+      {
+        id: 'noura',
+        name: 'د. نورا مهران',
+        email: 'nouramahran97@gmail.com',
+        phone: '01099182374',
+        role: 'صيدلانية ومحتوى طبي'
+      }
+    ];
+
+    let allResponses = [];
+
+    // PIN Authentication
+    function verifyPin(e) {
+      e.preventDefault();
+      const pin = document.getElementById('adminPinInput').value.trim();
+      if (pin === MASTER_PIN) {
+        document.getElementById('pinLockModal').classList.add('hidden');
+        document.getElementById('mainDashboard').classList.remove('hidden');
+        sessionStorage.setItem('wahetnor_mod_auth', 'true');
+        fetchCandidates();
+      } else {
+        document.getElementById('pinErrorMsg').classList.remove('hidden');
+      }
+    }
+
+    // Auto unlock if session is active
+    if (sessionStorage.getItem('wahetnor_mod_auth') === 'true') {
+      document.getElementById('pinLockModal').classList.add('hidden');
+      document.getElementById('mainDashboard').classList.remove('hidden');
+      fetchCandidates();
+    }
+
+    function lockDashboard() {
+      sessionStorage.removeItem('wahetnor_mod_auth');
+      window.location.reload();
+    }
+
+    // Fetch Candidates from Supabase
+    async function fetchCandidates() {
+      const refreshIcon = document.getElementById('refreshIcon');
+      if (refreshIcon) refreshIcon.classList.add('animate-spin');
+
+      try {
+        let rows = [];
+
+        // 1. Fetch from Supabase
+        try {
+          const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist_leads?source=eq.moderator_candidate&order=created_at.desc`, {
+            headers: {
+              'apikey': SUPABASE_ANON_KEY,
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+            }
+          });
+          if (res.ok) {
+            rows = await res.json();
+          }
+        } catch (err) {
+          console.warn('Supabase fetch error:', err);
+        }
+
+        // 2. Merge with LocalStorage backup
+        try {
+          const local = JSON.parse(localStorage.getItem('wahetnor_moderator_candidates') || '[]');
+          const existingNames = new Set(rows.map(r => r.name));
+          local.forEach(l => {
+            if (!existingNames.has(l.name)) {
+              rows.push({
+                created_at: l.submitted_at || new Date().toISOString(),
+                name: l.name,
+                phone: l.phone,
+                email: l.email,
+                diagnosis_title: l.diagnosis_title,
+                lifestyle_need: l.lifestyle_need,
+                diet_history: l.diet_history,
+                source: 'moderator_candidate'
+              });
+              existingNames.add(l.name);
+            }
+          });
+        } catch (e) {}
+
+        allResponses = rows || [];
+        renderDashboard(allResponses);
+
+      } catch (err) {
+        console.error('Fetch failed:', err);
+      } finally {
+        if (refreshIcon) refreshIcon.classList.remove('animate-spin');
+        lucide.createIcons();
+      }
+    }
+
+    // Render Cards & Table
+    function renderDashboard(responses) {
+      // 1. Update Top Stats
+      const receivedCount = responses.length;
+      document.getElementById('statReceivedCount').innerText = `${receivedCount} / 4`;
+      const pct = Math.round((receivedCount / 4) * 100);
+      document.getElementById('statReceivedPercent').innerText = `${pct}% نسبة الإنجاز`;
+
+      let immediateCount = 0;
+      let totalSalary = 0;
+      let validSalaryCount = 0;
+
+      responses.forEach(r => {
+        if (r.lifestyle_need && r.lifestyle_need.includes('فوراً')) {
+          immediateCount++;
+        }
+        // Extract numeric salary if any
+        if (r.diagnosis_title) {
+          const numMatch = r.diagnosis_title.replace(/[^0-9]/g, '');
+          if (numMatch && numMatch.length >= 3 && numMatch.length <= 6) {
+            totalSalary += parseInt(numMatch, 10);
+            validSalaryCount++;
+          }
+        }
+      });
+
+      document.getElementById('statImmediateReady').innerText = immediateCount;
+      if (validSalaryCount > 0) {
+        const avg = Math.round(totalSalary / validSalaryCount);
+        document.getElementById('statAvgSalary').innerText = `${avg.toLocaleString()} ج.م`;
+      } else if (receivedCount > 0) {
+        document.getElementById('statAvgSalary').innerText = `تم استلام ${receivedCount} رد`;
+      } else {
+        document.getElementById('statAvgSalary').innerText = 'في انتظار الردود';
+      }
+
+      // 2. Render Target Cards
+      const container = document.getElementById('targetCardsContainer');
+      container.innerHTML = '';
+
+      TARGET_CANDIDATES.forEach(target => {
+        // Find matching response
+        const match = responses.find(r => r.name && r.name.toLowerCase().includes(target.name.split(' ')[0].toLowerCase()));
+        
+        let cardHtml = '';
+        if (match) {
+          cardHtml = `
+            <div class="glass-card rounded-2xl p-5 border-emerald-500/40 relative overflow-hidden space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-black border border-emerald-500/30 flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> تم استلام الرد
+                </span>
+                <span class="text-[10px] text-slate-400">${new Date(match.created_at).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+              </div>
+
+              <div>
+                <h3 class="text-base font-black text-white">${match.name || target.name}</h3>
+                <p class="text-[11px] text-slate-400">${target.role}</p>
+              </div>
+
+              <div class="bg-slate-950/60 p-3 rounded-xl border border-white/5 space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">الراتب المتوقع:</span>
+                  <span class="font-black text-emerald-400 font-mono text-sm">${match.diagnosis_title || 'غير محدد'}</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">الجاهزية:</span>
+                  <span class="font-bold text-amber-300 text-[11px]">${match.lifestyle_need || 'غير محدد'}</span>
+                </div>
+              </div>
+
+              <div class="text-[11px] text-slate-300 bg-white/5 p-2.5 rounded-xl border border-white/5 line-clamp-2" title="${match.diet_history || 'لا توجد ملاحظات'}">
+                <span class="text-slate-400 font-bold">ملاحظات:</span> ${match.diet_history || 'لا توجد ملاحظات إضافية'}
+              </div>
+
+              <div class="pt-2 flex items-center gap-2">
+                <a 
+                  href="https://wa.me/${(match.phone || target.phone).replace(/[^0-9]/g, '')}?text=${encodeURIComponent('أهلاً ' + target.name + '، تواصل من إدارة واحة نور بخصوص استمارة الترشيح.')}" 
+                  target="_blank"
+                  class="flex-1 py-2 px-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition"
+                >
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  <span>واتساب</span>
+                </a>
+                <a 
+                  href="tel:${match.phone || target.phone}" 
+                  class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center justify-center transition"
+                >
+                  <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+          `;
+        } else {
+          // Waiting for response
+          const shareLink = `https://www.ahmedelkhateeb.com/moderator-form?name=${encodeURIComponent(target.name)}&email=${encodeURIComponent(target.email)}&phone=${target.phone}`;
+          const reminderMsg = encodeURIComponent(`مرحباً ${target.name}، نرجو التكرم باستكمال استمارة البيانات والجاهزية لوظيفة الموديراتور عبر الرابط: ${shareLink}`);
+          
+          cardHtml = `
+            <div class="glass-card rounded-2xl p-5 border-slate-800 relative overflow-hidden space-y-4 opacity-90 hover:opacity-100 transition">
+              <div class="flex items-center justify-between">
+                <span class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[10px] font-bold border border-slate-700 flex items-center gap-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-amber-400"></i> في انتظار الرد
+                </span>
+                <span class="text-[10px] text-slate-500">لم تُرسل بعد</span>
+              </div>
+
+              <div>
+                <h3 class="text-base font-black text-slate-200">${target.name}</h3>
+                <p class="text-[11px] text-slate-400">${target.role}</p>
+                <p class="text-[10px] font-mono text-cyan-400 mt-1">${target.phone}</p>
+              </div>
+
+              <div class="bg-slate-950/40 p-3 rounded-xl border border-white/5 text-center text-xs text-slate-500 py-6">
+                بانتظار تسجيل الراتب والموعد...
+              </div>
+
+              <div class="pt-2">
+                <a 
+                  href="https://wa.me/20${target.phone.replace(/^0/, '')}?text=${reminderMsg}" 
+                  target="_blank"
+                  class="w-full py-2 px-3 rounded-xl bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 border border-cyan-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition"
+                >
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>إرسال الاستمارة بواتساب</span>
+                </a>
+              </div>
+            </div>
+          `;
+        }
+        container.innerHTML += cardHtml;
+      });
+
+      // 3. Render Table
+      renderTable(responses);
+      lucide.createIcons();
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('candidatesTableBody');
+      if (!data || data.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="p-8 text-center text-slate-500">
+              لا توجد ردود مسجلة حتى الآن. بمجرد قيام أي مرشحة بملء الاستمارة ستظهر بياناتها فوراً هنا.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = data.map((item, index) => `
+        <tr class="hover:bg-white/5 transition">
+          <td class="p-3.5 font-bold text-white flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-[10px] font-mono">${index + 1}</span>
+            <span>${item.name || 'بدون اسم'}</span>
+          </td>
+          <td class="p-3.5 font-mono font-bold text-emerald-400">${item.diagnosis_title || '-'}</td>
+          <td class="p-3.5 text-amber-300 font-semibold">${item.lifestyle_need || '-'}</td>
+          <td class="p-3.5 font-mono text-slate-300">${item.phone || '-'}</td>
+          <td class="p-3.5 text-slate-400 max-w-xs truncate" title="${item.diet_history || ''}">${item.diet_history || '-'}</td>
+          <td class="p-3.5 text-slate-400 text-[11px]">${item.created_at ? new Date(item.created_at).toLocaleString('ar-EG') : '-'}</td>
+          <td class="p-3.5 text-center">
+            <a 
+              href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" 
+              target="_blank"
+              class="inline-flex p-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition"
+              title="محادثة واتساب"
+            >
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+          </td>
+        </tr>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function filterTable() {
+      const query = document.getElementById('tableSearchInput').value.toLowerCase().trim();
+      const filtered = allResponses.filter(r => 
+        (r.name && r.name.toLowerCase().includes(query)) ||
+        (r.phone && r.phone.includes(query)) ||
+        (r.diet_history && r.diet_history.toLowerCase().includes(query))
+      );
+      renderTable(filtered);
+    }
+
+    function exportCSV() {
+      if (allResponses.length === 0) {
+        alert('لا توجد بيانات متاحة للتصدير حالياً.');
+        return;
+      }
+      let csvContent = '\uFEFFالاسم,الراتب المتوقع,موعد الجاهزية,رقم الهاتف,البريد الإلكتروني,ملاحظات الشيفت,تاريخ الإرسال\n';
+      allResponses.forEach(r => {
+        csvContent += `"${r.name || ''}","${r.diagnosis_title || ''}","${r.lifestyle_need || ''}","${r.phone || ''}","${r.email || ''}","${(r.diet_history || '').replace(/"/g, '""')}","${r.created_at || ''}"\n`;
+      });
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', `واحة_نور_مفاضلة_الموديراتور_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>

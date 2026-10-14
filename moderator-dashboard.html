@@ -264,7 +264,7 @@
                 <th class="p-3.5 font-bold">الراتب المتوقع</th>
                 <th class="p-3.5 font-bold">موعد الجاهزية</th>
                 <th class="p-3.5 font-bold">الجاهزية التقنية</th>
-                <th class="p-3.5 font-bold">الرد على سيناريو العميلة</th>
+                <th class="p-3.5 font-bold">الملاحظات</th>
                 <th class="p-3.5 font-bold">الهاتف</th>
                 <th class="p-3.5 font-bold">توقيت الإرسال</th>
                 <th class="p-3.5 font-bold text-center">الإجراءات</th>
@@ -603,8 +603,8 @@
           <td class="p-3.5 text-sky-300 text-[11px] max-w-xs truncate" title="${item.fat_loc || ''}">
             ${item.fat_loc ? (item.fat_loc.includes('بالكامل') ? '<span class="px-2 py-0.5 rounded bg-sky-950 border border-sky-500/40 text-sky-300 font-semibold">✅ كامل + طوارئ</span>' : item.fat_loc) : '-'}
           </td>
-          <td class="p-3.5 text-slate-300 text-[11px] max-w-xs truncate italic" title="${item.insulin_sign || ''}">
-            ${item.insulin_sign ? `«${item.insulin_sign}»` : '-'}
+          <td class="p-3.5 text-slate-300 text-[11px] max-w-xs truncate" title="${item.diet_history || ''}">
+            ${item.diet_history || 'لا توجد ملاحظات'}
           </td>
           <td class="p-3.5 font-mono text-slate-300 text-[11px]">${item.phone || '-'}</td>
           <td class="p-3.5 text-slate-400 text-[11px]">${item.created_at ? new Date(item.created_at).toLocaleString('ar-EG') : '-'}</td>

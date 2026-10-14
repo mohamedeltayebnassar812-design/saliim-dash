@@ -355,6 +355,42 @@
       window.location.reload();
     }
 
+    function normalizeArabic(text) {
+      if (!text) return '';
+      return text
+        .replace(/[إأآا]/g, 'ا')
+        .replace(/ة/g, 'ه')
+        .replace(/ى/g, 'ي')
+        .replace(/[\u064B-\u065F]/g, '')
+        .trim()
+        .toLowerCase();
+    }
+
+    function matchCandidate(target, r) {
+      if (!r || !target) return false;
+      // Match by phone
+      if (r.phone && target.phone) {
+        const p1 = r.phone.replace(/[^0-9]/g, '');
+        const p2 = target.phone.replace(/[^0-9]/g, '');
+        if (p1 && p2 && (p1.includes(p2) || p2.includes(p1))) return true;
+      }
+      // Match by email
+      if (r.email && target.email && r.email.trim().toLowerCase() === target.email.trim().toLowerCase()) {
+        return true;
+      }
+      // Match by normalized name
+      if (r.name) {
+        const normR = normalizeArabic(r.name);
+        const normTarget = normalizeArabic(target.name);
+        if (normR.includes(normTarget) || normTarget.includes(normR)) return true;
+        if (target.id === 'fatma' && (normR.includes('فاطمه') || normR.includes('عبد الواحد'))) return true;
+        if (target.id === 'tasneem' && normR.includes('تسنيم')) return true;
+        if (target.id === 'sama' && (normR.includes('سما') || normR.includes('سماء'))) return true;
+        if (target.id === 'noura' && (normR.includes('نورا') || normR.includes('مهران'))) return true;
+      }
+      return false;
+    }
+
     // Fetch Candidates from Supabase
     async function fetchCandidates() {
       const refreshIcon = document.getElementById('refreshIcon');
@@ -374,9 +410,15 @@
           if (res.ok) {
             const raw = await res.json();
             const deleted = JSON.parse(localStorage.getItem('wahetnor_deleted_candidate_ids') || '[]');
+            const testIds = [
+              '20cd457f-9dad-4d61-8b57-ca22f4f44e07', 
+              '24a6c19b-7ea4-4f4d-affd-86662c6f5886', 
+              '3a4ff77d-6ac7-4540-946d-f1ae54fb5e4f'
+            ];
             rows = raw.filter(r => 
               r.email !== 'test@example.com' && 
-              r.id !== '20cd457f-9dad-4d61-8b57-ca22f4f44e07' &&
+              r.name !== 'mindiv mindiv' &&
+              !testIds.includes(r.id) &&
               !deleted.includes(r.id) &&
               !deleted.includes(r.name)
             );
@@ -409,7 +451,23 @@
           });
         } catch (e) {}
 
-        allResponses = rows || [];
+        // Deduplicate: keep the latest submission per candidate and enrich phone/email
+        const seen = new Set();
+        const uniqueRows = [];
+        rows.forEach(r => {
+          let matchedTarget = TARGET_CANDIDATES.find(t => matchCandidate(t, r));
+          let key = matchedTarget ? matchedTarget.id : normalizeArabic(r.name || '');
+          if (!seen.has(key)) {
+            seen.add(key);
+            if (matchedTarget) {
+              r.phone = r.phone || matchedTarget.phone;
+              r.email = r.email || matchedTarget.email;
+            }
+            uniqueRows.push(r);
+          }
+        });
+
+        allResponses = uniqueRows;
         renderDashboard(allResponses);
 
       } catch (err) {
@@ -419,6 +477,13 @@
         lucide.createIcons();
       }
     }
+
+    // Auto-refresh every 20 seconds
+    setInterval(() => {
+      if (sessionStorage.getItem('wahetnor_mod_auth') === 'true') {
+        fetchCandidates();
+      }
+    }, 20000);
 
     // Render Cards & Table
     function renderDashboard(responses) {
@@ -433,7 +498,7 @@
       let validSalaryCount = 0;
 
       responses.forEach(r => {
-        if (r.lifestyle_need && r.lifestyle_need.includes('فوراً')) {
+        if (r.lifestyle_need && (r.lifestyle_need.includes('فوراً') || r.lifestyle_need.includes('السبت'))) {
           immediateCount++;
         }
         // Extract numeric salary if any
@@ -462,10 +527,32 @@
 
       TARGET_CANDIDATES.forEach(target => {
         // Find matching response
-        const match = responses.find(r => r.name && r.name.toLowerCase().includes(target.name.split(' ')[0].toLowerCase()));
+        const match = responses.find(r => matchCandidate(target, r));
         
         let cardHtml = '';
         if (match) {
+          let salaryBlock = '';
+          if (match.diagnosis_title && match.diagnosis_title.length > 20) {
+            salaryBlock = `
+              <div class="space-y-1 pt-1">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400 font-bold">الراتب المتوقع:</span>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 text-[10px] font-bold border border-emerald-500/20">تفاوضي / مرنة</span>
+                </div>
+                <div class="bg-emerald-950/40 p-2.5 rounded-xl border border-emerald-500/20 text-emerald-200 text-xs italic leading-relaxed">
+                  «${match.diagnosis_title}»
+                </div>
+              </div>
+            `;
+          } else {
+            salaryBlock = `
+              <div class="flex justify-between items-center text-xs">
+                <span class="text-slate-400">الراتب المتوقع:</span>
+                <span class="font-black text-emerald-400 font-mono text-sm">${match.diagnosis_title || 'غير محدد'}</span>
+              </div>
+            `;
+          }
+
           cardHtml = `
             <div class="glass-card rounded-2xl p-5 border-emerald-500/40 relative overflow-hidden space-y-4">
               <div class="flex items-center justify-between">
@@ -481,13 +568,11 @@
               <div>
                 <h3 class="text-base font-black text-white">${match.name || target.name}</h3>
                 <p class="text-[11px] text-slate-400">${target.role}</p>
+                <p class="text-[10px] font-mono text-cyan-400 mt-1">${target.phone}</p>
               </div>
 
               <div class="bg-slate-950/60 p-3 rounded-xl border border-white/5 space-y-2">
-                <div class="flex justify-between items-center text-xs">
-                  <span class="text-slate-400">الراتب المتوقع:</span>
-                  <span class="font-black text-emerald-400 font-mono text-sm">${match.diagnosis_title || 'غير محدد'}</span>
-                </div>
+                ${salaryBlock}
                 <div class="flex justify-between items-center text-xs">
                   <span class="text-slate-400">الجاهزية:</span>
                   <span class="font-bold text-amber-300 text-[11px]">${match.lifestyle_need || 'غير محدد'}</span>
@@ -500,25 +585,13 @@
                 </div>
               </div>
 
-              ${match.insulin_sign ? `
-                <div class="text-[11px] bg-rose-950/30 border border-rose-500/30 p-2.5 rounded-xl space-y-1">
-                  <div class="flex items-center gap-1 font-bold text-rose-300 text-[10px]">
-                    <i data-lucide="heart-handshake" class="w-3 h-3 text-rose-400"></i>
-                    <span>نبرة الرد على سيناريو ثبات الوزن:</span>
-                  </div>
-                  <p class="text-slate-200 italic line-clamp-3 leading-relaxed" title="${match.insulin_sign}">
-                    «${match.insulin_sign}»
-                  </p>
-                </div>
-              ` : ''}
-
               <div class="text-[11px] text-slate-300 bg-white/5 p-2.5 rounded-xl border border-white/5 line-clamp-2" title="${match.diet_history || 'لا توجد ملاحظات'}">
                 <span class="text-slate-400 font-bold">ملاحظات:</span> ${match.diet_history || 'لا توجد ملاحظات إضافية'}
               </div>
 
               <div class="pt-2 flex items-center gap-2">
                 <a 
-                  href="https://wa.me/${(match.phone || target.phone).replace(/[^0-9]/g, '')}?text=${encodeURIComponent('أهلاً ' + target.name + '، تواصل من إدارة واحة نور بخصوص استمارة الترشيح.')}" 
+                  href="https://wa.me/20${target.phone.replace(/^0/, '')}?text=${encodeURIComponent('أهلاً ' + target.name + '، تواصل من إدارة واحة نور بخصوص استمارة الترشيح.')}" 
                   target="_blank"
                   class="flex-1 py-2 px-3 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-xs font-bold flex items-center justify-center gap-1.5 transition"
                 >
@@ -526,7 +599,7 @@
                   <span>واتساب</span>
                 </a>
                 <a 
-                  href="tel:${match.phone || target.phone}" 
+                  href="tel:${target.phone}" 
                   class="py-2 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center justify-center transition"
                 >
                   <i data-lucide="phone" class="w-3.5 h-3.5"></i>
@@ -598,7 +671,15 @@
             <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 flex items-center justify-center text-[10px] font-mono">${index + 1}</span>
             <span>${item.name || 'بدون اسم'}</span>
           </td>
-          <td class="p-3.5 font-mono font-bold text-emerald-400">${item.diagnosis_title || '-'}</td>
+          <td class="p-3.5 text-xs max-w-xs">
+            ${item.diagnosis_title && item.diagnosis_title.length > 20 ? `
+              <div class="text-[11px] text-emerald-300 bg-emerald-950/40 p-2 rounded-xl border border-emerald-500/20 italic leading-relaxed" title="${item.diagnosis_title}">
+                «${item.diagnosis_title}»
+              </div>
+            ` : `
+              <span class="font-mono font-bold text-emerald-400">${item.diagnosis_title || '-'}</span>
+            `}
+          </td>
           <td class="p-3.5 text-amber-300 font-semibold text-[11px]">${item.lifestyle_need || '-'}</td>
           <td class="p-3.5 text-sky-300 text-[11px] max-w-xs truncate" title="${item.fat_loc || ''}">
             ${item.fat_loc ? (item.fat_loc.includes('بالكامل') ? '<span class="px-2 py-0.5 rounded bg-sky-950 border border-sky-500/40 text-sky-300 font-semibold">✅ كامل + طوارئ</span>' : item.fat_loc) : '-'}
@@ -606,11 +687,11 @@
           <td class="p-3.5 text-slate-300 text-[11px] max-w-xs truncate" title="${item.diet_history || ''}">
             ${item.diet_history || 'لا توجد ملاحظات'}
           </td>
-          <td class="p-3.5 font-mono text-slate-300 text-[11px]">${item.phone || '-'}</td>
+          <td class="p-3.5 font-mono text-cyan-300 text-[11px] font-bold">${item.phone || '-'}</td>
           <td class="p-3.5 text-slate-400 text-[11px]">${item.created_at ? new Date(item.created_at).toLocaleString('ar-EG') : '-'}</td>
           <td class="p-3.5 text-center flex items-center justify-center gap-1.5">
             <a 
-              href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" 
+              href="https://wa.me/20${(item.phone || '').replace(/^0/, '')}" 
               target="_blank"
               class="inline-flex p-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition"
               title="محادثة واتساب"

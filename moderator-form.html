@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة البيانات والجاهزية للعمل • واحة نور | د. أحمد الخطيب</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Light Effects -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute -bottom-40 left-1/4 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-xl mx-auto">
+    
+    <!-- BRAND CARD HEADER -->
+    <div class="text-center mb-6 space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-bold">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span>فريق العمليات والموارد البشرية • HR & OPERATIONS</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">استمارة استكمال بيانات الترشيح النهائي</h1>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+        وظيفة: مشرف مجتمع ودعم عملاء (Community Moderator) • واحة نور (د. أحمد الخطيب)
+      </p>
+    </div>
+
+    <!-- MAIN FORM CONTAINER -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden" id="form-container">
+      
+      <div class="mb-6 pb-4 border-b border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        سعدنا جداً بالحديث معكِ في المقابلة اليوم. لاستكمال المفاضلة النهائية بين المرشحات وتحديد ترتيب الشيفتات والتعاقد، يرجى تعبئة الأسئلة الأربعة التالية بدقة:
+      </div>
+
+      <form id="moderatorForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
+        
+        <!-- QUESTION 1: FULL NAME -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xs font-black">1</span>
+            الاسم ثلاثي أو رباعي <span class="text-rose-400">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="fullName" 
+            required 
+            placeholder="مثال: فاطمة عبد الواحد / تسنيم نبيل / سما مصطفى / نورا مهران" 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+          >
+        </div>
+
+        <!-- QUESTION 2: EXPECTED SALARY -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs font-black">2</span>
+            الراتب الشهري المتوقع (Expected Salary) <span class="text-rose-400">*</span>
+          </label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="expectedSalary" 
+              required 
+              placeholder="اكتبي الرقم المتوقع بالجنيه المصري (مثال: 6000 - 8000 ج.م)" 
+              class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors"
+            >
+          </div>
+          <p class="text-[11px] text-slate-400 mt-1.5">نظام العمل: شيفت 12 ساعة عن بُعد (Work from Home) مع يوم إجازة أسبوعياً.</p>
+        </div>
+
+        <!-- QUESTION 3: AVAILABILITY & START DATE -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-xs font-black">3</span>
+            موعد الجاهزية لبدء العمل (Availability) <span class="text-rose-400">*</span>
+          </label>
+          <select 
+            id="availability" 
+            required 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-400 transition-colors"
+          >
+            <option value="" disabled selected>اختاري موعد جاهزيتك للبدء...</option>
+            <option value="جاهزة للبدء فوراً من الغد">جاهزة للبدء فوراً من الغد</option>
+            <option value="خلال 3 إلى 5 أيام">خلال 3 إلى 5 أيام</option>
+            <option value="بداية الأسبوع القادم (السبت)">بداية الأسبوع القادم (السبت)</option>
+            <option value="أحتاج أسبوعين لتسليم عملي الحالي">أحتاج أسبوعين لتسليم عملي الحالي</option>
+          </select>
+        </div>
+
+        <!-- QUESTION 4: OTHER NOTES -->
+        <div>
+          <label class="block text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-2">
+            <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center text-xs font-black">4</span>
+            ملاحظات أو استفسارات أخرى تودين إضافتها (اختياري)
+          </label>
+          <textarea 
+            id="otherNotes" 
+            rows="3" 
+            placeholder="أي تفاصيل خاصة بتفضيلك لمواعيد الشيفت (صباحي / مسائي)، أجهزة العمل، أو أي استفسار لإدارة المنظومة..." 
+            class="w-full bg-[#071626]/90 border border-white/10 rounded-xl p-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 transition-colors resize-none"
+          ></textarea>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="pt-3">
+          <button 
+            type="submit" 
+            class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-black text-sm transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+          >
+            <span>إرسال البيانات وتأكيد الرغبة</span>
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS CONFIRMATION STATE (Hidden initially) -->
+      <div id="successState" class="hidden text-center py-8 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
+          <i data-lucide="check" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-white">تم استلام بياناتك بنجاح!</h2>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+          شكراً لكِ. تم تسجيل إجاباتك لدى فريق العمليات والموارد البشرية في «واحة نور»، وسيتم التواصل معكِ رسمياً غداً لتأكيد القرار النهائي وبدء مرحلة التهيئة (Onboarding).
+        </p>
+
+        <!-- WHATSAPP BACKUP BUTTON -->
+        <div class="pt-4">
+          <a 
+            id="whatsappBackupLink" 
+            href="#" 
+            target="_blank" 
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold hover:bg-emerald-600/30 transition-all"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span>تأكيد الإرسال عبر واتساب الإدارة أيضاً</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center mt-6 text-xs text-slate-500">
+      واحة نور • د. أحمد الخطيب © 2026. جميع الحقوق محفوظة.
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('fullName').value.trim();
+      const salary = document.getElementById('expectedSalary').value.trim();
+      const availability = document.getElementById('availability').value;
+      const notes = document.getElementById('otherNotes').value.trim() || 'لا توجد ملاحظات إضافية';
+
+      // Format WhatsApp message
+      const text = encodeURIComponent(
+        `*استمارة المرشحة لوظيفة Community Moderator • واحة نور*\n\n` +
+        `👤 *الاسم:* ${name}\n` +
+        `💰 *الراتب المتوقع:* ${salary}\n` +
+        `⏰ *موعد الجاهزية للبدء:* ${availability}\n` +
+        `📝 *ملاحظات:* ${notes}`
+      );
+
+      // Pre-fill WhatsApp link to HR (or general WhatsApp API)
+      document.getElementById('whatsappBackupLink').href = `https://wa.me/?text=${text}`;
+
+      // Toggle UI to Success
+      document.getElementById('moderatorForm').classList.add('hidden');
+      document.getElementById('successState').classList.remove('hidden');
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

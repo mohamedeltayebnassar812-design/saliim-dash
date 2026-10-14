@@ -236,14 +236,22 @@
             <p class="text-xs text-slate-400">جميع البيانات الواردة مباشرة من استمارة المرشحات مع التوقيت الدقيق</p>
           </div>
 
-          <div class="w-full sm:w-64">
+          <div class="flex items-center gap-2 w-full sm:w-auto">
             <input 
               type="text" 
               id="tableSearchInput" 
               oninput="filterTable()" 
               placeholder="بحث بالاسم أو الهاتف..." 
-              class="w-full bg-slate-950/80 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+              class="w-full sm:w-60 bg-slate-950/80 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
             >
+            <button 
+              onclick="resetAllTestData()" 
+              class="px-3 py-2 rounded-xl bg-rose-950/50 hover:bg-rose-900/60 border border-rose-500/30 text-rose-300 text-xs font-bold transition flex items-center gap-1.5 shrink-0"
+              title="تصفير كل التجارب لتبدأ اللوحة بيضاء"
+            >
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+              <span>تصفير التجارب</span>
+            </button>
           </div>
         </div>
 
@@ -365,7 +373,13 @@
           });
           if (res.ok) {
             const raw = await res.json();
-            rows = raw.filter(r => r.email !== 'test@example.com' && r.id !== '20cd457f-9dad-4d61-8b57-ca22f4f44e07');
+            const deleted = JSON.parse(localStorage.getItem('wahetnor_deleted_candidate_ids') || '[]');
+            rows = raw.filter(r => 
+              r.email !== 'test@example.com' && 
+              r.id !== '20cd457f-9dad-4d61-8b57-ca22f4f44e07' &&
+              !deleted.includes(r.id) &&
+              !deleted.includes(r.name)
+            );
           }
         } catch (err) {
           console.warn('Supabase fetch error:', err);
@@ -374,9 +388,10 @@
         // 2. Merge with LocalStorage backup
         try {
           const local = JSON.parse(localStorage.getItem('wahetnor_moderator_candidates') || '[]');
+          const deleted = JSON.parse(localStorage.getItem('wahetnor_deleted_candidate_ids') || '[]');
           const existingNames = new Set(rows.map(r => r.name));
           local.forEach(l => {
-            if (!existingNames.has(l.name)) {
+            if (!existingNames.has(l.name) && !deleted.includes(l.name)) {
               rows.push({
                 created_at: l.submitted_at || new Date().toISOString(),
                 name: l.name,
@@ -384,6 +399,8 @@
                 email: l.email,
                 diagnosis_title: l.diagnosis_title,
                 lifestyle_need: l.lifestyle_need,
+                fat_loc: l.fat_loc,
+                insulin_sign: l.insulin_sign,
                 diet_history: l.diet_history,
                 source: 'moderator_candidate'
               });
@@ -455,7 +472,10 @@
                 <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-black border border-emerald-500/30 flex items-center gap-1">
                   <i data-lucide="check" class="w-3 h-3"></i> تم استلام الرد
                 </span>
-                <span class="text-[10px] text-slate-400">${new Date(match.created_at).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] text-slate-400">${new Date(match.created_at).toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}</span>
+                  <button onclick="deleteCandidateEntry('${match.id || ''}', '${match.name || target.name}')" class="p-1 rounded bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-[10px] transition" title="مسح التجربة وتصفير البطاقة"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
+                </div>
               </div>
 
               <div>
@@ -588,7 +608,7 @@
           </td>
           <td class="p-3.5 font-mono text-slate-300 text-[11px]">${item.phone || '-'}</td>
           <td class="p-3.5 text-slate-400 text-[11px]">${item.created_at ? new Date(item.created_at).toLocaleString('ar-EG') : '-'}</td>
-          <td class="p-3.5 text-center">
+          <td class="p-3.5 text-center flex items-center justify-center gap-1.5">
             <a 
               href="https://wa.me/${(item.phone || '').replace(/[^0-9]/g, '')}" 
               target="_blank"
@@ -597,10 +617,35 @@
             >
               <i data-lucide="message-circle" class="w-4 h-4"></i>
             </a>
+            <button 
+              onclick="deleteCandidateEntry('${item.id || ''}', '${item.name || ''}')"
+              class="inline-flex p-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 transition"
+              title="مسح هذه التجربة من اللوحة وتصفيرها"
+            >
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
           </td>
         </tr>
       `).join('');
       lucide.createIcons();
+    }
+
+    function deleteCandidateEntry(id, name) {
+      if (!confirm(`هل تريد مسح تجربة «${name || 'هذا السجل'}» وتصفير بطاقتها في اللوحة؟`)) return;
+      const deleted = JSON.parse(localStorage.getItem('wahetnor_deleted_candidate_ids') || '[]');
+      if (id) deleted.push(id);
+      if (name) deleted.push(name);
+      localStorage.setItem('wahetnor_deleted_candidate_ids', JSON.stringify(deleted));
+      fetchCandidates();
+    }
+
+    function resetAllTestData() {
+      if (!confirm('هل تريد تصفير جميع التجارب المسجلة حالياً لتبدأ اللوحة نظيفة تماماً 0/4 للمرشحات؟')) return;
+      const allKeys = allResponses.map(r => r.name).concat(allResponses.map(r => r.id).filter(Boolean));
+      const current = JSON.parse(localStorage.getItem('wahetnor_deleted_candidate_ids') || '[]');
+      localStorage.setItem('wahetnor_deleted_candidate_ids', JSON.stringify(current.concat(allKeys)));
+      localStorage.removeItem('wahetnor_moderator_candidates');
+      fetchCandidates();
     }
 
     function filterTable() {

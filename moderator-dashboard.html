@@ -363,7 +363,8 @@
             }
           });
           if (res.ok) {
-            rows = await res.json();
+            const raw = await res.json();
+            rows = raw.filter(r => r.email !== 'test@example.com' && r.id !== '20cd457f-9dad-4d61-8b57-ca22f4f44e07');
           }
         } catch (err) {
           console.warn('Supabase fetch error:', err);

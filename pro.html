@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>باقة الانطلاق والتحول 1:1 ($99) • جلسة د. أحمد الخطيب + الفريق | واحة نور</title>
-  <meta name="description" content="لم تكن يوماً قلة إرادة.. جسدك كان يطلب الأمان فقط. باقة الانطلاق الفردية 1:1 بجلسة تشخيص مباشر مع د. أحمد الخطيب، يتبعها شهر كامل مع أخصائي التغذية وكوتش الحركة وتطبيق الويب أب الذكي.">
+  <title>واحة نور • أحمد الخطيب | برنامج تغيير نمط الحياة واستعادة الحرق الطبيعي</title>
+  <meta name="description" content="لم تكن يوماً قلة إرادة.. جسدك كان يطلب الأمان فقط. برنامج تحول فردي يبدأ بمكالمة تقييم أولى مع أحمد الخطيب، ويستمر شهراً مع أخصائي تغذية نمط الحياة وكوتش الحركة وتطبيق الويب أب الذكي.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="باقة الانطلاق والتحول 1:1 ($99) • جلسة د. أحمد الخطيب + الفريق | واحة نور">
-  <meta property="og:description" content="فريق رعاية متكامل لك وحدك + الويب أب الذكي لحرق الدهون واستعادة طاقتك. شاهد قصص التحول الحقيقية.">
-  <meta property="og:image" content="assets/saudi_woman_transformation.webp">
+  <meta property="og:title" content="واحة نور • أحمد الخطيب | برنامج تغيير نمط الحياة واستعادة الحرق الطبيعي">
+  <meta property="og:description" content="مكالمة تقييم أولى مع أحمد الخطيب + متابعة مخصصة مع فريق التغذية والحركة وتطبيق الويب أب الذكي.">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Almarai (Modern, Warm, Clean) & IBM Plex Sans Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -24,29 +23,19 @@
 
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['IBM Plex Sans Arabic', 'Cairo', 'sans-serif'],
-            heading: ['Cairo', 'IBM Plex Sans Arabic', 'sans-serif'],
-          },
           colors: {
-            oasis: {
-              dark: '#071626',
-              surface: '#0B1E33',
-              card: '#0E2742',
-              border: 'rgba(255, 255, 255, 0.08)',
+            brand: {
+              navy: '#071626',
               cyan: '#0284C7',
-              cyanLight: '#38BDF8',
-              sky: '#0EA5E9',
-              emerald: '#10B981',
-              emeraldLight: '#34D399',
-              emeraldBg: '#064E3B',
-              gold: '#F59E0B',
-              amberLight: '#FBBF24',
-              muted: '#94A3B8'
+              mint: '#10B981',
+              amber: '#F59E0B'
             }
+          },
+          fontFamily: {
+            sans: ['Almarai', 'IBM Plex Sans Arabic', 'sans-serif'],
+            heading: ['Almarai', 'sans-serif']
           }
         }
       }
@@ -55,25 +44,23 @@
 
   <style>
     body {
+      font-family: 'Almarai', 'IBM Plex Sans Arabic', sans-serif;
       background-color: #071626;
-      color: #F8FAFC;
-      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
-      overflow-x: hidden;
-      margin: 0;
-      padding: 0;
-      -webkit-font-smoothing: antialiased;
+      color: #E2E8F0;
+      letter-spacing: -0.01em;
+      line-height: 1.7;
     }
 
     .responsive-container {
       width: 100%;
-      max-width: 1220px;
+      max-width: 1200px;
       margin: 0 auto;
       padding-left: 1.25rem;
       padding-right: 1.25rem;
     }
 
     .glass-card {
-      background: rgba(11, 30, 51, 0.75);
+      background: rgba(11, 30, 51, 0.78);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -85,30 +72,28 @@
     .glass-card-hover:hover {
       border-color: rgba(56, 189, 248, 0.35);
       transform: translateY(-3px);
-      box-shadow: 0 16px 36px -12px rgba(2, 132, 199, 0.25);
+      box-shadow: 0 16px 36px -12px rgba(2, 132, 199, 0.22);
     }
 
-    .badge-hope {
+    .badge-warm {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(2, 132, 199, 0.15) 100%);
       border: 1px solid rgba(52, 211, 153, 0.35);
-      box-shadow: 0 0 25px -4px rgba(16, 185, 129, 0.2);
     }
 
     .cta-vibrant {
       background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 50%, #10B981 100%);
-      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.38);
     }
     .cta-vibrant:hover {
       background: linear-gradient(135deg, #0369A1 0%, #0284C7 50%, #059669 100%);
-      box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 15px 35px -5px rgba(16, 185, 129, 0.45);
     }
 
-    /* Radiant glow spheres */
     .glow-sphere-cyan {
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(7, 22, 38, 0) 70%);
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(7, 22, 38, 0) 70%);
     }
     .glow-sphere-emerald {
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(7, 22, 38, 0) 70%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.14) 0%, rgba(7, 22, 38, 0) 70%);
     }
 
     /* Modal Animation */
@@ -122,7 +107,7 @@
       pointer-events: auto;
     }
     .modal-content {
-      transform: scale(0.95) translateY(12px);
+      transform: scale(0.96) translateY(10px);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .modal-backdrop.active .modal-content {
@@ -132,13 +117,13 @@
 </head>
 <body class="selection:bg-cyan-500/30 selection:text-white">
 
-  <!-- ==================== 1. TOP HOPE & VITALITY BANNER ==================== -->
+  <!-- ==================== 1. TOP ANNOUNCEMENT BANNER ==================== -->
   <aside class="bg-gradient-to-r from-emerald-950/80 via-[#0B2545] to-cyan-950/80 border-b border-emerald-500/25 py-2.5 text-center text-xs sm:text-sm font-medium text-slate-200">
     <div class="responsive-container flex items-center justify-center gap-2 flex-wrap">
       <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs border border-emerald-500/30">
         🌱 بداية جديدة • أمل يتجدد
       </span>
-      <span>مقاعد الفوج الحالي محدودة بـ 40 مشتركاً فقط لضمان دقة جلسة د. أحمد التشخيصية 1:1 والمتابعة اليومية</span>
+      <span>مقاعد الفوج محدودة لضمان دقة مكالمات التقييم الفردية وجودة المتابعة</span>
       <a href="#booking-card" class="text-cyan-300 font-bold hover:underline inline-flex items-center gap-1 mr-1">
         <span>احجز مقعدك بـ 99$</span>
         <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
@@ -146,11 +131,11 @@
     </div>
   </aside>
 
-  <!-- ==================== 2. MAIN HEADER (WAHET NOR BRAND) ==================== -->
-  <header class="border-b border-white/5 bg-[#071626]/92 backdrop-blur-md sticky top-0 z-40">
+  <!-- ==================== 2. MAIN HEADER ==================== -->
+  <header class="border-b border-white/5 bg-[#071626]/95 backdrop-blur-md sticky top-0 z-40">
     <div class="responsive-container py-3.5 flex items-center justify-between">
       
-      <!-- Logo matching the uploaded screenshot style -->
+      <!-- Logo & Identity -->
       <a href="wahet-nour.html" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#0284C7] to-[#38BDF8] text-white font-black text-xl flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover:scale-105 transition-transform">
           و
@@ -160,32 +145,31 @@
             <span class="font-black text-lg sm:text-xl tracking-tight text-white block leading-none font-heading">واحة نـور</span>
             <span class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">1:1 PRO</span>
           </div>
-          <span class="text-[11px] text-slate-400 font-medium">د. أحمد الخطيب • استعادة الحرق الطبيعي</span>
+          <span class="text-[11px] text-slate-400 font-medium">أحمد الخطيب • تغيير نمط الحياة واستعادة الحرق الطبيعي</span>
         </div>
       </a>
 
       <!-- Desktop Links -->
       <nav class="hidden lg:flex items-center gap-5 text-xs font-bold text-slate-300">
-        <a href="#transformations" class="hover:text-cyan-400 transition-colors flex items-center gap-1 text-emerald-300">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>قصص التحول</span>
-        </a>
-        <a href="#comparison" class="hover:text-cyan-400 transition-colors">الفارق والمقارنة</a>
+        <a href="#comparison" class="hover:text-cyan-400 transition-colors">الفلسفة والفارق</a>
         <a href="#journey" class="hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300">
           <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
           <span>خارطة الـ 30 يوماً</span>
         </a>
-        <a href="#team-duo" class="hover:text-cyan-400 transition-colors">الفريق 1:1</a>
+        <a href="#channels" class="hover:text-cyan-400 transition-colors flex items-center gap-1 text-emerald-300">
+          <i data-lucide="ticket" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>قنوات التواصل والتذاكر</span>
+        </a>
+        <a href="#team-duo" class="hover:text-cyan-400 transition-colors">فريق التغذية والحركة</a>
         <a href="#app-visuals" class="hover:text-cyan-400 transition-colors">الويب أب الذكي</a>
-        <a href="#reviews" class="hover:text-cyan-400 transition-colors">آراء العملاء</a>
-        <a href="#pricing" class="hover:text-cyan-400 transition-colors">الباقة ($99)</a>
-        <a href="#faq" class="hover:text-cyan-400 transition-colors">الأسئلة</a>
+        <a href="#pricing" class="hover:text-cyan-400 transition-colors">تفاصيل الباقة ($99)</a>
+        <a href="#faq" class="hover:text-cyan-400 transition-colors">الأسئلة الشائعة</a>
       </nav>
 
       <!-- Header CTA -->
       <div class="flex items-center gap-3">
         <button onclick="openBookingModal('monthly')" class="cta-vibrant text-white font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-xl flex items-center gap-1.5 transition-all active:scale-95 shadow-md">
-          <span>ابدأ تحولك ($99)</span>
+          <span>ابدأ رحلتك ($99)</span>
           <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
         </button>
       </div>
@@ -193,62 +177,62 @@
     </div>
   </header>
 
-  <!-- ==================== 3. HERO SECTION (HOPE + VISUAL PROOF) ==================== -->
+  <!-- ==================== 3. HERO SECTION (WARMTH & AUTHENTIC CLARITY) ==================== -->
   <section class="relative pt-10 pb-16 md:pt-16 md:pb-24 overflow-hidden">
-    <!-- Ambient glows based on the screenshot colors -->
+    <!-- Ambient Glows -->
     <div class="absolute top-1/4 right-1/3 w-[550px] h-[350px] glow-sphere-cyan blur-[110px] pointer-events-none"></div>
     <div class="absolute top-1/3 left-10 w-[400px] h-[300px] glow-sphere-emerald blur-[100px] pointer-events-none"></div>
 
     <div class="responsive-container relative z-10">
       
-      <!-- Top Hope Notification Banner (styled exactly like screenshot draft banner) -->
-      <div class="max-w-3xl mx-auto mb-8 p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between gap-3 text-xs sm:text-sm text-emerald-200 shadow-lg">
-        <div class="flex items-center gap-2">
+      <!-- Top Warmth Badge -->
+      <div class="max-w-3xl mx-auto mb-8 p-3.5 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 flex items-center justify-between gap-3 text-xs sm:text-sm text-emerald-200 shadow-lg">
+        <div class="flex items-center gap-2.5">
           <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <i data-lucide="heart-handshake" class="w-4 h-4"></i>
           </span>
-          <span><strong>أهلاً بك في ملاذ الأمان:</strong> لم تكن يوماً قلة إرادة.. جسدك يطلب الأمان، واليوم نبدأ معاً رحلة التغيير المستدام.</span>
+          <span><strong>أهلاً بك في ملاذ الأمان:</strong> لم تكن يوماً قلة إرادة.. جسدك كان يطلب الأمان فقط، واليوم نبدأ معاً رحلة التغيير الهادئ المستدام.</span>
         </div>
-        <span class="hidden sm:inline-block px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-bold text-xs">
-          نتائج حقيقية
+        <span class="hidden sm:inline-block px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-bold text-xs shrink-0">
+          نمط حياة حقيقي
         </span>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Right Column: Emotional & Persuasive Copy -->
+        <!-- Right Column: Emotional & Honest Copy -->
         <div class="lg:col-span-7 space-y-6 text-center lg:text-right">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-hope text-emerald-300 text-xs font-bold">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-warm text-emerald-300 text-xs font-bold">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>باقة الانطلاق والتحول 1:1 • جلسة د. أحمد الخطيب + الفريق + الويب أب</span>
+            <span>برنامج واحة نور • تغيير نمط الحياة واستعادة الحرق الطبيعي</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.3] font-heading tracking-tight">
-            ابدأ تحولك بجلسة تشخيص 1:1 مع د. أحمد الخطيب.. <br>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.35] font-heading tracking-tight">
+            ابدأ رحلتك بمكالمة تقييم وتحديد مسار خاصة مع أحمد الخطيب.. <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-l from-emerald-300 via-cyan-200 to-white">
-              وشهر كامل من الرعاية الطبية اليومية،
+              وشهر كامل من المتابعة الدقيقة مع فريق التغذية والحركة،
             </span> <br>
             من أكل بيتك العادي وبدون حرمان.
           </h1>
 
           <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light max-w-2xl mx-auto lg:mx-0">
-            جلسة فيديو سريرية مباشرة (30 دقيقة) مع <strong class="text-cyan-300 font-bold">د. أحمد الخطيب</strong> لتشخيص جذر مشكلتك وتسليمك رسمياً لفريقك الطبي، يتبعها 30 يوماً مع <strong class="text-white font-bold">أخصائي التغذية العلاجية</strong> و<strong class="text-white font-bold">الكوتش الرياضي</strong> وكامل أدوات <strong class="text-emerald-300 font-bold">الويب أب الذكي</strong> في جيبك باشتراك يبدأ من <strong class="text-white font-black text-lg">99$ فقط</strong> (الفوج محدود بـ 40 مشتركاً).
+            مكالمة تقييم أولى مباشرة (1:1) مع <strong class="text-cyan-300 font-bold">أحمد الخطيب</strong> (صيدلي ومختص إدارة السمنة SCOPE وتعديل السلوك PN L1) لفهم جذور مشكلتك ورسم المسار، تليها مكالمة (20 دقيقة) مع <strong class="text-white font-bold">الكوتش الحركي</strong> لتقييم روتينك وإصاباتك، ثم استلام خطة متكاملة ومتابعة محددة مع <strong class="text-white font-bold">أخصائي تغذية نمط الحياة</strong> و<strong class="text-emerald-300 font-bold">الويب أب الذكي</strong> في جيبك.
           </p>
 
-          <!-- Visual Highlights Badges -->
+          <!-- Core Highlights -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 text-right">
-            <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1">
-              <div class="text-emerald-400 font-bold text-lg sm:text-xl font-heading">30 دقيقة 1:1</div>
-              <div class="text-[11px] text-slate-400">جلسة تشخيص فيديو مع د. أحمد</div>
+            <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1">
+              <div class="text-emerald-400 font-bold text-base sm:text-lg font-heading">مكالمة أولى 1:1</div>
+              <div class="text-[11px] text-slate-400">تقييم وتحديد مسار مع أحمد الخطيب</div>
             </div>
-            <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1">
-              <div class="text-cyan-400 font-bold text-lg sm:text-xl font-heading">100% أكل بيت</div>
-              <div class="text-[11px] text-slate-400">شبع كامل بدون جوع أو كيتو قاسٍ</div>
+            <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1">
+              <div class="text-cyan-400 font-bold text-base sm:text-lg font-heading">100% أكل بيت</div>
+              <div class="text-[11px] text-slate-400">شبع بيولوجي بدون تجويع أو حرمان</div>
             </div>
-            <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1 col-span-2 sm:col-span-1">
-              <div class="text-amber-400 font-bold text-lg sm:text-xl font-heading">شات يومي 1:1</div>
-              <div class="text-[11px] text-slate-400">متابعة إنسانية لا تتركك وحيداً</div>
+            <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-1 col-span-2 sm:col-span-1">
+              <div class="text-amber-400 font-bold text-base sm:text-lg font-heading">تواصل منظم</div>
+              <div class="text-[11px] text-slate-400">تذاكر استشارة واضحة وأوقات رد محددة</div>
             </div>
           </div>
 
@@ -258,82 +242,98 @@
               <span>ابدأ رحلة التغيير الآن ($99)</span>
               <i data-lucide="sparkles" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
             </button>
-            <a href="https://wa.me/201018316820?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%88%D8%A7%D8%AD%D8%A9%20%D9%86%D9%88%D8%B1%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%80%2099%24%20%D9%85%D8%B9%20%D8%AF.%20%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AE%D8%B7%D9%8A%D8%A8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-bold flex items-center justify-center gap-2 transition-all">
+            <a href="https://wa.me/201018316820?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%88%D8%A7%D8%AD%D8%A9%20%D9%86%D9%88%D8%B1%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%80%2099%24%20%D9%85%D8%B9%20%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AE%D8%B7%D9%8A%D8%A8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-bold flex items-center justify-center gap-2 transition-all">
               <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-              <span>محادثة واتساب سريعة</span>
+              <span>محادثة واتساب للاستفسار</span>
             </a>
           </div>
 
           <!-- Micro Trust Bar -->
           <div class="pt-2 flex items-center justify-center lg:justify-start gap-4 text-xs text-slate-400 font-medium">
-            <span class="flex items-center gap-1 text-emerald-400"><i data-lucide="shield-check" class="w-4 h-4"></i> ضمان الراحة التامة</span>
+            <span class="flex items-center gap-1 text-emerald-400"><i data-lucide="shield-check" class="w-4 h-4"></i> وضوح وشفافية كاملة</span>
             <span>•</span>
-            <span class="flex items-center gap-1"><i data-lucide="credit-card" class="w-4 h-4 text-cyan-400"></i> متاح فيزا / مادا / كاش</span>
+            <span class="flex items-center gap-1"><i data-lucide="credit-card" class="w-4 h-4 text-cyan-400"></i> متاح فيزا / مادا / تحويل محلي</span>
             <span>•</span>
-            <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4 text-amber-400"></i> أكثر من 1,200 مشترك</span>
+            <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i> لقاءان مباشران شهرياً</span>
           </div>
 
         </div>
 
-        <!-- Left Column: VISUAL HERO PROOF (Image Showcase) -->
+        <!-- Left Column: Sleek Authentic Digital Dashboard Card -->
         <div class="lg:col-span-5 relative">
           <div class="relative mx-auto max-w-md">
             
-            <!-- Real Visual Transformation Card (Before & After Hero) -->
-            <div class="glass-card rounded-3xl p-5 border border-white/10 space-y-4 shadow-2xl relative overflow-hidden">
+            <div class="glass-card rounded-3xl p-6 border border-white/10 space-y-5 shadow-2xl relative overflow-hidden">
               <div class="absolute -top-10 -right-10 w-36 h-36 bg-cyan-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
-              <!-- Card Header with Doctor & Hope badge -->
-              <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <!-- Card Header -->
+              <div class="flex items-center justify-between border-b border-white/10 pb-4">
                 <div class="flex items-center gap-3">
                   <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-emerald-500 text-white font-bold flex items-center justify-center text-sm shadow-md">
-                    واحة
+                    نور
                   </div>
                   <div>
-                    <h3 class="text-xs font-bold text-white">قصة تحول حقيقية • الفوج الأخير</h3>
-                    <p class="text-[10px] text-emerald-300">أ. ريم (الرياض) • استعادة الحرق وضبط المقاسات</p>
+                    <h3 class="text-sm font-bold text-white font-heading">لوحة المشترك • واحة نور</h3>
+                    <p class="text-[11px] text-emerald-300">مسار تغيير نمط الحياة واستعادة الحرق</p>
                   </div>
                 </div>
-                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-black">
-                  -11 كجم
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+                  الفوج النشط
                 </span>
               </div>
 
-              <!-- Transformation Photo Frame -->
-              <div class="relative rounded-2xl overflow-hidden border border-white/10 group shadow-inner">
-                <img src="assets/saudi_woman_transformation.webp" alt="قصة تحول حقيقية من مشتركي واحة نور" class="w-full h-64 object-cover object-top hover:scale-105 transition-transform duration-500">
-                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#071626] via-[#071626]/80 to-transparent p-3 text-right">
-                  <div class="text-xs font-bold text-white flex items-center justify-between">
-                    <span>نزول 14 سم من محيط الخصر</span>
-                    <span class="text-amber-300 text-[11px] font-bold">★★★★★ تقييم موثق</span>
+              <!-- Journey Status Highlights -->
+              <div class="space-y-2.5 text-xs">
+                
+                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">✓</span>
+                    <span class="text-slate-200 font-medium">مكالمة التقييم الأولى مع أحمد الخطيب</span>
                   </div>
-                  <div class="text-[11px] text-slate-300 font-light mt-0.5">
-                    "أكلت شبعانة من أكل بيتي، ونومي صار عميق وطاقتي رجعت زي أيام زمان."
-                  </div>
+                  <span class="text-[11px] text-emerald-400 font-bold">مجدولة 1:1</span>
                 </div>
+
+                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold text-xs">✓</span>
+                    <span class="text-slate-200 font-medium">جلسة تقييم الكوتش الحركي (20 دقيقة)</span>
+                  </div>
+                  <span class="text-[11px] text-cyan-400 font-bold">الأسبوع 1</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-xs">⚡</span>
+                    <span class="text-slate-200 font-medium">خطة الوجبات المتوازنة من أكل بيتك</span>
+                  </div>
+                  <span class="text-[11px] text-amber-400 font-bold">مخصصة لك</span>
+                </div>
+
+                <div class="p-3 rounded-xl bg-white/[0.04] border border-white/5 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <span class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs"><i data-lucide="ticket" class="w-3.5 h-3.5"></i></span>
+                    <span class="text-slate-200 font-medium">رصيد تذاكر الاستشارة المتاحة</span>
+                  </div>
+                  <span class="text-[11px] text-white font-bold bg-white/10 px-2 py-0.5 rounded">5 أخصائي + 2 كوتش</span>
+                </div>
+
               </div>
 
-              <!-- Floating Live App Metrics -->
+              <!-- App Tool Features Row -->
               <div class="grid grid-cols-2 gap-2 pt-1 text-xs">
-                <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center gap-2">
-                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-                  <div>
-                    <div class="font-bold text-white">سكر صائم 88</div>
-                    <div class="text-[10px] text-slate-400">بعد أن كان 124</div>
-                  </div>
+                <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-emerald-300 flex items-center gap-2">
+                  <i data-lucide="camera" class="w-4 h-4 shrink-0"></i>
+                  <span>ماسح وجبات ذكي بالكاميرا</span>
                 </div>
-                <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 flex items-center gap-2">
-                  <i data-lucide="heart" class="w-4 h-4 text-rose-400 shrink-0"></i>
-                  <div>
-                    <div class="font-bold text-white">اختفاء الخمول</div>
-                    <div class="text-[10px] text-slate-400">طاقة متصلة طوال اليوم</div>
-                  </div>
+                <div class="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-cyan-300 flex items-center gap-2">
+                  <i data-lucide="video" class="w-4 h-4 shrink-0"></i>
+                  <span>لقاءان مباشران شهرياً</span>
                 </div>
               </div>
 
               <!-- Direct CTA in Card -->
-              <button onclick="openBookingModal('monthly')" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md">
-                <span>أريد نتيجة مماثلة • انضم بـ 99$</span>
+              <button onclick="openBookingModal('monthly')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-md">
+                <span>انضم للفوج القادم بـ 99$</span>
                 <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
               </button>
 
@@ -346,120 +346,7 @@
     </div>
   </section>
 
-  <!-- ==================== 4. PHOTO TRANSFORMATIONS GALLERY (صور التحول الحقيقية) ==================== -->
-  <section id="transformations" class="py-16 md:py-24 border-t border-white/5 bg-[#091D33]/60 relative">
-    <div class="responsive-container">
-
-      <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold border border-emerald-500/20">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-          <span>إثباتات بصرية لا تقبل الشك</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          شاهد بعينيك.. نتائج من استعادوا حرقهم الطبيعي
-        </h2>
-        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          صور تحول حقيقية لمشتركين من السعودية، الإمارات، ومصر خاضوا التجربة مع فريقنا الطبي والرياضي:
-        </p>
-      </div>
-
-      <!-- 3 Visual Transformation Showcases -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-
-        <!-- Transformation 1: Male Full Comparison -->
-        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between glass-card-hover">
-          <div>
-            <div class="relative overflow-hidden bg-slate-900 h-64">
-              <img src="assets/man_full_comparison.webp" alt="تحول كامل للرجال في واحة نور" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-cyan-600/90 text-white text-xs font-bold shadow-md">
-                خسارة 16 كجم دهون
-              </span>
-            </div>
-            <div class="p-6 space-y-3">
-              <div class="flex items-center justify-between">
-                <h3 class="font-bold text-white text-base">م. حسام (39 سنة) • دبي</h3>
-                <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">مدة 10 أسابيع</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed font-light">
-                "كسرت ثبات وزن استمر 3 سنين. الكوتش ظبط لي تمارين 20 دقيقة تناسب دوامي المكتبي، والأخصائية فهمت سفرياتي ونوعت لي بدائل المطاعم بدون أي إحراج."
-              </p>
-            </div>
-          </div>
-          <div class="p-6 pt-0 border-t border-white/5 mt-4 text-xs flex items-center justify-between text-slate-400">
-            <span>نزول الخصر: 104 سم ⬅ 88 سم</span>
-            <span class="text-cyan-400 font-bold">طاقة ولياقة ممتازة</span>
-          </div>
-        </div>
-
-        <!-- Transformation 2: Saudi Woman -->
-        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between glass-card-hover">
-          <div>
-            <div class="relative overflow-hidden bg-slate-900 h-64">
-              <img src="assets/saudi_woman_transformation.webp" alt="تحول سيدة سعودية في واحة نور" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-emerald-600/90 text-white text-xs font-bold shadow-md">
-                تخلصت من الشره وتكيس المبايض
-              </span>
-            </div>
-            <div class="p-6 space-y-3">
-              <div class="flex items-center justify-between">
-                <h3 class="font-bold text-white text-base">أم فيصل (44 سنة) • جدة</h3>
-                <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">مدة 8 أسابيع</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed font-light">
-                "كنت جربت كل أنواع الدايت القاسي وكان شعري يقع وأتعب. مع واحة نور أكلت كبسة وسلطات ولحوم بدهون صحية.. مقاس عبايتي صغر نمرتين ورجعت أتحرك بخفة."
-              </p>
-            </div>
-          </div>
-          <div class="p-6 pt-0 border-t border-white/5 mt-4 text-xs flex items-center justify-between text-slate-400">
-            <span>تحسن تحليل HOMA-IR ومقاومة الإنسولين</span>
-            <span class="text-emerald-400 font-bold">باقة 99$</span>
-          </div>
-        </div>
-
-        <!-- Transformation 3: Meal Plate Reality (No Starvation) -->
-        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col justify-between glass-card-hover">
-          <div>
-            <div class="relative overflow-hidden bg-slate-900 h-64">
-              <img src="assets/meal_after_saliim.webp" alt="طبق صحي مشبع من أكل البيت" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-amber-600/90 text-white text-xs font-bold shadow-md">
-                أكل بيت حقيقي مشبع
-              </span>
-            </div>
-            <div class="p-6 space-y-3">
-              <div class="flex items-center justify-between">
-                <h3 class="font-bold text-white text-base">د. شريف (48 سنة) • القاهرة</h3>
-                <span class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">مدة 6 أسابيع</span>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed font-light">
-                "السر في واحة نور هو الشبع البيولوجي؛ مش بتاكل عشان تجوع بعد ساعتين. ماسح الطعام في الويب أب خلاني أفهم جسمي واستغنيت عن دواء السكر التراكمي تحت إشرافهم."
-              </p>
-            </div>
-          </div>
-          <div class="p-6 pt-0 border-t border-white/5 mt-4 text-xs flex items-center justify-between text-slate-400">
-            <span>التراكمي نزل من 6.8 ⬅ 5.4</span>
-            <span class="text-amber-400 font-bold">بدون أدوية تجويع</span>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Trust Collage Banner -->
-      <div class="mt-12 rounded-3xl overflow-hidden border border-white/10 relative shadow-2xl">
-        <img src="assets/veiled_client_trust_banner.jpg" alt="مشتركة من واحة نور تتابع خطتها الصحية وتتواصل مع الفريق بتفاؤل" class="w-full h-56 sm:h-72 md:h-80 object-cover object-center opacity-90 hover:opacity-100 transition-opacity">
-        <div class="absolute inset-0 bg-gradient-to-t from-[#071626] via-[#071626]/60 to-transparent flex flex-col items-center justify-end p-6 text-center">
-          <p class="text-sm sm:text-base md:text-lg font-bold text-white max-w-xl drop-shadow">
-            مئات الرسائل اليومية من المشتركين يحتفلون بصغر مقاساتهم، هدوء هرموناتهم، واستعادة طاقتهم الحيوية
-          </p>
-          <button onclick="openBookingModal('monthly')" class="mt-3 px-6 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs sm:text-sm transition-all shadow-lg hover:shadow-cyan-500/25 active:scale-95">
-            انضم للفوج القادم بـ 99$ ↗
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ==================== 5. DUAL VISUAL COMPARISON (المقارنة البصرية المزدوجة) ==================== -->
+  <!-- ==================== 4. DUAL PHILOSOPHY COMPARISON (الفارق الجوهري) ==================== -->
   <section id="comparison" class="py-16 md:py-24 border-t border-white/5 relative">
     <div class="responsive-container">
 
@@ -472,7 +359,7 @@
           لماذا تختلف تجربتك معنا عن كل ما جربته من قبل؟
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          مقارنة واقعية وصادقة بين دوامة الدايت التقليدي وبين أمان الجسد واستعادة الحرق الطبيعي مع واحة نور:
+          مقارنة واقعية وصادقة بين دوامة الدايت المؤقت المجهد وبين أمان الجسد واستعادة الحرق الطبيعي مع واحة نور:
         </p>
       </div>
 
@@ -497,33 +384,33 @@
             <ul class="space-y-3.5 text-xs sm:text-sm text-slate-300">
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✕</span>
-                <span><strong>صراع دائم مع الجوع:</strong> حرمان من أكل الأسرة وأطباق مسلوقة معزولة تولد شعوراً بالعقاب والملل.</span>
+                <span><strong>صراع دائم مع الجوع:</strong> حرمان من أكل الأسرة وأطباق معزولة تولد شعوراً بالعقاب والملل.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✕</span>
-                <span><strong>قلق العزومات والمطاعم:</strong> خوف دائم من الخروج مع الأصدقاء، أو أكل بشراهة ثم بكاء وجلد ذات.</span>
+                <span><strong>قلق العزومات والمطاعم:</strong> خوف دائم من التجمعات، أو أكل بشراهة ثم بكاء وجلد ذات.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✕</span>
-                <span><strong>عقدة الميزان اليومي:</strong> وزنك يحدد مزاجك، وثبات الرقم على الشاشة يصيبك باليأس رغم قلة أكلك.</span>
+                <span><strong>عقدة الميزان اليومي:</strong> رقم الميزان يحدد مزاجك، وثباته يصيبك باليأس رغم قلة أكلك.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✕</span>
-                <span><strong>وحدة وانعدام توجيه:</strong> استلام ورقة دايت جامدة أو تطبيق روبوت مهجور دون أي دعم إنساني حقيقي.</span>
+                <span><strong>وحدة وانعدام توجيه:</strong> استلام ورقة جامدة أو تطبيق روبوت مهجور دون أي تفاعل إنساني حقيقي.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-rose-500/15 text-rose-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✕</span>
-                <span><strong>هبوط الطاقة والخمول:</strong> صداع، تقلبات مزاجية، وتوقف الحرق بسبب ارتفاع الكورتيزول المستمر.</span>
+                <span><strong>هبوط الطاقة والخمول:</strong> صداع، تقلبات مزاجية، وشراهة سكر ليلية بسبب التوتر المستمر.</span>
               </li>
             </ul>
           </div>
 
           <div class="p-3.5 rounded-xl bg-rose-950/30 border border-rose-500/20 text-xs text-rose-300 text-center font-medium">
-            النتيجة الحتمية: انقطاع بعد أسبوعين وعودة الوزن القديم مع زيادة
+            النتيجة الحتمية: انقطاع بعد أسبوعين وعودة الوزن القديم مع إحباط مضاعف
           </div>
         </div>
 
-        <!-- Column 2: The Liberating Wahet Nour Way -->
+        <!-- Column 2: The Wahet Nour Sustainable Lifestyle Way -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl border border-emerald-500/40 bg-gradient-to-b from-emerald-950/30 via-[#0B2545] to-[#0B1E33] space-y-6 flex flex-col justify-between shadow-2xl relative overflow-hidden">
           <div class="absolute -top-12 -left-12 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -535,7 +422,7 @@
                 </span>
                 <div>
                   <h3 class="font-bold text-white text-lg font-heading">مع واحة نور (باقة الـ $99)</h3>
-                  <span class="text-xs text-emerald-400 font-medium">أمان الجسد واستعادة الحرق الطبيعي</span>
+                  <span class="text-xs text-emerald-400 font-medium">أمان الجسد وتغيير نمط الحياة المستدام</span>
                 </div>
               </div>
               <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">نمط حياة مبهج</span>
@@ -544,29 +431,29 @@
             <ul class="space-y-3.5 text-xs sm:text-sm text-slate-200">
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
-                <span><strong>شبع بيولوجي كامل:</strong> تأكل من نفس أكل عائلتك (لحم، دجاج، أرز، خضار) ببدائل وتوقيت ذكي يشبعك.</span>
+                <span><strong>شبع بيولوجي كامل:</strong> تأكل من نفس أكل عائلتك (لحم، دجاج، أرز، خضار) ببدائل وتوقيت يشبعك بهدوء.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
-                <span><strong>حرية ومرونة المطاعم:</strong> تستشير أخصائيتك على شات الويب أب قبل أي عزومة وتأكل باطمئنان دون أي حرج.</span>
+                <span><strong>مرونة وحرية في المناسبات:</strong> تستخدم بنك البدائل وتستشير أخصائيك بتذكرتك وتأكل باطمئنان دون أي حرج.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
-                <span><strong>المقاسات ونزول الخصر:</strong> نركز على مقاسات ملابسك وخفة حركتك وصغر محيط البطن ونودع عقدة الميزان.</span>
+                <span><strong>التركيز على مقاسات ملابسك:</strong> نركز على راحة حركتك وصغر محيط الخصر ونودع هوس أرقام الميزان اليومية.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
-                <span><strong>مرافقة فردية حقيقية 1:1:</strong> جلسة فيديو 30 دقيقة مع د. أحمد الخطيب لتشخيص حالتك، ثم شات خاص يومي مع أخصائي التغذية وكوتش الحركة.</span>
+                <span><strong>انطلاق مع أحمد الخطيب ومتابعة واضحة:</strong> مكالمة تقييم أولى، تليها جلسة كوتش الحركة، ومتابعات وتذاكر محددة.</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5 font-bold text-xs">✓</span>
-                <span><strong>طاقة متصلة ونوم عميق:</strong> استقرار سكر الدم وهدوء هرمونات التوتر، واختفاء تام لنوبات الشراهة بالليل.</span>
+                <span><strong>طاقة متصلة ونوم عميق:</strong> هدوء إشارات الشبع وسلامة النوم واختفاء نوبات الشراهة المسائية.</span>
               </li>
             </ul>
           </div>
 
           <div class="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-emerald-300 text-center font-bold relative z-10">
-            النتيجة الحتمية: استعادة حرقك الطبيعي وعيش حياتك بخفة وثقة دائمة
+            النتيجة الحتمية: استعادة حرقك الطبيعي وعيش حياتك بخفة وثقة دائمة دون حرمان
           </div>
         </div>
 
@@ -575,20 +462,20 @@
     </div>
   </section>
 
-  <!-- ==================== 6. THE 30-DAY MILESTONES JOURNEY (خارطة محطات الـ 30 يوماً) ==================== -->
+  <!-- ==================== 5. THE EXACT 30-DAY MILESTONES JOURNEY ==================== -->
   <section id="journey" class="py-16 md:py-24 border-t border-white/5 bg-[#091D33]/60 relative">
     <div class="responsive-container">
 
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full badge-hope text-emerald-300 text-xs font-bold">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full badge-warm text-emerald-300 text-xs font-bold">
           <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-          <span>محطات استعادة الحرق الأربع</span>
+          <span>الجدول الزمني المنظم</span>
         </div>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          خارطة رحلتك في الـ 30 يوماً القادمة
+          خارطة مسار الـ 30 يوماً بالتفصيل الدقيق
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          ماذا سيحدث لجسدك وهرموناتك وطاقتك أسبوعاً بأسبوع داخل باقة الـ $99:
+          هكذا تسير رحلتك خطوة بخطوة من اليوم الأول وحتى ختام الشهر بوضوح كامل:
         </p>
       </div>
 
@@ -602,18 +489,20 @@
               <span class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 font-black text-sm flex items-center justify-center border border-emerald-500/30">
                 01
               </span>
-              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأيام 1 - 7</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأسبوع الأول</span>
             </div>
-            <h3 class="text-lg font-bold text-white font-heading">
-              جلسة د. أحمد (30 دقيقة) واستعادة الأمان
+            <h3 class="text-base font-bold text-white font-heading">
+              التقييم الشامل ورسم الخطة
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed font-light">
-              جلسة فيديو مباشرة 1:1 مع د. أحمد الخطيب لتشخيص جذر مشكلتك ورسم خارطة الطريق وتسليمك رسمياً لفريقك المعالج. نبدأ بوجبات مشبعة تطمئن الجهاز العصبي، فيطرد جسمك 2 إلى 4 كجم سوائل محتبسة بخفة تامة.
+              • <strong>مكالمة تقييم وتحديد مسار أولى (1:1)</strong> مع أحمد الخطيب لفهم تاريخك الصحي وتحدياتك.<br>
+              • تليها خلال 24 - 48 ساعة <strong>مكالمة تقييم حركي (20 دقيقة)</strong> مع الكوتش لمعرفة نشاطك وإصاباتك.<br>
+              • تسليم <strong>خطة نمط الحياة المتكاملة</strong> المخصصة لبيتك.
             </p>
           </div>
           <div class="pt-3 border-t border-white/5 text-[11px] text-emerald-400 font-bold flex items-center gap-1.5">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>الشعور الفوري بالراحة والخفة</span>
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+            <span>الانطلاق وبدء الراحة والخفة</span>
           </div>
         </div>
 
@@ -624,18 +513,20 @@
               <span class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-300 font-black text-sm flex items-center justify-center border border-cyan-500/30">
                 02
               </span>
-              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأيام 8 - 14</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأسبوع الثاني</span>
             </div>
-            <h3 class="text-lg font-bold text-white font-heading">
-              التحرر من الأكل العاطفي
+            <h3 class="text-base font-bold text-white font-heading">
+              التطبيق العملي والاندماج
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed font-light">
-              استقرار منحنى سكر الدم ينهي تماماً خمول ما بعد الظهر. تتوقف رغبتك المسعورة في السكر ليلاً، وتبدأ مع الكوتش تمارين 20 دقيقة ممتعة ترفع طاقتك دون إجهاد.
+              • <strong>المتابعة الأولى</strong> مع أخصائي تغذية نمط الحياة لمراجعة استجابة هضمك وتطويع أطباقك.<br>
+              • <strong>المتابعة الأولى</strong> مع كوتش الحركة لضبط أول روتين نشاط خفيف.<br>
+              • استخدام ماسح الوجبات الذكي بالـ AI وبنك البدائل في الويب أب.
             </p>
           </div>
           <div class="pt-3 border-t border-white/5 text-[11px] text-cyan-400 font-bold flex items-center gap-1.5">
             <i data-lucide="check" class="w-3.5 h-3.5"></i>
-            <span>طاقة مستقرة ونوم عميق بدون قلق</span>
+            <span>انتظام الطاقة والتحرر من الجوع</span>
           </div>
         </div>
 
@@ -646,18 +537,19 @@
               <span class="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-300 font-black text-sm flex items-center justify-center border border-amber-500/30">
                 03
               </span>
-              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأيام 15 - 21</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأسبوع الثالث</span>
             </div>
-            <h3 class="text-lg font-bold text-white font-heading">
-              تسارع حرق الدهون الصامت
+            <h3 class="text-base font-bold text-white font-heading">
+              التثبيت واللقاء المباشر الأول
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed font-light">
-              يصبح جسمك ماكينة حرق دهون فعالة؛ تصغر مقاسات ملابسك والبنطال والعباية بشكل لافت، وتستمتع بمرونة الصيام واستخدام ماسح الـ AI في المطاعم بكل ثقة.
+              • <strong>المتابعة الثانية</strong> مع أخصائي التغذية لتقييم نزول المقاسات والشبع.<br>
+              • <strong>اللقاء المباشر التفاعلي الأول (Live Session)</strong> مع أحمد الخطيب والفريق؛ للإجابة على تساؤلات المشتركين وتقديم الدعم النفسي التشاركي.
             </p>
           </div>
           <div class="pt-3 border-t border-white/5 text-[11px] text-amber-400 font-bold flex items-center gap-1.5">
-            <i data-lucide="trending-down" class="w-3.5 h-3.5"></i>
-            <span>نزول مقاسات ملحوظ للجميع</span>
+            <i data-lucide="video" class="w-3.5 h-3.5"></i>
+            <span>اللقاء المباشر الأول مع أحمد الخطيب</span>
           </div>
         </div>
 
@@ -668,167 +560,125 @@
               <span class="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-300 font-black text-sm flex items-center justify-center border border-emerald-500/30">
                 04
               </span>
-              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأيام 22 - 30</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-white/5 text-slate-300 text-[11px] font-bold">الأسبوع الرابع</span>
             </div>
-            <h3 class="text-lg font-bold text-white font-heading">
-              سيادة النمط وولادة الهوية
+            <h3 class="text-base font-bold text-white font-heading">
+              الحصاد واللقاء المباشر الثاني
             </h3>
             <p class="text-xs text-slate-300 leading-relaxed font-light">
-              تتحول العادات الجديدة إلى نمط حياة طبيعي وسهل. نحتفل بنزول محيط خصرك (-8 إلى -14 سم)، ونسلمك خريطة التثبيت الدائمة لتعيش حياتك بلا خوف من عودة الوزن.
+              • <strong>المتابعة الثالثة والختامية</strong> مع أخصائي التغذية لمراجعة النتائج وتثبيت العادات.<br>
+              • <strong>المتابعة الثانية</strong> مع كوتش الحركة لترسيخ روتين النشاط.<br>
+              • <strong>اللقاء المباشر التفاعلي الثاني (Live Session)</strong> مع أحمد الخطيب والفريق للاحتفاء بالتقدم ورسم خطة الاستمرارية.
             </p>
           </div>
           <div class="pt-3 border-t border-white/5 text-[11px] text-emerald-400 font-bold flex items-center gap-1.5">
             <i data-lucide="crown" class="w-3.5 h-3.5"></i>
-            <span>تثبيت النمط وحرية مستدامة للأبد</span>
+            <span>اللقاء المباشر الثاني وتثبيت النمط</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Action Button below Journey -->
-      <div class="mt-12 text-center">
-        <button onclick="openBookingModal('monthly')" class="cta-vibrant text-white font-black text-sm px-8 py-4 rounded-xl inline-flex items-center gap-2 shadow-xl active:scale-95 transition-all">
-          <span>أريد أن أبدأ هذه الرحلة اليوم ($99)</span>
-          <i data-lucide="arrow-left" class="w-4 h-4"></i>
-        </button>
-      </div>
-
     </div>
   </section>
 
-  <!-- ==================== 7. VERIFIED CLIENT REVIEWS (آراء العملاء الحقيقية) ==================== -->
-  <section id="reviews" class="py-16 md:py-24 border-t border-white/5 relative">
+  <!-- ==================== 6. STRUCTURED COMMUNICATION CHANNELS & TICKET SYSTEM ==================== -->
+  <section id="channels" class="py-16 md:py-24 border-t border-white/5 relative">
     <div class="responsive-container">
 
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 text-xs font-bold border border-amber-500/20">
-          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
-          <span>تقييمات موثقة 4.9 من 5</span>
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold border border-emerald-500/20">
+          <i data-lucide="ticket" class="w-3.5 h-3.5"></i>
+          <span>التواصل الواضح والمنظم</span>
         </div>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          ماذا يقول المشتركون عن تجربة باقة الـ $99؟
+          نظام قنوات التواصل والتذاكر المعتمد
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          تجارب حقيقية تعكس فارق الرعاية الإنسانية والراحة النفسية مع فريق واحة نور:
+          نؤمن بأن الرعاية الحقيقية تقوم على الوضوح والتركيز؛ لذلك صممنا نظام تواصل ذكي يمنحك إجابات مدروسة دون فوضى أو وعود مستحيلة:
         </p>
       </div>
 
-      <!-- 4 Rich Review Cards (WhatsApp & Dashboard Style) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- 3 Structured Communication Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
 
-        <!-- Review 1 -->
-        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-4 glass-card-hover">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-cyan-600/30 text-cyan-300 font-bold flex items-center justify-center text-sm border border-cyan-500/30">
-                نهى
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">نهى الشمري • الرياض</h4>
-                <div class="text-[11px] text-slate-400">مشتركة منذ شهرين • باقة Pro 1:1</div>
-              </div>
+        <!-- Channel 1: Nutritionist Tickets -->
+        <div class="glass-card p-6 sm:p-7 rounded-3xl border border-cyan-500/30 flex flex-col justify-between space-y-5 glass-card-hover">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-xl border border-cyan-500/30">
+              <i data-lucide="utensils" class="w-6 h-6"></i>
             </div>
-            <div class="flex items-center text-amber-400 text-xs gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+            <div>
+              <div class="inline-block px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 text-[10px] font-bold mb-1">
+                5 تذاكر شهرية
+              </div>
+              <h3 class="text-lg font-bold text-white font-heading">
+                قناة أخصائي تغذية نمط الحياة
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-light mt-2">
+                لديك <strong>5 تذاكر استشارة مخصصة</strong> خلال الشهر عبر لوحتك في الويب أب. تستخدمها لطرح أسئلتك عن الوجبات، خيارات السفر والمناسبات، أو طلب تعديلات في الأصناف.
+              </p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-            "كنت مشتركة في تطبيق مشهور قبله وكان كله روبوتات ولايف وسط آلاف الناس بدون أي إجابة لحالتي. في واحة نور، الأخصائية بترد عليا يومياً في الشات، وتعدل لي الأكلات، وماسح الوجبات بالكاميرا سحر! خسرت مقاسين كاملين في فساتيني ومرتاحة جداً."
-          </p>
-          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-xs text-emerald-300 flex items-center gap-2">
-            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
-            <span>النتيجة: نزول 8 سم من الخصر وثبات الطاقة بدون هبوط</span>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1 text-xs">
+            <div class="text-slate-400 text-[10px] font-bold">نافذة الرد المعتمدة:</div>
+            <div class="text-cyan-300 font-bold">يومياً خلال نافذة العمل المسائية</div>
+            <div class="text-[10px] text-slate-400">تدرس كل تذكرة بتركيز وتصلك الإجابة الوافية دون استعجال.</div>
           </div>
         </div>
 
-        <!-- Review 2 -->
-        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-4 glass-card-hover">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-emerald-600/30 text-emerald-300 font-bold flex items-center justify-center text-sm border border-emerald-500/30">
-                طارق
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">طارق المنصوري • أبوظبي</h4>
-                <div class="text-[11px] text-slate-400">مشترك 3 شهور • رعاية التغذية والكوتش</div>
-              </div>
+        <!-- Channel 2: Movement Coach Tickets -->
+        <div class="glass-card p-6 sm:p-7 rounded-3xl border border-emerald-500/30 flex flex-col justify-between space-y-5 glass-card-hover">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/30">
+              <i data-lucide="activity" class="w-6 h-6"></i>
             </div>
-            <div class="flex items-center text-amber-400 text-xs gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+            <div>
+              <div class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold mb-1">
+                تذكرتان شهرياً
+              </div>
+              <h3 class="text-lg font-bold text-white font-heading">
+                قناة كوتش النشاط والحركة
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-light mt-2">
+                لديك <strong>تذكرتان استشارة مخصصتان</strong> مع كوتش الحركة خلال الشهر، لتكييف التمارين الخفيفة، مراجعة أي شعور بإجهاد في المفاصل، أو ملاءمة الحركة لروتين دوامك.
+              </p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-            "سعر الـ 99$ يعتبر رمزياً مقارنة بالعيادات هنا في الإمارات اللي بتاخد 2000 درهم على جلسة واحدة بدون أي متابعة. وجود جلسة مع د. أحمد في البداية ثم مرافقة كوتش وأخصائية يومياً خلاني ألتزم لأول مرة في حياتي 3 شهور متواصلين بدون أي إجهاد."
-          </p>
-          <div class="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-xs text-cyan-300 flex items-center gap-2">
-            <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
-            <span>النتيجة: خسارة 13 كجم دهون حشوية وعودة النشاط الرياضي</span>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1 text-xs">
+            <div class="text-slate-400 text-[10px] font-bold">نافذة الرد المعتمدة:</div>
+            <div class="text-emerald-300 font-bold">خلال 24 ساعة من إرسال التذكرة</div>
+            <div class="text-[10px] text-slate-400">توجيه عملي آمن يناسب قدرتك الحركية دون أي إجهاد.</div>
           </div>
         </div>
 
-        <!-- Review 3 -->
-        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-4 glass-card-hover">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-purple-600/30 text-purple-300 font-bold flex items-center justify-center text-sm border border-purple-500/30">
-                ياسمين
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">ياسمين فتحي • الإسكندرية</h4>
-                <div class="text-[11px] text-slate-400">مشتركة منذ 6 أسابيع • باقة الـ 4,000 ج.م</div>
-              </div>
+        <!-- Channel 3: Customer Care & Admin Only -->
+        <div class="glass-card p-6 sm:p-7 rounded-3xl border border-slate-500/30 flex flex-col justify-between space-y-5 glass-card-hover">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-slate-500/20 text-slate-300 flex items-center justify-center font-bold text-xl border border-slate-500/30">
+              <i data-lucide="help-circle" class="w-6 h-6"></i>
             </div>
-            <div class="flex items-center text-amber-400 text-xs gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+            <div>
+              <div class="inline-block px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-bold mb-1">
+                للمسائل الإدارية فقط
+              </div>
+              <h3 class="text-lg font-bold text-white font-heading">
+                خدمة العملاء والدعم الفني
+              </h3>
+              <p class="text-xs text-slate-300 leading-relaxed font-light mt-2">
+                قناة مفتوحة عبر الواتساب والويب أب مخصصة <strong class="text-amber-300">حصرياً للمشاكل الإدارية والتقنية</strong> فقط.
+              </p>
             </div>
           </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-            "أهم حاجة بالنسبة لي كانت الشراهة مع الزعل والتوتر. أخصائية واحة نور علمتني إزاي أرتب طبقي وأشبع بدون ما أحرم نفسي من النشويات الصحية، والنتيجة إني بطلت أفتح التلاجة بالليل ومقاساتي نزلت بشكل ملحوظ جداً."
-          </p>
-          <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20 text-xs text-emerald-300 flex items-center gap-2">
-            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
-            <span>النتيجة: علاج الأكل العاطفي ونزول مقاس البنطلون درجتين</span>
-          </div>
-        </div>
 
-        <!-- Review 4 -->
-        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-4 glass-card-hover">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-11 h-11 rounded-2xl bg-amber-600/30 text-amber-300 font-bold flex items-center justify-center text-sm border border-amber-500/30">
-                د. عادل
-              </div>
-              <div>
-                <h4 class="font-bold text-white text-sm">د. عادل القرشي • مكة المكرمة</h4>
-                <div class="text-[11px] text-slate-400">مشترك شهرين • باقة التحول المتكامل</div>
-              </div>
-            </div>
-            <div class="flex items-center text-amber-400 text-xs gap-0.5">
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-            </div>
-          </div>
-          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-            "كطبيب، كنت أبحث عن أساس علمي لا يدمر الكلى ولا يرهق الغدة الدرقية. متابعة أخصائية واحة نور قائمة على كيمياء الأمان وفسيولوجيا الإنسولين الحقيقية. الويب أب منظم وسريع وفيديوهات التمارين ممتازة."
-          </p>
-          <div class="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-xs text-cyan-300 flex items-center gap-2">
-            <i data-lucide="check" class="w-4 h-4 text-cyan-400"></i>
-            <span>النتيجة: انخفاض ضغط الدم والدهون الثلاثية لمستويات مثالية</span>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1 text-xs">
+            <div class="text-slate-400 text-[10px] font-bold">مهام هذه القناة حصراً:</div>
+            <div class="text-slate-200">• تأجيل أو تعديل مواعيد المكالمات</div>
+            <div class="text-slate-200">• الاستفسار عن وسائل الدفع والتجديد</div>
+            <div class="text-slate-200">• مشاكل الدخول للويب أب وحسابك</div>
+            <div class="text-[10px] text-amber-300/80 pt-1">* لا تقدم هذه القناة استشارات تغذية أو تمارين.</div>
           </div>
         </div>
 
@@ -837,66 +687,58 @@
     </div>
   </section>
 
-  <!-- ==================== 6. THE DEDICATED CARE TEAM DUO ==================== -->
+  <!-- ==================== 7. THE SUPPORTING SPECIALIST TEAM ==================== -->
   <section id="team-duo" class="py-16 md:py-24 border-t border-white/5 bg-[#091D33]/60 relative">
     <div class="responsive-container">
 
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">الرعاية الإنسانية أولاً</span>
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">التكامل والخبرة</span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          اثنان من المتخصصين المعتمدين معك يومياً
+          فريق رعاية معاون معتمد يعمل بتناغم معك
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          لأن صحتك أثمن من أن تترك لخطة جاهزة؛ يتولى حالتك فريق متكامل تحت إشراف وتدقيق د. أحمد الخطيب:
+          لأن صحتك أثمن من أن تترك لخطة عامة؛ يتولى حالتك فريق متخصص يطبق بروتوكولات أحمد الخطيب بدقة:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-        
-        <!-- Specialist 1: Clinical Nutritionist -->
-        <div class="glass-card p-8 rounded-3xl border border-white/10 space-y-5 flex flex-col justify-between glass-card-hover">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
-              <i data-lucide="apple" class="w-6 h-6"></i>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+        <!-- Team Member 1: Nutritionist -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-5 glass-card-hover">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-2xl border border-cyan-500/30">
+              <i data-lucide="apple" class="w-7 h-7"></i>
             </div>
-            <h3 class="text-xl font-bold text-white font-heading">
-              أخصائي التغذية العلاجية (1:1)
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-              يصمم خطة شبع مخصصة لك 100% من أكل بيتك ومطاعمك المفضلة، ويراجع قياساتك أسبوعياً، ويجيبك يومياً عبر الشات لضبط وجباتك وسفرك وعزوماتك.
-            </p>
-            <div class="space-y-2 pt-2 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> ضبط حساسية الإنسولين وكسر ثبات الوزن</div>
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> بدائل فورية للأكلات التي لا تحبها</div>
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> إشراف مباشر من د. أحمد الخطيب</div>
+            <div>
+              <span class="px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 text-[10px] font-bold">الركن التغذوي</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white font-heading mt-1">أخصائي تغذية نمط الحياة</h3>
+              <p class="text-xs text-slate-400">متخصص في تطبيق مبادئ الـ Precision Nutrition وتطويع أكل بيتك</p>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/5 text-[11px] text-cyan-300 font-bold">
-            ✦ متابعة شخصية حقيقية وليست ردوداً آلية
-          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> صياغة خطة الوجبات المتوازنة من أكل البيت دون تجويع.</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> إجراء المتابعات الثلاث المجدولة خلال الشهر.</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> الرد المتأني على تذاكر الاستشارة الـ 5 المخصصة لك.</li>
+          </ul>
         </div>
 
-        <!-- Specialist 2: Movement Coach -->
-        <div class="glass-card p-8 rounded-3xl border border-white/10 space-y-5 flex flex-col justify-between glass-card-hover">
-          <div class="space-y-4">
-            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <i data-lucide="activity" class="w-6 h-6"></i>
+        <!-- Team Member 2: Movement Coach -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-5 glass-card-hover">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-2xl border border-emerald-500/30">
+              <i data-lucide="dumbbell" class="w-7 h-7"></i>
             </div>
-            <h3 class="text-xl font-bold text-white font-heading">
-              كوتش الحركة والتأهيل البدني
-            </h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
-              يصمم برنامج حركة خفيف ومريح (20-25 دقيقة) بوزن الجسم من البيت، يراعي تماماً ركبتك وظهرك، ويرفع حساسية الإنسولين دون إجهاد يرفع هرمون التوتر.
-            </p>
-            <div class="space-y-2 pt-2 text-xs text-slate-300">
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> فيديوهات توضيحية مصورة لكل حركة بدقة</div>
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> بدون أجهزة جيم معقدة أو اشتراكات إضافية</div>
-              <div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> تدرج ذكي يحميك من الإصابات والكسل</div>
+            <div>
+              <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">الركن الحركي</span>
+              <h3 class="text-lg sm:text-xl font-bold text-white font-heading mt-1">كوتش النشاط والتأهيل الحركي</h3>
+              <p class="text-xs text-slate-400">خبير في الحركة الوظيفية والتمارين الخفيفة المريحة للمفاصل</p>
             </div>
           </div>
-          <div class="pt-4 border-t border-white/5 text-[11px] text-emerald-300 font-bold">
-            ✦ حركة ذكية تدعم حرق دهون الأحشاء والبطن
-          </div>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> مكالمة تقييم حركي أولى (20 دقيقة) في الأسبوع الأول.</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> إجراء المتابعتين المجدولتين خلال الشهر لضبط وتطوير الحركة.</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> الرد على تذكرتي الاستشارة الحركية عبر الويب أب.</li>
+          </ul>
         </div>
 
       </div>
@@ -904,87 +746,60 @@
     </div>
   </section>
 
-  <!-- ==================== 7. INTERACTIVE WEB APP FEATURES (VISUAL TOUR) ==================== -->
+  <!-- ==================== 8. THE SMART WEB APP TOOLS ==================== -->
   <section id="app-visuals" class="py-16 md:py-24 border-t border-white/5 relative">
     <div class="responsive-container">
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">تقنية ذكية في جيبك</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
+          أدوات الويب أب الذكي ترافقك في كل لحظة
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+          تطبيق ويب متكامل يفتح مباشرة من متصفح هاتفك دون الحاجة لتحميل تطبيقات ثقيلة:
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
         
-        <!-- Right Column: Visual Mockup Showcase -->
-        <div class="lg:col-span-5 relative order-2 lg:order-1">
-          <div class="relative mx-auto max-w-sm rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950 p-2">
-            <img src="assets/app_mockup_phones.webp" alt="تطبيق واحة نور على الهاتف" class="w-full h-auto rounded-2xl object-cover hover:scale-105 transition-transform duration-500">
-            <div class="p-4 text-center space-y-1">
-              <span class="text-xs font-bold text-cyan-300">الويب أب يعمل فورا على هاتفك</span>
-              <p class="text-[11px] text-slate-400">بدون تعقيدات المتاجر • متاح لجميع أجهزة آبل وأندرويد</p>
-            </div>
+        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3 glass-card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center font-bold text-xl border border-cyan-500/30">
+            <i data-lucide="camera" class="w-6 h-6"></i>
           </div>
+          <h3 class="text-base font-bold text-white font-heading">ماسح الوجبات بالكاميرا بالـ AI</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            صور طبق غدائك بكاميرا هاتفك؛ ليحلل الذكاء الاصطناعي مكوناته ويمنحك ملاحظة تشجيعية فورية عن توازن البروتين والألياف.
+          </p>
         </div>
 
-        <!-- Left Column: App Superpowers List -->
-        <div class="lg:col-span-7 space-y-6 order-1 lg:order-2 text-right">
-          
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-bold border border-cyan-500/20">
-            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-            <span>تكنولوجيا الذكاء الاصطناعي في جيبك</span>
+        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3 glass-card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xl border border-emerald-500/30">
+            <i data-lucide="timer" class="w-6 h-6"></i>
           </div>
-
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-            الويب أب الأيضي الذكي.. <br>
-            عيادتك ومساعدك الشخصي في كل وجبة
-          </h2>
-
-          <p class="text-sm text-slate-300 leading-relaxed font-light">
-            لا نكتفي بالمتابعة البشرية، بل نضع في يدك أدوات رقمية تم بناؤها خصيصاً لمشتركي واحة نور لتجعل الالتزام سهلاً وتلقائياً:
+          <h3 class="text-base font-bold text-white font-heading">متتبع الصيام المتقطع التفاعلي</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            عداد ذكي يوضح لك مراحل راحة جهازك الهضمي واستعادة الحرق الطبيعي ساعة بساعة دون أي حسابات معقدة.
           </p>
+        </div>
 
-          <div class="space-y-4 pt-2">
-            
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="camera" class="w-5 h-5"></i>
-              </div>
-              <div class="text-xs sm:text-sm">
-                <h4 class="font-bold text-white text-base">ماسح الطعام بالذكاء الاصطناعي (AI Scanner)</h4>
-                <p class="text-slate-300 leading-relaxed font-light mt-1">
-                  صور طبقك بكاميرا هاتفك في المطعم أو البيت، ليحلل الذكاء الاصطناعي مكونات الوجبة ويخبرك بمدى استقرار سكر الدم والشبع فوراً.
-                </p>
-              </div>
-            </div>
-
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="timer" class="w-5 h-5"></i>
-              </div>
-              <div class="text-xs sm:text-sm">
-                <h4 class="font-bold text-white text-base">متتبع الصيام المتقطع التفاعلي</h4>
-                <p class="text-slate-300 leading-relaxed font-light mt-1">
-                  مؤقت ذكي يرصد مراحل حرق الجليكوجين، تفعيل حرق الدهون، ومرحلة تجديد الخلايا (الأوتوفاجي) لحظة بلحظة.
-                </p>
-              </div>
-            </div>
-
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 flex items-start gap-4">
-              <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-                <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
-              </div>
-              <div class="text-xs sm:text-sm">
-                <h4 class="font-bold text-white text-base">بنك بدائل الوجبات الديناميكي</h4>
-                <p class="text-slate-300 leading-relaxed font-light mt-1">
-                  صنف غير متاح في بيتك اليوم؟ اضغط زر "بديل" ليمنحك التطبيق عشرات الخيارات المتكافئة بالشبع والقيمة فوراً.
-                </p>
-              </div>
-            </div>
-
+        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3 glass-card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xl border border-amber-500/30">
+            <i data-lucide="refresh-cw" class="w-6 h-6"></i>
           </div>
+          <h3 class="text-base font-bold text-white font-heading">بنك بدائل الأكلات السريع</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            لا تحب صنفاً معيناً أو معزوم في مطعم؟ بضغطة زر يعطيك التطبيق البديل المناسب من نفس فئة أكلك البيتي المشبع.
+          </p>
+        </div>
 
-          <div class="pt-2">
-            <button onclick="openBookingModal('monthly')" class="cta-vibrant text-white font-bold text-xs sm:text-sm px-7 py-3.5 rounded-xl inline-flex items-center gap-2 active:scale-95 transition-all shadow-lg">
-              <span>احصل على الويب أب مع باقة الـ $99</span>
-              <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            </button>
+        <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-3 glass-card-hover">
+          <div class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-xl border border-purple-500/30">
+            <i data-lucide="line-chart" class="w-6 h-6"></i>
           </div>
-
+          <h3 class="text-base font-bold text-white font-heading">متتبع المقاسات والماء والراحة</h3>
+          <p class="text-xs text-slate-300 leading-relaxed font-light">
+            رسم بياني لتطور صغر مقاس خصرك ونقاء نومك وارتفاع طاقتك اليومية بعيداً عن هوس أرقام الميزان اليومية.
+          </p>
         </div>
 
       </div>
@@ -992,17 +807,17 @@
     </div>
   </section>
 
-  <!-- ==================== 8. PRICING & THE IRRESISTIBLE VALUE STACK ==================== -->
+  <!-- ==================== 9. PRICING & THE TRANSPARENT VALUE STACK ==================== -->
   <section id="pricing" class="py-16 md:py-24 border-t border-white/5 bg-[#091D33]/60 relative">
     <div class="responsive-container">
 
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">وضوح وشفافية كاملة</span>
+        <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">وضوح وشفافية تامة</span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          استثمار صحتك.. قيمة تتجاوز 450$ بـ 99$ فقط
+          استثمار صحتك وراحة بالك.. بـ 99$ فقط
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          باقة انطلاق شاملة تمنحك التشخيص الفردي مع د. أحمد وفريقك الملازم دون أي مصاريف خفية (محدودة بـ 40 مشتركاً):
+          باقة واحدة شاملة ومحددة بدقة تمنحك كل ما تحتاجه دون أي تكاليف خفية أو وعود مبهمة:
         </p>
       </div>
 
@@ -1015,19 +830,18 @@
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/10 pb-8">
             <div>
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold border border-emerald-500/20 mb-2">
-                🌟 الباقة الأكثر توازناً وطلباً في الخليج ومصر
+                🌟 باقة الانطلاق الشاملة (Kickoff & Pro Lifestyle Care)
               </div>
               <h3 class="text-2xl sm:text-3xl font-black text-white font-heading">
-                باقة الانطلاق والتحول 1:1 (Kickoff & Pro Care)
+                باقة الـ 30 يوماً مع أحمد الخطيب وفريق واحة نور
               </h3>
               <p class="text-xs sm:text-sm text-slate-300 mt-1">
-                جلسة تشخيص فيديو مع د. أحمد الخطيب + أخصائي تغذية مخصص + كوتش رياضي + حساب كامل في الويب أب
+                مكالمة تقييم أولى مع أحمد الخطيب + مكالمة كوتش الحركة + متابعات الفريق واللقاءات المباشرة والويب أب
               </p>
             </div>
 
             <!-- Price Callout -->
             <div class="text-center md:text-left bg-white/5 p-4 rounded-2xl border border-white/10">
-              <div class="text-xs text-slate-400 line-through">القيمة العيادية: $450</div>
               <div class="text-4xl sm:text-5xl font-black text-emerald-400 font-heading">$99</div>
               <div class="text-xs text-slate-300 font-medium">دولار / شهرياً (≈ 370 ر.س / 4,950 ج.م)</div>
             </div>
@@ -1035,40 +849,44 @@
 
           <!-- Value Stack Grid -->
           <div class="py-8 space-y-4">
-            <h4 class="text-xs font-bold text-slate-400 uppercase">ما يشمله اشتراكك بالكامل:</h4>
+            <h4 class="text-xs font-bold text-slate-400 uppercase">ما يشمله اشتراكك بالكامل دون أي إبهام:</h4>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-200">
               <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
                 <i data-lucide="video" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-                <span><strong>جلسة تشخيص سريري مباشر 1:1 (30 دقيقة)</strong> مع د. أحمد الخطيب</span>
-              </div>
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                <i data-lucide="file-text" class="w-4 h-4 text-cyan-400 shrink-0"></i>
-                <span>استبيان تقييم صحي ذكي وملخص الحالة (Case One-Pager)</span>
-              </div>
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                <i data-lucide="user-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-                <span>تسليم رسمي ومباشر من د. أحمد لأخصائي التغذية والكوتش</span>
-              </div>
-              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-                <span>متابعة شخصية 1:1 وشات يومي مع أخصائي التغذية العلاجية</span>
+                <span><strong>مكالمة تقييم وتحديد مسار أولى (1:1)</strong> مع أحمد الخطيب</span>
               </div>
               <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
                 <i data-lucide="activity" class="w-4 h-4 text-cyan-400 shrink-0"></i>
-                <span>برنامج تأهيل حركي وتمارين مريحة لمفاصلك مع الكوتش</span>
+                <span><strong>مكالمة تقييم حركي (20 دقيقة)</strong> مع كوتش الحركة بالأسبوع الأول</span>
               </div>
               <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400 shrink-0"></i>
-                <span>ماسح الوجبات الذكي بالكاميرا بالـ AI ومتتبع الصيام</span>
+                <i data-lucide="file-text" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>خطة نمط حياة متكاملة مخصصة لوجبات بيتك وجدولك</span>
               </div>
               <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                <i data-lucide="users" class="w-4 h-4 text-amber-400 shrink-0"></i>
-                <span>لايف جماعي أسبوعي لدفعة المشتركين مع د. أحمد الخطيب</span>
+                <i data-lucide="calendar" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span><strong>3 متابعات مجدولة</strong> مع أخصائي تغذية نمط الحياة</span>
               </div>
               <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
                 <i data-lucide="calendar" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-                <span>جلسة مراجعة شهرية دورية (20 دقيقة) مع د. أحمد عند كل تجديد</span>
+                <span><strong>متابعتان مجدولتان</strong> مع كوتش الحركة والتأهيل</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <i data-lucide="users" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                <span><strong>لقاءان مباشران تفاعليان شهرياً (Live)</strong> مع أحمد الخطيب والفريق</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <i data-lucide="ticket" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span><strong>5 تذاكر استشارة</strong> مع أخصائي التغذية (بنافذة رد يومية معتمدة)</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <i data-lucide="ticket" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span><strong>تذكرتان استشارة حركية</strong> مع الكوتش لتعديل النشاط</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5 col-span-1 md:col-span-2">
+                <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span>حساب كامل ومفتوح في الويب أب الذكي (ماسح الوجبات بالـ AI، متتبع الصيام، وبنك البدائل)</span>
               </div>
             </div>
           </div>
@@ -1078,24 +896,24 @@
             
             <div class="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/40 transition-all cursor-pointer text-right" onclick="openBookingModal('monthly')">
               <div class="flex justify-between items-center mb-1.5">
-                <span class="font-bold text-white text-sm">الاشتراك الشهري</span>
+                <span class="font-bold text-white text-sm">اشتراك شهر واحد</span>
                 <span class="text-cyan-400 font-black text-lg">$99</span>
               </div>
               <p class="text-xs text-slate-400 leading-relaxed">
-                جلسة د. أحمد (30 دقيقة) + شهر كامل مع الفريق + مراجعة شهرية دورية عند التجديد. (≈ 370 ر.س / 4,950 ج.م)
+                مكالمة أحمد الخطيب + مكالمة الكوتش + المتابعات والتذاكر وتطبيق الويب أب. (≈ 370 ر.س / 4,950 ج.م)
               </p>
             </div>
 
             <div class="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/40 hover:border-emerald-400 transition-all cursor-pointer text-right relative" onclick="openBookingModal('quarterly')">
               <span class="absolute -top-3 left-4 px-2.5 py-0.5 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-black">
-                وفر 48$ • الأكثر توفيراً
+                وفر 48$ • الخيار الأكثر استقراراً
               </span>
               <div class="flex justify-between items-center mb-1.5">
-                <span class="font-bold text-white text-sm">اشتراك 3 شهور (فوج التحول الثلاثي)</span>
+                <span class="font-bold text-white text-sm">اشتراك 3 شهور (فوج التحول)</span>
                 <span class="text-emerald-400 font-black text-lg">$249</span>
               </div>
               <p class="text-xs text-slate-300 leading-relaxed">
-                الرحلة المتكاملة لكسر ثبات الوزن وعلاج مقاومة الإنسولين مع جلسات د. أحمد الدورية. (≈ 930 ر.س / 12,500 ج.م)
+                المدة المثالية لترسيخ عادات نمط الحياة والتحرر التام من عقدة الدايت. (≈ 930 ر.س / 12,500 ج.م)
               </p>
             </div>
 
@@ -1104,11 +922,10 @@
           <!-- Checkout Action -->
           <div class="flex flex-col sm:flex-row items-center gap-4 justify-between pt-4 border-t border-white/10">
             <div class="text-xs text-slate-400 text-center sm:text-right">
-              🔒 دفع آمن ومشفر 100% | متاح الدفع بالفيزا والتحويل المحلي وفودافون كاش
+              🔒 تفعيل فوري لحسابك في الويب أب وحجز موعد مكالمة أحمد الخطيب بعد التأكيد مباشرة.
             </div>
-            <button onclick="openBookingModal('monthly')" class="w-full sm:w-auto cta-vibrant text-white font-black text-sm px-8 py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl">
-              <span>تأكيد الحجز الفردي الآن</span>
-              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <button onclick="openBookingModal('monthly')" class="w-full sm:w-auto cta-vibrant text-white font-black text-sm px-8 py-3.5 rounded-xl shadow-lg transition-all active:scale-95">
+              احجز مقعدك الآن بـ 99$ ↗
             </button>
           </div>
 
@@ -1118,14 +935,14 @@
     </div>
   </section>
 
-  <!-- ==================== 9. ACCORDION FAQ ==================== -->
+  <!-- ==================== 10. ACCORDION FAQ ==================== -->
   <section id="faq" class="py-16 md:py-24 border-t border-white/5 relative">
     <div class="responsive-container">
 
       <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
         <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">إجابات شفافة ومباشرة</span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-white font-heading">
-          الأسئلة الشائعة حول باقة الـ $99
+          الأسئلة الشائعة حول برنامج الـ 30 يوماً
         </h2>
         <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
           كل ما يدور في ذهنك قبل بدء رحلة التغيير:
@@ -1136,41 +953,41 @@
 
         <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
           <button class="w-full p-5 text-right font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4" onclick="toggleFaq(this)">
-            <span>هل سأجبر على أكل معين أو شراء منتجات ومكملات باهظة؟</span>
+            <span>ما هو دور أحمد الخطيب تحديداً في الباقة؟</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform"></i>
           </button>
           <div class="p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed font-light border-t border-white/5 hidden">
-            لا نهائياً. فلسفة واحة نور تقوم على أن الشفاء والاستشفاء يبدأ من أكل بيتك العادي والمحلي. لا نلزمك بأي منتجات تجارية خاصة أو أكلات مستوردة، ولن نبيعك مكملات غذائية. د. أحمد وفريقه يصممون الخطة مما تأكله عائلتك عادةً مع تعديل التوزيع والتوقيت بذكاء.
+            أحمد الخطيب هو واضع المنهج ومحدد المسار الرئيسي؛ يلتقي بك في مكالمة التقييم الأولى (1:1) لفهم طبيعة حياتك وتحديد الاتجاه العام لخطة نمط حياتك. كما يقود اللقاءين المباشرين التفاعليين شهرياً (Live) مع المشتركين والفريق، ويشرف على بروتوكولات الفريق المعتمدة.
           </div>
         </div>
 
         <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
           <button class="w-full p-5 text-right font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4" onclick="toggleFaq(this)">
-            <span>كيف يتم التواصل والمتابعة اليومية مع الأخصائي والكوتش؟</span>
+            <span>كيف يعمل نظام تذاكر الاستشارة؟ ومتى يتم الرد علي؟</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform"></i>
           </button>
           <div class="p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed font-light border-t border-white/5 hidden">
-            بمجرد إتمام الاشتراك، يُفتح لك حساب رسمي في الويب أب الخاص بواحة نور. داخل التطبيق يوجد قسم مخصص للمحادثات (In-App Messaging) بينك وبين أخصائي التغذية وكوتش الحركة، حيث يمكنك إرسال أي سؤال أو استشارة أو صور لوجباتك يومياً وتلقي التوجيه السريع، بالإضافة للمراجعة الأسبوعية الشاملة.
+            لكل مشترك 5 تذاكر استشارة مخصصة مع أخصائي التغذية وتذكرتان مع كوتش الحركة عبر الويب أب. لا نعتمد نظام الردود العشوائية على مدار الساعة؛ بل يُخصص الأخصائي نافذة عمل يومية محددة لفتح التذاكر ودراسة حالة المشترك والرد عليها بعناية وتأنٍ كاملين، مما يضمن لك توجيهاً دقيقاً ومحكماً.
           </div>
         </div>
 
         <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
           <button class="w-full p-5 text-right font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4" onclick="toggleFaq(this)">
-            <span>ما هي طرق الدفع المتاحة للعملاء في مصر والخليج؟</span>
+            <span>هل سأجبر على أكل معين أو شراء منتجات خاصة؟</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform"></i>
           </button>
           <div class="p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed font-light border-t border-white/5 hidden">
-            نوفر الدفع الإلكتروني المباشر عبر بطاقات فيزا وماستركارد ومادا ($99 ≈ 370 ر.س)، كما نوفر التحويلات المحلية المباشرة (فودافون كاش وإنستاباي داخل مصر بقيمة 4,950 ج.م، والتحويل البنكي المباشر في السعودية والإمارات) عبر التواصل المباشر مع خدمة العملاء.
+            نهائياً. فلسفة واحة نور قائمة على أن التغيير المستدام يبدأ من أكل بيتك العادي والمحلي. لا نلزمك بأي منتجات تجارية خاصة أو أكلات مستوردة. الأخصائي يصمم خطتك مما تأكله عائلتك عادةً مع تعديل التوزيع والتوقيت بذكاء وفق علم الـ Precision Nutrition.
           </div>
         </div>
 
         <div class="glass-card rounded-2xl border border-white/10 overflow-hidden">
           <button class="w-full p-5 text-right font-bold text-sm sm:text-base text-white flex items-center justify-between gap-4" onclick="toggleFaq(this)">
-            <span>ماذا يحدث بعد أن أقوم بالدفع مباشرة؟</span>
+            <span>ماذا يحدث بعد أن أقوم بالاشتراك والدفع مباشرة؟</span>
             <i data-lucide="chevron-down" class="w-4 h-4 text-cyan-400 transition-transform"></i>
           </button>
           <div class="p-5 pt-0 text-xs sm:text-sm text-slate-300 leading-relaxed font-light border-t border-white/5 hidden">
-            تصلك رسالة فورية عبر الواتساب والإيميل تحتوي على رابط الدخول للويب أب الخاص بك. تقوم بملء استبيان التقييم الصحي الذكي ورفع التحاليل، ويتم حجز موعد جلسة الفيديو المباشرة 1:1 مع د. أحمد الخطيب (30 دقيقة) لتشخيص حالتك ورسم الخطة وتسليمك رسمياً لفريقك المعالج لتبدأ رحلتك فوراً.
+            تصلك رسالة فورية عبر الواتساب والإيميل تحتوي على رابط الدخول للويب أب الخاص بك. تقوم بملء استبيان التقييم المبدئي، ويتم حجز موعد مكالمة التقييم الأولى مع أحمد الخطيب، تليها مكالمة كوتش الحركة، ثم تسليم الخطة وانطلاق رحلتك.
           </div>
         </div>
 
@@ -1179,11 +996,11 @@
     </div>
   </section>
 
-  <!-- ==================== 10. HOPEFUL FINAL CALL TO ACTION ==================== -->
+  <!-- ==================== 11. HOPEFUL FINAL CALL TO ACTION ==================== -->
   <section class="py-20 border-t border-white/5 bg-gradient-to-b from-[#091D33] to-[#071626] relative text-center">
     <div class="responsive-container max-w-3xl space-y-6">
       
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-hope text-emerald-300 text-xs font-bold">
+      <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full badge-warm text-emerald-300 text-xs font-bold">
         🌱 الأمل يبدأ بقرار هادئ
       </span>
 
@@ -1192,7 +1009,7 @@
       </h2>
 
       <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-        انضم اليوم إلى باقة الـ 99$، ودع د. أحمد الخطيب وفريق واحة نور يتولون التفكير والتخطيط والتوجيه، بينما تستمتع أنت باستعادة صحتك وخفة حركتك وراحة بالك.
+        انضم اليوم إلى باقة الـ 99$، ودع أحمد الخطيب وفريق واحة نور يرافقونك خطوة بخطوة، بينما تستمتع أنت باستعادة صحتك وخفة حركتك وراحة بالك.
       </p>
 
       <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1200,7 +1017,7 @@
           <span>ابدأ الآن بـ 99$ • احجز مقعدك</span>
           <i data-lucide="sparkles" class="w-4 h-4"></i>
         </button>
-        <a href="https://wa.me/201018316820?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%80%2099%24%20%D9%85%D8%B9%20%D8%AF.%20%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AE%D8%B7%D9%8A%D8%A8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-bold flex items-center justify-center gap-2 transition-all">
+        <a href="https://wa.me/201018316820?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%80%2099%24%20%D9%85%D8%B9%20%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AE%D8%B7%D9%8A%D8%A8" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-bold flex items-center justify-center gap-2 transition-all">
           <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
           <span>استفسر عبر واتساب</span>
         </a>
@@ -1209,56 +1026,48 @@
     </div>
   </section>
 
-  <!-- ==================== 11. FOOTER ==================== -->
+  <!-- ==================== 12. FOOTER ==================== -->
   <footer class="border-t border-white/5 bg-[#05111E] py-10 text-center text-xs text-slate-500">
     <div class="responsive-container space-y-4">
       <div class="flex items-center justify-center gap-2">
-        <div class="w-7 h-7 rounded-lg bg-cyan-600/30 text-cyan-300 font-bold flex items-center justify-center text-sm">
-          و
-        </div>
-        <span class="font-bold text-slate-300 font-heading">واحة نور • د. أحمد الخطيب</span>
+        <span class="w-7 h-7 rounded-lg bg-cyan-600 text-white font-bold flex items-center justify-center text-xs">و</span>
+        <span class="font-bold text-slate-300 font-heading">واحة نور • أحمد الخطيب</span>
       </div>
-      <p class="max-w-xl mx-auto leading-relaxed">
-        منظومة استعادة الحرق الطبيعي ونمط الحياة المتوازن. جميع الحقوق محفوظة © 2026.
-        <br>
-        المحتوى المقدم للتثقيف الصحي والعلاجي ولا يغني عن التشخيص الجراحي أو الطوارئ الطبية.
+      <p class="max-w-xl mx-auto text-slate-400 text-[11px] leading-relaxed">
+        برنامج واحة نور مخصص لتقديم الاستشارات الحياتية وتعديل السلوك وتغيير نمط الحياة والتغذية المخصصة، ولا يقدم أي خدمات طبية أو علاجية أو صرف أدوية.
       </p>
-      <div class="flex items-center justify-center gap-6 text-slate-400 pt-2">
-        <a href="wahet-nour.html" class="hover:text-cyan-400 transition-colors">الصفحة الرئيسية</a>
-        <span>•</span>
-        <a href="wahet-nour-quiz.html" class="hover:text-cyan-400 transition-colors">كويز فحص الحرق</a>
-        <span>•</span>
-        <a href="food-concepts.html" class="hover:text-cyan-400 transition-colors">مفاهيم الغذاء</a>
+      <div class="text-slate-600 text-[10px]">
+        جميع الحقوق محفوظة © 2026 واحة نور • Wahet Nour
       </div>
     </div>
   </footer>
 
-  <!-- ==================== 12. INTERACTIVE BOOKING MODAL ==================== -->
-  <div id="bookingModal" class="modal-backdrop fixed inset-0 z-50 bg-[#071626]/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="modal-content glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-cyan-500/30 shadow-2xl relative space-y-6 text-right max-h-[92vh] overflow-y-auto">
+  <!-- ==================== 13. BOOKING MODAL ==================== -->
+  <div id="bookingModal" class="modal-backdrop fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-content glass-card rounded-3xl p-6 sm:p-8 border border-white/10 max-w-lg w-full relative max-h-[90vh] overflow-y-auto space-y-6">
       
       <!-- Close Button -->
-      <button onclick="closeBookingModal()" class="absolute top-5 left-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-all">
-        <i data-lucide="x" class="w-4 h-4"></i>
+      <button onclick="closeBookingModal()" class="absolute top-5 left-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+        ✕
       </button>
 
-      <!-- Modal Title -->
-      <div>
-        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-500/30">
-          تأكيد الاشتراك الفردي 1:1
+      <!-- Modal Header -->
+      <div class="text-center space-y-1">
+        <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+          تأكيد الاشتراك
         </span>
         <h3 class="text-xl sm:text-2xl font-black text-white font-heading mt-2">
-          احجز مقعدك في باقة الانطلاق والتحول 1:1
+          احجز مقعدك في باقة الانطلاق والتحول
         </h3>
         <p class="text-xs text-slate-300 mt-1">
-          جلسة تشخيص فيديو 1:1 مع د. أحمد الخطيب + أخصائي تغذية مخصص + كوتش رياضي + حساب كامل في الويب أب
+          مكالمة تقييم أولى مع أحمد الخطيب + مكالمة كوتش الحركة + متابعات وتذاكر الفريق + الويب أب
         </p>
       </div>
 
       <!-- Plan Selection Tabs -->
       <div class="grid grid-cols-2 gap-3 p-1.5 rounded-2xl bg-[#071626] border border-white/10 text-center">
         <button id="planMonthlyBtn" onclick="selectPlan('monthly')" class="py-2.5 px-3 rounded-xl text-xs font-bold transition-all bg-cyan-600 text-white shadow-md">
-          <span>اشتراك شهر (شامل جلسة د. أحمد)</span>
+          <span>اشتراك شهر واحد</span>
           <span class="block text-[11px] font-black">$99 / 370 ر.س</span>
         </button>
         <button id="planQuarterlyBtn" onclick="selectPlan('quarterly')" class="py-2.5 px-3 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white">
@@ -1270,8 +1079,8 @@
       <!-- Price Summary Box -->
       <div class="bg-white/5 p-4 rounded-2xl border border-white/10 flex items-center justify-between">
         <div>
-          <span class="text-xs text-slate-400 block" id="summaryPlanLabel">الخطة المختارة: اشتراك شهري (شامل جلسة د. أحمد)</span>
-          <span class="text-xs text-emerald-400 font-bold">✓ تفعيل فوري للحساب وحجز موعد الجلسة</span>
+          <span class="text-xs text-slate-400 block" id="summaryPlanLabel">الخطة المختارة: اشتراك شهر واحد</span>
+          <span class="text-xs text-emerald-400 font-bold">✓ تفعيل فوري للحساب وحجز موعد المكالمة الأولى</span>
         </div>
         <div class="text-left">
           <span class="text-2xl font-black text-emerald-400 font-heading" id="summaryPrice">$99</span>
@@ -1327,13 +1136,13 @@
       </form>
 
       <p class="text-[11px] text-slate-400 text-center">
-        🔒 معلوماتك محمية بسرية تامة. سيتم التواصل معك عبر الواتساب فوراً بعد التأكيد لحجز موعد جلسة د. أحمد.
+        🔒 معلوماتك محمية بسرية تامة. سيتم التواصل معك عبر الواتساب فوراً بعد التأكيد لحجز موعد مكالمة أحمد الخطيب الأولى.
       </p>
 
     </div>
   </div>
 
-  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <!-- ==================== 14. JAVASCRIPT LOGIC ==================== -->
   <script>
     lucide.createIcons();
 
@@ -1377,7 +1186,7 @@
       if (plan === 'quarterly') {
         quarterlyBtn.className = 'py-2.5 px-3 rounded-xl text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-md';
         monthlyBtn.className = 'py-2.5 px-3 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white';
-        summaryPlanLabel.innerText = 'الخطة المختارة: فوج 3 شهور (الأكثر توفيراً)';
+        summaryPlanLabel.innerText = 'الخطة المختارة: فوج 3 شهور (الأكثر استقراراً)';
         summaryPrice.innerText = '$249';
         summaryPrice.className = 'text-2xl font-black text-emerald-400 font-heading';
         summaryLocalCurrency.innerText = '≈ 930 ر.س / 12,500 ج.م';
@@ -1385,7 +1194,7 @@
       } else {
         monthlyBtn.className = 'py-2.5 px-3 rounded-xl text-xs font-bold transition-all bg-cyan-600 text-white shadow-md';
         quarterlyBtn.className = 'py-2.5 px-3 rounded-xl text-xs font-bold transition-all text-slate-300 hover:text-white';
-        summaryPlanLabel.innerText = 'الخطة المختارة: اشتراك شهري (شامل جلسة د. أحمد)';
+        summaryPlanLabel.innerText = 'الخطة المختارة: اشتراك شهر واحد';
         summaryPrice.innerText = '$99';
         summaryPrice.className = 'text-2xl font-black text-emerald-400 font-heading';
         summaryLocalCurrency.innerText = '≈ 370 ر.س / 4,950 ج.م';
@@ -1399,9 +1208,9 @@
       const phone = document.getElementById('clientPhone').value;
       const country = document.getElementById('clientCountry').value;
       const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
-      const planName = currentSelectedPlan === 'quarterly' ? 'فوج 3 شهور ($249)' : 'اشتراك شهري شامل جلسة د. أحمد ($99)';
+      const planName = currentSelectedPlan === 'quarterly' ? 'فوج 3 شهور ($249)' : 'اشتراك شهر واحد ($99)';
 
-      const message = `مرحباً واحة نور (د. أحمد الخطيب)،\nأرغب في تأكيد اشتراكي في باقة الانطلاق والتحول 1:1:\n• الخطة: ${planName}\n• الاسم: ${name}\n• الدولة: ${country}\n• طريقة الدفع: ${paymentMethod === 'card' ? 'بطاقة بنكية / فيزا' : 'تحويل محلي / إنستاباي / كاش'}\n• الهاتف: ${phone}\nأرجو إرسال رابط تأكيد الدخول للويب أب وحجز موعد جلسة د. أحمد.`;
+      const message = `مرحباً واحة نور (أحمد الخطيب)،\nأرغب في تأكيد اشتراكي في باقة الانطلاق والتحول:\n• الخطة: ${planName}\n• الاسم: ${name}\n• الدولة: ${country}\n• طريقة الدفع: ${paymentMethod === 'card' ? 'بطاقة بنكية / فيزا' : 'تحويل محلي / إنستاباي / كاش'}\n• الهاتف: ${phone}\nأرجو إرسال رابط تأكيد الدخول للويب أب وحجز موعد مكالمة أحمد الخطيب الأولى.`;
 
       const whatsappUrl = `https://wa.me/201018316820?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');

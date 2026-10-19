@@ -224,6 +224,13 @@
           <span>5. الخطة المالية ومحاكي الأرباح</span>
         </button>
 
+        <!-- Button 6: Doctor Capacity & $99 Package Strategy Engine -->
+        <button onclick="filterModule('capacity-99')" id="btn-mod-capacity-99" 
+          class="module-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 hover:bg-emerald-200 transition whitespace-nowrap">
+          <i data-lucide="gauge" class="w-4 h-4 text-emerald-600"></i>
+          <span>6. محاكي كاباستي د. أحمد وباقة $99 🚀</span>
+        </button>
+
       </div>
 
     </div>
@@ -916,6 +923,339 @@
 
     </div>
 
+    <!-- =========================================================================
+         MODULE 6: DOCTOR CAPACITY & $99 PACKAGE STRATEGY ENGINE (تفاعلي بالكامل)
+         ========================================================================= -->
+    <div id="module-capacity-99" class="module-section space-y-12">
+      
+      <!-- Module Header -->
+      <div class="border-b border-slate-200 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-bold mb-2">
+          <i data-lucide="gauge" class="w-3.5 h-3.5"></i>
+          <span>المحور السادس: هندسة الكاباستي وباقة الانطلاق 1:1 ($99 Kickoff Engine)</span>
+        </div>
+        <h2 class="text-2xl lg:text-3xl font-black text-slate-900">
+          محاكي الطاقة الاستيعابية والنموذج المالي لباقة الـ $99 (د. أحمد الخطيب)
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">
+          أداة استراتيجية تفاعلية لقياس حجم المشتركين، ساعات وقتك الأسبوعية، مؤشر أمان الاحتراق النفسي، وتوقعات الدخل المتكرر لـ 6 أشهر.
+        </p>
+      </div>
+
+      <!-- Presets Quick Selector -->
+      <div class="flex flex-wrap items-center gap-2 text-xs">
+        <span class="text-slate-500 font-bold">النماذج الجاهزة السريعة:</span>
+        <button onclick="setCapPreset(40, 10, 70, 30, 15, true)" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold hover:bg-emerald-700 transition">
+          الخطة المتوازنة المعتمدة (40 جديد • 10 س أسبوعياً) ⭐
+        </button>
+        <button onclick="setCapPreset(50, 12, 75, 30, 15, true)" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
+          الخطة التوسعية (50 جديد • 12 س أسبوعياً)
+        </button>
+        <button onclick="setCapPreset(25, 6, 65, 30, 15, false)" class="px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
+          الخطة الهادئة الخفيفة (25 جديد • 6 س أسبوعياً)
+        </button>
+      </div>
+
+      <!-- Interactive Layout: Sliders (Left) & Real-time Metrics (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Controls Column (5 cols) -->
+        <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-slate-200 space-y-6 shadow-sm">
+          <div class="border-b border-slate-100 pb-3">
+            <h3 class="font-black text-slate-900 text-base flex items-center gap-2">
+              <i data-lucide="sliders" class="w-4 h-4 text-emerald-600"></i>
+              <span>محددات التشغيل ووقت الدكتور</span>
+            </h3>
+            <p class="text-[11px] text-slate-500">حرك المؤشرات لتحديث الحسابات والمؤشرات فورياً</p>
+          </div>
+
+          <!-- Slider 1: Doctor Weekly Hours -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700">ساعات د. أحمد المتاحة أسبوعياً:</span>
+              <span id="cap-val-doc-hours" class="font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">10 ساعات</span>
+            </div>
+            <input type="range" id="cap-slider-doc-hours" min="4" max="20" step="1" value="10" oninput="calculateCapacity99()" class="w-full accent-emerald-600 cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>4 ساعات (يوم واحد)</span>
+              <span>10 ساعات (معتمد)</span>
+              <span>20 ساعة (مكثف)</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: New Clients Intake -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700">مشتركون جدد شهرياً (New Cohort):</span>
+              <span id="cap-val-new-clients" class="font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">40 مشتركاً</span>
+            </div>
+            <input type="range" id="cap-slider-new-clients" min="10" max="80" step="5" value="40" oninput="calculateCapacity99()" class="w-full accent-emerald-600 cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>10 مشتركين</span>
+              <span>40 (السقف الآمن)</span>
+              <span>80 مشتركاً</span>
+            </div>
+          </div>
+
+          <!-- Slider 3: Retention Rate -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-700">نسبة التجديد للشهر التالي (Retention %):</span>
+              <span id="cap-val-retention" class="font-black text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">70% تجديد</span>
+            </div>
+            <input type="range" id="cap-slider-retention" min="30" max="90" step="5" value="70" oninput="calculateCapacity99()" class="w-full accent-cyan-600 cursor-pointer">
+            <div class="flex justify-between text-[10px] text-slate-400">
+              <span>30% (تحفظي)</span>
+              <span>70% (مستهدف الرعاية)</span>
+              <span>90% (ممتاز)</span>
+            </div>
+          </div>
+
+          <!-- Selectors: Session Durations -->
+          <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">مدة الجلسة الأولى (1:1):</label>
+              <select id="cap-select-kickoff-dur" onchange="calculateCapacity99()" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-lg p-2 focus:outline-none focus:border-emerald-500">
+                <option value="20">20 دقيقة (سريع ومكثف)</option>
+                <option value="30" selected>30 دقيقة (الخطة المعتمدة)</option>
+                <option value="45">45 دقيقة (موسع)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-700 mb-1">مدة جلسة التجديد (1:1):</label>
+              <select id="cap-select-review-dur" onchange="calculateCapacity99()" class="w-full text-xs font-semibold bg-white border border-slate-200 rounded-lg p-2 focus:outline-none focus:border-emerald-500">
+                <option value="10">10 دقائق (اطمئنان فقط)</option>
+                <option value="15" selected>15 دقيقة (معتمد شهرياً)</option>
+                <option value="20">20 دقيقة (مراجعة تفصيلية)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Toggle: Weekly Live Q&A -->
+          <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200">
+            <div>
+              <span class="text-xs font-bold text-slate-800 block">لايف جماعي أسبوعي لدفعة المشتركين:</span>
+              <span class="text-[10px] text-slate-500">ساعة أسبوعياً لحفظ تواجد د. أحمد الدائم</span>
+            </div>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="cap-toggle-live" checked onchange="calculateCapacity99()" class="sr-only peer">
+              <div class="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:right-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-600"></div>
+            </label>
+          </div>
+
+          <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-200 text-[11px] text-emerald-900 leading-relaxed">
+            💡 <strong>ميزة هذا النموذج:</strong> سعر 99$ ثابت لكل الشهور؛ مما يجعل العميل يشعر بالقيمة الفائقة لوجود د. أحمد في الانطلاق والمراجعة الشهرية، ويوفر تدفقاً مالياً متكرراً مستقراً (Predictable MRR).
+          </div>
+        </div>
+
+        <!-- Output Cards Column (7 cols) -->
+        <div class="lg:col-span-7 space-y-5">
+
+          <!-- 1. The Burnout Safety Meter (مؤشر أمان الطاقة) -->
+          <div id="cap-meter-card" class="p-6 rounded-2xl border transition-all duration-300 shadow-sm bg-white border-slate-200">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="shield-alert" class="w-4 h-4 text-emerald-600"></i>
+                <span>مؤشر أمان الطاقة والاحتراق النفسي (Burnout Safety Meter)</span>
+              </span>
+              <span id="cap-meter-badge" class="px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800">
+                🟢 منطقة الأمان والراحة التامة
+              </span>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden my-3 border border-slate-200">
+              <div id="cap-meter-bar" class="h-full bg-emerald-500 transition-all duration-500 rounded-full" style="width: 58%;"></div>
+            </div>
+
+            <div class="flex justify-between items-center text-xs pt-1">
+              <span id="cap-meter-hours-text" class="font-bold text-slate-800">الوقت المستهلك: 5.8 ساعة/أسبوع من أصل 10 ساعات</span>
+              <span id="cap-meter-util-pct" class="font-black text-emerald-700 font-sans">58% استخدام</span>
+            </div>
+            <p id="cap-meter-desc" class="text-[11px] text-slate-500 mt-2">
+              دكتور أحمد في وضع مثالي تماماً؛ يتبقى <strong>4.2 ساعة أسبوعياً</strong> كهامش أمان مرن دون أي ضغط ذهني أو تأخر في المواعيد.
+            </p>
+          </div>
+
+          <!-- 2. Core Operational Metrics Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+            
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[11px] text-slate-500 font-bold">المشتركون النشطون</div>
+              <div class="text-2xl font-black text-slate-900 font-sans mt-1" id="cap-stat-active-clients">68</div>
+              <div class="text-[10px] text-slate-400 mt-0.5" id="cap-stat-clients-detail">40 جديد + 28 مجدد</div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[11px] text-slate-500 font-bold">ساعات د. أحمد / أسبوع</div>
+              <div class="text-2xl font-black text-emerald-600 font-sans mt-1" id="cap-stat-weekly-hours">5.8 س</div>
+              <div class="text-[10px] text-slate-400 mt-0.5" id="cap-stat-monthly-hours">~ 25 ساعة شهرياً</div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[11px] text-slate-500 font-bold">الدخل الشهري (MRR)</div>
+              <div class="text-2xl font-black text-slate-900 font-sans mt-1" id="cap-stat-mrr-usd">$6,732</div>
+              <div class="text-[10px] text-emerald-600 font-bold mt-0.5" id="cap-stat-mrr-sar">≈ 25,245 ر.س</div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+              <div class="text-[11px] text-slate-500 font-bold">صافي الربح الشهري</div>
+              <div class="text-2xl font-black text-brand-600 font-sans mt-1" id="cap-stat-net-profit">$5,240</div>
+              <div class="text-[10px] text-brand-700 font-bold mt-0.5" id="cap-stat-net-margin">هامش ربح 78%</div>
+            </div>
+
+          </div>
+
+          <!-- 3. Financial Breakdown Card -->
+          <div class="glass-card p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm bg-gradient-to-br from-white via-slate-50/50 to-emerald-50/30">
+            <div class="flex justify-between items-center text-xs font-bold text-slate-700 border-b border-slate-200/80 pb-3">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="calculator" class="w-4 h-4 text-emerald-600"></i>
+                <span>التوزيع المالي الشهري والسنوي (Economics Breakdown)</span>
+              </span>
+              <span class="text-slate-400 font-normal">سعر الباقة = $99 / شهر</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-1">
+                <div class="text-slate-400 text-[10px]">الدخل السنوي المتكرر (ARR):</div>
+                <div class="text-xl font-black text-slate-900 font-sans" id="cap-stat-arr-usd">$80,784</div>
+                <div class="text-[10px] text-slate-500" id="cap-stat-arr-egp">≈ 4,000,000 ج.م</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-1">
+                <div class="text-slate-400 text-[10px]">فريق التغذية والكوتشينج:</div>
+                <div class="text-xl font-black text-slate-800 font-sans" id="cap-stat-dietitians-needed">2 أخصائي</div>
+                <div class="text-[10px] text-slate-500" id="cap-stat-team-cost">تكلفة الفريق: ~$1,250</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-white border border-slate-200 space-y-1">
+                <div class="text-slate-400 text-[10px]">عمولات الدفع الإلكتروني (3.5%):</div>
+                <div class="text-xl font-black text-slate-800 font-sans" id="cap-stat-stripe-cost">~$235</div>
+                <div class="text-[10px] text-slate-500">Stripe / بوابة الدفع</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 6-Month Cumulative Growth Table (محاكاة التراكم لـ 6 أشهر) -->
+      <div class="glass-card p-6 lg:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <h3 class="font-black text-slate-900 text-base flex items-center gap-2">
+              <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600"></i>
+              <span>محاكاة مسار النمو التراكمي لـ 6 أشهر قادمة (6-Month Cohort Projection)</span>
+            </h3>
+            <p class="text-xs text-slate-500">بناءً على المعطيات التي حددتها بالأعلى مع معدل تجديد شهري متكرر</p>
+          </div>
+          <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 self-start sm:self-auto">
+            تراكم آمن ومدروس
+          </span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-right text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-50 text-slate-600 font-bold border-b border-slate-200">
+                <th class="p-3">الشهر</th>
+                <th class="p-3">مشتركون جدد</th>
+                <th class="p-3">مشتركون مجددون</th>
+                <th class="p-3">إجمالي المشتركين النشطين</th>
+                <th class="p-3">ساعات د. أحمد / أسبوع</th>
+                <th class="p-3">الإيراد الشهري (MRR)</th>
+                <th class="p-3">تكلفة الفريق والتشغيل</th>
+                <th class="p-3 text-emerald-700 font-black">صافي ربح د. أحمد</th>
+              </tr>
+            </thead>
+            <tbody id="cap-projection-tbody" class="divide-y divide-slate-100 text-slate-700">
+              <!-- Dynamically populated via calculateCapacity99() -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Handover SOP & Copyable Script (بروتوكول الجلسة وسيناريو التسليم) -->
+      <div class="glass-card p-6 lg:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+        <div class="border-b border-slate-100 pb-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-100 text-cyan-800 text-xs font-bold mb-2">
+            <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+            <span>دليل التشغيل القياسي للجلسة الأولى (SOP)</span>
+          </div>
+          <h3 class="font-black text-slate-900 text-lg">
+            بروتوكول إدارة الـ 30 دقيقة ولحظة التسليم الذهبية للأخصائي والكوتش
+          </h3>
+        </div>
+
+        <!-- 4 Steps of the Consultation -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-[10px]">1</span>
+              <span class="font-bold text-slate-400">00 - 05 دقيقة</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-xs">الأمان والكسر العاطفي</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed font-light">
+              الترحيب بالاسم، وتأكيد قراءة استبيان Case One-Pager، وتطمين المشترك بأن المشكلة لم تكن قلة إرادة.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="w-6 h-6 rounded-full bg-cyan-600 text-white font-black flex items-center justify-center text-[10px]">2</span>
+              <span class="font-bold text-slate-400">05 - 20 دقيقة</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-xs">التشخيص السريري الجذري</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed font-light">
+              فك العقدة وشرح السبب الطبي لثبات الوزن أو لخبطة الهرمونات، وتحديد الهدف السلوكي للشهر الأول.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="w-6 h-6 rounded-full bg-amber-600 text-white font-black flex items-center justify-center text-[10px]">3</span>
+              <span class="font-bold text-slate-400">20 - 25 دقيقة</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-xs">رسم استراتيجية الخطة</h4>
+            <p class="text-[11px] text-slate-500 leading-relaxed font-light">
+              تحديد نمط الأكل البيتي، وتعديل أوقات الوجبات والنوم، وطبيعة الحركة الخفيفة المريحة لمفاصله.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 space-y-2">
+            <div class="flex items-center justify-between text-xs">
+              <span class="w-6 h-6 rounded-full bg-emerald-700 text-white font-black flex items-center justify-center text-[10px]">4</span>
+              <span class="font-bold text-emerald-800">25 - 30 دقيقة</span>
+            </div>
+            <h4 class="font-bold text-emerald-950 text-xs">لحظة التسليم الذهبية ⭐</h4>
+            <p class="text-[11px] text-emerald-800 leading-relaxed font-light">
+              دخول الأخصائي المعالج لغرفة الفيديو، وتقديمه كـ "الذراع الأيمن" لدكتور أحمد لنقل الثقة فورياً.
+            </p>
+          </div>
+        </div>
+
+        <!-- Handover Script Copy Box -->
+        <div class="p-5 rounded-2xl bg-slate-900 text-white space-y-3 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span>النص الرسمي المعتمد للتسليم (Handover Script) — لدكتور أحمد في آخر 5 دقائق:</span>
+            </span>
+            <button onclick="copyHandoverScript()" id="btn-copy-script" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] flex items-center gap-1 transition">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copy-script-text">نسخ النص</span>
+            </button>
+          </div>
+          <p id="handover-script-content" class="text-xs sm:text-sm text-slate-200 leading-relaxed font-arabic bg-slate-800/80 p-4 rounded-xl border border-slate-700">
+            "يا [اسم المشترك]، أحب أعرّفك بـ [اسم الأخصائي].. ده مش مجرد أخصائي تغذية، ده ذراعي اليمين وعيني اللي هتشوف بيهم يوم بيوم داخل الويب أب. إحنا راجعنا حالتك والتحاليل مع بعض، والخطة اللي رسمناها هو اللي هيشرف على تفعيلها وتطويعها على أكل بيتك خطوة بخطوة. أي وجبة هتاكلها، صوّرها في الويب أب وهتلاقيه بيرد عليك ويطمنك. وأنا هكون متابع تقاريرك الأسبوعية معاه وفي جلسة مراجعتنا الشهرية الجاية هنحتفل بالنتائج مع بعض."
+          </p>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Final Pitch & Call to Action -->
     <section class="glass-card rounded-2xl p-8 lg:p-10 border-2 border-brand-500/80 bg-gradient-to-b from-brand-50/40 to-white space-y-6">
       
@@ -1058,6 +1398,161 @@
 
     // Run initial calculation on load
     calculateRevenue();
+
+    // ==========================================
+    // MODULE 6: CAPACITY & $99 SIMULATOR LOGIC
+    // ==========================================
+    function calculateCapacity99() {
+      const docHoursPerWeek = parseFloat(document.getElementById('cap-slider-doc-hours').value) || 10;
+      const newClientsPerMonth = parseInt(document.getElementById('cap-slider-new-clients').value) || 40;
+      const retentionPct = parseInt(document.getElementById('cap-slider-retention').value) || 70;
+      const retentionRate = retentionPct / 100;
+      const kickoffMin = parseInt(document.getElementById('cap-select-kickoff-dur').value) || 30;
+      const reviewMin = parseInt(document.getElementById('cap-select-review-dur').value) || 15;
+      const hasWeeklyLive = document.getElementById('cap-toggle-live').checked;
+
+      // Update Slider Value Texts
+      document.getElementById('cap-val-doc-hours').innerText = docHoursPerWeek + ' ساعات أسبوعياً';
+      document.getElementById('cap-val-new-clients').innerText = newClientsPerMonth + ' مشتركاً جديداً';
+      document.getElementById('cap-val-retention').innerText = retentionPct + '% تجديد';
+
+      // Steady state renewals (from previous month cohort)
+      const renewals = Math.round(newClientsPerMonth * retentionRate);
+      const totalActive = newClientsPerMonth + renewals;
+
+      // Doctor hours per month
+      const newCallsHoursMonthly = newClientsPerMonth * (kickoffMin / 60);
+      const reviewCallsHoursMonthly = renewals * (reviewMin / 60);
+      const liveHoursMonthly = hasWeeklyLive ? 4.33 : 0;
+      const totalDocHoursMonthly = newCallsHoursMonthly + reviewCallsHoursMonthly + liveHoursMonthly;
+      const totalDocHoursWeekly = totalDocHoursMonthly / 4.33;
+
+      // Burnout safety calculation
+      const utilization = (totalDocHoursWeekly / docHoursPerWeek) * 100;
+      const bufferWeekly = Math.max(0, docHoursPerWeek - totalDocHoursWeekly);
+
+      // Meter UI
+      const meterBar = document.getElementById('cap-meter-bar');
+      const meterBadge = document.getElementById('cap-meter-badge');
+      const meterDesc = document.getElementById('cap-meter-desc');
+      const meterHoursText = document.getElementById('cap-meter-hours-text');
+      const meterUtilPct = document.getElementById('cap-meter-util-pct');
+
+      meterBar.style.width = Math.min(100, Math.round(utilization)) + '%';
+      meterUtilPct.innerText = Math.round(utilization) + '% استخدام';
+      meterHoursText.innerText = `الوقت المستهلك: ${totalDocHoursWeekly.toFixed(1)} ساعة/أسبوع من أصل ${docHoursPerWeek} ساعات`;
+
+      if (utilization <= 75) {
+        meterBar.className = 'h-full bg-emerald-500 transition-all duration-500 rounded-full';
+        meterBadge.className = 'px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800';
+        meterBadge.innerText = '🟢 منطقة الأمان والراحة التامة';
+        meterDesc.innerHTML = `دكتور أحمد في وضع مثالي ومريح للغاية؛ يتبقى <strong>${bufferWeekly.toFixed(1)} ساعة أسبوعياً</strong> كهامش أمان مرن دون أي إجهاد ذهني أو تأخر في المواعيد.`;
+      } else if (utilization <= 100) {
+        meterBar.className = 'h-full bg-amber-500 transition-all duration-500 rounded-full';
+        meterBadge.className = 'px-2.5 py-1 rounded-full text-xs font-black bg-amber-100 text-amber-800';
+        meterBadge.innerText = '🟡 منطقة التركيز العالي (High Focus)';
+        meterDesc.innerHTML = `الجدول مستغل بنسبة عالية، متبقي <strong>${bufferWeekly.toFixed(1)} ساعة أسبوعياً</strong>. يُنصح بعدم تجاوز هذا الحد للحفاظ على صفاء الذهن وجودة الجلسات.`;
+      } else {
+        meterBar.className = 'h-full bg-rose-500 transition-all duration-500 rounded-full';
+        meterBadge.className = 'px-2.5 py-1 rounded-full text-xs font-black bg-rose-100 text-rose-800';
+        meterBadge.innerText = '🔴 تحذير: تجاوز الطاقة المتاحة (Burnout Alert)';
+        meterDesc.innerHTML = `الساعات المطلوبة (${totalDocHoursWeekly.toFixed(1)} س) تتجاوز المتاح (${docHoursPerWeek} س) بعجز <strong>${(totalDocHoursWeekly - docHoursPerWeek).toFixed(1)} ساعة أسبوعياً</strong>. خفّض عدد المشتركين الجدد أو قلص مدة الجلسات فوراً.`;
+      }
+
+      // Operational & Financial Numbers
+      const price = 99;
+      const mrrUsd = totalActive * price;
+      const arrUsd = mrrUsd * 12;
+      const mrrSar = Math.round(mrrUsd * 3.75);
+      const mrrEgp = Math.round(mrrUsd * 49.5);
+      const arrEgp = Math.round(arrUsd * 49.5);
+
+      // Team requirements (1 Dietitian per ~35 active clients)
+      const dietitiansNeeded = Math.max(1, Math.ceil(totalActive / 35));
+      const stripeCost = Math.round(mrrUsd * 0.035);
+      const teamCost = Math.round(totalActive * 20);
+      const netProfit = mrrUsd - teamCost - stripeCost;
+      const netMargin = Math.round((netProfit / mrrUsd) * 100);
+
+      // Display in Cards
+      document.getElementById('cap-stat-active-clients').innerText = totalActive;
+      document.getElementById('cap-stat-clients-detail').innerText = `${newClientsPerMonth} جديد + ${renewals} مجدد`;
+      document.getElementById('cap-stat-weekly-hours').innerText = totalDocHoursWeekly.toFixed(1) + ' س';
+      document.getElementById('cap-stat-monthly-hours').innerText = `~ ${Math.round(totalDocHoursMonthly)} ساعة شهرياً`;
+      document.getElementById('cap-stat-mrr-usd').innerText = '$' + mrrUsd.toLocaleString('en-US');
+      document.getElementById('cap-stat-mrr-sar').innerText = '≈ ' + mrrSar.toLocaleString('en-US') + ' ر.س';
+      document.getElementById('cap-stat-net-profit').innerText = '$' + netProfit.toLocaleString('en-US');
+      document.getElementById('cap-stat-net-margin').innerText = `هامش ربح ${netMargin}%`;
+
+      document.getElementById('cap-stat-arr-usd').innerText = '$' + arrUsd.toLocaleString('en-US');
+      document.getElementById('cap-stat-arr-egp').innerText = '≈ ' + arrEgp.toLocaleString('en-US') + ' ج.م';
+      document.getElementById('cap-stat-dietitians-needed').innerText = `${dietitiansNeeded} أخصائي تغذية`;
+      document.getElementById('cap-stat-team-cost').innerText = `تكلفة الفريق: ~$${teamCost.toLocaleString('en-US')}`;
+      document.getElementById('cap-stat-stripe-cost').innerText = `~$${stripeCost.toLocaleString('en-US')}`;
+
+      // Populate 6-Month Projection Table
+      renderProjectionTable(newClientsPerMonth, retentionRate, kickoffMin, reviewMin, hasWeeklyLive, price);
+    }
+
+    function renderProjectionTable(newClients, retentionRate, kickoffMin, reviewMin, hasLive, price) {
+      const tbody = document.getElementById('cap-projection-tbody');
+      if (!tbody) return;
+
+      let html = '';
+      let previousActive = 0;
+
+      for (let month = 1; month <= 6; month++) {
+        let renewed = month === 1 ? 0 : Math.round(previousActive * retentionRate);
+        let active = newClients + renewed;
+        previousActive = active;
+
+        let newHours = newClients * (kickoffMin / 60);
+        let reviewHours = renewed * (reviewMin / 60);
+        let liveHours = hasLive ? 4.33 : 0;
+        let totalMonthlyHours = newHours + reviewHours + liveHours;
+        let weeklyHours = (totalMonthlyHours / 4.33).toFixed(1);
+
+        let mrr = active * price;
+        let team = Math.round(active * 20 + mrr * 0.035);
+        let profit = mrr - team;
+
+        html += `
+          <tr class="${month % 2 === 0 ? 'bg-slate-50/60' : 'bg-white'} hover:bg-emerald-50/40 transition">
+            <td class="p-3 font-bold text-slate-900">الشهر ${month}</td>
+            <td class="p-3 font-semibold text-emerald-600">${newClients}</td>
+            <td class="p-3 font-semibold text-cyan-600">${renewed}</td>
+            <td class="p-3 font-black text-slate-900 bg-emerald-50/50">${active} مشترك</td>
+            <td class="p-3 font-bold ${weeklyHours > 10 ? 'text-amber-600' : 'text-slate-700'}">${weeklyHours} س / أسبوع</td>
+            <td class="p-3 font-black text-slate-900 font-sans">$${mrr.toLocaleString('en-US')}</td>
+            <td class="p-3 text-slate-500 font-sans">$${team.toLocaleString('en-US')}</td>
+            <td class="p-3 font-black text-emerald-700 font-sans">$${profit.toLocaleString('en-US')}</td>
+          </tr>
+        `;
+      }
+      tbody.innerHTML = html;
+    }
+
+    function setCapPreset(newClients, docHours, retention, kickoff, review, live) {
+      document.getElementById('cap-slider-new-clients').value = newClients;
+      document.getElementById('cap-slider-doc-hours').value = docHours;
+      document.getElementById('cap-slider-retention').value = retention;
+      document.getElementById('cap-select-kickoff-dur').value = kickoff;
+      document.getElementById('cap-select-review-dur').value = review;
+      document.getElementById('cap-toggle-live').checked = live;
+      calculateCapacity99();
+    }
+
+    function copyHandoverScript() {
+      const scriptText = document.getElementById('handover-script-content').innerText;
+      navigator.clipboard.writeText(scriptText).then(() => {
+        const btnText = document.getElementById('copy-script-text');
+        btnText.innerText = 'تم النسخ بنجاح! ✓';
+        setTimeout(() => { btnText.innerText = 'نسخ النص'; }, 2500);
+      });
+    }
+
+    // Run initial capacity calculation on load
+    calculateCapacity99();
   </script>
 
 </body>

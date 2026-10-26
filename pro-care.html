@@ -115,6 +115,81 @@
       transform: scale(1) translateY(0);
     }
   
+    
+    /* --- Autoplaying Luxury Journey Cockpit Styles --- */
+    .deck-node {
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .deck-node .node-ring {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .deck-node:hover .node-ring {
+      transform: translateY(-3px) scale(1.12);
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+    }
+    .deck-node.active-station .node-ring {
+      transform: translateY(-5px) scale(1.22);
+      border-width: 3px;
+    }
+    .deck-node.active-station.theme-amber .node-ring {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), #071626);
+      border-color: #FBBF24;
+      color: #FEF3C7;
+      box-shadow: 0 0 25px 6px rgba(245, 158, 11, 0.65), 0 0 10px rgba(245, 158, 11, 0.4);
+    }
+    .deck-node.active-station.theme-emerald .node-ring {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), #071626);
+      border-color: #34D399;
+      color: #D1FAE5;
+      box-shadow: 0 0 25px 6px rgba(16, 185, 129, 0.65), 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+    .deck-node.active-station.theme-cyan .node-ring {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), #071626);
+      border-color: #22D3EE;
+      color: #CFFAFE;
+      box-shadow: 0 0 25px 6px rgba(6, 182, 212, 0.65), 0 0 10px rgba(6, 182, 212, 0.4);
+    }
+
+    /* Active Pulse Ring Indicator */
+    .deck-node.active-station::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      border: 2px solid currentColor;
+      opacity: 0.6;
+      animation: deckNodePulse 1.8s infinite ease-out;
+      pointer-events: none;
+    }
+    @keyframes deckNodePulse {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    /* Ascending Stage Animation */
+    .stage-ascending-panel {
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-ascending-panel.deck-rising {
+      animation: deckRiseStage 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes deckRiseStage {
+      0% {
+        opacity: 0.4;
+        transform: translateY(18px) scale(0.985);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.005);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     /* --- Ascending Timeline & Interactive Stage Styles --- */
     .station-node.active .node-bullet {
       transform: scale(1.25);
@@ -433,262 +508,302 @@
     </div>
   </section>
 
-      <!-- ==================== 5. SECTION: ASCENDING MILESTONE TIMELINE (خط زمني تفاعلي مع صعود اليوم وبياناته) ==================== -->
+      <!-- ==================== 5. SECTION: AUTOPLAYING LUXURY JOURNEY COCKPIT ==================== -->
   <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
     
-    <!-- Ambient Background Glows -->
-    <div class="absolute -top-32 right-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none"></div>
-    <div class="absolute -bottom-32 left-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-amber-500/5 blur-[140px] pointer-events-none"></div>
+    <!-- Ambient Atmospheric Glows -->
+    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/10 blur-[130px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 left-1/4 w-[600px] h-[600px] rounded-full bg-cyan-500/10 blur-[130px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-amber-500/5 blur-[150px] pointer-events-none"></div>
 
     <div class="responsive-container relative z-10">
       
-      <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-10 space-y-3">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
-          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-          <span>دفعة شهر نوفمبر 2026 • المسار التفاعلي المباشر</span>
+      <!-- Section Header: Emotional, High-Status, Caring & Precise -->
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-cyan-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>رعاية تشاركية واحتواء مستمر • دفعة نوفمبر 2026</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          خارطة مسار الـ 30 يوماً بالتفصيل
+        
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-extrabold text-white tracking-tight leading-tight">
+          رحلتك معنا طوال الـ 30 يوماً..<br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-l from-emerald-300 via-teal-200 to-amber-200">
+            خطوة بخطوة، ولست وحدك بعد اليوم
+          </span>
         </h2>
-        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
-          مرّر الفأرة أو انقر على أي محطة على الخط الزمني لتشاهد <span class="text-emerald-400 font-semibold">صعود اليوم بتفاصيله الكاملة</span>، وجلسات المتابعة واللايفات المجدولة لك:
+        
+        <p class="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-light max-w-2xl mx-auto">
+          لأن التغيير الحقيقي لا يولد من الحرمان ولا بالصدفة؛ رسمنا لك مساراً يومياً فائق القرب والدقة: 30 يوماً من الرفقة الإنسانية الصادقة، نلتقي فيها في <strong class="text-amber-300 font-semibold">3 محطات حية مع أحمد الخطيب</strong>، وترافقك <strong class="text-emerald-300 font-semibold">5 جلسات فردية خاصة (1:1)</strong> مع فريق التغذية واللياقة لضبط أكل بيتك، مع بنك تذاكر مفتوح لتبقى مطمئناً في كل خطوة.
         </p>
 
-        <!-- Role Legend -->
+        <!-- Role Legend Tags -->
         <div class="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-300">
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50"></span>
-            <span class="text-amber-300 font-medium">أحمد الخطيب (3 لايفات حصرية)</span>
+          <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span class="font-semibold">أحمد الخطيب (3 لايفات حصرية)</span>
           </div>
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
-            <span class="text-emerald-300 font-medium">أخصائي التغذية (3 جلسات 1:1)</span>
+          <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span class="font-semibold">أخصائي التغذية (3 جلسات 1:1)</span>
           </div>
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400/50"></span>
-            <span class="text-cyan-300 font-medium">كوتش الحركة (جلستان 1:1)</span>
+          <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+            <span class="font-semibold">كوتش الحركة (جلستان 1:1)</span>
           </div>
-          <div class="flex items-center gap-1.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-purple-400 shadow-sm shadow-purple-400/50"></span>
-            <span class="text-purple-300 font-medium">بنك التذاكر المرنة (10 تذاكر)</span>
+          <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-300">
+            <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+            <span class="font-semibold">بنك التذاكر المرنة (10 تذاكر)</span>
           </div>
         </div>
       </div>
 
-      <!-- ==================== INTERACTIVE TIMELINE RAIL ==================== -->
+      <!-- ==================== THE UNIFIED LUXURY JOURNEY COCKPIT ==================== -->
       <div class="max-w-5xl mx-auto space-y-6">
         
-        <!-- Horizontal Timeline Track (Desktop & Tablet) -->
-        <div class="glass-card p-4 sm:p-6 rounded-3xl border border-white/10 relative overflow-x-auto shadow-2xl">
+        <!-- Master Card: Unified Deck Container -->
+        <div id="journey-cockpit-frame" class="glass-card rounded-3xl border-2 border-emerald-500/30 p-5 sm:p-8 md:p-10 relative shadow-2xl transition-all duration-700 space-y-8" 
+          onmouseenter="pauseAutoplay()" onmouseleave="resumeAutoplay()">
           
-          <div class="min-w-[700px] relative py-6 px-4">
-            
-            <!-- Connecting Glowing Progress Bar -->
-            <div class="absolute top-[42px] inset-x-8 h-1.5 bg-slate-800 rounded-full z-0">
-              <div id="timeline-progress-fill" class="h-full bg-gradient-to-l from-amber-400 via-emerald-400 to-cyan-400 rounded-full transition-all duration-500 shadow-lg" style="width: 12%;"></div>
+          <!-- Top Autoplay Control & Status Bar -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 pb-5">
+            <div class="flex items-center gap-3">
+              <!-- Live Radar Pulse -->
+              <span class="relative flex h-3.5 w-3.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+              </span>
+              <span class="text-xs sm:text-sm font-bold text-white tracking-wide">
+                مسار العرض التلقائي المباشر لدفعة نوفمبر
+              </span>
+              <span id="autoplay-badge-status" class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] text-emerald-300 font-mono">
+                ▶ يعمل تلقائياً
+              </span>
             </div>
 
-            <!-- The 8 Station Nodes on the Rail -->
-            <div class="relative z-10 flex items-center justify-between">
+            <!-- Controller Buttons -->
+            <div class="flex items-center gap-2 text-xs">
+              <button type="button" onclick="toggleAutoplayState()" id="btn-toggle-autoplay" 
+                class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 flex items-center gap-1.5 transition">
+                <i id="autoplay-icon" data-lucide="pause" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span id="autoplay-btn-text">إيقاف مؤقت</span>
+              </button>
               
-              <!-- Station 1 (Day 1) -->
-              <button type="button" onmouseenter="activateStation(0)" onclick="activateStation(0)" id="node-0" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 group-hover:scale-125 group-hover:shadow-amber-400/60 transition-transform">
-                  1
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-amber-300">1 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">لايف انطلاق</span>
-                </div>
-              </button>
-
-              <!-- Station 2 (Day 2) -->
-              <button type="button" onmouseenter="activateStation(1)" onclick="activateStation(1)" id="node-1" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 group-hover:scale-125 group-hover:shadow-emerald-400/60 transition-transform">
-                  2
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-emerald-300">2 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">تغذية 1:1</span>
-                </div>
-              </button>
-
-              <!-- Station 3 (Day 3) -->
-              <button type="button" onmouseenter="activateStation(2)" onclick="activateStation(2)" id="node-2" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-cyan-400 text-cyan-300 flex items-center justify-center font-bold text-xs shadow-md shadow-cyan-400/30 group-hover:scale-125 group-hover:shadow-cyan-400/60 transition-transform">
-                  3
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-cyan-300">3 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">كوتش 1:1</span>
-                </div>
-              </button>
-
-              <!-- Station 4 (Day 10) -->
-              <button type="button" onmouseenter="activateStation(3)" onclick="activateStation(3)" id="node-3" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 group-hover:scale-125 group-hover:shadow-emerald-400/60 transition-transform">
-                  10
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-emerald-300">10 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">متابعة تغذية</span>
-                </div>
-              </button>
-
-              <!-- Station 5 (Day 15) -->
-              <button type="button" onmouseenter="activateStation(4)" onclick="activateStation(4)" id="node-4" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-cyan-400 text-cyan-300 flex items-center justify-center font-bold text-xs shadow-md shadow-cyan-400/30 group-hover:scale-125 group-hover:shadow-cyan-400/60 transition-transform">
-                  15
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-cyan-300">15 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">متابعة كوتش</span>
-                </div>
-              </button>
-
-              <!-- Station 6 (Day 17) -->
-              <button type="button" onmouseenter="activateStation(5)" onclick="activateStation(5)" id="node-5" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 group-hover:scale-125 group-hover:shadow-amber-400/60 transition-transform">
-                  17
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-amber-300">17 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">لايف أحمد</span>
-                </div>
-              </button>
-
-              <!-- Station 7 (Day 24) -->
-              <button type="button" onmouseenter="activateStation(6)" onclick="activateStation(6)" id="node-6" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 group-hover:scale-125 group-hover:shadow-emerald-400/60 transition-transform">
-                  24
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-emerald-300">24 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">ختام تغذية</span>
-                </div>
-              </button>
-
-              <!-- Station 8 (Day 29) -->
-              <button type="button" onmouseenter="activateStation(7)" onclick="activateStation(7)" id="node-7" 
-                class="station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300">
-                <div class="node-bullet w-10 h-10 rounded-full bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 group-hover:scale-125 group-hover:shadow-amber-400/60 transition-transform">
-                  29
-                </div>
-                <div class="text-center">
-                  <span class="block text-xs font-bold text-amber-300">29 نوفمبر</span>
-                  <span class="block text-[10px] text-slate-400">لايف تخرج</span>
-                </div>
-              </button>
-
-            </div>
-
-          </div>
-
-          <!-- Micro Scrubbing Note -->
-          <div class="text-center text-[11px] text-slate-400 pt-2 border-t border-white/5 flex items-center justify-between px-2">
-            <span>👈 مرر الفأرة على الدوائر أو انقر للتنقل بين الأيام</span>
-            <div class="flex items-center gap-2">
-              <button type="button" onclick="prevStation()" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 transition">السابق</button>
-              <span id="station-counter" class="text-xs font-mono text-emerald-400">1 / 8</span>
-              <button type="button" onclick="nextStation()" class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-xs text-slate-300 transition">التالي</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== THE ASCENDING STAGE SHOWCASE CARD (بطاقة صعود اليوم المختار) ==================== -->
-        <div id="ascending-stage-card" class="ascending-card glass-card p-6 sm:p-10 rounded-3xl border-2 transition-all duration-500 shadow-2xl relative text-right space-y-6">
-          
-          <!-- Top Row: Day Number, Date, Role, and Format Badge -->
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
-            <div class="flex items-center gap-4">
-              <!-- Giant Day Number -->
-              <div id="stage-day-num" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-amber-500/20 text-amber-300 border-2 border-amber-400 flex items-center justify-center text-3xl sm:text-4xl font-black font-mono shadow-xl shrink-0 transition-transform">
-                01
+              <div class="flex items-center gap-1 bg-white/[0.03] border border-white/10 rounded-xl p-1">
+                <button type="button" onclick="prevStationManual()" class="px-2.5 py-1 rounded-lg hover:bg-white/10 text-slate-300 transition" title="المحطة السابقة">
+                  السابق ‹
+                </button>
+                <span id="deck-station-indicator" class="px-2 font-mono text-emerald-400 font-bold">1 / 8</span>
+                <button type="button" onclick="nextStationManual()" class="px-2.5 py-1 rounded-lg hover:bg-white/10 text-slate-300 transition" title="المحطة التالية">
+                  › التالي
+                </button>
               </div>
-              <div class="space-y-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span id="stage-date" class="text-lg sm:text-xl font-extrabold text-white">1 نوفمبر (الجمعة)</span>
-                  <span id="stage-badge" class="px-2.5 py-1 rounded-full text-xs font-bold border">لايف مجمع</span>
+            </div>
+          </div>
+
+          <!-- Luminous Autoplay Countdown Bar (Instagram/Apple Story Style) -->
+          <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden relative">
+            <div id="deck-countdown-fill" class="h-full bg-gradient-to-l from-emerald-400 to-cyan-400 rounded-full transition-all ease-linear" style="width: 0%;"></div>
+          </div>
+
+          <!-- ==================== HORIZONTAL TIMELINE RAIL ==================== -->
+          <div class="relative py-2 overflow-x-auto">
+            <div class="min-w-[680px] relative px-4 py-4">
+              
+              <!-- Track Line -->
+              <div class="absolute top-[36px] inset-x-8 h-1.5 bg-slate-800 rounded-full z-0">
+                <div id="deck-rail-progress" class="h-full bg-gradient-to-l from-amber-400 via-emerald-400 to-cyan-400 rounded-full transition-all duration-700 shadow-lg shadow-emerald-500/30" style="width: 5%;"></div>
+              </div>
+
+              <!-- 8 Stations along the rail -->
+              <div class="relative z-10 flex items-center justify-between">
+                
+                <!-- Station 0: Day 1 -->
+                <button type="button" onclick="selectStation(0)" id="deck-node-0" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 transition-all duration-300 group-hover:scale-115">
+                    1
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-amber-300">1 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">لايف انطلاق</span>
+                  </div>
+                </button>
+
+                <!-- Station 1: Day 2 -->
+                <button type="button" onclick="selectStation(1)" id="deck-node-1" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 transition-all duration-300 group-hover:scale-115">
+                    2
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-emerald-300">2 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">أكل البيت 1:1</span>
+                  </div>
+                </button>
+
+                <!-- Station 2: Day 3 -->
+                <button type="button" onclick="selectStation(2)" id="deck-node-2" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-cyan-400 text-cyan-300 flex items-center justify-center font-bold text-xs shadow-md shadow-cyan-400/30 transition-all duration-300 group-hover:scale-115">
+                    3
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-cyan-300">3 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">كوتش 1:1</span>
+                  </div>
+                </button>
+
+                <!-- Station 3: Day 10 -->
+                <button type="button" onclick="selectStation(3)" id="deck-node-3" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 transition-all duration-300 group-hover:scale-115">
+                    10
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-emerald-300">10 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">متابعة تغذية</span>
+                  </div>
+                </button>
+
+                <!-- Station 4: Day 15 -->
+                <button type="button" onclick="selectStation(4)" id="deck-node-4" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-cyan-400 text-cyan-300 flex items-center justify-center font-bold text-xs shadow-md shadow-cyan-400/30 transition-all duration-300 group-hover:scale-115">
+                    15
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-cyan-300">15 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">متابعة كوتش</span>
+                  </div>
+                </button>
+
+                <!-- Station 5: Day 17 -->
+                <button type="button" onclick="selectStation(5)" id="deck-node-5" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 transition-all duration-300 group-hover:scale-115">
+                    17
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-amber-300">17 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">كسر الفتور</span>
+                  </div>
+                </button>
+
+                <!-- Station 6: Day 24 -->
+                <button type="button" onclick="selectStation(6)" id="deck-node-6" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-emerald-400 text-emerald-300 flex items-center justify-center font-bold text-xs shadow-md shadow-emerald-400/30 transition-all duration-300 group-hover:scale-115">
+                    24
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-emerald-300">24 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">ختام تغذية</span>
+                  </div>
+                </button>
+
+                <!-- Station 7: Day 29 -->
+                <button type="button" onclick="selectStation(7)" id="deck-node-7" class="deck-node flex flex-col items-center gap-2 cursor-pointer transition-all duration-300 group">
+                  <div class="node-ring w-11 h-11 rounded-2xl bg-[#071626] border-2 border-amber-400 text-amber-300 flex items-center justify-center font-bold text-xs shadow-md shadow-amber-400/30 transition-all duration-300 group-hover:scale-115">
+                    29
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-xs font-bold text-amber-300">29 نوفمبر</span>
+                    <span class="block text-[9px] text-slate-400 font-light">لايف التخرج</span>
+                  </div>
+                </button>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== THE ASCENDING STAGE SHOWCASE ==================== -->
+          <div id="deck-stage-display" class="stage-ascending-panel p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 relative text-right space-y-6 shadow-xl transition-all duration-500">
+            
+            <!-- Top Row: Day Identity & Session Channels -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+              <div class="flex items-center gap-4">
+                
+                <!-- Giant Glowing Day Box -->
+                <div id="stage-box-day" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-black font-mono shadow-xl shrink-0 transition-all duration-500 bg-amber-500/20 text-amber-300 border-2 border-amber-400 shadow-amber-500/30">
+                  01
                 </div>
-                <p id="stage-role" class="text-xs sm:text-sm font-semibold text-amber-300">
-                  بإشراف أحمد الخطيب شخصياً + كوتش الحركة وأخصائيي التغذية
+
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <span id="stage-text-date" class="text-lg sm:text-xl font-extrabold text-white">1 نوفمبر (الجمعة)</span>
+                    <span id="stage-text-badge" class="px-3 py-0.5 rounded-full text-xs font-bold border bg-amber-500/20 text-amber-300 border-amber-500/40">
+                      لايف انطلاق مجمع
+                    </span>
+                  </div>
+                  <p id="stage-text-role" class="text-xs sm:text-sm font-semibold text-amber-300">
+                    بإشراف أحمد الخطيب شخصياً + كوتش الحركة وأخصائيي التغذية
+                  </p>
+                </div>
+              </div>
+
+              <!-- Format & Time Pill -->
+              <div class="flex items-center gap-2 self-end sm:self-auto text-xs">
+                <span id="stage-text-duration" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 font-mono">
+                  ⏱️ 90 - 120 دقيقة
+                </span>
+                <span id="stage-text-channel" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 font-medium">
+                  🎥 Zoom Live مباشر
+                </span>
+              </div>
+            </div>
+
+            <!-- Title & Subtitle of the Day -->
+            <div class="space-y-1.5">
+              <h3 id="stage-text-title" class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                جلسة الانطلاق المجمعة وتدشين الأمان النفسي
+              </h3>
+              <p id="stage-text-subtitle" class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                اللقاء التأسيسي الأول لكسر الجليد، تدشين مسار الأمان، وفك قيود الحرمان وتأنيب الضمير للأبد.
+              </p>
+            </div>
+
+            <!-- 3 Detailed Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  <span id="stage-p1-title">ترحيب وسماع شخصي</span>
+                </div>
+                <p id="stage-p1-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                  ترحيب مباشر وسماع أسماء وتطلعات المشتركين الـ 30-35، لتبدأ رحلتك وأنت تشعر بأنك مرئي ومسموع ومحاط برعاية كاملة.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                  <i data-lucide="shield" class="w-4 h-4"></i>
+                  <span id="stage-p2-title">نزع عقدة الذنب</span>
+                </div>
+                <p id="stage-p2-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                  تفكيك أوهام الدايت القديمة، شرح الركائز الأربع لواحة نور، وإرساء قاعدة الأمان البيولوجي في التعامل مع الطعام.
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                  <i data-lucide="user-check" class="w-4 h-4"></i>
+                  <span id="stage-p3-title">مراسم التسليم للفريق</span>
+                </div>
+                <p id="stage-p3-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                  تقديم أخصائي التغذية وكوتش الحركة المعتمدين، وتسليم ملفك لبدء الجلسات الفردية (1:1) في صباح اليوم التالي مباشرة.
                 </p>
               </div>
             </div>
 
-            <div class="flex items-center gap-2 self-end sm:self-auto">
-              <span id="stage-duration" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200 font-mono">
-                ⏱️ 90 - 120 دقيقة
-              </span>
-              <span id="stage-channel" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">
-                🎥 Zoom Live
-              </span>
-            </div>
-          </div>
-
-          <!-- Session Main Title -->
-          <div>
-            <h3 id="stage-title" class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              جلسة الانطلاق المجمعة وتدشين الأمان النفسي
-            </h3>
-            <p id="stage-subtitle" class="text-xs sm:text-sm text-slate-300 mt-1 font-light leading-relaxed">
-              اللقاء التأسيسي الأول لكسر الجليد، تدشين مسار الأمان، وفك قيود الحرمان وتأنيب الضمير للأبد.
-            </p>
-          </div>
-
-          <!-- 3 Detailed Bullets -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
-              <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                <i data-lucide="sparkles" class="w-4 h-4"></i>
-                <span id="stage-point1-title">ترحيب وسماع شخصي</span>
+            <!-- Bottom Outcome Ribbon -->
+            <div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-2 font-semibold text-slate-200">
+                <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
+                <span>المحصلة والهدف من هذه المحطة:</span>
+                <span id="stage-text-outcome" class="text-emerald-400 font-bold">
+                  تدشين مسار الأمان وبدء الجلسات الفردية الخاصة
+                </span>
               </div>
-              <p id="stage-point1-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                ترحيب مباشر وسماع أسماء وتطلعات المشتركين الـ 30-35، لتبدأ رحلتك وأنت تشعر بأنك مرئي ومسموع ومحاط برعاية كاملة.
-              </p>
-            </div>
-
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
-              <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                <i data-lucide="shield" class="w-4 h-4"></i>
-                <span id="stage-point2-title">نزع عقدة الذنب</span>
+              
+              <div class="text-[11px] text-slate-400 flex items-center gap-1">
+                <span>المحطة التالية:</span>
+                <span id="stage-text-next" class="text-slate-200 font-bold">2 نوفمبر (تغذية 1:1) 👈</span>
               </div>
-              <p id="stage-point2-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                تفكيك أوهام الدايت القديمة، شرح الركائز الأربع لواحة نور، وإرساء قاعدة الأمان البيولوجي في التعامل مع الطعام.
-              </p>
             </div>
 
-            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
-              <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                <i data-lucide="user-check" class="w-4 h-4"></i>
-                <span id="stage-point3-title">مراسم التسليم للفريق</span>
-              </div>
-              <p id="stage-point3-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                تقديم أخصائي التغذية وكوتش الحركة المعتمدين، وتسليم ملفك لبدء الجلسات الفردية (1:1) في صباح اليوم التالي مباشرة.
-              </p>
-            </div>
-          </div>
-
-          <!-- Bottom Outcome Ribbon -->
-          <div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-            <div class="flex items-center gap-2 font-semibold text-slate-200">
-              <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
-              <span>المحصلة والهدف من هذه المحطة:</span>
-              <span id="stage-outcome" class="text-emerald-400 font-bold">تدشين مسار الأمان وبدء الجلسات الفردية الخاصة</span>
-            </div>
-            
-            <div class="text-[11px] text-slate-400">
-              المحطة التالية: <span id="stage-next-preview" class="text-slate-200 font-bold">2 نوفمبر (تغذية 1:1) 👈</span>
-            </div>
           </div>
 
         </div>
@@ -698,7 +813,7 @@
           <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
             
             <div class="space-y-3 max-w-2xl">
-              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
                 <i data-lucide="ticket" class="w-3.5 h-3.5"></i>
                 <span>الميزة الحصرية رقم 9 • أقصى درجات المرونة طوال الشهر</span>
               </div>
@@ -738,7 +853,6 @@
 
     </div>
   </section>
-
 
   <!-- ==================== 6. SECTION: HOW WE COMMUNICATE ==================== -->
   <section id="channels" class="py-16 md:py-24 border-t border-white/5 bg-[#091829]/70 relative">
@@ -1180,7 +1294,9 @@
 
 
     <script>
-    // --- Ascending Timeline Data & Logic ---
+    // ========================================================
+    // --- STATIONS DATA: 8 KEY MILESTONES ACROSS NOVEMBER ---
+    // ========================================================
     var stationsData = [
       {
         num: "01",
@@ -1192,8 +1308,10 @@
         shadowClass: "shadow-amber-500/20",
         numBg: "bg-amber-500/20 text-amber-300 border-amber-400",
         badgeStyle: "bg-amber-500/20 text-amber-300 border-amber-500/40",
+        roleColor: "text-amber-300",
+        pillColor: "text-amber-400",
         duration: "⏱️ 90 - 120 دقيقة",
-        channel: "🎥 Zoom Live",
+        channel: "🎥 Zoom Live مباشر",
         title: "جلسة الانطلاق المجمعة وتدشين الأمان النفسي",
         subtitle: "اللقاء التأسيسي الأول لكسر الجليد، تدشين مسار الأمان، وفك قيود الحرمان وتأنيب الضمير للأبد.",
         p1Title: "ترحيب وسماع شخصي",
@@ -1216,6 +1334,8 @@
         shadowClass: "shadow-emerald-500/20",
         numBg: "bg-emerald-500/20 text-emerald-300 border-emerald-400",
         badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
+        roleColor: "text-emerald-300",
+        pillColor: "text-emerald-400",
         duration: "⏱️ 20 دقيقة خاصة",
         channel: "📹 مكالمة فيديو 1:1",
         title: "الجلسة الأولى: تصميم يومك الغذائي المرن وأكل البيت",
@@ -1240,280 +1360,411 @@
         shadowClass: "shadow-cyan-500/20",
         numBg: "bg-cyan-500/20 text-cyan-300 border-cyan-400",
         badgeStyle: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+        roleColor: "text-cyan-300",
+        pillColor: "text-cyan-400",
         duration: "⏱️ 20 دقيقة خاصة",
         channel: "📹 مكالمة فيديو 1:1",
-        title: "الجلسة الأولى: فحص الحركة وتصميم النشاط اليومي المريح",
-        subtitle: "تقييم مرونة الجسد وتصميم روتين نشاط خفيف يرفع الحرق دون إجهاد المفاصل.",
-        p1Title: "فحص المرونة والأمان الحركي",
-        p1Desc: "مكالمة فيديو خاصة (20 دقيقة) لمراجعة صحة المفاصل وأي إصابات أو إجهاد سابق لضمان أعلى مستويات الأمان.",
-        p2Title: "روتين نشاط منزلي مريح",
-        p2Desc: "تصميم جدول نشاط خفيف يلائم مساحة منزلك وواقع دوامك، دون الحاجة للذهاب إلى جيم أو شراء معدات معقدة.",
-        p3Title: "خطوات ذكية لحرق الدهون",
-        p3Desc: "الاتفاق على خطوات حركة يومية تدريجية تصنع فارقاً تراكمياً هائلاً في حرق الدهون وتحسين تدفق الطاقة.",
-        outcome: "انطلاق روتين الحركة اليومي الآمن دون أي إرهاق",
-        nextPreview: "10 نوفمبر (متابعة تغذية) 👈",
+        title: "الجلسة الأولى: روتين الحركة الذكي وتنشيط الطاقة",
+        subtitle: "حركة خفيفة وذكية تناسب مفاصلك ومستوى نشاطك اليومي، دون أجهزة معقدة أو إجهاد.",
+        p1Title: "فحص النشاط والمفاصل",
+        p1Desc: "مكالمة فردية لتقييم أسلوب جلوسك اليومي وصحة مفاصلك وأي إصابات سابقة لتصميم حركة آمنة 100%.",
+        p2Title: "روتين الـ 15 دقيقة المريح",
+        p2Desc: "بناء تمارين بسيطة تؤديها في صالة بيتك أو مكتبك في 10-15 دقيقة ترفع هرمونات النشاط وتنشط الحرق.",
+        p3Title: "علاج خمول المكاتب والجلوس",
+        p3Desc: "حركات إطالة وتنشيط خفيفة تكسر ساعات الجلوس الطويلة وتمنحك خفة فورية في أسفل الظهر والرقبة.",
+        outcome: "تصميم خطة النشاط المريحة وتجاوز الخمول بأمان",
+        nextPreview: "10 نوفمبر (تغذية 1:1) 👈",
         progressPercent: 32
       },
       {
         num: "10",
         day: "10 نوفمبر (الأحد)",
-        role: "مع أخصائي تغذية نمط الحياة",
-        badge: "متابعة فردية (1:1)",
+        role: "مع أخصائي تغذية نمط الحياة المعتمد",
+        badge: "جلسة خاصة (1:1)",
         theme: "emerald",
         borderColor: "border-emerald-500/50",
         shadowClass: "shadow-emerald-500/20",
         numBg: "bg-emerald-500/20 text-emerald-300 border-emerald-400",
         badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
-        duration: "⏱️ 20 دقيقة متابعة",
+        roleColor: "text-emerald-300",
+        pillColor: "text-emerald-400",
+        duration: "⏱️ 15 دقيقة خاصة",
         channel: "📹 مكالمة فيديو 1:1",
-        title: "المتابعة الأولى: مراجعة أول 10 أيام وتحديث الخطة",
-        subtitle: "قياس استجابة جسدك ونزول المقاسات وعلاج أي صعوبة لضمان استمرار المتعة والخفة.",
-        p1Title: "قياس الخفة والمقاسات",
-        p1Desc: "مراجعة نزول الوزن ومحيط البطن، وفحص تحسن الهضم ومستويات النوم والنشاط بعد أول 10 أيام تطبيق.",
-        p2Title: "علاج العقبات الطارئة",
-        p2Desc: "مناقشة أي شعور بالرغبة في السكريات أو الجوع، وإعادة موازنة حصص الوجبات والدهون المشبعة لمنع أي إجهاد.",
-        p3Title: "تحديث الأصناف والبدائل",
-        p3Desc: "إدخال خيارات ووصفات أكل جديدة تكسر الروتين الغذائي وتضمن بقاء عملية الحرق في قمة نشاطها.",
-        outcome: "ظهور أولى نتائج الخفة ونزول المقاسات الملموسة",
-        nextPreview: "15 نوفمبر (متابعة كوتش) 👈",
-        progressPercent: 48
+        title: "المتابعة الأولى: قياس الاستجابة ومعايرة الأسبوع الأول",
+        subtitle: "تقييم أسبوعك الأول بميزان الراحة والقياسات، وتعديل أي وجبة لم تكن مريحة لك 100%.",
+        p1Title: "مراجعة الراحة والهضم",
+        p1Desc: "الاطمئنان على خفة المعدة وتحسن جودة النوم ومستويات الطاقة والشبع على مدار ساعات اليوم.",
+        p2Title: "إعادة ضبط الخيارات والبدائل",
+        p2Desc: "إضافة وجبات جديدة وتعديل المكونات حسب شهيتك ورغباتك لتظل مستمتعاً دون أي شعور بالتكرار.",
+        p3Title: "مكافحة الرغبة في السكر",
+        p3Desc: "حلول عملية وحيل ذكية لمعالجة اشتهاء السكريات والوجبات السريعة أثناء فترات العمل أو المساء.",
+        outcome: "معايرة الخطة وتجاوز عقبات الأسبوع الأول بثبات",
+        nextPreview: "15 نوفمبر (كوتش 1:1) 👈",
+        progressPercent: 46
       },
       {
         num: "15",
         day: "15 نوفمبر (الجمعة)",
-        role: "مع كوتش الحركة واللياقة",
-        badge: "متابعة فردية (1:1)",
+        role: "مع كوتش الحركة واللياقة المعتمد",
+        badge: "جلسة خاصة (1:1)",
         theme: "cyan",
         borderColor: "border-cyan-500/50",
         shadowClass: "shadow-cyan-500/20",
         numBg: "bg-cyan-500/20 text-cyan-300 border-cyan-400",
         badgeStyle: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
-        duration: "⏱️ 20 دقيقة متابعة",
+        roleColor: "text-cyan-300",
+        pillColor: "text-cyan-400",
+        duration: "⏱️ 15 دقيقة خاصة",
         channel: "📹 مكالمة فيديو 1:1",
-        title: "المتابعة الأولى: مراجعة الأداء الرياضي وتطوير التمارين",
-        subtitle: "تدقيق تكنيك الحركات بالفيديو، قياس صعود اللياقة، وترقية الشدة بذكاء.",
-        p1Title: "تدقيق تكنيك التمارين",
-        p1Desc: "مراجعة فيديو أدائك للتأكد من زوايا الحركة السليمة وحماية الركبتين والظهر من أي حمل خاطئ أثناء النشاط.",
-        p2Title: "قياس ارتفاع طاقة الجسد",
-        p2Desc: "ملاحظة التحسن في سرعة التعافي والتنفس وقوة الجذع والعضلات الأساسية في حياتك اليومية.",
-        p3Title: "تطوير مستوى الحركة",
-        p3Desc: "ترقية روتين التمارين خطوة إضافية بحسب راحتك لتحفيز استهلاك الدهون العنيدة وتسريع النحت.",
-        outcome: "رفع كفاءة حرق الدهون وزيادة طاقة الجسد والنشاط",
+        title: "المتابعة الأولى للحركة: تدرج النشاط والمرونة الحركية",
+        subtitle: "الاطمئنان على الأداء والتدرج في التمارين بما يحفز حرق الدهون ويعزز ثقتك في حركتك.",
+        p1Title: "تقييم التوافق والالتزام",
+        p1Desc: "فحص مدى سهولة تطبيق روتين الحركة ومدى ملاءمته لجدول أعمالك الأسبوعي دون تعطيل.",
+        p2Title: "تطوير التكنيك بأمان",
+        p2Desc: "مراجعة حية لطريقة تنفيذ التمارين لضمان أفضل استهداف للعضلات وتجنب أي تحميل خاطئ على المفاصل.",
+        p3Title: "شحن لياقة منتصف الشهر",
+        p3Desc: "إضافة تنويعات حركية منعشة تحافظ على الحماس وتكسر الملل البدني وتزيد معدل حرق السعرات اليومي.",
+        outcome: "رفع اللياقة والتأكد من الراحة والأمان الحركي الكامل",
         nextPreview: "17 نوفمبر (لايف كسر الفتور) 👈",
-        progressPercent: 62
+        progressPercent: 60
       },
       {
         num: "17",
         day: "17 نوفمبر (الأحد)",
-        role: "مع أحمد الخطيب شخصياً (جلسة إنقاذ وتجديد)",
-        badge: "لايف مجمع لكسر الفتور",
+        role: "بإشراف أحمد الخطيب شخصياً",
+        badge: "لايف تفاعلي مجمع",
         theme: "amber",
         borderColor: "border-amber-500/50",
         shadowClass: "shadow-amber-500/20",
         numBg: "bg-amber-500/20 text-amber-300 border-amber-400",
         badgeStyle: "bg-amber-500/20 text-amber-300 border-amber-500/40",
-        duration: "⏱️ 60 دقيقة تفاعلية",
-        channel: "🎥 Zoom Live",
-        title: "لايف منتصف الرحلة: كسر الفتور وتثبيت شعلة الالتزام",
-        subtitle: "اللقاء الأهم علمياً ونفسياً لإنقاذ المشترك من فتور الأسبوع الثالث وإشعال العزيمة للنصف الثاني.",
-        p1Title: "علاج فتور الأسبوع الثالث",
-        p1Desc: "تفكيك مرحلة (The Dip) التي يتعثر فيها معظم متبعي الدايت، وشرح بيولوجيا التكيف وطرد الشكوك والمخاوف.",
-        p2Title: "إجابة مباشرة على التحديات",
-        p2Desc: "فتح الحوار وسماع استفسارات المشتركين والإجابة عليها بنفسي لحل أي تردد أو صعوبة ميدانية واجهتك.",
-        p3Title: "إعادة شحن الشغف المعنوي",
-        p3Desc: "زرع حماس جديد وتثبيت النية للمواصلة بقوة ووعي كامل في الأسبوعين الحاسمين المتبقيين من الشهر.",
-        outcome: "كسر حاجز الفتور وشحن الطاقة لمواصلة النصف الثاني بأعلى التزام",
-        nextPreview: "24 نوفمبر (ختام التغذية) 👈",
+        roleColor: "text-amber-300",
+        pillColor: "text-amber-400",
+        duration: "⏱️ 60 - 75 دقيقة",
+        channel: "🎥 Zoom Live مباشر",
+        title: "لايف منتصف الطريق: كسر الفتور وإعادة شحن العزيمة",
+        subtitle: "اللقاء الحاسم في منتصف الشهر لتفكيك المقاومة البيولوجية وإشعال طاقة الاستمرار للنصف الثاني.",
+        p1Title: "تفكيك مقاومة منتصف الرحلة",
+        p1Desc: "فهم التغيرات الهرمونية ومقاومة الدماغ للروتين الجديد وكيف تتجاوز مرحلة الركود بثقة وهدوء.",
+        p2Title: "حوار مفتوح وسماع مباشر",
+        p2Desc: "إجابة أحمد الخطيب المباشرة على أسئلة الحضور وتحديات الأيام الماضية وتفكيك المخاوف بشفافية.",
+        p3Title: "استراتيجية النصف الثاني",
+        p3Desc: "خارطة طريق الـ 13 يوماً المتبقية لتعظيم النتائج وترسيخ الهدوء الداخلي والشعور بالانتصار.",
+        outcome: "كسر ثبات الوزن وتجديد الحافز للنصف الثاني بقوة",
+        nextPreview: "24 نوفمبر (تغذية 1:1) 👈",
         progressPercent: 74
       },
       {
         num: "24",
         day: "24 نوفمبر (الأحد)",
-        role: "مع أخصائي تغذية نمط الحياة",
-        badge: "متابعة ختامية (1:1)",
+        role: "مع أخصائي تغذية نمط الحياة المعتمد",
+        badge: "جلسة خاصة (1:1)",
         theme: "emerald",
         borderColor: "border-emerald-500/50",
         shadowClass: "shadow-emerald-500/20",
         numBg: "bg-emerald-500/20 text-emerald-300 border-emerald-400",
         badgeStyle: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
-        duration: "⏱️ 20 دقيقة تقييم شامل",
+        roleColor: "text-emerald-300",
+        pillColor: "text-emerald-400",
+        duration: "⏱️ 15 دقيقة خاصة",
         channel: "📹 مكالمة فيديو 1:1",
-        title: "المتابعة الثالثة والختامية: تقييم النتائج وخطة الاستدامة",
-        subtitle: "فحص إجمالي نزول الوزن والقياسات، وتصميم استراتيجية تثبيت المكتسبات مدى الحياة.",
-        p1Title: "فحص إجمالي التحول",
-        p1Desc: "مكالمة تقييم نهائية لمقارنة مقاسات البطن ومحيط الخصر مع اليوم الأول وتوثيق حجم الإنجاز الملموس.",
-        p2Title: "تثبيت الوزن ومنع الارتداد",
-        p2Desc: "بناء استراتيجية وقائية مرنة للتعامل مع العزومات والمناسبات والسفر لضمان عدم عودة الوزن السابق إطلاقاً.",
-        p3Title: "خريطة العادات المستمرة",
-        p3Desc: "تسليمك دليل نمط الحياة المستدام الذي يرافقك مدى الحياة كشخص يفهم جسده ويتحكم بشبعه دون خوف.",
-        outcome: "تثبيت النتيجة المحققة وامتلاك أدوات الأمان والاستدامة للأبد",
+        title: "المتابعة الختامية: تثبيت النتائج وصياغة نمطك المستدام",
+        subtitle: "تقييم شامل للتقدم، وتجهيزك لتثبيت وزنك والتحول إلى نمط حياة مستدام لا ينتهي بانتهاء الاشتراك.",
+        p1Title: "حصر النتائج والمقاسات",
+        p1Desc: "مقارنة مقاسات الجسم، تحسن النوم، استقرار المزاج، ونزول الوزن الفعلي خلال الأسابيع الثلاثة الماضية.",
+        p2Title: "خطة التثبيت المستمر",
+        p2Desc: "تصميم قواعد ذهبية لكيفية الاستمتاع بالطعام في المناسبات والسفر دون أي زيادة في الوزن أو انتكاسة.",
+        p3Title: "تسليم ملف التغذية الذاتي",
+        p3Desc: "تسليمك وثيقة إرشاداتك المخصصة لتكون مرجعك الدائم في الأكل الصحي الواعي بقية حياتك.",
+        outcome: "تثبيت النتائج وصياغة نمط حياة مستدام طويل الأمد",
         nextPreview: "29 نوفمبر (لايف التخرج) 👈",
         progressPercent: 88
       },
       {
         num: "29",
         day: "29 نوفمبر (الجمعة)",
-        role: "بإشراف أحمد الخطيب + كوتش الحركة وأخصائيي التغذية",
-        badge: "لايف تخرج مجمع",
+        role: "بحضور أحمد الخطيب + كوتش الحركة وأخصائيي التغذية",
+        badge: "لايف التخرج الشامل",
         theme: "amber",
         borderColor: "border-amber-500/50",
         shadowClass: "shadow-amber-500/20",
         numBg: "bg-amber-500/20 text-amber-300 border-amber-400",
         badgeStyle: "bg-amber-500/20 text-amber-300 border-amber-500/40",
-        duration: "⏱️ احتفالية ختامية",
-        channel: "🎥 Zoom Live",
-        title: "لايف التخرج الجماعي والاحتفال بالنتائج وتجديد العهد",
-        subtitle: "حفل ختام الدفعة، الاحتفال بالتحولات الملهمة، وترسيخ الهوية الجديدة للشخص الصحي الواعي.",
-        p1Title: "تكريم أبطال الدفعة",
-        p1Desc: "الاحتفاء بقصص التحول الرائعة، وتوثيق الإنجازات وسماع شهادات المشتركين الملهمة في حفل جماعي مبهج.",
-        p2Title: "ترسيخ هوية الشخص الصحي",
-        p2Desc: "الانتقال النفسي من عقلية (المحاولة والحرمان) إلى هوية الشخص الذي يعيش بخفة وسلام دائم مع الطعام.",
-        p3Title: "تجديد العهد والمرحلة القادمة",
-        p3Desc: "فتح باب التجديد التلقائي للشهر التالي للراغبين في الاستمرار مع الفريق بخصم الوفاء الخاص بأبناء الدفعة.",
-        outcome: "تخرج رسمي مبارك مع الفريق وتثبيت عهد الحياة الصحية الجديدة",
-        nextPreview: "اكتملت رحلة نوفمبر بنجاح 🏆",
+        roleColor: "text-amber-300",
+        pillColor: "text-amber-400",
+        duration: "⏱️ 90 دقيقة احتفالية",
+        channel: "🎥 Zoom Live مباشر",
+        title: "لايف التخرج والاحتفال بالإنجاز ورسم خارطة المستقبل",
+        subtitle: "حفل ختام الدفعة وتتويج رحلة الـ 30 يوماً والاحتفاء بالتغير الجوهري في صحتك وعلاقتك مع جسدك.",
+        p1Title: "الاحتفاء بقصص النجاح",
+        p1Desc: "استعراض تحولات المشتركين والاحتفال بالنتائج الملموسة في خفة الحركة والوزن وراحة البال.",
+        p2Title: "وصايا أحمد الخطيب للاستدامة",
+        p2Desc: "محاضرة ختامية ملهمة من أحمد الخطيب تضمن بقاء هذه العادات معك للأبد دون أي ارتداد.",
+        p3Title: "تسليم شهادات الإنجاز وتكريم الالتزام",
+        p3Desc: "تكريم المشتركين وفتح خيارات المتابعة للمراحل المتقدمة لمن يرغب في استكمال رحلة الارتقاء الصحي.",
+        outcome: "تتويج رحلة الـ 30 يوماً والاحتفال بالنسخة الأفضل من صحتك",
+        nextPreview: "انطلاق أسلوب حياتك الجديد بحرية وأمان 🌟",
         progressPercent: 100
       }
     ];
 
+    // ========================================================
+    // --- AUTOPLAY STATE & LOGIC ENGINE ---
+    // ========================================================
     var currentStationIdx = 0;
+    var isAutoplayRunning = true;
+    var autoplayIntervalMs = 4500; // 4.5 seconds per station
+    var autoplayStartTime = Date.now();
+    var countdownAnimFrame = null;
+    var isUserHovering = false;
 
-    function activateStation(idx) {
+    function selectStation(idx, isUserClick) {
       if (idx < 0 || idx >= stationsData.length) return;
       currentStationIdx = idx;
-      var data = stationsData[idx];
+      var d = stationsData[idx];
 
-      // Update Node States
+      // 1. Update Horizontal Rail Nodes
       for (var i = 0; i < stationsData.length; i++) {
-        var nodeEl = document.getElementById('node-' + i);
-        if (nodeEl) {
-          nodeEl.className = 'station-node group flex flex-col items-center gap-2 cursor-pointer transition-all duration-300';
+        var node = document.getElementById('deck-node-' + i);
+        if (node) {
+          node.classList.remove('active-station', 'theme-amber', 'theme-emerald', 'theme-cyan');
           if (i === idx) {
-            nodeEl.classList.add('active', 'active-' + data.theme);
+            node.classList.add('active-station', 'theme-' + d.theme);
           }
         }
       }
 
-      // Update Progress Bar Fill Width
-      var progressFill = document.getElementById('timeline-progress-fill');
-      if (progressFill) {
-        progressFill.style.width = data.progressPercent + '%';
+      // 2. Update Progress Line on Rail
+      var railProgress = document.getElementById('deck-rail-progress');
+      if (railProgress) {
+        railProgress.style.width = d.progressPercent + '%';
       }
 
-      // Update Counter
-      var counterEl = document.getElementById('station-counter');
-      if (counterEl) {
-        counterEl.textContent = (idx + 1) + ' / 8';
+      // 3. Update Indicator Text
+      var indicator = document.getElementById('deck-station-indicator');
+      if (indicator) {
+        indicator.textContent = (idx + 1) + ' / ' + stationsData.length;
       }
 
-      // Update Rising Showcase Card with Ascending Animation
-      var card = document.getElementById('ascending-stage-card');
-      if (card) {
-        card.classList.remove('rising-anim');
-        void card.offsetWidth; // trigger reflow
-        card.classList.add('rising-anim');
-
-        // Apply theme border and glow
-        card.className = 'ascending-card glass-card p-6 sm:p-10 rounded-3xl border-2 transition-all duration-500 shadow-2xl relative text-right space-y-6 ' + data.borderColor + ' ' + data.shadowClass;
+      // 4. Update Ascending Display Card with Animation
+      var stageCard = document.getElementById('deck-stage-display');
+      if (stageCard) {
+        stageCard.classList.remove('deck-rising');
+        void stageCard.offsetWidth; // trigger reflow
+        stageCard.classList.add('deck-rising');
       }
 
-      // Fill in Card Data
-      var dayNumEl = document.getElementById('stage-day-num');
-      if (dayNumEl) {
-        dayNumEl.textContent = data.num;
-        dayNumEl.className = 'w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-black font-mono shadow-xl shrink-0 transition-transform ' + data.numBg;
+      // 5. Update Elements Content (Using EXACT Matching IDs)
+      var boxDay = document.getElementById('stage-box-day');
+      if (boxDay) {
+        boxDay.textContent = d.num;
+        boxDay.className = 'w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-black font-mono shadow-xl shrink-0 transition-all duration-500 ' + d.numBg + ' border-2 shadow-lg';
       }
 
-      var dateEl = document.getElementById('stage-date');
-      if (dateEl) dateEl.textContent = data.day;
+      var textDate = document.getElementById('stage-text-date');
+      if (textDate) textDate.textContent = d.day;
 
-      var badgeEl = document.getElementById('stage-badge');
-      if (badgeEl) {
-        badgeEl.textContent = data.badge;
-        badgeEl.className = 'px-2.5 py-1 rounded-full text-xs font-bold border ' + data.badgeStyle;
+      var textBadge = document.getElementById('stage-text-badge');
+      if (textBadge) {
+        textBadge.textContent = d.badge;
+        textBadge.className = 'px-3 py-0.5 rounded-full text-xs font-bold border ' + d.badgeStyle;
       }
 
-      var roleEl = document.getElementById('stage-role');
-      if (roleEl) {
-        roleEl.textContent = data.role;
-        roleEl.className = 'text-xs sm:text-sm font-semibold ' + (data.theme === 'amber' ? 'text-amber-300' : (data.theme === 'emerald' ? 'text-emerald-300' : 'text-cyan-300'));
+      var textRole = document.getElementById('stage-text-role');
+      if (textRole) {
+        textRole.textContent = d.role;
+        textRole.className = 'text-xs sm:text-sm font-semibold ' + d.roleColor;
       }
 
-      var durEl = document.getElementById('stage-duration');
-      if (durEl) durEl.textContent = data.duration;
+      var textDuration = document.getElementById('stage-text-duration');
+      if (textDuration) textDuration.textContent = d.duration;
 
-      var chanEl = document.getElementById('stage-channel');
-      if (chanEl) chanEl.textContent = data.channel;
+      var textChannel = document.getElementById('stage-text-channel');
+      if (textChannel) textChannel.textContent = d.channel;
 
-      var titleEl = document.getElementById('stage-title');
-      if (titleEl) titleEl.textContent = data.title;
+      var textTitle = document.getElementById('stage-text-title');
+      if (textTitle) textTitle.textContent = d.title;
 
-      var subEl = document.getElementById('stage-subtitle');
-      if (subEl) subEl.textContent = data.subtitle;
+      var textSubtitle = document.getElementById('stage-text-subtitle');
+      if (textSubtitle) textSubtitle.textContent = d.subtitle;
 
-      var p1T = document.getElementById('stage-point1-title');
-      var p1D = document.getElementById('stage-point1-desc');
-      if (p1T && p1D) { p1T.textContent = data.p1Title; p1D.textContent = data.p1Desc; }
+      var p1Title = document.getElementById('stage-p1-title');
+      if (p1Title) p1Title.textContent = d.p1Title;
+      var p1Desc = document.getElementById('stage-p1-desc');
+      if (p1Desc) p1Desc.textContent = d.p1Desc;
 
-      var p2T = document.getElementById('stage-point2-title');
-      var p2D = document.getElementById('stage-point2-desc');
-      if (p2T && p2D) { p2T.textContent = data.p2Title; p2D.textContent = data.p2Desc; }
+      var p2Title = document.getElementById('stage-p2-title');
+      if (p2Title) p2Title.textContent = d.p2Title;
+      var p2Desc = document.getElementById('stage-p2-desc');
+      if (p2Desc) p2Desc.textContent = d.p2Desc;
 
-      var p3T = document.getElementById('stage-point3-title');
-      var p3D = document.getElementById('stage-point3-desc');
-      if (p3T && p3D) { p3T.textContent = data.p3Title; p3D.textContent = data.p3Desc; }
+      var p3Title = document.getElementById('stage-p3-title');
+      if (p3Title) p3Title.textContent = d.p3Title;
+      var p3Desc = document.getElementById('stage-p3-desc');
+      if (p3Desc) p3Desc.textContent = d.p3Desc;
 
-      var outEl = document.getElementById('stage-outcome');
-      if (outEl) outEl.textContent = data.outcome;
+      // Update pillar title colors to match theme
+      var pTitles = [p1Title, p2Title, p3Title];
+      for (var pt of pTitles) {
+        if (pt && pt.parentElement) {
+          pt.parentElement.className = 'flex items-center gap-2 text-xs font-bold ' + d.pillColor;
+        }
+      }
 
-      var nextPrevEl = document.getElementById('stage-next-preview');
-      if (nextPrevEl) nextPrevEl.textContent = data.nextPreview;
+      var textOutcome = document.getElementById('stage-text-outcome');
+      if (textOutcome) {
+        textOutcome.textContent = d.outcome;
+        textOutcome.className = 'font-bold ' + (d.theme === 'amber' ? 'text-amber-400' : (d.theme === 'emerald' ? 'text-emerald-400' : 'text-cyan-400'));
+      }
 
-      if (typeof lucide !== 'undefined') {
+      var textNext = document.getElementById('stage-text-next');
+      if (textNext) textNext.textContent = d.nextPreview;
+
+      // Re-render icons if needed
+      if (window.lucide) {
         lucide.createIcons();
       }
-    }
 
-    function nextStation() {
-      var next = (currentStationIdx + 1) % stationsData.length;
-      activateStation(next);
-    }
-
-    function prevStation() {
-      var prev = (currentStationIdx - 1 + stationsData.length) % stationsData.length;
-      activateStation(prev);
-    }
-
-    // Initialize Station 0 on load
-    document.addEventListener('DOMContentLoaded', function() {
-      activateStation(0);
-    });
-
-    // --- Interactive Ticket Simulator ---
-    function updateTicketSim() {
-      var slider = document.getElementById('ticket-slider');
-      var nutCount = document.getElementById('sim-nut-count');
-      var coachCount = document.getElementById('sim-coach-count');
-      var feedback = document.getElementById('sim-feedback-box');
-
-      if (!slider || !nutCount || !coachCount || !feedback) return;
-
-      var nut = parseInt(slider.value, 10);
-      var coach = 10 - nut;
-
-      nutCount.textContent = nut;
-      coachCount.textContent = coach;
-
-      if (nut === 10) {
-        feedback.innerHTML = '💡 <strong>تركيز تغذوي كامل:</strong> خصصت كل الـ 10 تذاكر لأخصائي التغذية! رائع جداً إن كانت أولويتك متابعة دقيقة لكل وجبة وعزومة ومطعم. كوتش الحركة متاح لك دائماً في الجلستين الفرديتين!';
-      } else if (coach === 10) {
-        feedback.innerHTML = '💡 <strong>تركيز حركي مكثف:</strong> خصصت كل الـ 10 تذاكر لكوتش الحركة والتمارين! مثالي لمراجعة التكنيك وفيديوهات الحركة خطوة بخطوة، مع بقاء 3 جلسات التغذية الفردية لتأمين وجباتك!';
-      } else if (nut === 5 && coach === 5) {
-        feedback.innerHTML = '💡 <strong>توزيع متوازن ومثالي (5 / 5):</strong> 5 تذاكر للتغذية والبدائل + 5 تذاكر لتدقيق التمارين. نموذج متناسق يلبي كل احتياجاتك اليومية بأريحية!';
-      } else {
-        feedback.innerHTML = '💡 <strong>مرونة تامة تناسب واقعك:</strong> خصصت ' + nut + ' تذاكر للتغذية و ' + coach + ' تذاكر لكوتش الحركة. يمكنك تغيير هذا التوزيع في أي وقت خلال الشهر بكل بساطة!';
+      // Reset Autoplay timer on manual click
+      if (isUserClick) {
+        restartAutoplayTimer();
       }
     }
+
+    // --- Autoplay Engine Functions ---
+    function startCountdown() {
+      autoplayStartTime = Date.now();
+      cancelAnimationFrame(countdownAnimFrame);
+
+      function updateBar() {
+        if (!isAutoplayRunning || isUserHovering) return;
+        var elapsed = Date.now() - autoplayStartTime;
+        var progress = Math.min((elapsed / autoplayIntervalMs) * 100, 100);
+        var bar = document.getElementById('deck-countdown-fill');
+        if (bar) bar.style.width = progress + '%';
+
+        if (elapsed < autoplayIntervalMs) {
+          countdownAnimFrame = requestAnimationFrame(updateBar);
+        } else {
+          // Advance to next station smoothly
+          var nextIdx = (currentStationIdx + 1) % stationsData.length;
+          selectStation(nextIdx, false);
+          startCountdown();
+        }
+      }
+      countdownAnimFrame = requestAnimationFrame(updateBar);
+    }
+
+    function restartAutoplayTimer() {
+      var bar = document.getElementById('deck-countdown-fill');
+      if (bar) bar.style.width = '0%';
+      if (isAutoplayRunning && !isUserHovering) {
+        startCountdown();
+      }
+    }
+
+    function pauseAutoplay() {
+      isUserHovering = true;
+      cancelAnimationFrame(countdownAnimFrame);
+      updateAutoplayUI(false, true);
+    }
+
+    function resumeAutoplay() {
+      isUserHovering = false;
+      if (isAutoplayRunning) {
+        updateAutoplayUI(true, false);
+        startCountdown();
+      }
+    }
+
+    function toggleAutoplayState() {
+      isAutoplayRunning = !isAutoplayRunning;
+      if (isAutoplayRunning) {
+        updateAutoplayUI(true, false);
+        startCountdown();
+      } else {
+        cancelAnimationFrame(countdownAnimFrame);
+        updateAutoplayUI(false, false);
+      }
+    }
+
+    function updateAutoplayUI(isRunning, isHover) {
+      var statusBadge = document.getElementById('autoplay-badge-status');
+      var btnText = document.getElementById('autoplay-btn-text');
+      var icon = document.getElementById('autoplay-icon');
+
+      if (isRunning) {
+        if (statusBadge) {
+          statusBadge.textContent = '▶ يعمل تلقائياً';
+          statusBadge.className = 'px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] text-emerald-300 font-mono';
+        }
+        if (btnText) btnText.textContent = 'إيقاف مؤقت';
+        if (icon) {
+          icon.setAttribute('data-lucide', 'pause');
+          icon.className = 'w-3.5 h-3.5 text-emerald-400';
+        }
+      } else {
+        if (statusBadge) {
+          statusBadge.textContent = isHover ? '⏸️ متوقف مؤقتاً للمعاينة' : '⏸️ متوقف';
+          statusBadge.className = 'px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/30 text-[10px] text-amber-300 font-mono';
+        }
+        if (btnText) btnText.textContent = 'تشغيل تلقائي';
+        if (icon) {
+          icon.setAttribute('data-lucide', 'play');
+          icon.className = 'w-3.5 h-3.5 text-amber-400';
+        }
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function nextStationManual() {
+      var next = (currentStationIdx + 1) % stationsData.length;
+      selectStation(next, true);
+    }
+
+    function prevStationManual() {
+      var prev = (currentStationIdx - 1 + stationsData.length) % stationsData.length;
+      selectStation(prev, true);
+    }
+
+    // ========================================================
+    // --- 10-TICKETS SIMULATOR SLIDER ---
+    // ========================================================
+    function updateTicketSim() {
+      var slider = document.getElementById('ticket-slider');
+      if (!slider) return;
+      var nut = parseInt(slider.value, 10);
+      var coach = 10 - nut;
+      var nutCount = document.getElementById('sim-nut-count');
+      var coachCount = document.getElementById('sim-coach-count');
+      var feedbackBox = document.getElementById('sim-feedback-box');
+
+      if (nutCount) nutCount.textContent = nut;
+      if (coachCount) coachCount.textContent = coach;
+
+      if (feedbackBox) {
+        var msg = '';
+        if (nut === 10) {
+          msg = '💡 <strong>تركيز تغذوي كامل:</strong> اخترت توجيه كل الـ 10 تذاكر لأخصائي التغذية لضبط كل وجبة وعزومة ومطعم طوال الشهر!';
+        } else if (coach === 10) {
+          msg = '💡 <strong>تركيز حركي مكثف:</strong> اخترت توجيه كل الـ 10 تذاكر لكوتش الحركة لمتابعة كل تكنيك تمرين وتطوير لياقتك بأقصى سرعة!';
+        } else if (nut >= 7) {
+          msg = '💡 <strong>أولوية التغذية (' + nut + ' تغذية و ' + coach + ' كوتش):</strong> مثالي لمن يركز على تظبيط أكل البيت وحل مشاكل الشبع مع دعم حركي مناسب.';
+        } else if (coach >= 7) {
+          msg = '💡 <strong>أولوية اللياقة (' + coach + ' كوتش و ' + nut + ' تغذية):</strong> مثالي لمن يمتلك نظاماً غذائياً مستقراً ويريد قفزة في التمارين والقوة البدنية.';
+        } else {
+          msg = '💡 <strong>توازن متناغم (' + nut + ' تغذية و ' + coach + ' كوتش):</strong> توزيع متوازن يمنحك دعماً غذائياً وحركياً متواصلاً طوال الـ 30 يوماً.';
+        }
+        feedbackBox.innerHTML = msg;
+      }
+    }
+
+    // --- Bootstrapping on Page Load ---
+    document.addEventListener('DOMContentLoaded', function() {
+      selectStation(0, false);
+      startCountdown();
+      updateTicketSim();
+    });
   </script>
 
 </body>

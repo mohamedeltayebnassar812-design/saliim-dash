@@ -387,132 +387,637 @@
     </div>
   </section>
 
-  <!-- ==================== 5. SECTION: THE 30-DAY JOURNEY ==================== -->
-  <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative">
-    <div class="responsive-container">
+    <!-- ==================== 5. SECTION: THE 30-DAY JOURNEY (3 INTERACTIVE DESIGNS) ==================== -->
+  <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
+    
+    <!-- Background Ambient Glows -->
+    <div class="absolute -top-40 right-1/4 w-96 h-96 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 left-1/4 w-96 h-96 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+
+    <div class="responsive-container relative z-10">
       
-      <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-        <span class="px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">الجدول الزمني المنظم</span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">خارطة مسار الـ 30 يوماً بالتفصيل</h2>
-        <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">هكذا تسير رحلتك خطوة بخطوة من اليوم الأول وحتى ختام الشهر بوضوح تام وبلا مفاجآت:</p>
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-10 space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          <span>دفعة شهر نوفمبر 2026 • جدول الرحلة المعتمد</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
+          خارطة رحلتك طوال الـ 30 يوماً بالتفصيل واليوم والساعة
+        </h2>
+        <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+          منهجية دقيقة ومدروسة تضمن لك الأمان والتحول الحقيقي: تجمع بين <span class="text-amber-400 font-semibold">3 لايفات حصرية مع أحمد الخطيب</span>، و<span class="text-emerald-400 font-semibold">5 جلسات فردية خاصة (1:1)</span> مع فريق التغذية واللياقة، مع <span class="text-purple-400 font-semibold">بنك الـ 10 تذاكر المرنة</span>.
+        </p>
+
+        <!-- View Switcher Tabs (3 Styles) -->
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <button type="button" onclick="switchJourneyView('timeline')" id="btn-view-timeline" 
+            class="view-tab-btn active px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300 hover:text-white transition">
+            <i data-lucide="git-commit" class="w-4 h-4 text-emerald-400"></i>
+            <span>المسار الزمني المضيء (الافتراضي)</span>
+          </button>
+          
+          <button type="button" onclick="switchJourneyView('cycle')" id="btn-view-cycle" 
+            class="view-tab-btn px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300 hover:text-white transition">
+            <i data-lucide="rotate-cw" class="w-4 h-4 text-cyan-400"></i>
+            <span>السايكل الدائري التفاعلي 360°</span>
+          </button>
+
+          <button type="button" onclick="switchJourneyView('calendar')" id="btn-view-calendar" 
+            class="view-tab-btn px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs sm:text-sm font-bold flex items-center gap-2 text-slate-300 hover:text-white transition">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-amber-400"></i>
+            <span>تقويم نوفمبر ومحاكي الـ 10 تذاكر</span>
+          </button>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- ==================== VIEW 1: THE GLOWING MILESTONE TIMELINE ==================== -->
+      <div id="view-timeline" class="journey-view active space-y-8">
         
-        <!-- Milestone 1 -->
-        <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-4 text-right flex flex-col justify-between border-t-2 border-t-emerald-500">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold">الأسبوع الأول</span>
-              <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center">01</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">التقييم الشامل ورسم الخطة</h3>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>مكالمة تقييم وتحديد مسار (1:1) مع أحمد الخطيب:</strong> لتشخيص جذور المشكلة وتاريخك الصحي.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>دخول فوري لمجتمع واحة نور الخاص:</strong> بدء التواصل ولقاء زملائك في بيئة آمنة فور اشتراكك.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>مكالمة كوتش الحركة (20 دقيقة):</strong> لتكييف النشاط لجسدك وتفادي أي إجهاد.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span>تسليم خطة نمط الحياة المرنة المصممة لواقع يومك وساعات عملك.</span>
-              </li>
-            </ul>
+        <!-- Legend of Roles -->
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-300 py-2 border-y border-white/5">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50"></span>
+            <span class="font-semibold text-amber-300">أحمد الخطيب (3 لايفات حصرية)</span>
           </div>
-          <div class="pt-3 border-t border-white/5 text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
-            <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
-            <span>الانطلاق وبدء الراحة والخفة</span>
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
+            <span class="font-semibold text-emerald-300">أخصائي التغذية (3 جلسات 1:1)</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400/50"></span>
+            <span class="font-semibold text-cyan-300">كوتش الحركة (جلستان 1:1)</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-purple-400 shadow-sm shadow-purple-400/50"></span>
+            <span class="font-semibold text-purple-300">بنك التذاكر المرنة (10 تذاكر)</span>
           </div>
         </div>
 
-        <!-- Milestone 2 -->
-        <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-4 text-right flex flex-col justify-between border-t-2 border-t-cyan-500">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-300 text-xs font-bold">الأسبوع الثاني</span>
-              <span class="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-400 font-bold text-xs flex items-center justify-center">02</span>
+        <!-- 8 Detailed Chronological Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          
+          <!-- Day 1: Ahmed Kickoff Live -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-amber-500/30 flex flex-col justify-between space-y-4 hover:border-amber-400 transition shadow-lg shadow-amber-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30 flex items-center gap-1">
+                  <i data-lucide="video" class="w-3 h-3"></i>
+                  <span>لايف مجمع</span>
+                </span>
+                <span class="text-sm font-black text-amber-400 font-mono">1 نوفمبر (الجمعة)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">جلسة الانطلاق المجمعة وتدشين الأمان النفسي</h3>
+              <p class="text-xs text-amber-300 font-semibold">بإشراف أحمد الخطيب شخصياً + الكوتش والأخصائيين</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span><strong>90 - 120 دقيقة عبر زووم:</strong> لقاء تفاعلي لكسر الجليد والترحيب بك شخصياً.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>نزع الشعور بالذنب، تفكيك قيود الدايت، وشرح الركائز الأربع للواحة.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>مراسم تسليم ملفك لفريق التغذية واللياقة الفردي لبدء المتابعة الخاصة.</span>
+                </li>
+              </ul>
             </div>
-            <h3 class="text-lg font-bold text-white">التطبيق العملي والاندماج</h3>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
-              <li class="flex items-start gap-2">
-                <span class="text-cyan-400">•</span>
-                <span><strong>المتابعة الأولى مع أخصائي التغذية:</strong> لمراجعة استجابة هضمك وتطويع خيارات طعامك أينما تواجدت.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-cyan-400">•</span>
-                <span><strong>المتابعة الأولى مع كوتش الحركة:</strong> لضبط أول روتين نشاط خفيف وتطويره.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-cyan-400">•</span>
-                <span>تفاعل تشاركي مستمر داخل المجتمع واستخدام ماسح الوجبات الذكي بالويب أب.</span>
-              </li>
-            </ul>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-amber-400 font-bold flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>تدشين مسار الأمان والتحول</span>
+            </div>
           </div>
-          <div class="pt-3 border-t border-white/5 text-xs text-cyan-400 font-semibold flex items-center gap-1.5">
-            <i data-lucide="activity" class="w-3.5 h-3.5"></i>
-            <span>انتظام الطاقة والتحرر من الجوع</span>
+
+          <!-- Day 2: Nutritionist Session 1 -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-emerald-500/30 flex flex-col justify-between space-y-4 hover:border-emerald-400 transition shadow-lg shadow-emerald-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 flex items-center gap-1">
+                  <i data-lucide="user-check" class="w-3 h-3"></i>
+                  <span>جلسة خاصة (1:1)</span>
+                </span>
+                <span class="text-sm font-black text-emerald-400 font-mono">2 نوفمبر (السبت)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">الجلسة الأولى: تصميم يومك الغذائي المرن</h3>
+              <p class="text-xs text-emerald-300 font-semibold">مع أخصائي تغذية نمط الحياة المعتمد</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span><strong>مكالمة فيديو خاصة (20 دقيقة):</strong> فحص عاداتك وتاريخك الغذائي المفصل.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>اعتماد أكل البيت المفضل، ضبط البدائل للمطاعم والعمل دون حرمان.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>تحديد مواعيد الوجبات المشبعة وساعات الصيام الخفيفة التي تناسبك.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i>
+              <span>خطة أكل البيت المخصصة</span>
+            </div>
+          </div>
+
+          <!-- Day 3: Movement Coach Session 1 -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-cyan-500/30 flex flex-col justify-between space-y-4 hover:border-cyan-400 transition shadow-lg shadow-cyan-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30 flex items-center gap-1">
+                  <i data-lucide="activity" class="w-3 h-3"></i>
+                  <span>جلسة خاصة (1:1)</span>
+                </span>
+                <span class="text-sm font-black text-cyan-400 font-mono">3 نوفمبر (الأحد)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">الجلسة الأولى: فحص الحركة وتصميم النشاط اليومي</h3>
+              <p class="text-xs text-cyan-300 font-semibold">مع كوتش الحركة واللياقة المعتمد</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span><strong>مكالمة فيديو خاصة (20 دقيقة):</strong> تقييم المرونة والمفاصل ومستواك البدني.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span>تصميم خطة حركة يومية خفيفة تلائم منزلك وأوقات دوامك المزدحم.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span>الاتفاق على خطوات يومية ذكية تحفز حرق الدهون دون إجهاد.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-cyan-400 font-bold flex items-center gap-1">
+              <i data-lucide="dumbbell" class="w-3.5 h-3.5"></i>
+              <span>انطلاق الحركة دون إرهاق</span>
+            </div>
+          </div>
+
+          <!-- Day 10: Nutritionist Follow-up 1 -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-emerald-500/30 flex flex-col justify-between space-y-4 hover:border-emerald-400 transition shadow-lg shadow-emerald-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 flex items-center gap-1">
+                  <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                  <span>متابعة (1:1)</span>
+                </span>
+                <span class="text-sm font-black text-emerald-400 font-mono">10 نوفمبر (الأحد)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">المتابعة الأولى: مراجعة أول 10 أيام وتحديث الخطة</h3>
+              <p class="text-xs text-emerald-300 font-semibold">مع أخصائي تغذية نمط الحياة</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span><strong>مكالمة متابعة فردية:</strong> قياس استجابة الجسد، الخفة، وتغير مقاسات البطن.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>علاج أي شعور بالجوع أو الصعوبة وإعادة موازنة كميات الوجبات.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>إدخال أصناف ووصفات جديدة منعاً للروتين وثبات الوزن.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+              <i data-lucide="trending-down" class="w-3.5 h-3.5"></i>
+              <span>ظهور أولى نتائج الخفة</span>
+            </div>
+          </div>
+
+          <!-- Day 15: Coach Follow-up 1 -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-cyan-500/30 flex flex-col justify-between space-y-4 hover:border-cyan-400 transition shadow-lg shadow-cyan-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30 flex items-center gap-1">
+                  <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                  <span>متابعة (1:1)</span>
+                </span>
+                <span class="text-sm font-black text-cyan-400 font-mono">15 نوفمبر (الجمعة)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">المتابعة الأولى: مراجعة الأداء الرياضي وتطويره</h3>
+              <p class="text-xs text-cyan-300 font-semibold">مع كوتش الحركة واللياقة</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span><strong>مكالمة متابعة فردية:</strong> مراجعة تكنيك التمارين وتفادي أي حمل خاطئ.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span>قياس التحسن في التنفس، الطاقة اليومية، وقوة العضلات الأساسية.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-cyan-400 font-bold">•</span>
+                  <span>تطوير شدة الحركة بحسب راحتك لتحفيز حرق الدهون العنيدة.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-cyan-400 font-bold flex items-center gap-1">
+              <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+              <span>رفع كفاءة الحرق والطاقة</span>
+            </div>
+          </div>
+
+          <!-- Day 17: Ahmed Mid-Journey Live -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-amber-500/30 flex flex-col justify-between space-y-4 hover:border-amber-400 transition shadow-lg shadow-amber-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30 flex items-center gap-1">
+                  <i data-lucide="video" class="w-3 h-3"></i>
+                  <span>لايف مجمع</span>
+                </span>
+                <span class="text-sm font-black text-amber-400 font-mono">17 نوفمبر (الأحد)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">لايف منتصف الرحلة: كسر الفتور وتثبيت شعلة الالتزام</h3>
+              <p class="text-xs text-amber-300 font-semibold">مع أحمد الخطيب شخصياً (جلسة إنقاذ وتجديد)</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span><strong>60 دقيقة حاسمة في منتصف الشهر:</strong> لعلاج فتور الأسبوع الثالث (The Dip).</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>الإجابة المباشرة على تحديات المشتركين وطرد الشكوك والمخاوف.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>إعادة شحن الشغف والطاقة النفسية لإتمام النصف الثاني بأعلى التزام.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-amber-400 font-bold flex items-center gap-1">
+              <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+              <span>كسر الفتور والشحن المعنوي</span>
+            </div>
+          </div>
+
+          <!-- Day 24: Nutritionist Final Follow-up 3 -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-emerald-500/30 flex flex-col justify-between space-y-4 hover:border-emerald-400 transition shadow-lg shadow-emerald-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 flex items-center gap-1">
+                  <i data-lucide="check-circle" class="w-3 h-3"></i>
+                  <span>متابعة ختامية (1:1)</span>
+                </span>
+                <span class="text-sm font-black text-emerald-400 font-mono">24 نوفمبر (الأحد)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">المتابعة الثالثة والختامية: تقييم النتائج وخطة الاستدامة</h3>
+              <p class="text-xs text-emerald-300 font-semibold">مع أخصائي تغذية نمط الحياة</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span><strong>مكالمة التقييم النهائي الفردية:</strong> فحص نزول المقاسات والوزن الصافي.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>بناء استراتيجية تثبيت المكتسبات لتفادي أي ارتداد في الوزن مستقبلاً.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400 font-bold">•</span>
+                  <span>تسليم خريطة العادات المستدامة ونمط الحياة اليومي للمرحلة التالية.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-emerald-400 font-bold flex items-center gap-1">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+              <span>تثبيت النتيجة ومنع الارتداد</span>
+            </div>
+          </div>
+
+          <!-- Day 29: Graduation & Renewal Live -->
+          <div class="timeline-milestone glass-card p-5 sm:p-6 rounded-3xl border border-amber-500/30 flex flex-col justify-between space-y-4 hover:border-amber-400 transition shadow-lg shadow-amber-950/20">
+            <div class="space-y-3 text-right">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30 flex items-center gap-1">
+                  <i data-lucide="party-popper" class="w-3 h-3"></i>
+                  <span>لايف مجمع</span>
+                </span>
+                <span class="text-sm font-black text-amber-400 font-mono">29 نوفمبر (الجمعة)</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-white">لايف التخرج الجماعي والاحتفال بالنتائج وتجديد العهد</h3>
+              <p class="text-xs text-amber-300 font-semibold">بإشراف أحمد الخطيب + الكوتش والأخصائيين</p>
+              <ul class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span><strong>حفل ختام الشهر وتكريم الدفعة:</strong> سماع وتوثيق قصص التحول والإنجاز.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>ترسيخ الهوية الجديدة: كيف أصبحت شخصاً يحيا بخفة دون خوف من الأكل.</span>
+                </li>
+                <li class="flex items-start gap-1.5">
+                  <span class="text-amber-400 font-bold">•</span>
+                  <span>فتح باب تجديد الاشتراك التلقائي للشهر الثاني بخصم الوفاء الخاص.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="pt-3 border-t border-white/5 text-[11px] text-amber-400 font-bold flex items-center gap-1">
+              <i data-lucide="check-check" class="w-3.5 h-3.5"></i>
+              <span>تخرج الدفعة وتثبيت العهد</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Power Feature #9: Flexible 10-Tickets Vault Card -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-purple-950/40 via-[#101432] to-indigo-950/40 border-2 border-purple-500/40 shadow-2xl relative overflow-hidden">
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6 text-right">
+            
+            <div class="space-y-3 max-w-2xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
+                <i data-lucide="ticket" class="w-3.5 h-3.5"></i>
+                <span>الميزة الحصرية رقم 9 • أقصى درجات المرونة</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-black text-white">
+                بنك الـ 10 تذاكر الشهرية المرنة (Direct Focus Inquiries)
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                لا نلزمك بتقسيم جامد يضيع عليك استفساراتك! لكل مشترك <strong>رصيد شهري يضم 10 تذاكر استفسار مباشرة</strong> تقسمها بكامل حريتك: إن احتجت كل أسئلتك للتغذية وبدائل العزومات استهلكها كلها مع أخصائي التغذية، وإن احتجت أسئلة حركة وجهها للكوتش. أنت صاحب القرار!
+              </p>
+              <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-purple-200 pt-1">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="clock" class="w-4 h-4 text-purple-400"></i>
+                  <span>فترتا رد يوميتان معتمدتان (صباحية ومسائية)</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="shield-check" class="w-4 h-4 text-purple-400"></i>
+                  <span>ردود بشرية متأنية ومخصصة لحالتك</span>
+                </span>
+              </div>
+            </div>
+
+            <div class="shrink-0 p-5 rounded-2xl bg-white/[0.04] border border-white/10 text-center space-y-2 w-full sm:w-64">
+              <span class="text-4xl font-black text-purple-400 font-mono tracking-tight">10 تذاكر</span>
+              <p class="text-xs text-purple-200 font-medium">رصيد استفسارات مرن شهرياً</p>
+              <div class="text-[11px] text-slate-400 border-t border-white/10 pt-2">
+                توزعها بحرية تامة بين أخصائي التغذية وكوتش الحركة
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Milestone 3 -->
-        <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-4 text-right flex flex-col justify-between border-t-2 border-t-amber-500">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 text-xs font-bold">الأسبوع الثالث</span>
-              <span class="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center">03</span>
+      </div>
+
+      <!-- ==================== VIEW 2: THE 360° CIRCULAR TRANSFORMATION CYCLE ==================== -->
+      <div id="view-cycle" class="journey-view space-y-8">
+        
+        <div class="glass-card p-6 sm:p-10 rounded-3xl border border-cyan-500/30 text-center space-y-8">
+          
+          <div class="max-w-xl mx-auto space-y-2">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">
+              دورة التحول المستمر (The Closed Loop)
+            </span>
+            <h3 class="text-xl sm:text-2xl font-black text-white">السايكل الدائري التكاملي لدفعة نوفمبر</h3>
+            <p class="text-xs sm:text-sm text-slate-300 font-light">
+              4 أرباع متصلة تبدأ بالأمان النفسي وتختتم بالتحول الذاتي المستدام:
+            </p>
+          </div>
+
+          <!-- Circular Orbit Visual (SVG & Interactive Badges) -->
+          <div class="relative max-w-lg mx-auto py-8 flex items-center justify-center">
+            
+            <!-- Center Hub -->
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-tr from-emerald-950 via-[#0B2545] to-cyan-950 border-2 border-emerald-400/50 flex flex-col items-center justify-center p-4 text-center shadow-2xl orbit-pulse z-20">
+              <span class="text-emerald-400 text-2xl font-black mb-1">واحة نور</span>
+              <span class="text-[11px] text-white font-bold leading-tight">أحمد الخطيب</span>
+              <span class="text-[9px] text-cyan-300 mt-1">توجيه ورعاية متواصلة</span>
             </div>
-            <h3 class="text-lg font-bold text-white">التثبيت واللقاء المباشر الأول</h3>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
-              <li class="flex items-start gap-2">
-                <span class="text-amber-400">•</span>
-                <span><strong>المتابعة الثانية مع أخصائي التغذية:</strong> لتقييم نزول المقاسات والشبع وتحسين النوم.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-amber-400">•</span>
-                <span><strong>اللقاء المباشر التفاعلي الأول (Live Session) معي بنفسي:</strong> نلتقي لايف للإجابة عن أسئلتكم ومشاركتكم الحلول والدعم النفسي.</span>
-              </li>
-            </ul>
+
+            <!-- Outer Orbit Ring -->
+            <div class="absolute inset-0 rounded-full border-2 border-dashed border-white/15 animate-spin" style="animation-duration: 60s;"></div>
+
+            <!-- 4 Phase Nodes Around Circle -->
+            <!-- Top Right: Phase 1 -->
+            <div class="absolute -top-3 right-0 sm:right-6 p-3 rounded-2xl bg-[#0B1E33] border border-amber-500/40 text-right w-40 sm:w-48 shadow-xl text-xs space-y-1">
+              <span class="font-bold text-amber-400 block text-[11px]">الربع 1: التدشين والأمان</span>
+              <p class="text-[10px] text-slate-300">أيام 1، 2، 3 نوفمبر: لايف الانطلاق + مكالمتي التغذية واللياقة التأسيسيتين.</p>
+            </div>
+
+            <!-- Bottom Right: Phase 2 -->
+            <div class="absolute -bottom-3 right-0 sm:right-6 p-3 rounded-2xl bg-[#0B1E33] border border-emerald-500/40 text-right w-40 sm:w-48 shadow-xl text-xs space-y-1">
+              <span class="font-bold text-emerald-400 block text-[11px]">الربع 2: الزخم والاستجابة</span>
+              <p class="text-[10px] text-slate-300">يوم 10 نوفمبر: متابعة التغذية الأولى وتعديل الخطط وبدء تذاكر الدعم.</p>
+            </div>
+
+            <!-- Bottom Left: Phase 3 -->
+            <div class="absolute -bottom-3 left-0 sm:left-6 p-3 rounded-2xl bg-[#0B1E33] border border-cyan-500/40 text-right w-40 sm:w-48 shadow-xl text-xs space-y-1">
+              <span class="font-bold text-cyan-400 block text-[11px]">الربع 3: كسر الفتور</span>
+              <p class="text-[10px] text-slate-300">أيام 15، 17 نوفمبر: متابعة الكوتش + لايف منتصف الرحلة مع أحمد الخطيب.</p>
+            </div>
+
+            <!-- Top Left: Phase 4 -->
+            <div class="absolute -top-3 left-0 sm:left-6 p-3 rounded-2xl bg-[#0B1E33] border border-purple-500/40 text-right w-40 sm:w-48 shadow-xl text-xs space-y-1">
+              <span class="font-bold text-purple-400 block text-[11px]">الربع 4: الحصاد والتثبيت</span>
+              <p class="text-[10px] text-slate-300">أيام 24، 29 نوفمبر: ختام التغذية + لايف التخرج وتجديد العهد للشهر التالي.</p>
+            </div>
+
           </div>
-          <div class="pt-3 border-t border-white/5 text-xs text-amber-400 font-semibold flex items-center gap-1.5">
-            <i data-lucide="video" class="w-3.5 h-3.5"></i>
-            <span>اللقاء المباشر الأول مع أحمد الخطيب</span>
+
+          <!-- 4 Phase Cards Explanation -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-right pt-6 border-t border-white/5">
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-amber-400">1. الأمان النفسي</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                الانطلاق مع أحمد الخطيب وسماع المشتركين، يتبعه فوراً الجلستان الفرديتان لتخصيص أكل البيت والنشاط.
+              </p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-emerald-400">2. المعايرة والاعتياد</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                متابعة اليوم العاشر لمراجعة الراحة والخفة وتحديث الأصناف، مع تفعيل بنك التذاكر للمسائل اليومية.
+              </p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-cyan-400">3. كسر فتور الطريق</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                تطوير حركة الجسد في اليوم الـ 15، يتبعه لايف أحمد الخطيب في اليوم الـ 17 لإعادة شحن العزيمة وطرد الشك.
+              </p>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+              <span class="text-xs font-bold text-purple-400">4. التمكين والتجديد</span>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                جلسة تثبيت العادات مع أخصائي التغذية، والاحتفال الجماعي في لايف التخرج مع كامل الفريق وفتح التجديد.
+              </p>
+            </div>
           </div>
+
         </div>
 
-        <!-- Milestone 4 -->
-        <div class="glass-card glass-card-hover p-6 rounded-3xl space-y-4 text-right flex flex-col justify-between border-t-2 border-t-emerald-400">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold">الأسبوع الرابع</span>
-              <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center">04</span>
+      </div>
+
+      <!-- ==================== VIEW 3: NOVEMBER CALENDAR & TICKETS SIMULATOR ==================== -->
+      <div id="view-calendar" class="journey-view space-y-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          <!-- Calendar Grid (7 Columns) -->
+          <div class="lg:col-span-7 glass-card p-5 sm:p-7 rounded-3xl border border-white/10 space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <div>
+                <h3 class="text-lg font-bold text-white">روزنامة شهر نوفمبر 2026</h3>
+                <p class="text-xs text-slate-400">اضغط على أي يوم مميز لاستعراض تفاصيل اللقاء</p>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold">
+                الدفعة الأولى • Wave 1
+              </span>
             </div>
-            <h3 class="text-lg font-bold text-white">الحصاد واللقاء المباشر الثاني</h3>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2">
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>المتابعة الثالثة والختامية مع أخصائي التغذية:</strong> لمراجعة النتائج وتثبيت العادات.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>المتابعة الثانية مع كوتش الحركة:</strong> لترسيخ روتين النشاط كجزء من يومك.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-emerald-400">•</span>
-                <span><strong>اللقاء المباشر الثاني (Live Session) معي بنفسي:</strong> للاحتفاء بالتقدم ورسم خطة الاستمرارية المستقلة مدى الحياة.</span>
-              </li>
-            </ul>
+
+            <!-- Calendar Days Header -->
+            <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-slate-400 py-1">
+              <span>الجمعة</span>
+              <span>السبت</span>
+              <span>الأحد</span>
+              <span>الاثنين</span>
+              <span>الثلاثاء</span>
+              <span>الأربعاء</span>
+              <span>الخميس</span>
+            </div>
+
+            <!-- Calendar Days Grid (November Starts on Friday = Day 1) -->
+            <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center text-xs font-mono">
+              
+              <!-- Day 1: Ahmed Kickoff Live -->
+              <button type="button" onclick="showCalDetail(1)" class="p-2 sm:p-2.5 rounded-xl bg-amber-500/30 border-2 border-amber-400 text-amber-200 font-bold hover:scale-105 transition shadow-md shadow-amber-500/30">
+                1
+                <span class="block text-[8px] font-sans font-normal text-amber-300">لايف انطلاق</span>
+              </button>
+
+              <!-- Day 2: Nutritionist 1 -->
+              <button type="button" onclick="showCalDetail(2)" class="p-2 sm:p-2.5 rounded-xl bg-emerald-500/30 border-2 border-emerald-400 text-emerald-200 font-bold hover:scale-105 transition shadow-md shadow-emerald-500/30">
+                2
+                <span class="block text-[8px] font-sans font-normal text-emerald-300">تغذية 1:1</span>
+              </button>
+
+              <!-- Day 3: Coach 1 -->
+              <button type="button" onclick="showCalDetail(3)" class="p-2 sm:p-2.5 rounded-xl bg-cyan-500/30 border-2 border-cyan-400 text-cyan-200 font-bold hover:scale-105 transition shadow-md shadow-cyan-500/30">
+                3
+                <span class="block text-[8px] font-sans font-normal text-cyan-300">كوتش 1:1</span>
+              </button>
+
+              <!-- Days 4 - 9: Regular Days -->
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">4</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">5</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">6</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">7</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">8</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">9</span>
+
+              <!-- Day 10: Nutritionist Follow-up 1 -->
+              <button type="button" onclick="showCalDetail(10)" class="p-2 sm:p-2.5 rounded-xl bg-emerald-500/30 border-2 border-emerald-400 text-emerald-200 font-bold hover:scale-105 transition shadow-md shadow-emerald-500/30">
+                10
+                <span class="block text-[8px] font-sans font-normal text-emerald-300">متابعة تغذية</span>
+              </button>
+
+              <!-- Days 11 - 14 -->
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">11</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">12</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">13</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">14</span>
+
+              <!-- Day 15: Coach Follow-up 1 -->
+              <button type="button" onclick="showCalDetail(15)" class="p-2 sm:p-2.5 rounded-xl bg-cyan-500/30 border-2 border-cyan-400 text-cyan-200 font-bold hover:scale-105 transition shadow-md shadow-cyan-500/30">
+                15
+                <span class="block text-[8px] font-sans font-normal text-cyan-300">متابعة كوتش</span>
+              </button>
+
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">16</span>
+
+              <!-- Day 17: Ahmed Mid Live -->
+              <button type="button" onclick="showCalDetail(17)" class="p-2 sm:p-2.5 rounded-xl bg-amber-500/30 border-2 border-amber-400 text-amber-200 font-bold hover:scale-105 transition shadow-md shadow-amber-500/30">
+                17
+                <span class="block text-[8px] font-sans font-normal text-amber-300">لايف أحمد</span>
+              </button>
+
+              <!-- Days 18 - 23 -->
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">18</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">19</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">20</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">21</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">22</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">23</span>
+
+              <!-- Day 24: Nutritionist Final 3 -->
+              <button type="button" onclick="showCalDetail(24)" class="p-2 sm:p-2.5 rounded-xl bg-emerald-500/30 border-2 border-emerald-400 text-emerald-200 font-bold hover:scale-105 transition shadow-md shadow-emerald-500/30">
+                24
+                <span class="block text-[8px] font-sans font-normal text-emerald-300">ختام تغذية</span>
+              </button>
+
+              <!-- Days 25 - 28 -->
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">25</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">26</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">27</span>
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">28</span>
+
+              <!-- Day 29: Graduation Live -->
+              <button type="button" onclick="showCalDetail(29)" class="p-2 sm:p-2.5 rounded-xl bg-amber-500/30 border-2 border-amber-400 text-amber-200 font-bold hover:scale-105 transition shadow-md shadow-amber-500/30">
+                29
+                <span class="block text-[8px] font-sans font-normal text-amber-300">لايف تخرج</span>
+              </button>
+
+              <span class="p-2 rounded-lg bg-white/[0.02] text-slate-400">30</span>
+            </div>
+
+            <!-- Dynamic Detail Box for clicked day -->
+            <div id="cal-detail-box" class="p-4 rounded-2xl bg-amber-950/30 border border-amber-500/30 text-right space-y-1 transition-all">
+              <span id="cal-detail-day" class="text-xs font-bold text-amber-400">يوم 1 نوفمبر (الجمعة)</span>
+              <h4 id="cal-detail-title" class="text-sm font-bold text-white">لايف الانطلاق المجمع مع أحمد الخطيب وكامل الفريق</h4>
+              <p id="cal-detail-desc" class="text-xs text-slate-300">
+                جلسة افتتاحية تفاعلية مدتها 90-120 دقيقة عبر زووم، لإرساء الأمان النفسي، شرح الركائز الأربع، والترحيب بك شخصياً في واحة نور.
+              </p>
+            </div>
           </div>
-          <div class="pt-3 border-t border-white/5 text-xs text-emerald-400 font-semibold flex items-center gap-1.5">
-            <i data-lucide="crown" class="w-3.5 h-3.5"></i>
-            <span>تثبيت النمط والاستمرارية مدى الحياة</span>
+
+          <!-- Interactive 10-Tickets Simulator Column -->
+          <div class="lg:col-span-5 glass-card p-5 sm:p-7 rounded-3xl border border-purple-500/30 space-y-5 text-right">
+            
+            <div class="space-y-2 border-b border-white/10 pb-4">
+              <span class="px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold border border-purple-500/30">
+                محاكي المرونة التفاعلي
+              </span>
+              <h3 class="text-lg font-bold text-white">كيف تحب أن توزع تذاكرك الـ 10؟</h3>
+              <p class="text-xs text-slate-300 font-light leading-relaxed">
+                حرّك المؤشر وشاهد بنفسك كيف تتكيف الباقة مع أولوياتك دون أن تخسر تذكرة واحدة:
+              </p>
+            </div>
+
+            <!-- Ticket Slider -->
+            <div class="space-y-3 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="text-emerald-400">تذاكر التغذية: <span id="sim-nut-count" class="font-mono text-base">6</span></span>
+                <span class="text-cyan-400">تذاكر الكوتش: <span id="sim-coach-count" class="font-mono text-base">4</span></span>
+              </div>
+              <input type="range" id="ticket-slider" min="0" max="10" value="6" 
+                class="w-full accent-purple-400 cursor-pointer" oninput="updateTicketSim()">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>10 للكوتش / 0 للتغذية</span>
+                <span>توزيع متوازن (5 / 5)</span>
+                <span>10 للتغذية / 0 للكوتش</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Feedback Box -->
+            <div id="sim-feedback-box" class="p-4 rounded-2xl bg-purple-950/20 border border-purple-500/20 text-xs text-purple-200 leading-relaxed">
+              💡 <strong>نموذج مرن ومثالي:</strong> خصصت 6 تذاكر للتغذية (لأسئلة العزومات، المطاعم، والوصفات) و 4 تذاكر للكوتش (لتعديل التمارين المنزلية). يمكنك تعديل هذا التوزيع في أي وقت خلال الشهر بحسب حاجتك!
+            </div>
+
+            <div class="p-3 bg-white/[0.02] rounded-xl text-[11px] text-slate-400 space-y-1">
+              <div class="flex items-center gap-1.5 text-slate-300 font-semibold">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>ردود متأنية خلال نافذتي الرد اليوميتين (11 ص - 1 ظ / 6 م - 8 م)</span>
+              </div>
+              <div class="flex items-center gap-1.5 text-slate-300 font-semibold">
+                <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>لا تضيع تذاكرك غير المستخدمة بل تحول للأخصائي الآخر</span>
+              </div>
+            </div>
+
           </div>
+
         </div>
 
       </div>
@@ -520,99 +1025,100 @@
     </div>
   </section>
 
+
   <!-- ==================== 6. SECTION: HOW WE COMMUNICATE ==================== -->
   <section id="channels" class="py-16 md:py-24 border-t border-white/5 bg-[#091829]/70 relative">
     <div class="responsive-container">
       
       <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
         <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold">تواصل سلس ومريح</span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">كيف يتم التواصل معنا؟</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">كيف يتم التواصل معنا طوال الـ 30 يوماً؟</h2>
         <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">صممنا نظام متابعة مريح ومرتب يضمن لك الحصول على إجابات وافية ودقيقة دون فوضى أو تأخير:</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         
-        <!-- Card 1: Nutritionist Tickets -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-right border-t-2 border-t-cyan-500 flex flex-col justify-between">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
-                <i data-lucide="utensils" class="w-6 h-6"></i>
-              </span>
-              <span class="text-xl sm:text-2xl font-bold text-cyan-400">خمس تذاكر شهرياً</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">التواصل مع أخصائي تغذية نمط الحياة</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              رصيد مخصص لطرح استفساراتك حول الوجبات، خيارات المطاعم والعمل والمناسبات، أو طلب تعديل الأصناف والبدائل. يُدرس كل سؤال بتركيز وتصلك الإجابة الوافية يومياً خلال نافذة الرد المسائية.
-            </p>
-          </div>
-          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-cyan-300 font-medium">
-            نافذة رد يومية مسائية معتمدة
-          </div>
-        </div>
-
-        <!-- Card 2: Movement Coach Tickets -->
+        <!-- Card 1: Nutritionist Sessions & Flexible Tickets -->
         <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-right border-t-2 border-t-emerald-500 flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
               <span class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                <i data-lucide="activity" class="w-6 h-6"></i>
+                <i data-lucide="utensils" class="w-6 h-6"></i>
               </span>
-              <span class="text-xl sm:text-2xl font-bold text-emerald-400">تذكرتان شهرياً</span>
+              <span class="text-lg sm:text-xl font-bold text-emerald-400">3 جلسات 1:1 + تذاكر</span>
             </div>
-            <h3 class="text-lg font-bold text-white">التواصل مع الكوتش</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              رصيد مخصص لكوتش الحركة لتكييف التمارين الخفيفة، مراجعة أي شعور بإجهاد في المفاصل، أو ملاءمة روتين النشاط مع أوقات دوامك، مع توجيه عملي آمن يصلك خلال 24 ساعة.
+            <h3 class="text-lg font-bold text-white">أخصائي تغذية نمط الحياة</h3>
+            <p class="text-sm text-slate-300 leading-relaxed font-light">
+              3 جلسات فردية خاصة بالفيديو (الأيام 2، 10، 24 نوفمبر) لتفصيل ومراجعة وتثبيت خطة أكل البيت. بالإضافة لإمكانية توجيه رصيدك من بنك التذاكر المرنة لأي سؤال طارئ حول الوجبات والعزومات والبدائل.
             </p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-emerald-300 font-medium">
-            رد وتوجيه عملي خلال 24 ساعة
+          <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-emerald-300 font-medium">
+            3 مكالمات فيديو خاصة + استشارات مكتوبة
           </div>
         </div>
 
-        <!-- Card 3: Customer Care & Admin Only -->
-        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-right border-t-2 border-t-amber-500 flex flex-col justify-between">
+        <!-- Card 2: Movement Coach Sessions & Flexible Tickets -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-right border-t-2 border-t-cyan-500 flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center justify-between">
-              <span class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                <i data-lucide="help-circle" class="w-6 h-6"></i>
+              <span class="w-12 h-12 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+                <i data-lucide="activity" class="w-6 h-6"></i>
               </span>
-              <span class="text-lg sm:text-xl font-bold text-amber-400">للمسائل الإدارية فقط</span>
+              <span class="text-lg sm:text-xl font-bold text-cyan-400">جلستان 1:1 + تذاكر</span>
             </div>
-            <h3 class="text-lg font-bold text-white">خدمة العملاء والدعم الفني</h3>
-            <p class="text-sm text-slate-300 leading-relaxed">
-              قناة مباشرة ومفتوحة للمشاكل التنظيمية والتقنية: تأجيل أو ترتيب مواعيد المكالمات، استفسارات وسائل الدفع، أو المساعدة في تسجيل الدخول للويب أب وحسابك.
+            <h3 class="text-lg font-bold text-white">كوتش الحركة والنشاط</h3>
+            <p class="text-sm text-slate-300 leading-relaxed font-light">
+              جلستان فرديتان خاصتان بالفيديو (الأيام 3، 15 نوفمبر) لتقييم المفاصل وتطوير خطوات النشاط والتمارين المناسبة لبيتك. كما يمكنك توجيه رصيد تذاكرك لمراجعة تكنيك التمارين بالفيديو.
             </p>
           </div>
-          <div class="p-3.5 rounded-2xl bg-amber-950/20 border border-amber-500/20 text-xs text-amber-300 font-medium">
-            مخصصة حصرياً للشؤون الإدارية والتقنية
+          <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/5 text-xs text-cyan-300 font-medium">
+            مكالمتا فيديو خاصتان + تدقيق التكنيك
+          </div>
+        </div>
+
+        <!-- Card 3: 10 Flexible Tickets Vault -->
+        <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-5 text-right border-t-2 border-t-purple-500 flex flex-col justify-between">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="w-12 h-12 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center">
+                <i data-lucide="ticket" class="w-6 h-6"></i>
+              </span>
+              <span class="text-lg sm:text-xl font-bold text-purple-400">10 تذاكر شهرية مرنة</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">بنك الاستشارات المكتوبة المباشرة</h3>
+            <p class="text-sm text-slate-300 leading-relaxed font-light">
+              رصيد شهري يمنحك 10 تذاكر تقسمها بحرية تامة: استهلكها كلها مع التغذية أو وزعها مع الكوتش. تُراجع استفساراتك باهتمام بشري متأنٍ وتصلك الإجابة خلال نافذتي الرد المعتمدتين يومياً.
+            </p>
+          </div>
+          <div class="p-3 rounded-2xl bg-purple-950/20 border border-purple-500/20 text-xs text-purple-300 font-medium">
+            حرية تقسيم كاملة بين التغذية واللياقة
           </div>
         </div>
 
       </div>
 
-      <!-- Feature Highlight Card: 2 Live Sessions with Ahmed personally + Instant Community -->
-      <div class="mt-8 max-w-5xl mx-auto p-6 sm:p-8 rounded-3xl bg-gradient-to-l from-emerald-950/40 via-[#0B2545] to-cyan-950/40 border border-emerald-500/30 flex flex-col md:flex-row items-center justify-between gap-6 text-right shadow-xl">
+      <!-- Feature Highlight Card: 3 Live Sessions with Ahmed + Full Team + Instant Community -->
+      <div class="mt-8 max-w-5xl mx-auto p-6 sm:p-8 rounded-3xl bg-gradient-to-l from-emerald-950/40 via-[#0B2545] to-amber-950/40 border border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6 text-right shadow-xl">
         <div class="space-y-2 max-w-xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30">
             <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-            <span>مزايا حصرية ومباشرة في باقتك</span>
+            <span>مزايا القيادة والتوجيه الحصري</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-bold text-white">معكم لايف مرتين في الشهر بنفسي + انضمام فوري للكوميونيتي</h3>
+          <h3 class="text-xl sm:text-2xl font-bold text-white">3 لايفات حصرية مع أحمد الخطيب وكامل الفريق + انضمام فوري للكوميونيتي</h3>
           <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-            لأن التغيير الحقيقي يحتاج رفقة وأماناً مستمراً، لن تنتهي علاقتي بك بعد المكالمة الأولى؛ بل نلتقي لايف كل أسبوعين في جلسة تفاعلية مباشرة للإجابة والدعم، وتدخل فور اشتراكك لمجتمع واحة نور الخاص لتجد التحفيز اليومي من زملائك.
+            لأن التغيير الحقيقي يحتاج رفقة وأماناً مستمراً؛ نلتقي في 3 محطات حاسمة عبر زووم: <strong class="text-amber-300">لقاء الانطلاق (1 نوفمبر)</strong>، و<strong class="text-amber-300">لايف كسر الفتور (17 نوفمبر)</strong>، و<strong class="text-amber-300">لايف التخرج وتجديد العهد (29 نوفمبر)</strong>، مع انضمامك الفوري لمجتمع واحة نور الخاص وتطبيق المتابعة اليومية.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
           <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-right space-y-1 sm:w-44">
-            <div class="text-emerald-400 font-bold text-sm sm:text-base flex items-center gap-1.5">
+            <div class="text-amber-400 font-bold text-sm sm:text-base flex items-center gap-1.5">
               <i data-lucide="video" class="w-4 h-4"></i>
-              <span>2 لايف شهرياً</span>
+              <span>3 لايفات حصرية</span>
             </div>
-            <div class="text-xs text-slate-300">مع أحمد الخطيب شخصياً</div>
+            <div class="text-xs text-slate-300">مع أحمد الخطيب والفريق</div>
           </div>
           <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-right space-y-1 sm:w-44">
-            <div class="text-cyan-300 font-bold text-sm sm:text-base flex items-center gap-1.5">
+            <div class="text-emerald-300 font-bold text-sm sm:text-base flex items-center gap-1.5">
               <i data-lucide="users" class="w-4 h-4"></i>
               <span>مجتمع واحة نور</span>
             </div>
@@ -699,7 +1205,7 @@
               1:1 KICKOFF + 30 DAYS
             </span>
             <h3 class="text-2xl font-bold text-white mt-2">باقة الانطلاق والتحول الفردية</h3>
-            <p class="text-xs text-slate-300 mt-1">جلسة البداية 1:1 معي + 2 لايف شهرياً + مرافقة 30 يوماً</p>
+            <p class="text-xs text-slate-300 mt-1">3 لايفات حصرية مع أحمد الخطيب + 5 مكالمات 1:1 خاصة + 10 تذاكر مرنة</p>
           </div>
           <div class="text-left">
             <div class="text-3xl sm:text-4xl font-black text-emerald-400">$99</div>
@@ -960,6 +1466,131 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeBookingModal();
     });
+  </script>
+
+
+  <script>
+    // --- Interactive Journey Views Switcher ---
+    function switchJourneyView(viewId) {
+      document.querySelectorAll('.journey-view').forEach(function(el) {
+        el.classList.remove('active');
+      });
+      document.querySelectorAll('.view-tab-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+
+      var activeView = document.getElementById('view-' + viewId);
+      var activeBtn = document.getElementById('btn-view-' + viewId);
+      if (activeView) activeView.classList.add('active');
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+
+    // --- Interactive Calendar Detail Box ---
+    var calDetails = {
+      1: {
+        day: '1 نوفمبر (الجمعة)',
+        role: 'أحمد الخطيب + الكوتش والأخصائيين',
+        badgeClass: 'bg-amber-950/30 border-amber-500/30 text-amber-400',
+        title: 'لايف الانطلاق المجمع وتدشين الأمان النفسي',
+        desc: 'جلسة افتتاحية تفاعلية مدتها 90-120 دقيقة عبر زووم، لإرساء الأمان النفسي، شرح الركائز الأربع، والترحيب بك شخصياً في واحة نور.'
+      },
+      2: {
+        day: '2 نوفمبر (السبت)',
+        role: 'أخصائي تغذية نمط الحياة',
+        badgeClass: 'bg-emerald-950/30 border-emerald-500/30 text-emerald-400',
+        title: 'الجلسة الفردية الأولى (1:1): تصميم يومك الغذائي المرن',
+        desc: 'مكالمة فيديو خاصة (20 دقيقة) لدراسة تاريخك وعاداتك واعتماد أكل البيت المفضل والبدائل العملية دون حرمان.'
+      },
+      3: {
+        day: '3 نوفمبر (الأحد)',
+        role: 'كوتش الحركة والنشاط',
+        badgeClass: 'bg-cyan-950/30 border-cyan-500/30 text-cyan-400',
+        title: 'الجلسة الفردية الأولى (1:1): فحص الحركة والنشاط اليومي',
+        desc: 'مكالمة فيديو خاصة (20 دقيقة) لتقييم المفاصل والمرونة وتصميم روتين نشاط منزلي مريح يرفع الحرق دون إجهاد.'
+      },
+      10: {
+        day: '10 نوفمبر (الأحد)',
+        role: 'أخصائي تغذية نمط الحياة',
+        badgeClass: 'bg-emerald-950/30 border-emerald-500/30 text-emerald-400',
+        title: 'المتابعة الفردية الأولى (1:1): مراجعة أول 10 أيام وتحديث الخطة',
+        desc: 'مراجعة استجابة جسدك ونزول المقاسات وعلاج أي صعوبة وتحديث الخطة لضمان كسر أي روتين وثبات في الوزن.'
+      },
+      15: {
+        day: '15 نوفمبر (الجمعة)',
+        role: 'كوتش الحركة والنشاط',
+        badgeClass: 'bg-cyan-950/30 border-cyan-500/30 text-cyan-400',
+        title: 'المتابعة الفردية الأولى (1:1): مراجعة الأداء الرياضي وتطويره',
+        desc: 'مراجعة تكنيك التمارين بالفيديو وقياس تحسن مستويات الطاقة والنشاط وترقية الحركة بما يلائم راحة مفاصلك.'
+      },
+      17: {
+        day: '17 نوفمبر (الأحد)',
+        role: 'أحمد الخطيب شخصياً',
+        badgeClass: 'bg-amber-950/30 border-amber-500/30 text-amber-400',
+        title: 'لايف منتصف الرحلة: كسر الفتور وتثبيت شعلة الالتزام',
+        desc: 'جلسة حاسمة مدتها 60 دقيقة في منتصف الشهر لكسر فتور الأسبوع الثالث (The Dip) وشحن الطاقة وإجابة كل التساؤلات.'
+      },
+      24: {
+        day: '24 نوفمبر (الأحد)',
+        role: 'أخصائي تغذية نمط الحياة',
+        badgeClass: 'bg-emerald-950/30 border-emerald-500/30 text-emerald-400',
+        title: 'المتابعة الثالثة والختامية (1:1): تقييم النتائج وخطة الاستدامة',
+        desc: 'مكالمة تقييم شامل لنزول الوزن ومقاسات محيط الخصر، وتصميم خطة تثبيت المكتسبات مدى الحياة.'
+      },
+      29: {
+        day: '29 نوفمبر (الجمعة)',
+        role: 'أحمد الخطيب + الفريق كاملاً',
+        badgeClass: 'bg-amber-950/30 border-amber-500/30 text-amber-400',
+        title: 'لايف التخرج الجماعي والاحتفال بالنتائج وتجديد العهد',
+        desc: 'حفل تخرج الدفعة الأولى، توثيق قصص النجاح الملهمة، وفتح باب تجديد الاشتراك التلقائي للشهر الثاني بخصم الوفاء.'
+      }
+    };
+
+    function showCalDetail(dayNum) {
+      var item = calDetails[dayNum];
+      if (!item) return;
+
+      var box = document.getElementById('cal-detail-box');
+      var dayEl = document.getElementById('cal-detail-day');
+      var titleEl = document.getElementById('cal-detail-title');
+      var descEl = document.getElementById('cal-detail-desc');
+
+      if (box && dayEl && titleEl && descEl) {
+        dayEl.textContent = item.day + ' • ' + item.role;
+        titleEl.textContent = item.title;
+        descEl.textContent = item.desc;
+        box.className = 'p-4 rounded-2xl border text-right space-y-1 transition-all ' + item.badgeClass;
+      }
+    }
+
+    // --- Interactive Ticket Simulator ---
+    function updateTicketSim() {
+      var slider = document.getElementById('ticket-slider');
+      var nutCount = document.getElementById('sim-nut-count');
+      var coachCount = document.getElementById('sim-coach-count');
+      var feedback = document.getElementById('sim-feedback-box');
+
+      if (!slider || !nutCount || !coachCount || !feedback) return;
+
+      var nut = parseInt(slider.value, 10);
+      var coach = 10 - nut;
+
+      nutCount.textContent = nut;
+      coachCount.textContent = coach;
+
+      if (nut === 10) {
+        feedback.innerHTML = '💡 <strong>تركيز تغذوي كامل:</strong> خصصت كل الـ 10 تذاكر لأخصائي التغذية! رائع جداً إن كانت أولويتك متابعة دقيقة لكل وجبة وعزومة ومطعم. كوتش الحركة متاح لك دائماً في الجلستين الفرديتين!';
+      } else if (coach === 10) {
+        feedback.innerHTML = '💡 <strong>تركيز حركي مكثف:</strong> خصصت كل الـ 10 تذاكر لكوتش الحركة والتمارين! مثالي لمراجعة التكنيك وفيديوهات الحركة خطوة بخطوة، مع بقاء 3 جلسات التغذية الفردية لتأمين وجباتك!';
+      } else if (nut === 5 && coach === 5) {
+        feedback.innerHTML = '💡 <strong>توزيع متوازن ومثالي (5 / 5):</strong> 5 تذاكر للتغذية والبدائل + 5 تذاكر لتدقيق التمارين. نموذج متناسق يلبي كل احتياجاتك اليومية بأريحية!';
+      } else {
+        feedback.innerHTML = '💡 <strong>مرونة تامة تناسب واقعك:</strong> خصصت ' + nut + ' تذاكر للتغذية و ' + coach + ' تذاكر لكوتش الحركة. يمكنك تغيير هذا التوزيع في أي وقت خلال الشهر بكل بساطة!';
+      }
+    }
   </script>
 
 </body>

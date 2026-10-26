@@ -117,6 +117,60 @@
   
     
     
+    
+    /* --- Motion Graphic 360 Containment Styles --- */
+    @keyframes pulseGlowAura {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 0.75;
+      }
+    }
+    .motion-pulse-aura {
+      animation: pulseGlowAura 4s infinite ease-in-out;
+    }
+
+    @keyframes orbitSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .motion-orbit-ring {
+      animation: orbitSlow 25s linear infinite;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .shimmer-gradient-text {
+      background: linear-gradient(90deg, #F59E0B 0%, #10B981 25%, #0284C7 50%, #10B981 75%, #F59E0B 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 6s linear infinite;
+    }
+
+    .containment-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .containment-card-hover:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.3);
+      border-color: rgba(52, 211, 153, 0.5);
+    }
+
+    @keyframes beaconBlink {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(5px); }
+    }
+    .beacon-arrow-anim {
+      animation: beaconBlink 1.8s infinite ease-in-out;
+    }
+
     /* --- Ascending Ladder of Transformation Styles --- */
     .ladder-node {
       position: relative;
@@ -234,6 +288,60 @@
     }
 
   
+    
+    /* --- Motion Graphic 360 Containment Styles --- */
+    @keyframes pulseGlowAura {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 0.75;
+      }
+    }
+    .motion-pulse-aura {
+      animation: pulseGlowAura 4s infinite ease-in-out;
+    }
+
+    @keyframes orbitSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .motion-orbit-ring {
+      animation: orbitSlow 25s linear infinite;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .shimmer-gradient-text {
+      background: linear-gradient(90deg, #F59E0B 0%, #10B981 25%, #0284C7 50%, #10B981 75%, #F59E0B 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 6s linear infinite;
+    }
+
+    .containment-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .containment-card-hover:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.3);
+      border-color: rgba(52, 211, 153, 0.5);
+    }
+
+    @keyframes beaconBlink {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(5px); }
+    }
+    .beacon-arrow-anim {
+      animation: beaconBlink 1.8s infinite ease-in-out;
+    }
+
     /* --- Ascending Ladder of Transformation Styles --- */
     .ladder-node {
       position: relative;
@@ -306,6 +414,60 @@
     }
 
   
+    
+    /* --- Motion Graphic 360 Containment Styles --- */
+    @keyframes pulseGlowAura {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.4;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 0.75;
+      }
+    }
+    .motion-pulse-aura {
+      animation: pulseGlowAura 4s infinite ease-in-out;
+    }
+
+    @keyframes orbitSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .motion-orbit-ring {
+      animation: orbitSlow 25s linear infinite;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .shimmer-gradient-text {
+      background: linear-gradient(90deg, #F59E0B 0%, #10B981 25%, #0284C7 50%, #10B981 75%, #F59E0B 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 6s linear infinite;
+    }
+
+    .containment-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .containment-card-hover:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.3);
+      border-color: rgba(52, 211, 153, 0.5);
+    }
+
+    @keyframes beaconBlink {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(5px); }
+    }
+    .beacon-arrow-anim {
+      animation: beaconBlink 1.8s infinite ease-in-out;
+    }
+
     /* --- Ascending Ladder of Transformation Styles --- */
     .ladder-node {
       position: relative;
@@ -415,11 +577,11 @@
 
       <!-- Desktop Links -->
       <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="#comparison" class="hover:text-cyan-400 transition-colors">الفلسفة والفارق</a>
-        <a href="#journey" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-cyan-300">
-          <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
-          <span>خارطة الـ 30 يوماً</span>
+        <a href="#journey" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-emerald-300 font-bold">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+          <span>سلم تحولك (30 يوماً)</span>
         </a>
+        <a href="#comparison" class="hover:text-cyan-400 transition-colors">الفلسفة والفارق</a>
         <a href="#channels" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5 text-emerald-300">
           <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
           <span>كيف يتم التواصل معنا؟</span>
@@ -566,91 +728,7 @@
     </div>
   </section>
 
-  <!-- ==================== 4. SECTION: PHILOSOPHY & COMPARISON ==================== -->
-  <section id="comparison" class="py-16 md:py-24 border-t border-white/5 bg-[#0A1A2E]/50 relative">
-    <div class="responsive-container">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
-        <span class="px-3.5 py-1.5 rounded-full badge-warm text-emerald-300 text-xs font-semibold">الفلسفة والفارق</span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">لماذا تفشل الدايتات التقليدية وتنجح واحة نور؟</h2>
-        <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">الفارق بين إجبار الجسد على الحرمان، وبين منحه الأمان وخيارات مرنة تناسب دوامك ويومك الحقيقي.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        
-        <!-- Old Painful Way -->
-        <div class="p-6 sm:p-8 rounded-3xl bg-rose-950/20 border border-rose-500/20 space-y-5 text-right">
-          <div class="flex items-center gap-3 border-b border-rose-500/20 pb-4">
-            <span class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
-              <i data-lucide="x-circle" class="w-5 h-5"></i>
-            </span>
-            <div>
-              <h3 class="font-bold text-lg text-white">الدايت التقليدي والحرمان</h3>
-              <span class="text-xs text-rose-300">دوامة الفشل وتأنيب الضمير</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-300">
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
-              <span>جداول صارمة تجبرك على تحضير وجبات معقدة لا تناسب ضغط عملك أو خروجك.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
-              <span>تجويع مستمر يبطئ هرمونات الحرق ويدفعك للشراهة والانفجار في العطلات.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
-              <span>فقدان وزن وهمي من العضلات والماء يتبعه ارتداد أسرع (Yo-Yo Effect).</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
-              <span>وحدة تامة وشعور بالذنب دون مرشد يفسر لك أسباب ما يحدث بجسدك.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- The Wahet Nour Method -->
-        <div class="p-6 sm:p-8 rounded-3xl bg-emerald-950/30 border border-emerald-500/30 space-y-5 text-right relative overflow-hidden shadow-xl">
-          <div class="absolute top-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
-          <div class="flex items-center gap-3 border-b border-emerald-500/25 pb-4">
-            <span class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
-              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
-            </span>
-            <div>
-              <h3 class="font-bold text-lg text-white">منهج واحة نور • أحمد الخطيب</h3>
-              <span class="text-xs text-emerald-300">أمان بيولوجي ومرونة حقيقية</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-sm text-slate-200">
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
-              <span><strong>لقاء انطلاق تفاعلي حي ومباشر (زووم) مع أحمد الخطيب وكامل الفريق (1 نوفمبر):</strong> لتدشين الأمان النفسي، فك عقدة الذنب، وشرح الركائز الأربع.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
-              <span><strong>مرونة غذائية كاملة:</strong> تأكل كل ما تحبه بأسلوب صحي يناسب روتينك (في البيت، الدوام، أو السفر).</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
-              <span><strong>3 لايفات تفاعلية حصرية مع أحمد الخطيب وكامل الفريق:</strong> لايف الانطلاق، لايف كسر الفتور في منتصف الرحلة، ولايف التخرج وتجديد العهد.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
-              <span><strong>دخول فوري لمجتمع واحة نور:</strong> رفقة داعمة وبيئة أمان ومشاركة من اليوم الأول.</span>
-            </li>
-            <li class="flex items-start gap-2.5">
-              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
-              <span><strong>فريق متخصص ومتابعة فردية (1:1):</strong> 3 جلسات للتغذية، جلستان للكوتش، وبنك الـ 10 تذاكر المرنة.</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-                <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
+  <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
   <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
     
     <!-- Ambient Atmospheric Glows -->
@@ -660,6 +738,149 @@
 
     <div class="responsive-container relative z-10">
       
+            <!-- ==================== MOTION GRAPHIC 360° TOTAL CONTAINMENT SHOWCASE ==================== -->
+      <div class="mb-14 relative">
+        
+        <!-- Ambient Orbiting Glow Elements -->
+        <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] rounded-full bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-amber-500/10 blur-[100px] pointer-events-none motion-pulse-aura"></div>
+        
+        <!-- Master Motion Card: Total 360 Containment -->
+        <div class="glass-card rounded-3xl border-2 border-emerald-500/40 p-6 sm:p-10 relative overflow-hidden shadow-2xl text-center space-y-8">
+          
+          <!-- Animated Top Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/15 via-emerald-500/15 to-cyan-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-bold shadow-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>🛡️ إحاطة ورعاية دائرية 360° • لن نتركك وحدك للحظة واحدة</span>
+          </div>
+
+          <!-- Emotional High-Impact Headline -->
+          <div class="max-w-3xl mx-auto space-y-3">
+            <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
+              شفت هنكون معاك كام مرة؟..<br>
+              <span class="shimmer-gradient-text">
+                نحيط بك من كل اتجاه، خطوة بخطوة
+              </span>
+            </h2>
+            <p class="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-light max-w-2xl mx-auto">
+              تخيّل أن تبدأ شهراً لا تكون فيه تائهاً ولا محروماً.. رسمنا لك بيئة احتواء تشبه حضن الأمان: نلتقي معاً في بث حي ومباشر، ونلتقي بك في جلسات فردية مغلقة (1:1) كأننا معك في بيتك، مع بنك مفتوح لـ 10 تذاكر استفسار مباشرة. <strong class="text-white font-medium">هل رأيت اهتماماً بهذا القرب والدقة من قبل؟</strong>
+            </p>
+          </div>
+
+          <!-- 4 Kinetic Metric Pillars (The 4 Arms of Containment) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 text-right pt-2">
+            
+            <!-- Pillar 1: Ahmed Elkhateeb (3 Lives) -->
+            <div class="containment-card-hover p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-amber-500/15 via-white/[0.02] to-transparent border border-amber-500/30 space-y-3 relative group">
+              <div class="flex items-center justify-between">
+                <span class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center font-black text-xl shadow-lg shadow-amber-500/20 group-hover:scale-110 transition-transform">
+                  <i data-lucide="video" class="w-6 h-6"></i>
+                </span>
+                <span class="text-3xl font-black text-amber-400 font-mono tracking-tight">3 مرات</span>
+              </div>
+              <div class="space-y-1">
+                <h3 class="text-base font-bold text-white group-hover:text-amber-300 transition-colors">
+                  لايفات حية معي شخصياً
+                </h3>
+                <span class="text-[11px] text-amber-300 font-medium block">
+                  بث Zoom مباشر تفاعلي معي
+                </span>
+                <p class="text-xs text-slate-300 leading-relaxed font-light pt-1">
+                  أسمع صوتك بالاسم، نفكك عقدة الذنب، نكسر الفتور في منتصف الرحلة، ونحتفل بانتصارك في حفل التخرج.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pillar 2: 1:1 Individual Video Sessions (5 Sessions x 20 min) -->
+            <div class="containment-card-hover p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-emerald-500/15 via-white/[0.02] to-transparent border border-emerald-500/30 space-y-3 relative group">
+              <div class="flex items-center justify-between">
+                <span class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 flex items-center justify-center font-black text-xl shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+                  <i data-lucide="user-check" class="w-6 h-6"></i>
+                </span>
+                <span class="text-3xl font-black text-emerald-400 font-mono tracking-tight">5 جلسات</span>
+              </div>
+              <div class="space-y-1">
+                <h3 class="text-base font-bold text-white group-hover:text-emerald-300 transition-colors">
+                  جلسات خاصة فردية (1:1)
+                </h3>
+                <span class="text-[11px] text-emerald-300 font-medium block">
+                  مكالمات فيديو مغلقة • 20 دقيقة لكل جلسة
+                </span>
+                <p class="text-xs text-slate-300 leading-relaxed font-light pt-1">
+                  3 جلسات لضبط أكل بيتك وتفصيل مائدتك مع أخصائي التغذية + جلستان مع كوتش الحركة لمرونة مفاصلك وخفة جسدك.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pillar 3: 10 Flexible Direct Inquiries Tickets -->
+            <div class="containment-card-hover p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-purple-500/15 via-white/[0.02] to-transparent border border-purple-500/30 space-y-3 relative group">
+              <div class="flex items-center justify-between">
+                <span class="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-500/40 text-purple-300 flex items-center justify-center font-black text-xl shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+                  <i data-lucide="ticket" class="w-6 h-6"></i>
+                </span>
+                <span class="text-3xl font-black text-purple-400 font-mono tracking-tight">10 تذاكر</span>
+              </div>
+              <div class="space-y-1">
+                <h3 class="text-base font-bold text-white group-hover:text-purple-300 transition-colors">
+                  بنك استفسارات يومي مرن
+                </h3>
+                <span class="text-[11px] text-purple-300 font-medium block">
+                  فترتا رد يوميتان معتمدتان
+                </span>
+                <p class="text-xs text-slate-300 leading-relaxed font-light pt-1">
+                  رصيد أسئلة مباشر تقسمه بحريتك بين التغذية والكوتش؛ اسأل عن وجبات العزومات وتكنيك التمارين وتجد الرد صباحاً ومساءً.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pillar 4: 30 Days of Unbroken Safety & Community -->
+            <div class="containment-card-hover p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-cyan-500/15 via-white/[0.02] to-transparent border border-cyan-500/30 space-y-3 relative group">
+              <div class="flex items-center justify-between">
+                <span class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 flex items-center justify-center font-black text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+                  <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </span>
+                <span class="text-3xl font-black text-cyan-400 font-mono tracking-tight">30 يوماً</span>
+              </div>
+              <div class="space-y-1">
+                <h3 class="text-base font-bold text-white group-hover:text-cyan-300 transition-colors">
+                  أمان واحتواء متواصل
+                </h3>
+                <span class="text-[11px] text-cyan-300 font-medium block">
+                  رفقة إنسانية وبيئة واحة نور
+                </span>
+                <p class="text-xs text-slate-300 leading-relaxed font-light pt-1">
+                  لست رقماً ولا ملفاً منسياً في درج؛ فريق كامل يعمل معك ويتنفس تفاصيل يومك لتشعر بالسكينة طوال الشهر.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Emotional Reassurance Ribbon -->
+          <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-300 bg-white/[0.02] -mx-6 -mb-6 sm:-mx-10 sm:-mb-10 p-4 sm:p-6 rounded-b-3xl">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400 font-bold text-base">✨ الخلاصة:</span>
+              <span>8 محطات حية ومباشرة (3 لايفات + 5 جلسات فردية) + 10 تذاكر مرنة = احتواء كامل لا يترك مجالاً للحيرة.</span>
+            </div>
+            <a href="#booking-card" class="text-emerald-300 font-bold hover:underline flex items-center gap-1 shrink-0">
+              <span>انضم للمجموعة بـ 99$</span>
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Animated Downward Transition Cue into the Ladder -->
+        <div class="text-center pt-8 pb-2 space-y-2">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold">
+            <span>🪜 والآن.. اصعد معنا درجات السلم درجة بدرجة نحو حريتك:</span>
+          </div>
+          <div class="beacon-arrow-anim text-emerald-400">
+            <i data-lucide="chevron-down" class="w-5 h-5 mx-auto"></i>
+          </div>
+        </div>
+
+      </div>
+
       <!-- Section Header: Emotional, High-Status, Caring & Inspiring -->
       <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-amber-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-sm">
@@ -2016,7 +2237,91 @@
   </section>
 
 
-  <!-- ==================== 6. SECTION: HOW WE COMMUNICATE ==================== -->
+  <!-- ==================== 4. SECTION: PHILOSOPHY & COMPARISON ==================== -->
+  <section id="comparison" class="py-16 md:py-24 border-t border-white/5 bg-[#0A1A2E]/50 relative">
+    <div class="responsive-container">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <span class="px-3.5 py-1.5 rounded-full badge-warm text-emerald-300 text-xs font-semibold">الفلسفة والفارق</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">لماذا تفشل الدايتات التقليدية وتنجح واحة نور؟</h2>
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">الفارق بين إجبار الجسد على الحرمان، وبين منحه الأمان وخيارات مرنة تناسب دوامك ويومك الحقيقي.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        
+        <!-- Old Painful Way -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-rose-950/20 border border-rose-500/20 space-y-5 text-right">
+          <div class="flex items-center gap-3 border-b border-rose-500/20 pb-4">
+            <span class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center shrink-0">
+              <i data-lucide="x-circle" class="w-5 h-5"></i>
+            </span>
+            <div>
+              <h3 class="font-bold text-lg text-white">الدايت التقليدي والحرمان</h3>
+              <span class="text-xs text-rose-300">دوامة الفشل وتأنيب الضمير</span>
+            </div>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-300">
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
+              <span>جداول صارمة تجبرك على تحضير وجبات معقدة لا تناسب ضغط عملك أو خروجك.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
+              <span>تجويع مستمر يبطئ هرمونات الحرق ويدفعك للشراهة والانفجار في العطلات.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
+              <span>فقدان وزن وهمي من العضلات والماء يتبعه ارتداد أسرع (Yo-Yo Effect).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="x" class="w-4 h-4 text-rose-400 mt-1 shrink-0"></i>
+              <span>وحدة تامة وشعور بالذنب دون مرشد يفسر لك أسباب ما يحدث بجسدك.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- The Wahet Nour Method -->
+        <div class="p-6 sm:p-8 rounded-3xl bg-emerald-950/30 border border-emerald-500/30 space-y-5 text-right relative overflow-hidden shadow-xl">
+          <div class="absolute top-0 left-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="flex items-center gap-3 border-b border-emerald-500/25 pb-4">
+            <span class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            </span>
+            <div>
+              <h3 class="font-bold text-lg text-white">منهج واحة نور • أحمد الخطيب</h3>
+              <span class="text-xs text-emerald-300">أمان بيولوجي ومرونة حقيقية</span>
+            </div>
+          </div>
+          <ul class="space-y-3 text-sm text-slate-200">
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
+              <span><strong>لقاء انطلاق تفاعلي حي ومباشر (زووم) مع أحمد الخطيب وكامل الفريق (1 نوفمبر):</strong> لتدشين الأمان النفسي، فك عقدة الذنب، وشرح الركائز الأربع.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
+              <span><strong>مرونة غذائية كاملة:</strong> تأكل كل ما تحبه بأسلوب صحي يناسب روتينك (في البيت، الدوام، أو السفر).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
+              <span><strong>3 لايفات تفاعلية حصرية مع أحمد الخطيب وكامل الفريق:</strong> لايف الانطلاق، لايف كسر الفتور في منتصف الرحلة، ولايف التخرج وتجديد العهد.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
+              <span><strong>دخول فوري لمجتمع واحة نور:</strong> رفقة داعمة وبيئة أمان ومشاركة من اليوم الأول.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <i data-lucide="check" class="w-4 h-4 text-emerald-400 mt-1 shrink-0"></i>
+              <span><strong>فريق متخصص ومتابعة فردية (1:1):</strong> 3 جلسات للتغذية، جلستان للكوتش، وبنك الـ 10 تذاكر المرنة.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+                <!-- ==================== 6. SECTION: HOW WE COMMUNICATE ==================== -->
   <section id="channels" class="py-16 md:py-24 border-t border-white/5 bg-[#091829]/70 relative">
     <div class="responsive-container">
       

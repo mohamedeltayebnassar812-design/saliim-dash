@@ -233,6 +233,150 @@
       }
     }
 
+  
+    /* --- Ascending Ladder of Transformation Styles --- */
+    .ladder-node {
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ladder-node:hover {
+      transform: translateY(-4px);
+    }
+    .ladder-node.active-step {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(52, 211, 153, 0.5);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+    }
+    .ladder-node.active-step.theme-amber {
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(245, 158, 11, 0.3);
+    }
+    .ladder-node.active-step.theme-emerald {
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(16, 185, 129, 0.3);
+    }
+    .ladder-node.active-step.theme-cyan {
+      border-color: rgba(6, 182, 212, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(6, 182, 212, 0.3);
+    }
+
+    .ladder-node.active-step .ladder-icon-box {
+      transform: scale(1.15);
+    }
+    .ladder-node.active-step.theme-amber .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.1));
+      border-color: #FBBF24;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    }
+    .ladder-node.active-step.theme-emerald .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
+      border-color: #34D399;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+    .ladder-node.active-step.theme-cyan .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(6, 182, 212, 0.1));
+      border-color: #22D3EE;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    }
+
+    .ladder-node.active-step .active-arrow-indicator {
+      opacity: 1;
+    }
+
+    /* Stage Panel Animation */
+    .stage-ascending-panel {
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-ascending-panel.deck-rising {
+      animation: ladderRiseStage 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes ladderRiseStage {
+      0% {
+        opacity: 0.35;
+        transform: translateY(18px) scale(0.985);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.005);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+  
+    /* --- Ascending Ladder of Transformation Styles --- */
+    .ladder-node {
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ladder-node:hover {
+      transform: translateY(-4px);
+    }
+    .ladder-node.active-step {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(52, 211, 153, 0.5);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5);
+    }
+    .ladder-node.active-step.theme-amber {
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(245, 158, 11, 0.3);
+    }
+    .ladder-node.active-step.theme-emerald {
+      border-color: rgba(16, 185, 129, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(16, 185, 129, 0.3);
+    }
+    .ladder-node.active-step.theme-cyan {
+      border-color: rgba(6, 182, 212, 0.6);
+      box-shadow: 0 12px 30px -8px rgba(6, 182, 212, 0.3);
+    }
+
+    .ladder-node.active-step .ladder-icon-box {
+      transform: scale(1.15);
+    }
+    .ladder-node.active-step.theme-amber .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.1));
+      border-color: #FBBF24;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    }
+    .ladder-node.active-step.theme-emerald .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.1));
+      border-color: #34D399;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+    }
+    .ladder-node.active-step.theme-cyan .ladder-icon-box {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(6, 182, 212, 0.1));
+      border-color: #22D3EE;
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    }
+
+    .ladder-node.active-step .active-arrow-indicator {
+      opacity: 1;
+    }
+
+    /* Stage Panel Animation */
+    .stage-ascending-panel {
+      transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-ascending-panel.deck-rising {
+      animation: ladderRiseStage 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes ladderRiseStage {
+      0% {
+        opacity: 0.35;
+        transform: translateY(18px) scale(0.985);
+      }
+      50% {
+        transform: translateY(-4px) scale(1.005);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
   </style>
 </head>
 <body class="selection:bg-cyan-500/30 selection:text-white">
@@ -506,7 +650,7 @@
     </div>
   </section>
 
-        <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
+            <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
   <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
     
     <!-- Ambient Atmospheric Glows -->
@@ -611,7 +755,7 @@
             </div>
 
             <div class="flex items-stretch gap-2.5 overflow-x-auto pb-3 pt-1 scrollbar-thin">
-            <!-- Step 1: أمان واحتواء مباشر -->
+            <!-- Step 1: لقاء الانطلاق المباشر معي -->
             <button type="button" onclick="selectLadderStep(0, true)" id="ladder-node-0" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -628,7 +772,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-amber-300 transition leading-tight">
-                  أمان واحتواء مباشر
+                  لقاء الانطلاق المباشر معي
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • مطلع الشهر (اليوم 1)
@@ -638,7 +782,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-amber-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 2: أكل بيتك بلا حرمان -->
+            <!-- Step 2: جلستك الأولى: أكل بيتك -->
             <button type="button" onclick="selectLadderStep(1, true)" id="ladder-node-1" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -655,7 +799,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
-                  أكل بيتك بلا حرمان
+                  جلستك الأولى: أكل بيتك
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • اليوم 2
@@ -665,7 +809,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-emerald-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 3: خفة الجسد وتوديع الخمول -->
+            <!-- Step 3: جلستك الأولى: خفة الحركة -->
             <button type="button" onclick="selectLadderStep(2, true)" id="ladder-node-2" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -682,7 +826,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-cyan-300 transition leading-tight">
-                  خفة الجسد وتوديع الخمول
+                  جلستك الأولى: خفة الحركة
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • اليوم 3
@@ -692,7 +836,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-cyan-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 4: معايرة الراحة والهضم -->
+            <!-- Step 4: متابعتك الثانية: راحة وهضم -->
             <button type="button" onclick="selectLadderStep(3, true)" id="ladder-node-3" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -709,7 +853,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
-                  معايرة الراحة والهضم
+                  متابعتك الثانية: راحة وهضم
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الثاني • اليوم 10
@@ -719,7 +863,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-emerald-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 5: رشاقة وانسيابية حركتك -->
+            <!-- Step 5: متابعتك الثانية: رشاقة وحركة -->
             <button type="button" onclick="selectLadderStep(4, true)" id="ladder-node-4" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -736,7 +880,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-cyan-300 transition leading-tight">
-                  رشاقة وانسيابية حركتك
+                  متابعتك الثانية: رشاقة وحركة
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   منتصف الشهر • اليوم 15
@@ -746,7 +890,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-cyan-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 6: كسر الفتور وشحن الشغف -->
+            <!-- Step 6: لقاء منتصف الطريق معي -->
             <button type="button" onclick="selectLadderStep(5, true)" id="ladder-node-5" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -763,7 +907,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-amber-300 transition leading-tight">
-                  كسر الفتور وشحن الشغف
+                  لقاء منتصف الطريق معي
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الثالث • اليوم 17
@@ -773,7 +917,7 @@
               <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-amber-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 7: تثبيت وزنك مدى الحياة -->
+            <!-- Step 7: متابعتك الختامية: تثبيت للأبد -->
             <button type="button" onclick="selectLadderStep(6, true)" id="ladder-node-6" 
               class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               
@@ -790,7 +934,7 @@
               <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
                 <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
-                  تثبيت وزنك مدى الحياة
+                  متابعتك الختامية: تثبيت للأبد
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الرابع • اليوم 24
@@ -1424,10 +1568,10 @@
     var ladderStepsData = [
   {
     "step_num": "01",
-    "step_badge": "الدرجة الأولى • الانطلاق والأمان",
+    "step_badge": "الدرجة الأولى • لقاء الانطلاق الحي",
     "title": "لقاء الأمان والاحتواء الحي المباشر معي",
     "sub_title": "نلتقي وجهاً لوجه لكسر الجليد، نزع عقدة الذنب، وتدشين مسار الراحة للأبد",
-    "keyword": "أمان واحتواء مباشر",
+    "keyword": "لقاء الانطلاق المباشر معي",
     "companion": "بإشراف أحمد الخطيب شخصياً وبحضور فريقك بالكامل",
     "companion_type": "ahmed",
     "format": "🎥 Zoom Live تفاعلي • 90 - 120 دقيقة",
@@ -1449,15 +1593,15 @@
       }
     ],
     "outcome": "الشعور الفوري بالراحة النفسية والاطمئنان لبدء الجلسات الخاصة دون أي خوف",
-    "next_step": "الدرجة 2: تفصيل مائدتك وأكل بيتك 👈"
+    "next_step": "الدرجة 2: جلستك الأولى لأكل بيتك 👈"
   },
   {
     "step_num": "02",
-    "step_badge": "الدرجة الثانية • راحة المائدة والشبع",
-    "title": "تصميم مائدتك من أكل بيتك المفضل",
-    "sub_title": "جلستك الفردية الخاصة (1:1) لتأكل ما تحب وتشبع دون حرمان أو أكلات غريبة",
-    "keyword": "أكل بيتك بلا حرمان",
-    "companion": "جلستك الخاصة الفردية (1:1) مع أخصائي التغذية المعتمد",
+    "step_badge": "الدرجة الثانية • جلستك الأولى (تغذية)",
+    "title": "جلستك الأولى: تصميم مائدتك من أكل بيتك المفضل",
+    "sub_title": "جلستك الخاصة الفردية الأولى (1:1) لتأكل ما تحب وتشبع دون حرمان أو أكلات غريبة",
+    "keyword": "جلستك الأولى: أكل بيتك",
+    "companion": "الجلسة الفردية الخاصة الأولى (1:1) مع أخصائي التغذية المعتمد",
     "companion_type": "nutrition",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
     "timing_subtle": "الأسبوع الأول • اليوم 2",
@@ -1466,7 +1610,7 @@
     "benefits": [
       {
         "title": "تشخيص عاداتك وأكلاتك المحببة",
-        "desc": "مكالمة فيديو خاصة للتعرف على ما تحبه من طعام ليكون هو نفسه حجر الأساس في خطتك اليومية."
+        "desc": "مكالمة فيديو خاصة (20 دقيقة) للتعرف على ما تحبه من طعام ليكون هو نفسه حجر الأساس في خطتك اليومية."
       },
       {
         "title": "بدائل ذكية للمطاعم والعزومات",
@@ -1478,28 +1622,28 @@
       }
     ],
     "outcome": "اعتماد خطة أكل البيت المريحة وبدء الشعور بالخفة وراحة المعدة فوراً",
-    "next_step": "الدرجة 3: إيقاظ طاقة جسدك وخفتك 👈"
+    "next_step": "الدرجة 3: جلستك الأولى مع الكوتش 👈"
   },
   {
     "step_num": "03",
-    "step_badge": "الدرجة الثالثة • انسيابية الطاقة والنشاط",
-    "title": "إيقاظ خفة جسدك وتوديع خمول المكاتب",
-    "sub_title": "جلستك الفردية الخاصة (1:1) لروتين حركة ذكي بـ 15 دقيقة فقط في صالة بيتك",
-    "keyword": "خفة الجسد وتوديع الخمول",
-    "companion": "جلستك الخاصة الفردية (1:1) مع كوتش الحركة واللياقة المعتمد",
+    "step_badge": "الدرجة الثالثة • جلستك الأولى (كوتش)",
+    "title": "جلستك الأولى: إيقاظ خفة جسدك وتوديع خمول المكاتب",
+    "sub_title": "جلستك الخاصة الفردية الأولى (1:1) مع الكوتش لتصميم روتين حركة ذكي بـ 20 دقيقة في صالة بيتك",
+    "keyword": "جلستك الأولى: خفة الحركة",
+    "companion": "الجلسة الفردية الخاصة الأولى (1:1) مع كوتش الحركة واللياقة المعتمد",
     "companion_type": "coach",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
     "timing_subtle": "الأسبوع الأول • اليوم 3",
     "icon": "zap",
-    "card_quote": "«لا نطلب منك الذهاب للجيم ولا شراء أجهزة معقدة؛ 15 دقيقة ذكية في صالتك تعيد لظهرك ورقبتك الانسيابية والحيوية.»",
+    "card_quote": "«لا نطلب منك الذهاب للجيم ولا شراء أجهزة معقدة؛ 20 دقيقة مريحة وخفيفة في صالتك تعيد لظهرك ورقبتك الانسيابية والحيوية.»",
     "benefits": [
       {
         "title": "فحص طبيعة جلوسك وصحة مفاصلك",
         "desc": "تقييم أسلوب جلوسك اليومي وساعات دوامك ومفاصلك لتصميم روتين آمن 100% يمنع أي ألم."
       },
       {
-        "title": "روتين الـ 15 دقيقة الذكي في البيت",
-        "desc": "حركات بسيطة وممتعة تؤديها في صالة بيتك ترفع هرمونات النشاط وتنشط الحرق دون إجهاد."
+        "title": "جلسة الـ 20 دقيقة مع الكوتش",
+        "desc": "مكالمة فيديو خاصة (20 دقيقة) لتصميم روتين بسيط تؤديه في صالة بيتك يرفع هرمونات النشاط وتنشيط الحرق دون إجهاد."
       },
       {
         "title": "تفكيك آلام الظهر وتيبس الرقبة",
@@ -1507,20 +1651,20 @@
       }
     ],
     "outcome": "امتلاك خطة حركة ممتعة وسهلة وتوديع كسل البدايات والشعور بالنشاط",
-    "next_step": "الدرجة 4: معايرة الراحة والاطمئنان 👈"
+    "next_step": "الدرجة 4: متابعتك الثانية للتغذية 👈"
   },
   {
     "step_num": "04",
-    "step_badge": "الدرجة الرابعة • معايرة الراحة والاطمئنان",
-    "title": "معايرة الراحة والاطمئنان وتجاوز عقبات البداية",
-    "sub_title": "متابعتك الفردية (1:1) لقياس خفة بطنك، تحسن نومك، واختفاء الرغبة في السكر",
-    "keyword": "معايرة الراحة والهضم",
-    "companion": "المتابعة الخاصة الفردية (1:1) مع أخصائي التغذية المعتمد",
+    "step_badge": "الدرجة الرابعة • متابعتك الثانية",
+    "title": "متابعتك الثانية: معايرة الراحة والاطمئنان وتجاوز عقبات البداية",
+    "sub_title": "جلستك الفردية الخاصة الثانية لقياس خفة بطنك، تحسن نومك، واختفاء الرغبة في السكر",
+    "keyword": "متابعتك الثانية: راحة وهضم",
+    "companion": "المتابعة الفردية الخاصة الثانية (1:1) مع أخصائي التغذية المعتمد",
     "companion_type": "nutrition",
-    "format": "📹 مكالمة فيديو خاصة (1:1) • 15 دقيقة",
+    "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
     "timing_subtle": "الأسبوع الثاني • اليوم 10",
     "icon": "shield-check",
-    "card_quote": "«بعد انقضاء أسبوعك الأول، نطمئن على معدتك ونومك؛ أي وجبة لم ترتح لها نغيرها فوراً لتظل في غاية السعادة والرضا.»",
+    "card_quote": "«بعد انقضاء أسبوعك الأول، نطمئن على معدتك ونومك في مكالمة خاصة ثانية؛ أي وجبة لم ترتح لها نغيرها فوراً لتظل في غاية السعادة والرضا.»",
     "benefits": [
       {
         "title": "مراجعة خفة الهضم وجودة النوم",
@@ -1536,20 +1680,20 @@
       }
     ],
     "outcome": "تثبيت خفة الأسبوع الأول ومعايرة الخطة لتصبح مريحة وممتعة 100%",
-    "next_step": "الدرجة 5: تدفق النشاط ورشاقة المفاصل 👈"
+    "next_step": "الدرجة 5: متابعتك الثانية مع الكوتش 👈"
   },
   {
     "step_num": "05",
-    "step_badge": "الدرجة الخامسة • رشاقة القوام والمرونة",
-    "title": "انسيابية حركتك وتدفق طاقتك بلا إجهاد",
-    "sub_title": "متابعتك الفردية (1:1) للتدرج في اللياقة وتعزيز ثقتك في قوة جسدك",
-    "keyword": "رشاقة وانسيابية حركتك",
-    "companion": "المتابعة الخاصة الفردية (1:1) مع كوتش الحركة واللياقة المعتمد",
+    "step_badge": "الدرجة الخامسة • متابعتك الثانية للحركة",
+    "title": "متابعتك الثانية: انسيابية حركتك وتدفق طاقتك بلا إجهاد",
+    "sub_title": "جلستك الفردية الخاصة الثانية (20 دقيقة) مع الكوتش للتدرج في اللياقة وتعزيز ثقتك في جسدك",
+    "keyword": "متابعتك الثانية: رشاقة وحركة",
+    "companion": "المتابعة الفردية الخاصة الثانية (1:1) مع كوتش الحركة واللياقة المعتمد",
     "companion_type": "coach",
-    "format": "📹 مكالمة فيديو خاصة (1:1) • 15 دقيقة",
+    "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
     "timing_subtle": "منتصف الشهر • اليوم 15",
     "icon": "feather",
-    "card_quote": "«تدرج لطيف ومدروس يجعل الحركة عادة تنتظرها بشوق، لتشعر أن جسدك أصبح يعمل معك لا ضدك.»",
+    "card_quote": "«جلسة فيديو خاصة 20 دقيقة لمتابعة حركتك وتطوير روتينك؛ تدرج لطيف ومدروس يجعل الحركة عادة تنتظرها بشوق لتشعر أن جسدك أصبح يعمل معك لا ضدك.»",
     "benefits": [
       {
         "title": "تقييم التوافق وسهولة التطبيق",
@@ -1560,19 +1704,19 @@
         "desc": "مراجعة حية للأداء للتأكد من استهداف العضلات بالشكل الصحيح وحماية ركبتيك وظهرك."
       },
       {
-        "title": "شحن لياقة منتصف الشهر",
-        "desc": "إضافة تنويعات حركية منعشة تكسر الملل البدني وتزيد معدل حرق الدهون اليومي بثبات."
+        "title": "شحن لياقة منتصف الشهر بـ 20 دقيقة",
+        "desc": "إضافة تنويعات حركية ممتعة تكسر الملل البدني وتزيد معدل حرق الدهون اليومي بثبات وأمان."
       }
     ],
     "outcome": "قوام مشدود، مفاصل مرنة، وشعور ملموس بالخفة والقدرة على صعود السلالم والنشاط",
-    "next_step": "الدرجة 6: شحن العزيمة وكسر الفتور 👈"
+    "next_step": "الدرجة 6: لقاء منتصف الطريق معي 👈"
   },
   {
     "step_num": "06",
-    "step_badge": "الدرجة السادسة • نقطة التحول وتجديد الشغف",
+    "step_badge": "الدرجة السادسة • لقاء تجديد الشغف",
     "title": "لقاء منتصف الطريق معي.. كسر الفتور ومضاعفة الحماس",
     "sub_title": "اللقاء الحاسم في منتصف الشهر لتفكيك المقاومة البيولوجية وإشعال طاقة الانتصار",
-    "keyword": "كسر الفتور وشحن الشغف",
+    "keyword": "لقاء منتصف الطريق معي",
     "companion": "بإشراف أحمد الخطيب شخصياً (بث حي تفاعلي)",
     "companion_type": "ahmed",
     "format": "🎥 Zoom Live تفاعلي • 60 - 75 دقيقة",
@@ -1594,17 +1738,17 @@
       }
     ],
     "outcome": "كسر ثبات الوزن، تجديد طاقة الاستمرار، وشحن العزيمة لعبور النصف الثاني بقوة",
-    "next_step": "الدرجة 7: درع الاستدامة وتثبيت وزنك 👈"
+    "next_step": "الدرجة 7: متابعتك الختامية للتغذية 👈"
   },
   {
     "step_num": "07",
-    "step_badge": "الدرجة السابعة • درع الاستدامة والاستقرار",
-    "title": "درع الاستدامة وتثبيت نتائجك مدى الحياة",
-    "sub_title": "جلستك الفردية الختامية (1:1) لتأصيل عاداتك وتملك بوصلة التغذية الذاتية",
-    "keyword": "تثبيت وزنك مدى الحياة",
-    "companion": "المتابعة الختامية الخاصة (1:1) مع أخصائي التغذية المعتمد",
+    "step_badge": "الدرجة السابعة • متابعتك الختامية (تغذية)",
+    "title": "متابعتك الختامية: درع الاستدامة وتثبيت نتائجك مدى الحياة",
+    "sub_title": "جلستك الفردية الخاصة الختامية (20 دقيقة) لتأصيل عاداتك وتملك بوصلة التغذية الذاتية",
+    "keyword": "متابعتك الختامية: تثبيت للأبد",
+    "companion": "المتابعة الفردية الخاصة الختامية (1:1) مع أخصائي التغذية المعتمد",
     "companion_type": "nutrition",
-    "format": "📹 مكالمة فيديو خاصة (1:1) • 15 دقيقة",
+    "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
     "timing_subtle": "الأسبوع الرابع • اليوم 24",
     "icon": "gem",
     "card_quote": "«تسليم مفاتيح الأمان الذاتي: تتعلم كيف تأكل في السفر والبوفيهات وتثبت وزنك دون خوف من الارتداد للأبد.»",

@@ -650,7 +650,7 @@
     </div>
   </section>
 
-            <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
+              <!-- ==================== 5. SECTION: ASCENDING LADDER OF HEALTH FREEDOM (سلم الارتقاء الصحي) ==================== -->
   <section id="journey" class="py-16 md:py-24 border-t border-white/5 relative overflow-hidden">
     
     <!-- Ambient Atmospheric Glows -->
@@ -661,7 +661,7 @@
     <div class="responsive-container relative z-10">
       
       <!-- Section Header: Emotional, High-Status, Caring & Inspiring -->
-      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+      <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-4">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-amber-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-sm">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span>🌿 سلم الصعود والارتقاء الصحي • 30 يوماً من الاحتواء والحرية</span>
@@ -679,7 +679,7 @@
         </p>
 
         <!-- Companion Legend Tags -->
-        <div class="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs text-slate-300">
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-2.5 sm:gap-6 text-xs text-slate-300">
           <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300">
             <span class="w-2 h-2 rounded-full bg-amber-400"></span>
             <span class="font-semibold">أحمد الخطيب (3 لايفات حصرية دافئة)</span>
@@ -702,30 +702,31 @@
       <!-- ==================== THE UNIFIED ASCENDING LADDER COCKPIT ==================== -->
       <div class="max-w-5xl mx-auto space-y-6">
         
-        <!-- Master Container: Unified Ladder Cockpit -->
-        <div id="ladder-cockpit-frame" class="glass-card rounded-3xl border-2 border-emerald-500/30 p-5 sm:p-8 md:p-10 relative shadow-2xl transition-all duration-700 space-y-7" 
+        <!-- Master Container -->
+        <div id="ladder-cockpit-frame" class="glass-card rounded-3xl border-2 border-emerald-500/30 p-4 sm:p-8 md:p-10 relative shadow-2xl transition-all duration-700 space-y-6 sm:space-y-7" 
           onmouseenter="pauseLadderAutoplay()" onmouseleave="resumeLadderAutoplay()">
           
           <!-- Top Control & Status Bar -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 pb-5">
-            <div class="flex items-center gap-3">
-              <!-- Live Radar Pulse -->
-              <span class="relative flex h-3.5 w-3.5">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
-              </span>
-              <span class="text-xs sm:text-sm font-bold text-white tracking-wide">
-                مسار صعود درجات السلم الصحي
-              </span>
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-white/10 pb-4 sm:pb-5">
+            <div class="flex items-center justify-between w-full sm:w-auto gap-3">
+              <div class="flex items-center gap-2.5">
+                <span class="relative flex h-3.5 w-3.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500"></span>
+                </span>
+                <span class="text-xs sm:text-sm font-bold text-white tracking-wide">
+                  مسار صعود درجات السلم
+                </span>
+              </div>
               <span id="ladder-autoplay-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] text-emerald-300 font-mono">
                 ▶ يصعد تلقائياً
               </span>
             </div>
 
             <!-- Controller Buttons -->
-            <div class="flex items-center gap-2 text-xs">
+            <div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-2 text-xs">
               <button type="button" onclick="toggleLadderAutoplay()" id="btn-toggle-ladder-autoplay" 
-                class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 flex items-center gap-1.5 transition">
+                class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 flex items-center gap-1.5 transition">
                 <i id="ladder-autoplay-icon" data-lucide="pause" class="w-3.5 h-3.5 text-emerald-400"></i>
                 <span id="ladder-autoplay-text">إيقاف مؤقت</span>
               </button>
@@ -747,330 +748,1223 @@
             <div id="ladder-countdown-fill" class="h-full bg-gradient-to-l from-emerald-400 via-teal-300 to-amber-300 rounded-full transition-all ease-linear" style="width: 0%;"></div>
           </div>
 
-          <!-- ==================== THE ASCENDING STAIRCASE RAIL (8 STEPPED CARDS) ==================== -->
-          <div class="relative py-1">
-            <div class="text-xs font-semibold text-slate-300 mb-2 flex items-center justify-between">
-              <span>🪜 اختر أو تتبع درجات الصعود (اضغط على أي درجة):</span>
-              <span id="ladder-current-phase-pill" class="text-emerald-400 font-mono text-[11px]">الدرجة 1 من 8: أمان واحتواء مباشر</span>
-            </div>
-
-            <div class="flex items-stretch gap-2.5 overflow-x-auto pb-3 pt-1 scrollbar-thin">
+          <!-- ==================== DESKTOP VIEW: HORIZONTAL STEPPED RAIL + STAGE ==================== -->
+          <div class="hidden md:block space-y-7">
+            <!-- Rail -->
+            <div class="relative py-1">
+              <div class="text-xs font-semibold text-slate-300 mb-2 flex items-center justify-between">
+                <span>🪜 اختر أو تتبع درجات الصعود (اضغط على أي درجة):</span>
+                <span id="ladder-current-phase-pill" class="text-emerald-400 font-mono text-[11px]">الدرجة 1 من 8: لقاء الانطلاق المباشر معي</span>
+              </div>
+              <div class="flex items-stretch gap-2.5 overflow-x-auto pb-3 pt-1 scrollbar-thin">
             <!-- Step 1: لقاء الانطلاق المباشر معي -->
             <button type="button" onclick="selectLadderStep(0, true)" id="ladder-node-0" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-amber-400/40 transition">
                 درجة 01
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110 group-hover:shadow-amber-500/30">
-                <i data-lucide="heart-handshake" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110">
+                <i data-lucide="heart-handshake" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-amber-300 transition leading-tight">
+                <span class="block text-xs font-bold text-white group-hover:text-amber-300 transition leading-tight">
                   لقاء الانطلاق المباشر معي
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • مطلع الشهر (اليوم 1)
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-amber-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 2: جلستك الأولى: أكل بيتك -->
+            <!-- Step 2: الجلسة الأولى: أكل بيتك -->
             <button type="button" onclick="selectLadderStep(1, true)" id="ladder-node-1" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-emerald-400/40 transition">
                 درجة 02
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110 group-hover:shadow-emerald-500/30">
-                <i data-lucide="utensils" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110">
+                <i data-lucide="utensils" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
-                  جلستك الأولى: أكل بيتك
+                <span class="block text-xs font-bold text-white group-hover:text-emerald-300 transition leading-tight">
+                  الجلسة الأولى: أكل بيتك
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • اليوم 2
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-emerald-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 3: جلستك الأولى: خفة الحركة -->
+            <!-- Step 3: الجلسة الأولى: كوتش (20 دقيقة) -->
             <button type="button" onclick="selectLadderStep(2, true)" id="ladder-node-2" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-cyan-400/40 transition">
                 درجة 03
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 group-hover:scale-110 group-hover:shadow-cyan-500/30">
-                <i data-lucide="zap" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 group-hover:scale-110">
+                <i data-lucide="zap" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-cyan-300 transition leading-tight">
-                  جلستك الأولى: خفة الحركة
+                <span class="block text-xs font-bold text-white group-hover:text-cyan-300 transition leading-tight">
+                  الجلسة الأولى: كوتش (20 دقيقة)
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الأول • اليوم 3
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-cyan-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 4: متابعتك الثانية: راحة وهضم -->
+            <!-- Step 4: المتابعة الثانية: راحة وهضم -->
             <button type="button" onclick="selectLadderStep(3, true)" id="ladder-node-3" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-emerald-400/40 transition">
                 درجة 04
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110 group-hover:shadow-emerald-500/30">
-                <i data-lucide="shield-check" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
-                  متابعتك الثانية: راحة وهضم
+                <span class="block text-xs font-bold text-white group-hover:text-emerald-300 transition leading-tight">
+                  المتابعة الثانية: راحة وهضم
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الثاني • اليوم 10
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-emerald-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
-            <!-- Step 5: متابعتك الثانية: رشاقة وحركة -->
+            <!-- Step 5: المتابعة الثانية: كوتش (20 دقيقة) -->
             <button type="button" onclick="selectLadderStep(4, true)" id="ladder-node-4" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-cyan-400/40 transition">
                 درجة 05
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 group-hover:scale-110 group-hover:shadow-cyan-500/30">
-                <i data-lucide="feather" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 group-hover:scale-110">
+                <i data-lucide="feather" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-cyan-300 transition leading-tight">
-                  متابعتك الثانية: رشاقة وحركة
+                <span class="block text-xs font-bold text-white group-hover:text-cyan-300 transition leading-tight">
+                  المتابعة الثانية: كوتش (20 دقيقة)
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   منتصف الشهر • اليوم 15
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-cyan-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
             <!-- Step 6: لقاء منتصف الطريق معي -->
             <button type="button" onclick="selectLadderStep(5, true)" id="ladder-node-5" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-amber-400/40 transition">
                 درجة 06
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110 group-hover:shadow-amber-500/30">
-                <i data-lucide="flame" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110">
+                <i data-lucide="flame" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-amber-300 transition leading-tight">
+                <span class="block text-xs font-bold text-white group-hover:text-amber-300 transition leading-tight">
                   لقاء منتصف الطريق معي
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الثالث • اليوم 17
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-amber-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
             <!-- Step 7: متابعتك الختامية: تثبيت للأبد -->
             <button type="button" onclick="selectLadderStep(6, true)" id="ladder-node-6" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-emerald-400/40 transition">
                 درجة 07
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110 group-hover:shadow-emerald-500/30">
-                <i data-lucide="gem" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 group-hover:scale-110">
+                <i data-lucide="gem" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-emerald-300 transition leading-tight">
+                <span class="block text-xs font-bold text-white group-hover:text-emerald-300 transition leading-tight">
                   متابعتك الختامية: تثبيت للأبد
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   الأسبوع الرابع • اليوم 24
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-emerald-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
             <!-- Step 8: حفل التتويج والتخرج -->
             <button type="button" onclick="selectLadderStep(7, true)" id="ladder-node-7" 
-              class="ladder-node flex-1 min-w-[130px] sm:min-w-[140px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
-              
-              <!-- Subtle Step Number Pill -->
+              class="ladder-node flex-1 min-w-[130px] p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 transition-all duration-300 flex flex-col items-center text-center gap-2.5 cursor-pointer group relative">
               <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/5 group-hover:border-amber-400/40 transition">
                 درجة 08
               </span>
-
-              <!-- Big Stylish Icon Container -->
-              <div class="ladder-icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110 group-hover:shadow-amber-500/30">
-                <i data-lucide="crown" class="w-6 h-6 sm:w-7 sm:h-7"></i>
+              <div class="ladder-icon-box w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 group-hover:scale-110">
+                <i data-lucide="crown" class="w-6 h-6"></i>
               </div>
-
-              <!-- Main Emotional Keyword (The Primary Headline) -->
               <div class="space-y-0.5">
-                <span class="block text-xs sm:text-[13px] font-bold text-white group-hover:text-amber-300 transition leading-tight">
+                <span class="block text-xs font-bold text-white group-hover:text-amber-300 transition leading-tight">
                   حفل التتويج والتخرج
                 </span>
                 <span class="block text-[10px] text-slate-400 font-light truncate max-w-[120px]">
                   ختام الشهر • اليوم 29
                 </span>
               </div>
-
-              <!-- Active Arrow Indicator -->
               <div class="active-arrow-indicator absolute -bottom-2.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0B1E33] border-r border-b border-amber-400 rotate-45 opacity-0 transition-opacity duration-300"></div>
             </button>
+              </div>
             </div>
-          </div>
 
-          <!-- ==================== THE ACTIVE STEP SPOTLIGHT STAGE ==================== -->
-          <div id="ladder-stage-display" class="stage-ascending-panel p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 relative text-right space-y-6 shadow-xl transition-all duration-500">
-            
-            <!-- Top Step Header: Icon, Step Title, Companion & Badges -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 border-b border-white/10 pb-5">
-              <div class="flex items-center gap-4">
-                
-                <!-- Giant Glowing Step Icon -->
-                <div id="stage-icon-container" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-xl shrink-0 transition-all duration-500 bg-amber-500/20 text-amber-300 border-2 border-amber-400 shadow-amber-500/30">
-                  <i id="stage-icon-elem" data-lucide="heart-handshake" class="w-8 h-8 sm:w-10 sm:h-10"></i>
+            <!-- Desktop Master Spotlight Stage -->
+            <div id="ladder-stage-display" class="stage-ascending-panel p-6 sm:p-8 rounded-3xl bg-white/[0.02] border border-white/10 relative text-right space-y-6 shadow-xl transition-all duration-500">
+              
+              <!-- Top Step Header: Icon, Step Title, Companion & Badges -->
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 border-b border-white/10 pb-5">
+                <div class="flex items-center gap-4">
+                  <!-- Giant Glowing Step Icon -->
+                  <div id="stage-icon-container" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-xl shrink-0 transition-all duration-500 bg-amber-500/20 text-amber-300 border-2 border-amber-400 shadow-amber-500/30">
+                    <i id="stage-icon-elem" data-lucide="heart-handshake" class="w-8 h-8 sm:w-10 sm:h-10"></i>
+                  </div>
+
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span id="stage-badge-step" class="px-3 py-0.5 rounded-full text-xs font-bold border bg-amber-500/20 text-amber-300 border-amber-500/40">
+                        الدرجة الأولى • لقاء الانطلاق الحي
+                      </span>
+                      <span id="stage-text-timing" class="text-xs text-slate-300 font-medium">
+                        الأسبوع الأول • مطلع الشهر (اليوم 1)
+                      </span>
+                    </div>
+                    <h3 id="stage-title-step" class="text-xl sm:text-2xl font-black text-white tracking-tight">
+                      لقاء الأمان والاحتواء الحي المباشر معي
+                    </h3>
+                    <p id="stage-text-companion" class="text-xs sm:text-sm font-semibold text-amber-300">
+                      بإشراف أحمد الخطيب شخصياً وبحضور فريقك بالكامل
+                    </p>
+                  </div>
                 </div>
 
-                <div class="space-y-1">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span id="stage-badge-step" class="px-3 py-0.5 rounded-full text-xs font-bold border bg-amber-500/20 text-amber-300 border-amber-500/40">
-                      الدرجة الأولى • الانطلاق والأمان
-                    </span>
-                    <span id="stage-text-timing" class="text-xs text-slate-300 font-medium">
-                      الأسبوع الأول • مطلع الشهر (اليوم 1)
-                    </span>
+                <!-- Format & Duration Pill -->
+                <div class="shrink-0">
+                  <span id="stage-text-format" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 text-xs font-medium inline-block">
+                    🎥 Zoom Live تفاعلي • 90 - 120 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Warm Emotional Quote / Heartbeat -->
+              <div class="p-4 rounded-2xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-4 border-amber-400 space-y-1">
+                <p id="stage-card-quote" class="text-xs sm:text-sm text-slate-200 font-light italic leading-relaxed">
+                  «أول خطوة ليست دايتاً جافاً ولا أوامر حرمان؛ بل جلسة حية دافئة أسمع فيها صوتك وأطمئن قلبك أنك لست وحدك بعد اليوم.»
+                </p>
+                <p id="stage-text-subtitle" class="text-[11px] text-slate-400">
+                  نلتقي وجهاً لوجه لكسر الجليد، نزع عقدة الذنب، وتدشين مسار الراحة للأبد.
+                </p>
+              </div>
+
+              <!-- 3 Detailed Emotional Pillars Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+                <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                  <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    <span id="stage-p1-title">سماع شخصي وكسر الجليد</span>
                   </div>
-                  <h3 id="stage-title-step" class="text-xl sm:text-2xl font-black text-white tracking-tight">
-                    لقاء الأمان والاحتواء الحي المباشر معي
-                  </h3>
-                  <p id="stage-text-companion" class="text-xs sm:text-sm font-semibold text-amber-300">
-                    بإشراف أحمد الخطيب شخصياً وبحضور فريقك بالكامل
+                  <p id="stage-p1-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                    أتعرف عليك بالاسم، أسمع مخاوفك وتجاربك السابقة لتشعر أنك مرئي ومسموع ومحاط برعاية صادقة.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                  <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                    <span id="stage-p2-title">نزع عقدة الذنب وتأنيب الضمير</span>
+                  </div>
+                  <p id="stage-p2-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                    تفكيك أوهام الدايتات القاسية وإرساء قاعدة الأمان البيولوجي والنفسي في التعامل مع الطعام.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
+                  <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
+                    <i data-lucide="user-check" class="w-4 h-4"></i>
+                    <span id="stage-p3-title">مراسم التسليم لفريقك الخاص</span>
+                  </div>
+                  <p id="stage-p3-desc" class="text-xs text-slate-300 leading-relaxed font-light">
+                    تقديم أخصائي التغذية وكوتش الحركة الخاصين بك وتسليم ملفك لبدء الجلسات الفردية 1:1 فوراً.
                   </p>
                 </div>
               </div>
 
-              <!-- Format & Duration Pill -->
-              <div class="shrink-0">
-                <span id="stage-text-format" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 text-xs font-medium inline-block">
-                  🎥 Zoom Live تفاعلي • 90 - 120 دقيقة
-                </span>
-              </div>
-            </div>
-
-            <!-- Warm Emotional Quote / Heartbeat -->
-            <div class="p-4 rounded-2xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-4 border-amber-400 space-y-1">
-              <p id="stage-card-quote" class="text-xs sm:text-sm text-slate-200 font-light italic leading-relaxed">
-                «أول خطوة ليست دايتاً جافاً ولا أوامر حرمان؛ بل جلسة حية دافئة أسمع فيها صوتك وأطمئن قلبك أنك لست وحدك بعد اليوم.»
-              </p>
-              <p id="stage-text-subtitle" class="text-[11px] text-slate-400">
-                نلتقي وجهاً لوجه لكسر الجليد، نزع عقدة الذنب، وتدشين مسار الراحة للأبد.
-              </p>
-            </div>
-
-            <!-- 3 Detailed Emotional Pillars Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
-                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                  <i data-lucide="sparkles" class="w-4 h-4"></i>
-                  <span id="stage-p1-title">سماع شخصي وكسر الجليد</span>
+              <!-- Bottom Outcome Ribbon -->
+              <div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                <div class="flex items-center gap-2 font-semibold text-slate-200">
+                  <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
+                  <span>المحصلة والشعور في نهاية هذه الدرجة:</span>
+                  <span id="stage-text-outcome" class="text-amber-300 font-bold">
+                    الشعور الفوري بالراحة النفسية والاطمئنان لبدء الجلسات الخاصة دون أي خوف
+                  </span>
                 </div>
-                <p id="stage-p1-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                  أتعرف عليك بالاسم، أسمع مخاوفك وتجاربك السابقة لتشعر أنك مرئي ومسموع ومحاط برعاية صادقة.
-                </p>
+                
+                <div class="text-[11px] text-slate-400 flex items-center gap-1">
+                  <span>الدرجة القادمة في السلم:</span>
+                  <span id="stage-text-next" class="text-slate-200 font-bold">الدرجة 2: الجلسة الفردية الأولى للتغذية 👈</span>
+                </div>
               </div>
 
-              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
-                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                  <i data-lucide="shield" class="w-4 h-4"></i>
-                  <span id="stage-p2-title">نزع عقدة الذنب وتأنيب الضمير</span>
+            </div>
+          </div>
+
+          <!-- ==================== MOBILE VIEW: ZERO-SCROLL IN-PLACE EXPANDING CARDS ==================== -->
+          <div class="block md:hidden space-y-3">
+            <div class="text-xs font-semibold text-slate-300 px-1 flex items-center justify-between">
+              <span>🪜 درجات الصعود (اضغط لمعاينة أي مرحلة):</span>
+              <span id="mobile-current-phase-pill" class="text-emerald-400 font-mono text-[10px]">درجة 1 من 8</span>
+            </div>
+
+            <!-- 8 In-Place Expandable Cards Container -->
+            <div id="mobile-accordion-container" class="space-y-2.5">
+          <!-- Mobile Step Item 1 -->
+          <div id="mobile-card-step-0" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(0, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-amber-300 bg-amber-500/15 border-amber-500/40 shadow-sm">
+                  <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                 </div>
-                <p id="stage-p2-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                  تفكيك أوهام الدايتات القاسية وإرساء قاعدة الأمان البيولوجي والنفسي في التعامل مع الطعام.
-                </p>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 01
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الأول • مطلع الشهر (اليوم 1)
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    لقاء الانطلاق المباشر معي
+                  </h4>
+                  <span class="text-[11px] text-amber-300 font-medium block">
+                    🎥 Zoom Live تفاعلي • 90 - 120 دقيقة
+                  </span>
+                </div>
               </div>
 
-              <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2 text-right">
-                <div class="flex items-center gap-2 text-amber-400 text-xs font-bold">
-                  <i data-lucide="user-check" class="w-4 h-4"></i>
-                  <span id="stage-p3-title">مراسم التسليم لفريقك الخاص</span>
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-0" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-amber-300 bg-amber-500/15 border-amber-500/30">
+                    الدرجة الأولى • لقاء الانطلاق الحي
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    لقاء الأمان والاحتواء الحي المباشر معي
+                  </h3>
+                  <p class="text-xs font-semibold text-amber-300">
+                    بإشراف أحمد الخطيب شخصياً وبحضور فريقك بالكامل
+                  </p>
                 </div>
-                <p id="stage-p3-desc" class="text-xs text-slate-300 leading-relaxed font-light">
-                  تقديم أخصائي التغذية وكوتش الحركة الخاصين بك وتسليم ملفك لبدء الجلسات الفردية 1:1 فوراً.
-                </p>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-amber-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «أول خطوة ليست دايتاً جافاً ولا أوامر حرمان؛ بل جلسة حية دافئة أسمع فيها صوتك وأطمئن قلبك أنك لست وحدك بعد اليوم.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    نلتقي وجهاً لوجه لكسر الجليد، نزع عقدة الذنب، وتدشين مسار الراحة للأبد
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>سماع شخصي وكسر الجليد</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      أتعرف عليك بالاسم، أسمع مخاوفك وتجاربك السابقة لتشعر أنك مرئي ومسموع ومحاط برعاية صادقة.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>نزع عقدة الذنب وتأنيب الضمير</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      تفكيك أوهام الدايتات القاسية وإرساء قاعدة الأمان البيولوجي والنفسي في التعامل مع الطعام.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>مراسم التسليم لفريقك الخاص</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      تقديم أخصائي التغذية وكوتش الحركة الخاصين بك وتسليم ملفك لبدء الجلسات الفردية 1:1 فوراً.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-amber-300 leading-normal">
+                    الشعور الفوري بالراحة النفسية والاطمئنان لبدء الجلسات الخاصة دون أي خوف
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(1, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 02 (الجلسة الأولى: أكل بيتك) 👈</span>
+                  </button>
+                </div>
+
               </div>
             </div>
 
-            <!-- Bottom Outcome Ribbon -->
-            <div class="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-              <div class="flex items-center gap-2 font-semibold text-slate-200">
-                <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
-                <span>المحصلة والشعور في نهاية هذه الدرجة:</span>
-                <span id="stage-text-outcome" class="text-amber-300 font-bold">
-                  الشعور الفوري بالراحة النفسية والاطمئنان لبدء الجلسات الخاصة دون أي خوف
-                </span>
+          </div>
+          <!-- Mobile Step Item 2 -->
+          <div id="mobile-card-step-1" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(1, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-emerald-300 bg-emerald-500/15 border-emerald-500/40 shadow-sm">
+                  <i data-lucide="utensils" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 02
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الأول • اليوم 2
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    الجلسة الأولى: أكل بيتك
+                  </h4>
+                  <span class="text-[11px] text-emerald-300 font-medium block">
+                    📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة
+                  </span>
+                </div>
               </div>
-              
-              <div class="text-[11px] text-slate-400 flex items-center gap-1">
-                <span>الدرجة القادمة في السلم:</span>
-                <span id="stage-text-next" class="text-slate-200 font-bold">الدرجة 2: تفصيل مائدتك وأكل بيتك 👈</span>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-1" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-emerald-300 bg-emerald-500/15 border-emerald-500/30">
+                    الدرجة الثانية • الجلسة الفردية الأولى (تغذية)
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    الجلسة الفردية الخاصة الأولى مع أخصائي التغذية
+                  </h3>
+                  <p class="text-xs font-semibold text-emerald-300">
+                    الجلسة الفردية الخاصة الأولى (1:1) مع أخصائي التغذية المعتمد
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-emerald-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «لا ميزان في الجيب ولا وجبات معقدة؛ خطتك تُبنى من نفس طعام أهلك وثلاجتك ومطاعم عملك المفضلة.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    جلستك الخاصة الفردية الأولى (1:1) لتأكل ما تحب وتشبع دون حرمان أو أكلات غريبة
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>تشخيص عاداتك وأكلاتك المحببة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      مكالمة فيديو خاصة (20 دقيقة) للتعرف على ما تحبه من طعام ليكون هو نفسه حجر الأساس في خطتك اليومية.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>بدائل ذكية للمطاعم والعزومات</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      حلول عملية لتعيش حياتك الاجتماعية وتستمتع بعزومات أهلك والعمل دون أي شعور بالحرمان.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>معايرة الشبع وساعات الصيام المريحة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      تحديد مقادير الشبع المشبعة وساعات الصيام الخفيفة التي تمنحك طاقة دون جوع أو صداع.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-emerald-300 leading-normal">
+                    اعتماد خطة أكل البيت المريحة وبدء الشعور بالخفة وراحة المعدة فوراً
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(2, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 03 (الجلسة الأولى: كوتش (20 دقيقة)) 👈</span>
+                  </button>
+                </div>
+
               </div>
             </div>
 
+          </div>
+          <!-- Mobile Step Item 3 -->
+          <div id="mobile-card-step-2" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(2, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-cyan-300 bg-cyan-500/15 border-cyan-500/40 shadow-sm">
+                  <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 03
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الأول • اليوم 3
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    الجلسة الأولى: كوتش (20 دقيقة)
+                  </h4>
+                  <span class="text-[11px] text-cyan-300 font-medium block">
+                    📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-2" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-cyan-300 bg-cyan-500/15 border-cyan-500/30">
+                    الدرجة الثالثة • الجلسة الأولى (كوتش)
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    الجلسة الفردية الخاصة الأولى مع كوتش الحركة (20 دقيقة)
+                  </h3>
+                  <p class="text-xs font-semibold text-cyan-300">
+                    الجلسة الفردية الخاصة الأولى (1:1) مع كوتش الحركة واللياقة المعتمد
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-cyan-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «لا نطلب منك الذهاب للجيم ولا شراء أجهزة معقدة؛ 20 دقيقة مريحة وخفيفة في صالتك تعيد لظهرك ورقبتك الانسيابية والحيوية.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    جلستك الخاصة الفردية الأولى (1:1) مع الكوتش لتصميم روتين حركة ذكي بـ 20 دقيقة في صالة بيتك
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>فحص طبيعة جلوسك وصحة مفاصلك</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      تقييم أسلوب جلوسك اليومي وساعات دوامك ومفاصلك لتصميم روتين آمن 100% يمنع أي ألم.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>جلسة الـ 20 دقيقة مع الكوتش</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      مكالمة فيديو خاصة (20 دقيقة) لتصميم روتين بسيط تؤديه في صالة بيتك يرفع هرمونات النشاط وتنشيط الحرق دون إجهاد.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>تفكيك آلام الظهر وتيبس الرقبة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      إطالات وتمارين تنشيط مريحة تمحو إرهاق الجلوس المكتبي الطويل وتمنحك خفة فورية.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-cyan-300 leading-normal">
+                    امتلاك خطة حركة ممتعة وسهلة وتوديع كسل البدايات والشعور بالنشاط
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(3, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 04 (المتابعة الثانية: راحة وهضم) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Mobile Step Item 4 -->
+          <div id="mobile-card-step-3" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(3, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-emerald-300 bg-emerald-500/15 border-emerald-500/40 shadow-sm">
+                  <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 04
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الثاني • اليوم 10
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    المتابعة الثانية: راحة وهضم
+                  </h4>
+                  <span class="text-[11px] text-emerald-300 font-medium block">
+                    📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-3" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-emerald-300 bg-emerald-500/15 border-emerald-500/30">
+                    الدرجة الرابعة • المتابعة الفردية الخاصة الثانية
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    المتابعة الفردية الخاصة الثانية مع أخصائي التغذية
+                  </h3>
+                  <p class="text-xs font-semibold text-emerald-300">
+                    المتابعة الفردية الخاصة الثانية (1:1) مع أخصائي التغذية المعتمد
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-emerald-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «بعد انقضاء أسبوعك الأول، نطمئن على معدتك ونومك في مكالمة خاصة ثانية؛ أي وجبة لم ترتح لها نغيرها فوراً لتظل في غاية السعادة والرضا.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    جلستك الفردية الخاصة الثانية (20 دقيقة) لقياس خفة بطنك، تحسن نومك، واختفاء الرغبة في السكر
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>مراجعة خفة الهضم وجودة النوم</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      الاطمئنان على انتهاء الانتفاخ، تحسن جودة النوم العميق، واستقرار مستويات طاقتك طوال النهار.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>تعديل الوجبات وإضافة رغباتك الجديدة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      إدخال خيارات شهية جديدة بحسب ما اشتهيته هذا الأسبوع لتظل مستمتعاً دون أي رتابة.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>حيل عملية للقضاء على اشتهاء السكر</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      حلول ذكية وبدائل طبيعية لذيذة تنهي تماماً نوبات اشتهاء السكر واللقمشة الليلية.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-emerald-300 leading-normal">
+                    تثبيت خفة الأسبوع الأول ومعايرة الخطة لتصبح مريحة وممتعة 100%
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(4, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 05 (المتابعة الثانية: كوتش (20 دقيقة)) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Mobile Step Item 5 -->
+          <div id="mobile-card-step-4" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(4, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-cyan-300 bg-cyan-500/15 border-cyan-500/40 shadow-sm">
+                  <i data-lucide="feather" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 05
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      منتصف الشهر • اليوم 15
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    المتابعة الثانية: كوتش (20 دقيقة)
+                  </h4>
+                  <span class="text-[11px] text-cyan-300 font-medium block">
+                    📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-4" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-cyan-300 bg-cyan-500/15 border-cyan-500/30">
+                    الدرجة الخامسة • المتابعة الفردية الخاصة الثانية للحركة
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    المتابعة الفردية الخاصة الثانية مع كوتش الحركة (20 دقيقة)
+                  </h3>
+                  <p class="text-xs font-semibold text-cyan-300">
+                    المتابعة الفردية الخاصة الثانية (1:1) مع كوتش الحركة واللياقة المعتمد
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-cyan-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «جلسة فيديو خاصة 20 دقيقة لمتابعة حركتك وتطوير روتينك؛ تدرج لطيف ومدروس يجعل الحركة عادة تنتظرها بشوق لتشعر أن جسدك أصبح يعمل معك لا ضدك.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    جلستك الفردية الخاصة الثانية (20 دقيقة) مع الكوتش للتدرج في اللياقة وتعزيز ثقتك في جسدك
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>تقييم التوافق وسهولة التطبيق</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      التأكد من أن روتين الحركة أصبح جزءاً سلساً من يومك يمنحك الطاقة دون أن يعطل أشغالك.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>تطوير التكنيك وحماية المفاصل</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      مراجعة حية للأداء للتأكد من استهداف العضلات بالشكل الصحيح وحماية ركبتيك وظهرك.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>شحن لياقة منتصف الشهر بـ 20 دقيقة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      إضافة تنويعات حركية ممتعة تكسر الملل البدني وتزيد معدل حرق الدهون اليومي بثبات وأمان.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-cyan-300 leading-normal">
+                    قوام مشدود، مفاصل مرنة، وشعور ملموس بالخفة والقدرة على صعود السلالم والنشاط
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(5, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 06 (لقاء منتصف الطريق معي) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Mobile Step Item 6 -->
+          <div id="mobile-card-step-5" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(5, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-amber-300 bg-amber-500/15 border-amber-500/40 shadow-sm">
+                  <i data-lucide="flame" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 06
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الثالث • اليوم 17
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    لقاء منتصف الطريق معي
+                  </h4>
+                  <span class="text-[11px] text-amber-300 font-medium block">
+                    🎥 Zoom Live تفاعلي • 60 - 75 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-5" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-amber-300 bg-amber-500/15 border-amber-500/30">
+                    الدرجة السادسة • لقاء تجديد الشغف
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    لقاء منتصف الطريق معي.. كسر الفتور ومضاعفة الحماس
+                  </h3>
+                  <p class="text-xs font-semibold text-amber-300">
+                    بإشراف أحمد الخطيب شخصياً (بث حي تفاعلي)
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-amber-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «عندما يحاول عقلك العودة لمنطقة الراحة القديمة؛ نلتقي معاً لنفكك المقاومة ونجدد الشغف لتصل لخط النهاية منتصراً.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    اللقاء الحاسم في منتصف الشهر لتفكيك المقاومة البيولوجية وإشعال طاقة الانتصار
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>تفكيك مقاومة منتصف الرحلة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      فهم تغيرات الهرمونات ومقاومة الدماغ للروتين الجديد وكيف تتجاوز مرحلة الركود بثقة وهدوء.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>حوار مباشر وإجابة كل التساؤلات</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      أجيب شخصياً على كل تساؤلاتك وتحديات الأيام الماضية لنزيل أي لبس أو تردد في ثوانٍ.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>خارطة طريق النصف الثاني</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      استراتيجية الـ 13 يوماً المتبقية لتعظيم النتائج وترسيخ السلام الداخلي والشعور بالإنجاز.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-amber-300 leading-normal">
+                    كسر ثبات الوزن، تجديد طاقة الاستمرار، وشحن العزيمة لعبور النصف الثاني بقوة
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(6, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 07 (متابعتك الختامية: تثبيت للأبد) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Mobile Step Item 7 -->
+          <div id="mobile-card-step-6" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(6, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-emerald-300 bg-emerald-500/15 border-emerald-500/40 shadow-sm">
+                  <i data-lucide="gem" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 07
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      الأسبوع الرابع • اليوم 24
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    متابعتك الختامية: تثبيت للأبد
+                  </h4>
+                  <span class="text-[11px] text-emerald-300 font-medium block">
+                    📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-6" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-emerald-300 bg-emerald-500/15 border-emerald-500/30">
+                    الدرجة السابعة • المتابعة الفردية الخاصة الختامية
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    المتابعة الفردية الخاصة الختامية مع أخصائي التغذية
+                  </h3>
+                  <p class="text-xs font-semibold text-emerald-300">
+                    المتابعة الفردية الخاصة الختامية (1:1) مع أخصائي التغذية المعتمد
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-emerald-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «تسليم مفاتيح الأمان الذاتي: تتعلم كيف تأكل في السفر والبوفيهات وتثبت وزنك دون خوف من الارتداد للأبد.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    جلستك الفردية الخاصة الختامية (20 دقيقة) لتأصيل عاداتك وتملك بوصلة التغذية الذاتية
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>حصر النتائج ونزول المقاسات الفعلي</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      مقارنة مقاسات ملابسك، صفاء ذهنك، واستقرار طاقتك وتتويج الجهد بالأرقام الملموسة.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>خطة التثبيت في السفر والمناسبات</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      قواعد ذهبية مرنة للاستمتاع بالطعام خارج البيت دون أي زيادة في الوزن أو تأنيب ضمير.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>تسليم بوصلة التغذية الذاتية المخصصة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      ملف إرشاداتك الخاص ليكون مرجعك الدائم في الأكل الواعي والمستدام بقية حياتك.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-emerald-300 leading-normal">
+                    التحرر الكامل من هوس الميزان وتملك أدوات الحفاظ على وزنك وصحتك للأبد
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(7, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 08 (حفل التتويج والتخرج) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- Mobile Step Item 8 -->
+          <div id="mobile-card-step-7" class="mobile-step-card rounded-2xl border transition-all duration-300 overflow-hidden bg-white/[0.03] border-white/10">
+            
+            <!-- Mobile Step Trigger Header (Tap to Open/Close) -->
+            <button type="button" onclick="selectLadderStep(7, true)" class="w-full p-4 flex items-center justify-between gap-3 text-right cursor-pointer select-none">
+              <div class="flex items-center gap-3.5">
+                <!-- Glowing Step Icon -->
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-all duration-300 text-amber-300 bg-amber-500/15 border-amber-500/40 shadow-sm">
+                  <i data-lucide="crown" class="w-6 h-6"></i>
+                </div>
+                
+                <div class="space-y-0.5">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] font-mono font-bold text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                      درجة 08
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-light">
+                      ختام الشهر • اليوم 29
+                    </span>
+                  </div>
+                  <h4 class="text-sm font-bold text-white transition leading-snug">
+                    حفل التتويج والتخرج
+                  </h4>
+                  <span class="text-[11px] text-amber-300 font-medium block">
+                    🎥 Zoom Live احتفالي • 90 دقيقة
+                  </span>
+                </div>
+              </div>
+
+              <!-- Accordion Arrow Icon -->
+              <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center shrink-0 text-slate-400 mobile-arrow-btn transition-transform duration-300">
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+              </div>
+            </button>
+
+            <!-- Mobile Step Expanded Body (In-Place Details!) -->
+            <div id="mobile-body-step-7" class="mobile-step-body transition-all duration-500 overflow-hidden" style="max-height: 0px; opacity: 0;">
+              <div class="p-4 pt-1 space-y-4 border-t border-white/5 text-right">
+                
+                <!-- Step Title & Companion -->
+                <div class="space-y-1">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border inline-block text-amber-300 bg-amber-500/15 border-amber-500/30">
+                    الدرجة الثامنة • قمة التتويج والاحتفال
+                  </span>
+                  <h3 class="text-base font-extrabold text-white leading-tight">
+                    حفل التتويج والتخرج.. نحتفل بنسختك الأجمل والأهدأ
+                  </h3>
+                  <p class="text-xs font-semibold text-amber-300">
+                    بحضور أحمد الخطيب + كوتش الحركة وأخصائيي التغذية
+                  </p>
+                </div>
+
+                <!-- Emotional Quote -->
+                <div class="p-3.5 rounded-xl bg-gradient-to-r from-white/[0.04] to-transparent border-r-3 border-amber-400 space-y-1">
+                  <p class="text-xs text-slate-200 font-light italic leading-relaxed">
+                    «تنتهي الـ 30 يوماً وتبدأ حياتك الحقيقية: جسد خفيف، علاقة مطمئنة مع الطعام، وسلام داخلي تستحقه بكل فخر.»
+                  </p>
+                  <p class="text-[10px] text-slate-400">
+                    حفل الختام الشامل وتكريم التزامك وإطلاق أسلوب حياتك الجديد بحرية وفخر
+                  </p>
+                </div>
+
+                <!-- 3 Transformation Pillars (Stacked on Mobile) -->
+                <div class="space-y-2.5 pt-1">
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                      <span>الاحتفاء بقصص النجاح والتحول</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      استعراض تحولات المشتركين المذهلة والاحتفال بالنتائج في المقاسات وخفة الروح وراحة البال.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+                      <span>وصايا أحمد الخطيب الذهبية للاستدامة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      جلسة ختامية عميقة تضمن بقاء هذه العادات والسكينة معك للأبد كجزء لا يتجزأ من هويتك.
+                    </p>
+                  </div>
+
+                  <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
+                    <div class="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+                      <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
+                      <span>شهادات الإنجاز وتكريم المسيرة</span>
+                    </div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-light">
+                      تكريم رحلتك وفتح مسارات الرعاية المتقدمة لتبقى دائماً في كنف بيئتنا الداعمة.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Outcome & Emotion -->
+                <div class="pt-2 border-t border-white/5 space-y-1 text-xs">
+                  <div class="flex items-center gap-1.5 font-semibold text-slate-300">
+                    <i data-lucide="target" class="w-3.5 h-3.5 text-emerald-400"></i>
+                    <span>المحصلة والشعور:</span>
+                  </div>
+                  <p class="text-xs font-bold text-amber-300 leading-normal">
+                    تتويج رحلة الـ 30 يوماً والاحتفال بامتلاك النسخة الأفضل والأهدأ من صحتك وجسدك
+                  </p>
+                </div>
+
+                <!-- Direct In-Place Action Button to Climb to Next Step -->
+                <div class="pt-2">
+                  <button type="button" onclick="selectLadderStep(0, true)" 
+                    class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-white flex items-center justify-center gap-2 transition group">
+                    <span>الصعود للدرجة التالية: درجة 01 (لقاء الانطلاق المباشر معي) 👈</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+            </div>
           </div>
 
         </div>
@@ -1593,14 +2487,14 @@
       }
     ],
     "outcome": "الشعور الفوري بالراحة النفسية والاطمئنان لبدء الجلسات الخاصة دون أي خوف",
-    "next_step": "الدرجة 2: جلستك الأولى لأكل بيتك 👈"
+    "next_step": "الدرجة 2: الجلسة الفردية الأولى للتغذية 👈"
   },
   {
     "step_num": "02",
-    "step_badge": "الدرجة الثانية • جلستك الأولى (تغذية)",
-    "title": "جلستك الأولى: تصميم مائدتك من أكل بيتك المفضل",
+    "step_badge": "الدرجة الثانية • الجلسة الفردية الأولى (تغذية)",
+    "title": "الجلسة الفردية الخاصة الأولى مع أخصائي التغذية",
     "sub_title": "جلستك الخاصة الفردية الأولى (1:1) لتأكل ما تحب وتشبع دون حرمان أو أكلات غريبة",
-    "keyword": "جلستك الأولى: أكل بيتك",
+    "keyword": "الجلسة الأولى: أكل بيتك",
     "companion": "الجلسة الفردية الخاصة الأولى (1:1) مع أخصائي التغذية المعتمد",
     "companion_type": "nutrition",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
@@ -1622,14 +2516,14 @@
       }
     ],
     "outcome": "اعتماد خطة أكل البيت المريحة وبدء الشعور بالخفة وراحة المعدة فوراً",
-    "next_step": "الدرجة 3: جلستك الأولى مع الكوتش 👈"
+    "next_step": "الدرجة 3: الجلسة الأولى مع كوتش الحركة 👈"
   },
   {
     "step_num": "03",
-    "step_badge": "الدرجة الثالثة • جلستك الأولى (كوتش)",
-    "title": "جلستك الأولى: إيقاظ خفة جسدك وتوديع خمول المكاتب",
+    "step_badge": "الدرجة الثالثة • الجلسة الأولى (كوتش)",
+    "title": "الجلسة الفردية الخاصة الأولى مع كوتش الحركة (20 دقيقة)",
     "sub_title": "جلستك الخاصة الفردية الأولى (1:1) مع الكوتش لتصميم روتين حركة ذكي بـ 20 دقيقة في صالة بيتك",
-    "keyword": "جلستك الأولى: خفة الحركة",
+    "keyword": "الجلسة الأولى: كوتش (20 دقيقة)",
     "companion": "الجلسة الفردية الخاصة الأولى (1:1) مع كوتش الحركة واللياقة المعتمد",
     "companion_type": "coach",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
@@ -1651,14 +2545,14 @@
       }
     ],
     "outcome": "امتلاك خطة حركة ممتعة وسهلة وتوديع كسل البدايات والشعور بالنشاط",
-    "next_step": "الدرجة 4: متابعتك الثانية للتغذية 👈"
+    "next_step": "الدرجة 4: المتابعة الفردية الثانية للتغذية 👈"
   },
   {
     "step_num": "04",
-    "step_badge": "الدرجة الرابعة • متابعتك الثانية",
-    "title": "متابعتك الثانية: معايرة الراحة والاطمئنان وتجاوز عقبات البداية",
-    "sub_title": "جلستك الفردية الخاصة الثانية لقياس خفة بطنك، تحسن نومك، واختفاء الرغبة في السكر",
-    "keyword": "متابعتك الثانية: راحة وهضم",
+    "step_badge": "الدرجة الرابعة • المتابعة الفردية الخاصة الثانية",
+    "title": "المتابعة الفردية الخاصة الثانية مع أخصائي التغذية",
+    "sub_title": "جلستك الفردية الخاصة الثانية (20 دقيقة) لقياس خفة بطنك، تحسن نومك، واختفاء الرغبة في السكر",
+    "keyword": "المتابعة الثانية: راحة وهضم",
     "companion": "المتابعة الفردية الخاصة الثانية (1:1) مع أخصائي التغذية المعتمد",
     "companion_type": "nutrition",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
@@ -1680,14 +2574,14 @@
       }
     ],
     "outcome": "تثبيت خفة الأسبوع الأول ومعايرة الخطة لتصبح مريحة وممتعة 100%",
-    "next_step": "الدرجة 5: متابعتك الثانية مع الكوتش 👈"
+    "next_step": "الدرجة 5: المتابعة الفردية الثانية مع الكوتش 👈"
   },
   {
     "step_num": "05",
-    "step_badge": "الدرجة الخامسة • متابعتك الثانية للحركة",
-    "title": "متابعتك الثانية: انسيابية حركتك وتدفق طاقتك بلا إجهاد",
+    "step_badge": "الدرجة الخامسة • المتابعة الفردية الخاصة الثانية للحركة",
+    "title": "المتابعة الفردية الخاصة الثانية مع كوتش الحركة (20 دقيقة)",
     "sub_title": "جلستك الفردية الخاصة الثانية (20 دقيقة) مع الكوتش للتدرج في اللياقة وتعزيز ثقتك في جسدك",
-    "keyword": "متابعتك الثانية: رشاقة وحركة",
+    "keyword": "المتابعة الثانية: كوتش (20 دقيقة)",
     "companion": "المتابعة الفردية الخاصة الثانية (1:1) مع كوتش الحركة واللياقة المعتمد",
     "companion_type": "coach",
     "format": "📹 مكالمة فيديو خاصة (1:1) • 20 دقيقة",
@@ -1738,12 +2632,12 @@
       }
     ],
     "outcome": "كسر ثبات الوزن، تجديد طاقة الاستمرار، وشحن العزيمة لعبور النصف الثاني بقوة",
-    "next_step": "الدرجة 7: متابعتك الختامية للتغذية 👈"
+    "next_step": "الدرجة 7: المتابعة الفردية الختامية للتغذية 👈"
   },
   {
     "step_num": "07",
-    "step_badge": "الدرجة السابعة • متابعتك الختامية (تغذية)",
-    "title": "متابعتك الختامية: درع الاستدامة وتثبيت نتائجك مدى الحياة",
+    "step_badge": "الدرجة السابعة • المتابعة الفردية الخاصة الختامية",
+    "title": "المتابعة الفردية الخاصة الختامية مع أخصائي التغذية",
     "sub_title": "جلستك الفردية الخاصة الختامية (20 دقيقة) لتأصيل عاداتك وتملك بوصلة التغذية الذاتية",
     "keyword": "متابعتك الختامية: تثبيت للأبد",
     "companion": "المتابعة الفردية الخاصة الختامية (1:1) مع أخصائي التغذية المعتمد",
@@ -1802,7 +2696,7 @@
 
     var currentLadderStep = 0;
     var isLadderAutoplay = true;
-    var ladderIntervalMs = 4500; // 4.5 seconds per step
+    var ladderIntervalMs = 5000; // 5 seconds per step for comfortable reading
     var ladderStartTime = Date.now();
     var ladderCountdownFrame = null;
     var isLadderHovered = false;
@@ -1813,20 +2707,48 @@
       var d = ladderStepsData[idx];
       var theme = d.companion_type === "ahmed" ? "amber" : (d.companion_type === "nutrition" ? "emerald" : "cyan");
 
-      // 1. Update Step Nodes on the Ladder
+      // 1. Update Desktop Step Nodes on the Rail
       for (var i = 0; i < ladderStepsData.length; i++) {
         var node = document.getElementById('ladder-node-' + i);
         if (node) {
           node.classList.remove('active-step', 'theme-amber', 'theme-emerald', 'theme-cyan');
           if (i === idx) {
             node.classList.add('active-step', 'theme-' + theme);
-            // Ensure visible in horizontal scroll
             node.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
           }
         }
       }
 
-      // 2. Update Header Indicators
+      // 2. Update Mobile In-Place Accordion Cards
+      for (var i = 0; i < ladderStepsData.length; i++) {
+        var mCard = document.getElementById('mobile-card-step-' + i);
+        var mBody = document.getElementById('mobile-body-step-' + i);
+        if (mCard && mBody) {
+          var arrow = mCard.querySelector('.mobile-arrow-btn');
+          if (i === idx) {
+            mCard.classList.add('border-' + theme + '-500/60', 'bg-white/[0.07]', 'shadow-lg');
+            mCard.classList.remove('border-white/10', 'bg-white/[0.03]');
+            mBody.style.maxHeight = mBody.scrollHeight + 50 + 'px';
+            mBody.style.opacity = '1';
+            if (arrow) arrow.style.transform = 'rotate(180deg)';
+
+            // If user clicked manually on mobile, smoothly scroll the card to comfortable viewing position
+            if (isManual && window.innerWidth < 768) {
+              setTimeout(function() {
+                mCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              }, 100);
+            }
+          } else {
+            mCard.classList.remove('border-amber-500/60', 'border-emerald-500/60', 'border-cyan-500/60', 'bg-white/[0.07]', 'shadow-lg');
+            mCard.classList.add('border-white/10', 'bg-white/[0.03]');
+            mBody.style.maxHeight = '0px';
+            mBody.style.opacity = '0';
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+          }
+        }
+      }
+
+      // 3. Update Header Indicators
       var indicator = document.getElementById('ladder-step-indicator');
       if (indicator) {
         indicator.textContent = (idx + 1) + ' / ' + ladderStepsData.length;
@@ -1837,7 +2759,12 @@
         phasePill.textContent = 'الدرجة ' + (idx + 1) + ' من 8: ' + d.keyword;
       }
 
-      // 3. Trigger Stage Panel Elevation Animation
+      var mPhasePill = document.getElementById('mobile-current-phase-pill');
+      if (mPhasePill) {
+        mPhasePill.textContent = 'درجة ' + (idx + 1) + ' من 8: ' + d.keyword;
+      }
+
+      // 4. Trigger Desktop Stage Panel Animation
       var stageCard = document.getElementById('ladder-stage-display');
       if (stageCard) {
         stageCard.classList.remove('deck-rising');
@@ -1845,7 +2772,7 @@
         stageCard.classList.add('deck-rising');
       }
 
-      // 4. Update Stage Elements
+      // 5. Update Desktop Stage Elements
       var iconContainer = document.getElementById('stage-icon-container');
       var iconElem = document.getElementById('stage-icon-elem');
       if (iconContainer && iconElem) {
@@ -1886,7 +2813,7 @@
       var textSubtitle = document.getElementById('stage-text-subtitle');
       if (textSubtitle) textSubtitle.textContent = d.sub_title;
 
-      // 3 detailed transformation pillars
+      // 3 detailed transformation pillars on Desktop
       if (d.benefits && d.benefits.length >= 3) {
         var p1T = document.getElementById('stage-p1-title');
         var p1D = document.getElementById('stage-p1-desc');

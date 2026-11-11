@@ -232,14 +232,21 @@
                   <span id="disp-nut-actual-hours-sum" class="font-black text-emerald-300 text-xs">2.1 س / يومياً</span>
                 </div>
                 
-                <div class="space-y-1.5 text-[10px] text-slate-300 bg-slate-950/70 p-2 rounded border border-slate-800/80">
-                  <div class="flex justify-between items-center text-emerald-300 font-bold">
-                    <span>📞 3 جلسات كول للمشترك شهرياً:</span>
-                    <span>70 دقيقة كول (30+20+20)</span>
+                <!-- Editable Session Minutes -->
+                <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-300 bg-slate-950/70 p-2 rounded border border-slate-800/80">
+                  <div class="flex items-center justify-between">
+                    <span class="text-emerald-300 font-bold">📞 كول المشترك (30+20+20):</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-nut-call-mins" value="70" min="0" max="180" step="5" oninput="recalc()" class="w-10 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-emerald-300">
+                      <span>د</span>
+                    </div>
                   </div>
-                  <div class="flex justify-between items-center text-teal-300 font-bold">
-                    <span>📋 تقارير الجلسات للمشترك شهرياً:</span>
-                    <span>30 دقيقة تقارير (10+10+10)</span>
+                  <div class="flex items-center justify-between">
+                    <span class="text-teal-300 font-bold">📋 تقارير الجلسات (10+10+10):</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-nut-rep-mins" value="30" min="0" max="90" step="5" oninput="recalc()" class="w-10 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-teal-300">
+                      <span>د</span>
+                    </div>
                   </div>
                 </div>
 
@@ -301,14 +308,21 @@
                   <span id="disp-coach-actual-hours-sum" class="font-black text-cyan-300 text-xs">4.0 س / يومياً</span>
                 </div>
 
-                <div class="space-y-1.5 text-[10px] text-slate-300 bg-slate-950/70 p-2 rounded border border-slate-800/80">
-                  <div class="flex justify-between items-center text-cyan-300 font-bold">
-                    <span>📞 جلستان كول للمشترك شهرياً:</span>
-                    <span>50 دقيقة كول (30+20)</span>
+                <!-- Editable Session Minutes -->
+                <div class="grid grid-cols-2 gap-2 text-[10px] text-slate-300 bg-slate-950/70 p-2 rounded border border-slate-800/80">
+                  <div class="flex items-center justify-between">
+                    <span class="text-cyan-300 font-bold">📞 كول المشترك (30+20):</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-coach-call-mins" value="50" min="0" max="120" step="5" oninput="recalc()" class="w-10 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-cyan-300">
+                      <span>د</span>
+                    </div>
                   </div>
-                  <div class="flex justify-between items-center text-teal-300 font-bold">
-                    <span>📋 تقارير الجلسات للمشترك شهرياً:</span>
-                    <span>20 دقيقة تقارير (10+10)</span>
+                  <div class="flex items-center justify-between">
+                    <span class="text-teal-300 font-bold">📋 تقارير الجلسات (10+10):</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-coach-rep-mins" value="20" min="0" max="60" step="5" oninput="recalc()" class="w-10 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-teal-300">
+                      <span>د</span>
+                    </div>
                   </div>
                 </div>
 
@@ -555,50 +569,32 @@
 
       <!-- Comparative Sensitivity Table -->
       <div class="mt-10 space-y-4 relative z-10">
-        <h3 class="text-base font-black text-white flex items-center gap-2">
-          <i data-lucide="table" class="w-4 h-4 text-emerald-400"></i>
-          <span>جدول المقارنة الحساسة المباشرة (نطاق 35 إلى 50 مشترك)</span>
-        </h3>
+        <div class="flex justify-between items-center">
+          <h3 class="text-base font-black text-white flex items-center gap-2">
+            <i data-lucide="table" class="w-4 h-4 text-emerald-400"></i>
+            <span>جدول المقارنة الحساسة المباشرة (تحديث تفاعلي لحظي لنطاق 35 إلى 50 مشترك)</span>
+          </h3>
+          <span class="text-[11px] text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/30">تحليل فوري للمدخلات الحالية</span>
+        </div>
 
-        <div class="overflow-x-auto border border-slate-700 rounded-2xl bg-[#071626]/80">
+        <div class="overflow-x-auto border border-slate-700 rounded-2xl bg-[#071626]/80 shadow-2xl">
           <table class="w-full text-right text-xs">
-            <thead class="bg-slate-800/80 border-b border-slate-700 text-slate-400">
+            <thead class="bg-slate-800/80 border-b border-slate-700 text-slate-400" id="sensitivity-table-head">
               <tr>
                 <th class="p-3.5 font-bold">حجم الدفعة</th>
-                <th class="p-3.5 font-bold text-center">سيناريو 79$ (إجمالي الدخل)</th>
-                <th class="p-3.5 font-bold text-center">سيناريو 99$ (إجمالي الدخل)</th>
-                <th class="p-3.5 font-bold text-center">ساعات الأخصائي / يومياً (من 8 س)</th>
-                <th class="p-3.5 font-bold text-center">ساعات الكوتش / يومياً (من 8 س)</th>
+                <th class="p-3.5 font-bold text-center" id="th-scen-early">سيناريو المبكر ($79)</th>
+                <th class="p-3.5 font-bold text-center" id="th-scen-late">سيناريو العادي ($99)</th>
+                <th class="p-3.5 font-bold text-center" id="th-nut-hrs">ساعات الأخصائي / يومياً (من 8 س)</th>
+                <th class="p-3.5 font-bold text-center" id="th-coach-hrs">ساعات الكوتش / يومياً (من 8 س)</th>
                 <th class="p-3.5 font-bold text-center">تقييم الإشغال اليومي</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-800 text-slate-300">
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="p-3.5 font-bold text-white">35 مشتركاً (الحد الأدنى)</td>
-                <td class="p-3.5 text-center font-bold text-emerald-400">$2,765 (134,100 ج)</td>
-                <td class="p-3.5 text-center font-bold text-cyan-400">$3,465 (168,000 ج)</td>
-                <td class="p-3.5 text-center font-bold">~1.8 س / يومياً (23%)</td>
-                <td class="p-3.5 text-center font-bold">~3.5 س / يومياً (44%)</td>
-                <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">مريح وهادئ جداً 🟢</span></td>
-              </tr>
-              <tr class="hover:bg-slate-800/40 transition bg-emerald-500/10">
-                <td class="p-3.5 font-black text-emerald-400">40 مشتركاً (الهدف الذهبي المعتمد ⭐)</td>
-                <td class="p-3.5 text-center font-bold text-emerald-400">$3,160 (153,260 ج)</td>
-                <td class="p-3.5 text-center font-bold text-cyan-400">$3,960 (192,000 ج)</td>
-                <td class="p-3.5 text-center font-black text-white">~2.1 س / يومياً (26%)</td>
-                <td class="p-3.5 text-center font-black text-white">~10.0 ساعات / س</td>
-                <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-black">توازن إكلينيكي مثالي 🟢</span></td>
-              </tr>
-              <tr class="hover:bg-slate-800/40 transition">
-                <td class="p-3.5 font-bold text-white">50 مشتركاً (السقف الأقصى للدفعة الأولى)</td>
-                <td class="p-3.5 text-center font-bold text-emerald-400">$3,950 (191,500 ج)</td>
-                <td class="p-3.5 text-center font-bold text-cyan-400">$4,950 (240,000 ج)</td>
-                <td class="p-3.5 text-center font-bold">~2.6 س / يومياً (33%)</td>
-                <td class="p-3.5 text-center font-bold">~5.0 س / يومياً (63%)</td>
-                <td class="p-3.5 text-center"><span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">إشغال نشط ومستقر 🟡</span></td>
-              </tr>
+            <tbody class="divide-y divide-slate-800 text-slate-300" id="sensitivity-table-body">
+              <!-- Rendered dynamically via recalc() -->
             </tbody>
           </table>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -720,29 +716,27 @@
 
       // Staff Headcounts, Daily Official Hours & Salaries
       const cntNut = Math.max(1, parseInt(document.getElementById('cnt-nut').value) || 1);
-      const hrsNutDaily = Math.max(1, parseFloat(document.getElementById('hrs-nut').value) || 8);
+      const hrsNutDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-nut').value) || 8);
       const salNut = parseFloat(document.getElementById('sal-nut').value) || 0;
 
       const cntCoach = Math.max(1, parseInt(document.getElementById('cnt-coach').value) || 1);
-      const hrsCoachDaily = Math.max(1, parseFloat(document.getElementById('hrs-coach').value) || 8);
+      const hrsCoachDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-coach').value) || 8);
       const salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
 
       const cntMod = Math.max(1, parseInt(document.getElementById('cnt-mod').value) || 1);
-      const hrsModDaily = Math.max(1, parseFloat(document.getElementById('hrs-mod').value) || 6);
+      const hrsModDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-mod').value) || 6);
       const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
 
       // 4. Clinical Package Session Formulas (wahetnor.com/#about):
       // A) Dietitians:
-      // - 3 Calls monthly: 30m + 20m + 20m = 70 min Calls per client
-      // - 3 Reports monthly: 10m + 10m + 10m = 30 min Reports per client
-      // - Plan prep: task-nut-prep (default 15 min per client)
-      // - Community & Tickets: task-nut-tickets (default 30 min daily)
-      const clientsPerNut = (totalClients / cntNut);
+      const nutCallMins = parseFloat(document.getElementById('task-nut-call-mins')?.value) || 70;
+      const nutRepMins = parseFloat(document.getElementById('task-nut-rep-mins')?.value) || 30;
       const nutPrepMins = parseFloat(document.getElementById('task-nut-prep')?.value) || 15;
       const nutDailyTicketMins = parseFloat(document.getElementById('task-nut-tickets')?.value) || 30;
 
-      const monthlyNutCallHours = (clientsPerNut * 70) / 60;
-      const monthlyNutReportHours = (clientsPerNut * 30) / 60;
+      const clientsPerNut = (totalClients / cntNut);
+      const monthlyNutCallHours = (clientsPerNut * nutCallMins) / 60;
+      const monthlyNutReportHours = (clientsPerNut * nutRepMins) / 60;
       const monthlyNutPrepHours = (clientsPerNut * nutPrepMins) / 60;
       const monthlyNutTicketHours = (nutDailyTicketMins * daysPerMonth) / 60;
 
@@ -759,18 +753,15 @@
       if (elDispNutActual) elDispNutActual.innerText = dailyNutHours.toFixed(1) + ' س / يومياً';
 
       // B) Fitness Coach:
-      // - 2 Calls monthly: 30m + 20m = 50 min Calls per client
-      // - 2 Reports monthly: 10m + 10m = 20 min Reports per client
-      // - Workout prep: task-coach-prep (default 20 min per client)
-      // - Tickets & Community: task-coach-tickets (default 30 min daily)
-      // - Daily Admin & Reports: task-coach-daily-report (default 1.0 hr daily)
-      const clientsPerCoach = (totalClients / cntCoach);
+      const coachCallMins = parseFloat(document.getElementById('task-coach-call-mins')?.value) || 50;
+      const coachRepMins = parseFloat(document.getElementById('task-coach-rep-mins')?.value) || 20;
       const coachPrepMins = parseFloat(document.getElementById('task-coach-prep')?.value) || 20;
       const coachDailyTicketMins = parseFloat(document.getElementById('task-coach-tickets')?.value) || 30;
       const coachDailyAdminHours = parseFloat(document.getElementById('task-coach-daily-report')?.value) || 1.0;
 
-      const monthlyCoachCallHours = (clientsPerCoach * 50) / 60;
-      const monthlyCoachReportHours = (clientsPerCoach * 20) / 60;
+      const clientsPerCoach = (totalClients / cntCoach);
+      const monthlyCoachCallHours = (clientsPerCoach * coachCallMins) / 60;
+      const monthlyCoachReportHours = (clientsPerCoach * coachRepMins) / 60;
       const monthlyCoachPrepHours = (clientsPerCoach * coachPrepMins) / 60;
       const monthlyCoachTicketHours = (coachDailyTicketMins * daysPerMonth) / 60;
       const monthlyCoachAdminHours = coachDailyAdminHours * daysPerMonth;
@@ -854,12 +845,12 @@
 
       // Max Capacity Calculations (at 100% of official daily hours)
       const nutAvailableHoursForClients = (hrsNutDaily * daysPerMonth) - monthlyNutTicketHours;
-      const nutHoursPerClient = (70 + 30 + nutPrepMins) / 60;
-      const maxClientsPerNut = Math.max(1, Math.floor(nutAvailableHoursForClients / nutHoursPerClient));
+      const nutHoursPerClient = (nutCallMins + nutRepMins + nutPrepMins) / 60;
+      const maxClientsPerNut = Math.max(1, Math.floor(nutAvailableHoursForClients / (nutHoursPerClient || 1)));
 
       const coachAvailableHoursForClients = (hrsCoachDaily * daysPerMonth) - monthlyCoachTicketHours - monthlyCoachAdminHours;
-      const coachHoursPerClient = (50 + 20 + coachPrepMins) / 60;
-      const maxClientsPerCoach = Math.max(1, Math.floor(coachAvailableHoursForClients / coachHoursPerClient));
+      const coachHoursPerClient = (coachCallMins + coachRepMins + coachPrepMins) / 60;
+      const maxClientsPerCoach = Math.max(1, Math.floor(coachAvailableHoursForClients / (coachHoursPerClient || 1)));
 
       // Badges
       function getLoadBadge(pct, diff) {
@@ -916,8 +907,8 @@
       workloadHTML += '<div style="width: ' + nutTicketWidth + '%;" class="bg-indigo-400 h-full transition-all duration-300" title="تذاكر الكوميونيتي: ' + dailyNutTicketHours.toFixed(1) + ' س/يوم"></div>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="flex flex-wrap justify-between text-[10px] text-slate-400 font-bold px-0.5 gap-y-1">';
-      workloadHTML += '<span class="text-emerald-400">● كول (70د): ' + dailyNutCallHours.toFixed(1) + ' س/يوم</span>';
-      workloadHTML += '<span class="text-teal-300">● تقارير (30د): ' + dailyNutReportHours.toFixed(1) + ' س/يوم</span>';
+      workloadHTML += '<span class="text-emerald-400">● كول (' + nutCallMins + 'د): ' + dailyNutCallHours.toFixed(1) + ' س/يوم</span>';
+      workloadHTML += '<span class="text-teal-300">● تقارير (' + nutRepMins + 'د): ' + dailyNutReportHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '<span class="text-cyan-300">● تجهيز خطط: ' + dailyNutPrepHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '<span class="text-indigo-300">● تذاكر: ' + dailyNutTicketHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '</div>';
@@ -964,8 +955,8 @@
       workloadHTML += '<div style="width: ' + coachAdminWidth + '%;" class="bg-amber-400 h-full transition-all duration-300" title="إدارة وتقارير يومية: ' + dailyCoachAdminHours.toFixed(1) + ' س/يوم"></div>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="flex flex-wrap justify-between text-[10px] text-slate-400 font-bold px-0.5 gap-y-1">';
-      workloadHTML += '<span class="text-cyan-400">● كول (50د): ' + dailyCoachCallHours.toFixed(1) + ' س/يوم</span>';
-      workloadHTML += '<span class="text-teal-300">● تقارير (20د): ' + dailyCoachReportHours.toFixed(1) + ' س/يوم</span>';
+      workloadHTML += '<span class="text-cyan-400">● كول (' + coachCallMins + 'د): ' + dailyCoachCallHours.toFixed(1) + ' س/يوم</span>';
+      workloadHTML += '<span class="text-teal-300">● تقارير (' + coachRepMins + 'د): ' + dailyCoachReportHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '<span class="text-blue-300">● تجهيز تمارين: ' + dailyCoachPrepHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '<span class="text-indigo-300">● تذاكر: ' + dailyCoachTicketHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '<span class="text-amber-300">● تقارير يومية: ' + dailyCoachAdminHours.toFixed(1) + ' س/يوم</span>';
@@ -996,6 +987,70 @@
       workloadHTML += '</div>';
 
       document.getElementById('dynamic-workload-container').innerHTML = workloadHTML;
+
+      // 8. Dynamic Sensitivity Table Calculation & Update
+      const thEarly = document.getElementById('th-scen-early');
+      if (thEarly) thEarly.innerText = 'سيناريو المبكر ($' + priceEarly + ')';
+      const thLate = document.getElementById('th-scen-late');
+      if (thLate) thLate.innerText = 'سيناريو العادي ($' + priceLate + ')';
+      const thNut = document.getElementById('th-nut-hrs');
+      if (thNut) thNut.innerText = 'ساعات الأخصائي / يومياً (من ' + hrsNutDaily + ' س)';
+      const thCoach = document.getElementById('th-coach-hrs');
+      if (thCoach) thCoach.innerText = 'ساعات الكوتش / يومياً (من ' + hrsCoachDaily + ' س)';
+
+      const scenarios = [
+        { n: 35, label: '35 مشتركاً (الحد الأدنى)', isHighlight: false },
+        { n: 40, label: '40 مشتركاً (الهدف الذهبي المعتمد ⭐)', isHighlight: true },
+        { n: 45, label: '45 مشتركاً (نمو متوازن)', isHighlight: false },
+        { n: 50, label: '50 مشتركاً (السقف الأقصى للدفعة الأولى)', isHighlight: false }
+      ];
+
+      let tableHTML = '';
+      scenarios.forEach(sc => {
+        const revE = sc.n * priceEarly;
+        const revEEGP = Math.round(revE * FX_RATE);
+        const revL = sc.n * priceLate;
+        const revLEGP = Math.round(revL * FX_RATE);
+
+        // Dietitian for this cohort size
+        const cNut_N = sc.n / cntNut;
+        const mNutHours_N = (cNut_N * (nutCallMins + nutRepMins + nutPrepMins) / 60) + monthlyNutTicketHours;
+        const dNutHours_N = mNutHours_N / daysPerMonth;
+        const nutPct_N = Math.round((dNutHours_N / hrsNutDaily) * 100);
+
+        // Coach for this cohort size
+        const cCoach_N = sc.n / cntCoach;
+        const mCoachHours_N = (cCoach_N * (coachCallMins + coachRepMins + coachPrepMins) / 60) + monthlyCoachTicketHours + monthlyCoachAdminHours;
+        const dCoachHours_N = mCoachHours_N / daysPerMonth;
+        const coachPct_N = Math.round((dCoachHours_N / hrsCoachDaily) * 100);
+
+        const maxLoad = Math.max(nutPct_N, coachPct_N);
+        let evalBadge = '';
+        if (maxLoad <= 50) {
+          evalBadge = '<span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">مريح وهادئ جداً 🟢</span>';
+        } else if (maxLoad <= 75) {
+          evalBadge = '<span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-black">توازن إكلينيكي ممتاز 🟢</span>';
+        } else if (maxLoad <= 100) {
+          evalBadge = '<span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-bold">إشغال نشط ومستقر 🟡</span>';
+        } else {
+          evalBadge = '<span class="px-2.5 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 font-bold">يتطلب كادراً إضافياً ⚠️</span>';
+        }
+
+        const rowBg = sc.isHighlight ? 'bg-emerald-500/10 hover:bg-emerald-500/15' : 'hover:bg-slate-800/40';
+        const labelClass = sc.isHighlight ? 'font-black text-emerald-400' : 'font-bold text-white';
+
+        tableHTML += '<tr class="transition ' + rowBg + '">';
+        tableHTML += '<td class="p-3.5 ' + labelClass + '">' + sc.label + '</td>';
+        tableHTML += '<td class="p-3.5 text-center font-bold text-emerald-400">$' + revE.toLocaleString() + ' (' + revEEGP.toLocaleString() + ' ج)</td>';
+        tableHTML += '<td class="p-3.5 text-center font-bold text-cyan-400">$' + revL.toLocaleString() + ' (' + revLEGP.toLocaleString() + ' ج)</td>';
+        tableHTML += '<td class="p-3.5 text-center font-bold text-slate-200">~' + dNutHours_N.toFixed(1) + ' س / يومياً (' + nutPct_N + '%)</td>';
+        tableHTML += '<td class="p-3.5 text-center font-bold text-slate-200">~' + dCoachHours_N.toFixed(1) + ' س / يومياً (' + coachPct_N + '%)</td>';
+        tableHTML += '<td class="p-3.5 text-center">' + evalBadge + '</td>';
+        tableHTML += '</tr>';
+      });
+
+      const tbodyEl = document.getElementById('sensitivity-table-body');
+      if (tbodyEl) tbodyEl.innerHTML = tableHTML;
       
       // Update Lucide icons if needed
       if (window.lucide) {

@@ -449,9 +449,45 @@
             <div class="flex justify-between items-center border-b border-slate-800 pb-3">
               <h4 class="font-bold text-sm text-white flex items-center gap-2">
                 <i data-lucide="clock-4" class="w-4 h-4 text-emerald-400"></i>
-                <span>توزيع ساعات ومدى انشغال الموظفين طوال الشهر</span>
+                <span>توزيع ساعات ومدى انشغال الموظفين (باقة wahetnor.com)</span>
               </h4>
-              <span class="text-xs text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-700">حساب ديناميكي فوري لنسب الإشغال</span>
+              <span class="text-xs text-slate-400 bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-700">معيار الجلسات: أولى (30+10د) • متابعة (20+10د)</span>
+            </div>
+
+            <!-- Clinical Package Sessions Formula Banner (حسب باقة wahetnor.com/#about) -->
+            <div class="bg-gradient-to-r from-emerald-950/40 via-cyan-950/30 to-slate-900 border border-emerald-500/30 rounded-xl p-3.5 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-emerald-300 flex items-center gap-1.5">
+                  <i data-lucide="calendar-check" class="w-4 h-4 text-emerald-400"></i>
+                  <span>معيار جلسات الباقة المعتمد في الموقع (wahetnor.com/#about):</span>
+                </span>
+                <span class="text-[10px] text-cyan-400 font-bold bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">30 يوماً من المتابعة</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-emerald-500/20 space-y-1">
+                  <span class="font-bold text-emerald-400 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>أخصائي التغذية (3 جلسات/عميل):</span>
+                  </span>
+                  <ul class="text-[10px] text-slate-300 space-y-0.5 pr-2">
+                    <li>• <strong class="text-white">الاستشارة الأولى:</strong> 30 د كول + 10 د تقرير (= 40 د)</li>
+                    <li>• <strong class="text-white">متابعتان شهرياً:</strong> 2 × (20 د كول + 10 د تقرير) (= 60 د)</li>
+                    <li class="text-emerald-300 font-bold pt-0.5">المجموع: 100 دقيقة/مشترك (70 د كول + 30 د تقارير)</li>
+                  </ul>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-cyan-500/20 space-y-1">
+                  <span class="font-bold text-cyan-400 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    <span>كوتش الحركة (جلستان/عميل):</span>
+                  </span>
+                  <ul class="text-[10px] text-slate-300 space-y-0.5 pr-2">
+                    <li>• <strong class="text-white">الاستشارة الأولى:</strong> 30 د كول + 10 د برنامج (= 40 د)</li>
+                    <li>• <strong class="text-white">متابعة واحدة:</strong> 20 د كول + 10 د برنامج (= 30 د)</li>
+                    <li>• <strong class="text-amber-300">+ ساعة إداري أسبوعياً</strong> للتنسيق والمتابعة</li>
+                    <li class="text-cyan-300 font-bold pt-0.5">المجموع: 70 دقيقة/مشترك + 1 س إداري</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <!-- Dynamic Container for Staff Workload Bars -->
@@ -654,18 +690,41 @@
       const hrsMod = Math.max(1, parseFloat(document.getElementById('hrs-mod').value) || 14);
       const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
 
-      // Task hours components
-      const taskNutCalls = parseFloat(document.getElementById('task-nut-calls').value) || 5;
-      const taskNutReports = parseFloat(document.getElementById('task-nut-reports').value) || 3;
-      const actualNutHours = taskNutCalls + taskNutReports; // 8.0 hrs
+      // 4. Clinical Package Session Formulas (wahetnor.com/#about):
+      // A) Dietitians:
+      // - Initial Consultation: 30 min call + 10 min report (= 40 min)
+      // - 2 Followups: 2 x (20 min call + 10 min report) (= 60 min)
+      // Monthly Total per Client: 70 min Calls + 30 min Reports = 100 min total
+      const clientsPerNut = (totalClients / cntNut);
+      const actualNutCallHours = (clientsPerNut * 70) / (4 * 60); // weekly call hours
+      const actualNutReportHours = (clientsPerNut * 30) / (4 * 60); // weekly report hours
+      const actualNutHours = actualNutCallHours + actualNutReportHours;
+
+      // Update input fields preview in sidebar
+      const elTaskNutCalls = document.getElementById('task-nut-calls');
+      if (elTaskNutCalls) elTaskNutCalls.value = actualNutCallHours.toFixed(1);
+      const elTaskNutReports = document.getElementById('task-nut-reports');
+      if (elTaskNutReports) elTaskNutReports.value = actualNutReportHours.toFixed(1);
       document.getElementById('disp-nut-actual-hours-sum').innerText = actualNutHours.toFixed(1) + ' س فعلية';
 
-      const taskCoachCalls = parseFloat(document.getElementById('task-coach-calls').value) || 5;
-      const taskCoachReports = parseFloat(document.getElementById('task-coach-reports').value) || 3;
-      const taskCoachAdmin = parseFloat(document.getElementById('task-coach-admin').value) || 1;
-      const actualCoachHours = taskCoachCalls + taskCoachReports + taskCoachAdmin; // 9.0 hrs
+      // B) Fitness Coach:
+      // - Initial Consultation: 30 min call + 10 min plan (= 40 min)
+      // - 1 Followup: 20 min call + 10 min plan (= 30 min)
+      // Monthly Total per Client: 50 min Calls + 20 min Plans = 70 min total
+      // + 1 Hour Admin per week
+      const clientsPerCoach = (totalClients / cntCoach);
+      const actualCoachCallHours = (clientsPerCoach * 50) / (4 * 60); // weekly call hours
+      const actualCoachReportHours = (clientsPerCoach * 20) / (4 * 60); // weekly plan hours
+      const actualCoachAdminHours = parseFloat(document.getElementById('task-coach-admin')?.value) || 1.0;
+      const actualCoachHours = actualCoachCallHours + actualCoachReportHours + actualCoachAdminHours;
+
+      const elTaskCoachCalls = document.getElementById('task-coach-calls');
+      if (elTaskCoachCalls) elTaskCoachCalls.value = actualCoachCallHours.toFixed(1);
+      const elTaskCoachReports = document.getElementById('task-coach-reports');
+      if (elTaskCoachReports) elTaskCoachReports.value = actualCoachReportHours.toFixed(1);
       document.getElementById('disp-coach-actual-hours-sum').innerText = actualCoachHours.toFixed(1) + ' س فعلية';
 
+      // Payroll Calculations
       const totalNutPayrollEGP = cntNut * salNut;
       const totalCoachPayrollEGP = cntCoach * salCoach;
       const totalModPayrollEGP = cntMod * salMod;
@@ -695,7 +754,7 @@
         subdetailEl.innerText = cntNut + ' تغذية + ' + cntCoach + ' كوتش + ' + cntMod + ' موديراتور';
       }
 
-      // 4. Marketing & Gateway Fees
+      // 5. Marketing & Gateway Fees
       const adSpendUSD = parseFloat(document.getElementById('val-adspend').value) || 0;
       const gatewayPct = (parseFloat(document.getElementById('val-gateway-pct').value) || 0) / 100;
       const gatewayFeeUSD = Math.round(totalRevUSD * gatewayPct);
@@ -706,7 +765,7 @@
       document.getElementById('disp-costs-egp').innerText = '≈ ' + totalOpCostsEGP.toLocaleString() + ' ج.م';
       document.getElementById('disp-costs-breakdown').innerText = 'إعلانات: $' + adSpendUSD.toLocaleString() + ' • بوابة الدفع: $' + gatewayFeeUSD.toLocaleString();
 
-      // 5. Net Profit & Margin
+      // 6. Net Profit & Margin
       const totalExpensesUSD = totalStaffPayrollUSD + totalOpCostsUSD;
       const netProfitUSD = Math.max(0, totalRevUSD - totalExpensesUSD);
       const netProfitEGP = Math.round(netProfitUSD * FX_RATE);
@@ -716,18 +775,16 @@
       document.getElementById('disp-net-egp').innerText = '≈ ' + netProfitEGP.toLocaleString() + ' ج.م';
       document.getElementById('disp-margin').innerText = 'هامش: ' + profitMarginPct + '%';
 
-      // 6. Dynamic Workload & Utilization Calculations based on Actual Work Hours
-      // A) Clinical Dietitians
-      const clientsPerNut = (totalClients / cntNut).toFixed(1);
+      // 7. Dynamic Workload & Utilization Calculations based on Actual Work Hours
+      // Dietitians Utilization
       const nutLoadPct = Math.round((actualNutHours / hrsNut) * 100);
       const nutDiffHours = (hrsNut - actualNutHours).toFixed(1);
 
-      // B) Fitness Coaches
-      const clientsPerCoach = (totalClients / cntCoach).toFixed(1);
+      // Fitness Coaches Utilization
       const coachLoadPct = Math.round((actualCoachHours / hrsCoach) * 100);
       const coachDiffHours = (hrsCoach - actualCoachHours).toFixed(1);
 
-      // C) Community Moderators
+      // Community Moderators Utilization
       const actualModHours = (10 + (totalClients * 0.1)) / cntMod;
       const modLoadPct = Math.round((actualModHours / hrsMod) * 100);
       const modDiffHours = (hrsMod - actualModHours).toFixed(1);
@@ -753,12 +810,12 @@
       let workloadHTML = '';
 
       // Dietitians Block
-      const nutCallWidth = Math.min(100, Math.round((taskNutCalls / hrsNut) * 100));
-      const nutRepWidth = Math.min(100 - nutCallWidth, Math.round((taskNutReports / hrsNut) * 100));
+      const nutCallWidth = Math.min(100, Math.round((actualNutCallHours / hrsNut) * 100));
+      const nutRepWidth = Math.min(100 - nutCallWidth, Math.round((actualNutReportHours / hrsNut) * 100));
 
       workloadHTML += '<div class="space-y-3 p-3.5 bg-slate-900/80 rounded-xl border border-emerald-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائي التغذية (' + cntNut + ' كادر • ساعات الموظف: ' + hrsNut + ' س/أسبوعياً):</span></span>';
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائيو التغذية (' + cntNut + ' كادر • ساعات الموظف: ' + hrsNut + ' س/أسبوعياً):</span></span>';
       workloadHTML += getLoadBadge(nutLoadPct, nutDiffHours);
       workloadHTML += '</div>';
 
@@ -766,24 +823,24 @@
       workloadHTML += '<div>';
       workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">ساعات العمل الفعلية:</span>';
       workloadHTML += '<span class="text-sm font-black text-emerald-300">' + actualNutHours.toFixed(1) + ' س / أسبوعياً</span>';
-      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + taskNutCalls + ' س كول + ' + taskNutReports + ' س تقارير وخطط)</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + actualNutCallHours.toFixed(1) + ' س كول + ' + actualNutReportHours.toFixed(1) + ' س تقارير وخطط)</span>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="text-left">';
       workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">مدى الانشغال (% الإشغال):</span>';
       workloadHTML += '<span class="text-sm font-black ' + getLoadColor(nutLoadPct) + '">' + nutLoadPct + '%</span>';
-      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsNut + ' س مكتوبة (' + clientsPerNut + ' مشترك/أخصائي)</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsNut + ' س مكتوبة (' + clientsPerNut.toFixed(1) + ' مشترك/أخصائي)</span>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
 
       // Segmented Progress Bar
       workloadHTML += '<div class="space-y-1.5">';
       workloadHTML += '<div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex">';
-      workloadHTML += '<div style="width: ' + nutCallWidth + '%;" class="bg-emerald-500 h-full transition-all duration-300" title="استقبال كول: ' + taskNutCalls + ' س"></div>';
-      workloadHTML += '<div style="width: ' + nutRepWidth + '%;" class="bg-teal-400 h-full transition-all duration-300" title="تجهيز تقارير وخطط: ' + taskNutReports + ' س"></div>';
+      workloadHTML += '<div style="width: ' + nutCallWidth + '%;" class="bg-emerald-500 h-full transition-all duration-300" title="استقبال كول: ' + actualNutCallHours.toFixed(1) + ' س"></div>';
+      workloadHTML += '<div style="width: ' + nutRepWidth + '%;" class="bg-teal-400 h-full transition-all duration-300" title="تجهيز تقارير وخطط: ' + actualNutReportHours.toFixed(1) + ' س"></div>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="flex justify-between text-[10px] text-slate-400 font-bold px-0.5">';
-      workloadHTML += '<span class="text-emerald-400">● استقبال كول: ' + taskNutCalls + ' س</span>';
-      workloadHTML += '<span class="text-teal-300">● تقارير وخطط: ' + taskNutReports + ' س</span>';
+      workloadHTML += '<span class="text-emerald-400">● كول (30+20د): ' + actualNutCallHours.toFixed(1) + ' س</span>';
+      workloadHTML += '<span class="text-teal-300">● خطط وتقارير (10د): ' + actualNutReportHours.toFixed(1) + ' س</span>';
       if (hrsNut >= actualNutHours) {
         workloadHTML += '<span class="text-slate-400 font-normal">فائض أمان: ' + nutDiffHours + ' س</span>';
       } else {
@@ -794,9 +851,9 @@
       workloadHTML += '</div>';
 
       // Coach Block
-      const coachCallWidth = Math.min(100, Math.round((taskCoachCalls / hrsCoach) * 100));
-      const coachRepWidth = Math.min(100 - coachCallWidth, Math.round((taskCoachReports / hrsCoach) * 100));
-      const coachAdminWidth = Math.min(100 - coachCallWidth - coachRepWidth, Math.round((taskCoachAdmin / hrsCoach) * 100));
+      const coachCallWidth = Math.min(100, Math.round((actualCoachCallHours / hrsCoach) * 100));
+      const coachRepWidth = Math.min(100 - coachCallWidth, Math.round((actualCoachReportHours / hrsCoach) * 100));
+      const coachAdminWidth = Math.min(100 - coachCallWidth - coachRepWidth, Math.round((actualCoachAdminHours / hrsCoach) * 100));
 
       workloadHTML += '<div class="space-y-3 p-3.5 bg-slate-900/80 rounded-xl border border-cyan-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
@@ -808,26 +865,26 @@
       workloadHTML += '<div>';
       workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">ساعات العمل الفعلية:</span>';
       workloadHTML += '<span class="text-sm font-black text-cyan-300">' + actualCoachHours.toFixed(1) + ' س / أسبوعياً</span>';
-      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + taskCoachCalls + ' س كول + ' + taskCoachReports + ' س تقارير + ' + taskCoachAdmin + ' س إداري)</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + actualCoachCallHours.toFixed(1) + ' س كول + ' + actualCoachReportHours.toFixed(1) + ' س برامج + ' + actualCoachAdminHours + ' س إداري)</span>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="text-left">';
       workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">مدى الانشغال (% الإشغال):</span>';
       workloadHTML += '<span class="text-sm font-black ' + getLoadColor(coachLoadPct) + '">' + coachLoadPct + '%</span>';
-      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsCoach + ' س مكتوبة (' + clientsPerCoach + ' مشترك/كوتش)</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsCoach + ' س مكتوبة (' + clientsPerCoach.toFixed(1) + ' مشترك/كوتش)</span>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
 
       // Segmented Progress Bar for Coach
       workloadHTML += '<div class="space-y-1.5">';
       workloadHTML += '<div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex">';
-      workloadHTML += '<div style="width: ' + coachCallWidth + '%;" class="bg-cyan-500 h-full transition-all duration-300" title="استقبال كول: ' + taskCoachCalls + ' س"></div>';
-      workloadHTML += '<div style="width: ' + coachRepWidth + '%;" class="bg-blue-400 h-full transition-all duration-300" title="تجهيز تقارير وخطط: ' + taskCoachReports + ' س"></div>';
-      workloadHTML += '<div style="width: ' + coachAdminWidth + '%;" class="bg-amber-400 h-full transition-all duration-300" title="ساعة إداري: ' + taskCoachAdmin + ' س"></div>';
+      workloadHTML += '<div style="width: ' + coachCallWidth + '%;" class="bg-cyan-500 h-full transition-all duration-300" title="استقبال كول: ' + actualCoachCallHours.toFixed(1) + ' س"></div>';
+      workloadHTML += '<div style="width: ' + coachRepWidth + '%;" class="bg-blue-400 h-full transition-all duration-300" title="تجهيز برامج تمارين: ' + actualCoachReportHours.toFixed(1) + ' س"></div>';
+      workloadHTML += '<div style="width: ' + coachAdminWidth + '%;" class="bg-amber-400 h-full transition-all duration-300" title="ساعة إداري: ' + actualCoachAdminHours + ' س"></div>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="flex justify-between text-[10px] text-slate-400 font-bold px-0.5">';
-      workloadHTML += '<span class="text-cyan-400">● كول: ' + taskCoachCalls + ' س</span>';
-      workloadHTML += '<span class="text-blue-300">● تقارير: ' + taskCoachReports + ' س</span>';
-      workloadHTML += '<span class="text-amber-300">● إداري: ' + taskCoachAdmin + ' س</span>';
+      workloadHTML += '<span class="text-cyan-400">● كول (30+20د): ' + actualCoachCallHours.toFixed(1) + ' س</span>';
+      workloadHTML += '<span class="text-blue-300">● برامج تمارين (10د): ' + actualCoachReportHours.toFixed(1) + ' س</span>';
+      workloadHTML += '<span class="text-amber-300">● إداري: ' + actualCoachAdminHours + ' س</span>';
       if (hrsCoach >= actualCoachHours) {
         workloadHTML += '<span class="text-slate-400 font-normal">فائض: ' + coachDiffHours + ' س</span>';
       } else {

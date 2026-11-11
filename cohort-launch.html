@@ -181,6 +181,28 @@
               <span class="text-[10px] text-cyan-300 font-bold bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20" id="disp-total-staff-count-pill">4 موظفين</span>
             </div>
 
+            <!-- Smart Employment Model Switcher (دوام كامل vs بارت تايم vs بالعميل) -->
+            <div class="space-y-1.5 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center text-[11px] font-bold">
+                <span class="text-slate-300 flex items-center gap-1.5">
+                  <i data-lucide="briefcase" class="w-3.5 h-3.5 text-cyan-400"></i>
+                  <span>نمط التعاقد المقترح:</span>
+                </span>
+                <span id="disp-mode-badge" class="text-[10px] text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30 font-bold">بارت تايم (نصف دوام 4س) ⭐ الأنسب للـ 40</span>
+              </div>
+              <div class="grid grid-cols-3 gap-1 text-[10px] font-bold">
+                <button type="button" onclick="setEmploymentMode('fulltime')" id="btn-mode-fulltime" class="py-1.5 px-1 rounded-lg transition-all text-center border border-slate-700 bg-slate-900 text-slate-300 hover:text-white">
+                  🏢 دوام كامل (8س)
+                </button>
+                <button type="button" onclick="setEmploymentMode('parttime')" id="btn-mode-parttime" class="py-1.5 px-1 rounded-lg transition-all text-center border border-emerald-500/50 bg-emerald-500/20 text-emerald-300 shadow font-black">
+                  ⚡ بارت تايم (4س) ⭐
+                </button>
+                <button type="button" onclick="setEmploymentMode('perclient')" id="btn-mode-perclient" class="py-1.5 px-1 rounded-lg transition-all text-center border border-slate-700 bg-slate-900 text-slate-300 hover:text-white">
+                  🎯 محاسبة بالعميل
+                </button>
+              </div>
+            </div>
+
             <!-- Working Days per Month Setting -->
             <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800 flex items-center justify-between">
               <div class="flex items-center gap-1.5 text-xs text-slate-300 font-bold">
@@ -547,7 +569,108 @@
               <!-- Rendered via recalc() -->
             </div>
 
-            <!-- Dr Ahmed (Always Fixed & Clinical Leadership) -->
+            <!-- Unit Economics & Part-Time Savings Tracker (تحليل تكلفة المشترك وتوفير البارت تايم) -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-cyan-500/30 space-y-3.5 shadow-lg my-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2.5 border-b border-slate-800 gap-2">
+              <div>
+                <span class="text-xs font-black text-cyan-400 flex items-center gap-1.5">
+                  <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                  <span>تحليل تكلفة المشترك الواحد (Unit Economics) ووفر البارت تايم</span>
+                </span>
+                <p class="text-[10px] text-slate-400 mt-0.5">دراسة مالية دقيقة لحصة كل مشترك من رواتب الفريق وحجم الوفر عند تشغيل نصف الدوام</p>
+              </div>
+              <span id="disp-unit-econ-badge" class="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+                هامش أمان سريري فائق 🟢
+              </span>
+            </div>
+
+            <!-- 3 Metric Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <!-- Card 1: Staff Cost Per Client -->
+              <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-800 space-y-1">
+                <div class="flex justify-between items-center text-[10px] text-slate-400 font-bold">
+                  <span>تكلفة الفريق لكل مشترك:</span>
+                  <i data-lucide="user-check" class="w-3.5 h-3.5 text-cyan-400"></i>
+                </div>
+                <div class="text-base font-black text-white" id="disp-staff-cost-per-client">420 ج.م <span class="text-[11px] font-normal text-slate-400">($8.7)</span></div>
+                <div class="text-[10px] text-emerald-400 font-bold" id="disp-staff-cost-pct">تمثل 10.1% فقط من سعر الباقة</div>
+                <div class="text-[9px] text-slate-400 pt-1 border-t border-slate-800" id="disp-staff-cost-detail">تغذية: 225 ج • كوتش: 120 ج • موديراتور: 75 ج</div>
+              </div>
+
+              <!-- Card 2: Part-Time Monthly Savings -->
+              <div class="p-3 rounded-lg bg-emerald-950/30 border border-emerald-500/30 space-y-1">
+                <div class="flex justify-between items-center text-[10px] text-emerald-300 font-bold">
+                  <span>وفر الرواتب بالبارت تايم:</span>
+                  <i data-lucide="trending-up" class="w-3.5 h-3.5 text-emerald-400"></i>
+                </div>
+                <div class="text-base font-black text-emerald-300" id="disp-pt-savings">+12,200 ج.م <span class="text-[11px] font-normal text-emerald-400/80">($252)</span></div>
+                <div class="text-[10px] text-emerald-400 font-bold">توفير شهري مباشر في فاتورة الفريق</div>
+                <div class="text-[9px] text-slate-300 pt-1 border-t border-emerald-500/20">تُضاف بالكامل لصافي أرباح د. أحمد دون مساس بالجودة</div>
+              </div>
+
+              <!-- Card 3: Breakeven Clients -->
+              <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-800 space-y-1">
+                <div class="flex justify-between items-center text-[10px] text-slate-400 font-bold">
+                  <span>نقطة تعادل رواتب الفريق:</span>
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-400"></i>
+                </div>
+                <div class="text-base font-black text-amber-300" id="disp-breakeven-clients">5 مشتركون فقط</div>
+                <div class="text-[10px] text-slate-400 font-bold">يغطون إجمالي رواتب الفريق بالكامل!</div>
+                <div class="text-[9px] text-slate-400 pt-1 border-t border-slate-800">باقي الـ 35 مشتركاً أرباح صافية مباشرة</div>
+              </div>
+            </div>
+
+            <!-- Collapsible Part-Time Job Description & Scope of Work -->
+            <div class="border border-slate-800 rounded-lg overflow-hidden bg-slate-950/60">
+              <button type="button" onclick="toggleJDAccordion()" class="w-full p-2.5 flex justify-between items-center text-xs font-bold text-slate-200 hover:bg-slate-900/60 transition">
+                <span class="flex items-center gap-2 text-cyan-300">
+                  <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+                  <span>📄 وثيقة مهام وعقد عمل البارت تايم (Scope of Work & Deliverables) — جاهزة للمقابلات والعقود</span>
+                </span>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20 font-bold">استعراض 👁️</span>
+                  <i id="jd-toggle-arrow" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+                </div>
+              </button>
+
+              <div id="jd-accordion-body" class="hidden p-3 border-t border-slate-800 space-y-2.5 text-[11px] text-slate-300 bg-slate-950/90">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+                  <!-- JD Dietitian -->
+                  <div class="p-2.5 rounded-lg bg-slate-900/90 border border-emerald-500/20 space-y-1.5">
+                    <div class="flex justify-between items-center text-xs font-black text-emerald-400 pb-1 border-b border-slate-800">
+                      <span>🩺 أخصائي التغذية العلاجية (Part-Time)</span>
+                      <span class="text-[10px] text-slate-400 font-normal">نصف دوام عن بعد (2 - 2.5 س/يوم)</span>
+                    </div>
+                    <ul class="text-[10px] space-y-1 text-slate-300 pr-2">
+                      <li>• <strong class="text-white">نطاق المسؤولية:</strong> إدارة 20 مشتركاً نشطاً طوال دورة الـ 28 يوماً.</li>
+                      <li>• <strong class="text-white">مكالمات الفيديو الفردية:</strong> 3 جلسات شهرياً لكل مشترك (30 د استشارة أولى + متابعتان 20 د = 70 دقيقة كول لكل مشترك).</li>
+                      <li>• <strong class="text-white">الملفات والتقارير:</strong> كتابة وتحديث تقارير الجلسات وحساب السعرات والمغذيات (10 دقائق بعد كل كول = 30 دقيقة شهرياً لكل مشترك).</li>
+                      <li>• <strong class="text-white">الرد والمتابعة اليومية:</strong> تخصيص 30 دقيقة يومياً للرد على تذاكر واستفسارات المشتركين بالمنصة.</li>
+                      <li>• <strong class="text-emerald-300 font-bold">الراتب المقترح للبارت تايم:</strong> 4,500 - 5,000 ج.م شهرياً (أو 250 ج.م لكل مشترك نشط).</li>
+                    </ul>
+                  </div>
+
+                  <!-- JD Coach -->
+                  <div class="p-2.5 rounded-lg bg-slate-900/90 border border-cyan-500/20 space-y-1.5">
+                    <div class="flex justify-between items-center text-xs font-black text-cyan-400 pb-1 border-b border-slate-800">
+                      <span>🏋️ كوتش الحركة والتمارين (Part-Time)</span>
+                      <span class="text-[10px] text-slate-400 font-normal">نصف دوام عن بعد (3.5 - 4 س/يوم)</span>
+                    </div>
+                    <ul class="text-[10px] space-y-1 text-slate-300 pr-2">
+                      <li>• <strong class="text-white">نطاق المسؤولية:</strong> إدارة 40 مشتركاً نشطاً طوال الدورة.</li>
+                      <li>• <strong class="text-white">مكالمات التقييم والتدريب:</strong> جلستان شهرياً لكل مشترك (30 د جلسة أولى + 20 د متابعة = 50 دقيقة كول لكل مشترك).</li>
+                      <li>• <strong class="text-white">تصميم برامج الحركة:</strong> تجهيز خطة التمارين ومقاطع الفيديو المخصصة (20 دقيقة لكل مشترك).</li>
+                      <li>• <strong class="text-white">الإدارة والتقارير اليومية:</strong> 1 ساعة يومياً لمراجعة التطور الحركي + 30 دقيقة تذاكر تمارين.</li>
+                      <li>• <strong class="text-cyan-300 font-bold">الراتب المقترح للبارت تايم:</strong> 4,800 - 5,500 ج.م شهرياً (أو 180 ج.م لكل مشترك نشط).</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Dr Ahmed (Always Fixed & Clinical Leadership) -->
             <div class="space-y-1.5 pt-3 border-t border-slate-800">
               <div class="flex justify-between text-xs font-bold">
                 <span class="flex items-center gap-2 text-slate-300">
@@ -673,6 +796,78 @@
     lucide.createIcons();
 
     const FX_RATE = 48.5; // USD to EGP exchange rate
+    let currentEmploymentMode = 'parttime'; // default to part-time for high efficiency
+
+    function toggleJDAccordion() {
+      const body = document.getElementById('jd-accordion-body');
+      const arrow = document.getElementById('jd-toggle-arrow');
+      if (body) {
+        body.classList.toggle('hidden');
+        if (arrow) {
+          arrow.classList.toggle('rotate-180');
+        }
+      }
+    }
+
+    function setEmploymentMode(mode) {
+      currentEmploymentMode = mode;
+      
+      const btnFull = document.getElementById('btn-mode-fulltime');
+      const btnPart = document.getElementById('btn-mode-parttime');
+      const btnPer = document.getElementById('btn-mode-perclient');
+      const badge = document.getElementById('disp-mode-badge');
+
+      // Reset button styles
+      [btnFull, btnPart, btnPer].forEach(btn => {
+        if (btn) {
+          btn.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-slate-700 bg-slate-900 text-slate-300 hover:text-white";
+        }
+      });
+
+      const totalClients = (parseInt(document.getElementById('cnt-early').value) || 0) + (parseInt(document.getElementById('cnt-late').value) || 0);
+      const cntNut = Math.max(1, parseInt(document.getElementById('cnt-nut').value) || 1);
+      const cntCoach = Math.max(1, parseInt(document.getElementById('cnt-coach').value) || 1);
+
+      if (mode === 'fulltime') {
+        if (btnFull) btnFull.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-blue-500/50 bg-blue-500/20 text-blue-300 shadow font-black";
+        if (badge) {
+          badge.innerText = "دوام كامل تقليدي (8 س/يومياً) 🏢";
+          badge.className = "text-[10px] text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30 font-bold";
+        }
+        document.getElementById('hrs-nut').value = 8;
+        document.getElementById('sal-nut').value = 8000;
+        document.getElementById('hrs-coach').value = 8;
+        document.getElementById('sal-coach').value = 8000;
+        document.getElementById('hrs-mod').value = 6;
+        document.getElementById('sal-mod').value = 5000;
+      } else if (mode === 'parttime') {
+        if (btnPart) btnPart.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-emerald-500/50 bg-emerald-500/20 text-emerald-300 shadow font-black";
+        if (badge) {
+          badge.innerText = "بارت تايم (نصف دوام 4س) ⭐ الأنسب للـ 40";
+          badge.className = "text-[10px] text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30 font-bold";
+        }
+        document.getElementById('hrs-nut').value = 4;
+        document.getElementById('sal-nut').value = 4500;
+        document.getElementById('hrs-coach').value = 4;
+        document.getElementById('sal-coach').value = 4800;
+        document.getElementById('hrs-mod').value = 3;
+        document.getElementById('sal-mod').value = 3000;
+      } else if (mode === 'perclient') {
+        if (btnPer) btnPer.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-amber-500/50 bg-amber-500/20 text-amber-300 shadow font-black";
+        if (badge) {
+          badge.innerText = "محاسبة بالعميل النشط (تكلفة متغيرة 100%) 🎯";
+          badge.className = "text-[10px] text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 font-bold";
+        }
+        document.getElementById('hrs-nut').value = 4;
+        document.getElementById('hrs-coach').value = 4;
+        document.getElementById('hrs-mod').value = 3;
+        document.getElementById('sal-nut').value = Math.round((totalClients / cntNut) * 250);
+        document.getElementById('sal-coach').value = Math.round((totalClients / cntCoach) * 180);
+        document.getElementById('sal-mod').value = Math.round(totalClients * 80);
+      }
+
+      recalc();
+    }
 
     function recalc() {
       // 1. Inputs: Early vs Late
@@ -716,16 +911,26 @@
 
       // Staff Headcounts, Daily Official Hours & Salaries
       const cntNut = Math.max(1, parseInt(document.getElementById('cnt-nut').value) || 1);
-      const hrsNutDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-nut').value) || 8);
-      const salNut = parseFloat(document.getElementById('sal-nut').value) || 0;
+      const hrsNutDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-nut').value) || 4);
+      let salNut = parseFloat(document.getElementById('sal-nut').value) || 0;
 
       const cntCoach = Math.max(1, parseInt(document.getElementById('cnt-coach').value) || 1);
-      const hrsCoachDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-coach').value) || 8);
-      const salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
+      const hrsCoachDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-coach').value) || 4);
+      let salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
 
       const cntMod = Math.max(1, parseInt(document.getElementById('cnt-mod').value) || 1);
-      const hrsModDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-mod').value) || 6);
-      const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
+      const hrsModDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-mod').value) || 3);
+      let salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
+
+      // In perclient mode, auto-scale salaries dynamically with clients
+      if (currentEmploymentMode === 'perclient') {
+        salNut = Math.round((totalClients / cntNut) * 250);
+        salCoach = Math.round((totalClients / cntCoach) * 180);
+        salMod = Math.round(totalClients * 80);
+        document.getElementById('sal-nut').value = salNut;
+        document.getElementById('sal-coach').value = salCoach;
+        document.getElementById('sal-mod').value = salMod;
+      }
 
       // 4. Clinical Package Session Formulas (wahetnor.com/#about):
       // A) Dietitians:
@@ -852,6 +1057,41 @@
       const coachHoursPerClient = (coachCallMins + coachRepMins + coachPrepMins) / 60;
       const maxClientsPerCoach = Math.max(1, Math.floor(coachAvailableHoursForClients / (coachHoursPerClient || 1)));
 
+      // 8. Unit Economics & Part-Time Savings Calculations
+      const safeClients = Math.max(1, totalClients);
+      const staffCostPerClientEGP = Math.round(totalStaffPayrollEGP / safeClients);
+      const staffCostPerClientUSD = (staffCostPerClientEGP / FX_RATE).toFixed(1);
+
+      const nutCostPerClientEGP = Math.round(totalNutPayrollEGP / safeClients);
+      const coachCostPerClientEGP = Math.round(totalCoachPayrollEGP / safeClients);
+      const modCostPerClientEGP = Math.round(totalModPayrollEGP / safeClients);
+
+      const avgPriceUSD = totalClients > 0 ? (totalRevUSD / totalClients) : 89;
+      const staffCostPctOfPrice = avgPriceUSD > 0 ? (((staffCostPerClientEGP / FX_RATE) / avgPriceUSD) * 100).toFixed(1) : 0;
+
+      // Benchmark full time payroll (8s @ 8000 nut, 8s @ 8000 coach, 6s @ 5000 mod)
+      const benchmarkFullTimeEGP = (cntNut * 8000) + (cntCoach * 8000) + (cntMod * 5000);
+      const ptSavingsEGP = Math.max(0, benchmarkFullTimeEGP - totalStaffPayrollEGP);
+      const ptSavingsUSD = Math.round(ptSavingsEGP / FX_RATE);
+
+      // Breakeven clients needed to cover entire staff payroll
+      const breakevenClients = Math.ceil(totalStaffPayrollUSD / (priceEarly || 79));
+
+      const elStaffCostClient = document.getElementById('disp-staff-cost-per-client');
+      if (elStaffCostClient) elStaffCostClient.innerHTML = staffCostPerClientEGP.toLocaleString() + ' ج.م <span class="text-[11px] font-normal text-slate-400">($' + staffCostPerClientUSD + ')</span>';
+
+      const elStaffCostPct = document.getElementById('disp-staff-cost-pct');
+      if (elStaffCostPct) elStaffCostPct.innerText = 'تمثل ' + staffCostPctOfPrice + '% فقط من متوسط سعر الباقة ($' + Math.round(avgPriceUSD) + ')';
+
+      const elStaffCostDetail = document.getElementById('disp-staff-cost-detail');
+      if (elStaffCostDetail) elStaffCostDetail.innerText = 'تغذية: ' + nutCostPerClientEGP + ' ج • كوتش: ' + coachCostPerClientEGP + ' ج • موديراتور: ' + modCostPerClientEGP + ' ج';
+
+      const elPtSavings = document.getElementById('disp-pt-savings');
+      if (elPtSavings) elPtSavings.innerHTML = '+' + ptSavingsEGP.toLocaleString() + ' ج.م <span class="text-[11px] font-normal text-emerald-400/80">(+$' + ptSavingsUSD + ')</span>';
+
+      const elBreakeven = document.getElementById('disp-breakeven-clients');
+      if (elBreakeven) elBreakeven.innerText = breakevenClients + ' مشتركون فقط';
+
       // Badges
       function getLoadBadge(pct, diff) {
         if (pct <= 75) {
@@ -881,7 +1121,7 @@
 
       workloadHTML += '<div class="space-y-3 p-4 bg-slate-900/80 rounded-xl border border-emerald-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائيو التغذية العلاجية (' + cntNut + ' كادر • الدوام اليومي الرسمي: ' + hrsNutDaily + ' س/يومياً):</span></span>';
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائيو التغذية العلاجية (' + cntNut + ' كادر • الدوام اليومي: ' + hrsNutDaily + ' س/يومياً):</span></span>';
       workloadHTML += getLoadBadge(nutLoadPct, nutDiffHours);
       workloadHTML += '</div>';
 
@@ -913,7 +1153,7 @@
       workloadHTML += '<span class="text-indigo-300">● تذاكر: ' + dailyNutTicketHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="p-2 rounded bg-slate-950/60 border border-slate-800 text-[10px] text-slate-300 flex justify-between items-center">';
-      workloadHTML += '<span>🎯 <strong class="text-white">الطاقة الاستيعابية القصوى للأخصائي الواحد:</strong> حتى <strong class="text-emerald-400">' + maxClientsPerNut + ' مشتركاً</strong> بدوام ' + hrsNutDaily + ' س/يومياً</span>';
+      workloadHTML += '<span>🎯 <strong class="text-white">الطاقة الاستيعابية للأخصائي الواحد:</strong> حتى <strong class="text-emerald-400">' + maxClientsPerNut + ' مشتركاً</strong> بدوام ' + hrsNutDaily + ' س/يومياً</span>';
       workloadHTML += '<span class="text-emerald-300 font-bold">فائض أمان: ' + nutDiffHours + ' س/يوم</span>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
@@ -928,7 +1168,7 @@
 
       workloadHTML += '<div class="space-y-3 p-4 bg-slate-900/80 rounded-xl border border-cyan-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span><span>كوتش الحركة والرياضة (' + cntCoach + ' كادر • الدوام اليومي الرسمي 7+1: ' + hrsCoachDaily + ' س/يومياً):</span></span>';
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span><span>كوتش الحركة والرياضة (' + cntCoach + ' كادر • الدوام اليومي: ' + hrsCoachDaily + ' س/يومياً):</span></span>';
       workloadHTML += getLoadBadge(coachLoadPct, coachDiffHours);
       workloadHTML += '</div>';
 
@@ -962,7 +1202,7 @@
       workloadHTML += '<span class="text-amber-300">● تقارير يومية: ' + dailyCoachAdminHours.toFixed(1) + ' س/يوم</span>';
       workloadHTML += '</div>';
       workloadHTML += '<div class="p-2 rounded bg-slate-950/60 border border-slate-800 text-[10px] text-slate-300 flex justify-between items-center">';
-      workloadHTML += '<span>🎯 <strong class="text-white">الطاقة الاستيعابية القصوى للكوتش الواحد:</strong> حتى <strong class="text-cyan-400">' + maxClientsPerCoach + ' مشتركاً</strong> بدوام ' + hrsCoachDaily + ' س/يومياً</span>';
+      workloadHTML += '<span>🎯 <strong class="text-white">الطاقة الاستيعابية للكوتش الواحد:</strong> حتى <strong class="text-cyan-400">' + maxClientsPerCoach + ' مشتركاً</strong> بدوام ' + hrsCoachDaily + ' س/يومياً</span>';
       workloadHTML += '<span class="text-cyan-300 font-bold">فائض أمان: ' + coachDiffHours + ' س/يوم</span>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
@@ -988,7 +1228,7 @@
 
       document.getElementById('dynamic-workload-container').innerHTML = workloadHTML;
 
-      // 8. Dynamic Sensitivity Table Calculation & Update
+      // 9. Dynamic Sensitivity Table Calculation & Update
       const thEarly = document.getElementById('th-scen-early');
       if (thEarly) thEarly.innerText = 'سيناريو المبكر ($' + priceEarly + ')';
       const thLate = document.getElementById('th-scen-late');
@@ -1057,6 +1297,11 @@
         window.lucide.createIcons();
       }
     }
+
+    // Default to part-time model initially on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setEmploymentMode('parttime');
+    });
 
     // Initial calculation on load
     recalc();

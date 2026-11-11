@@ -1,140 +1,72 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محاكي انطلاق الدفعة الأولى والطاقة الاستيعابية | واحة نور (د. أحمد الخطيب)</title>
-  <!-- STRICT PRIVACY: HIDDEN FROM SEARCH ENGINES -->
+  <title>محاكي انطلاق الدفعة الأولى • واحة نور (د. أحمد الخطيب)</title>
+  
+  <!-- Strict Privacy Directives: Completely hidden from search engines -->
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow">
-
-  <!-- Google Fonts -->
+  
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#ECFDF5',
-              100: '#D1FAE5',
-              500: '#10B981',
-              600: '#059669',
-              700: '#047857',
-              800: '#065F46',
-              900: '#064E3B',
-              dark: '#022C22'
-            },
-            navy: {
-              800: '#0B1E33',
-              900: '#071626',
-              950: '#030F1C'
-            }
-          },
-          fontFamily: {
-            arabic: ['"IBM Plex Sans Arabic"', 'Cairo', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
   <style>
-    body {
-      font-family: 'IBM Plex Sans Arabic', 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #071626;
-      color: #E2E8F0;
-      overflow-x: hidden;
-    }
-    .glass-navy {
-      background: rgba(11, 30, 51, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(25, 67, 107, 0.5);
-    }
-    .glow-emerald {
-      box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.15);
-    }
+    body { font-family: 'Cairo', 'Tajawal', sans-serif; }
   </style>
 </head>
-<body class="antialiased min-h-screen py-8 px-4 sm:px-6 lg:px-8 selection:bg-emerald-500 selection:text-white">
+<body class="bg-[#030d18] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-white">
 
-  <!-- Hidden Operations Navigation Bar (Team Secret Hub) -->
-  <header class="max-w-6xl mx-auto mb-8">
-    <div class="glass-navy rounded-2xl p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 border border-[#19436B]">
-      
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white font-black text-sm shadow-md">
-          WN
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs font-black text-white">بوابة العمليات والإدارة السرية</span>
-            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold">
-              <i data-lucide="lock" class="w-3 h-3"></i>
-              <span>خاص بالإدارة • غير مدرج</span>
-            </span>
+  <!-- Glow Backgrounds -->
+  <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+
+  <!-- Header / Navigation -->
+  <header class="border-b border-slate-800/80 bg-[#071626]/80 backdrop-blur-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="https://wahetnor.com" target="_blank" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center font-black text-slate-950 text-xl shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+            ن
           </div>
-          <p class="text-[11px] text-slate-400">واحة نور • د. أحمد الخطيب</p>
-        </div>
+          <div>
+            <div class="font-black text-white text-base tracking-wide flex items-center gap-2">
+              <span>واحة نور</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">د. أحمد الخطيب</span>
+            </div>
+            <p class="text-xs text-slate-400">بوابة التخطيط المالي والتشغيلي المباشر</p>
+          </div>
+        </a>
       </div>
 
-      <!-- Quick Nav Links between Hidden Pages -->
-      <nav class="flex flex-wrap items-center gap-2 text-xs font-bold">
-        <a href="cohort-launch.html" class="px-3 py-1.5 rounded-xl bg-emerald-600 text-white shadow-sm flex items-center gap-1.5 transition">
-          <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
-          <span>محاكي الدفعة الأولى</span>
+      <div class="flex items-center gap-3">
+        <a href="https://wahetnor.com/#about" target="_blank" class="text-xs font-bold text-slate-300 hover:text-emerald-400 transition flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/50">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span>عرض الباقة بالموقع (28 يوماً)</span>
         </a>
-        <a href="strategy-plan.html" class="px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
-          <span>خطة البيزنس والتسويق</span>
-        </a>
-        <a href="operations.html" class="px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-          <span>دليل العمليات</span>
-        </a>
-        <a href="benchmarks.html" class="px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i>
-          <span>استخبارات السوق</span>
-        </a>
-        <a href="competitors.html" class="px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="shield" class="w-3.5 h-3.5"></i>
-          <span>المنافسون</span>
-        </a>
-      </nav>
-
+      </div>
     </div>
   </header>
 
-  <!-- Main Hero Card -->
-  <main class="max-w-6xl mx-auto space-y-8">
-    
-    <div class="glass-navy rounded-3xl p-6 sm:p-10 border border-[#19436B] glow-emerald relative overflow-hidden">
-      <!-- Glow ambient background -->
-      <div class="absolute -top-32 -left-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
 
-      <!-- Header Title -->
-      <div class="relative z-10 border-b border-slate-700/60 pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <!-- Hero Title Block -->
+    <div class="space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold mb-3 border border-emerald-500/20">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold mb-3">
             <i data-lucide="gauge" class="w-3.5 h-3.5"></i>
-            <span>هندسة الكاباستي والتسعير • دورة الـ 28 يوماً الأولى</span>
+            <span>هندسة الكاباستي والتسعير ورواتب الفريق • دورة الـ 28 يوماً الأولى</span>
           </div>
           <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight">
             محاكي انطلاق الدفعة الأولى (35 - 50 مشترك)
           </h1>
           <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-2xl leading-relaxed">
-            حسابات دقيقة لساعات وانشغال الفريق الإكلينيكي (2 أخصائيين تغذية + 1 كوتش حركة + د. أحمد الخطيب)، مع حساسية التسعير (79$ مقابل 99$) وتدقيق متطلبات البدء.
+            حسابات دقيقة تفاعلية تشمل: تسعير الباقة (79$ مقابل 99$)، رواتب طاقم العمل (2 أخصائيي تغذية + 1 كوتش حركة + 1 موديراتور مجتمع)، وساعات الانشغال وصافي الأرباح.
           </p>
         </div>
 
@@ -145,7 +77,7 @@
             <span>طاقم العمل الميداني المعتمد:</span>
           </div>
           <div class="text-xs text-emerald-400 font-black">
-            2 أخصائي تغذية • 1 كوتش حركة • د. أحمد
+            2 أخصائي تغذية • 1 كوتش حركة • 1 موديراتور • د. أحمد
           </div>
         </div>
       </div>
@@ -158,7 +90,7 @@
           <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
             <h3 class="font-black text-base text-white flex items-center gap-2">
               <i data-lucide="sliders" class="w-4 h-4 text-emerald-400"></i>
-              <span>محددات تشغيل الدفعة</span>
+              <span>محددات تشغيل الدفعة والتسعير</span>
             </h3>
             <span class="text-[11px] text-slate-400">تحكم فوري</span>
           </div>
@@ -199,6 +131,60 @@
             </p>
           </div>
 
+          <!-- Staff Salaries Section (رواتب ومكافآت الموظفين) -->
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-cyan-500/30 space-y-3.5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+              <span class="text-xs font-black text-cyan-400 flex items-center gap-1.5">
+                <i data-lucide="badge-dollar-sign" class="w-4 h-4"></i>
+                <span>رواتب ومكافآت فريق العمل (شهرياً)</span>
+              </span>
+              <span class="text-[10px] text-slate-400">بالجنيه المصري (EGP)</span>
+            </div>
+
+            <!-- Dietitians Salary Input -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label for="sal-nut" class="font-bold text-slate-200">أخصائي التغذية (لكل أخصائي × 2):</label>
+                <span class="text-[11px] text-cyan-300 font-bold" id="disp-nut-total-egp">إجمالي: 16,000 ج.م</span>
+              </div>
+              <div class="relative">
+                <input type="number" id="sal-nut" value="8000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-14">
+                <span class="absolute left-3 top-2 text-[10px] text-slate-400 font-bold">ج.م / فرد</span>
+              </div>
+            </div>
+
+            <!-- Fitness Coach Salary Input -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label for="sal-coach" class="font-bold text-slate-200">كوتش الحركة والرياضة (كوتش واحد):</label>
+                <span class="text-[11px] text-slate-400" id="disp-coach-usd">≈ $155</span>
+              </div>
+              <div class="relative">
+                <input type="number" id="sal-coach" value="7500" step="500" min="0" oninput="recalc()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-14">
+                <span class="absolute left-3 top-2 text-[10px] text-slate-400 font-bold">ج.م شهرياً</span>
+              </div>
+            </div>
+
+            <!-- Community Moderator Salary Input -->
+            <div class="space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <label for="sal-mod" class="font-bold text-slate-200">مشرف المجتمع والمتابعة (الموديراتور):</label>
+                <span class="text-[11px] text-slate-400" id="disp-mod-usd">≈ $103</span>
+              </div>
+              <div class="relative">
+                <input type="number" id="sal-mod" value="5000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-14">
+                <span class="absolute left-3 top-2 text-[10px] text-slate-400 font-bold">ج.م شهرياً</span>
+              </div>
+              <p class="text-[10px] text-slate-400">إدارة تفاعل المشتركين بالموقع، مراجعة صور الأطباق، وتنسيق أسئلة لايف د. أحمد.</p>
+            </div>
+
+            <!-- Total Payroll Preview -->
+            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="font-bold text-slate-300">إجمالي فاتورة الرواتب:</span>
+              <span id="disp-total-payroll-badge" class="font-black text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">28,500 ج.م ($588)</span>
+            </div>
+          </div>
+
           <!-- Rules Summary -->
           <div class="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs space-y-2 text-amber-200">
             <div class="font-bold flex items-center gap-1.5 text-amber-400">
@@ -208,7 +194,7 @@
             <ul class="space-y-1 text-[11px] list-disc list-inside text-amber-200/90 leading-relaxed">
               <li><strong>الاستشارة الأولى:</strong> 30 دقيقة + 10 د احتياطية = <strong>40 دقيقة</strong>.</li>
               <li><strong>جلسات المتابعة:</strong> 20 دقيقة + 10 د احتياطية = <strong>30 دقيقة</strong>.</li>
-              <li><strong>الكوميونيتي:</strong> مشمول مجاناً مع الباقة لتوفير الدعم الجماعي وخفض الاستفسارات الفردية.</li>
+              <li><strong>الكوميونيتي:</strong> مشمول مجاناً داخل المنصة لتوفير الدعم وتخفيف العبء الفردي.</li>
             </ul>
           </div>
 
@@ -217,8 +203,10 @@
         <!-- Metrics & Workload (Right 7 cols) -->
         <div class="lg:col-span-7 space-y-5">
           
-          <!-- Financial Yield Cards -->
+          <!-- Financial Yield 4-Grid Cards -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Revenue Card -->
             <div class="p-5 rounded-2xl bg-[#071626]/90 border border-emerald-500/30 space-y-1">
               <span class="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
                 <i data-lucide="dollar-sign" class="w-3.5 h-3.5"></i>
@@ -228,22 +216,47 @@
               <span id="disp-rev-egp" class="text-xs text-slate-400 block font-semibold">≈ 172,660 ج.م (@ 48.5)</span>
             </div>
 
+            <!-- Staff Payroll Card -->
             <div class="p-5 rounded-2xl bg-[#071626]/90 border border-cyan-500/30 space-y-1">
               <span class="text-xs font-bold text-cyan-400 flex items-center gap-1.5">
-                <i data-lucide="pie-chart" class="w-3.5 h-3.5"></i>
-                <span>صافي الأرباح بعد أجور الفريق</span>
+                <i data-lucide="users-2" class="w-3.5 h-3.5"></i>
+                <span>إجمالي رواتب طاقم العمل</span>
               </span>
-              <div id="disp-net-usd" class="text-3xl font-black text-white">$2,680</div>
-              <span id="disp-margin" class="text-xs text-emerald-400 font-bold block">هامش ربح صافٍ: 75.3%</span>
+              <div id="disp-payroll-usd" class="text-3xl font-black text-white">$588</div>
+              <span id="disp-payroll-egp" class="text-xs text-cyan-300 block font-semibold">28,500 ج.م (4 موظفين)</span>
             </div>
+
+            <!-- Operating & Ad Costs Card -->
+            <div class="p-5 rounded-2xl bg-[#071626]/90 border border-slate-700/80 space-y-1">
+              <span class="text-xs font-bold text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
+                <span>إعلانات وبوابات الدفع</span>
+              </span>
+              <div id="disp-costs-usd" class="text-2xl font-black text-slate-200">$275</div>
+              <span id="disp-costs-egp" class="text-xs text-slate-400 block font-semibold">≈ 13,330 ج.م (إعلانات + 3.5%)</span>
+            </div>
+
+            <!-- Net Profit Card -->
+            <div class="p-5 rounded-2xl bg-[#071626]/90 border-2 border-emerald-500 space-y-1 shadow-lg shadow-emerald-950/50">
+              <span class="text-xs font-black text-emerald-400 flex items-center gap-1.5">
+                <i data-lucide="pie-chart" class="w-3.5 h-3.5"></i>
+                <span>صافي أرباح د. أحمد والواحة</span>
+              </span>
+              <div id="disp-net-usd" class="text-3xl font-black text-emerald-300">$2,697</div>
+              <div class="flex items-center justify-between text-xs">
+                <span id="disp-net-egp" class="text-slate-300 font-bold">≈ 130,800 ج.م</span>
+                <span id="disp-margin" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-black text-[11px]">هامش: 75.8%</span>
+              </div>
+            </div>
+
           </div>
 
           <!-- Team Workload Distribution Bars -->
           <div class="bg-[#071626]/90 border border-slate-700/80 rounded-2xl p-5 space-y-4 shadow-xl">
             <div class="flex justify-between items-center border-b border-slate-800 pb-3">
               <h4 class="font-bold text-sm text-white flex items-center gap-2">
-                <i data-lucide="users" class="w-4 h-4 text-emerald-400"></i>
-                <span>توزيع ساعات وانشغال الفريق طوال الشهر</span>
+                <i data-lucide="clock-4" class="w-4 h-4 text-emerald-400"></i>
+                <span>توزيع ساعات وانشغال الموظفين طوال الشهر</span>
               </h4>
               <span class="text-xs text-slate-400">سقف الدوام المرن: 15 س/أسبوعياً</span>
             </div>
@@ -289,6 +302,21 @@
                 <div id="bar-coach" class="bg-gradient-to-r from-cyan-500 to-blue-400 h-full rounded-full transition-all duration-300" style="width: 66%;"></div>
               </div>
               <p class="text-[11px] text-slate-400">💡 الكوتش هو المحدد الرئيسي لسقف الدفعة الأولى (الحد الأقصى المريح لكوتش واحد هو 50 مشتركاً).</p>
+            </div>
+
+            <!-- Community Moderator -->
+            <div class="space-y-1.5 pt-2 border-t border-slate-800/80">
+              <div class="flex justify-between text-xs font-bold">
+                <span class="flex items-center gap-2 text-slate-300">
+                  <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
+                  <span>مشرف المجتمع والمتابعة (الموديراتور):</span>
+                </span>
+                <span class="text-purple-400 font-black">14 ساعة / أسبوعياً (~2 س يومياً)</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-400 h-full rounded-full" style="width: 65%;"></div>
+              </div>
+              <p class="text-[11px] text-slate-400">متابعة يومية مستمرة لمجتمع الموقع، التفاعل مع منشورات المشتركين، وفرز الأسئلة.</p>
             </div>
 
             <!-- Dr Ahmed -->
@@ -391,7 +419,7 @@
               <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold text-[10px]">مدمج بالموقع 100%</span>
             </div>
             <p class="text-slate-300 leading-relaxed">
-              تفعيل قناة مجتمع الدفعة الأولى التفاعلية داخل المنصة لمشاركة صور الأطباق اليومية والتفاعل مع الزملاء والأخصائيين، مع قصر الواتساب فقط على الدعم الفني الفردي والتنبيهات وإعادة الاستهداف.
+              تفعيل قناة مجتمع الدفعة الأولى التفاعلية داخل المنصة لمشاركة صور الأطباق اليومية والتفاعل مع الموديراتور والزملاء والأخصائيين، مع قصر الواتساب فقط على الدعم الفني الفردي والتنبيهات وإعادة الاستهداف.
             </p>
           </div>
 
@@ -436,6 +464,7 @@
     lucide.createIcons();
 
     let currentPricing = 'hybrid'; // 79, 99, or hybrid
+    const FX_RATE = 48.5; // USD to EGP exchange rate
 
     function setPricing(val) {
       currentPricing = val;
@@ -463,7 +492,21 @@
       const clients = parseInt(document.getElementById('slider-clients').value);
       document.getElementById('disp-clients').innerText = clients + ' مشتركاً';
 
-      // 1. Financial calculations
+      // 1. Staff Salaries in EGP & USD
+      const nutSalaryEGP = parseFloat(document.getElementById('sal-nut').value) || 0;
+      const coachSalaryEGP = parseFloat(document.getElementById('sal-coach').value) || 0;
+      const modSalaryEGP = parseFloat(document.getElementById('sal-mod').value) || 0;
+
+      const totalNutPayrollEGP = nutSalaryEGP * 2; // 2 Dietitians
+      const totalStaffPayrollEGP = totalNutPayrollEGP + coachSalaryEGP + modSalaryEGP;
+      const totalStaffPayrollUSD = Math.round(totalStaffPayrollEGP / FX_RATE);
+
+      document.getElementById('disp-nut-total-egp').innerText = 'إجمالي: ' + totalNutPayrollEGP.toLocaleString() + ' ج.م';
+      document.getElementById('disp-coach-usd').innerText = '≈ $' + Math.round(coachSalaryEGP / FX_RATE);
+      document.getElementById('disp-mod-usd').innerText = '≈ $' + Math.round(modSalaryEGP / FX_RATE);
+      document.getElementById('disp-total-payroll-badge').innerText = totalStaffPayrollEGP.toLocaleString() + ' ج.م ($' + totalStaffPayrollUSD + ')';
+
+      // 2. Financial Gross Revenue
       let revUSD = 0;
       if (currentPricing === 79) {
         revUSD = clients * 79;
@@ -474,17 +517,35 @@
         revUSD = (half * 79) + ((clients - half) * 99);
       }
 
-      const revEGP = Math.round(revUSD * 48.5);
-      const costUSD = Math.round(revUSD * 0.255);
-      const netUSD = revUSD - costUSD;
-      const margin = ((netUSD / revUSD) * 100).toFixed(1);
+      const revEGP = Math.round(revUSD * FX_RATE);
 
+      // 3. Operating & Tech Costs (Ad budget $150 + Payment gateway 3.5%)
+      const adSpendUSD = 150;
+      const gatewayFeeUSD = Math.round(revUSD * 0.035);
+      const totalOpCostsUSD = adSpendUSD + gatewayFeeUSD;
+      const totalOpCostsEGP = Math.round(totalOpCostsUSD * FX_RATE);
+
+      // 4. Net Profit & Margin
+      const totalExpensesUSD = totalStaffPayrollUSD + totalOpCostsUSD;
+      const netProfitUSD = Math.max(0, revUSD - totalExpensesUSD);
+      const netProfitEGP = Math.round(netProfitUSD * FX_RATE);
+      const profitMarginPct = revUSD > 0 ? ((netProfitUSD / revUSD) * 100).toFixed(1) : 0;
+
+      // Update Financial Cards
       document.getElementById('disp-rev-usd').innerText = '$' + revUSD.toLocaleString();
-      document.getElementById('disp-rev-egp').innerText = '≈ ' + revEGP.toLocaleString() + ' ج.م (@ 48.5)';
-      document.getElementById('disp-net-usd').innerText = '$' + netUSD.toLocaleString();
-      document.getElementById('disp-margin').innerText = 'هامش ربح صافٍ: ' + margin + '%';
+      document.getElementById('disp-rev-egp').innerText = '≈ ' + revEGP.toLocaleString() + ' ج.م (@ ' + FX_RATE + ')';
+      
+      document.getElementById('disp-payroll-usd').innerText = '$' + totalStaffPayrollUSD.toLocaleString();
+      document.getElementById('disp-payroll-egp').innerText = totalStaffPayrollEGP.toLocaleString() + ' ج.م (4 موظفين)';
 
-      // 2. Capacity calculations
+      document.getElementById('disp-costs-usd').innerText = '$' + totalOpCostsUSD.toLocaleString();
+      document.getElementById('disp-costs-egp').innerText = '≈ ' + totalOpCostsEGP.toLocaleString() + ' ج.م (إعلانات + 3.5%)';
+
+      document.getElementById('disp-net-usd').innerText = '$' + netProfitUSD.toLocaleString();
+      document.getElementById('disp-net-egp').innerText = '≈ ' + netProfitEGP.toLocaleString() + ' ج.م';
+      document.getElementById('disp-margin').innerText = 'هامش: ' + profitMarginPct + '%';
+
+      // 5. Workload capacity calculations
       const clientsPerNut = clients / 2;
       const totalNutMinutesMonth = clientsPerNut * 100;
       const nutHoursPerWeek = (totalNutMinutesMonth / (4 * 60));

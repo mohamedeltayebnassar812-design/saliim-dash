@@ -215,18 +215,38 @@
               </div>
             </div>
 
+            <!-- Master KPI Achievement & Commission Controller -->
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/40 rounded-xl p-3 space-y-2 shadow-lg">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-indigo-300 flex items-center gap-1.5">
+                  <i data-lucide="target" class="w-3.5 h-3.5 text-indigo-400"></i>
+                  <span>نسبة تحقيق مؤشرات الأداء والعمولة (KPI Score):</span>
+                </span>
+                <span id="disp-kpi-score" class="font-black text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 text-xs">100% (أداء مثالي ⭐)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <input type="range" id="val-kpi-score" min="0" max="100" step="5" value="100" oninput="recalc()" class="w-full accent-amber-400 bg-slate-800 rounded-lg cursor-pointer h-2">
+              </div>
+              <div class="grid grid-cols-4 gap-1 text-[9px] font-bold text-slate-400 text-center">
+                <button type="button" onclick="setKpiScore(0)" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 hover:text-white transition">0% أساسي فقط</button>
+                <button type="button" onclick="setKpiScore(50)" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 hover:text-white transition">50% متوسط</button>
+                <button type="button" onclick="setKpiScore(80)" class="py-1 px-1 rounded bg-slate-900 border border-slate-700 hover:text-white transition">80% أداء واقعي</button>
+                <button type="button" onclick="setKpiScore(100)" class="py-1 px-1 rounded bg-amber-500/20 border border-amber-500/40 text-amber-300 hover:text-white font-black transition">100% كامل العمولة ⭐</button>
+              </div>
+            </div>
+
             <!-- Role 1: Clinical Dietitians -->
             <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-2.5">
               <div class="flex justify-between items-center text-xs">
                 <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-                  <span>أخصائيو التغذية العلاجية:</span>
+                  <span>أخصائيو التغذية العلاجية (12k + 6k عمولة):</span>
                 </span>
-                <span class="text-[11px] text-emerald-300 font-bold" id="disp-nut-total-egp">إجمالي: 16,000 ج.م</span>
+                <span class="text-[11px] text-emerald-300 font-bold" id="disp-nut-total-egp">إجمالي: 36,000 ج.م</span>
               </div>
 
-              <!-- Main Inputs Grid: Count, Official Daily Hours, Salary -->
-              <div class="grid grid-cols-3 gap-2">
+              <!-- Main Inputs Grid: Count, Daily Hours, Base Salary, Max Commission -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <div>
                   <label for="cnt-nut" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-nut" value="2" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد أخصائيي التغذية">
@@ -239,9 +259,18 @@
                   </div>
                 </div>
                 <div>
-                  <label for="sal-nut" class="block text-[10px] text-slate-400 mb-1 font-bold">راتب الفرد (ج.م):</label>
-                  <input type="number" id="sal-nut" value="8000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="راتب الأخصائي الواحد شهرياً">
+                  <label for="sal-nut-base" class="block text-[10px] text-slate-400 mb-1 font-bold">الأساسي (ج.م):</label>
+                  <input type="number" id="sal-nut-base" value="12000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="الراتب الأساسي للأخصائي الواحد شهرياً">
                 </div>
+                <div>
+                  <label for="sal-nut-comm" class="block text-[10px] text-amber-400 mb-1 font-bold">العمولة القصوى:</label>
+                  <input type="number" id="sal-nut-comm" value="6000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-amber-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-amber-300 focus:outline-none focus:border-amber-400 text-center" title="أقصى عمولة مرتبطة بمؤشرات الأداء KPIs">
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center bg-slate-900/60 px-2.5 py-1 rounded text-[10px] text-slate-300 border border-slate-800">
+                <span>استحقاق الفرد الكامل (OTE):</span>
+                <span id="disp-nut-single-ote" class="font-bold text-emerald-300">18,000 ج.م (12,000 أساسي + 6,000 عمولة)</span>
               </div>
 
               <!-- Actual Work Breakdown for Dietitian -->
@@ -296,13 +325,13 @@
               <div class="flex justify-between items-center text-xs">
                 <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-                  <span>كوتش الحركة والرياضة:</span>
+                  <span>كوتش الحركة والرياضة (7.5k + 1.5k عمولة):</span>
                 </span>
-                <span class="text-[11px] text-cyan-300 font-bold" id="disp-coach-total-egp">إجمالي: 8,000 ج.م</span>
+                <span class="text-[11px] text-cyan-300 font-bold" id="disp-coach-total-egp">إجمالي: 9,000 ج.م</span>
               </div>
 
-              <!-- Main Inputs Grid: Count, Official Daily Hours (7+1), Salary -->
-              <div class="grid grid-cols-3 gap-2">
+              <!-- Main Inputs Grid: Count, Official Daily Hours (7+1), Base Salary, Max Commission -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <div>
                   <label for="cnt-coach" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-coach" value="1" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد كوتشات الحركة">
@@ -315,9 +344,18 @@
                   </div>
                 </div>
                 <div>
-                  <label for="sal-coach" class="block text-[10px] text-slate-400 mb-1 font-bold">راتب الفرد (ج.م):</label>
-                  <input type="number" id="sal-coach" value="8000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="راتب الكوتش الواحد شهرياً">
+                  <label for="sal-coach-base" class="block text-[10px] text-slate-400 mb-1 font-bold">الأساسي (ج.م):</label>
+                  <input type="number" id="sal-coach-base" value="7500" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="الراتب الأساسي للكوتش الواحد شهرياً">
                 </div>
+                <div>
+                  <label for="sal-coach-comm" class="block text-[10px] text-amber-400 mb-1 font-bold">العمولة القصوى:</label>
+                  <input type="number" id="sal-coach-comm" value="1500" step="250" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-amber-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-amber-300 focus:outline-none focus:border-amber-400 text-center" title="أقصى عمولة مرتبطة بمؤشرات الأداء KPIs">
+                </div>
+              </div>
+
+              <div class="flex justify-between items-center bg-slate-900/60 px-2.5 py-1 rounded text-[10px] text-slate-300 border border-slate-800">
+                <span>استحقاق الفرد الكامل (OTE):</span>
+                <span id="disp-coach-single-ote" class="font-bold text-cyan-300">9,000 ج.م (7,500 أساسي + 1,500 عمولة)</span>
               </div>
 
               <!-- Actual Work Breakdown for Coach -->
@@ -379,11 +417,11 @@
               <div class="flex justify-between items-center text-xs">
                 <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
-                  <span>مشرف المجتمع والمتابعة (الموديراتور):</span>
+                  <span>مشرف المجتمع والمتابعة (5k + 2k عمولة):</span>
                 </span>
-                <span class="text-[11px] text-purple-300 font-bold" id="disp-mod-total-egp">إجمالي: 5,000 ج.م</span>
+                <span class="text-[11px] text-purple-300 font-bold" id="disp-mod-total-egp">إجمالي: 7,000 ج.م</span>
               </div>
-              <div class="grid grid-cols-3 gap-2">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <div>
                   <label for="cnt-mod" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-mod" value="1" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد المشرفين">
@@ -396,16 +434,30 @@
                   </div>
                 </div>
                 <div>
-                  <label for="sal-mod" class="block text-[10px] text-slate-400 mb-1 font-bold">راتب الفرد (ج.م):</label>
-                  <input type="number" id="sal-mod" value="5000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="راتب المشرف الواحد شهرياً">
+                  <label for="sal-mod-base" class="block text-[10px] text-slate-400 mb-1 font-bold">الأساسي (ج.م):</label>
+                  <input type="number" id="sal-mod-base" value="5000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="الراتب الأساسي للمشرف شهرياً">
                 </div>
+                <div>
+                  <label for="sal-mod-comm" class="block text-[10px] text-amber-400 mb-1 font-bold">العمولة القصوى:</label>
+                  <input type="number" id="sal-mod-comm" value="2000" step="250" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-amber-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-amber-300 focus:outline-none focus:border-amber-400 text-center" title="أقصى عمولة مرتبطة بمؤشرات الأداء KPIs">
+                </div>
+              </div>
+              <div class="flex justify-between items-center bg-slate-900/60 px-2.5 py-1 rounded text-[10px] text-slate-300 border border-slate-800">
+                <span>استحقاق الفرد الكامل (OTE):</span>
+                <span id="disp-mod-single-ote" class="font-bold text-purple-300">7,000 ج.م (5,000 أساسي + 2,000 عمولة)</span>
               </div>
             </div>
 
             <!-- Total Payroll Preview -->
-            <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
-              <span class="font-bold text-slate-300">إجمالي فاتورة الرواتب:</span>
-              <span id="disp-total-payroll-badge" class="font-black text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">29,000 ج.م ($598)</span>
+            <div class="pt-2 border-t border-slate-800 space-y-1">
+              <div class="flex justify-between items-center text-xs">
+                <span class="font-bold text-slate-300">إجمالي فاتورة الرواتب والعمولات:</span>
+                <span id="disp-total-payroll-badge" class="font-black text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">52,000 ج.م ($1,072)</span>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400 pr-1">
+                <span>• الأساسي الثابت: <strong id="disp-subtotal-base-egp" class="text-white">36,500 ج.م</strong></span>
+                <span>• العمولات المستحقة: <strong id="disp-subtotal-comm-egp" class="text-amber-300">15,500 ج.م</strong></span>
+              </div>
             </div>
           </div>
 
@@ -670,7 +722,139 @@
 
           </div>
 
-          <!-- Dr Ahmed (Always Fixed & Clinical Leadership) -->
+          <!-- Collapsible KPIs Charter & Commission Scoring System -->
+            <div class="border border-indigo-500/30 rounded-xl overflow-hidden bg-slate-950/80 shadow-xl">
+              <button type="button" onclick="toggleKPIAccordion()" class="w-full p-3 flex justify-between items-center text-xs font-black text-slate-100 hover:bg-slate-900/80 transition bg-gradient-to-r from-indigo-950/40 to-slate-900/60">
+                <span class="flex items-center gap-2 text-indigo-300">
+                  <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                  <span>🎯 ميثاق مؤشرات الأداء (KPIs) ومعايير استحقاق العمولة الشهرية (Scorecards & Governance)</span>
+                </span>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] bg-amber-500/10 text-amber-300 px-2 py-0.5 rounded border border-amber-500/30 font-bold">استعراض الميثاق 👁️</span>
+                  <i id="kpi-toggle-arrow" data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-200"></i>
+                </div>
+              </button>
+
+              <div id="kpi-accordion-body" class="hidden p-4 border-t border-slate-800 space-y-4 text-[11px] text-slate-300 bg-slate-950/95">
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  نظام حوافز سريري وعملي مبني على <strong class="text-amber-300">جودة الرعاية والالتزام الفعلي</strong> لضمان رضا المشترك وتجديد اشتراكه (Retention)، ويتم احتسابه شهرياً تلقائياً عبر لوحة التحكم:
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <!-- Dietitian Scorecard -->
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/30 space-y-2">
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                      <span class="font-black text-xs text-emerald-400">🥗 أخصائي التغذية العلاجية</span>
+                      <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">عمولة: حتى 6,000 ج.م</span>
+                    </div>
+                    <div class="space-y-1.5 text-[10px]">
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>1. الالتزام بالمواعيد والجلسات:</span>
+                          <span class="text-emerald-400">25% (1,500 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">تنفيذ 100% من مكالمات المشتركين الـ 3 (30+10، 20+10، 20+10) بدون تأخير أو إلغاء غير مبرر (نسبة حضور >= 98%).</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>2. سرعة رفع التقارير والخطط:</span>
+                          <span class="text-emerald-400">25% (1,500 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">رفع خطة الوجبات المخصصة وتقرير الجلسة بالمنصة خلال أقل من 24 ساعة كحد أقصى (Turnaround SLA).</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>3. تقييم رضا المشترك (CSAT):</span>
+                          <span class="text-emerald-400">25% (1,500 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">تحقيق متوسط تقييم لا يقل عن 4.8 من 5 نجوم في استبيان التقييم التلقائي الذي يظهر للمشترك بعد كل كول.</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>4. التزام المشترك والتجديد:</span>
+                          <span class="text-emerald-400">25% (1,500 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">نسبة المشتركين الملتزمين بتسجيل وجباتهم ورغبتهم في تجديد الاشتراك للشهر التالي (Renewal Rate >= 60%).</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Coach Scorecard -->
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 space-y-2">
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                      <span class="font-black text-xs text-cyan-400">🏋️ كوتش الحركة والرياضة</span>
+                      <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">عمولة: حتى 1,500 ج.م</span>
+                    </div>
+                    <div class="space-y-1.5 text-[10px]">
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>1. التقييم الحركي وتسليم البرنامج:</span>
+                          <span class="text-cyan-400">40% (600 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">إجراء كول التقييم ومتابعة التكنيك ورفع فيديوهات التمارين المخصصة خلال 24 ساعة بدون أي شكوى إصابات أو آلام مفاصل.</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>2. حضور الكول ورضا المشترك (CSAT):</span>
+                          <span class="text-cyan-400">35% (525 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">حضور 100% من الجلسات المجدولة والحصول على متوسط تقييم >= 4.8/5 في استبيانات الجلسة المباشرة.</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>3. التقرير السريري اليومي والتنسيق:</span>
+                          <span class="text-cyan-400">25% (375 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">الالتزام بساعة الإدارة والتقارير اليومية وتنسيق الحالات ذات الصعوبات البدنية مع د. أحمد الخطيب بانتظام.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Moderator Scorecard -->
+                  <div class="p-3 rounded-xl bg-slate-900/90 border border-purple-500/30 space-y-2">
+                    <div class="flex justify-between items-center pb-2 border-b border-slate-800">
+                      <span class="font-black text-xs text-purple-400">💬 مشرف المجتمع (الموديراتور)</span>
+                      <span class="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">عمولة: حتى 2,000 ج.م</span>
+                    </div>
+                    <div class="space-y-1.5 text-[10px]">
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>1. سرعة الاستجابة على التذاكر:</span>
+                          <span class="text-purple-400">40% (800 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">الرد على أي استفسار أو تذكرة داخل مجتمع المنصة خلال أقل من 15 - 30 دقيقة طوال فترات الدوام الرسمية.</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>2. حيوية وتفاعل المجتمع اليومي:</span>
+                          <span class="text-purple-400">35% (700 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">نشر منشورات وتحديات اليومية (فطور، خطوات، أسئلة اللايف) ومتابعة المشتركين الخاملين لتنشيطهم.</p>
+                      </div>
+                      <div class="p-1.5 bg-slate-950/80 rounded border border-slate-800">
+                        <div class="flex justify-between font-bold text-slate-200">
+                          <span>3. حل المشكلات وتصفير التصعيد:</span>
+                          <span class="text-purple-400">25% (500 ج.م)</span>
+                        </div>
+                        <p class="text-slate-400 text-[9px] mt-0.5">حل 95% من المشكلات التقنية وتنسيق المواعيد ذاتياً دون الحاجة لتصعيدها لدكتور أحمد أو تأخير.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Governance Rules -->
+                <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-[10px] space-y-1.5">
+                  <span class="font-bold text-amber-300 block">⚖️ قواعد حوكمة الصرف والشفافية:</span>
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-slate-400">
+                    <div>• <strong class="text-slate-200">الشفافية اللحظية:</strong> تظهر نقاط كل موظف ونسبة استحقاقه أسبوعياً في لوحة تحكمه الخاصة بالمنصة.</div>
+                    <div>• <strong class="text-slate-200">موعد الصرف:</strong> تُصرف العمولات المستحقة في نهاية دورة الـ 28 يوماً مع الراتب الأساسي.</div>
+                    <div>• <strong class="text-slate-200">حماية الجودة:</strong> أي جلسة تحصل على تقييم أقل من 4.2 يُراجع تسجيلها فورياً مع د. أحمد لتحسين الأداء.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dr Ahmed (Always Fixed & Clinical Leadership) -->
             <div class="space-y-1.5 pt-3 border-t border-slate-800">
               <div class="flex justify-between text-xs font-bold">
                 <span class="flex items-center gap-2 text-slate-300">
@@ -809,6 +993,25 @@
       }
     }
 
+    function toggleKPIAccordion() {
+      const body = document.getElementById('kpi-accordion-body');
+      const arrow = document.getElementById('kpi-toggle-arrow');
+      if (body) {
+        body.classList.toggle('hidden');
+        if (arrow) {
+          arrow.classList.toggle('rotate-180');
+        }
+      }
+    }
+
+    function setKpiScore(score) {
+      const slider = document.getElementById('val-kpi-score');
+      if (slider) {
+        slider.value = score;
+        recalc();
+      }
+    }
+
     function setEmploymentMode(mode) {
       currentEmploymentMode = mode;
       
@@ -826,110 +1029,65 @@
 
       const totalClients = (parseInt(document.getElementById('cnt-early').value) || 0) + (parseInt(document.getElementById('cnt-late').value) || 0);
       const cntNut = Math.max(1, parseInt(document.getElementById('cnt-nut').value) || 1);
-      const cntCoach = Math.max(1, parseInt(document.getElementById('cnt-coach').value) || 1);
-
-      if (mode === 'fulltime') {
-        if (btnFull) btnFull.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-blue-500/50 bg-blue-500/20 text-blue-300 shadow font-black";
-        if (badge) {
-          badge.innerText = "دوام كامل تقليدي (8 س/يومياً) 🏢";
-          badge.className = "text-[10px] text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/30 font-bold";
-        }
-        document.getElementById('hrs-nut').value = 8;
-        document.getElementById('sal-nut').value = 8000;
-        document.getElementById('hrs-coach').value = 8;
-        document.getElementById('sal-coach').value = 8000;
-        document.getElementById('hrs-mod').value = 6;
-        document.getElementById('sal-mod').value = 5000;
-      } else if (mode === 'parttime') {
-        if (btnPart) btnPart.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-emerald-500/50 bg-emerald-500/20 text-emerald-300 shadow font-black";
-        if (badge) {
-          badge.innerText = "بارت تايم (نصف دوام 4س) ⭐ الأنسب للـ 40";
-          badge.className = "text-[10px] text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30 font-bold";
-        }
-        document.getElementById('hrs-nut').value = 4;
-        document.getElementById('sal-nut').value = 4500;
-        document.getElementById('hrs-coach').value = 4;
-        document.getElementById('sal-coach').value = 4800;
-        document.getElementById('hrs-mod').value = 3;
-        document.getElementById('sal-mod').value = 3000;
-      } else if (mode === 'perclient') {
-        if (btnPer) btnPer.className = "py-1.5 px-1 rounded-lg transition-all text-center border border-amber-500/50 bg-amber-500/20 text-amber-300 shadow font-black";
-        if (badge) {
-          badge.innerText = "محاسبة بالعميل النشط (تكلفة متغيرة 100%) 🎯";
-          badge.className = "text-[10px] text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/30 font-bold";
-        }
-        document.getElementById('hrs-nut').value = 4;
-        document.getElementById('hrs-coach').value = 4;
-        document.getElementById('hrs-mod').value = 3;
-        document.getElementById('sal-nut').value = Math.round((totalClients / cntNut) * 250);
-        document.getElementById('sal-coach').value = Math.round((totalClients / cntCoach) * 180);
-        document.getElementById('sal-mod').value = Math.round(totalClients * 80);
-      }
-
-      recalc();
-    }
-
-    function recalc() {
-      // 1. Inputs: Early vs Late
-      const cntEarly = parseInt(document.getElementById('cnt-early').value) || 0;
-      const priceEarly = parseFloat(document.getElementById('price-early').value) || 0;
-
-      const cntLate = parseInt(document.getElementById('cnt-late').value) || 0;
-      const priceLate = parseFloat(document.getElementById('price-late').value) || 0;
-
-      const totalClients = cntEarly + cntLate;
-      document.getElementById('disp-total-clients').innerText = totalClients + ' مشتركاً';
-
-      // Capacity Status Badge
-      const capBadge = document.getElementById('disp-capacity-status');
-      if (totalClients < 35) {
-        capBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/30";
-        capBadge.innerText = "أقل من الحد الأدنى (35) ℹ️";
-      } else if (totalClients <= 50) {
-        capBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
-        capBadge.innerText = "النطاق الذهبي المثالي (35 - 50) 🟢";
-      } else {
-        capBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30";
-        capBadge.innerText = "فوق السقف المعتاد (يتطلب فريقاً إضافياً) ⚠️";
-      }
-
-      // 2. Gross Revenue Calculations
-      const subtotalEarlyUSD = cntEarly * priceEarly;
-      const subtotalLateUSD = cntLate * priceLate;
-      const totalRevUSD = subtotalEarlyUSD + subtotalLateUSD;
-      const totalRevEGP = Math.round(totalRevUSD * FX_RATE);
-
-      document.getElementById('disp-early-subtotal').innerText = '$' + subtotalEarlyUSD.toLocaleString();
-      document.getElementById('disp-late-subtotal').innerText = '$' + subtotalLateUSD.toLocaleString();
-
-      document.getElementById('disp-rev-usd').innerText = '$' + totalRevUSD.toLocaleString();
-      document.getElementById('disp-rev-egp').innerText = '≈ ' + totalRevEGP.toLocaleString() + ' ج.م (@ ' + FX_RATE + ')';
-      document.getElementById('disp-rev-breakdown').innerText = 'مبكر: $' + subtotalEarlyUSD.toLocaleString() + ' (' + cntEarly + ') • عادي: $' + subtotalLateUSD.toLocaleString() + ' (' + cntLate + ')';
-
-      // 3. Working Days & Official Daily Hours
-      const daysPerMonth = Math.max(1, parseInt(document.getElementById('days-per-month')?.value) || 24);
-
-      // Staff Headcounts, Daily Official Hours & Salaries
-      const cntNut = Math.max(1, parseInt(document.getElementById('cnt-nut').value) || 1);
       const hrsNutDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-nut').value) || 4);
-      let salNut = parseFloat(document.getElementById('sal-nut').value) || 0;
+      let salNutBase = parseFloat(document.getElementById('sal-nut-base')?.value) || 12000;
+      let salNutComm = parseFloat(document.getElementById('sal-nut-comm')?.value) || 6000;
 
       const cntCoach = Math.max(1, parseInt(document.getElementById('cnt-coach').value) || 1);
       const hrsCoachDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-coach').value) || 4);
-      let salCoach = parseFloat(document.getElementById('sal-coach').value) || 0;
+      let salCoachBase = parseFloat(document.getElementById('sal-coach-base')?.value) || 7500;
+      let salCoachComm = parseFloat(document.getElementById('sal-coach-comm')?.value) || 1500;
 
       const cntMod = Math.max(1, parseInt(document.getElementById('cnt-mod').value) || 1);
       const hrsModDaily = Math.max(0.5, parseFloat(document.getElementById('hrs-mod').value) || 3);
-      let salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
+      let salModBase = parseFloat(document.getElementById('sal-mod-base')?.value) || 5000;
+      let salModComm = parseFloat(document.getElementById('sal-mod-comm')?.value) || 2000;
 
       // In perclient mode, auto-scale salaries dynamically with clients
       if (currentEmploymentMode === 'perclient') {
-        salNut = Math.round((totalClients / cntNut) * 250);
-        salCoach = Math.round((totalClients / cntCoach) * 180);
-        salMod = Math.round(totalClients * 80);
-        document.getElementById('sal-nut').value = salNut;
-        document.getElementById('sal-coach').value = salCoach;
-        document.getElementById('sal-mod').value = salMod;
+        salNutBase = Math.round((totalClients / cntNut) * 250);
+        salNutComm = 0;
+        salCoachBase = Math.round((totalClients / cntCoach) * 180);
+        salCoachComm = 0;
+        salModBase = Math.round(totalClients * 80);
+        salModComm = 0;
+        if (document.getElementById('sal-nut-base')) document.getElementById('sal-nut-base').value = salNutBase;
+        if (document.getElementById('sal-nut-comm')) document.getElementById('sal-nut-comm').value = 0;
+        if (document.getElementById('sal-coach-base')) document.getElementById('sal-coach-base').value = salCoachBase;
+        if (document.getElementById('sal-coach-comm')) document.getElementById('sal-coach-comm').value = 0;
+        if (document.getElementById('sal-mod-base')) document.getElementById('sal-mod-base').value = salModBase;
+        if (document.getElementById('sal-mod-comm')) document.getElementById('sal-mod-comm').value = 0;
+      }
+
+      // KPI Performance Score Calculation
+      const kpiScorePct = parseFloat(document.getElementById('val-kpi-score')?.value ?? 100);
+      const dispKpiScore = document.getElementById('disp-kpi-score');
+      if (dispKpiScore) {
+        let label = 'أداء جزئي';
+        if (kpiScorePct === 100) label = 'أداء مثالي (كامل العمولة ⭐)';
+        else if (kpiScorePct >= 80) label = 'أداء واقعي ممتاز 🟢';
+        else if (kpiScorePct >= 50) label = 'أداء متوسط 🟡';
+        else if (kpiScorePct === 0) label = 'الأساسي فقط (0% عمولة)';
+        dispKpiScore.innerText = kpiScorePct + '% (' + label + ')';
+      }
+
+      // Effective salaries per person
+      const effSalNut = salNutBase + (salNutComm * (kpiScorePct / 100));
+      const effSalCoach = salCoachBase + (salCoachComm * (kpiScorePct / 100));
+      const effSalMod = salModBase + (salModComm * (kpiScorePct / 100));
+
+      // Update single OTE previews
+      const dispNutSingleOTE = document.getElementById('disp-nut-single-ote');
+      if (dispNutSingleOTE) {
+        dispNutSingleOTE.innerText = Math.round(effSalNut).toLocaleString() + ' ج.م (' + salNutBase.toLocaleString() + ' أساسي + ' + Math.round(salNutComm * (kpiScorePct / 100)).toLocaleString() + ' عمولة)';
+      }
+      const dispCoachSingleOTE = document.getElementById('disp-coach-single-ote');
+      if (dispCoachSingleOTE) {
+        dispCoachSingleOTE.innerText = Math.round(effSalCoach).toLocaleString() + ' ج.م (' + salCoachBase.toLocaleString() + ' أساسي + ' + Math.round(salCoachComm * (kpiScorePct / 100)).toLocaleString() + ' عمولة)';
+      }
+      const dispModSingleOTE = document.getElementById('disp-mod-single-ote');
+      if (dispModSingleOTE) {
+        dispModSingleOTE.innerText = Math.round(effSalMod).toLocaleString() + ' ج.م (' + salModBase.toLocaleString() + ' أساسي + ' + Math.round(salModComm * (kpiScorePct / 100)).toLocaleString() + ' عمولة)';
       }
 
       // 4. Clinical Package Session Formulas (wahetnor.com/#about):
@@ -947,12 +1105,6 @@
 
       const totalMonthlyNutHours = monthlyNutCallHours + monthlyNutReportHours + monthlyNutPrepHours + monthlyNutTicketHours;
       const dailyNutHours = totalMonthlyNutHours / daysPerMonth;
-
-      // Daily breakdown
-      const dailyNutCallHours = monthlyNutCallHours / daysPerMonth;
-      const dailyNutReportHours = monthlyNutReportHours / daysPerMonth;
-      const dailyNutPrepHours = monthlyNutPrepHours / daysPerMonth;
-      const dailyNutTicketHours = monthlyNutTicketHours / daysPerMonth;
 
       const elDispNutActual = document.getElementById('disp-nut-actual-hours-sum');
       if (elDispNutActual) elDispNutActual.innerText = dailyNutHours.toFixed(1) + ' س / يومياً';
@@ -974,13 +1126,6 @@
       const totalMonthlyCoachHours = monthlyCoachCallHours + monthlyCoachReportHours + monthlyCoachPrepHours + monthlyCoachTicketHours + monthlyCoachAdminHours;
       const dailyCoachHours = totalMonthlyCoachHours / daysPerMonth;
 
-      // Daily breakdown
-      const dailyCoachCallHours = monthlyCoachCallHours / daysPerMonth;
-      const dailyCoachReportHours = monthlyCoachReportHours / daysPerMonth;
-      const dailyCoachPrepHours = monthlyCoachPrepHours / daysPerMonth;
-      const dailyCoachTicketHours = monthlyCoachTicketHours / daysPerMonth;
-      const dailyCoachAdminHours = coachDailyAdminHours;
-
       const elDispCoachActual = document.getElementById('disp-coach-actual-hours-sum');
       if (elDispCoachActual) elDispCoachActual.innerText = dailyCoachHours.toFixed(1) + ' س / يومياً';
 
@@ -988,9 +1133,12 @@
       const dailyModHours = (1.5 + (totalClients * 0.05)) / cntMod;
 
       // Payroll Calculations
-      const totalNutPayrollEGP = cntNut * salNut;
-      const totalCoachPayrollEGP = cntCoach * salCoach;
-      const totalModPayrollEGP = cntMod * salMod;
+      const totalNutPayrollEGP = Math.round(cntNut * effSalNut);
+      const totalCoachPayrollEGP = Math.round(cntCoach * effSalCoach);
+      const totalModPayrollEGP = Math.round(cntMod * effSalMod);
+
+      const totalBasePayrollEGP = Math.round((cntNut * salNutBase) + (cntCoach * salCoachBase) + (cntMod * salModBase));
+      const totalCommPayrollEGP = Math.round(((cntNut * salNutComm) + (cntCoach * salCoachComm) + (cntMod * salModComm)) * (kpiScorePct / 100));
 
       const totalStaffCount = cntNut + cntCoach + cntMod;
       const totalStaffPayrollEGP = totalNutPayrollEGP + totalCoachPayrollEGP + totalModPayrollEGP;
@@ -1003,6 +1151,11 @@
 
       document.getElementById('disp-total-staff-count-pill').innerText = totalStaffCount + ' موظفين';
       document.getElementById('disp-total-payroll-badge').innerText = totalStaffPayrollEGP.toLocaleString() + ' ج.م ($' + totalStaffPayrollUSD + ')';
+
+      const dispSubBase = document.getElementById('disp-subtotal-base-egp');
+      if (dispSubBase) dispSubBase.innerText = totalBasePayrollEGP.toLocaleString() + ' ج.م';
+      const dispSubComm = document.getElementById('disp-subtotal-comm-egp');
+      if (dispSubComm) dispSubComm.innerText = totalCommPayrollEGP.toLocaleString() + ' ج.م';
 
       // Update Header Cards & Badges
       const staffBadgeEl = document.getElementById('disp-hero-staff-badge');
@@ -1070,7 +1223,7 @@
       const staffCostPctOfPrice = avgPriceUSD > 0 ? (((staffCostPerClientEGP / FX_RATE) / avgPriceUSD) * 100).toFixed(1) : 0;
 
       // Benchmark full time payroll (8s @ 8000 nut, 8s @ 8000 coach, 6s @ 5000 mod)
-      const benchmarkFullTimeEGP = (cntNut * 8000) + (cntCoach * 8000) + (cntMod * 5000);
+      const benchmarkFullTimeEGP = (cntNut * 18000) + (cntCoach * 9000) + (cntMod * 7000);
       const ptSavingsEGP = Math.max(0, benchmarkFullTimeEGP - totalStaffPayrollEGP);
       const ptSavingsUSD = Math.round(ptSavingsEGP / FX_RATE);
 
@@ -1300,7 +1453,7 @@
 
     // Default to part-time model initially on load
     window.addEventListener('DOMContentLoaded', () => {
-      setEmploymentMode('parttime');
+      setEmploymentMode('fulltime');
     });
 
     // Initial calculation on load

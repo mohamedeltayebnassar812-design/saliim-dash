@@ -176,30 +176,32 @@
             <div class="flex items-center justify-between border-b border-slate-800 pb-2">
               <span class="text-xs font-black text-cyan-400 flex items-center gap-1.5">
                 <i data-lucide="users" class="w-4 h-4"></i>
-                <span>فريق العمل: العدد، المواعيد، والرواتب</span>
+                <span>فريق العمل: العدد، ساعات الدوام، والرواتب</span>
               </span>
               <span class="text-[10px] text-cyan-300 font-bold bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20" id="disp-total-staff-count-pill">4 موظفين</span>
             </div>
 
             <!-- Role 1: Clinical Dietitians -->
-            <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 space-y-2">
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-2.5">
               <div class="flex justify-between items-center text-xs">
-                <span class="font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
                   <span>أخصائيو التغذية العلاجية:</span>
                 </span>
                 <span class="text-[11px] text-emerald-300 font-bold" id="disp-nut-total-egp">إجمالي: 16,000 ج.م</span>
               </div>
+
+              <!-- Main Inputs Grid: Count, Contracted Hours, Salary -->
               <div class="grid grid-cols-3 gap-2">
                 <div>
-                  <label for="cnt-nut" class="block text-[10px] text-slate-400 mb-1 font-bold">عدد الأخصائيين:</label>
+                  <label for="cnt-nut" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-nut" value="2" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد أخصائيي التغذية">
                 </div>
                 <div>
-                  <label for="hrs-nut" class="block text-[10px] text-slate-400 mb-1 font-bold">الدوام أسبوعياً:</label>
+                  <label for="hrs-nut" class="block text-[10px] text-emerald-400 mb-1 font-bold">ساعات الموظف:</label>
                   <div class="relative">
-                    <input type="number" id="hrs-nut" value="15" min="1" max="60" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-6" title="ساعات عمل كل أخصائي أسبوعياً">
-                    <span class="absolute left-1.5 top-1.5 text-[9px] text-slate-400">ساعة</span>
+                    <input type="number" id="hrs-nut" value="15" min="1" max="60" step="0.5" oninput="recalc()" class="w-full bg-slate-900 border border-emerald-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-emerald-300 focus:outline-none focus:border-emerald-400 text-left pl-6" title="ساعات عمل كل أخصائي المتعاقد عليها أسبوعياً">
+                    <span class="absolute left-1.5 top-1.5 text-[9px] text-emerald-400 font-bold">س</span>
                   </div>
                 </div>
                 <div>
@@ -207,27 +209,56 @@
                   <input type="number" id="sal-nut" value="8000" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="راتب الأخصائي الواحد شهرياً">
                 </div>
               </div>
+
+              <!-- Actual Work Breakdown for Dietitian -->
+              <div class="bg-slate-900/60 rounded-lg p-2 border border-slate-800 text-[11px] space-y-1.5">
+                <div class="flex justify-between items-center text-slate-300">
+                  <span class="font-bold flex items-center gap-1">
+                    <i data-lucide="check-circle-2" class="w-3 h-3 text-emerald-400"></i>
+                    <span>توزيع الشغل الفعلي للأخصائي:</span>
+                  </span>
+                  <span id="disp-nut-actual-hours-sum" class="font-black text-emerald-300 text-xs">8.0 س فعلية</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5 text-[10px] text-slate-400">
+                  <div class="flex items-center justify-between bg-slate-950/60 px-2 py-1 rounded">
+                    <span>📞 استقبال كول:</span>
+                    <div class="flex items-center gap-1">
+                      <input type="number" id="task-nut-calls" value="5" min="0" max="30" step="0.5" oninput="recalc()" class="w-9 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-white">
+                      <span>س</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between bg-slate-950/60 px-2 py-1 rounded">
+                    <span>📋 تقارير وخطط:</span>
+                    <div class="flex items-center gap-1">
+                      <input type="number" id="task-nut-reports" value="3" min="0" max="30" step="0.5" oninput="recalc()" class="w-9 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-white">
+                      <span>س</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Role 2: Fitness Coaches -->
-            <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 space-y-2">
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-2.5">
               <div class="flex justify-between items-center text-xs">
-                <span class="font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
                   <span>كوتش الحركة والرياضة:</span>
                 </span>
                 <span class="text-[11px] text-cyan-300 font-bold" id="disp-coach-total-egp">إجمالي: 7,500 ج.م</span>
               </div>
+
+              <!-- Main Inputs Grid: Count, Contracted Hours, Salary -->
               <div class="grid grid-cols-3 gap-2">
                 <div>
-                  <label for="cnt-coach" class="block text-[10px] text-slate-400 mb-1 font-bold">عدد الكوتشات:</label>
+                  <label for="cnt-coach" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-coach" value="1" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد كوتشات الرياضة">
                 </div>
                 <div>
-                  <label for="hrs-coach" class="block text-[10px] text-slate-400 mb-1 font-bold">الدوام أسبوعياً:</label>
+                  <label for="hrs-coach" class="block text-[10px] text-cyan-400 mb-1 font-bold">ساعات الموظف:</label>
                   <div class="relative">
-                    <input type="number" id="hrs-coach" value="15" min="1" max="60" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-6" title="ساعات عمل كل كوتش أسبوعياً">
-                    <span class="absolute left-1.5 top-1.5 text-[9px] text-slate-400">ساعة</span>
+                    <input type="number" id="hrs-coach" value="15" min="1" max="60" step="0.5" oninput="recalc()" class="w-full bg-slate-900 border border-cyan-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-cyan-300 focus:outline-none focus:border-cyan-400 text-left pl-6" title="ساعات عمل كل كوتش المتعاقد عليها أسبوعياً">
+                    <span class="absolute left-1.5 top-1.5 text-[9px] text-cyan-400 font-bold">س</span>
                   </div>
                 </div>
                 <div>
@@ -235,12 +266,46 @@
                   <input type="number" id="sal-coach" value="7500" step="500" min="0" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="راتب الكوتش الواحد شهرياً">
                 </div>
               </div>
+
+              <!-- Actual Work Breakdown for Coach -->
+              <div class="bg-slate-900/60 rounded-lg p-2 border border-slate-800 text-[11px] space-y-1.5">
+                <div class="flex justify-between items-center text-slate-300">
+                  <span class="font-bold flex items-center gap-1">
+                    <i data-lucide="check-circle-2" class="w-3 h-3 text-cyan-400"></i>
+                    <span>توزيع الشغل الفعلي للكوتش:</span>
+                  </span>
+                  <span id="disp-coach-actual-hours-sum" class="font-black text-cyan-300 text-xs">9.0 س فعلية</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5 text-[10px] text-slate-400">
+                  <div class="flex items-center justify-between bg-slate-950/60 px-1.5 py-1 rounded">
+                    <span>📞 كول:</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-coach-calls" value="5" min="0" max="30" step="0.5" oninput="recalc()" class="w-8 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-white">
+                      <span>س</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between bg-slate-950/60 px-1.5 py-1 rounded">
+                    <span>📋 تقارير:</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-coach-reports" value="3" min="0" max="30" step="0.5" oninput="recalc()" class="w-8 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-white">
+                      <span>س</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between bg-slate-950/60 px-1.5 py-1 rounded">
+                    <span>⚙️ إداري:</span>
+                    <div class="flex items-center gap-0.5">
+                      <input type="number" id="task-coach-admin" value="1" min="0" max="10" step="0.5" oninput="recalc()" class="w-8 bg-slate-900 border border-slate-700 rounded text-center text-[10px] font-bold text-white">
+                      <span>س</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Role 3: Community Moderators -->
-            <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 space-y-2">
+            <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-3 space-y-2">
               <div class="flex justify-between items-center text-xs">
-                <span class="font-bold text-slate-200 flex items-center gap-1.5">
+                <span class="font-bold text-slate-100 flex items-center gap-1.5">
                   <span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span>
                   <span>مشرف المجتمع والمتابعة (الموديراتور):</span>
                 </span>
@@ -248,14 +313,14 @@
               </div>
               <div class="grid grid-cols-3 gap-2">
                 <div>
-                  <label for="cnt-mod" class="block text-[10px] text-slate-400 mb-1 font-bold">عدد المشرفين:</label>
+                  <label for="cnt-mod" class="block text-[10px] text-slate-400 mb-1 font-bold">العدد:</label>
                   <input type="number" id="cnt-mod" value="1" min="1" max="10" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-center" title="عدد المشرفين">
                 </div>
                 <div>
-                  <label for="hrs-mod" class="block text-[10px] text-slate-400 mb-1 font-bold">الدوام أسبوعياً:</label>
+                  <label for="hrs-mod" class="block text-[10px] text-purple-400 mb-1 font-bold">ساعات الموظف:</label>
                   <div class="relative">
-                    <input type="number" id="hrs-mod" value="14" min="1" max="60" step="1" oninput="recalc()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs font-bold text-white focus:outline-none focus:border-cyan-400 text-left pl-6" title="ساعات عمل كل مشرف أسبوعياً">
-                    <span class="absolute left-1.5 top-1.5 text-[9px] text-slate-400">ساعة</span>
+                    <input type="number" id="hrs-mod" value="14" min="1" max="60" step="0.5" oninput="recalc()" class="w-full bg-slate-900 border border-purple-500/50 rounded-lg px-2 py-1.5 text-xs font-black text-purple-300 focus:outline-none focus:border-purple-400 text-left pl-6" title="ساعات عمل كل مشرف أسبوعياً">
+                    <span class="absolute left-1.5 top-1.5 text-[9px] text-purple-400 font-bold">س</span>
                   </div>
                 </div>
                 <div>
@@ -589,6 +654,18 @@
       const hrsMod = Math.max(1, parseFloat(document.getElementById('hrs-mod').value) || 14);
       const salMod = parseFloat(document.getElementById('sal-mod').value) || 0;
 
+      // Task hours components
+      const taskNutCalls = parseFloat(document.getElementById('task-nut-calls').value) || 5;
+      const taskNutReports = parseFloat(document.getElementById('task-nut-reports').value) || 3;
+      const actualNutHours = taskNutCalls + taskNutReports; // 8.0 hrs
+      document.getElementById('disp-nut-actual-hours-sum').innerText = actualNutHours.toFixed(1) + ' س فعلية';
+
+      const taskCoachCalls = parseFloat(document.getElementById('task-coach-calls').value) || 5;
+      const taskCoachReports = parseFloat(document.getElementById('task-coach-reports').value) || 3;
+      const taskCoachAdmin = parseFloat(document.getElementById('task-coach-admin').value) || 1;
+      const actualCoachHours = taskCoachCalls + taskCoachReports + taskCoachAdmin; // 9.0 hrs
+      document.getElementById('disp-coach-actual-hours-sum').innerText = actualCoachHours.toFixed(1) + ' س فعلية';
+
       const totalNutPayrollEGP = cntNut * salNut;
       const totalCoachPayrollEGP = cntCoach * salCoach;
       const totalModPayrollEGP = cntMod * salMod;
@@ -639,91 +716,142 @@
       document.getElementById('disp-net-egp').innerText = '≈ ' + netProfitEGP.toLocaleString() + ' ج.م';
       document.getElementById('disp-margin').innerText = 'هامش: ' + profitMarginPct + '%';
 
-      // 6. Dynamic Workload & Utilization Calculations
+      // 6. Dynamic Workload & Utilization Calculations based on Actual Work Hours
       // A) Clinical Dietitians
       const clientsPerNut = (totalClients / cntNut).toFixed(1);
-      const totalNutMinutesMonth = (totalClients / cntNut) * 100; // 40m setup + 2x30m checks
-      const nutHoursNeeded = (totalNutMinutesMonth / (4 * 60));
-      const nutLoadPct = Math.round((nutHoursNeeded / hrsNut) * 100);
+      const nutLoadPct = Math.round((actualNutHours / hrsNut) * 100);
+      const nutDiffHours = (hrsNut - actualNutHours).toFixed(1);
 
       // B) Fitness Coaches
       const clientsPerCoach = (totalClients / cntCoach).toFixed(1);
-      const totalCoachMinutesMonth = (totalClients / cntCoach) * 60; // 30m kickoff + 30m updates
-      const coachHoursNeeded = (totalCoachMinutesMonth / (4 * 60));
-      const coachLoadPct = Math.round((coachHoursNeeded / hrsCoach) * 100);
+      const coachLoadPct = Math.round((actualCoachHours / hrsCoach) * 100);
+      const coachDiffHours = (hrsCoach - actualCoachHours).toFixed(1);
 
       // C) Community Moderators
-      const modHoursNeeded = (10 + (totalClients * 0.12)) / cntMod;
-      const modLoadPct = Math.round((modHoursNeeded / hrsMod) * 100);
+      const actualModHours = (10 + (totalClients * 0.1)) / cntMod;
+      const modLoadPct = Math.round((actualModHours / hrsMod) * 100);
+      const modDiffHours = (hrsMod - actualModHours).toFixed(1);
 
-      // Build Workload HTML dynamically
-      function getLoadBadge(pct) {
+      // Helper function for badges
+      function getLoadBadge(pct, diff) {
         if (pct <= 75) {
-          return '<span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">مريح وسلس 🟢</span>';
+          return '<span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30">مريح وسلس 🟢 (فائض ' + diff + ' س)</span>';
         } else if (pct <= 100) {
           return '<span class="text-[10px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/30">إشغال مثالي مرتفع 🟡</span>';
         } else {
-          return '<span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/30">حمل زائد ⚠️ (يحتاج زيادة كادر/ساعات)</span>';
+          const over = Math.abs(diff);
+          return '<span class="text-[10px] font-bold text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/30">حمل زائد ⚠️ (عجز ' + over + ' س)</span>';
         }
       }
 
-      function getBarColor(pct) {
-        if (pct <= 75) return 'from-emerald-500 to-teal-400';
-        if (pct <= 100) return 'from-cyan-500 to-blue-400';
-        return 'from-rose-500 to-amber-500';
+      function getLoadColor(pct) {
+        if (pct <= 75) return 'text-emerald-300';
+        if (pct <= 100) return 'text-cyan-300';
+        return 'text-rose-400';
       }
 
       let workloadHTML = '';
 
-      // Dietitians Blocks
-      workloadHTML += '<div class="space-y-2 p-3 bg-slate-900/60 rounded-xl border border-emerald-500/20">';
+      // Dietitians Block
+      const nutCallWidth = Math.min(100, Math.round((taskNutCalls / hrsNut) * 100));
+      const nutRepWidth = Math.min(100 - nutCallWidth, Math.round((taskNutReports / hrsNut) * 100));
+
+      workloadHTML += '<div class="space-y-3 p-3.5 bg-slate-900/80 rounded-xl border border-emerald-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائيو التغذية (' + cntNut + ' كادر • سقف الدوام: ' + hrsNut + ' س/أسبوعياً للفرد):</span></span>';
-      workloadHTML += getLoadBadge(nutLoadPct);
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span><span>أخصائي التغذية (' + cntNut + ' كادر • ساعات الموظف: ' + hrsNut + ' س/أسبوعياً):</span></span>';
+      workloadHTML += getLoadBadge(nutLoadPct, nutDiffHours);
       workloadHTML += '</div>';
 
-      workloadHTML += '<div class="flex justify-between items-center text-xs">';
-      workloadHTML += '<span class="text-slate-400 text-[11px]">نصيب كل أخصائي: <strong class="text-white">' + clientsPerNut + ' مشتركاً</strong></span>';
-      workloadHTML += '<span class="text-emerald-300 font-black">' + nutHoursNeeded.toFixed(1) + ' س / ' + hrsNut + ' س (' + nutLoadPct + '% إشغال)</span>';
+      workloadHTML += '<div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/70 p-2.5 rounded-lg border border-slate-800">';
+      workloadHTML += '<div>';
+      workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">ساعات العمل الفعلية:</span>';
+      workloadHTML += '<span class="text-sm font-black text-emerald-300">' + actualNutHours.toFixed(1) + ' س / أسبوعياً</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + taskNutCalls + ' س كول + ' + taskNutReports + ' س تقارير وخطط)</span>';
+      workloadHTML += '</div>';
+      workloadHTML += '<div class="text-left">';
+      workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">مدى الانشغال (% الإشغال):</span>';
+      workloadHTML += '<span class="text-sm font-black ' + getLoadColor(nutLoadPct) + '">' + nutLoadPct + '%</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsNut + ' س مكتوبة (' + clientsPerNut + ' مشترك/أخصائي)</span>';
+      workloadHTML += '</div>';
       workloadHTML += '</div>';
 
-      workloadHTML += '<div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">';
-      workloadHTML += '<div class="bg-gradient-to-r ' + getBarColor(nutLoadPct) + ' h-full rounded-full transition-all duration-300" style="width: ' + Math.min(100, nutLoadPct) + '%;"></div>';
+      // Segmented Progress Bar
+      workloadHTML += '<div class="space-y-1.5">';
+      workloadHTML += '<div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex">';
+      workloadHTML += '<div style="width: ' + nutCallWidth + '%;" class="bg-emerald-500 h-full transition-all duration-300" title="استقبال كول: ' + taskNutCalls + ' س"></div>';
+      workloadHTML += '<div style="width: ' + nutRepWidth + '%;" class="bg-teal-400 h-full transition-all duration-300" title="تجهيز تقارير وخطط: ' + taskNutReports + ' س"></div>';
+      workloadHTML += '</div>';
+      workloadHTML += '<div class="flex justify-between text-[10px] text-slate-400 font-bold px-0.5">';
+      workloadHTML += '<span class="text-emerald-400">● استقبال كول: ' + taskNutCalls + ' س</span>';
+      workloadHTML += '<span class="text-teal-300">● تقارير وخطط: ' + taskNutReports + ' س</span>';
+      if (hrsNut >= actualNutHours) {
+        workloadHTML += '<span class="text-slate-400 font-normal">فائض أمان: ' + nutDiffHours + ' س</span>';
+      } else {
+        workloadHTML += '<span class="text-rose-400 font-black">عجز بالساعات: ' + Math.abs(nutDiffHours) + ' س ⚠️</span>';
+      }
+      workloadHTML += '</div>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
 
-      // Coach Blocks
-      workloadHTML += '<div class="space-y-2 p-3 bg-slate-900/60 rounded-xl border border-cyan-500/20">';
+      // Coach Block
+      const coachCallWidth = Math.min(100, Math.round((taskCoachCalls / hrsCoach) * 100));
+      const coachRepWidth = Math.min(100 - coachCallWidth, Math.round((taskCoachReports / hrsCoach) * 100));
+      const coachAdminWidth = Math.min(100 - coachCallWidth - coachRepWidth, Math.round((taskCoachAdmin / hrsCoach) * 100));
+
+      workloadHTML += '<div class="space-y-3 p-3.5 bg-slate-900/80 rounded-xl border border-cyan-500/30 shadow-md">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span><span>كوتش الحركة والرياضة (' + cntCoach + ' كادر • سقف الدوام: ' + hrsCoach + ' س/أسبوعياً للفرد):</span></span>';
-      workloadHTML += getLoadBadge(coachLoadPct);
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-100"><span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span><span>كوتش الحركة والرياضة (' + cntCoach + ' كادر • ساعات الموظف: ' + hrsCoach + ' س/أسبوعياً):</span></span>';
+      workloadHTML += getLoadBadge(coachLoadPct, coachDiffHours);
       workloadHTML += '</div>';
 
-      workloadHTML += '<div class="flex justify-between items-center text-xs">';
-      workloadHTML += '<span class="text-slate-400 text-[11px]">نصيب كل كوتش: <strong class="text-white">' + clientsPerCoach + ' مشتركاً</strong></span>';
-      workloadHTML += '<span class="text-cyan-300 font-black">' + coachHoursNeeded.toFixed(1) + ' س / ' + hrsCoach + ' س (' + coachLoadPct + '% إشغال)</span>';
+      workloadHTML += '<div class="grid grid-cols-2 gap-2 text-xs bg-slate-950/70 p-2.5 rounded-lg border border-slate-800">';
+      workloadHTML += '<div>';
+      workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">ساعات العمل الفعلية:</span>';
+      workloadHTML += '<span class="text-sm font-black text-cyan-300">' + actualCoachHours.toFixed(1) + ' س / أسبوعياً</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">(' + taskCoachCalls + ' س كول + ' + taskCoachReports + ' س تقارير + ' + taskCoachAdmin + ' س إداري)</span>';
+      workloadHTML += '</div>';
+      workloadHTML += '<div class="text-left">';
+      workloadHTML += '<span class="text-[11px] text-slate-400 block font-medium">مدى الانشغال (% الإشغال):</span>';
+      workloadHTML += '<span class="text-sm font-black ' + getLoadColor(coachLoadPct) + '">' + coachLoadPct + '%</span>';
+      workloadHTML += '<span class="text-[10px] text-slate-400 block mt-0.5">من أصل ' + hrsCoach + ' س مكتوبة (' + clientsPerCoach + ' مشترك/كوتش)</span>';
+      workloadHTML += '</div>';
       workloadHTML += '</div>';
 
-      workloadHTML += '<div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">';
-      workloadHTML += '<div class="bg-gradient-to-r ' + getBarColor(coachLoadPct) + ' h-full rounded-full transition-all duration-300" style="width: ' + Math.min(100, coachLoadPct) + '%;"></div>';
+      // Segmented Progress Bar for Coach
+      workloadHTML += '<div class="space-y-1.5">';
+      workloadHTML += '<div class="w-full bg-slate-800 h-3 rounded-full overflow-hidden flex">';
+      workloadHTML += '<div style="width: ' + coachCallWidth + '%;" class="bg-cyan-500 h-full transition-all duration-300" title="استقبال كول: ' + taskCoachCalls + ' س"></div>';
+      workloadHTML += '<div style="width: ' + coachRepWidth + '%;" class="bg-blue-400 h-full transition-all duration-300" title="تجهيز تقارير وخطط: ' + taskCoachReports + ' س"></div>';
+      workloadHTML += '<div style="width: ' + coachAdminWidth + '%;" class="bg-amber-400 h-full transition-all duration-300" title="ساعة إداري: ' + taskCoachAdmin + ' س"></div>';
       workloadHTML += '</div>';
-      workloadHTML += '<p class="text-[10px] text-slate-400">💡 معيار الكوتشينج: الحد الأقصى المريح لكوتش واحد بدوام جزئي (15 س) هو 50 مشتركاً.</p>';
+      workloadHTML += '<div class="flex justify-between text-[10px] text-slate-400 font-bold px-0.5">';
+      workloadHTML += '<span class="text-cyan-400">● كول: ' + taskCoachCalls + ' س</span>';
+      workloadHTML += '<span class="text-blue-300">● تقارير: ' + taskCoachReports + ' س</span>';
+      workloadHTML += '<span class="text-amber-300">● إداري: ' + taskCoachAdmin + ' س</span>';
+      if (hrsCoach >= actualCoachHours) {
+        workloadHTML += '<span class="text-slate-400 font-normal">فائض: ' + coachDiffHours + ' س</span>';
+      } else {
+        workloadHTML += '<span class="text-rose-400 font-black">عجز: ' + Math.abs(coachDiffHours) + ' س ⚠️</span>';
+      }
+      workloadHTML += '</div>';
+      workloadHTML += '</div>';
       workloadHTML += '</div>';
 
-      // Moderator Blocks
+      // Moderator Block
+      const modBarWidth = Math.min(100, modLoadPct);
       workloadHTML += '<div class="space-y-2 p-3 bg-slate-900/60 rounded-xl border border-purple-500/20">';
       workloadHTML += '<div class="flex justify-between items-center text-xs font-bold">';
-      workloadHTML += '<span class="flex items-center gap-2 text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span><span>مشرف المجتمع والمتابعة (' + cntMod + ' كادر • سقف الدوام: ' + hrsMod + ' س/أسبوعياً):</span></span>';
-      workloadHTML += getLoadBadge(modLoadPct);
+      workloadHTML += '<span class="flex items-center gap-2 text-slate-200"><span class="w-2.5 h-2.5 rounded-full bg-purple-400"></span><span>مشرف المجتمع والمتابعة (' + cntMod + ' كادر • ساعات الموظف: ' + hrsMod + ' س/أسبوعياً):</span></span>';
+      workloadHTML += getLoadBadge(modLoadPct, modDiffHours);
       workloadHTML += '</div>';
 
       workloadHTML += '<div class="flex justify-between items-center text-xs">';
-      workloadHTML += '<span class="text-slate-400 text-[11px]">متابعة المجتمع اليومية وتفاعل المشتركين</span>';
-      workloadHTML += '<span class="text-purple-300 font-black">' + modHoursNeeded.toFixed(1) + ' س / ' + hrsMod + ' س (' + modLoadPct + '% إشغال)</span>';
+      workloadHTML += '<span class="text-slate-400 text-[11px]">متابعة يومية لمجتمع الموقع وفرز أسئلة المشتركين</span>';
+      workloadHTML += '<span class="text-purple-300 font-black">' + actualModHours.toFixed(1) + ' س فعلية / ' + hrsMod + ' س (' + modLoadPct + '% إشغال)</span>';
       workloadHTML += '</div>';
 
       workloadHTML += '<div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden">';
-      workloadHTML += '<div class="bg-gradient-to-r ' + getBarColor(modLoadPct) + ' h-full rounded-full transition-all duration-300" style="width: ' + Math.min(100, modLoadPct) + '%;"></div>';
+      workloadHTML += '<div class="bg-gradient-to-r from-purple-500 to-indigo-400 h-full rounded-full transition-all duration-300" style="width: ' + modBarWidth + '%;"></div>';
       workloadHTML += '</div>';
       workloadHTML += '</div>';
 

@@ -7,7 +7,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>استمارة تسجيل ساعات عمل الفريق • واحة نور | د. أحمد الخطيب</title>
+  <title>استمارة تسجيل ساعات عمل أخصائيي التغذية والكوادر • واحة نور | د. أحمد الخطيب</title>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +45,12 @@
       border-color: #06B6D4;
       box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
     }
+    .quick-chip {
+      transition: all 0.2s ease;
+    }
+    .quick-chip:hover {
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4 sm:p-6 selection:bg-cyan-500 selection:text-white">
@@ -60,46 +66,97 @@
     <!-- Top Brand Header -->
     <div class="text-center mb-8">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4 tracking-wide">
-        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-        <span>بوابة الكوادر والتشغيل الداخلي • نوفمبر 2026</span>
+        <i data-lucide="stethoscope" class="w-3.5 h-3.5 text-emerald-400"></i>
+        <span>بوابة الكوادر وأخصائيي التغذية العلاجية (Nutritionists) • نوفمبر 2026</span>
       </div>
       <h1 class="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
-        تسجيل ساعات العمل اليومية
+        تسجيل ساعات العمل والمهام السريرية
       </h1>
       <p class="text-slate-400 text-sm max-w-md mx-auto">
-        خاص بفريق عمل واحة نور ومنظومة د. أحمد الخطيب لرصد الساعات المنجزة بدقة واحتساب المستحقات الشهرية.
+        خاص بفريق التغذية العلاجية والكوادر الطبية المعتمدة بمنظومة واحة نور ود. أحمد الخطيب لرصد ساعات العمل والتقارير الشهرية.
       </p>
     </div>
 
     <!-- Main Form Card -->
     <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-2xl relative">
       
+      <!-- Quick Staff Selector Chips -->
+      <div class="mb-6 pb-6 border-b border-slate-800">
+        <label class="block text-xs font-bold text-slate-300 mb-3 flex items-center gap-1.5">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>اختيار سريع للأخصائيين المسجلين بالمنصة:</span>
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <!-- Dr. Mahmoud Hassan -->
+          <button type="button" onclick="selectQuickStaff('د. محمود حسن', 'أخصائي تغذية علاجية (Nutritionist)', '15:00', '23:00', 8.0, '56 ساعة أسبوعياً • 15:00 - 23:00 يومياً')" 
+                  class="quick-chip p-2.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 hover:border-cyan-400 text-right flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-lg bg-cyan-950 text-cyan-400 flex items-center justify-center font-bold text-xs shrink-0 group-hover:scale-105 transition">
+              م.ح
+            </div>
+            <div class="overflow-hidden">
+              <div class="text-xs font-bold text-white truncate">د. محمود حسن</div>
+              <div class="text-[10px] text-cyan-400 font-medium truncate">أخصائي تغذية (56 س/أسبوع)</div>
+            </div>
+          </button>
+
+          <!-- Dr. Mai Reyad -->
+          <button type="button" onclick="selectQuickStaff('د. مي رياض', 'أخصائية تغذية علاجية (Nutritionist)', '09:00', '14:00', 5.0, '25 ساعة أسبوعياً • 09:00 - 14:00 (سبت، أحد، ثلاثاء، خميس، جمعة)')" 
+                  class="quick-chip p-2.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400 text-right flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-lg bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 group-hover:scale-105 transition">
+              م.ر
+            </div>
+            <div class="overflow-hidden">
+              <div class="text-xs font-bold text-white truncate">د. مي رياض</div>
+              <div class="text-[10px] text-emerald-400 font-medium truncate">أخصائية تغذية (25 س/أسبوع)</div>
+            </div>
+          </button>
+
+          <!-- Captain Mohamed Essam -->
+          <button type="button" onclick="selectQuickStaff('كابتن محمد عصام', 'كابتن لياقة وتأهيل حركي (Coach)', '13:00', '17:00', 4.0, '12 ساعة أسبوعياً • (سبت، ثلاثاء، خميس، جمعة)')" 
+                  class="quick-chip p-2.5 rounded-xl bg-slate-900/90 border border-purple-500/30 hover:border-purple-400 text-right flex items-center gap-2.5 group">
+            <div class="w-8 h-8 rounded-lg bg-purple-950 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0 group-hover:scale-105 transition">
+              م.ع
+            </div>
+            <div class="overflow-hidden">
+              <div class="text-xs font-bold text-white truncate">كابتن محمد عصام</div>
+              <div class="text-[10px] text-purple-400 font-medium truncate">كابتن لياقة (12 س/أسبوع)</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
       <form id="staffHoursForm" onsubmit="handleStaffSubmit(event)" class="space-y-6">
 
         <!-- Staff Member Selection -->
         <div>
           <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
             <i data-lucide="user-check" class="w-4 h-4 text-cyan-400"></i>
-            <span>اسم الموظف / العضو المسجل بالمنظومة <span class="text-rose-400">*</span></span>
+            <span>اسم الأخصائي / العضو المسجل بالمنظومة <span class="text-rose-400">*</span></span>
           </label>
           <select id="staffName" required onchange="handleStaffChange()" class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
             <option value="" disabled selected>-- اختر اسمك من القائمة --</option>
-            <option value="د. يمنى عبد العزيز" data-dept="التغذية العلاجية">د. يمنى عبد العزيز (أخصائية التغذية العلاجية)</option>
-            <option value="د. أروى الشاذلي" data-dept="التغذية العلاجية">د. أروى الشاذلي (أخصائية التغذية العلاجية)</option>
-            <option value="كوتش أحمد سمير" data-dept="الحركة والميكانيكا">كوتش أحمد سمير (كوتش الحركة والميكانيكا الحيوية)</option>
-            <option value="كوتش عمر خالد" data-dept="التدريب الحركي">كوتش عمر خالد (كوتش اللياقة البدنية وإعادة التأهيل)</option>
-            <option value="مشرف المجتمع والدعم" data-dept="المتابعة والمجتمع">مشرف المجتمع والمتابعة (Community Moderator)</option>
-            <option value="منسق المواعيد والعمليات" data-dept="العمليات وخدمة العملاء">منسق المواعيد والجلسات (Operations & Scheduling)</option>
-            <option value="مسؤول التقارير والأنظمة" data-dept="الإدارة الطبية">مسؤول التقارير والأنظمة المساندة</option>
-            <option value="الدعم التقني وتطوير المنصة" data-dept="التطوير التقني">الدعم التقني وتطوير المنصة</option>
-            <option value="other" data-dept="عام">-- عضو آخر (كتابة الاسم يدوياً) --</option>
+            <option value="د. محمود حسن" data-dept="أخصائي تغذية علاجية (Nutritionist)" data-schedule="56 ساعة أسبوعياً • 15:00 - 23:00 يومياً">د. محمود حسن — أخصائي تغذية علاجية (Clinical Nutritionist)</option>
+            <option value="د. مي رياض" data-dept="أخصائية تغذية علاجية (Nutritionist)" data-schedule="25 ساعة أسبوعياً • 09:00 - 14:00 (سبت، أحد، ثلاثاء، خميس، جمعة)">د. مي رياض — أخصائية تغذية علاجية (Clinical Nutritionist)</option>
+            <option value="كابتن محمد عصام" data-dept="كابتن لياقة وتأهيل حركي (Coach)" data-schedule="12 ساعة أسبوعياً • (سبت، ثلاثاء، خميس، جمعة)">كابتن محمد عصام — كابتن لياقة وتأهيل حركي (Coach)</option>
+            <option value="مشرف المجتمع والدعم" data-dept="المتابعة والمجتمع (Moderator)" data-schedule="دوام متابعة مجتمعية">مشرف المجتمع والمتابعة (Community Moderator)</option>
+            <option value="منسق خدمة العملاء والعمليات" data-dept="خدمة العملاء والعمليات (Operations)" data-schedule="دوام عمليات وتنسيق">منسق خدمة العملاء والعمليات (Operations & Support)</option>
+            <option value="other" data-dept="أخصائي تغذية علاجية (Nutritionist)" data-schedule="غير محدد">-- أخصائي / موظف آخر (كتابة الاسم يدوياً) --</option>
           </select>
+        </div>
+
+        <!-- Schedule Badge (Dynamic) -->
+        <div id="scheduleInfoBox" class="hidden p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/60 text-xs text-cyan-300 flex items-center gap-2">
+          <i data-lucide="calendar-check" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+          <div>
+            <span class="font-bold text-white">الجدول المعتمد بالمنصة: </span>
+            <span id="scheduleText">56 ساعة أسبوعياً</span>
+          </div>
         </div>
 
         <!-- Custom Name Input (Hidden by default) -->
         <div id="customNameContainer" class="hidden">
           <label class="block text-xs font-semibold text-slate-300 mb-1.5">اكتب اسمك الثلاثي الكامل <span class="text-rose-400">*</span></label>
-          <input type="text" id="customName" placeholder="مثال: سارة أحمد محمود" class="input-field w-full px-4 py-2.5 rounded-xl text-sm">
+          <input type="text" id="customName" placeholder="مثال: د. سارة أحمد محمود" class="input-field w-full px-4 py-2.5 rounded-xl text-sm">
         </div>
 
         <!-- Department / Role -->
@@ -107,9 +164,9 @@
           <div>
             <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
               <i data-lucide="briefcase" class="w-4 h-4 text-emerald-400"></i>
-              <span>القسم / التخصص <span class="text-rose-400">*</span></span>
+              <span>الدور والتخصص السريري <span class="text-rose-400">*</span></span>
             </label>
-            <input type="text" id="staffDept" required placeholder="مثال: التغذية العلاجية" class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
+            <input type="text" id="staffDept" required placeholder="مثال: أخصائي تغذية علاجية (Nutritionist)" class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
           </div>
 
           <!-- Date of Work -->
@@ -149,18 +206,19 @@
         <div>
           <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
             <i data-lucide="layers" class="w-4 h-4 text-purple-400"></i>
-            <span>تصنيف المهام الأساسية <span class="text-rose-400">*</span></span>
+            <span>تصنيف المهمة السريرية / التشغيلية <span class="text-rose-400">*</span></span>
           </label>
           <select id="taskCategory" required class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
             <option value="" disabled selected>-- اختر طبيعة العمل المنفذ --</option>
-            <option value="جلسات استشارية فردية ومتابعات 1:1">جلسات استشارية سريرية فردية ومتابعات مباشرة (1:1)</option>
-            <option value="كتابة وتصميم الخطط الغذائية وتقارير الجلسات">إعداد وتصميم الخطط والوجبات وتقارير الجلسات بالمنصة</option>
-            <option value="متابعة مجتمعية وتذاكر المشتركين (شات)">متابعة مجتمع المشتركين، شات الدفعة، والرد على التذاكر</option>
-            <option value="فحص حركي وتصميم برامج تمارين">فحص ميكانيكا حيوية وجلسات كوتش وتصميم تمارين</option>
-            <option value="مراجعة وتطوير مكتبة الوجبات الغذائية">مراجعة وتدقيق وجبات ومكونات المنصة والأنظمة الغذائية</option>
+            <option value="جلسات استشارية سريرية 1:1 وتقارير الجلسات">جلسات استشارية سريرية مباشرة 1:1 وتقارير الجلسات (Consultations)</option>
+            <option value="تصميم وتعديل الخطط الغذائية وحساب الماكروز">تصميم وتعديل الخطط الغذائية وحساب الماكروز وسعرات الحالات (Meal Plans)</option>
+            <option value="مراجعة تحاليل الدم والسكر ومقاومة الإنسولين">مراجعة تحاليل الدم والسكر التراكمي ومقاومة الإنسولين (Lab Review)</option>
+            <option value="متابعة يوميات طعام المشتركين وشات الدفعة">متابعة يوميات طعام المشتركين، شات الدفعة والرد على الاستفسارات (Chat Support)</option>
+            <option value="تدقيق وتطوير مكتبة الوجبات الغذائية (كيتو/لوكارب)">تدقيق وتطوير وصفات مكتبة الوجبات الغذائية كيتو ولوكارب (Meal Library)</option>
+            <option value="اجتماع سريري ومناقشة الحالات مع د. أحمد الخطيب">اجتماع سريري ومناقشة تقارير الحالات مع د. أحمد الخطيب (Clinical Round)</option>
+            <option value="فحص حركي وتصميم برامج تمارين">فحص حركي وميكانيكا وتصميم برامج تمارين (Coach Sessions)</option>
             <option value="تنسيق مواعيد واتصالات إدارية">تنسيق مواعيد، اتصالات تأكيد المشتركين وعمليات المنظومة</option>
-            <option value="اجتماعات وتنسيق سريري مع د. أحمد">اجتماعات سريرية ومناقشة تقارير الحالات مع د. أحمد الخطيب</option>
-            <option value="مهام تقنية وتطوير المنصة">مهام تطوير برمجي وصيانة المنصة</option>
+            <option value="مهام تقنية وتطوير المنصة">مهام تطوير تقني وصيانة المنصة</option>
             <option value="أخرى">مهام أخرى (موضحة في التقرير أدناه)</option>
           </select>
         </div>
@@ -171,7 +229,7 @@
             <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
             <span>بيان تفصيلي بما تم إنجازه خلال الساعات <span class="text-rose-400">*</span></span>
           </label>
-          <textarea id="taskSummary" required rows="4" placeholder="اذكر بإيجاز ووضوح أهم ما أنجزته (مثال: تم تنفيذ 3 جلسات استشارية لكل من: فلان وفلان، وكتابة تقريرين سريريين، وحل 12 استفساراً في شات الدفعة...)" class="input-field w-full p-4 rounded-xl text-sm leading-relaxed"></textarea>
+          <textarea id="taskSummary" required rows="4" placeholder="اذكر بإيجاز ووضوح الحالات والمهام (مثال: تنفيذ استشارتين سريريتين 1:1 للمشتركين سليم ومحمد، مراجعة تحاليل HOMA-IR، كتابة خطتين غذائيتين كيتو، وحل 15 استفساراً في شات الدفعة...)" class="input-field w-full p-4 rounded-xl text-sm leading-relaxed"></textarea>
         </div>
 
         <!-- Optional Proof Link or Notes -->
@@ -180,7 +238,7 @@
             <i data-lucide="link" class="w-4 h-4 text-slate-400"></i>
             <span>رابط مرجعي أو ملاحظة إضافية (اختياري)</span>
           </label>
-          <input type="text" id="notesLink" placeholder="رابط شيت / مستند / أو أي ملاحظات تخص ساعات العمل" class="input-field w-full px-4 py-3 rounded-xl text-sm">
+          <input type="text" id="notesLink" placeholder="رابط شيت / مستند الحالات / رابط تسجيل الجلسة (Eduraa/Drive)" class="input-field w-full px-4 py-3 rounded-xl text-sm">
         </div>
 
         <!-- Submit Button -->
@@ -201,7 +259,7 @@
         <div class="space-y-2">
           <h2 class="text-2xl font-black text-white">تم تسجيل ساعات العمل بنجاح!</h2>
           <p class="text-slate-300 text-sm max-w-md mx-auto">
-            تم إدراج سجلك بنجاح في المنظومة السحابية وقاعدة البيانات لتظهر مباشرة في لوحة إدارة ومتابعة د. أحمد الخطيب.
+            تم إدراج سجلك بنجاح في المنظومة وقاعدة البيانات لتظهر مباشرة في لوحة إدارة ومتابعة د. أحمد الخطيب.
           </p>
         </div>
 
@@ -216,18 +274,17 @@
           </button>
           <a href="staff-hours-dashboard.html" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm transition flex items-center justify-center gap-2">
             <i data-lucide="layout-dashboard" class="w-4 h-4 text-cyan-400"></i>
-            <span>معاينة لوحة متابعة الساعات</span>
+            <span>معاينة لوحة متابعة الساعات (PIN: 2026)</span>
           </a>
         </div>
       </div>
 
     </div>
 
-    <!-- Footer Links -->
-    <div class="mt-8 text-center text-xs text-slate-500 flex items-center justify-center gap-4">
-      <span>منظومة واحة نور • د. أحمد الخطيب</span>
-      <span>•</span>
-      <a href="staff-hours-dashboard.html" class="text-cyan-400/80 hover:text-cyan-300 underline">لوحة تحكم الإدارة</a>
+    <!-- Bottom Footer info -->
+    <div class="text-center mt-6 text-slate-500 text-xs flex items-center justify-center gap-2">
+      <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+      <span>منظومة واحة نور • إدارة العمليات والكوادر الطبية • د. أحمد الخطيب</span>
     </div>
 
   </div>
@@ -254,21 +311,49 @@
       document.getElementById('hoursDisplay').innerText = `${parseFloat(val || 0).toFixed(1)} ساعات`;
     }
 
+    function selectQuickStaff(name, dept, startTime, endTime, hours, schedule) {
+      const select = document.getElementById('staffName');
+      select.value = name;
+      handleStaffChange();
+
+      if (startTime) document.getElementById('startTime').value = startTime;
+      if (endTime) document.getElementById('endTime').value = endTime;
+      if (hours) {
+        document.getElementById('hoursNumber').value = hours;
+        updateHoursDisplay(hours);
+      }
+      
+      // Flash animation on card
+      const formCard = document.querySelector('.glass-card');
+      formCard.classList.add('ring-2', 'ring-cyan-400');
+      setTimeout(() => formCard.classList.remove('ring-2', 'ring-cyan-400'), 500);
+    }
+
     function handleStaffChange() {
       const select = document.getElementById('staffName');
       const selectedOption = select.options[select.selectedIndex];
       const customDiv = document.getElementById('customNameContainer');
       const deptInput = document.getElementById('staffDept');
+      const scheduleBox = document.getElementById('scheduleInfoBox');
+      const scheduleText = document.getElementById('scheduleText');
 
       if (select.value === 'other') {
         customDiv.classList.remove('hidden');
         document.getElementById('customName').required = true;
-        deptInput.value = '';
+        deptInput.value = 'أخصائي تغذية علاجية (Nutritionist)';
+        scheduleBox.classList.add('hidden');
       } else {
         customDiv.classList.add('hidden');
         document.getElementById('customName').required = false;
         const dept = selectedOption.getAttribute('data-dept');
+        const sched = selectedOption.getAttribute('data-schedule');
         if (dept) deptInput.value = dept;
+        if (sched && sched !== 'غير محدد') {
+          scheduleText.innerText = sched;
+          scheduleBox.classList.remove('hidden');
+        } else {
+          scheduleBox.classList.add('hidden');
+        }
       }
     }
 
@@ -329,8 +414,8 @@
           },
           body: JSON.stringify({
             _subject: `ساعات عمل جديدة [${hours}س] - ${staffName} (${date})`,
-            الموظف: staffName,
-            القسم: dept,
+            الأخصائي: staffName,
+            التخصص: dept,
             تاريخ_العمل: date,
             عدد_الساعات: `${hours} ساعات`,
             الفترة: startTime && endTime ? `${startTime} إلى ${endTime}` : 'غير محدد',
@@ -346,21 +431,21 @@
         <div class="flex justify-between border-b border-slate-800 pb-1.5 text-slate-400">
           <span>رقم الإيصال:</span> <span class="text-cyan-400 font-bold">${recordId}</span>
         </div>
-        <div class="flex justify-between text-slate-300">
-          <span>الموظف:</span> <span class="text-white font-bold">${staffName}</span>
+        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+          <span class="text-slate-400">الأخصائي:</span> <span class="text-white font-bold">${staffName}</span>
         </div>
-        <div class="flex justify-between text-slate-300">
-          <span>التاريخ:</span> <span class="text-amber-400 font-bold">${date}</span>
+        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+          <span class="text-slate-400">التاريخ:</span> <span class="text-emerald-400 font-bold">${date}</span>
         </div>
-        <div class="flex justify-between text-slate-300">
-          <span>الساعات المعتمدة:</span> <span class="text-emerald-400 font-black text-sm">${hours} ساعات</span>
+        <div class="flex justify-between border-b border-slate-800 pb-1.5">
+          <span class="text-slate-400">الساعات:</span> <span class="text-amber-400 font-bold">${hours} ساعات (${startTime || '--'} إلى ${endTime || '--'})</span>
         </div>
-        <div class="flex justify-between text-slate-300">
-          <span>المهمة:</span> <span class="text-slate-200">${category}</span>
+        <div class="flex justify-between">
+          <span class="text-slate-400">التصنيف:</span> <span class="text-purple-300 font-medium">${category}</span>
         </div>
       `;
 
-      // Show Success State
+      // Show success
       document.getElementById('staffHoursForm').classList.add('hidden');
       document.getElementById('successState').classList.remove('hidden');
       lucide.createIcons();
@@ -370,11 +455,11 @@
       document.getElementById('staffHoursForm').reset();
       document.getElementById('workDate').value = todayStr;
       updateHoursDisplay(4.0);
-      document.getElementById('customNameContainer').classList.add('hidden');
       document.getElementById('staffHoursForm').classList.remove('hidden');
       document.getElementById('successState').classList.add('hidden');
       document.getElementById('submitBtn').disabled = false;
       document.getElementById('submitBtn').innerHTML = `<i data-lucide="send" class="w-5 h-5"></i><span>تسجيل الساعات واعتماد الإرسال</span>`;
+      handleStaffChange();
       lucide.createIcons();
     }
   </script>

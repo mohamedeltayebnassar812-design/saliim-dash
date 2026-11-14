@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- STRICT PRIVACY: HIDDEN FROM SEARCH ENGINES -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة تسجيل ساعات عمل الفريق • واحة نور | د. أحمد الخطيب</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(6, 182, 212, 0.3);
+    }
+    .input-field {
+      background: rgba(7, 22, 38, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #F8FAFC;
+      transition: all 0.2s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #06B6D4;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 sm:p-6 selection:bg-cyan-500 selection:text-white">
+
+  <!-- Ambient Light Effects -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 right-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[160px]"></div>
+  </div>
+
+  <div class="w-full max-w-2xl relative z-10 py-8">
+    
+    <!-- Top Brand Header -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs font-bold mb-4 tracking-wide">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span>بوابة الكوادر والتشغيل الداخلي • نوفمبر 2026</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white mb-2 leading-tight">
+        تسجيل ساعات العمل اليومية
+      </h1>
+      <p class="text-slate-400 text-sm max-w-md mx-auto">
+        خاص بفريق عمل واحة نور ومنظومة د. أحمد الخطيب لرصد الساعات المنجزة بدقة واحتساب المستحقات الشهرية.
+      </p>
+    </div>
+
+    <!-- Main Form Card -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+      
+      <form id="staffHoursForm" onsubmit="handleStaffSubmit(event)" class="space-y-6">
+
+        <!-- Staff Member Selection -->
+        <div>
+          <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+            <i data-lucide="user-check" class="w-4 h-4 text-cyan-400"></i>
+            <span>اسم الموظف / العضو المسجل بالمنظومة <span class="text-rose-400">*</span></span>
+          </label>
+          <select id="staffName" required onchange="handleStaffChange()" class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
+            <option value="" disabled selected>-- اختر اسمك من القائمة --</option>
+            <option value="د. يمنى عبد العزيز" data-dept="التغذية العلاجية">د. يمنى عبد العزيز (أخصائية التغذية العلاجية)</option>
+            <option value="د. أروى الشاذلي" data-dept="التغذية العلاجية">د. أروى الشاذلي (أخصائية التغذية العلاجية)</option>
+            <option value="كوتش أحمد سمير" data-dept="الحركة والميكانيكا">كوتش أحمد سمير (كوتش الحركة والميكانيكا الحيوية)</option>
+            <option value="كوتش عمر خالد" data-dept="التدريب الحركي">كوتش عمر خالد (كوتش اللياقة البدنية وإعادة التأهيل)</option>
+            <option value="مشرف المجتمع والدعم" data-dept="المتابعة والمجتمع">مشرف المجتمع والمتابعة (Community Moderator)</option>
+            <option value="منسق المواعيد والعمليات" data-dept="العمليات وخدمة العملاء">منسق المواعيد والجلسات (Operations & Scheduling)</option>
+            <option value="مسؤول التقارير والأنظمة" data-dept="الإدارة الطبية">مسؤول التقارير والأنظمة المساندة</option>
+            <option value="الدعم التقني وتطوير المنصة" data-dept="التطوير التقني">الدعم التقني وتطوير المنصة</option>
+            <option value="other" data-dept="عام">-- عضو آخر (كتابة الاسم يدوياً) --</option>
+          </select>
+        </div>
+
+        <!-- Custom Name Input (Hidden by default) -->
+        <div id="customNameContainer" class="hidden">
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">اكتب اسمك الثلاثي الكامل <span class="text-rose-400">*</span></label>
+          <input type="text" id="customName" placeholder="مثال: سارة أحمد محمود" class="input-field w-full px-4 py-2.5 rounded-xl text-sm">
+        </div>
+
+        <!-- Department / Role -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+              <i data-lucide="briefcase" class="w-4 h-4 text-emerald-400"></i>
+              <span>القسم / التخصص <span class="text-rose-400">*</span></span>
+            </label>
+            <input type="text" id="staffDept" required placeholder="مثال: التغذية العلاجية" class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
+          </div>
+
+          <!-- Date of Work -->
+          <div>
+            <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+              <i data-lucide="calendar" class="w-4 h-4 text-amber-400"></i>
+              <span>تاريخ يوم العمل <span class="text-rose-400">*</span></span>
+            </label>
+            <input type="date" id="workDate" required class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
+            <span class="text-[11px] text-slate-400 mt-1 block">يسمح بالتسجيل من 1 نوفمبر 2026 وحتى اليوم.</span>
+          </div>
+        </div>
+
+        <!-- Hours Worked -->
+        <div>
+          <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <i data-lucide="timer" class="w-4 h-4 text-cyan-400"></i>
+              <span>عدد الساعات الفعلية المنجزة <span class="text-rose-400">*</span></span>
+            </span>
+            <span id="hoursDisplay" class="text-cyan-400 font-extrabold text-sm bg-cyan-950/80 px-2.5 py-0.5 rounded-md border border-cyan-800">4.0 ساعات</span>
+          </label>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-2">
+            <input type="number" id="hoursNumber" required min="0.5" max="16" step="0.5" value="4.0" oninput="updateHoursDisplay(this.value)" class="input-field w-full px-4 py-3 rounded-xl text-sm font-bold text-cyan-300">
+            
+            <div class="sm:col-span-2 flex items-center gap-2">
+              <input type="time" id="startTime" class="input-field w-1/2 px-3 py-3 rounded-xl text-xs" title="وقت البداية (اختياري)">
+              <span class="text-slate-500 text-xs">إلى</span>
+              <input type="time" id="endTime" class="input-field w-1/2 px-3 py-3 rounded-xl text-xs" title="وقت النهاية (اختياري)">
+            </div>
+          </div>
+          <span class="text-[11px] text-slate-400 block">يمكن إدخال كسور الساعات (مثال: 2.5 ساعة = ساعتان ونصف).</span>
+        </div>
+
+        <!-- Category of Work -->
+        <div>
+          <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+            <i data-lucide="layers" class="w-4 h-4 text-purple-400"></i>
+            <span>تصنيف المهام الأساسية <span class="text-rose-400">*</span></span>
+          </label>
+          <select id="taskCategory" required class="input-field w-full px-4 py-3 rounded-xl text-sm font-medium">
+            <option value="" disabled selected>-- اختر طبيعة العمل المنفذ --</option>
+            <option value="جلسات استشارية فردية ومتابعات 1:1">جلسات استشارية سريرية فردية ومتابعات مباشرة (1:1)</option>
+            <option value="كتابة وتصميم الخطط الغذائية وتقارير الجلسات">إعداد وتصميم الخطط والوجبات وتقارير الجلسات بالمنصة</option>
+            <option value="متابعة مجتمعية وتذاكر المشتركين (شات)">متابعة مجتمع المشتركين، شات الدفعة، والرد على التذاكر</option>
+            <option value="فحص حركي وتصميم برامج تمارين">فحص ميكانيكا حيوية وجلسات كوتش وتصميم تمارين</option>
+            <option value="مراجعة وتطوير مكتبة الوجبات الغذائية">مراجعة وتدقيق وجبات ومكونات المنصة والأنظمة الغذائية</option>
+            <option value="تنسيق مواعيد واتصالات إدارية">تنسيق مواعيد، اتصالات تأكيد المشتركين وعمليات المنظومة</option>
+            <option value="اجتماعات وتنسيق سريري مع د. أحمد">اجتماعات سريرية ومناقشة تقارير الحالات مع د. أحمد الخطيب</option>
+            <option value="مهام تقنية وتطوير المنصة">مهام تطوير برمجي وصيانة المنصة</option>
+            <option value="أخرى">مهام أخرى (موضحة في التقرير أدناه)</option>
+          </select>
+        </div>
+
+        <!-- Detailed Description of Accomplished Tasks -->
+        <div>
+          <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4 text-cyan-400"></i>
+            <span>بيان تفصيلي بما تم إنجازه خلال الساعات <span class="text-rose-400">*</span></span>
+          </label>
+          <textarea id="taskSummary" required rows="4" placeholder="اذكر بإيجاز ووضوح أهم ما أنجزته (مثال: تم تنفيذ 3 جلسات استشارية لكل من: فلان وفلان، وكتابة تقريرين سريريين، وحل 12 استفساراً في شات الدفعة...)" class="input-field w-full p-4 rounded-xl text-sm leading-relaxed"></textarea>
+        </div>
+
+        <!-- Optional Proof Link or Notes -->
+        <div>
+          <label class="block text-sm font-bold text-slate-200 mb-2 flex items-center gap-2">
+            <i data-lucide="link" class="w-4 h-4 text-slate-400"></i>
+            <span>رابط مرجعي أو ملاحظة إضافية (اختياري)</span>
+          </label>
+          <input type="text" id="notesLink" placeholder="رابط شيت / مستند / أو أي ملاحظات تخص ساعات العمل" class="input-field w-full px-4 py-3 rounded-xl text-sm">
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 text-white font-extrabold py-3.5 px-6 rounded-xl shadow-lg shadow-cyan-900/40 transition duration-200 flex items-center justify-center gap-2 text-base">
+            <i data-lucide="send" class="w-5 h-5"></i>
+            <span>تسجيل الساعات واعتماد الإرسال</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success State (Hidden by default) -->
+      <div id="successState" class="hidden text-center py-8 space-y-6">
+        <div class="w-20 h-20 bg-emerald-500/20 border-2 border-emerald-500/40 rounded-full flex items-center justify-center mx-auto text-emerald-400 shadow-xl shadow-emerald-950">
+          <i data-lucide="check-circle" class="w-10 h-10"></i>
+        </div>
+        <div class="space-y-2">
+          <h2 class="text-2xl font-black text-white">تم تسجيل ساعات العمل بنجاح!</h2>
+          <p class="text-slate-300 text-sm max-w-md mx-auto">
+            تم إدراج سجلك بنجاح في المنظومة السحابية وقاعدة البيانات لتظهر مباشرة في لوحة إدارة ومتابعة د. أحمد الخطيب.
+          </p>
+        </div>
+
+        <div id="receiptCard" class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 max-w-md mx-auto text-right text-xs space-y-2 font-mono">
+          <!-- Populated by JS -->
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <button onclick="resetFormForNewEntry()" class="px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-sm transition flex items-center justify-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>تسجيل ساعات ليوم آخر</span>
+          </button>
+          <a href="staff-hours-dashboard.html" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-sm transition flex items-center justify-center gap-2">
+            <i data-lucide="layout-dashboard" class="w-4 h-4 text-cyan-400"></i>
+            <span>معاينة لوحة متابعة الساعات</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer Links -->
+    <div class="mt-8 text-center text-xs text-slate-500 flex items-center justify-center gap-4">
+      <span>منظومة واحة نور • د. أحمد الخطيب</span>
+      <span>•</span>
+      <a href="staff-hours-dashboard.html" class="text-cyan-400/80 hover:text-cyan-300 underline">لوحة تحكم الإدارة</a>
+    </div>
+
+  </div>
+
+  <script>
+    // Init Lucide
+    lucide.createIcons();
+
+    // Set Date Constraints: From beginning of current month (2026-11-01) up to today
+    const dateInput = document.getElementById('workDate');
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    
+    const firstDayOfMonth = `${year}-${month}-01`;
+    const todayStr = `${year}-${month}-${day}`;
+    
+    dateInput.min = firstDayOfMonth;
+    dateInput.max = todayStr;
+    dateInput.value = todayStr; // default to today
+
+    function updateHoursDisplay(val) {
+      document.getElementById('hoursDisplay').innerText = `${parseFloat(val || 0).toFixed(1)} ساعات`;
+    }
+
+    function handleStaffChange() {
+      const select = document.getElementById('staffName');
+      const selectedOption = select.options[select.selectedIndex];
+      const customDiv = document.getElementById('customNameContainer');
+      const deptInput = document.getElementById('staffDept');
+
+      if (select.value === 'other') {
+        customDiv.classList.remove('hidden');
+        document.getElementById('customName').required = true;
+        deptInput.value = '';
+      } else {
+        customDiv.classList.add('hidden');
+        document.getElementById('customName').required = false;
+        const dept = selectedOption.getAttribute('data-dept');
+        if (dept) deptInput.value = dept;
+      }
+    }
+
+    async function handleStaffSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> جاري حفظ الساعات واعتمادها...`;
+
+      // Extract values
+      const staffSelect = document.getElementById('staffName');
+      let staffName = staffSelect.value;
+      if (staffName === 'other') {
+        staffName = document.getElementById('customName').value.trim();
+      }
+      const dept = document.getElementById('staffDept').value.trim();
+      const date = document.getElementById('workDate').value;
+      const hours = parseFloat(document.getElementById('hoursNumber').value);
+      const startTime = document.getElementById('startTime').value || '';
+      const endTime = document.getElementById('endTime').value || '';
+      const category = document.getElementById('taskCategory').value;
+      const summary = document.getElementById('taskSummary').value.trim();
+      const notes = document.getElementById('notesLink').value.trim();
+
+      const recordId = 'HR-' + Date.now().toString(36).toUpperCase();
+      const timestamp = new Date().toISOString();
+
+      const record = {
+        id: recordId,
+        staff_name: staffName,
+        department: dept,
+        work_date: date,
+        hours_count: hours,
+        time_slot: startTime && endTime ? `${startTime} - ${endTime}` : '',
+        task_category: category,
+        task_summary: summary,
+        notes: notes,
+        created_at: timestamp,
+        status: 'approved'
+      };
+
+      // 1. LocalStorage primary repository
+      try {
+        const existing = JSON.parse(localStorage.getItem('wahetnor_staff_hours_records') || '[]');
+        existing.unshift(record);
+        localStorage.setItem('wahetnor_staff_hours_records', JSON.stringify(existing));
+      } catch (err) {
+        console.warn('LocalStorage save error:', err);
+      }
+
+      // 2. Email Notification to Dr. Ahmed Elkhatib Admin Email
+      try {
+        fetch('https://formsubmit.co/ajax/mindivmindiv@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `ساعات عمل جديدة [${hours}س] - ${staffName} (${date})`,
+            الموظف: staffName,
+            القسم: dept,
+            تاريخ_العمل: date,
+            عدد_الساعات: `${hours} ساعات`,
+            الفترة: startTime && endTime ? `${startTime} إلى ${endTime}` : 'غير محدد',
+            نوع_المهمة: category,
+            تفاصيل_الإنجاز: summary,
+            ملاحظات_إضافية: notes || 'لا يوجد'
+          })
+        }).catch(() => {});
+      } catch (e) {}
+
+      // Render Receipt
+      document.getElementById('receiptCard').innerHTML = `
+        <div class="flex justify-between border-b border-slate-800 pb-1.5 text-slate-400">
+          <span>رقم الإيصال:</span> <span class="text-cyan-400 font-bold">${recordId}</span>
+        </div>
+        <div class="flex justify-between text-slate-300">
+          <span>الموظف:</span> <span class="text-white font-bold">${staffName}</span>
+        </div>
+        <div class="flex justify-between text-slate-300">
+          <span>التاريخ:</span> <span class="text-amber-400 font-bold">${date}</span>
+        </div>
+        <div class="flex justify-between text-slate-300">
+          <span>الساعات المعتمدة:</span> <span class="text-emerald-400 font-black text-sm">${hours} ساعات</span>
+        </div>
+        <div class="flex justify-between text-slate-300">
+          <span>المهمة:</span> <span class="text-slate-200">${category}</span>
+        </div>
+      `;
+
+      // Show Success State
+      document.getElementById('staffHoursForm').classList.add('hidden');
+      document.getElementById('successState').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function resetFormForNewEntry() {
+      document.getElementById('staffHoursForm').reset();
+      document.getElementById('workDate').value = todayStr;
+      updateHoursDisplay(4.0);
+      document.getElementById('customNameContainer').classList.add('hidden');
+      document.getElementById('staffHoursForm').classList.remove('hidden');
+      document.getElementById('successState').classList.add('hidden');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').innerHTML = `<i data-lucide="send" class="w-5 h-5"></i><span>تسجيل الساعات واعتماد الإرسال</span>`;
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

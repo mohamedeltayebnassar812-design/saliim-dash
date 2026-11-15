@@ -710,10 +710,10 @@
               </div>
             </div>
 
-            <!-- Case Study Teaser & Action Bar -->
+            <!-- Case Study Teaser / Scopes & Action Bar -->
             <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
               <div class="text-[11px] text-slate-400 truncate max-w-xl">
-                <strong class="text-slate-300">حل الحالة العملية:</strong> "${(a.caseStudy || '').slice(0, 100)}..."
+                <strong class="text-slate-300">مجالات التدريب:</strong> ${Array.isArray(a.scopes) ? a.scopes.join(' • ') : (a.scopes || 'تدريب وتأهيل حركي')}
               </div>
               <div class="flex items-center gap-2">
                 ${a.cvLink ? `
@@ -805,17 +805,22 @@
             </div>
           </div>
 
-          <!-- Case Study -->
-          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
-            <span class="text-amber-400 block font-bold">الحالة السريرية المقترحة (مريض 115 كجم، خشونة ركبة، انزلاق L4-L5):</span>
-            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.caseStudy || 'لم يتم تسجيل إجابة'}</p>
+          <!-- Training Scopes & Tools -->
+          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-2">
+            <span class="text-cyan-400 block font-bold">مجالات التدريب الفعلية والأدوات الرقمية:</span>
+            <div class="flex flex-wrap gap-1.5">
+              ${(Array.isArray(a.scopes) ? a.scopes : [a.scopes || 'تدريب وتأهيل حركي']).map(s => `<span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200 text-[11px] font-semibold border border-slate-700">${s}</span>`).join('')}
+              ${(Array.isArray(a.tools) ? a.tools : [a.tools || 'WhatsApp Business']).map(t => `<span class="px-2.5 py-1 rounded-md bg-cyan-950/60 text-cyan-300 text-[11px] font-semibold border border-cyan-800/50">${t}</span>`).join('')}
+            </div>
           </div>
 
-          <!-- Behavioral Coaching Question -->
+          ${a.caseStudy ? `
+          <!-- Case Study (If provided) -->
           <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
-            <span class="text-blue-400 block font-bold">التعامل مع فتور وإحباط العميل:</span>
-            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.behaviorAnswer || 'لم يتم تسجيل إجابة'}</p>
+            <span class="text-amber-400 block font-bold">دراسة الحالة السريرية:</span>
+            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.caseStudy}</p>
           </div>
+          ` : ''}
 
           <!-- Availability & Links -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">

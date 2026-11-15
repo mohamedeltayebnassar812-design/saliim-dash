@@ -256,10 +256,10 @@
         <div class="w-12 h-12 mx-auto rounded-full bg-slate-800/80 flex items-center justify-center text-slate-500">
           <i data-lucide="inbox" class="w-6 h-6"></i>
         </div>
-        <h3 class="text-sm font-bold text-slate-300">لا توجد طلبات تطابق الفلاتر المحددة</h3>
-        <p class="text-xs text-slate-500">جرب تعديل كلمات البحث أو تصفير خيارات الفلترة لعرض كافة المتقدمين.</p>
+        <h3 id="emptyTitle" class="text-sm font-bold text-slate-300">بانتظار استقبال طلبات التقديم الأولى</h3>
+        <p id="emptyDesc" class="text-xs text-slate-500 max-w-md mx-auto">لم يتم تسجيل أي طلبات حتى الآن. بمجرد تقديم أي كوتش عبر الاستمارة ستظهر بياناته والسكور الذكي الخاص به هنا تلقائياً ولحظياً.</p>
         <button onclick="resetFilters()" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition">
-          إعادة ضبط الفلاتر
+          تحديث الصفحة
         </button>
       </div>
     </section>
@@ -349,172 +349,6 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Initial Benchmark Seed Applicants (Realistic Profiles for Immediate Use)
-    const SEED_APPLICANTS = [
-      {
-        id: "seed-1",
-        fullName: "د. عبد الرحمن سامي شريف",
-        gender: "ذكر",
-        birthYear: 1997,
-        location: "القاهرة (مدينة نصر)",
-        phone: "01019284756",
-        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
-        gradDetails: "جامعة القاهرة • دفعة 2020",
-        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
-        certifications: "NASM-CPT, ISSA-CES (إصابات وتأهيل حركي), Dynamic Neuromuscular Stabilization (DNS)",
-        experienceYears: 4,
-        monthlyCaseload: "45-60 عميل شهرياً",
-        scopes: ["التأهيل الحركي والإصابات", "تدريب أونلاين عن بعد", "تدريب شخصي جيم", "تعديل القوام وكبار السن"],
-        caseStudy: "أبدأ بتقييم المدى الحركي لمفصل الركبة والحوض، واختبار ثبات الجذع (Core Stability). استبعد تماماً تمرين الـ Deep Squat أو القفز. أعتمد تمارين Closed Kinetic Chain مثل Wall Sit مع كرة بين الركبتين، Glute Bridges مع تثبيت الحوض لدعم الفقرات L4-L5، وتمرين Bird-Dog لتقوية عضلات أسفل الظهر العميقة دون أي تحميل محوري على الفقرات. مع خطة متدرجة للكارديو الخالي من الصدمات (Low Impact Cardio) مثل المشي المائي أو الدراجة الثابتة بالمقاومة المنخفضة.",
-        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "تسجيل فيديوهات لوم (Loom)", "واتساب بيزنس"],
-        behaviorAnswer: "أقوم بتقسيم الجلسات لأهداف صغيرة (Micro-habits) لا تتجاوز 15 دقيقة لكسر حاجز المقاومة النفسية، وأتواصل معه بصوت دافئ لتحديد سبب الفتور، مع تعديل شدة التدريب (Deload) إذا كان الإرهاق جسدياً.",
-        weeklyHours: 35,
-        availability: "فوراً خلال 48 ساعة",
-        commitments: "لا توجد أي التزامات عائقة، متفرغ للعمل الأونلاين",
-        expectedSalary: 14000,
-        cvLink: "https://drive.google.com/file/d/sample-cv-1/view",
-        sampleWorkLink: "https://youtube.com/shorts/sample-exercise-demo",
-        smartScore: 96,
-        status: "shortlist",
-        createdAt: "2026-11-14T18:30:00Z"
-      },
-      {
-        id: "seed-2",
-        fullName: "د. آية محمود حسانين",
-        gender: "أنثى",
-        birthYear: 1999,
-        location: "الجيزة (الدقي)",
-        phone: "01148291034",
-        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
-        gradDetails: "جامعة 6 أكتوبر • دفعة 2022",
-        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
-        certifications: "ISSA-CPT, FMS Level 1 (تقييم الحركة الوظيفية), Women's Pre & Post-Natal Specialist",
-        experienceYears: 3,
-        monthlyCaseload: "30-40 عميل شهرياً",
-        scopes: ["تدريب أونلاين عن بعد", "التأهيل الحركي والإصابات", "نزول وزن ودهون عنيدة", "لياقة منزلية وزن الجسم"],
-        caseStudy: "العميل يحتاج حماية غضروف الركبة وتخفيف الضغط الضاغط على العصب L4-L5. أمنع الـ Spinal Flexion تحت الوزن، وأركز على تفعيل الـ Transverse Abdominis وتمارين الـ Pelvic Tilt. لتقوية الكوادز بدون إجهاد الركبة نستخدم Straight Leg Raise و Terminal Knee Extensions باستخدام حبل المقاومة. البرنامج منزلي بحزام مطاطي ومات طبية فقط.",
-        tools: ["جداول جوجل (Google Sheets)", "تسجيل فيديوهات لوم (Loom)", "واتساب بيزنس"],
-        behaviorAnswer: "أرسل له رسائل تشجيعية بمتابعة يومية عبر الواتساب لتذكيره بالهدف الأكبر (صحته وتخلصه من آلام المفاصل)، ونعيد مراجعة ساعات نومه وتغذيته للتأكد أن الفتور ليس نتيجة عجز طاقة شديد.",
-        weeklyHours: 30,
-        availability: "خلال أسبوع من التعاقد",
-        commitments: "نصف دوام صباحي في عيادة خاصة (3 ساعات يومياً فقط)",
-        expectedSalary: 12000,
-        cvLink: "https://drive.google.com/file/d/sample-cv-2/view",
-        sampleWorkLink: "https://loom.com/share/sample-rehab-plan",
-        smartScore: 92,
-        status: "shortlist",
-        createdAt: "2026-11-14T20:15:00Z"
-      },
-      {
-        id: "seed-3",
-        fullName: "كابتن حازم طارق النجار",
-        gender: "ذكر",
-        birthYear: 1995,
-        location: "الإسكندرية (سموحة)",
-        phone: "01283746192",
-        faculty: "تربية رياضية (علوم الحركة والتدريب)",
-        gradDetails: "جامعة الإسكندرية • دفعة 2018",
-        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
-        certifications: "CSCS (Certified Strength & Conditioning Specialist), ACE-CPT, Precision Nutrition L1",
-        experienceYears: 6,
-        monthlyCaseload: "60+ عميل شهرياً",
-        scopes: ["تدريب أونلاين عن بعد", "تدريب شخصي جيم", "نزول وزن ودهون عنيدة", "بناء كتلة عضلية"],
-        caseStudy: "مع وزن 115 كجم وإصابات ركبة وظهر، الأولوية هي تقليل الأحمال المباشرة على المفاصل. نستخدم تمارين الثبات مثل Planks المعدلة على الركبة، Step-ups بارتفاع 10 سم فقط مع دعم جداري، وتمارين التجديف بالمطاط Seated Band Rows لتقوية أعلى الظهر وتحسين القوام لتقليل الحمل على الفقرات القطنية.",
-        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "Trainerize / TrueCoach", "واتساب بيزنس"],
-        behaviorAnswer: "أقوم بإجراء مكالمة دعم صوتية سريعة عبر الواتساب للوقوف على التحديات النفسية وجعل التمرين روتيناً ممتعاً غير مرهق عصبياً.",
-        weeklyHours: 40,
-        availability: "فوراً خلال 48 ساعة",
-        commitments: "متفرغ تماماً للأونلاين",
-        expectedSalary: 15000,
-        cvLink: "https://drive.google.com/file/d/sample-cv-3/view",
-        sampleWorkLink: "https://docs.google.com/spreadsheets/d/sample-plan",
-        smartScore: 88,
-        status: "shortlist",
-        createdAt: "2026-11-15T09:00:00Z"
-      },
-      {
-        id: "seed-4",
-        fullName: "د. شريف كمال الدسوقي",
-        gender: "ذكر",
-        birthYear: 2000,
-        location: "المنصورة (الدقهلية)",
-        phone: "01099238411",
-        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
-        gradDetails: "جامعة المنصورة • دفعة 2023",
-        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
-        certifications: "ISSA-CPT, Kinesiology Taping Practitioner",
-        experienceYears: 2,
-        monthlyCaseload: "20-30 عميل شهرياً",
-        scopes: ["التأهيل الحركي والإصابات", "تدريب أونلاين عن بعد", "لياقة منزلية وزن الجسم"],
-        caseStudy: "تركيز على تقوية العضلة الرباعية متساوية القياس (Isometric Quad Sets)، تمارين Hamstring Curls بوزن الساق، وتقوية عضلات الحوض والبطن العميقة لتخفيف الإجهاد على القرص الغضروفي L4-L5.",
-        tools: ["جداول جوجل (Google Sheets)", "واتساب بيزنس"],
-        behaviorAnswer: "أتابع معه الالتزام الغذائي وشرب الماء ونتفق على يوم راحة نشطة (Active Recovery).",
-        weeklyHours: 25,
-        availability: "فوراً خلال 48 ساعة",
-        commitments: "فترة تدريب امتياز مسائي",
-        expectedSalary: 8500,
-        cvLink: "https://drive.google.com/file/d/sample-cv-4/view",
-        sampleWorkLink: "",
-        smartScore: 84,
-        status: "pending",
-        createdAt: "2026-11-15T11:20:00Z"
-      },
-      {
-        id: "seed-5",
-        fullName: "كابتن سارة هشام الباز",
-        gender: "أنثى",
-        birthYear: 1998,
-        location: "القاهرة (المعادي)",
-        phone: "01157392018",
-        faculty: "تربية رياضية (علوم الحركة والتدريب)",
-        gradDetails: "جامعة حلوان • دفعة 2021",
-        syndicateLicense: "قيد استخراج الكارنيه",
-        certifications: "ACE-CPT, Pilates Mat Specialist",
-        experienceYears: 3,
-        monthlyCaseload: "30-45 عميل شهرياً",
-        scopes: ["تدريب أونلاين عن بعد", "لياقة منزلية وزن الجسم", "تعديل القوام وكبار السن"],
-        caseStudy: "تمارين بيلاتس علاجية منخفضة الحمل، تقوية الـ Core وثبات الحوض لدعم الظهر، وتفادي أي ثني مفاجئ للركبة أو الجذع.",
-        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "واتساب بيزنس"],
-        behaviorAnswer: "تعديل الجدول إلى 3 أيام فقط بدلاً من 5 لتسهيل الالتزام، مع رسائل تحفيزية صوتية.",
-        weeklyHours: 30,
-        availability: "خلال أسبوع من التعاقد",
-        commitments: "لا توجد التزامات عائقة",
-        expectedSalary: 11000,
-        cvLink: "https://drive.google.com/file/d/sample-cv-5/view",
-        sampleWorkLink: "https://instagram.com/sample-coach",
-        smartScore: 81,
-        status: "pending",
-        createdAt: "2026-11-15T13:40:00Z"
-      },
-      {
-        id: "seed-6",
-        fullName: "كابتن كريم ممدوح غنيم",
-        gender: "ذكر",
-        birthYear: 1996,
-        location: "طنطا (الغربية)",
-        phone: "01062947153",
-        faculty: "كلية أخرى",
-        gradDetails: "تجارة طنطا • دبلومة تدريب رياضي",
-        syndicateLicense: "لا أملك ترخيص نقابي",
-        certifications: "ISSA-CPT",
-        experienceYears: 4,
-        monthlyCaseload: "40 عميل شهرياً",
-        scopes: ["تدريب شخصي جيم", "بناء كتلة عضلية", "نزول وزن ودهون عنيدة"],
-        caseStudy: "تمارين ليف تمرينات رجل خفيفة، والمشي الخفيف، والتركيز على أجهزة الظهر المدعومة مثل Chest Supported Row.",
-        tools: ["واتساب بيزنس"],
-        behaviorAnswer: "أحفزه بالصور والفيديوهات لنتائج عملاء سابقين.",
-        weeklyHours: 30,
-        availability: "فوراً خلال 48 ساعة",
-        commitments: "عمل شفت مسائي بجيم",
-        expectedSalary: 9000,
-        cvLink: "https://drive.google.com/file/d/sample-cv-6/view",
-        sampleWorkLink: "",
-        smartScore: 68,
-        status: "backup",
-        createdAt: "2026-11-15T15:10:00Z"
-      }
-    ];
-
     // LocalStorage Key
     const STORAGE_KEY = "wahetnor_coach_applicants";
 
@@ -522,23 +356,21 @@
     let applicants = [];
     let currentQuickPill = "all";
 
-    // Load data from LocalStorage combined with Seeds
+    // Load data strictly from LocalStorage (Purging any old test/seed dummy data)
     function initData() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          // Merge parsed with seeds avoiding duplicate phone/id
-          const existingIds = new Set(parsed.map(p => p.id || p.phone));
-          const extraSeeds = SEED_APPLICANTS.filter(s => !existingIds.has(s.id) && !existingIds.has(s.phone));
-          applicants = [...parsed, ...extraSeeds];
+          // Purge any seed dummy data if previously cached
+          applicants = parsed.filter(p => p && p.id && !p.id.toString().startsWith("seed-") && !p.fullName?.includes("عبد الرحمن سامي"));
         } catch (e) {
-          applicants = [...SEED_APPLICANTS];
+          applicants = [];
         }
       } else {
-        applicants = [...SEED_APPLICANTS];
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+        applicants = [];
       }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
       renderKPIs();
       applyFilters();
     }

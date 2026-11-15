@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- STRICT PRIVACY: HIDDEN FROM SEARCH ENGINES -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة الانضمام لفريق التدريب والتأهيل الحركي • د. أحمد الخطيب | واحة نور</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #060b11;
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+    .glass-card {
+      background: rgba(13, 23, 33, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+    }
+    .glass-input {
+      background: rgba(10, 18, 27, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+    .glass-input:focus {
+      border-color: #06b6d4;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+      outline: none;
+    }
+    .badge-glow {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.35);
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-white py-10 px-4 sm:px-6 lg:px-8">
+
+  <!-- Background decorative glows -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-cyan-600/15 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 -left-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-40 right-1/3 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-4xl mx-auto">
+    
+    <!-- Top Header & Branding -->
+    <header class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-semibold mb-5 badge-glow">
+        <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+        <span>بوابة استقطاب الكفاءات الرياضية والطبية • واحة نور</span>
+      </div>
+      
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">
+        استمارة التقديم الرسمية: مدرب لياقة بدنية وتأهيل حركي
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+        انضم للفريق الاستشاري والطبي لـ <strong class="text-slate-200">د. أحمد الخطيب</strong> للإشراف على برامج الحركة والتأهيل الرياضي للمشتركين عن بعد. الاستمارة تستغرق 5-7 دقائق فقط.
+      </p>
+
+      <!-- Pillars badges -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-6 text-xs text-slate-300">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-cyan-400"></i>
+          أولوية لخريجي كليات العلاج الطبيعي
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60">
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
+          تأهيل حركي وتمارين منزلية آمنة
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60">
+          <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i>
+          ساعات عمل مرنة (عن بُعد)
+        </span>
+      </div>
+    </header>
+
+    <!-- Main Form Container -->
+    <main class="glass-card rounded-2xl p-6 sm:p-10">
+      <form id="coachApplicationForm" onsubmit="handleCoachSubmit(event)" class="space-y-8">
+
+        <!-- SECTION 1: Personal Data -->
+        <div class="border-b border-slate-800/80 pb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              1
+            </div>
+            <h2 class="text-lg font-bold text-white">البيانات الشخصية ووسائل الاتصال</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Full Name -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-2">الاسم الكامل ثلاثياً <span class="text-rose-400">*</span></label>
+              <input type="text" id="fullName" required placeholder="مثال: د. كريم أحمد محمود" class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+            </div>
+
+            <!-- Gender -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">الجنس <span class="text-rose-400">*</span></label>
+              <select id="gender" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر الجنس</option>
+                <option value="ذكر">ذكر</option>
+                <option value="أنثى">أنثى</option>
+              </select>
+            </div>
+
+            <!-- Birth Year -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">سنة الميلاد <span class="text-rose-400">*</span></label>
+              <input type="number" id="birthYear" required min="1970" max="2005" placeholder="مثال: 1996" class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+            </div>
+
+            <!-- Country & City -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">بلد ومدينة الإقامة الحالية <span class="text-rose-400">*</span></label>
+              <input type="text" id="location" required placeholder="مثال: مصر - القاهرة (المعادي)" class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+            </div>
+
+            <!-- Phone WhatsApp -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">رقم الهاتف (مفعّل على واتساب للتواصل) <span class="text-rose-400">*</span></label>
+              <input type="tel" id="phone" required placeholder="مثال: 01012345678" class="w-full rounded-xl px-4 py-3 glass-input text-sm text-left" dir="ltr">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: Academic Background & Licensing -->
+        <div class="border-b border-slate-800/80 pb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              2
+            </div>
+            <h2 class="text-lg font-bold text-white">المؤهل الأكاديمي والتراخيص المهنية</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Degree / Faculty -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">المؤهل العلمي والكلية الأساسية <span class="text-rose-400">*</span></label>
+              <select id="faculty" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر الكلية والمؤهل</option>
+                <option value="بكالوريوس علاج طبيعي">بكالوريوس علاج طبيعي (مفضل ⭐)</option>
+                <option value="بكالوريوس تربية رياضية">بكالوريوس تربية رياضية</option>
+                <option value="بكالوريوس طب بشري">بكالوريوس طب بشري</option>
+                <option value="بكالوريوس صيدلة">بكالوريوس صيدلة</option>
+                <option value="كلية علوم طبية / تأهيل حركي">علوم طبية تطبيقية / تأهيل حركي</option>
+                <option value="كلية علمية أخرى">كلية علمية أخرى</option>
+              </select>
+            </div>
+
+            <!-- University & Grad Year -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">اسم الجامعة + سنة التخرج <span class="text-rose-400">*</span></label>
+              <input type="text" id="universityGrad" required placeholder="مثال: جامعة القاهرة - 2020" class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+            </div>
+
+            <!-- License -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-2">كارنيه النقابة / ترخيص مزاولة المهنة الساري <span class="text-rose-400">*</span></label>
+              <select id="syndicateLicense" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر حالة الترخيص</option>
+                <option value="نعم (نقابة العلاج الطبيعي)">نعم - مسجل بنقابة العلاج الطبيعي وترخيص سارٍ</option>
+                <option value="نعم (نقابة المهن الرياضية)">نعم - مسجل بنقابة المهن الرياضية وترخيص سارٍ</option>
+                <option value="قيد الاستخراج / التجديد">قيد الاستخراج أو التجديد</option>
+                <option value="لا أمتلك حالياً">لا أمتلك ترخيص نقابي حالياً</option>
+              </select>
+            </div>
+
+            <!-- International Certs Checkboxes -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-3">الشهادات والاعتمادات الدولية في التدريب واللياقة (اختر كل ما ينطبق)</label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="ISSA (CFT / S&C)" class="rounded text-cyan-500 focus:ring-0">
+                  <span>ISSA (CFT / S&C)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="NASM (CPT / CES)" class="rounded text-cyan-500 focus:ring-0">
+                  <span>NASM (CPT / CES)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="ACE / ACSM" class="rounded text-cyan-500 focus:ring-0">
+                  <span>ACE / ACSM</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="CSCS" class="rounded text-cyan-500 focus:ring-0">
+                  <span>CSCS (قوة وتكييف)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="إصابات ملاعب وتأهيل" class="rounded text-cyan-500 focus:ring-0">
+                  <span>إصابات ملاعب وتأهيل حركي</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 cursor-pointer text-xs transition-all">
+                  <input type="checkbox" name="certs" value="ميكانيكا حيوية وتشريح" class="rounded text-cyan-500 focus:ring-0">
+                  <span>دورات تشريح وميكانيكا حيوية</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: Experience & Scopes -->
+        <div class="border-b border-slate-800/80 pb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              3
+            </div>
+            <h2 class="text-lg font-bold text-white">الخبرة العملية ومجالات التدريب الفعلية</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Years of Experience -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">عدد سنوات الخبرة العملية في التدريب والمتابعة <span class="text-rose-400">*</span></label>
+              <select id="experienceYears" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر سنوات الخبرة</option>
+                <option value="أقل من سنة">أقل من سنة</option>
+                <option value="١–٢ سنة">١–٢ سنة</option>
+                <option value="٣–٥ سنوات">٣–٥ سنوات</option>
+                <option value="أكثر من ٥ سنوات">أكثر من ٥ سنوات</option>
+              </select>
+            </div>
+
+            <!-- Monthly Caseload -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">متوسط عدد المشتركين الذين تتابعهم شهرياً حالياً <span class="text-rose-400">*</span></label>
+              <select id="caseload" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر حجم المتابعة</option>
+                <option value="أقل من ١٠">أقل من ١٠ مشتركين</option>
+                <option value="١٠–٢٥">١٠ إلى ٢٥ مشتركاً</option>
+                <option value="٢٦–٥٠">٢٦ إلى ٥٠ مشتركاً</option>
+                <option value="أكثر من ٥٠">أكثر من ٥٠ مشتركاً</option>
+              </select>
+            </div>
+
+            <!-- Training Scopes Checkboxes -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-3">مجالات التدريب التي مارستها فعلياً (اختر كل ما ينطبق)</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="تدريب أونلاين" class="rounded text-cyan-500">
+                  <span>تدريب أونلاين (Online)</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="تدريب شخصي جيم PT" class="rounded text-cyan-500">
+                  <span>تدريب خاص بالجيم (PT)</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="تأهيل إصابات وعلاج طبيعي" class="rounded text-cyan-500">
+                  <span>تأهيل إصابات وعلاج طبيعي</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="تمارين منزلية بدون أوزان" class="rounded text-cyan-500">
+                  <span>تمارين منزلية بوزن الجسم</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="سمنة مفرطة ومفاصل" class="rounded text-cyan-500">
+                  <span>سمنة مفرطة وحالات خاصة</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="فتنس وتخسيس سيدات" class="rounded text-cyan-500">
+                  <span>فتنس وتخسيس سيدات</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="بناء عضلي وقوة" class="rounded text-cyan-500">
+                  <span>بناء عضلي وقوة بدنية</span>
+                </label>
+                <label class="flex items-center gap-2 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs cursor-pointer">
+                  <input type="checkbox" name="scopes" value="مرونة وتصحيح قوام" class="rounded text-cyan-500">
+                  <span>مرونة وتصحيح قوام (Mobility)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: Case Study & Clinical Scenarios -->
+        <div class="border-b border-slate-800/80 pb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              4
+            </div>
+            <h2 class="text-lg font-bold text-white">التقييم الفني وسيناريو دراسة الحالة</h2>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Case Study -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2 leading-relaxed">
+                <span class="text-cyan-400 font-bold">دراسة حالة سريرية:</span>
+                مشترك وزنه 115 كجم، يعاني من سمنة مفرطة ولديه بداية خشونة بالركبة وانزلاق غضروفي قطني بسيط (L4-L5)، ويطلب برنامجاً منزلياً لخسارة الوزن بدون أدوات وبدون إجهاد لمفاصله. اذكر باختصار منهجيتك في بناء حركته للأسبوع الأول؟ <span class="text-rose-400">*</span>
+              </label>
+              <textarea id="caseStudyAnswer" required rows="4" placeholder="اذكر باختصار: نوع الحركات الممنوعة، والبدائل الآمنة للمفاصل، وعدد مرات وجرعات الحركة في البداية..." class="w-full rounded-xl px-4 py-3 glass-input text-sm leading-relaxed"></textarea>
+            </div>
+
+            <!-- Behavioral Scenario -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2 leading-relaxed">
+                <span class="text-cyan-400 font-bold">سؤال سلوكي وتواصلي:</span>
+                مشترك يتكاسل باستمرار عن أداء التمارين ويبرر ذلك بضيق الوقت والإرهاق من العمل.. كيف تتعامل معه وتدفعه للالتزام دون أن تشعره بالذنب أو الإحباط؟ <span class="text-rose-400">*</span>
+              </label>
+              <textarea id="behavioralAnswer" required rows="3" placeholder="اشرح طريقتك في بناء عادة الحركة الصغيرة وكيف تحفزه إنسانياً وتفكك حاجز التكاسل..." class="w-full rounded-xl px-4 py-3 glass-input text-sm leading-relaxed"></textarea>
+            </div>
+
+            <!-- Digital Tools -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-3">البرامج والأدوات الرقمية التي تجيد استخدامها</label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer">
+                  <input type="checkbox" name="tools" value="Google Sheets" class="rounded text-cyan-500">
+                  <span>Google Sheets / Excel</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer">
+                  <input type="checkbox" name="tools" value="Loom (فيديوهات الشرح)" class="rounded text-cyan-500">
+                  <span>Loom / فيديو تكنيك</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer">
+                  <input type="checkbox" name="tools" value="Trainerize / TrueCoach" class="rounded text-cyan-500">
+                  <span>تطبيقات المتابعة الرياضية</span>
+                </label>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 cursor-pointer">
+                  <input type="checkbox" name="tools" value="WhatsApp Business" class="rounded text-cyan-500">
+                  <span>WhatsApp Business</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 5: Availability & Commitments -->
+        <div class="border-b border-slate-800/80 pb-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-sm">
+              5
+            </div>
+            <h2 class="text-lg font-bold text-white">التفرغ، الارتباطات، والتطلعات المالية</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Weekly Hours -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">عدد الساعات الأسبوعية المتاحة للعمل معنا <span class="text-rose-400">*</span></label>
+              <select id="weeklyHours" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر عدد الساعات</option>
+                <option value="١٠–٢٠ ساعة أسبوعياً">١٠ إلى ٢٠ ساعة أسبوعياً (دوام جزئي)</option>
+                <option value="٢١–٣٠ ساعة أسبوعياً">٢١ إلى ٣٠ ساعة أسبوعياً</option>
+                <option value="٣١–٤٠ ساعة أسبوعياً">٣١ إلى ٤٠ ساعة أسبوعياً</option>
+                <option value="دوام كامل +">دوام كامل مخصص (Full-Time)</option>
+              </select>
+            </div>
+
+            <!-- Start Date -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">متى يمكنك استلام العمل في حال القبول؟ <span class="text-rose-400">*</span></label>
+              <select id="startDate" required class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+                <option value="" disabled selected>اختر موعد البدء</option>
+                <option value="فوراً (خلال أيام)">فوراً (خلال أيام)</option>
+                <option value="خلال أسبوعين">خلال أسبوعين</option>
+                <option value="خلال شهر">خلال شهر</option>
+              </select>
+            </div>
+
+            <!-- Current Commitments -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-2">هل لديك ارتباطات مهنية حالية (جيم، عيادة، عمل خاص)؟ — للشفافية والتنسيق فقط <span class="text-rose-400">*</span></label>
+              <input type="text" id="commitments" required placeholder="مثال: أعمل أخصائي في عيادة خاصة صباحاً ومتفرغ للمتابعة الأونلاين مساءً..." class="w-full rounded-xl px-4 py-3 glass-input text-sm">
+            </div>
+
+            <!-- Expected Salary -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">الراتب الشهري المتوقع الصافي (بالجنيه المصري) <span class="text-rose-400">*</span></label>
+              <input type="number" id="expectedSalary" required placeholder="مثال: 9000" class="w-full rounded-xl px-4 py-3 glass-input text-sm text-left" dir="ltr">
+            </div>
+
+            <!-- CV Link -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-2">رابط السيرة الذاتية (CV بصيغة PDF) <span class="text-rose-400">*</span></label>
+              <input type="url" id="cvLink" required placeholder="رابط Google Drive أو Dropbox متاح للعامة" class="w-full rounded-xl px-4 py-3 glass-input text-sm text-left" dir="ltr">
+            </div>
+
+            <!-- Sample Plan Link (Optional) -->
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-2">رابط نموذج خطة تدريبية أو فيديو شرح تكنيك (اختياري)</label>
+              <input type="url" id="sampleLink" placeholder="رابط Google Drive / YouTube / Loom إن وجد" class="w-full rounded-xl px-4 py-3 glass-input text-sm text-left" dir="ltr">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button & Feedback -->
+        <div class="pt-4">
+          <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:via-teal-500 hover:to-emerald-500 text-white font-bold text-base sm:text-lg shadow-xl shadow-cyan-900/30 transition-all duration-200 flex items-center justify-center gap-3">
+            <i data-lucide="send" class="w-5 h-5"></i>
+            <span>إرسال طلب الانضمام ومراجعة الملف</span>
+          </button>
+          <p class="text-center text-xs text-slate-500 mt-3">
+            🔒 كافة البيانات تُعامل بسرية مهنية تامة ومخصصة حصرياً للجنة التقييم في منظومة د. أحمد الخطيب.
+          </p>
+        </div>
+
+      </form>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+      <div class="glass-card rounded-2xl max-w-md w-full p-8 text-center border border-emerald-500/30">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto mb-5 shadow-lg shadow-emerald-500/20">
+          <i data-lucide="check-circle" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">تم استلام طلبك بنجاح!</h3>
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+          شكراً لاهتمامك بالانضمام لمنظومة د. أحمد الخطيب. تم تسجيل ملفك وسيقوم الفريق الاستشاري بفحص دراسة الحالة والتواصل مع المرشحين المتأهلين للمقابلات الشخصية.
+        </p>
+        <button onclick="closeSuccessModal()" class="w-full py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold transition-all">
+          إغلاق النافذة
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').classList.add('hidden');
+      document.getElementById('coachApplicationForm').reset();
+    }
+
+    // Smart Score Calculation
+    function calculateSmartScore(app) {
+      let score = 40; // Base score
+      
+      // Faculty bonus
+      if (app.faculty === 'بكالوريوس علاج طبيعي') score += 35;
+      else if (app.faculty === 'بكالوريوس تربية رياضية') score += 20;
+      else if (app.faculty === 'بكالوريوس طب بشري' || app.faculty === 'بكالوريوس صيدلة') score += 20;
+      else score += 10;
+
+      // Certs bonus
+      if (app.certs && app.certs.length > 0) {
+        score += Math.min(app.certs.length * 5, 15);
+      }
+
+      // Experience bonus
+      if (app.experienceYears === 'أكثر من ٥ سنوات') score += 10;
+      else if (app.experienceYears === '٣–٥ سنوات') score += 8;
+      else if (app.experienceYears === '١–٢ سنة') score += 5;
+
+      // Start date bonus
+      if (app.startDate && app.startDate.includes('فوراً')) score += 5;
+
+      return Math.min(score, 100);
+    }
+
+    async function handleCoachSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>جاري إرسال الطلب وحفظ البيانات...</span>`;
+      lucide.createIcons();
+
+      // Collect certs
+      const certs = Array.from(document.querySelectorAll('input[name="certs"]:checked')).map(cb => cb.value);
+      // Collect scopes
+      const scopes = Array.from(document.querySelectorAll('input[name="scopes"]:checked')).map(cb => cb.value);
+      // Collect tools
+      const tools = Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(cb => cb.value);
+
+      const applicantData = {
+        id: 'coach_' + Date.now(),
+        submittedAt: new Date().toISOString(),
+        fullName: document.getElementById('fullName').value.trim(),
+        gender: document.getElementById('gender').value,
+        birthYear: document.getElementById('birthYear').value,
+        location: document.getElementById('location').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        faculty: document.getElementById('faculty').value,
+        universityGrad: document.getElementById('universityGrad').value.trim(),
+        syndicateLicense: document.getElementById('syndicateLicense').value,
+        certs: certs,
+        experienceYears: document.getElementById('experienceYears').value,
+        caseload: document.getElementById('caseload').value,
+        scopes: scopes,
+        caseStudyAnswer: document.getElementById('caseStudyAnswer').value.trim(),
+        behavioralAnswer: document.getElementById('behavioralAnswer').value.trim(),
+        tools: tools,
+        weeklyHours: document.getElementById('weeklyHours').value,
+        startDate: document.getElementById('startDate').value,
+        commitments: document.getElementById('commitments').value.trim(),
+        expectedSalary: parseFloat(document.getElementById('expectedSalary').value) || 0,
+        cvLink: document.getElementById('cvLink').value.trim(),
+        sampleLink: document.getElementById('sampleLink').value.trim(),
+        status: 'قيد المراجعة',
+        privateNotes: ''
+      };
+
+      applicantData.smartScore = calculateSmartScore(applicantData);
+
+      // Save to localStorage
+      try {
+        const key = 'wahetnor_coach_applicants';
+        const existing = JSON.parse(localStorage.getItem(key) || '[]');
+        existing.unshift(applicantData);
+        localStorage.setItem(key, JSON.stringify(existing));
+      } catch (err) {
+        console.warn('LocalStorage save error:', err);
+      }
+
+      // Show success modal
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i data-lucide="send" class="w-5 h-5"></i><span>إرسال طلب الانضمام ومراجعة الملف</span>`;
+        lucide.createIcons();
+        document.getElementById('successModal').classList.remove('hidden');
+      }, 700);
+    }
+  </script>
+</body>
+</html>

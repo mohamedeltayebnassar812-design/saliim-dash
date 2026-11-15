@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!-- PRIVACY: HIDDEN FROM SEARCH ENGINES -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة استقطاب وتعيين الكوتشينج والتأهيل الحركي • واحة نور | د. أحمد الخطيب</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(16, 185, 129, 0.35);
+      transform: translateY(-2px);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    }
+    .emerald-gradient {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    }
+    .teal-gradient {
+      background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%);
+    }
+    .badge-pt {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34D399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .badge-cert {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60A5FA;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .badge-gold {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FBBF24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #071626;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased custom-scrollbar">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-slate-800 bg-[#071626]/90 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl emerald-gradient flex items-center justify-center text-white shadow-lg shadow-emerald-950/40">
+          <i data-lucide="dumbbell" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold text-white tracking-tight">داشبورد استقطاب وتعيين الكوتشينج والتأهيل الحركي</h1>
+            <span class="bg-emerald-500/20 text-emerald-400 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-emerald-500/30">Executive Suite</span>
+          </div>
+          <p class="text-xs text-slate-400">منظومة واحة نور • إدارة الدكتور أحمد الخطيب</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="/coach-apply" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-800 text-xs font-semibold text-slate-200 border border-slate-700 transition">
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>فتح رابط التقديم المباشر</span>
+        </a>
+        <button onclick="exportToCSV()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-800 text-xs font-semibold text-slate-200 border border-slate-700 transition">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span>تصدير Excel (CSV)</span>
+        </button>
+        <button onclick="openAddModal()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg emerald-gradient hover:opacity-95 text-xs font-bold text-white shadow-md shadow-emerald-950/30 transition">
+          <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+          <span>إضافة يدوي</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- KPI STATS CARDS -->
+    <section class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+      <!-- Total -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400">
+          <span class="text-xs font-medium">إجمالي المتقدمين</span>
+          <i data-lucide="users" class="w-4 h-4 text-slate-400"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-total" class="text-2xl font-black text-white">0</span>
+          <span class="text-[11px] text-slate-400">مرشح</span>
+        </div>
+      </div>
+
+      <!-- PT Grads -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between border-emerald-500/20 bg-emerald-950/10">
+        <div class="flex items-center justify-between text-emerald-400">
+          <span class="text-xs font-semibold">علاج طبيعي ⭐</span>
+          <i data-lucide="activity" class="w-4 h-4"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-pt" class="text-2xl font-black text-emerald-400">0</span>
+          <span class="text-[11px] text-emerald-400/80">أولوية أولى</span>
+        </div>
+      </div>
+
+      <!-- Certified -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-blue-400">
+          <span class="text-xs font-medium">اعتماد دولي (ISSA/NASM)</span>
+          <i data-lucide="award" class="w-4 h-4"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-certified" class="text-2xl font-black text-blue-400">0</span>
+          <span class="text-[11px] text-slate-400">مدرب معتمد</span>
+        </div>
+      </div>
+
+      <!-- High Experience -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-amber-400">
+          <span class="text-xs font-medium">خبرة 3+ سنوات</span>
+          <i data-lucide="briefcase" class="w-4 h-4"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-exp" class="text-2xl font-black text-amber-400">0</span>
+          <span class="text-[11px] text-slate-400">محترف</span>
+        </div>
+      </div>
+
+      <!-- Immediate -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-teal-400">
+          <span class="text-xs font-medium">جاهز فوراً</span>
+          <i data-lucide="zap" class="w-4 h-4"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-immediate" class="text-2xl font-black text-teal-400">0</span>
+          <span class="text-[11px] text-slate-400">متاح الآن</span>
+        </div>
+      </div>
+
+      <!-- Avg Salary -->
+      <div class="glass-card rounded-xl p-3.5 flex flex-col justify-between">
+        <div class="flex items-center justify-between text-slate-400">
+          <span class="text-xs font-medium">متوسط الراتب</span>
+          <i data-lucide="credit-card" class="w-4 h-4"></i>
+        </div>
+        <div class="mt-2 flex items-baseline justify-between">
+          <span id="kpi-salary" class="text-xl font-black text-slate-200">0</span>
+          <span class="text-[11px] text-slate-400">ج.م/شهرياً</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER & SEARCH BAR -->
+    <section class="glass-card rounded-xl p-4 space-y-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <!-- Search Input -->
+        <div class="relative lg:col-span-2">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
+          <input type="text" id="searchInput" oninput="applyFilters()" placeholder="بحث بالاسم، رقم الواتساب، الجامعة..." class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg pr-9 pl-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+        </div>
+
+        <!-- Faculty Filter -->
+        <div>
+          <select id="facultyFilter" onchange="applyFilters()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+            <option value="all">كل المؤهلات والجامعات</option>
+            <option value="pt">⭐ خريجو علاج طبيعي فقط</option>
+            <option value="sports">تربية رياضية فقط</option>
+            <option value="other">كليات علمية / طبية أخرى</option>
+          </select>
+        </div>
+
+        <!-- Status Filter -->
+        <div>
+          <select id="statusFilter" onchange="applyFilters()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+            <option value="all">كل حالات المراجعة</option>
+            <option value="shortlist">⭐ مؤهل للمقابلة (Shortlisted)</option>
+            <option value="pending">⏳ قيد المراجعة الفنية</option>
+            <option value="backup">📦 قائمة الاحتياط</option>
+            <option value="rejected">❌ غير مناسب</option>
+          </select>
+        </div>
+
+        <!-- Sort By -->
+        <div>
+          <select id="sortFilter" onchange="applyFilters()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+            <option value="score_desc">الترتيب: السكور الذكي الأعلى</option>
+            <option value="exp_desc">سنوات الخبرة الأكثر</option>
+            <option value="salary_asc">الراتب المتوقع الأنسب</option>
+            <option value="date_desc">الأحدث تقديماً</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Category Pills -->
+      <div class="flex flex-wrap items-center gap-2 pt-1 border-t border-slate-800/80 text-xs">
+        <span class="text-slate-400 font-medium text-[11px]">فلترة سريعة:</span>
+        <button onclick="setQuickPill('all')" class="pill-btn active px-2.5 py-1 rounded-md bg-slate-800 text-slate-200 text-[11px] font-semibold border border-slate-700 hover:border-slate-600 transition" data-pill="all">الكل</button>
+        <button onclick="setQuickPill('pt_only')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-emerald-500/50 hover:text-emerald-400 transition" data-pill="pt_only">خريج علاج طبيعي مرخص (PT)</button>
+        <button onclick="setQuickPill('nasm_issa')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-blue-500/50 hover:text-blue-400 transition" data-pill="nasm_issa">شهادات NASM أو ISSA</button>
+        <button onclick="setQuickPill('immediate_only')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-teal-500/50 hover:text-teal-400 transition" data-pill="immediate_only">بدء فوري وبدون التزامات عائقة</button>
+      </div>
+    </section>
+
+    <!-- APPLICANTS LIST CONTAINER -->
+    <section class="space-y-3.5">
+      <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+        <span>عرض <strong id="visible-count" class="text-emerald-400 font-bold">0</strong> من أصل <span id="total-count">0</span> مرشح</span>
+        <span class="text-[11px]">يتم تقييم كل مرشح تلقائياً بسكور ذكي من 100 نقطة وفق المعايير السريرية للعيادة</span>
+      </div>
+
+      <div id="applicantsGrid" class="space-y-3">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden glass-card rounded-2xl p-12 text-center space-y-3">
+        <div class="w-12 h-12 mx-auto rounded-full bg-slate-800/80 flex items-center justify-center text-slate-500">
+          <i data-lucide="inbox" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-sm font-bold text-slate-300">لا توجد طلبات تطابق الفلاتر المحددة</h3>
+        <p class="text-xs text-slate-500">جرب تعديل كلمات البحث أو تصفير خيارات الفلترة لعرض كافة المتقدمين.</p>
+        <button onclick="resetFilters()" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition">
+          إعادة ضبط الفلاتر
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- CANDIDATE DETAILS MODAL -->
+  <div id="detailsModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
+    <div class="glass-card bg-[#0A192F] border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 space-y-6 relative shadow-2xl">
+      <!-- Close button -->
+      <button onclick="closeDetailsModal()" class="absolute top-4 left-4 w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="modalContent">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD APPLICANT MANUALLY MODAL -->
+  <div id="addModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-5">
+    <div class="glass-card bg-[#0A192F] border border-slate-700 rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar p-6 space-y-5 relative shadow-2xl">
+      <button onclick="closeAddModal()" class="absolute top-4 left-4 w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-lg emerald-gradient flex items-center justify-center text-white">
+          <i data-lucide="user-plus" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white">إضافة مرشح جديد يدوياً</h3>
+          <p class="text-xs text-slate-400">تسجيل بيانات مدرب من محادثة واتساب أو إحالة خاصة</p>
+        </div>
+      </div>
+
+      <form id="addApplicantForm" onsubmit="saveManualApplicant(event)" class="space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">الاسم الرباعي</label>
+            <input type="text" id="manual_fullName" required class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">رقم الواتساب</label>
+            <input type="tel" id="manual_phone" required placeholder="010XXXXXXXX" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">المؤهل الأكاديمي والكلية</label>
+            <select id="manual_faculty" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+              <option value="علاج طبيعي (Physical Therapy) - أولوية أولى">علاج طبيعي (Physical Therapy)</option>
+              <option value="تربية رياضية (علوم الحركة والتدريب)">تربية رياضية (علوم الحركة والتدريب)</option>
+              <option value="طب بشري / علوم طبية مساندة">طب بشري / علوم طبية مساندة</option>
+              <option value="كلية أخرى">كلية أخرى</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">الجامعة وسنة التخرج</label>
+            <input type="text" id="manual_gradDetails" placeholder="مثال: جامعة القاهرة 2022" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">سنوات الخبرة</label>
+            <input type="number" id="manual_experienceYears" min="0" value="2" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">الشهادات الدولية</label>
+            <input type="text" id="manual_certifications" placeholder="ISSA, NASM, CSCS..." class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1 font-medium">الراتب المتوقع (ج.م)</label>
+            <input type="number" id="manual_expectedSalary" value="10000" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-400 mb-1 font-medium">رابط السيرة الذاتية (CV PDF)</label>
+          <input type="url" id="manual_cvLink" placeholder="https://drive.google.com/..." class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-white focus:border-emerald-500">
+        </div>
+
+        <div class="pt-2 flex justify-end gap-2">
+          <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">إلغاء</button>
+          <button type="submit" class="px-5 py-2 rounded-lg emerald-gradient text-white font-bold hover:opacity-95 transition">حفظ المرشح</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initial Benchmark Seed Applicants (Realistic Profiles for Immediate Use)
+    const SEED_APPLICANTS = [
+      {
+        id: "seed-1",
+        fullName: "د. عبد الرحمن سامي شريف",
+        gender: "ذكر",
+        birthYear: 1997,
+        location: "القاهرة (مدينة نصر)",
+        phone: "01019284756",
+        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
+        gradDetails: "جامعة القاهرة • دفعة 2020",
+        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
+        certifications: "NASM-CPT, ISSA-CES (إصابات وتأهيل حركي), Dynamic Neuromuscular Stabilization (DNS)",
+        experienceYears: 4,
+        monthlyCaseload: "45-60 عميل شهرياً",
+        scopes: ["التأهيل الحركي والإصابات", "تدريب أونلاين عن بعد", "تدريب شخصي جيم", "تعديل القوام وكبار السن"],
+        caseStudy: "أبدأ بتقييم المدى الحركي لمفصل الركبة والحوض، واختبار ثبات الجذع (Core Stability). استبعد تماماً تمرين الـ Deep Squat أو القفز. أعتمد تمارين Closed Kinetic Chain مثل Wall Sit مع كرة بين الركبتين، Glute Bridges مع تثبيت الحوض لدعم الفقرات L4-L5، وتمرين Bird-Dog لتقوية عضلات أسفل الظهر العميقة دون أي تحميل محوري على الفقرات. مع خطة متدرجة للكارديو الخالي من الصدمات (Low Impact Cardio) مثل المشي المائي أو الدراجة الثابتة بالمقاومة المنخفضة.",
+        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "تسجيل فيديوهات لوم (Loom)", "واتساب بيزنس"],
+        behaviorAnswer: "أقوم بتقسيم الجلسات لأهداف صغيرة (Micro-habits) لا تتجاوز 15 دقيقة لكسر حاجز المقاومة النفسية، وأتواصل معه بصوت دافئ لتحديد سبب الفتور، مع تعديل شدة التدريب (Deload) إذا كان الإرهاق جسدياً.",
+        weeklyHours: 35,
+        availability: "فوراً خلال 48 ساعة",
+        commitments: "لا توجد أي التزامات عائقة، متفرغ للعمل الأونلاين",
+        expectedSalary: 14000,
+        cvLink: "https://drive.google.com/file/d/sample-cv-1/view",
+        sampleWorkLink: "https://youtube.com/shorts/sample-exercise-demo",
+        smartScore: 96,
+        status: "shortlist",
+        createdAt: "2026-11-14T18:30:00Z"
+      },
+      {
+        id: "seed-2",
+        fullName: "د. آية محمود حسانين",
+        gender: "أنثى",
+        birthYear: 1999,
+        location: "الجيزة (الدقي)",
+        phone: "01148291034",
+        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
+        gradDetails: "جامعة 6 أكتوبر • دفعة 2022",
+        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
+        certifications: "ISSA-CPT, FMS Level 1 (تقييم الحركة الوظيفية), Women's Pre & Post-Natal Specialist",
+        experienceYears: 3,
+        monthlyCaseload: "30-40 عميل شهرياً",
+        scopes: ["تدريب أونلاين عن بعد", "التأهيل الحركي والإصابات", "نزول وزن ودهون عنيدة", "لياقة منزلية وزن الجسم"],
+        caseStudy: "العميل يحتاج حماية غضروف الركبة وتخفيف الضغط الضاغط على العصب L4-L5. أمنع الـ Spinal Flexion تحت الوزن، وأركز على تفعيل الـ Transverse Abdominis وتمارين الـ Pelvic Tilt. لتقوية الكوادز بدون إجهاد الركبة نستخدم Straight Leg Raise و Terminal Knee Extensions باستخدام حبل المقاومة. البرنامج منزلي بحزام مطاطي ومات طبية فقط.",
+        tools: ["جداول جوجل (Google Sheets)", "تسجيل فيديوهات لوم (Loom)", "واتساب بيزنس"],
+        behaviorAnswer: "أرسل له رسائل تشجيعية بمتابعة يومية عبر الواتساب لتذكيره بالهدف الأكبر (صحته وتخلصه من آلام المفاصل)، ونعيد مراجعة ساعات نومه وتغذيته للتأكد أن الفتور ليس نتيجة عجز طاقة شديد.",
+        weeklyHours: 30,
+        availability: "خلال أسبوع من التعاقد",
+        commitments: "نصف دوام صباحي في عيادة خاصة (3 ساعات يومياً فقط)",
+        expectedSalary: 12000,
+        cvLink: "https://drive.google.com/file/d/sample-cv-2/view",
+        sampleWorkLink: "https://loom.com/share/sample-rehab-plan",
+        smartScore: 92,
+        status: "shortlist",
+        createdAt: "2026-11-14T20:15:00Z"
+      },
+      {
+        id: "seed-3",
+        fullName: "كابتن حازم طارق النجار",
+        gender: "ذكر",
+        birthYear: 1995,
+        location: "الإسكندرية (سموحة)",
+        phone: "01283746192",
+        faculty: "تربية رياضية (علوم الحركة والتدريب)",
+        gradDetails: "جامعة الإسكندرية • دفعة 2018",
+        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
+        certifications: "CSCS (Certified Strength & Conditioning Specialist), ACE-CPT, Precision Nutrition L1",
+        experienceYears: 6,
+        monthlyCaseload: "60+ عميل شهرياً",
+        scopes: ["تدريب أونلاين عن بعد", "تدريب شخصي جيم", "نزول وزن ودهون عنيدة", "بناء كتلة عضلية"],
+        caseStudy: "مع وزن 115 كجم وإصابات ركبة وظهر، الأولوية هي تقليل الأحمال المباشرة على المفاصل. نستخدم تمارين الثبات مثل Planks المعدلة على الركبة، Step-ups بارتفاع 10 سم فقط مع دعم جداري، وتمارين التجديف بالمطاط Seated Band Rows لتقوية أعلى الظهر وتحسين القوام لتقليل الحمل على الفقرات القطنية.",
+        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "Trainerize / TrueCoach", "واتساب بيزنس"],
+        behaviorAnswer: "أقوم بإجراء مكالمة دعم صوتية سريعة عبر الواتساب للوقوف على التحديات النفسية وجعل التمرين روتيناً ممتعاً غير مرهق عصبياً.",
+        weeklyHours: 40,
+        availability: "فوراً خلال 48 ساعة",
+        commitments: "متفرغ تماماً للأونلاين",
+        expectedSalary: 15000,
+        cvLink: "https://drive.google.com/file/d/sample-cv-3/view",
+        sampleWorkLink: "https://docs.google.com/spreadsheets/d/sample-plan",
+        smartScore: 88,
+        status: "shortlist",
+        createdAt: "2026-11-15T09:00:00Z"
+      },
+      {
+        id: "seed-4",
+        fullName: "د. شريف كمال الدسوقي",
+        gender: "ذكر",
+        birthYear: 2000,
+        location: "المنصورة (الدقهلية)",
+        phone: "01099238411",
+        faculty: "علاج طبيعي (Physical Therapy) - أولوية أولى",
+        gradDetails: "جامعة المنصورة • دفعة 2023",
+        syndicateLicense: "نعم، مقيد ولدي ترخيص ساري",
+        certifications: "ISSA-CPT, Kinesiology Taping Practitioner",
+        experienceYears: 2,
+        monthlyCaseload: "20-30 عميل شهرياً",
+        scopes: ["التأهيل الحركي والإصابات", "تدريب أونلاين عن بعد", "لياقة منزلية وزن الجسم"],
+        caseStudy: "تركيز على تقوية العضلة الرباعية متساوية القياس (Isometric Quad Sets)، تمارين Hamstring Curls بوزن الساق، وتقوية عضلات الحوض والبطن العميقة لتخفيف الإجهاد على القرص الغضروفي L4-L5.",
+        tools: ["جداول جوجل (Google Sheets)", "واتساب بيزنس"],
+        behaviorAnswer: "أتابع معه الالتزام الغذائي وشرب الماء ونتفق على يوم راحة نشطة (Active Recovery).",
+        weeklyHours: 25,
+        availability: "فوراً خلال 48 ساعة",
+        commitments: "فترة تدريب امتياز مسائي",
+        expectedSalary: 8500,
+        cvLink: "https://drive.google.com/file/d/sample-cv-4/view",
+        sampleWorkLink: "",
+        smartScore: 84,
+        status: "pending",
+        createdAt: "2026-11-15T11:20:00Z"
+      },
+      {
+        id: "seed-5",
+        fullName: "كابتن سارة هشام الباز",
+        gender: "أنثى",
+        birthYear: 1998,
+        location: "القاهرة (المعادي)",
+        phone: "01157392018",
+        faculty: "تربية رياضية (علوم الحركة والتدريب)",
+        gradDetails: "جامعة حلوان • دفعة 2021",
+        syndicateLicense: "قيد استخراج الكارنيه",
+        certifications: "ACE-CPT, Pilates Mat Specialist",
+        experienceYears: 3,
+        monthlyCaseload: "30-45 عميل شهرياً",
+        scopes: ["تدريب أونلاين عن بعد", "لياقة منزلية وزن الجسم", "تعديل القوام وكبار السن"],
+        caseStudy: "تمارين بيلاتس علاجية منخفضة الحمل، تقوية الـ Core وثبات الحوض لدعم الظهر، وتفادي أي ثني مفاجئ للركبة أو الجذع.",
+        tools: ["جداول جوجل (Google Sheets)", "تطبيق نوشن (Notion)", "واتساب بيزنس"],
+        behaviorAnswer: "تعديل الجدول إلى 3 أيام فقط بدلاً من 5 لتسهيل الالتزام، مع رسائل تحفيزية صوتية.",
+        weeklyHours: 30,
+        availability: "خلال أسبوع من التعاقد",
+        commitments: "لا توجد التزامات عائقة",
+        expectedSalary: 11000,
+        cvLink: "https://drive.google.com/file/d/sample-cv-5/view",
+        sampleWorkLink: "https://instagram.com/sample-coach",
+        smartScore: 81,
+        status: "pending",
+        createdAt: "2026-11-15T13:40:00Z"
+      },
+      {
+        id: "seed-6",
+        fullName: "كابتن كريم ممدوح غنيم",
+        gender: "ذكر",
+        birthYear: 1996,
+        location: "طنطا (الغربية)",
+        phone: "01062947153",
+        faculty: "كلية أخرى",
+        gradDetails: "تجارة طنطا • دبلومة تدريب رياضي",
+        syndicateLicense: "لا أملك ترخيص نقابي",
+        certifications: "ISSA-CPT",
+        experienceYears: 4,
+        monthlyCaseload: "40 عميل شهرياً",
+        scopes: ["تدريب شخصي جيم", "بناء كتلة عضلية", "نزول وزن ودهون عنيدة"],
+        caseStudy: "تمارين ليف تمرينات رجل خفيفة، والمشي الخفيف، والتركيز على أجهزة الظهر المدعومة مثل Chest Supported Row.",
+        tools: ["واتساب بيزنس"],
+        behaviorAnswer: "أحفزه بالصور والفيديوهات لنتائج عملاء سابقين.",
+        weeklyHours: 30,
+        availability: "فوراً خلال 48 ساعة",
+        commitments: "عمل شفت مسائي بجيم",
+        expectedSalary: 9000,
+        cvLink: "https://drive.google.com/file/d/sample-cv-6/view",
+        sampleWorkLink: "",
+        smartScore: 68,
+        status: "backup",
+        createdAt: "2026-11-15T15:10:00Z"
+      }
+    ];
+
+    // LocalStorage Key
+    const STORAGE_KEY = "wahetnor_coach_applicants";
+
+    // State
+    let applicants = [];
+    let currentQuickPill = "all";
+
+    // Load data from LocalStorage combined with Seeds
+    function initData() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          // Merge parsed with seeds avoiding duplicate phone/id
+          const existingIds = new Set(parsed.map(p => p.id || p.phone));
+          const extraSeeds = SEED_APPLICANTS.filter(s => !existingIds.has(s.id) && !existingIds.has(s.phone));
+          applicants = [...parsed, ...extraSeeds];
+        } catch (e) {
+          applicants = [...SEED_APPLICANTS];
+        }
+      } else {
+        applicants = [...SEED_APPLICANTS];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+      }
+      renderKPIs();
+      applyFilters();
+    }
+
+    // Calculate & Render KPI Cards
+    function renderKPIs() {
+      document.getElementById("kpi-total").innerText = applicants.length;
+      
+      const ptCount = applicants.filter(a => a.faculty && a.faculty.includes("علاج طبيعي")).length;
+      document.getElementById("kpi-pt").innerText = ptCount;
+
+      const certCount = applicants.filter(a => {
+        const c = (a.certifications || "").toUpperCase();
+        return c.includes("ISSA") || c.includes("NASM") || c.includes("CSCS") || c.includes("ACE");
+      }).length;
+      document.getElementById("kpi-certified").innerText = certCount;
+
+      const expCount = applicants.filter(a => (parseInt(a.experienceYears) || 0) >= 3).length;
+      document.getElementById("kpi-exp").innerText = expCount;
+
+      const immCount = applicants.filter(a => (a.availability || "").includes("فوراً")).length;
+      document.getElementById("kpi-immediate").innerText = immCount;
+
+      const salaries = applicants.map(a => parseInt(a.expectedSalary) || 0).filter(s => s > 0);
+      const avgSalary = salaries.length ? Math.round(salaries.reduce((a, b) => a + b, 0) / salaries.length) : 0;
+      document.getElementById("kpi-salary").innerText = avgSalary.toLocaleString('ar-EG');
+
+      document.getElementById("total-count").innerText = applicants.length;
+    }
+
+    // Apply Search, Filters, and Sorting
+    function applyFilters() {
+      const search = (document.getElementById("searchInput").value || "").trim().toLowerCase();
+      const faculty = document.getElementById("facultyFilter").value;
+      const status = document.getElementById("statusFilter").value;
+      const sortBy = document.getElementById("sortFilter").value;
+
+      let filtered = applicants.filter(a => {
+        // Search
+        if (search) {
+          const matchName = (a.fullName || "").toLowerCase().includes(search);
+          const matchPhone = (a.phone || "").includes(search);
+          const matchGrad = (a.gradDetails || "").toLowerCase().includes(search);
+          const matchCerts = (a.certifications || "").toLowerCase().includes(search);
+          if (!matchName && !matchPhone && !matchGrad && !matchCerts) return false;
+        }
+
+        // Faculty filter
+        if (faculty === "pt" && (!a.faculty || !a.faculty.includes("علاج طبيعي"))) return false;
+        if (faculty === "sports" && (!a.faculty || !a.faculty.includes("تربية رياضية"))) return false;
+        if (faculty === "other" && a.faculty && (a.faculty.includes("علاج طبيعي") || a.faculty.includes("تربية رياضية"))) return false;
+
+        // Status filter
+        if (status !== "all" && a.status !== status) return false;
+
+        // Quick pill filter
+        if (currentQuickPill === "pt_only") {
+          const isPT = a.faculty && a.faculty.includes("علاج طبيعي");
+          const isLicensed = a.syndicateLicense && a.syndicateLicense.includes("ترخيص ساري");
+          if (!isPT || !isLicensed) return false;
+        } else if (currentQuickPill === "nasm_issa") {
+          const c = (a.certifications || "").toUpperCase();
+          if (!c.includes("NASM") && !c.includes("ISSA")) return false;
+        } else if (currentQuickPill === "immediate_only") {
+          if (!a.availability || !a.availability.includes("فوراً")) return false;
+        }
+
+        return true;
+      });
+
+      // Sorting
+      filtered.sort((a, b) => {
+        if (sortBy === "score_desc") return (b.smartScore || 0) - (a.smartScore || 0);
+        if (sortBy === "exp_desc") return (parseInt(b.experienceYears) || 0) - (parseInt(a.experienceYears) || 0);
+        if (sortBy === "salary_asc") return (parseInt(a.expectedSalary) || 0) - (parseInt(b.expectedSalary) || 0);
+        if (sortBy === "date_desc") return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+        return 0;
+      });
+
+      renderGrid(filtered);
+    }
+
+    // Render Applicants Cards
+    function renderGrid(list) {
+      const container = document.getElementById("applicantsGrid");
+      const emptyState = document.getElementById("emptyState");
+      document.getElementById("visible-count").innerText = list.length;
+
+      if (!list.length) {
+        container.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      container.innerHTML = list.map(a => {
+        const isPT = a.faculty && a.faculty.includes("علاج طبيعي");
+        const score = a.smartScore || 70;
+        let scoreBadgeClass = "bg-emerald-500/20 text-emerald-400 border-emerald-500/40";
+        if (score < 80 && score >= 70) scoreBadgeClass = "bg-blue-500/20 text-blue-400 border-blue-500/40";
+        else if (score < 70) scoreBadgeClass = "bg-amber-500/20 text-amber-400 border-amber-500/40";
+
+        // Clean phone for whatsapp
+        let waNumber = (a.phone || "").replace(/\D/g, '');
+        if (waNumber.startsWith('0')) waNumber = '2' + waNumber;
+        else if (!waNumber.startsWith('20') && waNumber.length === 10) waNumber = '20' + waNumber;
+
+        const waMsg = encodeURIComponent(`مرحباً دكتور/كابتن ${a.fullName}،\nمعك فريق إدارة دكتور أحمد الخطيب (واحة نور).\nاطلعنا باهتمام على طلبك المتميز للانضمام لفريق الكوتشينج والتأهيل الحركي، ونود ترتيب موعد مقابلة فنية أونلاين لمناقشة التفاصيل.\nهل يناسبك الغد أم بعد الغد؟`);
+        const waLink = `https://wa.me/${waNumber}?text=${waMsg}`;
+
+        return `
+          <div class="glass-card glass-card-hover rounded-xl p-4 sm:p-5 transition space-y-3.5 border ${isPT ? 'border-emerald-500/25' : 'border-slate-800'}">
+            <!-- Header Row -->
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div class="flex items-start gap-3">
+                <div class="w-10 h-10 rounded-xl ${isPT ? 'emerald-gradient text-white' : 'bg-slate-800 text-slate-300'} flex items-center justify-center font-black text-sm shrink-0 shadow-md">
+                  ${isPT ? '<i data-lucide="stethoscope" class="w-5 h-5"></i>' : '<i data-lucide="dumbbell" class="w-5 h-5"></i>'}
+                </div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <h3 class="text-sm sm:text-base font-bold text-white">${a.fullName}</h3>
+                    <span class="text-xs px-2 py-0.5 rounded-full font-bold border ${scoreBadgeClass}">
+                      السكور: ${score}/100
+                    </span>
+                    ${isPT ? '<span class="text-[10px] px-2 py-0.5 rounded-md font-bold badge-pt">علاج طبيعي ⭐</span>' : ''}
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">
+                    ${a.gradDetails || a.faculty || ''} • ${a.location || 'مصر'} • السن: ${a.birthYear ? (2026 - a.birthYear) + ' سنة' : '—'}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Status Selector & Action -->
+              <div class="flex items-center gap-2">
+                <select onchange="updateApplicantStatus('${a.id}', this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-[11px] font-semibold text-slate-200 focus:outline-none focus:border-emerald-500">
+                  <option value="shortlist" ${a.status === 'shortlist' ? 'selected' : ''}>⭐ مؤهل للمقابلة</option>
+                  <option value="pending" ${a.status === 'pending' ? 'selected' : ''}>⏳ قيد المراجعة</option>
+                  <option value="backup" ${a.status === 'backup' ? 'selected' : ''}>📦 قائمة الاحتياط</option>
+                  <option value="rejected" ${a.status === 'rejected' ? 'selected' : ''}>❌ غير مناسب</option>
+                </select>
+
+                <a href="${waLink}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  <span>واتساب</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Badges & Details Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 py-2.5 px-3 rounded-lg bg-slate-900/60 text-xs border border-slate-800/80">
+              <div>
+                <span class="text-slate-400 block text-[11px]">الشهادات والاعتمادات:</span>
+                <span class="font-semibold text-slate-200 truncate block mt-0.5" title="${a.certifications || 'لا توجد'}">
+                  ${a.certifications || 'مؤهل أكاديمي أساسي'}
+                </span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[11px]">الخبرة والقدرة الشهرية:</span>
+                <span class="font-semibold text-emerald-400 block mt-0.5">
+                  ${a.experienceYears || 0} سنوات خبرة • ${a.monthlyCaseload || '—'}
+                </span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[11px]">التفرغ والراتب المتوقع:</span>
+                <span class="font-semibold text-amber-300 block mt-0.5">
+                  ${a.weeklyHours || 30} س/أسبوع • ${(parseInt(a.expectedSalary) || 0).toLocaleString('ar-EG')} ج.م
+                </span>
+              </div>
+            </div>
+
+            <!-- Case Study Teaser & Action Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
+              <div class="text-[11px] text-slate-400 truncate max-w-xl">
+                <strong class="text-slate-300">حل الحالة العملية:</strong> "${(a.caseStudy || '').slice(0, 100)}..."
+              </div>
+              <div class="flex items-center gap-2">
+                ${a.cvLink ? `
+                  <a href="${a.cvLink}" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium border border-slate-700 transition">
+                    <i data-lucide="file-text" class="w-3 h-3 text-blue-400"></i>
+                    <span>عرض السيرة الذاتية (CV)</span>
+                  </a>
+                ` : ''}
+                <button onclick="viewApplicantDetails('${a.id}')" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800/90 hover:bg-slate-700 text-emerald-400 text-[11px] font-bold border border-slate-700 transition">
+                  <i data-lucide="eye" class="w-3 h-3"></i>
+                  <span>فحص كامل الإجابات</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Set Quick Pill Filter
+    function setQuickPill(type) {
+      currentQuickPill = type;
+      document.querySelectorAll(".pill-btn").forEach(btn => {
+        if (btn.getAttribute("data-pill") === type) {
+          btn.classList.add("bg-slate-800", "text-slate-200", "border-slate-700");
+          btn.classList.remove("bg-slate-900/70", "text-slate-400");
+        } else {
+          btn.classList.remove("bg-slate-800", "text-slate-200", "border-slate-700");
+          btn.classList.add("bg-slate-900/70", "text-slate-400");
+        }
+      });
+      applyFilters();
+    }
+
+    // Reset Filters
+    function resetFilters() {
+      document.getElementById("searchInput").value = "";
+      document.getElementById("facultyFilter").value = "all";
+      document.getElementById("statusFilter").value = "all";
+      document.getElementById("sortFilter").value = "score_desc";
+      setQuickPill("all");
+    }
+
+    // Update Status
+    function updateApplicantStatus(id, newStatus) {
+      const idx = applicants.findIndex(a => a.id === id);
+      if (idx !== -1) {
+        applicants[idx].status = newStatus;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+      }
+    }
+
+    // View Details Modal
+    function viewApplicantDetails(id) {
+      const a = applicants.find(x => x.id === id);
+      if (!a) return;
+
+      const modal = document.getElementById("detailsModal");
+      const content = document.getElementById("modalContent");
+
+      content.innerHTML = `
+        <div class="space-y-4 text-xs">
+          <!-- Header -->
+          <div class="flex items-start justify-between border-b border-slate-800 pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-white">${a.fullName}</h2>
+                <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                  السكور: ${a.smartScore || 70}/100
+                </span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">
+                ${a.faculty} • ${a.gradDetails} • ترخيص النقابة: <span class="text-emerald-400 font-semibold">${a.syndicateLicense || '—'}</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Academic & Certs -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+            <div>
+              <span class="text-slate-400 block font-medium">الشهادات الدولية:</span>
+              <p class="text-slate-200 mt-1 font-semibold">${a.certifications || 'لا توجد'}</p>
+            </div>
+            <div>
+              <span class="text-slate-400 block font-medium">سنوات الخبرة والحمل الشهري:</span>
+              <p class="text-emerald-400 mt-1 font-semibold">${a.experienceYears} سنوات • ${a.monthlyCaseload}</p>
+            </div>
+          </div>
+
+          <!-- Case Study -->
+          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
+            <span class="text-amber-400 block font-bold">الحالة السريرية المقترحة (مريض 115 كجم، خشونة ركبة، انزلاق L4-L5):</span>
+            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.caseStudy || 'لم يتم تسجيل إجابة'}</p>
+          </div>
+
+          <!-- Behavioral Coaching Question -->
+          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
+            <span class="text-blue-400 block font-bold">التعامل مع فتور وإحباط العميل:</span>
+            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.behaviorAnswer || 'لم يتم تسجيل إجابة'}</p>
+          </div>
+
+          <!-- Availability & Links -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+            <div>
+              <span class="text-slate-400 block font-medium">التفرغ والجاهزية:</span>
+              <p class="text-slate-200 mt-1">${a.weeklyHours} س/أسبوع • ${a.availability}</p>
+            </div>
+            <div>
+              <span class="text-slate-400 block font-medium">الالتزامات الحالية:</span>
+              <p class="text-slate-200 mt-1">${a.commitments || 'لا توجد'}</p>
+            </div>
+            <div>
+              <span class="text-slate-400 block font-medium">الراتب المتوقع:</span>
+              <p class="text-amber-300 mt-1 font-bold">${(parseInt(a.expectedSalary) || 0).toLocaleString('ar-EG')} ج.م شهرياً</p>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            ${a.cvLink ? `<a href="${a.cvLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> فتح ملف السيرة الذاتية (CV)</a>` : ''}
+            ${a.sampleWorkLink ? `<a href="${a.sampleWorkLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold transition flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> نموذج الشرح / الخطة</a>` : ''}
+          </div>
+        </div>
+      `;
+
+      modal.classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function closeDetailsModal() {
+      document.getElementById("detailsModal").classList.add("hidden");
+    }
+
+    // Add Manual Modal Handlers
+    function openAddModal() {
+      document.getElementById("addModal").classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function closeAddModal() {
+      document.getElementById("addModal").classList.add("hidden");
+      document.getElementById("addApplicantForm").reset();
+    }
+
+    function saveManualApplicant(e) {
+      e.preventDefault();
+      const isPT = document.getElementById("manual_faculty").value.includes("علاج طبيعي");
+      const exp = parseInt(document.getElementById("manual_experienceYears").value) || 0;
+      let score = 70;
+      if (isPT) score += 18;
+      if (exp >= 3) score += 10;
+
+      const newApp = {
+        id: "manual-" + Date.now(),
+        fullName: document.getElementById("manual_fullName").value.trim(),
+        phone: document.getElementById("manual_phone").value.trim(),
+        faculty: document.getElementById("manual_faculty").value,
+        gradDetails: document.getElementById("manual_gradDetails").value.trim(),
+        syndicateLicense: isPT ? "نعم، مقيد ولدي ترخيص ساري" : "—",
+        certifications: document.getElementById("manual_certifications").value.trim(),
+        experienceYears: exp,
+        monthlyCaseload: "30-50 عميل",
+        caseStudy: "تمت إضافة المرشح يدوياً عبر لوحة الإدارة.",
+        behaviorAnswer: "تم التحقق هاتفياً.",
+        weeklyHours: 30,
+        availability: "فوراً خلال 48 ساعة",
+        commitments: "لا توجد",
+        expectedSalary: parseInt(document.getElementById("manual_expectedSalary").value) || 10000,
+        cvLink: document.getElementById("manual_cvLink").value.trim(),
+        smartScore: score,
+        status: "pending",
+        createdAt: new Date().toISOString()
+      };
+
+      applicants.unshift(newApp);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+      closeAddModal();
+      renderKPIs();
+      applyFilters();
+    }
+
+    // Export to Excel / CSV
+    function exportToCSV() {
+      if (!applicants.length) {
+        alert("لا توجد بيانات لتصديرها.");
+        return;
+      }
+      const headers = ["الاسم الرباعي", "رقم الواتساب", "المؤهل والجامعة", "الترخيص النقابي", "الشهادات الدولية", "سنوات الخبرة", "السكور الذكي", "الراتب المتوقع", "الحالة", "رابط الـ CV"];
+      const rows = applicants.map(a => [
+        `"${a.fullName || ''}"`,
+        `"${a.phone || ''}"`,
+        `"${(a.faculty || '') + ' - ' + (a.gradDetails || '')}"`,
+        `"${a.syndicateLicense || ''}"`,
+        `"${a.certifications || ''}"`,
+        `"${a.experienceYears || 0}"`,
+        `"${a.smartScore || 0}"`,
+        `"${a.expectedSalary || 0}"`,
+        `"${a.status || ''}"`,
+        `"${a.cvLink || ''}"`
+      ]);
+
+      const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `WahetNour_Coach_Applicants_${new Date().toISOString().slice(0, 10)}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Init on Load
+    document.addEventListener("DOMContentLoaded", () => {
+      initData();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>

@@ -42,7 +42,7 @@
         }
 
         .container {
-            max-width: 1120px;
+            max-width: 1140px;
             margin: 0 auto;
         }
 
@@ -77,7 +77,7 @@
         .brand-header p {
             color: var(--text-muted);
             font-size: 15px;
-            max-width: 680px;
+            max-width: 720px;
             margin: 0 auto;
             line-height: 1.6;
         }
@@ -454,18 +454,53 @@
             gap: 4px;
             background: #e0f2fe;
             color: #0369a1;
-            padding: 3px 8px;
+            padding: 4px 9px;
             border-radius: 6px;
-            font-size: 11px;
+            font-size: 11.5px;
             font-weight: 600;
             text-decoration: none;
-            margin-top: 4px;
             transition: all 0.15s;
         }
 
         .btn-post-link:hover {
             background: #0284c7;
             color: #ffffff;
+        }
+
+        .btn-add-post {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fffbeb;
+            color: #b45309;
+            border: 1px dashed #f59e0b;
+            padding: 4px 9px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-add-post:hover {
+            background: #fef3c7;
+            border-style: solid;
+        }
+
+        .btn-edit-post {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-edit-post:hover {
+            background: #e2e8f0;
+            color: var(--dark);
         }
 
         .btn-copy-tbl {
@@ -544,7 +579,7 @@
                 <span>منظومة واحة نور • د. أحمد الخطيب</span>
             </div>
             <h1>مولّد روابط التتبّع الذكية والفريدة (UTM Generator)</h1>
-            <p>أداة فورية لمنع التكرار وتوليد روابط مخصصة لكل فيديو، ريلز، كاروسيل، أو منشور بدقة مطلقة، مع إمكانية حفظ رابط المنشور الأصلي للرجوع إليه بضغطة زر واحدة.</p>
+            <p>أداة فورية لتوليد روابط مخصصة لكل فيديو، ريلز، كاروسيل، أو منشور، مع إمكانية ربط رابط البوست الأصلي الآن أو في أي وقت لاحق بعد النشر للرجوع إليه بضغطة زر واحدة.</p>
         </header>
 
         <!-- Main Workspace -->
@@ -634,13 +669,13 @@
                     </div>
                 </div>
 
-                <!-- NEW: Optional Post / Video Source URL -->
+                <!-- Optional Post / Video Source URL -->
                 <div class="form-group">
                     <label for="postUrl">
                         🔗 6. رابط المنشور أو الفيديو الأصلي على المنصة:
-                        <span class="hint" style="color: var(--primary); font-weight: 600;">(اختياري — للرجوع للبوست بضغطة زر)</span>
+                        <span class="hint" style="color: var(--primary); font-weight: 600;">(اختياري — يمكنك تركه فارغاً وإضافته لاحقاً بعد نشر الفيديو)</span>
                     </label>
-                    <input type="text" id="postUrl" placeholder="https://www.facebook.com/... أو https://instagram.com/p/..." style="direction: ltr; text-align: left; font-family: monospace; font-size: 13px;">
+                    <input type="text" id="postUrl" placeholder="https://www.facebook.com/... أو https://instagram.com/reel/..." style="direction: ltr; text-align: left; font-family: monospace; font-size: 13px;">
                 </div>
 
             </div>
@@ -706,9 +741,14 @@
         <!-- History Section -->
         <div class="card history-section">
             <div class="history-header">
-                <div class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
-                    <span class="icon">📜</span>
-                    <span>سجل الروابط السابقة المولدّة (<span id="historyCount">0</span> روابط محفوظة)</span>
+                <div>
+                    <div class="card-title" style="margin-bottom: 4px; border-bottom: none; padding-bottom: 0;">
+                        <span class="icon">📜</span>
+                        <span>سجل الروابط السابقة المولدّة (<span id="historyCount">0</span> روابط محفوظة)</span>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+                        💡 يمكنك النقر على <strong>«➕ إضافة رابط البوست بعد النشر»</strong> في أي وقت لربط الفيديو المنشور مباشرة!
+                    </div>
                 </div>
                 <div class="history-actions">
                     <button class="btn-small" onclick="exportCSV()">📥 تصدير Excel (CSV)</button>
@@ -720,10 +760,10 @@
                 <table id="historyTable">
                     <thead>
                         <tr>
-                            <th style="width: 25%;">عنوان المحتوى والبوست</th>
-                            <th style="width: 15%;">المنصة والنوع</th>
-                            <th style="width: 15%;">كود الحملة</th>
-                            <th style="width: 25%;">الرابط الذكي</th>
+                            <th style="width: 28%;">عنوان المحتوى والبوست الأصلي</th>
+                            <th style="width: 14%;">المنصة والنوع</th>
+                            <th style="width: 14%;">كود الحملة</th>
+                            <th style="width: 24%;">الرابط الذكي</th>
                             <th style="width: 20%; text-align: center;">إجراءات</th>
                         </tr>
                     </thead>
@@ -746,7 +786,7 @@
     </div>
 
     <script>
-        // Storage Key v3 (includes postUrl)
+        // Storage Key v3
         const STORAGE_KEY = 'wahetnor_utm_history_v3';
         let historyData = [];
 
@@ -763,13 +803,13 @@
                 if (raw) {
                     historyData = JSON.parse(raw);
                 } else {
-                    // Seed initial examples with sample postUrls
+                    // Seed initial examples with and without postUrl to demonstrate both states
                     historyData = [
-                        { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', postUrl: 'https://facebook.com/reel/example1', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
-                        { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', postUrl: 'https://facebook.com/watch/?v=example2', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
-                        { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', postUrl: 'https://instagram.com/p/example3', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
-                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', postUrl: 'https://instagram.com/reel/example4', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
-                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', postUrl: 'https://tiktok.com/@example/video/12345', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
+                        { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', postUrl: 'https://facebook.com/reel/12345678', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
+                        { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', postUrl: '', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
+                        { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', postUrl: 'https://instagram.com/p/C_sample123', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
+                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', postUrl: '', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
+                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', postUrl: 'https://tiktok.com/@drahmed/video/7123456789', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
                     ];
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
                 }
@@ -983,7 +1023,6 @@
             // Check if already in history
             const idx = historyData.findIndex(item => item.url === url);
             if (idx !== -1) {
-                // Update postUrl if provided
                 if (postUrl) {
                     historyData[idx].postUrl = postUrl;
                     saveHistory();
@@ -1007,13 +1046,32 @@
 
             historyData.unshift(newItem);
             saveHistory();
-            showToast('تم حفظ الرابط ورابط البوست في السجل بنجاح! 💾');
+            showToast('تم حفظ الرابط في السجل بنجاح! 💾');
             
             // Clear postUrl input for the next item
             document.getElementById('postUrl').value = '';
             
             // Advance counter for the next content piece!
             autoIncrementCode();
+        }
+
+        function editPostUrl(id) {
+            const item = historyData.find(x => x.id === id);
+            if (!item) return;
+
+            const current = item.postUrl || '';
+            const newUrl = prompt(`أدخل رابط البوست أو الفيديو المنشور على المنصة لـ:
+"${item.title}" (${item.campaign})`, current);
+            
+            if (newUrl !== null) {
+                item.postUrl = newUrl.trim();
+                saveHistory();
+                if (item.postUrl) {
+                    showToast('تم حفظ ورابط البوست بنجاح! 🎥');
+                } else {
+                    showToast('تم إزالة رابط البوست.');
+                }
+            }
         }
 
         function renderHistoryTable() {
@@ -1039,13 +1097,21 @@
                 else if (item.platform === 'whatsapp') badgeClass = 'badge-wa';
 
                 const postLinkHtml = item.postUrl ? `
-                    <div style="margin-top: 5px;">
+                    <div style="margin-top: 5px; display: flex; align-items: center; gap: 5px;">
                         <a href="${escapeHtml(item.postUrl)}" target="_blank" class="btn-post-link" title="${escapeHtml(item.postUrl)}">
                             <span>🎥</span>
                             <span>مشاهدة البوست ↗</span>
                         </a>
+                        <button type="button" class="btn-edit-post" onclick="editPostUrl(${item.id})" title="تعديل رابط البوست">✏️</button>
                     </div>
-                ` : '';
+                ` : `
+                    <div style="margin-top: 5px;">
+                        <button type="button" class="btn-add-post" onclick="editPostUrl(${item.id})">
+                            <span>➕</span>
+                            <span>إضافة رابط البوست بعد النشر</span>
+                        </button>
+                    </div>
+                `;
 
                 return `
                     <tr>
@@ -1062,7 +1128,7 @@
                             <code style="font-weight: 700; color: var(--primary-dark); background: #f0fdfa; padding: 2px 6px; border-radius: 4px;">${escapeHtml(item.campaign)}</code>
                         </td>
                         <td>
-                            <div style="direction: ltr; font-family: monospace; font-size: 11px; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(item.url)}">
+                            <div style="direction: ltr; font-family: monospace; font-size: 11px; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(item.url)}">
                                 ${escapeHtml(item.url)}
                             </div>
                         </td>
@@ -1105,7 +1171,7 @@
                 return;
             }
 
-            let csv = '\uFEFFالعنوان,المنصة,النوع,كود الحملة,رابط البوست الأصلي,الرابط الذكي,التاريخ\n';
+            let csv = '\uFEFFالعنوان,المنصة,النوع,كود الحملة,رابط البوست المنشور,الرابط الذكي,التاريخ\n';
             historyData.forEach(item => {
                 csv += `"${(item.title||'').replace(/"/g, '""')}","${item.platform}","${item.medium}","${item.campaign}","${(item.postUrl||'').replace(/"/g, '""')}","${item.url}","${item.date}"\n`;
             });

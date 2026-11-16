@@ -478,36 +478,52 @@
       // Collect tools
       const tools = Array.from(document.querySelectorAll('input[name="tools"]:checked')).map(cb => cb.value);
 
+      const nowIso = new Date().toISOString();
+      const rawFaculty = document.getElementById('faculty').value;
+      const rawGrad = document.getElementById('universityGrad').value.trim();
+      const rawStart = document.getElementById('startDate').value;
+      const rawCaseload = document.getElementById('caseload').value;
+      const rawSample = document.getElementById('sampleLink').value.trim();
+      const rawPhone = document.getElementById('phone').value.trim();
+      const rawSalary = parseFloat(document.getElementById('expectedSalary').value) || 0;
+
       const applicantData = {
         id: 'coach_' + Date.now(),
-        submittedAt: new Date().toISOString(),
+        submittedAt: nowIso,
+        createdAt: nowIso,
         fullName: document.getElementById('fullName').value.trim(),
         gender: document.getElementById('gender').value,
         birthYear: document.getElementById('birthYear').value,
         location: document.getElementById('location').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        faculty: document.getElementById('faculty').value,
-        universityGrad: document.getElementById('universityGrad').value.trim(),
+        phone: rawPhone,
+        faculty: rawFaculty,
+        universityGrad: rawGrad,
+        gradDetails: rawFaculty + (rawGrad ? ' (' + rawGrad + ')' : ''),
         syndicateLicense: document.getElementById('syndicateLicense').value,
         certs: certs,
         otherCerts: otherCerts,
-        certifications: certs.join(' • '),
+        certifications: certs.length ? certs.join(' • ') : 'مؤهل أكاديمي أساسي',
         experienceYears: document.getElementById('experienceYears').value,
-        caseload: document.getElementById('caseload').value,
+        caseload: rawCaseload,
+        monthlyCaseload: rawCaseload,
         scopes: scopes,
         tools: tools,
         weeklyHours: document.getElementById('weeklyHours').value,
-        startDate: document.getElementById('startDate').value,
+        startDate: rawStart,
+        availability: rawStart,
         commitments: document.getElementById('commitments').value.trim(),
-        expectedSalary: parseFloat(document.getElementById('expectedSalary').value) || 0,
-        sampleLink: document.getElementById('sampleLink').value.trim(),
-        status: 'قيد المراجعة',
+        expectedSalary: rawSalary,
+        sampleLink: rawSample,
+        sampleWorkLink: rawSample,
+        cvLink: rawSample,
+        status: 'pending',
+        statusAr: 'قيد المراجعة',
         privateNotes: ''
       };
 
       applicantData.smartScore = calculateSmartScore(applicantData);
 
-      // Save to localStorage
+      // 1. Save to LocalStorage immediately for instant offline & local availability
       try {
         const key = 'wahetnor_coach_applicants';
         const existing = JSON.parse(localStorage.getItem(key) || '[]');
@@ -515,6 +531,21 @@
         localStorage.setItem(key, JSON.stringify(existing));
       } catch (err) {
         console.warn('LocalStorage save error:', err);
+      }
+
+      // 2. Cloud Sync: Send to Google Sheets WebApp in background
+      try {
+        const webhookUrl = localStorage.getItem('wahetnor_coach_webhook_url') || 'https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec';
+        if (webhookUrl) {
+          fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(applicantData)
+          }).catch(e => console.warn('Cloud sync background error:', e));
+        }
+      } catch (cloudErr) {
+        console.warn('Cloud sync error:', cloudErr);
       }
 
       // Show success modal

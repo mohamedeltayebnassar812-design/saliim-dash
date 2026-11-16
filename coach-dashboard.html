@@ -370,20 +370,21 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    // LocalStorage Key
+    // Storage & Cloud Keys
     const STORAGE_KEY = "wahetnor_coach_applicants";
+    const CLOUD_WEBHOOK_KEY = "wahetnor_coach_webhook_url";
+    const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxVYE6T2lYH87A7R8Yuzcl_PfE1920BA9pHC9zB0GHu-RuxEXC_PgWQhtgkBA_8pCtnyQ/exec";
 
     // State
     let applicants = [];
     let currentQuickPill = "all";
 
-    // Load data strictly from LocalStorage (Purging any old test/seed dummy data)
+    // Load data from LocalStorage first, then auto-sync with Cloud
     function initData() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         try {
           const parsed = JSON.parse(stored);
-          // Purge any seed dummy data if previously cached
           applicants = parsed.filter(p => p && p.id && !p.id.toString().startsWith("seed-") && !p.fullName?.includes("عبد الرحمن سامي"));
         } catch (e) {
           applicants = [];
@@ -394,6 +395,92 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
       renderKPIs();
       applyFilters();
+
+      // Trigger automatic cloud sync
+      syncWithCloud(true);
+    }
+
+    // Cloud Sync Handler
+    async function syncWithCloud(silent = false) {
+      const syncBtn = document.getElementById("syncCloudBtn");
+      const syncIcon = document.getElementById("syncIcon");
+      const syncText = document.getElementById("syncText");
+
+      if (!silent && syncIcon) {
+        syncIcon.classList.add("animate-spin");
+        syncText.innerText = "جاري المزامنة...";
+      }
+
+      const webhookUrl = localStorage.getItem(CLOUD_WEBHOOK_KEY) || DEFAULT_WEBHOOK_URL;
+      if (!webhookUrl) {
+        if (!silent) {
+          syncIcon.classList.remove("animate-spin");
+          syncText.innerText = "مزامنة السحابة 🔄";
+          openCloudSettingsModal();
+        }
+        return;
+      }
+
+      try {
+        const res = await fetch(webhookUrl, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          const cloudList = data.applicants || data.clients || [];
+          
+          if (Array.isArray(cloudList) && cloudList.length > 0) {
+            // Merge cloud applicants with local applicants (avoiding duplicates by id or phone)
+            const map = new Map();
+            // Local first
+            applicants.forEach(a => {
+              const k = a.id || a.phone;
+              if (k) map.set(k, a);
+            });
+            // Cloud overwrites/adds
+            cloudList.forEach(ca => {
+              const k = ca.id || ca.phone;
+              if (k) {
+                const existing = map.get(k) || {};
+                map.set(k, { ...existing, ...ca });
+              }
+            });
+
+            applicants = Array.from(map.values());
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+            renderKPIs();
+            applyFilters();
+          }
+        }
+      } catch (err) {
+        console.warn("Cloud sync warning:", err);
+      } finally {
+        if (syncIcon) {
+          syncIcon.classList.remove("animate-spin");
+          syncText.innerText = "مزامنة السحابة 🔄";
+        }
+      }
+    }
+
+    // Cloud Settings Modal
+    function openCloudSettingsModal() {
+      const input = document.getElementById("cloudWebhookInput");
+      input.value = localStorage.getItem(CLOUD_WEBHOOK_KEY) || DEFAULT_WEBHOOK_URL;
+      document.getElementById("cloudModal").classList.remove("hidden");
+      lucide.createIcons();
+    }
+
+    function closeCloudSettingsModal() {
+      document.getElementById("cloudModal").classList.add("hidden");
+    }
+
+    function saveCloudSettings() {
+      const val = document.getElementById("cloudWebhookInput").value.trim();
+      if (val) {
+        localStorage.setItem(CLOUD_WEBHOOK_KEY, val);
+      } else {
+        localStorage.removeItem(CLOUD_WEBHOOK_KEY);
+      }
+      closeCloudSettingsModal();
+      syncWithCloud();
     }
 
     // Calculate & Render KPI Cards
@@ -404,25 +491,34 @@
       document.getElementById("kpi-pt").innerText = ptCount;
 
       const certCount = applicants.filter(a => {
-        const c = (a.certifications || "").toUpperCase();
+        const c = ((a.certifications || "") + " " + ((a.certs || []).join(" "))).toUpperCase();
         return c.includes("ISSA") || c.includes("NASM") || c.includes("CSCS") || c.includes("ACE");
       }).length;
       document.getElementById("kpi-certified").innerText = certCount;
 
-      const expCount = applicants.filter(a => (parseInt(a.experienceYears) || 0) >= 3).length;
+      const expCount = applicants.filter(a => (parseInt(a.experienceYears) || 0) >= 3 || (a.experienceYears || "").includes("٣") || (a.experienceYears || "").includes("أكثر")).length;
       document.getElementById("kpi-exp").innerText = expCount;
 
-      const immCount = applicants.filter(a => (a.availability || "").includes("فوراً")).length;
+      const immCount = applicants.filter(a => ((a.availability || a.startDate || "").includes("فوراً"))).length;
       document.getElementById("kpi-immediate").innerText = immCount;
-
-      const salaries = applicants.map(a => parseInt(a.expectedSalary) || 0).filter(s => s > 0);
-      const avgSalary = salaries.length ? Math.round(salaries.reduce((a, b) => a + b, 0) / salaries.length) : 0;
-      document.getElementById("kpi-salary").innerText = avgSalary.toLocaleString('ar-EG');
-
-      document.getElementById("total-count").innerText = applicants.length;
     }
 
-    // Apply Search, Filters, and Sorting
+    // Quick Category Pill Filter
+    function setQuickPill(type) {
+      currentQuickPill = type;
+      document.querySelectorAll(".pill-btn").forEach(btn => {
+        if (btn.dataset.pill === type) {
+          btn.classList.add("active", "bg-emerald-600", "text-white", "border-emerald-500");
+          btn.classList.remove("bg-slate-800", "text-slate-200", "border-slate-700");
+        } else {
+          btn.classList.remove("active", "bg-emerald-600", "text-white", "border-emerald-500");
+          btn.classList.add("bg-slate-800", "text-slate-200", "border-slate-700");
+        }
+      });
+      applyFilters();
+    }
+
+    // Main Filter & Search Engine
     function applyFilters() {
       const search = (document.getElementById("searchInput").value || "").trim().toLowerCase();
       const faculty = document.getElementById("facultyFilter").value;
@@ -434,7 +530,7 @@
         if (search) {
           const matchName = (a.fullName || "").toLowerCase().includes(search);
           const matchPhone = (a.phone || "").includes(search);
-          const matchGrad = (a.gradDetails || "").toLowerCase().includes(search);
+          const matchGrad = ((a.gradDetails || a.universityGrad || "")).toLowerCase().includes(search);
           const matchCerts = (a.certifications || "").toLowerCase().includes(search);
           if (!matchName && !matchPhone && !matchGrad && !matchCerts) return false;
         }
@@ -444,19 +540,25 @@
         if (faculty === "sports" && (!a.faculty || !a.faculty.includes("تربية رياضية"))) return false;
         if (faculty === "other" && a.faculty && (a.faculty.includes("علاج طبيعي") || a.faculty.includes("تربية رياضية"))) return false;
 
-        // Status filter
-        if (status !== "all" && a.status !== status) return false;
+        // Status filter (harmonized Arabic & English)
+        if (status !== "all") {
+          const s = (a.status || "").toLowerCase();
+          if (status === "shortlist" && !s.includes("shortlist") && !s.includes("مؤهل")) return false;
+          if (status === "pending" && !s.includes("pending") && !s.includes("قيد المراجعة") && !s.includes("مراجعة")) return false;
+          if (status === "backup" && !s.includes("backup") && !s.includes("احتياط")) return false;
+          if (status === "rejected" && !s.includes("rejected") && !s.includes("غير مناسب")) return false;
+        }
 
         // Quick pill filter
         if (currentQuickPill === "pt_only") {
           const isPT = a.faculty && a.faculty.includes("علاج طبيعي");
-          const isLicensed = a.syndicateLicense && a.syndicateLicense.includes("ترخيص ساري");
-          if (!isPT || !isLicensed) return false;
+          if (!isPT) return false;
         } else if (currentQuickPill === "nasm_issa") {
-          const c = (a.certifications || "").toUpperCase();
+          const c = ((a.certifications || "") + " " + ((a.certs || []).join(" "))).toUpperCase();
           if (!c.includes("NASM") && !c.includes("ISSA")) return false;
         } else if (currentQuickPill === "immediate_only") {
-          if (!a.availability || !a.availability.includes("فوراً")) return false;
+          const avail = a.availability || a.startDate || "";
+          if (!avail.includes("فوراً")) return false;
         }
 
         return true;
@@ -467,7 +569,11 @@
         if (sortBy === "score_desc") return (b.smartScore || 0) - (a.smartScore || 0);
         if (sortBy === "exp_desc") return (parseInt(b.experienceYears) || 0) - (parseInt(a.experienceYears) || 0);
         if (sortBy === "salary_asc") return (parseInt(a.expectedSalary) || 0) - (parseInt(b.expectedSalary) || 0);
-        if (sortBy === "date_desc") return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+        if (sortBy === "date_desc") {
+          const d1 = new Date(b.createdAt || b.submittedAt || 0);
+          const d2 = new Date(a.createdAt || a.submittedAt || 0);
+          return d1 - d2;
+        }
         return 0;
       });
 
@@ -503,6 +609,11 @@
         const waMsg = encodeURIComponent(`مرحباً دكتور/كابتن ${a.fullName}،\nمعك فريق إدارة دكتور أحمد الخطيب (واحة نور).\nاطلعنا باهتمام على طلبك المتميز للانضمام لفريق الكوتشينج والتأهيل الحركي، ونود ترتيب موعد مقابلة فنية أونلاين لمناقشة التفاصيل.\nهل يناسبك الغد أم بعد الغد؟`);
         const waLink = `https://wa.me/${waNumber}?text=${waMsg}`;
 
+        const isShortlist = (a.status === 'shortlist' || a.status === 'مؤهل للمقابلة');
+        const isPending = (a.status === 'pending' || a.status === 'قيد المراجعة' || !a.status);
+        const isBackup = (a.status === 'backup' || a.status === 'قائمة الاحتياط');
+        const isRejected = (a.status === 'rejected' || a.status === 'غير مناسب');
+
         return `
           <div class="glass-card glass-card-hover rounded-xl p-4 sm:p-5 transition space-y-3.5 border ${isPT ? 'border-emerald-500/25' : 'border-slate-800'}">
             <!-- Header Row -->
@@ -520,64 +631,71 @@
                     ${isPT ? '<span class="text-[10px] px-2 py-0.5 rounded-md font-bold badge-pt">علاج طبيعي ⭐</span>' : ''}
                   </div>
                   <p class="text-xs text-slate-400 mt-0.5">
-                    ${a.gradDetails || a.faculty || ''} • ${a.location || 'مصر'} • السن: ${a.birthYear ? (2026 - a.birthYear) + ' سنة' : '—'}
+                    ${a.gradDetails || a.universityGrad || a.faculty || ''} • ${a.location || 'مصر'} • السن: ${a.birthYear ? (typeof a.birthYear === 'string' && a.birthYear.includes('سنة') ? a.birthYear : (2026 - parseInt(a.birthYear)) + ' سنة') : '—'}
                   </p>
                 </div>
               </div>
 
               <!-- Status Selector & Action -->
               <div class="flex items-center gap-2">
-                <select onchange="updateApplicantStatus('${a.id}', this.value)" class="bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1 text-[11px] font-semibold text-slate-200 focus:outline-none focus:border-emerald-500">
-                  <option value="shortlist" ${a.status === 'shortlist' ? 'selected' : ''}>⭐ مؤهل للمقابلة</option>
-                  <option value="pending" ${a.status === 'pending' ? 'selected' : ''}>⏳ قيد المراجعة</option>
-                  <option value="backup" ${a.status === 'backup' ? 'selected' : ''}>📦 قائمة الاحتياط</option>
-                  <option value="rejected" ${a.status === 'rejected' ? 'selected' : ''}>❌ غير مناسب</option>
+                <select onchange="updateApplicantStatus('${a.id}', this.value)" class="bg-slate-900 border border-slate-700 text-xs rounded-lg px-2.5 py-1 text-slate-300 focus:outline-none focus:border-emerald-500">
+                  <option value="shortlist" ${isShortlist ? 'selected' : ''}>⭐ مؤهل للمقابلة</option>
+                  <option value="pending" ${isPending ? 'selected' : ''}>⏳ قيد المراجعة</option>
+                  <option value="backup" ${isBackup ? 'selected' : ''}>📦 قائمة الاحتياط</option>
+                  <option value="rejected" ${isRejected ? 'selected' : ''}>❌ غير مناسب</option>
                 </select>
 
-                <a href="${waLink}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition">
-                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                  <span>واتساب</span>
+                <a href="${waLink}" target="_blank" class="p-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/30 transition shadow-sm" title="محادثة واتساب">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
                 </a>
               </div>
             </div>
 
-            <!-- Badges & Details Row -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 py-2.5 px-3 rounded-lg bg-slate-900/60 text-xs border border-slate-800/80">
+            <!-- Badges Row -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-800/80 text-[11px]">
               <div>
-                <span class="text-slate-400 block text-[11px]">الشهادات والاعتمادات:</span>
-                <span class="font-semibold text-slate-200 truncate block mt-0.5" title="${a.certifications || 'لا توجد'}">
-                  ${a.certifications || 'مؤهل أكاديمي أساسي'}
+                <span class="text-slate-400 block text-[10px]">الشهادات والاعتمادات:</span>
+                <span class="font-semibold text-slate-200 truncate block" title="${a.certifications || 'مؤهل أساسي'}">
+                  ${a.certifications || 'مؤهل أساسي'}
                 </span>
               </div>
               <div>
-                <span class="text-slate-400 block text-[11px]">الخبرة والقدرة الشهرية:</span>
-                <span class="font-semibold text-emerald-400 block mt-0.5">
-                  ${a.experienceYears || 0} سنوات خبرة • ${a.monthlyCaseload || '—'}
+                <span class="text-slate-400 block text-[10px]">الخبرة والقدرة الشهرية:</span>
+                <span class="font-semibold text-slate-200 truncate block">
+                  ${a.experienceYears || '—'} • ${a.monthlyCaseload || a.caseload || '—'}
                 </span>
               </div>
               <div>
-                <span class="text-slate-400 block text-[11px]">التفرغ والراتب المتوقع:</span>
-                <span class="font-semibold text-amber-300 block mt-0.5">
-                  ${a.weeklyHours || 30} س/أسبوع • ${(parseInt(a.expectedSalary) || 0).toLocaleString('ar-EG')} ج.م
+                <span class="text-slate-400 block text-[10px]">التفرغ والراتب المتوقع:</span>
+                <span class="font-semibold text-amber-300 truncate block">
+                  ${a.weeklyHours ? a.weeklyHours + ' س/أسبوع' : '—'} • ${a.expectedSalary ? parseInt(a.expectedSalary).toLocaleString('ar-EG') + ' ج.م' : '—'}
+                </span>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[10px]">تاريخ البدء والترخيص:</span>
+                <span class="font-semibold text-emerald-400 truncate block">
+                  ${a.availability || a.startDate || '—'} • ${a.syndicateLicense ? 'مقيد' : '—'}
                 </span>
               </div>
             </div>
 
-            <!-- Case Study Teaser / Scopes & Action Bar -->
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-              <div class="text-[11px] text-slate-400 truncate max-w-xl">
-                <strong class="text-slate-300">مجالات التدريب:</strong> ${Array.isArray(a.scopes) ? a.scopes.join(' • ') : (a.scopes || 'تدريب وتأهيل حركي')}
+            <!-- Footer Details & Buttons -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs">
+              <div class="flex items-center gap-3 text-slate-400 text-[11px]">
+                <span class="flex items-center gap-1">
+                  <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i>
+                  <span dir="ltr">${a.phone || '—'}</span>
+                </span>
+                <span class="flex items-center gap-1">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                  <span>${a.createdAt || a.submittedAt ? new Date(a.createdAt || a.submittedAt).toLocaleDateString('ar-EG') : 'اليوم'}</span>
+                </span>
               </div>
+
               <div class="flex items-center gap-2">
-                ${a.cvLink ? `
-                  <a href="${a.cvLink}" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium border border-slate-700 transition">
-                    <i data-lucide="file-text" class="w-3 h-3 text-blue-400"></i>
-                    <span>عرض السيرة الذاتية (CV)</span>
-                  </a>
-                ` : ''}
-                <button onclick="viewApplicantDetails('${a.id}')" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-slate-800/90 hover:bg-slate-700 text-emerald-400 text-[11px] font-bold border border-slate-700 transition">
-                  <i data-lucide="eye" class="w-3 h-3"></i>
-                  <span>فحص كامل الإجابات</span>
+                <button onclick="viewApplicantDetails('${a.id}')" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold border border-slate-700 transition flex items-center gap-1">
+                  <i data-lucide="eye" class="w-3.5 h-3.5 text-cyan-400"></i>
+                  <span>عرض التفاصيل الكاملة</span>
                 </button>
               </div>
             </div>
@@ -588,36 +706,14 @@
       lucide.createIcons();
     }
 
-    // Set Quick Pill Filter
-    function setQuickPill(type) {
-      currentQuickPill = type;
-      document.querySelectorAll(".pill-btn").forEach(btn => {
-        if (btn.getAttribute("data-pill") === type) {
-          btn.classList.add("bg-slate-800", "text-slate-200", "border-slate-700");
-          btn.classList.remove("bg-slate-900/70", "text-slate-400");
-        } else {
-          btn.classList.remove("bg-slate-800", "text-slate-200", "border-slate-700");
-          btn.classList.add("bg-slate-900/70", "text-slate-400");
-        }
-      });
-      applyFilters();
-    }
-
-    // Reset Filters
-    function resetFilters() {
-      document.getElementById("searchInput").value = "";
-      document.getElementById("facultyFilter").value = "all";
-      document.getElementById("statusFilter").value = "all";
-      document.getElementById("sortFilter").value = "score_desc";
-      setQuickPill("all");
-    }
-
-    // Update Status
+    // Update Status Handler
     function updateApplicantStatus(id, newStatus) {
       const idx = applicants.findIndex(a => a.id === id);
       if (idx !== -1) {
         applicants[idx].status = newStatus;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+        renderKPIs();
+        applyFilters();
       }
     }
 
@@ -627,62 +723,41 @@
       if (!a) return;
 
       const modal = document.getElementById("detailsModal");
-      const content = document.getElementById("modalContent");
+      const content = document.getElementById("detailsModalContent");
 
       content.innerHTML = `
-        <div class="space-y-4 text-xs">
-          <!-- Header -->
-          <div class="flex items-start justify-between border-b border-slate-800 pb-4">
+        <div class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-3">
             <div>
-              <div class="flex items-center gap-2">
-                <h2 class="text-base font-bold text-white">${a.fullName}</h2>
-                <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                  السكور: ${a.smartScore || 70}/100
-                </span>
-              </div>
-              <p class="text-xs text-slate-400 mt-1">
-                ${a.faculty} • ${a.gradDetails} • ترخيص النقابة: <span class="text-emerald-400 font-semibold">${a.syndicateLicense || '—'}</span>
-              </p>
+              <h3 class="text-lg font-bold text-white">${a.fullName}</h3>
+              <p class="text-xs text-slate-400">${a.gradDetails || a.universityGrad || a.faculty || ''} • ${a.location || 'مصر'}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${a.smartScore >= 80 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' : 'bg-blue-500/20 text-blue-400 border-blue-500/40'}">
+                السكور: ${a.smartScore || 70}/100
+              </span>
             </div>
           </div>
 
-          <!-- Academic & Certs -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <div>
-              <span class="text-slate-400 block font-medium">الشهادات الدولية:</span>
-              <p class="text-slate-200 mt-1 font-semibold">${a.certifications || 'لا توجد'}</p>
+              <span class="text-slate-400 block font-medium">رقم الهاتف:</span>
+              <p class="text-white mt-1 font-mono" dir="ltr">${a.phone || '—'}</p>
             </div>
             <div>
-              <span class="text-slate-400 block font-medium">سنوات الخبرة والحمل الشهري:</span>
-              <p class="text-emerald-400 mt-1 font-semibold">${a.experienceYears} سنوات • ${a.monthlyCaseload}</p>
-            </div>
-          </div>
-
-          <!-- Training Scopes & Tools -->
-          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-2">
-            <span class="text-cyan-400 block font-bold">مجالات التدريب الفعلية والأدوات الرقمية:</span>
-            <div class="flex flex-wrap gap-1.5">
-              ${(Array.isArray(a.scopes) ? a.scopes : [a.scopes || 'تدريب وتأهيل حركي']).map(s => `<span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200 text-[11px] font-semibold border border-slate-700">${s}</span>`).join('')}
-              ${(Array.isArray(a.tools) ? a.tools : [a.tools || 'WhatsApp Business']).map(t => `<span class="px-2.5 py-1 rounded-md bg-cyan-950/60 text-cyan-300 text-[11px] font-semibold border border-cyan-800/50">${t}</span>`).join('')}
-            </div>
-          </div>
-
-          ${a.caseStudy ? `
-          <!-- Case Study (If provided) -->
-          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-1.5">
-            <span class="text-amber-400 block font-bold">دراسة الحالة السريرية:</span>
-            <p class="text-slate-200 leading-relaxed bg-slate-950/60 p-3 rounded-lg border border-slate-800/80 text-[11px] whitespace-pre-wrap">${a.caseStudy}</p>
-          </div>
-          ` : ''}
-
-          <!-- Availability & Links -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
-            <div>
-              <span class="text-slate-400 block font-medium">التفرغ والجاهزية:</span>
-              <p class="text-slate-200 mt-1">${a.weeklyHours} س/أسبوع • ${a.availability}</p>
+              <span class="text-slate-400 block font-medium">الترخيص النقابي:</span>
+              <p class="text-emerald-400 mt-1 font-semibold">${a.syndicateLicense || '—'}</p>
             </div>
             <div>
-              <span class="text-slate-400 block font-medium">الالتزامات الحالية:</span>
+              <span class="text-slate-400 block font-medium">الشهادات المعتمدة:</span>
+              <p class="text-white mt-1 font-semibold">${a.certifications || 'مؤهل أساسي'}</p>
+            </div>
+            <div>
+              <span class="text-slate-400 block font-medium">سنوات الخبرة والقدرة:</span>
+              <p class="text-white mt-1">${a.experienceYears || '—'} • ${a.monthlyCaseload || a.caseload || '—'}</p>
+            </div>
+            <div>
+              <span class="text-slate-400 block font-medium">التفرغ والالتزامات:</span>
               <p class="text-slate-200 mt-1">${a.commitments || 'لا توجد'}</p>
             </div>
             <div>
@@ -693,8 +768,7 @@
 
           <!-- Links -->
           <div class="flex flex-wrap items-center gap-3 pt-2">
-            ${a.cvLink ? `<a href="${a.cvLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition flex items-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> فتح ملف السيرة الذاتية (CV)</a>` : ''}
-            ${a.sampleWorkLink ? `<a href="${a.sampleWorkLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-bold transition flex items-center gap-1.5"><i data-lucide="play-circle" class="w-4 h-4"></i> نموذج الشرح / الخطة</a>` : ''}
+            ${a.cvLink || a.sampleWorkLink || a.sampleLink ? `<a href="${a.cvLink || a.sampleWorkLink || a.sampleLink}" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition flex items-center gap-1.5"><i data-lucide="external-link" class="w-4 h-4"></i> فتح رابط النموذج / CV</a>` : ''}
           </div>
         </div>
       `;
@@ -732,19 +806,21 @@
         phone: document.getElementById("manual_phone").value.trim(),
         faculty: document.getElementById("manual_faculty").value,
         gradDetails: document.getElementById("manual_gradDetails").value.trim(),
+        universityGrad: document.getElementById("manual_gradDetails").value.trim(),
         syndicateLicense: isPT ? "نعم، مقيد ولدي ترخيص ساري" : "—",
         certifications: document.getElementById("manual_certifications").value.trim(),
         experienceYears: exp,
         monthlyCaseload: "30-50 عميل",
-        caseStudy: "تمت إضافة المرشح يدوياً عبر لوحة الإدارة.",
-        behaviorAnswer: "تم التحقق هاتفياً.",
+        caseload: "30-50 عميل",
         weeklyHours: 30,
         availability: "فوراً خلال 48 ساعة",
+        startDate: "فوراً خلال 48 ساعة",
         commitments: "لا توجد",
         expectedSalary: parseInt(document.getElementById("manual_expectedSalary").value) || 10000,
         smartScore: score,
         status: "pending",
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        submittedAt: new Date().toISOString()
       };
 
       applicants.unshift(newApp);
@@ -752,6 +828,19 @@
       closeAddModal();
       renderKPIs();
       applyFilters();
+
+      // Cloud sync
+      try {
+        const webhookUrl = localStorage.getItem(CLOUD_WEBHOOK_KEY) || DEFAULT_WEBHOOK_URL;
+        if (webhookUrl) {
+          fetch(webhookUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newApp)
+          });
+        }
+      } catch (err) {}
     }
 
     // Export to Excel / CSV
@@ -760,18 +849,18 @@
         alert("لا توجد بيانات لتصديرها.");
         return;
       }
-      const headers = ["الاسم الرباعي", "رقم الواتساب", "المؤهل والجامعة", "الترخيص النقابي", "الشهادات الدولية", "سنوات الخبرة", "السكور الذكي", "الراتب المتوقع", "الحالة", "رابط الـ CV"];
+      const headers = ["الاسم الكامل", "رقم الواتساب", "المؤهل والجامعة", "الترخيص النقابي", "الشهادات والاعتمادات", "سنوات الخبرة", "السكور الذكي", "الراتب المتوقع", "الحالة", "الرابط"];
       const rows = applicants.map(a => [
         `"${a.fullName || ''}"`,
         `"${a.phone || ''}"`,
-        `"${(a.faculty || '') + ' - ' + (a.gradDetails || '')}"`,
+        `"${(a.faculty || '') + ' - ' + (a.gradDetails || a.universityGrad || '')}"`,
         `"${a.syndicateLicense || ''}"`,
         `"${a.certifications || ''}"`,
         `"${a.experienceYears || 0}"`,
         `"${a.smartScore || 0}"`,
         `"${a.expectedSalary || 0}"`,
         `"${a.status || ''}"`,
-        `"${a.cvLink || ''}"`
+        `"${a.cvLink || a.sampleWorkLink || a.sampleLink || ''}"`
       ]);
 
       const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');

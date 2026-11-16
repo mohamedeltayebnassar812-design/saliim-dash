@@ -487,7 +487,7 @@
     function renderKPIs() {
       document.getElementById("kpi-total").innerText = applicants.length;
       
-      const ptCount = applicants.filter(a => a.faculty && a.faculty.includes("علاج طبيعي")).length;
+      const ptCount = applicants.filter(a => String(a.faculty || "").includes("علاج طبيعي")).length;
       document.getElementById("kpi-pt").innerText = ptCount;
 
       const certCount = applicants.filter(a => {
@@ -496,10 +496,10 @@
       }).length;
       document.getElementById("kpi-certified").innerText = certCount;
 
-      const expCount = applicants.filter(a => (parseInt(a.experienceYears) || 0) >= 3 || (a.experienceYears || "").includes("٣") || (a.experienceYears || "").includes("أكثر")).length;
+      const expCount = applicants.filter(a => (parseInt(a.experienceYears) || 0) >= 3 || String(a.experienceYears || "").includes("٣") || String(a.experienceYears || "").includes("أكثر")).length;
       document.getElementById("kpi-exp").innerText = expCount;
 
-      const immCount = applicants.filter(a => ((a.availability || a.startDate || "").includes("فوراً"))).length;
+      const immCount = applicants.filter(a => (String(a.availability || a.startDate || "").includes("فوراً"))).length;
       document.getElementById("kpi-immediate").innerText = immCount;
     }
 
@@ -528,17 +528,17 @@
       let filtered = applicants.filter(a => {
         // Search
         if (search) {
-          const matchName = (a.fullName || "").toLowerCase().includes(search);
-          const matchPhone = (a.phone || "").includes(search);
-          const matchGrad = ((a.gradDetails || a.universityGrad || "")).toLowerCase().includes(search);
-          const matchCerts = (a.certifications || "").toLowerCase().includes(search);
+          const matchName = String(a.fullName || "").toLowerCase().includes(search);
+          const matchPhone = String(a.phone || "").includes(search);
+          const matchGrad = String(a.gradDetails || a.universityGrad || "").toLowerCase().includes(search);
+          const matchCerts = String(a.certifications || "").toLowerCase().includes(search);
           if (!matchName && !matchPhone && !matchGrad && !matchCerts) return false;
         }
 
         // Faculty filter
-        if (faculty === "pt" && (!a.faculty || !a.faculty.includes("علاج طبيعي"))) return false;
-        if (faculty === "sports" && (!a.faculty || !a.faculty.includes("تربية رياضية"))) return false;
-        if (faculty === "other" && a.faculty && (a.faculty.includes("علاج طبيعي") || a.faculty.includes("تربية رياضية"))) return false;
+        if (faculty === "pt" && (!String(a.faculty || "").includes("علاج طبيعي"))) return false;
+        if (faculty === "sports" && (!String(a.faculty || "").includes("تربية رياضية"))) return false;
+        if (faculty === "other" && (String(a.faculty || "").includes("علاج طبيعي") || String(a.faculty || "").includes("تربية رياضية"))) return false;
 
         // Status filter (harmonized Arabic & English)
         if (status !== "all") {
@@ -551,13 +551,13 @@
 
         // Quick pill filter
         if (currentQuickPill === "pt_only") {
-          const isPT = a.faculty && a.faculty.includes("علاج طبيعي");
+          const isPT = String(a.faculty || "").includes("علاج طبيعي");
           if (!isPT) return false;
         } else if (currentQuickPill === "nasm_issa") {
           const c = ((a.certifications || "") + " " + ((a.certs || []).join(" "))).toUpperCase();
           if (!c.includes("NASM") && !c.includes("ISSA")) return false;
         } else if (currentQuickPill === "immediate_only") {
-          const avail = a.availability || a.startDate || "";
+          const avail = String(a.availability || a.startDate || "");
           if (!avail.includes("فوراً")) return false;
         }
 
@@ -595,14 +595,14 @@
       emptyState.classList.add("hidden");
 
       container.innerHTML = list.map(a => {
-        const isPT = a.faculty && a.faculty.includes("علاج طبيعي");
+        const isPT = String(a.faculty || "").includes("علاج طبيعي");
         const score = a.smartScore || 70;
         let scoreBadgeClass = "bg-emerald-500/20 text-emerald-400 border-emerald-500/40";
         if (score < 80 && score >= 70) scoreBadgeClass = "bg-blue-500/20 text-blue-400 border-blue-500/40";
         else if (score < 70) scoreBadgeClass = "bg-amber-500/20 text-amber-400 border-amber-500/40";
 
         // Clean phone for whatsapp
-        let waNumber = (a.phone || "").replace(/\D/g, '');
+        let waNumber = String(a.phone || "").replace(/\D/g, '');
         if (waNumber.startsWith('0')) waNumber = '2' + waNumber;
         else if (!waNumber.startsWith('20') && waNumber.length === 10) waNumber = '20' + waNumber;
 

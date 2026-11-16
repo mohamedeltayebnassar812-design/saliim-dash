@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولّد روابط التتبع الذكية • واحة نور — د. أحمد الخطيب</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d9488;
+            --primary-dark: #0f766e;
+            --primary-light: #ccfbf1;
+            --primary-surface: #f0fdfa;
+            --accent: #10b981;
+            --dark: #0f172a;
+            --dark-surface: #1e293b;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --success: #10b981;
+            --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Readex Pro', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdfa 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 30px 20px 60px;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        /* Header Header */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .brand-header h1 {
+            font-family: 'Alexandria', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-header p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Main Grid */
+        .generator-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (min-width: 900px) {
+            .generator-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+        }
+
+        /* Card Container */
+        .card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            padding: 28px;
+            position: relative;
+        }
+
+        .card-title {
+            font-family: 'Alexandria', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title span.icon {
+            font-size: 20px;
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 7px;
+        }
+
+        label span.req {
+            color: var(--danger);
+            margin-right: 3px;
+        }
+
+        label span.hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-right: 6px;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            color: var(--dark);
+            background: #fdfdfd;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: var(--primary);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        /* Campaign Code Generator row */
+        .code-row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-increment {
+            background: var(--primary-surface);
+            color: var(--primary-dark);
+            border: 1.5px solid var(--primary-light);
+            padding: 11px 14px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-increment:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+
+        /* Deduplication Alert */
+        .dedup-alert {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            border-radius: var(--radius-md);
+            font-size: 12.5px;
+            line-height: 1.5;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .dedup-alert.active {
+            display: flex;
+        }
+
+        .dedup-alert.safe {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        /* Result Panel */
+        .result-box {
+            background: var(--primary-surface);
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: right;
+            position: relative;
+        }
+
+        .result-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .link-display {
+            direction: ltr;
+            text-align: left;
+            font-family: monospace;
+            font-size: 13.5px;
+            color: var(--dark);
+            background: #ffffff;
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            word-break: break-all;
+            user-select: all;
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 140px;
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25);
+        }
+
+        .btn-copy:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-test {
+            background: #ffffff;
+            color: var(--dark);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-test:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        .btn-save {
+            background: var(--dark);
+            color: #ffffff;
+        }
+
+        .btn-save:hover {
+            background: var(--dark-surface);
+        }
+
+        /* Analytics Simulator Box */
+        .sim-box {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 15px;
+        }
+
+        .sim-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sim-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12.5px;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .sim-item:last-child {
+            border-bottom: none;
+        }
+
+        .sim-label {
+            color: var(--text-muted);
+        }
+
+        .sim-val {
+            font-weight: 700;
+            color: var(--primary-dark);
+            direction: ltr;
+        }
+
+        /* History Table Section */
+        .history-section {
+            margin-top: 25px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .history-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-small {
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .btn-small:hover {
+            background: #f1f5f9;
+            color: var(--dark);
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            background: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f8fafc;
+            color: var(--dark);
+            padding: 12px 14px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        .badge-plat {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-fb { background: #dbeafe; color: #1e40af; }
+        .badge-ig { background: #fce7f3; color: #9d174d; }
+        .badge-tt { background: #f1f5f9; color: #0f172a; }
+        .badge-yt { background: #fee2e2; color: #991b1b; }
+        .badge-wa { background: #dcfce7; color: #166534; }
+        .badge-other { background: #f1f5f9; color: #475569; }
+
+        .btn-copy-tbl {
+            background: var(--primary-surface);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-light);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-copy-tbl:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .btn-del-tbl {
+            background: #fef2f2;
+            color: #ef4444;
+            border: 1px solid #fecaca;
+            padding: 5px 8px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            cursor: pointer;
+            margin-right: 4px;
+        }
+
+        .btn-del-tbl:hover {
+            background: #ef4444;
+            color: #ffffff;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 35px 20px;
+            color: var(--text-muted);
+            font-size: 13.5px;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--dark);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="brand-header">
+            <div class="brand-badge">
+                <span>⚡</span>
+                <span>منظومة واحة نور • د. أحمد الخطيب</span>
+            </div>
+            <h1>مولّد روابط التتبّع الذكية والفريدة (UTM Generator)</h1>
+            <p>أداة فورية لمنع التكرار وتوليد روابط مخصصة لكل فيديو، ريلز، أو منشور بدقة مطلقة، لربط كل مشترك بمصدره الحقيقي في لوحة التحليلات الحية.</p>
+        </header>
+
+        <!-- Main Workspace -->
+        <div class="generator-grid">
+            
+            <!-- Left Panel: Input Form -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">⚙️</span>
+                    <span>بيانات المحتوى المستهدف</span>
+                </div>
+
+                <!-- Target Page -->
+                <div class="form-group">
+                    <label for="targetPage"><span class="req">*</span> 1. الصفحة المستهدفة (Destination Funnel):</label>
+                    <select id="targetPage" onchange="generateLink()">
+                        <option value="https://wahetnor.com/start" selected>صفحة باقة Elite الرسمية (wahetnor.com/start) — قمع الشراء الرئيسي</option>
+                        <option value="https://wahetnor.com/quiz">استمارة التقييم الصحي المجاني (wahetnor.com/quiz) — قمع التشخيص</option>
+                        <option value="https://wahetnor.com/">الصفحة الرئيسية الرسمية (wahetnor.com)</option>
+                        <option value="custom">رابط مخصص آخر...</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="customUrlGroup" style="display: none;">
+                    <label for="customUrl">الرابط المخصص:</label>
+                    <input type="text" id="customUrl" placeholder="https://wahetnor.com/..." oninput="generateLink()">
+                </div>
+
+                <!-- Platform & Medium in one row -->
+                <div class="row-2">
+                    <div class="form-group">
+                        <label for="platform"><span class="req">*</span> 2. المنصة (Source):</label>
+                        <select id="platform" onchange="onPlatformChange()">
+                            <option value="facebook" selected>فيسبوك (Facebook)</option>
+                            <option value="instagram">إنستغرام (Instagram)</option>
+                            <option value="tiktok">تيك توك (TikTok)</option>
+                            <option value="youtube">يوتيوب (YouTube)</option>
+                            <option value="whatsapp">واتساب (WhatsApp)</option>
+                            <option value="telegram">تليجرام (Telegram)</option>
+                            <option value="linkedin">لينكد إن (LinkedIn)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="medium"><span class="req">*</span> 3. نوع وموضع النشر (Medium):</label>
+                        <select id="medium" onchange="onMediumChange()">
+                            <option value="video" selected>فيديو عادي (Video)</option>
+                            <option value="reels">ريلز / شورتس (Reels/Shorts)</option>
+                            <option value="post">منشور نصي / صورة (Post)</option>
+                            <option value="story">استوري / ملصق (Story)</option>
+                            <option value="bio">رابط البايو (Bio Link)</option>
+                            <option value="chat">رسالة خاصة / شات (Chat)</option>
+                            <option value="pinned">تعليق مثبت (Pinned)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Video Title -->
+                <div class="form-group">
+                    <label for="videoTitle">
+                        <span class="req">*</span> 4. عنوان أو موضوع الفيديو / المنشور:
+                        <span class="hint">(مثال: مقاومة الأنسولين، ثبات الوزن، نصيحة الكيتو)</span>
+                    </label>
+                    <input type="text" id="videoTitle" placeholder="اكتب اسم أو فكرة الفيديو هنا..." oninput="onTitleInput()">
+                </div>
+
+                <!-- Campaign Code with Auto Increment -->
+                <div class="form-group">
+                    <label for="campaignCode">
+                        <span class="req">*</span> 5. كود الحملة الفريد (Campaign Code):
+                        <span class="hint">(هذا الاسم الذي سيظهر لك في لوحة التحليلات)</span>
+                    </label>
+                    <div class="code-row">
+                        <input type="text" id="campaignCode" placeholder="fb_v1" oninput="checkDuplicateAndGenerate()" style="font-family: monospace; font-weight: 700; color: var(--primary-dark);">
+                        <button type="button" class="btn-increment" onclick="autoIncrementCode()" title="توليد الرقم التالي لمنع التكرار">
+                            <span>➕ رقم جديد</span>
+                        </button>
+                    </div>
+
+                    <!-- Deduplication Warning Banner -->
+                    <div class="dedup-alert" id="dedupAlert">
+                        <span id="dedupIcon">⚠️</span>
+                        <div id="dedupText">تنبيه: هذا الكود تم استخدامه من قبل!</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Panel: Result & Analytics Simulator -->
+            <div class="card">
+                <div class="card-title">
+                    <span class="icon">🎯</span>
+                    <span>الرابط الذكي النهائي</span>
+                </div>
+
+                <div class="result-box">
+                    <div class="result-label">
+                        <span>الرابط الجاهز للنشر المباشر:</span>
+                        <span id="charCount" style="color: var(--text-muted); font-size: 11px;">0 حرف</span>
+                    </div>
+                    <div class="link-display" id="finalUrl">https://wahetnor.com/start...</div>
+
+                    <div class="action-buttons">
+                        <button type="button" class="btn btn-copy" onclick="copyLink()">
+                            <span>📋</span>
+                            <span>نسخ الرابط</span>
+                        </button>
+                        <button type="button" class="btn btn-save" onclick="saveToHistory()">
+                            <span>💾</span>
+                            <span>حفظ بالسجل</span>
+                        </button>
+                        <button type="button" class="btn btn-test" onclick="testLink()" title="فتح الرابط لتجربته في تبويب جديد">
+                            <span>↗️</span>
+                            <span>تجربة</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulator Box -->
+                <div class="sim-box">
+                    <div class="sim-title">
+                        <span>📊</span>
+                        <span>كيف سيظهر هذا الرابط في لوحة تحليلات واحة نور؟</span>
+                    </div>
+                    <div class="sim-item">
+                        <span class="sim-label">المصدر (utm_source):</span>
+                        <span class="sim-val" id="simSource">facebook</span>
+                    </div>
+                    <div class="sim-item">
+                        <span class="sim-label">النوع (utm_medium):</span>
+                        <span class="sim-val" id="simMedium">video</span>
+                    </div>
+                    <div class="sim-item">
+                        <span class="sim-label">الحملة (utm_campaign):</span>
+                        <span class="sim-val" id="simCampaign" style="color: var(--primary); font-weight: 800;">fb_v1</span>
+                    </div>
+                    <div class="sim-item">
+                        <span class="sim-label">مكان الرصد باللوحة:</span>
+                        <span class="sim-val" style="color: var(--dark); font-family: sans-serif; font-size: 11px;">بطاقة الحملات (UTM) وقمع الشراء</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- History Section -->
+        <div class="card history-section">
+            <div class="history-header">
+                <div class="card-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;">
+                    <span class="icon">📜</span>
+                    <span>سجل الروابط السابقة المولدّة (<span id="historyCount">0</span> روابط محفوظة)</span>
+                </div>
+                <div class="history-actions">
+                    <button class="btn-small" onclick="exportCSV()">📥 تصدير Excel (CSV)</button>
+                    <button class="btn-small" onclick="clearHistory()" style="color: var(--danger);">🗑️ مسح السجل</button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table id="historyTable">
+                    <thead>
+                        <tr>
+                            <th style="width: 25%;">عنوان المحتوى</th>
+                            <th style="width: 15%;">المنصة والنوع</th>
+                            <th style="width: 15%;">كود الحملة</th>
+                            <th style="width: 25%;">الرابط</th>
+                            <th style="width: 20%; text-align: center;">إجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyBody">
+                        <!-- Dynamic Rows -->
+                    </tbody>
+                </table>
+                <div class="empty-history" id="emptyHistoryMsg">
+                    لم تقم بحفظ أي روابط في السجل بعد. أي رابط تولده وتحفظه سيظهر هنا لنسخه في أي وقت!
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span>✅</span>
+        <span id="toastText">تم نسخ الرابط بنجاح!</span>
+    </div>
+
+    <script>
+        // Storage Key
+        const STORAGE_KEY = 'wahetnor_utm_history_v1';
+        let historyData = [];
+
+        // Load History on Init
+        window.addEventListener('DOMContentLoaded', () => {
+            loadHistory();
+            autoSuggestInitialCode();
+            generateLink();
+        });
+
+        function loadHistory() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                    historyData = JSON.parse(raw);
+                } else {
+                    // Seed initial examples so the user immediately sees the power of deduplication
+                    historyData = [
+                        { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
+                        { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
+                        { id: 3, title: 'فيديو فيسبوك 3: شرح باقة Elite المباشر', platform: 'facebook', medium: 'video', campaign: 'fb_v3', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v3', date: '2026-11-16' },
+                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة مقاومة الأنسولين', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
+                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
+                    ];
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+                }
+            } catch (e) {
+                historyData = [];
+            }
+            renderHistoryTable();
+        }
+
+        function saveHistory() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+            } catch (e) {}
+            renderHistoryTable();
+        }
+
+        // Prefix map
+        const prefixMap = {
+            'facebook_video': 'fb_v',
+            'facebook_reels': 'fb_reel_',
+            'facebook_post': 'fb_post_',
+            'facebook_story': 'fb_story_',
+            'facebook_bio': 'fb_bio',
+            'facebook_chat': 'fb_chat_',
+            'facebook_pinned': 'fb_pin_',
+
+            'instagram_reels': 'ig_reel_',
+            'instagram_story': 'ig_story_',
+            'instagram_post': 'ig_post_',
+            'instagram_bio': 'ig_bio',
+            'instagram_video': 'ig_v',
+
+            'tiktok_video': 'tt_v',
+            'tiktok_bio': 'tt_bio',
+
+            'youtube_shorts': 'yt_short_',
+            'youtube_video': 'yt_v',
+            'youtube_pinned': 'yt_pin_',
+
+            'whatsapp_chat': 'wa_msg_',
+            'whatsapp_status': 'wa_status_',
+
+            'telegram_channel': 'tg_post_',
+            'telegram_pinned': 'tg_pin_'
+        };
+
+        function onPlatformChange() {
+            const plat = document.getElementById('platform').value;
+            const medSelect = document.getElementById('medium');
+            
+            // Adjust available medium options based on platform
+            if (plat === 'whatsapp') {
+                medSelect.value = 'chat';
+            } else if (plat === 'telegram') {
+                medSelect.value = 'post';
+            } else if (plat === 'tiktok' || plat === 'instagram') {
+                if (medSelect.value === 'video' && plat === 'instagram') {
+                    medSelect.value = 'reels';
+                }
+            }
+            autoSuggestInitialCode();
+            generateLink();
+        }
+
+        function onMediumChange() {
+            autoSuggestInitialCode();
+            generateLink();
+        }
+
+        function onTitleInput() {
+            // If user enters title and campaign code is empty or default, suggest next
+            checkDuplicateAndGenerate();
+        }
+
+        function autoSuggestInitialCode() {
+            const plat = document.getElementById('platform').value;
+            const med = document.getElementById('medium').value;
+            const key = `${plat}_${med}`;
+            let basePrefix = prefixMap[key] || `${plat.slice(0, 2)}_${med.slice(0, 1)}_`;
+
+            // Find max existing number in history for this prefix
+            let maxNum = 0;
+            historyData.forEach(item => {
+                if (item.campaign && item.campaign.startsWith(basePrefix)) {
+                    const suffix = item.campaign.replace(basePrefix, '');
+                    const n = parseInt(suffix, 10);
+                    if (!isNaN(n) && n > maxNum) {
+                        maxNum = n;
+                    }
+                }
+            });
+
+            const nextNum = maxNum + 1;
+            document.getElementById('campaignCode').value = `${basePrefix}${nextNum}`;
+            checkDuplicateAndGenerate();
+        }
+
+        function autoIncrementCode() {
+            const codeInput = document.getElementById('campaignCode');
+            let current = codeInput.value.trim();
+            const match = current.match(/^(.*?)(\d+)$/);
+            if (match) {
+                const prefix = match[1];
+                const num = parseInt(match[2], 10) + 1;
+                codeInput.value = `${prefix}${num}`;
+            } else {
+                codeInput.value = `${current}_1`;
+            }
+            checkDuplicateAndGenerate();
+            showToast(`تمت زيادة الرقم إلى: ${codeInput.value}`);
+        }
+
+        function checkDuplicateAndGenerate() {
+            const code = document.getElementById('campaignCode').value.trim();
+            const alertBox = document.getElementById('dedupAlert');
+            const alertText = document.getElementById('dedupText');
+            const alertIcon = document.getElementById('dedupIcon');
+
+            if (!code) {
+                alertBox.className = 'dedup-alert';
+                generateLink();
+                return;
+            }
+
+            const existing = historyData.find(item => item.campaign.toLowerCase() === code.toLowerCase());
+
+            if (existing) {
+                alertBox.className = 'dedup-alert active';
+                alertIcon.textContent = '⚠️';
+                alertText.innerHTML = `<strong>كود مكرر!</strong> تم استخدام هذا الكود سابقاً لـ: "<em>${existing.title || 'فيديو محفوظ'}</em>". <a href="javascript:void(0)" onclick="autoIncrementCode()" style="color: #b45309; font-weight: 700; text-decoration: underline; margin-right: 5px;">اضغط هنا للزيادة التلقائية</a>`;
+            } else {
+                alertBox.className = 'dedup-alert active safe';
+                alertIcon.textContent = '✅';
+                alertText.innerHTML = `<strong>كود ممتاز وفريد!</strong> لم يسبق استخدامه مطلقاً وسيرصد في اللوحة بشكل مستقل تماماً.`;
+            }
+
+            generateLink();
+        }
+
+        function generateLink() {
+            let baseUrl = document.getElementById('targetPage').value;
+            if (baseUrl === 'custom') {
+                document.getElementById('customUrlGroup').style.display = 'block';
+                baseUrl = document.getElementById('customUrl').value.trim() || 'https://wahetnor.com';
+            } else {
+                document.getElementById('customUrlGroup').style.display = 'none';
+            }
+
+            const source = document.getElementById('platform').value;
+            const medium = document.getElementById('medium').value;
+            let campaign = document.getElementById('campaignCode').value.trim();
+
+            if (!campaign) {
+                campaign = 'v1';
+            }
+
+            // Clean parameters
+            const cleanSource = encodeURIComponent(source);
+            const cleanMedium = encodeURIComponent(medium);
+            const cleanCampaign = encodeURIComponent(campaign);
+
+            const separator = baseUrl.includes('?') ? '&' : '?';
+            const finalUrl = `${baseUrl}${separator}utm_source=${cleanSource}&utm_medium=${cleanMedium}&utm_campaign=${cleanCampaign}`;
+
+            document.getElementById('finalUrl').textContent = finalUrl;
+            document.getElementById('charCount').textContent = `${finalUrl.length} حرف`;
+
+            // Update Simulator
+            document.getElementById('simSource').textContent = source;
+            document.getElementById('simMedium').textContent = medium;
+            document.getElementById('simCampaign').textContent = campaign;
+        }
+
+        function copyLink() {
+            const url = document.getElementById('finalUrl').textContent;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('تم نسخ الرابط إلى الحافظة بنجاح! 📋');
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast('تم نسخ الرابط بنجاح! 📋');
+            });
+        }
+
+        function testLink() {
+            const url = document.getElementById('finalUrl').textContent;
+            window.open(url, '_blank');
+        }
+
+        function saveToHistory() {
+            const url = document.getElementById('finalUrl').textContent;
+            const title = document.getElementById('videoTitle').value.trim() || 'فيديو بدون عنوان';
+            const platform = document.getElementById('platform').value;
+            const medium = document.getElementById('medium').value;
+            const campaign = document.getElementById('campaignCode').value.trim();
+
+            // Check if already in history
+            const idx = historyData.findIndex(item => item.url === url);
+            if (idx !== -1) {
+                showToast('هذا الرابط مسجل بالفعل في السجل! 👍');
+                return;
+            }
+
+            const newItem = {
+                id: Date.now(),
+                title: title,
+                platform: platform,
+                medium: medium,
+                campaign: campaign,
+                url: url,
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            historyData.unshift(newItem);
+            saveHistory();
+            showToast('تم حفظ الرابط في السجل بنجاح! 💾');
+            
+            // Advance counter for the next video!
+            autoIncrementCode();
+        }
+
+        function renderHistoryTable() {
+            const tbody = document.getElementById('historyBody');
+            const emptyMsg = document.getElementById('emptyHistoryMsg');
+            const countSpan = document.getElementById('historyCount');
+
+            countSpan.textContent = historyData.length;
+
+            if (historyData.length === 0) {
+                tbody.innerHTML = '';
+                emptyMsg.style.display = 'block';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            tbody.innerHTML = historyData.map((item, idx) => {
+                let badgeClass = 'badge-other';
+                if (item.platform === 'facebook') badgeClass = 'badge-fb';
+                else if (item.platform === 'instagram') badgeClass = 'badge-ig';
+                else if (item.platform === 'tiktok') badgeClass = 'badge-tt';
+                else if (item.platform === 'youtube') badgeClass = 'badge-yt';
+                else if (item.platform === 'whatsapp') badgeClass = 'badge-wa';
+
+                return `
+                    <tr>
+                        <td>
+                            <strong>${escapeHtml(item.title)}</strong>
+                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">تاريخ: ${item.date || ''}</div>
+                        </td>
+                        <td>
+                            <span class="badge-plat ${badgeClass}">${item.platform}</span>
+                            <span style="font-size: 11.5px; color: var(--text-muted); margin-right: 4px;">/ ${item.medium}</span>
+                        </td>
+                        <td>
+                            <code style="font-weight: 700; color: var(--primary-dark); background: #f0fdfa; padding: 2px 6px; border-radius: 4px;">${escapeHtml(item.campaign)}</code>
+                        </td>
+                        <td>
+                            <div style="direction: ltr; font-family: monospace; font-size: 11px; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(item.url)}">
+                                ${escapeHtml(item.url)}
+                            </div>
+                        </td>
+                        <td style="text-align: center; white-space: nowrap;">
+                            <button class="btn-copy-tbl" onclick="copyTableUrl('${escapeHtml(item.url)}')">نسخ 📋</button>
+                            <button class="btn-del-tbl" onclick="deleteHistoryItem(${item.id})" title="حذف">✕</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function copyTableUrl(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                showToast('تم نسخ الرابط من السجل بنجاح! 📋');
+            });
+        }
+
+        function deleteHistoryItem(id) {
+            if (confirm('هل أنت متأكد من حذف هذا الرابط من السجل؟')) {
+                historyData = historyData.filter(item => item.id !== id);
+                saveHistory();
+                showToast('تم حذف الرابط من السجل.');
+                checkDuplicateAndGenerate();
+            }
+        }
+
+        function clearHistory() {
+            if (confirm('هل أنت متأكد من مسح جميع الروابط المحفوظة في السجل؟')) {
+                historyData = [];
+                saveHistory();
+                showToast('تم إفراغ السجل بالكامل.');
+                checkDuplicateAndGenerate();
+            }
+        }
+
+        function exportCSV() {
+            if (historyData.length === 0) {
+                alert('لا توجد روابط لتصديرها.');
+                return;
+            }
+
+            let csv = '\uFEFFالعنوان,المنصة,النوع,كود الحملة,الرابط,التاريخ\n';
+            historyData.forEach(item => {
+                csv += `"${(item.title||'').replace(/"/g, '""')}","${item.platform}","${item.medium}","${item.campaign}","${item.url}","${item.date}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('download', `روابط_تتبع_واحة_نور_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('تم تصدير ملف Excel بنجاح! 📥');
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').textContent = text;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>

@@ -2,4 +2,6 @@
 .zcode/
 ~$*
 *.tmp
+__pycache__/
+
 

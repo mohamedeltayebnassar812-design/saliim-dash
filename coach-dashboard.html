@@ -624,7 +624,7 @@
                 </div>
                 <div>
                   <div class="flex flex-wrap items-center gap-2">
-                    <h3 class="text-sm sm:text-base font-bold text-white">${a.fullName}</h3>
+                    <h3 class="text-sm sm:text-base font-bold text-white">${a.fullName || a.name || "مرشح بدون اسم"}</h3>
                     <span class="text-xs px-2 py-0.5 rounded-full font-bold border ${scoreBadgeClass}">
                       السكور: ${score}/100
                     </span>
@@ -648,6 +648,9 @@
                 <a href="${waLink}" target="_blank" class="p-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/30 transition shadow-sm" title="محادثة واتساب">
                   <i data-lucide="message-circle" class="w-4 h-4"></i>
                 </a>
+                <button onclick="deleteApplicant('${a.id}')" class="p-1.5 rounded-lg bg-rose-500/15 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 transition shadow-sm" title="حذف هذا المرشح">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
               </div>
             </div>
 
@@ -707,6 +710,16 @@
     }
 
     // Update Status Handler
+    
+    // Delete Applicant Handler
+    function deleteApplicant(id) {
+      if (!confirm("هل أنت متأكد من رغبتك في حذف هذا المرشح من الداشبورد؟")) return;
+      applicants = applicants.filter(a => a.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(applicants));
+      renderKPIs();
+      applyFilters();
+    }
+
     function updateApplicantStatus(id, newStatus) {
       const idx = applicants.findIndex(a => a.id === id);
       if (idx !== -1) {

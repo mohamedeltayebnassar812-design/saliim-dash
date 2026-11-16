@@ -524,7 +524,7 @@
                 <span>منظومة واحة نور • د. أحمد الخطيب</span>
             </div>
             <h1>مولّد روابط التتبّع الذكية والفريدة (UTM Generator)</h1>
-            <p>أداة فورية لمنع التكرار وتوليد روابط مخصصة لكل فيديو، ريلز، أو منشور بدقة مطلقة، لربط كل مشترك بمصدره الحقيقي في لوحة التحليلات الحية.</p>
+            <p>أداة فورية لمنع التكرار وتوليد روابط مخصصة لكل فيديو، ريلز، كاروسيل، أو منشور بدقة مطلقة، لربط كل مشترك بمصدره الحقيقي في لوحة التحليلات الحية.</p>
         </header>
 
         <!-- Main Workspace -->
@@ -572,10 +572,13 @@
                         <label for="medium"><span class="req">*</span> 3. نوع وموضع النشر (Medium):</label>
                         <select id="medium" onchange="onMediumChange()">
                             <option value="video" selected>فيديو عادي (Video)</option>
-                            <option value="reels">ريلز / شورتس (Reels/Shorts)</option>
-                            <option value="post">منشور نصي / صورة (Post)</option>
+                            <option value="reels">ريلز / شورتس (Reels / Shorts)</option>
+                            <option value="carousel">🖼️ كاروسيل / ألبوم متعدد الصور (Carousel)</option>
+                            <option value="post">منشور نصي / صورة واحدة (Post)</option>
                             <option value="story">استوري / ملصق (Story)</option>
-                            <option value="bio">رابط البايو (Bio Link)</option>
+                            <option value="live">بث مباشر (Live Stream)</option>
+                            <option value="podcast">بودكاست (Podcast)</option>
+                            <option value="bio">رابط البايو الدائم (Bio Link)</option>
                             <option value="chat">رسالة خاصة / شات (Chat)</option>
                             <option value="pinned">تعليق مثبت (Pinned)</option>
                         </select>
@@ -585,10 +588,10 @@
                 <!-- Video Title -->
                 <div class="form-group">
                     <label for="videoTitle">
-                        <span class="req">*</span> 4. عنوان أو موضوع الفيديو / المنشور:
-                        <span class="hint">(مثال: مقاومة الأنسولين، ثبات الوزن، نصيحة الكيتو)</span>
+                        <span class="req">*</span> 4. عنوان أو موضوع الفيديو / الكاروسيل:
+                        <span class="hint">(مثال: مقاومة الأنسولين، 5 وجبات لسد الشهية، ثبات الوزن)</span>
                     </label>
-                    <input type="text" id="videoTitle" placeholder="اكتب اسم أو فكرة الفيديو هنا..." oninput="onTitleInput()">
+                    <input type="text" id="videoTitle" placeholder="اكتب اسم أو فكرة المحتوى هنا..." oninput="onTitleInput()">
                 </div>
 
                 <!-- Campaign Code with Auto Increment -->
@@ -715,7 +718,7 @@
 
     <script>
         // Storage Key
-        const STORAGE_KEY = 'wahetnor_utm_history_v1';
+        const STORAGE_KEY = 'wahetnor_utm_history_v2';
         let historyData = [];
 
         // Load History on Init
@@ -731,13 +734,14 @@
                 if (raw) {
                     historyData = JSON.parse(raw);
                 } else {
-                    // Seed initial examples so the user immediately sees the power of deduplication
+                    // Seed initial examples including Carousel!
                     historyData = [
                         { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
                         { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
-                        { id: 3, title: 'فيديو فيسبوك 3: شرح باقة Elite المباشر', platform: 'facebook', medium: 'video', campaign: 'fb_v3', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v3', date: '2026-11-16' },
-                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة مقاومة الأنسولين', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
-                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
+                        { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
+                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
+                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' },
+                        { id: 6, title: 'كاروسيل فيسبوك: وجبات كيتو للمبتدئين', platform: 'facebook', medium: 'carousel', campaign: 'fb_car_1', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=carousel&utm_campaign=fb_car_1', date: '2026-11-16' }
                     ];
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
                 }
@@ -758,44 +762,54 @@
         const prefixMap = {
             'facebook_video': 'fb_v',
             'facebook_reels': 'fb_reel_',
+            'facebook_carousel': 'fb_car_',
             'facebook_post': 'fb_post_',
             'facebook_story': 'fb_story_',
+            'facebook_live': 'fb_live_',
             'facebook_bio': 'fb_bio',
             'facebook_chat': 'fb_chat_',
             'facebook_pinned': 'fb_pin_',
 
+            'instagram_carousel': 'ig_car_',
             'instagram_reels': 'ig_reel_',
             'instagram_story': 'ig_story_',
             'instagram_post': 'ig_post_',
+            'instagram_live': 'ig_live_',
             'instagram_bio': 'ig_bio',
             'instagram_video': 'ig_v',
 
             'tiktok_video': 'tt_v',
+            'tiktok_live': 'tt_live_',
             'tiktok_bio': 'tt_bio',
 
             'youtube_shorts': 'yt_short_',
             'youtube_video': 'yt_v',
+            'youtube_live': 'yt_live_',
+            'youtube_podcast': 'yt_pod_',
             'youtube_pinned': 'yt_pin_',
 
             'whatsapp_chat': 'wa_msg_',
             'whatsapp_status': 'wa_status_',
 
             'telegram_channel': 'tg_post_',
-            'telegram_pinned': 'tg_pin_'
+            'telegram_pinned': 'tg_pin_',
+
+            'linkedin_carousel': 'li_car_',
+            'linkedin_post': 'li_post_'
         };
 
         function onPlatformChange() {
             const plat = document.getElementById('platform').value;
             const medSelect = document.getElementById('medium');
             
-            // Adjust available medium options based on platform
+            // Adjust default medium options based on platform
             if (plat === 'whatsapp') {
                 medSelect.value = 'chat';
             } else if (plat === 'telegram') {
                 medSelect.value = 'post';
-            } else if (plat === 'tiktok' || plat === 'instagram') {
-                if (medSelect.value === 'video' && plat === 'instagram') {
-                    medSelect.value = 'reels';
+            } else if (plat === 'instagram') {
+                if (medSelect.value === 'video') {
+                    medSelect.value = 'carousel';
                 }
             }
             autoSuggestInitialCode();
@@ -808,7 +822,6 @@
         }
 
         function onTitleInput() {
-            // If user enters title and campaign code is empty or default, suggest next
             checkDuplicateAndGenerate();
         }
 
@@ -816,7 +829,7 @@
             const plat = document.getElementById('platform').value;
             const med = document.getElementById('medium').value;
             const key = `${plat}_${med}`;
-            let basePrefix = prefixMap[key] || `${plat.slice(0, 2)}_${med.slice(0, 1)}_`;
+            let basePrefix = prefixMap[key] || `${plat.slice(0, 2)}_${med.slice(0, 3)}_`;
 
             // Find max existing number in history for this prefix
             let maxNum = 0;
@@ -867,7 +880,7 @@
             if (existing) {
                 alertBox.className = 'dedup-alert active';
                 alertIcon.textContent = '⚠️';
-                alertText.innerHTML = `<strong>كود مكرر!</strong> تم استخدام هذا الكود سابقاً لـ: "<em>${existing.title || 'فيديو محفوظ'}</em>". <a href="javascript:void(0)" onclick="autoIncrementCode()" style="color: #b45309; font-weight: 700; text-decoration: underline; margin-right: 5px;">اضغط هنا للزيادة التلقائية</a>`;
+                alertText.innerHTML = `<strong>كود مكرر!</strong> تم استخدام هذا الكود سابقاً لـ: "<em>${existing.title || 'محتوى محفوظ'}</em>". <a href="javascript:void(0)" onclick="autoIncrementCode()" style="color: #b45309; font-weight: 700; text-decoration: underline; margin-right: 5px;">اضغط هنا للزيادة التلقائية</a>`;
             } else {
                 alertBox.className = 'dedup-alert active safe';
                 alertIcon.textContent = '✅';
@@ -933,7 +946,7 @@
 
         function saveToHistory() {
             const url = document.getElementById('finalUrl').textContent;
-            const title = document.getElementById('videoTitle').value.trim() || 'فيديو بدون عنوان';
+            const title = document.getElementById('videoTitle').value.trim() || 'محتوى بدون عنوان';
             const platform = document.getElementById('platform').value;
             const medium = document.getElementById('medium').value;
             const campaign = document.getElementById('campaignCode').value.trim();
@@ -959,7 +972,7 @@
             saveHistory();
             showToast('تم حفظ الرابط في السجل بنجاح! 💾');
             
-            // Advance counter for the next video!
+            // Advance counter for the next content piece!
             autoIncrementCode();
         }
 

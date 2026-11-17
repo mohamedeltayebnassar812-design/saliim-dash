@@ -194,7 +194,7 @@
 
     <!-- FILTER & SEARCH BAR -->
     <section class="glass-card rounded-xl p-4 space-y-3">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
         <!-- Search Input -->
         <div class="relative lg:col-span-2">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
@@ -208,6 +208,16 @@
             <option value="pt">⭐ خريجو علاج طبيعي فقط</option>
             <option value="sports">تربية رياضية فقط</option>
             <option value="other">كليات علمية / طبية أخرى</option>
+          </select>
+        </div>
+
+        <!-- Age Filter (فلتر السن) -->
+        <div>
+          <select id="ageFilter" onchange="applyFilters()" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 transition">
+            <option value="all">كل الأعمار والسن</option>
+            <option value="over25">🎂 أكبر من 25 سنة (> 25)</option>
+            <option value="under25">🎂 25 سنة أو أقل (≤ 25)</option>
+            <option value="over30">🎂 30 سنة فأكثر (30+)</option>
           </select>
         </div>
 
@@ -240,6 +250,8 @@
         <button onclick="setQuickPill('pt_only')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-emerald-500/50 hover:text-emerald-400 transition" data-pill="pt_only">خريج علاج طبيعي مرخص (PT)</button>
         <button onclick="setQuickPill('nasm_issa')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-blue-500/50 hover:text-blue-400 transition" data-pill="nasm_issa">شهادات NASM أو ISSA</button>
         <button onclick="setQuickPill('immediate_only')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-teal-500/50 hover:text-teal-400 transition" data-pill="immediate_only">بدء فوري وبدون التزامات عائقة</button>
+        <button onclick="setQuickPill('over25')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-amber-500/50 hover:text-amber-400 transition" data-pill="over25">🎂 أكبر من 25 سنة</button>
+        <button onclick="setQuickPill('under25')" class="pill-btn px-2.5 py-1 rounded-md bg-slate-900/70 text-slate-300 text-[11px] font-semibold border border-slate-800 hover:border-purple-500/50 hover:text-purple-400 transition" data-pill="under25">🎂 25 سنة أو أقل</button>
       </div>
     </section>
 
@@ -501,9 +513,27 @@
     }
 
     // Main Filter & Search Engine
+    
+    // Age Calculator Helper
+    function getApplicantAge(a) {
+      if (!a) return 0;
+      const raw = String(a.birthYear || "");
+      const m_age = raw.match(/(\d+)\s*سنة/);
+      if (m_age) return parseInt(m_age[1], 10);
+      const m_y = raw.match(/\b(19\d\d|20\d\d)\b/);
+      if (m_y) return 2026 - parseInt(m_y[1], 10);
+      const num = parseInt(raw, 10);
+      if (!isNaN(num)) {
+        if (num > 1900 && num < 2026) return 2026 - num;
+        if (num >= 18 && num <= 80) return num;
+      }
+      return 0;
+    }
+
     function applyFilters() {
       const search = (document.getElementById("searchInput").value || "").trim().toLowerCase();
       const faculty = document.getElementById("facultyFilter").value;
+      const ageFilter = document.getElementById("ageFilter") ? document.getElementById("ageFilter").value : "all";
       const status = document.getElementById("statusFilter").value;
       const sortBy = document.getElementById("sortFilter").value;
 
@@ -541,6 +571,24 @@
         } else if (currentQuickPill === "immediate_only") {
           const avail = String(a.availability || a.startDate || "");
           if (!avail.includes("فوراً")) return false;
+        } else if (currentQuickPill === "over25") {
+          const age = getApplicantAge(a);
+          if (age <= 25) return false;
+        } else if (currentQuickPill === "under25") {
+          const age = getApplicantAge(a);
+          if (age > 25 || age === 0) return false;
+        }
+
+        // Age Dropdown Filter
+        if (ageFilter === "over25") {
+          const age = getApplicantAge(a);
+          if (age <= 25) return false;
+        } else if (ageFilter === "under25") {
+          const age = getApplicantAge(a);
+          if (age > 25 || age === 0) return false;
+        } else if (ageFilter === "over30") {
+          const age = getApplicantAge(a);
+          if (age < 30) return false;
         }
 
         return true;

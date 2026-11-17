@@ -1048,18 +1048,123 @@
                 }
             } catch (e) {}
 
-            // أمثلة تمهيدية إن كان السجل فارغاً بالكامل
-            if (historyData.length === 0) {
-                historyData = [
-                    { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', postUrl: 'https://facebook.com/reel/12345678', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
-                    { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', postUrl: '', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
-                    { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', postUrl: 'https://instagram.com/p/C_sample123', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
-                    { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', postUrl: '', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
-                    { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', postUrl: 'https://tiktok.com/@drahmed/video/7123456789', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
-                ];
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
-                idbBulkPut(historyData);
-            }
+            // 🚀 الروابط والحملات التسويقية الرسمية المعتمدة (1 فيديو + 1 ريل على كل المنصات)
+            const OFFICIAL_CAMPAIGNS = [
+                    {
+                                        "id": "utm_vid_yt_01",
+                                        "title": "فيديو رئيسي 1: الدليل الكامل لمنظومة واحة نور وعلاج مقاومة الإنسولين",
+                                        "platform": "youtube",
+                                        "medium": "video_description",
+                                        "campaign": "yt_vid_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=video_description&utm_campaign=yt_vid_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_vid_fb_01",
+                                        "title": "فيديو رئيسي 1: المحتوى التوعوي الشامل لمنظومة واحة نور",
+                                        "platform": "facebook",
+                                        "medium": "video_post",
+                                        "campaign": "fb_vid_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=facebook&utm_medium=video_post&utm_campaign=fb_vid_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_vid_ig_01",
+                                        "title": "فيديو رئيسي 1: رابط البايو والستوري المرافق للفيديو الطويل",
+                                        "platform": "instagram",
+                                        "medium": "bio",
+                                        "campaign": "ig_vid_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=bio&utm_campaign=ig_vid_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_vid_tg_01",
+                                        "title": "فيديو رئيسي 1: رسالة القناة الرسمية لدكتور أحمد الخطيب",
+                                        "platform": "telegram",
+                                        "medium": "channel_post",
+                                        "campaign": "tg_vid_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=telegram&utm_medium=channel_post&utm_campaign=tg_vid_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_vid_wa_01",
+                                        "title": "فيديو رئيسي 1: رسالة مجتمع وقناة واحة نور الرسمية على واتساب",
+                                        "platform": "whatsapp",
+                                        "medium": "broadcast",
+                                        "campaign": "wa_vid_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=whatsapp&utm_medium=broadcast&utm_campaign=wa_vid_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_ig_01",
+                                        "title": "ريل 1: 3 علامات للشفاء من مقاومة الإنسولين وثبات الوزن",
+                                        "platform": "instagram",
+                                        "medium": "reels",
+                                        "campaign": "ig_reel_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_tt_01",
+                                        "title": "ريل 1 تيك توك: سر ثبات الوزن وعلاج مقاومة الإنسولين في واحة نور",
+                                        "platform": "tiktok",
+                                        "medium": "video",
+                                        "campaign": "tt_reel_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_reel_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_yt_01",
+                                        "title": "ريل 1 يوتيوب شورتس: علامات الشفاء من مقاومة الإنسولين",
+                                        "platform": "youtube",
+                                        "medium": "shorts",
+                                        "campaign": "yt_short_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=shorts&utm_campaign=yt_short_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_fb_01",
+                                        "title": "ريل 1 فيسبوك: ريل الأخطاء الثلاثة ونصائح باقة النخبة",
+                                        "platform": "facebook",
+                                        "medium": "reels",
+                                        "campaign": "fb_reel_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=facebook&utm_medium=reels&utm_campaign=fb_reel_01",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_snap_01",
+                                        "title": "ريل 1 سناب شات: ستوري الأخطاء الثلاثة ورابط السحب لأعلى",
+                                        "platform": "snapchat",
+                                        "medium": "story",
+                                        "campaign": "snap_reel_01",
+                                        "postUrl": "",
+                                        "url": "https://wahetnor.com/start?utm_source=snapchat&utm_medium=story&utm_campaign=snap_reel_01",
+                                        "date": "2026-11-17"
+                    }
+];
+
+            // دمج الروابط الرسمية في السجل لمنع التكرار وضمان توفرها على كافة الأجهزة
+            const currentMap = new Map();
+            historyData.forEach(item => currentMap.set((item.campaign || item.id).toString().toLowerCase(), item));
+            
+            OFFICIAL_CAMPAIGNS.forEach(item => {
+                const k = (item.campaign || item.id).toString().toLowerCase();
+                if (!currentMap.has(k)) {
+                    currentMap.set(k, item);
+                }
+            });
+            historyData = Array.from(currentMap.values());
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+            idbBulkPut(OFFICIAL_CAMPAIGNS);
 
             renderHistoryTable();
 

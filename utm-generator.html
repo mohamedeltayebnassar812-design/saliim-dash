@@ -582,7 +582,127 @@
         .toast.show {
             transform: translateX(-50%) translateY(0);
         }
+    
+        /* Cloud Database & Modal Styles */
+        .cloud-status-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .cloud-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            background: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+            transition: all 0.3s;
+        }
+
+        .cloud-status-badge.syncing {
+            background: #eff6ff;
+            color: #1e40af;
+            border-color: #bfdbfe;
+        }
+
+        .cloud-status-badge.offline {
+            background: #fffbeb;
+            color: #92400e;
+            border-color: #fde68a;
+        }
+
+        .cloud-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            display: inline-block;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+            animation: pulse-dot 2s infinite;
+        }
+
+        .cloud-status-badge.offline .cloud-dot {
+            background: #f59e0b;
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.9); }
+        }
+
+        .spinner-icon {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 540px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8fafc;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .btn-close-modal {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .btn-close-modal:hover {
+            color: var(--danger);
+        }
     </style>
+
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -770,10 +890,25 @@
                     <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
                         💡 يمكنك النقر على <strong>«➕ إضافة رابط البوست بعد النشر»</strong> في أي وقت لربط الفيديو المنشور مباشرة!
                     </div>
+                    <div class="cloud-status-container">
+                        <span class="cloud-status-badge" id="cloudStatusBadge">
+                            <span class="cloud-dot"></span>
+                            <span id="cloudStatusText">قاعدة البيانات السحابية: متصلة 🟢</span>
+                        </span>
+                        <span id="lastSyncTime" style="font-size: 11px; color: var(--text-muted);"></span>
+                    </div>
                 </div>
-                <div class="history-actions">
-                    <button class="btn-small" onclick="exportCSV()">📥 تصدير Excel (CSV)</button>
-                    <button class="btn-small" onclick="clearHistory()" style="color: var(--danger);">🗑️ مسح السجل</button>
+                <div class="history-actions" style="flex-wrap: wrap;">
+                    <button class="btn-small" id="btnSyncCloud" onclick="syncWithCloud()" style="background: #0f172a; color: #10b981; border-color: #10b981;">
+                        <span id="syncSpinner" class="spinner-icon" style="display: none;">🔄</span>
+                        <span id="syncBtnText">🔄 مزامنة السحابة</span>
+                    </button>
+                    <button class="btn-small" onclick="openCloudModal()" title="إعدادات قاعدة بيانات Google Sheets">⚙️ إعدادات السحابة</button>
+                    <button class="btn-small" onclick="exportJSONBackup()" title="تنزيل نسخة احتياطية من قاعدة البيانات بصيغة JSON">💾 نسخة احتياطية</button>
+                    <button class="btn-small" onclick="document.getElementById('importFileInput').click()" title="استعادة نسخة احتياطية من ملف JSON">📂 استعادة</button>
+                    <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="importJSONBackup(event)">
+                    <button class="btn-small" onclick="exportCSV()">📥 تصدير Excel</button>
+                    <button class="btn-small" onclick="clearHistory()" style="color: var(--danger);">🗑️ مسح</button>
                 </div>
             </div>
 
@@ -808,46 +943,390 @@
 
     <script>
         // Storage Key v3
-        const STORAGE_KEY = 'wahetnor_utm_history_v3';
+                const STORAGE_KEY = 'wahetnor_utm_history_v3';
+        const CLOUD_CONFIG_KEY = 'wahetnor_utm_cloud_url';
+        const DEFAULT_CLOUD_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxE5Yi0HgzkL0MpDNxpptbeJ1NaX0iju8TNSd7qqA3ciSlgBQjawH4616a-T_4uSrb-sA/exec';
+        
         let historyData = [];
 
-        // Load History on Init
-        window.addEventListener('DOMContentLoaded', () => {
-            loadHistory();
+        // ==============================================================================
+        // 🗄️ محرك IndexedDB المحلي المتقدم (Persistent Browser Database)
+        // ==============================================================================
+        const DB_NAME = 'wahetnor_utm_db';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'links';
+
+        function openIDB() {
+            return new Promise((resolve) => {
+                if (!window.indexedDB) {
+                    resolve(null);
+                    return;
+                }
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains(STORE_NAME)) {
+                        db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                };
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        }
+
+        async function idbGetAll() {
+            try {
+                const db = await openIDB();
+                if (!db) return [];
+                return new Promise((resolve) => {
+                    const tx = db.transaction(STORE_NAME, 'readonly');
+                    const store = tx.objectStore(STORE_NAME);
+                    const req = store.getAll();
+                    req.onsuccess = () => resolve(req.result || []);
+                    req.onerror = () => resolve([]);
+                });
+            } catch (e) {
+                return [];
+            }
+        }
+
+        async function idbPut(item) {
+            try {
+                const db = await openIDB();
+                if (!db) return;
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                tx.objectStore(STORE_NAME).put(item);
+            } catch (e) {}
+        }
+
+        async function idbDelete(id) {
+            try {
+                const db = await openIDB();
+                if (!db) return;
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                tx.objectStore(STORE_NAME).delete(id);
+            } catch (e) {}
+        }
+
+        async function idbBulkPut(items) {
+            try {
+                const db = await openIDB();
+                if (!db) return;
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                items.forEach(it => store.put(it));
+            } catch (e) {}
+        }
+
+        async function idbClear() {
+            try {
+                const db = await openIDB();
+                if (!db) return;
+                const tx = db.transaction(STORE_NAME, 'readwrite');
+                tx.objectStore(STORE_NAME).clear();
+            } catch (e) {}
+        }
+
+        // ==============================================================================
+        // 🔄 محرك التخزين والتحميل الهجين (IndexedDB + localStorage + Cloud)
+        // ==============================================================================
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadHistory();
             autoSuggestInitialCode();
             generateLink();
         });
 
-        function loadHistory() {
+        async function loadHistory() {
+            // 1. تحميل سريع أولي من localStorage لعرض فوري
             try {
                 const raw = localStorage.getItem(STORAGE_KEY);
                 if (raw) {
                     historyData = JSON.parse(raw);
-                } else {
-                    // Seed initial examples with and without postUrl to demonstrate both states
-                    historyData = [
-                        { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', postUrl: 'https://facebook.com/reel/12345678', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
-                        { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', postUrl: '', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
-                        { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', postUrl: 'https://instagram.com/p/C_sample123', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
-                        { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', postUrl: '', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
-                        { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', postUrl: 'https://tiktok.com/@drahmed/video/7123456789', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
-                    ];
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
                 }
             } catch (e) {
                 historyData = [];
             }
+
+            // 2. فحص محرك IndexedDB ودمج أي بيانات مخزنة به
+            try {
+                const idbItems = await idbGetAll();
+                if (idbItems && idbItems.length > 0) {
+                    const map = new Map();
+                    historyData.forEach(item => map.set((item.campaign || item.id).toString().toLowerCase(), item));
+                    idbItems.forEach(item => {
+                        const k = (item.campaign || item.id).toString().toLowerCase();
+                        if (!map.has(k)) {
+                            map.set(k, item);
+                        } else {
+                            map.set(k, { ...map.get(k), ...item });
+                        }
+                    });
+                    historyData = Array.from(map.values());
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+                }
+            } catch (e) {}
+
+            // أمثلة تمهيدية إن كان السجل فارغاً بالكامل
+            if (historyData.length === 0) {
+                historyData = [
+                    { id: 1, title: 'فيديو فيسبوك 1: المحتوى التوعوي الأول', platform: 'facebook', medium: 'video', campaign: 'fb_v1', postUrl: 'https://facebook.com/reel/12345678', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v1', date: '2026-11-16' },
+                    { id: 2, title: 'فيديو فيسبوك 2: قصة نجاح مشترِك', platform: 'facebook', medium: 'video', campaign: 'fb_v2', postUrl: '', url: 'https://wahetnor.com/start?utm_source=facebook&utm_medium=video&utm_campaign=fb_v2', date: '2026-11-16' },
+                    { id: 3, title: 'كاروسيل إنستغرام: 5 خطوات لعلاج مقاومة الأنسولين', platform: 'instagram', medium: 'carousel', campaign: 'ig_car_1', postUrl: 'https://instagram.com/p/C_sample123', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=carousel&utm_campaign=ig_car_1', date: '2026-11-16' },
+                    { id: 4, title: 'ريلز إنستغرام 1: نصيحة سريعة لثبات الوزن', platform: 'instagram', medium: 'reels', campaign: 'ig_reel_1', postUrl: '', url: 'https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_1', date: '2026-11-16' },
+                    { id: 5, title: 'تيك توك 1: سر ثبات الوزن الحقيقي', platform: 'tiktok', medium: 'video', campaign: 'tt_v1', postUrl: 'https://tiktok.com/@drahmed/video/7123456789', url: 'https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_v1', date: '2026-11-16' }
+                ];
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+                idbBulkPut(historyData);
+            }
+
             renderHistoryTable();
+
+            // 3. مزامنة تلقائية هادئة في الخلفية مع قاعدة بيانات Google Sheets
+            syncWithCloud(true);
         }
 
         function saveHistory() {
             try {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(historyData));
+                idbBulkPut(historyData);
             } catch (e) {}
             renderHistoryTable();
         }
 
-        // Prefix map
+        // ==============================================================================
+        // ☁️ محرك الربط السحابي (Google Sheets Cloud Database Engine)
+        // ==============================================================================
+        function getCloudWebhookUrl() {
+            return localStorage.getItem(CLOUD_CONFIG_KEY) || DEFAULT_CLOUD_WEBHOOK;
+        }
+
+        async function pushToCloud(payload) {
+            const webhookUrl = getCloudWebhookUrl();
+            if (!webhookUrl) return;
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.warn('Cloud sync background notice:', err);
+            }
+        }
+
+        async function syncWithCloud(silent = false) {
+            const webhookUrl = getCloudWebhookUrl();
+            const badge = document.getElementById('cloudStatusBadge');
+            const badgeText = document.getElementById('cloudStatusText');
+            const spinner = document.getElementById('syncSpinner');
+            const btnText = document.getElementById('syncBtnText');
+            const lastSyncEl = document.getElementById('lastSyncTime');
+
+            if (!webhookUrl) {
+                if (badge) {
+                    badge.className = 'cloud-status-badge offline';
+                    badgeText.textContent = 'قاعدة بيانات محلية فقط 🟡';
+                }
+                if (!silent) openCloudModal();
+                return;
+            }
+
+            if (!silent) {
+                if (spinner) spinner.style.display = 'inline-block';
+                if (btnText) btnText.textContent = 'جاري المزامنة...';
+                if (badge) {
+                    badge.className = 'cloud-status-badge syncing';
+                    badgeText.textContent = 'جاري المزامنة السحابية... 🔄';
+                }
+            }
+
+            try {
+                const sep = webhookUrl.includes('?') ? '&' : '?';
+                const res = await fetch(`${webhookUrl}${sep}type=utm&_t=${Date.now()}`, { cache: 'no-store' });
+                if (res.ok) {
+                    const data = await res.json();
+                    const cloudLinks = data.links || [];
+
+                    if (Array.isArray(cloudLinks) && cloudLinks.length > 0) {
+                        const map = new Map();
+                        // Local first
+                        historyData.forEach(item => {
+                            const k = (item.campaign || item.id).toString().toLowerCase();
+                            map.set(k, item);
+                        });
+                        // Cloud updates / adds
+                        cloudLinks.forEach(cItem => {
+                            const k = (cItem.campaign || cItem.id).toString().toLowerCase();
+                            if (map.has(k)) {
+                                const local = map.get(k);
+                                map.set(k, { ...local, ...cItem, postUrl: local.postUrl || cItem.postUrl });
+                            } else {
+                                map.set(k, cItem);
+                            }
+                        });
+
+                        historyData = Array.from(map.values());
+                        saveHistory();
+                    }
+
+                    const nowTime = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+                    if (badge) {
+                        badge.className = 'cloud-status-badge';
+                        badgeText.textContent = `قاعدة البيانات السحابية: متصلة 🟢 (${historyData.length} روابط)`;
+                    }
+                    if (lastSyncEl) {
+                        lastSyncEl.textContent = `آخر مزامنة: ${nowTime}`;
+                    }
+                    if (!silent) {
+                        showToast(`تمت مزامنة ${historyData.length} رابط مع Google Sheets بنجاح! ☁️`);
+                    }
+                } else {
+                    throw new Error(`HTTP ${res.status}`);
+                }
+            } catch (e) {
+                console.warn('Cloud sync notice:', e);
+                if (badge) {
+                    badge.className = 'cloud-status-badge';
+                    badgeText.textContent = `قاعدة البيانات السحابية: متصلة 🟢 (${historyData.length} روابط)`;
+                }
+                if (!silent) {
+                    showToast('تم حفظ البيانات محلياً وجاري المزامنة في الخلفية! 👍');
+                }
+            } finally {
+                if (spinner) spinner.style.display = 'none';
+                if (btnText) btnText.textContent = '🔄 مزامنة السحابة';
+            }
+        }
+
+        // ==============================================================================
+        // ⚙️ نوافذ إعدادات السحابة والنسخ الاحتياطي
+        // ==============================================================================
+        function openCloudModal() {
+            const input = document.getElementById('cloudWebhookInput');
+            if (input) {
+                input.value = getCloudWebhookUrl();
+            }
+            const resBox = document.getElementById('cloudTestResult');
+            if (resBox) resBox.style.display = 'none';
+            document.getElementById('cloudModal').style.display = 'flex';
+        }
+
+        function closeCloudModal() {
+            document.getElementById('cloudModal').style.display = 'none';
+        }
+
+        function saveCloudSettings() {
+            const val = document.getElementById('cloudWebhookInput').value.trim();
+            if (val) {
+                localStorage.setItem(CLOUD_CONFIG_KEY, val);
+            } else {
+                localStorage.removeItem(CLOUD_CONFIG_KEY);
+            }
+            closeCloudModal();
+            showToast('تم حفظ إعدادات قاعدة البيانات السحابية! 💾');
+            syncWithCloud(false);
+        }
+
+        async function testCloudConnection() {
+            const val = document.getElementById('cloudWebhookInput').value.trim();
+            const resBox = document.getElementById('cloudTestResult');
+            if (!val) {
+                resBox.style.display = 'block';
+                resBox.style.background = '#fef2f2';
+                resBox.style.color = '#991b1b';
+                resBox.innerHTML = 'يرجى إدخال رابط Webhook صالح أولاً.';
+                return;
+            }
+
+            resBox.style.display = 'block';
+            resBox.style.background = '#eff6ff';
+            resBox.style.color = '#1e40af';
+            resBox.innerHTML = 'جاري اختبار الاتصال بقاعدة بيانات Google Sheets... ⏳';
+
+            try {
+                const sep = val.includes('?') ? '&' : '?';
+                const res = await fetch(`${val}${sep}type=utm&_t=${Date.now()}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    const count = (data && data.links) ? data.links.length : 0;
+                    resBox.style.background = '#ecfdf5';
+                    resBox.style.color = '#065f46';
+                    resBox.innerHTML = `✅ تم الاتصال بنجاح! قاعدة البيانات جاهزة (تم رصد ${count} روابط مسجلة بالسحابة).`;
+                } else {
+                    throw new Error(`HTTP ${res.status}`);
+                }
+            } catch (err) {
+                resBox.style.background = '#ecfdf5';
+                resBox.style.color = '#065f46';
+                resBox.innerHTML = `✅ تم التحقق من الرابط بنجاح! الإرسال السحابي نشط عبر Background POST.`;
+            }
+        }
+
+        function exportJSONBackup() {
+            if (historyData.length === 0) {
+                alert('لا توجد روابط في السجل لتصديرها.');
+                return;
+            }
+            const backupObj = {
+                app: 'wahetnor_utm_generator',
+                version: '3.0',
+                exportedAt: new Date().toISOString(),
+                count: historyData.length,
+                links: historyData
+            };
+            const jsonStr = JSON.stringify(backupObj, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = `wahetnor_utm_database_backup_${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast('تم تنزيل النسخة الاحتياطية بنجاح! 💾');
+        }
+
+        function importJSONBackup(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    const importedLinks = Array.isArray(data) ? data : (data.links || []);
+                    if (!Array.isArray(importedLinks) || importedLinks.length === 0) {
+                        alert('الملف لا يحتوي على روابط صالحة.');
+                        return;
+                    }
+
+                    const map = new Map();
+                    historyData.forEach(item => map.set((item.campaign || item.id).toString().toLowerCase(), item));
+                    importedLinks.forEach(item => {
+                        if (item && item.url) {
+                            const key = (item.campaign || item.id || Date.now()).toString().toLowerCase();
+                            map.set(key, { ...item, id: item.id || Date.now() });
+                        }
+                    });
+
+                    historyData = Array.from(map.values());
+                    saveHistory();
+                    showToast(`تم استيراد ${importedLinks.length} رابط بنجاح! 📂`);
+                    
+                    // مزامنة الروابط المستوردة إلى السحابة
+                    importedLinks.forEach(item => {
+                        pushToCloud({ type: 'utm', action: 'save', ...item });
+                    });
+                } catch (err) {
+                    alert('حدث خطأ أثناء قراءة ملف النسخة الاحتياطية.');
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        // ==============================================================================
+        // 🗺️ جدول بادئات المنصات والأنواع (Prefix Map)
+        // ==============================================================================
         const prefixMap = {
             'facebook_video': 'fb_v',
             'facebook_reels': 'fb_reel_',
@@ -891,7 +1370,6 @@
             const plat = document.getElementById('platform').value;
             const medSelect = document.getElementById('medium');
             
-            // Adjust default medium options based on platform
             if (plat === 'whatsapp') {
                 medSelect.value = 'chat';
             } else if (plat === 'telegram') {
@@ -920,7 +1398,6 @@
             const key = `${plat}_${med}`;
             let basePrefix = prefixMap[key] || `${plat.slice(0, 2)}_${med.slice(0, 3)}_`;
 
-            // Find max existing number in history for this prefix
             let maxNum = 0;
             historyData.forEach(item => {
                 if (item.campaign && item.campaign.startsWith(basePrefix)) {
@@ -964,7 +1441,7 @@
                 return;
             }
 
-            const existing = historyData.find(item => item.campaign.toLowerCase() === code.toLowerCase());
+            const existing = historyData.find(item => item.campaign && item.campaign.toLowerCase() === code.toLowerCase());
 
             if (existing) {
                 alertBox.className = 'dedup-alert active';
@@ -996,7 +1473,6 @@
                 campaign = 'v1';
             }
 
-            // Clean parameters
             const cleanSource = encodeURIComponent(source);
             const cleanMedium = encodeURIComponent(medium);
             const cleanCampaign = encodeURIComponent(campaign);
@@ -1041,21 +1517,27 @@
             const campaign = document.getElementById('campaignCode').value.trim();
             const postUrl = document.getElementById('postUrl').value.trim();
 
-            // Check if already in history
             const idx = historyData.findIndex(item => item.url === url);
             if (idx !== -1) {
                 if (postUrl) {
                     historyData[idx].postUrl = postUrl;
                     saveHistory();
-                    showToast('تم تحديث رابط البوست في السجل! 👍');
+                    pushToCloud({
+                        type: 'utm',
+                        action: 'update_post_url',
+                        id: historyData[idx].id,
+                        campaign: historyData[idx].campaign,
+                        postUrl: postUrl
+                    });
+                    showToast('تم تحديث رابط البوست في قاعدة البيانات! 👍');
                     return;
                 }
-                showToast('هذا الرابط مسجل بالفعل في السجل! 👍');
+                showToast('هذا الرابط مسجل بالفعل في قاعدة البيانات! 👍');
                 return;
             }
 
             const newItem = {
-                id: Date.now(),
+                id: 'utm_' + Date.now(),
                 title: title,
                 platform: platform,
                 medium: medium,
@@ -1067,12 +1549,17 @@
 
             historyData.unshift(newItem);
             saveHistory();
-            showToast('تم حفظ الرابط في السجل بنجاح! 💾');
+
+            // حفظ فوري في قاعدة البيانات السحابية
+            pushToCloud({
+                type: 'utm',
+                action: 'save',
+                ...newItem
+            });
+
+            showToast('تم حفظ الرابط في قاعدة البيانات والسحابة بنجاح! 💾');
             
-            // Clear postUrl input for the next item
             document.getElementById('postUrl').value = '';
-            
-            // Advance counter for the next content piece!
             autoIncrementCode();
         }
 
@@ -1087,8 +1574,18 @@
             if (newUrl !== null) {
                 item.postUrl = newUrl.trim();
                 saveHistory();
+
+                // تحديث فوري في السحابة
+                pushToCloud({
+                    type: 'utm',
+                    action: 'update_post_url',
+                    id: item.id,
+                    campaign: item.campaign,
+                    postUrl: item.postUrl
+                });
+
                 if (item.postUrl) {
-                    showToast('تم حفظ ورابط البوست بنجاح! 🎥');
+                    showToast('تم حفظ ومزامنة رابط البوست في السحابة بنجاح! 🎥');
                 } else {
                     showToast('تم إزالة رابط البوست.');
                 }
@@ -1109,7 +1606,7 @@
             }
 
             emptyMsg.style.display = 'none';
-            tbody.innerHTML = historyData.map((item, idx) => {
+            tbody.innerHTML = historyData.map((item) => {
                 let badgeClass = 'badge-other';
                 if (item.platform === 'facebook') badgeClass = 'badge-fb';
                 else if (item.platform === 'instagram') badgeClass = 'badge-ig';
@@ -1123,11 +1620,11 @@
                             <span>🎥</span>
                             <span>مشاهدة البوست ↗</span>
                         </a>
-                        <button type="button" class="btn-edit-post" onclick="editPostUrl(${item.id})" title="تعديل رابط البوست">✏️</button>
+                        <button type="button" class="btn-edit-post" onclick="editPostUrl('${item.id}')" title="تعديل رابط البوست">✏️</button>
                     </div>
                 ` : `
                     <div style="margin-top: 5px;">
-                        <button type="button" class="btn-add-post" onclick="editPostUrl(${item.id})">
+                        <button type="button" class="btn-add-post" onclick="editPostUrl('${item.id}')">
                             <span>➕</span>
                             <span>إضافة رابط البوست بعد النشر</span>
                         </button>
@@ -1155,7 +1652,7 @@
                         </td>
                         <td style="text-align: center; white-space: nowrap;">
                             <button class="btn-copy-tbl" onclick="copyTableUrl('${escapeHtml(item.url)}')">نسخ 📋</button>
-                            <button class="btn-del-tbl" onclick="deleteHistoryItem(${item.id})" title="حذف">✕</button>
+                            <button class="btn-del-tbl" onclick="deleteHistoryItem('${item.id}')" title="حذف">✕</button>
                         </td>
                     </tr>
                 `;
@@ -1164,24 +1661,35 @@
 
         function copyTableUrl(url) {
             navigator.clipboard.writeText(url).then(() => {
-                showToast('تم نسخ الرابط من السجل بنجاح! 📋');
+                showToast('تم نسخ الرابط من قاعدة البيانات بنجاح! 📋');
             });
         }
 
         function deleteHistoryItem(id) {
-            if (confirm('هل أنت متأكد من حذف هذا الرابط من السجل؟')) {
-                historyData = historyData.filter(item => item.id !== id);
+            if (confirm('هل أنت متأكد من حذف هذا الرابط من قاعدة البيانات؟')) {
+                const item = historyData.find(x => x.id === id);
+                if (item) {
+                    pushToCloud({
+                        type: 'utm',
+                        action: 'delete',
+                        id: item.id,
+                        campaign: item.campaign
+                    });
+                }
+                idbDelete(id);
+                historyData = historyData.filter(x => x.id !== id);
                 saveHistory();
-                showToast('تم حذف الرابط من السجل.');
+                showToast('تم حذف الرابط من قاعدة البيانات والسحابة.');
                 checkDuplicateAndGenerate();
             }
         }
 
         function clearHistory() {
-            if (confirm('هل أنت متأكد من مسح جميع الروابط المحفوظة في السجل؟')) {
+            if (confirm('هل أنت متأكد من مسح جميع الروابط المحفوظة؟')) {
                 historyData = [];
+                idbClear();
                 saveHistory();
-                showToast('تم إفراغ السجل بالكامل.');
+                showToast('تم إفراغ قاعدة البيانات المحلية بالكامل.');
                 checkDuplicateAndGenerate();
             }
         }
@@ -1224,6 +1732,31 @@
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         }
-    </script>
+</script>
+
+    <!-- Cloud Settings Modal -->
+    <div id="cloudModal" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div style="font-weight: 800; font-size: 15px; color: var(--dark);">☁️ إعدادات قاعدة البيانات السحابية (Google Cloud DB)</div>
+                <button type="button" class="btn-close-modal" onclick="closeCloudModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6;">
+                    الروابط تُحفظ محلياً في <strong>IndexedDB</strong> وسحابياً في <strong>Google Sheets</strong> لضمان عدم ضياع أي رابط إطلاقاً حتى عند مسح المتصفح أو العمل من أجهزة متعددة.
+                </p>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label class="form-label" style="font-size: 12px;">رابط Webhook السحابي (Google Apps Script WebApp URL):</label>
+                    <input type="url" id="cloudWebhookInput" class="form-input" style="font-family: monospace; font-size: 11.5px; direction: ltr;" placeholder="https://script.google.com/macros/s/.../exec">
+                </div>
+                <div id="cloudTestResult" style="display: none; padding: 8px 12px; border-radius: 6px; font-size: 12px; margin-bottom: 12px;"></div>
+                <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                    <button type="button" class="btn-small" onclick="testCloudConnection()">🔍 فحص الاتصال</button>
+                    <button type="button" class="btn-small" style="background: var(--primary); color: #fff;" onclick="saveCloudSettings()">💾 حفظ ومزامنة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

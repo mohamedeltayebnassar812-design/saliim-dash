@@ -48,14 +48,14 @@
           <span>محاكي الجدوى المالية والتسعير المعتمد — واحة نور</span>
         </h1>
         <p class="text-xs text-slate-300 mt-0.5">
-          الأسعار المعتمدة: الخليج (<strong class="text-emerald-400">$99 · $59 · $35</strong>) · مصر (<strong class="text-emerald-400">2499 ج · 1499 ج · 999 ج</strong>) · تحكم كامل بنسب المشتركين
+          الأسعار المعتمدة: الخليج (<strong class="text-emerald-400">$99 · $59 · $35</strong>) · مصر (<strong class="text-emerald-400">2499 ج · 1499 ج · 999 ج</strong>) · محاكاة مرنة لنسبة عروض الـ 3 شهور
         </p>
       </div>
 
       <div class="flex items-center gap-2 flex-wrap">
         <span class="text-xs text-slate-300 font-bold">سيناريوهات سريعة:</span>
         <button onclick="setScenario('breakeven')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition shadow">
-          نقطة التعادل (28)
+          نقطة التعادل (20)
         </button>
         <button onclick="setScenario('standard')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-900/40 transition">
           الهدف القياسي (45) ⭐
@@ -70,7 +70,7 @@
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
       <!-- Revenue -->
       <div class="panel-card rounded-2xl p-4 border-r-4 border-r-emerald-500">
-        <div class="text-xs font-bold text-slate-300">إجمالي الإيرادات المتوقعة</div>
+        <div class="text-xs font-bold text-slate-300">إجمالي السيولة المحصلة (Cashflow)</div>
         <div id="kpi-revenue" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono mt-1">0 ج.م</div>
         <div id="kpi-arpu" class="text-xs text-slate-300 font-semibold mt-1">متوسط المشترك: 0 ج</div>
       </div>
@@ -84,7 +84,7 @@
 
       <!-- Net Profit -->
       <div class="panel-card rounded-2xl p-4 border-r-4 border-r-amber-400">
-        <div class="text-xs font-bold text-slate-300">صافي الربح الشهري الخالص</div>
+        <div class="text-xs font-bold text-slate-300">صافي الربح الفوري الخالص</div>
         <div id="kpi-profit" class="text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400">0 ج.م</div>
         <div id="kpi-margin" class="text-xs font-black mt-1 text-emerald-400">هامش الربح: 0%</div>
       </div>
@@ -92,19 +92,21 @@
       <!-- Break Even -->
       <div class="panel-card rounded-2xl p-4 border-r-4 border-r-cyan-400">
         <div class="text-xs font-bold text-slate-300">نقطة التعادل (Break-Even)</div>
-        <div id="kpi-breakeven" class="text-xl sm:text-2xl font-black font-mono mt-1 text-cyan-400">28 مشتركاً</div>
+        <div id="kpi-breakeven" class="text-xl sm:text-2xl font-black font-mono mt-1 text-cyan-400">20 مشتركاً</div>
         <div id="kpi-safety-margin" class="text-xs font-bold mt-1 text-emerald-400">فائض أمان: 0 مشترك</div>
       </div>
     </div>
 
-    <!-- 3-Month Offer Special Banner -->
+    <!-- 3-Month Offer Special Banner with Dynamic Breakdown -->
     <div class="panel-card rounded-2xl p-4 border-indigo-500/40 bg-gradient-to-r from-indigo-950/40 via-slate-900 to-emerald-950/40">
       <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
         <div class="flex items-center gap-2">
           <span class="text-lg">🔥</span>
-          <span class="font-black text-sm text-white">عروض الـ 3 شهور الحصرية (ادفع شهرين واحصل على الثالث مجاناً 🎁):</span>
+          <span class="font-black text-sm text-white">عروض الـ 3 شهور (ادفع شهرين واحصل على الثالث مجاناً 🎁):</span>
         </div>
-        <span class="text-[11px] font-bold text-emerald-400 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-800">تضمن استمرار العميل 90 يوماً وتدفق نقدي فوري</span>
+        <span id="badge-live-breakdown" class="text-[11px] font-bold text-emerald-300 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-800 font-mono">
+          14 مشترك بعرض 3 شهور · 31 مشترك شهري
+        </span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3 text-xs">
@@ -153,7 +155,7 @@
       <div class="panel-card rounded-2xl p-4 space-y-3.5">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
           <h2 class="font-black text-sm text-white flex items-center gap-2">
-            <span>🏷️</span> الأسعار الشهرية الأساسية
+            <span>🏷️</span> أسعار الشهر الواحد (الأساسية)
           </h2>
           <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-lg border border-emerald-800/60">الدولار = 50 ج</span>
         </div>
@@ -213,11 +215,11 @@
         </div>
       </div>
 
-      <!-- Column 2: Volume & Customizable Distribution Controls -->
+      <!-- Column 2: Volume, Distribution & 3-Month Split Controls -->
       <div class="panel-card rounded-2xl p-4 space-y-3.5">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
           <h2 class="font-black text-sm text-white flex items-center gap-2">
-            <span>👥</span> المشتركون والإعلانات
+            <span>👥</span> المشتركون ونوع الاشتراك
           </h2>
           <span id="readout-total-members" class="font-mono text-emerald-400 font-black text-xs bg-slate-900 px-2.5 py-0.5 rounded-lg border border-slate-700">45 مشترك</span>
         </div>
@@ -232,6 +234,26 @@
             <input id="range-total-members" type="range" min="10" max="100" value="45" class="w-full" oninput="syncRange('total-members')">
           </div>
 
+          <!-- 3-Month vs 1-Month Split Slider (NEW FEATURE) -->
+          <div class="p-2.5 rounded-xl bg-indigo-950/40 border border-indigo-500/40 space-y-2">
+            <div class="flex justify-between items-center font-bold">
+              <span class="text-indigo-300 flex items-center gap-1.5">
+                <span>🎁 نسبة المشتركين بعرض الـ 3 شهور:</span>
+              </span>
+              <span id="lbl-split-3m" class="font-black font-mono text-emerald-300 text-xs bg-indigo-900/60 px-2 py-0.5 rounded border border-indigo-700">
+                30% (3 شهور) · 70% (شهري)
+              </span>
+            </div>
+            <input id="range-split-3m" type="range" min="0" max="80" step="5" value="30" class="w-full accent-indigo-400" oninput="onSplit3MChange()">
+            
+            <div class="flex items-center justify-between gap-1 pt-1">
+              <button onclick="setSplitPreset(0)" class="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">0% شهري فقط</button>
+              <button onclick="setSplitPreset(15)" class="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">15% تحفظي</button>
+              <button onclick="setSplitPreset(30)" class="px-1.5 py-0.5 rounded text-[9px] bg-indigo-950 text-indigo-300 font-bold border border-indigo-800">30% واقعي ⭐</button>
+              <button onclick="setSplitPreset(50)" class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950 text-emerald-300 border border-emerald-800">50% قوي</button>
+            </div>
+          </div>
+
           <!-- Country Split Slider -->
           <div>
             <div class="flex justify-between font-bold mb-1">
@@ -242,13 +264,13 @@
           </div>
 
           <!-- Interactive Distribution Sliders Section -->
-          <div class="pt-2.5 border-t border-slate-800 space-y-2.5">
+          <div class="pt-2 border-t border-slate-800 space-y-2">
             <div class="flex items-center justify-between">
-              <span class="text-slate-200 font-bold">توزيع نسب المشتركين على الباقات:</span>
+              <span class="text-slate-200 font-bold">توزيع المشتركين على الباقات:</span>
               <div class="flex items-center gap-1">
-                <button onclick="setDistPreset(25, 50, 25)" class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">متوازن</button>
-                <button onclick="setDistPreset(15, 70, 15)" class="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">تركيز الميكس ⭐</button>
-                <button onclick="setDistPreset(30, 50, 20)" class="px-1.5 py-0.5 rounded text-[10px] bg-amber-950 text-amber-300 border border-amber-800">نخبة أكثر</button>
+                <button onclick="setDistPreset(25, 50, 25)" class="px-1.5 py-0.5 rounded text-[9px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">متوازن</button>
+                <button onclick="setDistPreset(15, 70, 15)" class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-950 text-emerald-300 border border-emerald-800">تركيز الميكس ⭐</button>
+                <button onclick="setDistPreset(30, 50, 20)" class="px-1.5 py-0.5 rounded text-[9px] bg-amber-950 text-amber-300 border border-amber-800">نخبة أكثر</button>
               </div>
             </div>
 
@@ -427,6 +449,32 @@
     let pctElite = 25;
     let pctMix = 50;
     let pctComm = 25;
+    let pct3M = 0.30; // 30% take 3-month offer (realistic default)
+
+    // 3-Month Fixed Package Prices:
+    // Elite 3M: Egypt 4,999 EGP | GCC $198
+    // Mix 3M: Egypt 2,999 EGP | GCC $118
+    // Comm 3M: Egypt 2,499 EGP | GCC $70
+    const P_3M_ELITE_EG = 4999;
+    const P_3M_ELITE_GCC = 198 * USD_RATE;
+
+    const P_3M_MIX_EG = 2999;
+    const P_3M_MIX_GCC = 118 * USD_RATE;
+
+    const P_3M_COMM_EG = 2499;
+    const P_3M_COMM_GCC = 70 * USD_RATE;
+
+    function onSplit3MChange() {
+      const val = parseInt(document.getElementById('range-split-3m').value);
+      pct3M = val / 100;
+      document.getElementById('lbl-split-3m').innerText = val + '% (3 شهور) · ' + (100 - val) + '% (شهري)';
+      calculate();
+    }
+
+    function setSplitPreset(val) {
+      document.getElementById('range-split-3m').value = val;
+      onSplit3MChange();
+    }
 
     function onElitePctChange() {
       let e = parseInt(document.getElementById('range-pct-elite').value);
@@ -502,19 +550,22 @@
 
     function setScenario(type) {
       if (type === 'breakeven') {
-        document.getElementById('range-total-members').value = 28;
+        document.getElementById('range-total-members').value = 20;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
+        setSplitPreset(30);
         setDistPreset(25, 50, 25);
       } else if (type === 'standard') {
         document.getElementById('range-total-members').value = 45;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
+        setSplitPreset(30);
         setDistPreset(25, 50, 25);
       } else if (type === 'growth') {
         document.getElementById('range-total-members').value = 70;
         document.getElementById('range-gcc-pct').value = 45;
         document.getElementById('range-ad-spend').value = 45000;
+        setSplitPreset(35);
         setDistPreset(20, 60, 20);
       }
       syncRange('total-members');
@@ -523,15 +574,15 @@
     }
 
     function calculate() {
-      // Inputs
-      const pEliteEg = parseFloat(document.getElementById('price-elite-eg').value) || 0;
-      const pEliteGcc = (parseFloat(document.getElementById('price-elite-gcc').value) || 0) * USD_RATE;
+      // 1-Month Inputs
+      const p1EliteEg = parseFloat(document.getElementById('price-elite-eg').value) || 0;
+      const p1EliteGcc = (parseFloat(document.getElementById('price-elite-gcc').value) || 0) * USD_RATE;
 
-      const pMixEg = parseFloat(document.getElementById('price-mix-eg').value) || 0;
-      const pMixGcc = (parseFloat(document.getElementById('price-mix-gcc').value) || 0) * USD_RATE;
+      const p1MixEg = parseFloat(document.getElementById('price-mix-eg').value) || 0;
+      const p1MixGcc = (parseFloat(document.getElementById('price-mix-gcc').value) || 0) * USD_RATE;
 
-      const pCommEg = parseFloat(document.getElementById('price-comm-eg').value) || 0;
-      const pCommGcc = (parseFloat(document.getElementById('price-comm-gcc').value) || 0) * USD_RATE;
+      const p1CommEg = parseFloat(document.getElementById('price-comm-eg').value) || 0;
+      const p1CommGcc = (parseFloat(document.getElementById('price-comm-gcc').value) || 0) * USD_RATE;
 
       const totalMembers = parseInt(document.getElementById('range-total-members').value) || 0;
       const gccPct = (parseInt(document.getElementById('range-gcc-pct').value) || 40) / 100;
@@ -545,7 +596,7 @@
       const costTech = parseFloat(document.getElementById('cost-tech').value) || 0;
       const gatewayRate = (parseFloat(document.getElementById('rate-gateway').value) || 3.5) / 100;
 
-      // Dynamic Member Distribution
+      // Dynamic Member Counts per Tier
       const countElite = Math.round(totalMembers * (pctElite / 100));
       const countMix = Math.round(totalMembers * (pctMix / 100));
       const countComm = Math.max(0, totalMembers - countElite - countMix);
@@ -553,6 +604,11 @@
       document.getElementById('count-elite').innerText = countElite;
       document.getElementById('count-mix').innerText = countMix;
       document.getElementById('count-comm').innerText = countComm;
+
+      // 3-Month vs 1-Month Breakdown
+      const count3M = Math.round(totalMembers * pct3M);
+      const count1M = totalMembers - count3M;
+      document.getElementById('badge-live-breakdown').innerText = count3M + ' مشترك بعرض 3 شهور · ' + count1M + ' مشترك شهري';
 
       // Elite Cap Badge
       const capBadge = document.getElementById('badge-elite-cap');
@@ -563,6 +619,16 @@
         capBadge.innerText = '(⚠️ تجاوز سقف 15)';
         capBadge.className = 'text-[9px] text-rose-400 font-bold mr-1';
       }
+
+      // Blended Pricing based on (1M vs 3M split)
+      const pEliteEg = ((1 - pct3M) * p1EliteEg) + (pct3M * P_3M_ELITE_EG);
+      const pEliteGcc = ((1 - pct3M) * p1EliteGcc) + (pct3M * P_3M_ELITE_GCC);
+
+      const pMixEg = ((1 - pct3M) * p1MixEg) + (pct3M * P_3M_MIX_EG);
+      const pMixGcc = ((1 - pct3M) * p1MixGcc) + (pct3M * P_3M_MIX_GCC);
+
+      const pCommEg = ((1 - pct3M) * p1CommEg) + (pct3M * P_3M_COMM_EG);
+      const pCommGcc = ((1 - pct3M) * p1CommGcc) + (pct3M * P_3M_COMM_GCC);
 
       // Revenue Calculation
       const revElite = countElite * ((egPct * pEliteEg) + (gccPct * pEliteGcc));

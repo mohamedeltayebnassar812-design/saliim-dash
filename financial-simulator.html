@@ -48,7 +48,7 @@
           <span>محاكي الجدوى المالية والتسعير المعتمد — واحة نور</span>
         </h1>
         <p class="text-xs text-slate-300 mt-0.5">
-          الأسعار المعتمدة: الخليج (<strong class="text-emerald-400">$99 · $59 · $35</strong>) · مصر (<strong class="text-emerald-400">2499 ج · 1499 ج · 999 ج</strong>) · عروض 3 شهور بسعر شهرين
+          الأسعار المعتمدة: الخليج (<strong class="text-emerald-400">$99 · $59 · $35</strong>) · مصر (<strong class="text-emerald-400">2499 ج · 1499 ج · 999 ج</strong>) · تحكم كامل بنسب المشتركين
         </p>
       </div>
 
@@ -213,7 +213,7 @@
         </div>
       </div>
 
-      <!-- Column 2: Volume & Ad Spend Controls -->
+      <!-- Column 2: Volume & Customizable Distribution Controls -->
       <div class="panel-card rounded-2xl p-4 space-y-3.5">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
           <h2 class="font-black text-sm text-white flex items-center gap-2">
@@ -223,6 +223,7 @@
         </div>
 
         <div class="space-y-3 text-xs">
+          <!-- Total Members Slider -->
           <div>
             <div class="flex justify-between font-bold mb-1">
               <span class="text-slate-300">إجمالي المشتركين المستهدف:</span>
@@ -231,6 +232,7 @@
             <input id="range-total-members" type="range" min="10" max="100" value="45" class="w-full" oninput="syncRange('total-members')">
           </div>
 
+          <!-- Country Split Slider -->
           <div>
             <div class="flex justify-between font-bold mb-1">
               <span class="text-slate-300">نسبة الخليج vs مصر:</span>
@@ -239,24 +241,62 @@
             <input id="range-gcc-pct" type="range" min="10" max="80" value="40" class="w-full" oninput="syncRange('gcc-pct')">
           </div>
 
-          <div class="pt-2 border-t border-slate-800">
-            <div class="text-slate-300 font-bold mb-1.5">توزيع المشتركين على الباقات:</div>
-            <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
-                <div class="text-[10px] text-amber-400 font-bold">Elite (25%)</div>
-                <div id="count-elite" class="font-black font-mono text-white text-base">11</div>
+          <!-- Interactive Distribution Sliders Section -->
+          <div class="pt-2.5 border-t border-slate-800 space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-200 font-bold">توزيع نسب المشتركين على الباقات:</span>
+              <div class="flex items-center gap-1">
+                <button onclick="setDistPreset(25, 50, 25)" class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">متوازن</button>
+                <button onclick="setDistPreset(15, 70, 15)" class="px-1.5 py-0.5 rounded text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-800">تركيز الميكس ⭐</button>
+                <button onclick="setDistPreset(30, 50, 20)" class="px-1.5 py-0.5 rounded text-[10px] bg-amber-950 text-amber-300 border border-amber-800">نخبة أكثر</button>
               </div>
-              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
-                <div class="text-[10px] text-emerald-400 font-bold">Mix (50%)</div>
-                <div id="count-mix" class="font-black font-mono text-white text-base">23</div>
+            </div>
+
+            <!-- Elite Percentage Control -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-amber-500/30 space-y-1">
+              <div class="flex justify-between items-center font-bold">
+                <span class="text-amber-400 flex items-center gap-1.5">
+                  <span>👑 النخبة (Elite):</span>
+                  <span id="lbl-pct-elite" class="font-mono text-xs">25%</span>
+                </span>
+                <span class="font-mono text-white text-xs bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/30">
+                  <strong id="count-elite" class="text-amber-300 text-sm">11</strong> مشترك
+                  <span id="badge-elite-cap" class="text-[9px] text-emerald-400 mr-1">(آمن &le; 15)</span>
+                </span>
               </div>
-              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
-                <div class="text-[10px] text-cyan-400 font-bold">Comm (25%)</div>
-                <div id="count-comm" class="font-black font-mono text-white text-base">11</div>
+              <input id="range-pct-elite" type="range" min="5" max="50" value="25" class="w-full accent-amber-500" oninput="onElitePctChange()">
+            </div>
+
+            <!-- Mix Percentage Control -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-emerald-500/30 space-y-1">
+              <div class="flex justify-between items-center font-bold">
+                <span class="text-emerald-400 flex items-center gap-1.5">
+                  <span>⚡ الميكس (Mix):</span>
+                  <span id="lbl-pct-mix" class="font-mono text-xs">50%</span>
+                </span>
+                <span class="font-mono text-white text-xs bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <strong id="count-mix" class="text-emerald-300 text-sm">23</strong> مشترك
+                </span>
               </div>
+              <input id="range-pct-mix" type="range" min="20" max="80" value="50" class="w-full accent-emerald-500" oninput="onMixPctChange()">
+            </div>
+
+            <!-- Community Percentage Control -->
+            <div class="p-2 rounded-xl bg-slate-900/90 border border-cyan-500/30 space-y-1">
+              <div class="flex justify-between items-center font-bold">
+                <span class="text-cyan-400 flex items-center gap-1.5">
+                  <span>🌟 الكوميونيتي:</span>
+                  <span id="lbl-pct-comm" class="font-mono text-xs">25%</span>
+                </span>
+                <span class="font-mono text-white text-xs bg-cyan-500/20 px-2 py-0.5 rounded border border-cyan-500/30">
+                  <strong id="count-comm" class="text-cyan-300 text-sm">11</strong> مشترك
+                </span>
+              </div>
+              <input id="range-pct-comm" type="range" min="5" max="60" value="25" class="w-full accent-cyan-500" oninput="onCommPctChange()">
             </div>
           </div>
 
+          <!-- Ad Spend Slider -->
           <div class="pt-2 border-t border-slate-800 space-y-1.5">
             <div class="flex justify-between font-bold">
               <span class="text-slate-300">ميزانية الإعلانات الشهرية:</span>
@@ -384,6 +424,67 @@
   <script>
     const USD_RATE = 50.0;
 
+    let pctElite = 25;
+    let pctMix = 50;
+    let pctComm = 25;
+
+    function onElitePctChange() {
+      let e = parseInt(document.getElementById('range-pct-elite').value);
+      let m = parseInt(document.getElementById('range-pct-mix').value);
+      if (e + m > 95) {
+        m = 95 - e;
+        document.getElementById('range-pct-mix').value = m;
+      }
+      let c = 100 - e - m;
+      document.getElementById('range-pct-comm').value = c;
+      updateDistUI();
+      calculate();
+    }
+
+    function onMixPctChange() {
+      let m = parseInt(document.getElementById('range-pct-mix').value);
+      let e = parseInt(document.getElementById('range-pct-elite').value);
+      if (e + m > 95) {
+        e = 95 - m;
+        document.getElementById('range-pct-elite').value = e;
+      }
+      let c = 100 - e - m;
+      document.getElementById('range-pct-comm').value = c;
+      updateDistUI();
+      calculate();
+    }
+
+    function onCommPctChange() {
+      let c = parseInt(document.getElementById('range-pct-comm').value);
+      let e = parseInt(document.getElementById('range-pct-elite').value);
+      if (e + c > 95) {
+        e = 95 - c;
+        document.getElementById('range-pct-elite').value = e;
+      }
+      let m = 100 - e - c;
+      document.getElementById('range-pct-mix').value = m;
+      updateDistUI();
+      calculate();
+    }
+
+    function setDistPreset(e, m, c) {
+      document.getElementById('range-pct-elite').value = e;
+      document.getElementById('range-pct-mix').value = m;
+      document.getElementById('range-pct-comm').value = c;
+      updateDistUI();
+      calculate();
+    }
+
+    function updateDistUI() {
+      pctElite = parseInt(document.getElementById('range-pct-elite').value);
+      pctMix = parseInt(document.getElementById('range-pct-mix').value);
+      pctComm = parseInt(document.getElementById('range-pct-comm').value);
+
+      document.getElementById('lbl-pct-elite').innerText = pctElite + '%';
+      document.getElementById('lbl-pct-mix').innerText = pctMix + '%';
+      document.getElementById('lbl-pct-comm').innerText = pctComm + '%';
+    }
+
     function syncRange(key) {
       if (key === 'total-members') {
         const val = document.getElementById('range-total-members').value;
@@ -404,14 +505,17 @@
         document.getElementById('range-total-members').value = 28;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
+        setDistPreset(25, 50, 25);
       } else if (type === 'standard') {
         document.getElementById('range-total-members').value = 45;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
+        setDistPreset(25, 50, 25);
       } else if (type === 'growth') {
         document.getElementById('range-total-members').value = 70;
         document.getElementById('range-gcc-pct').value = 45;
         document.getElementById('range-ad-spend').value = 45000;
+        setDistPreset(20, 60, 20);
       }
       syncRange('total-members');
       syncRange('gcc-pct');
@@ -441,14 +545,24 @@
       const costTech = parseFloat(document.getElementById('cost-tech').value) || 0;
       const gatewayRate = (parseFloat(document.getElementById('rate-gateway').value) || 3.5) / 100;
 
-      // Member Distribution: 25% Elite, 50% Mix, 25% Community
-      const countElite = Math.round(totalMembers * 0.25);
-      const countMix = Math.round(totalMembers * 0.50);
+      // Dynamic Member Distribution
+      const countElite = Math.round(totalMembers * (pctElite / 100));
+      const countMix = Math.round(totalMembers * (pctMix / 100));
       const countComm = Math.max(0, totalMembers - countElite - countMix);
 
       document.getElementById('count-elite').innerText = countElite;
       document.getElementById('count-mix').innerText = countMix;
       document.getElementById('count-comm').innerText = countComm;
+
+      // Elite Cap Badge
+      const capBadge = document.getElementById('badge-elite-cap');
+      if (countElite <= 15) {
+        capBadge.innerText = '(آمن ≤ 15)';
+        capBadge.className = 'text-[9px] text-emerald-400 mr-1';
+      } else {
+        capBadge.innerText = '(⚠️ تجاوز سقف 15)';
+        capBadge.className = 'text-[9px] text-rose-400 font-bold mr-1';
+      }
 
       // Revenue Calculation
       const revElite = countElite * ((egPct * pEliteEg) + (gccPct * pEliteGcc));
@@ -542,6 +656,7 @@
     }
 
     // Initial run
+    updateDistUI();
     calculate();
   </script>
 </body>

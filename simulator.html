@@ -903,41 +903,44 @@
         document.getElementById('kpi-ltv-cac').innerText = ltvRatio + 'x ' + (parseFloat(ltvRatio) >= 3.0 ? 'مميز' : 'مقبول');
       }
 
-      // Cumulative Cohort Profits Forecast
+      // Net Profit & OM Profit Share (MUST BE CALCULATED BEFORE COHORT FORECAST)
+      const netProfitBeforeOM = totalRevenue - totalExpenses;
+      const rateOM = (parseFloat(document.getElementById('rate-om') ? document.getElementById('rate-om').value : 10) || 10) / 100;
+      const omShare = netProfitBeforeOM > 0 ? (netProfitBeforeOM * rateOM) : 0;
+      const drNetProfit = netProfitBeforeOM - omShare;
+
+      if (document.getElementById('readout-om-amount')) {
+        document.getElementById('readout-om-amount').innerText = 'المستحق: ' + Math.round(omShare).toLocaleString() + ' ج';
+      }
+
+      const profitEl = document.getElementById('kpi-profit');
+      const marginEl = document.getElementById('kpi-margin');
+      const omShareEl = document.getElementById('kpi-om-share');
+
+      if (profitEl) profitEl.innerText = Math.round(drNetProfit).toLocaleString() + ' ج.م';
+      const margin = totalRevenue > 0 ? Math.round((drNetProfit / totalRevenue) * 100) : 0;
+      if (marginEl) marginEl.innerText = 'الهامش: ' + margin + '%';
+      if (omShareEl) omShareEl.innerText = 'العمليات (' + Math.round(rateOM * 100) + '%): ' + Math.round(omShare).toLocaleString() + ' ج';
+
+      if (profitEl) {
+        if (drNetProfit >= 0) {
+          profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400';
+          if (marginEl) marginEl.className = 'font-black text-emerald-400';
+        } else {
+          profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-rose-400';
+          if (marginEl) marginEl.className = 'font-black text-rose-400';
+        }
+      }
+
+      // Cumulative Cohort Profits Forecast (USES drNetProfit)
       if (document.getElementById('cohort-m1')) {
         document.getElementById('cohort-m1').innerText = Math.round(drNetProfit).toLocaleString() + ' ج.م';
-        // Month 3: M1 profit + month 2 and month 3 renewals (almost pure profit as CAC is already paid)
         const monthlyRenewals = count1M * retentionRate;
         const extraRevM23 = Math.round(monthlyRenewals * avg1M * 1.6);
         const profitM3 = drNetProfit + extraRevM23;
         document.getElementById('cohort-m3').innerText = Math.round(profitM3).toLocaleString() + ' ج.م';
         const profitM6 = Math.round(drNetProfit + (extraRevM23 * 2.1));
         document.getElementById('cohort-m6').innerText = Math.round(profitM6).toLocaleString() + ' ج.م';
-      }
-
-      // Net Profit & OM Profit Share
-      const netProfitBeforeOM = totalRevenue - totalExpenses;
-      const rateOM = (parseFloat(document.getElementById('rate-om').value) || 0) / 100;
-      const omShare = netProfitBeforeOM > 0 ? (netProfitBeforeOM * rateOM) : 0;
-      const drNetProfit = netProfitBeforeOM - omShare;
-
-      document.getElementById('readout-om-amount').innerText = 'المستحق: ' + Math.round(omShare).toLocaleString() + ' ج';
-
-      const profitEl = document.getElementById('kpi-profit');
-      const marginEl = document.getElementById('kpi-margin');
-      const omShareEl = document.getElementById('kpi-om-share');
-
-      profitEl.innerText = Math.round(drNetProfit).toLocaleString() + ' ج.م';
-      const margin = totalRevenue > 0 ? Math.round((drNetProfit / totalRevenue) * 100) : 0;
-      marginEl.innerText = 'الهامش: ' + margin + '%';
-      omShareEl.innerText = 'العمليات (' + Math.round(rateOM * 100) + '%): ' + Math.round(omShare).toLocaleString() + ' ج';
-
-      if (drNetProfit >= 0) {
-        profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400';
-        marginEl.className = 'font-black text-emerald-400';
-      } else {
-        profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-rose-400';
-        marginEl.className = 'font-black text-rose-400';
       }
 
       // Break-Even Calculation

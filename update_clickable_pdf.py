@@ -16,9 +16,10 @@ import shutil
 from playwright.sync_api import sync_playwright
 
 WORKSPACE_DIR = os.path.dirname(os.path.abspath(__file__))
-HTML_TEMPLATE = os.path.join(r"C:\Users\Admin\.gemini\antigravity\brain\ac8b7089-aeb2-45ba-baa5-a49a75d00126\scratch\pdf_template.html")
+HTML_TEMPLATE = r"C:\Users\Admin\Desktop\final app\New folder\واحة-نور\pdf_template.html"
 OUT_PDF_REPO = os.path.join(WORKSPACE_DIR, "Wahet_Nour_Complete_Clickable_Links_Directory.pdf")
-OUT_PDF_ARCHIVE = r"C:\Users\Admin\Desktop\final app\New folder\سليم---د.-أحمد-الخطيب-_-saliim\00_أرشيف_ملفات_المشروع\Wahet_Nour_Complete_Clickable_Links_Directory.pdf"
+OUT_PDF_ARCHIVE_1 = r"C:\Users\Admin\Desktop\final app\New folder\واحة-نور\00_أرشيف_ملفات_المشروع\Wahet_Nour_Complete_Clickable_Links_Directory.pdf"
+OUT_PDF_ARCHIVE_2 = r"C:\Users\Admin\Desktop\final app\New folder\سليم---د.-أحمد-الخطيب-_-saliim\00_أرشيف_ملفات_المشروع\Wahet_Nour_Complete_Clickable_Links_Directory.pdf"
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 def build_pdf():
@@ -27,7 +28,7 @@ def build_pdf():
         browser = p.chromium.launch(executable_path=CHROME_PATH, headless=True)
         page = browser.new_page()
         page.goto("file:///" + HTML_TEMPLATE.replace("\\", "/"))
-        page.wait_for_timeout(1000)
+        page.wait_for_timeout(1500)
         
         page.pdf(
             path=OUT_PDF_REPO,
@@ -42,10 +43,12 @@ def build_pdf():
         )
         browser.close()
 
-    shutil.copy2(OUT_PDF_REPO, OUT_PDF_ARCHIVE)
+    for archive_path in [OUT_PDF_ARCHIVE_1, OUT_PDF_ARCHIVE_2]:
+        os.makedirs(os.path.dirname(archive_path), exist_ok=True)
+        shutil.copy2(OUT_PDF_REPO, archive_path)
+        print(f"-> Synced to: {archive_path}")
+
     print(f"[SUCCESS] PDF generated and synced successfully: {os.path.getsize(OUT_PDF_REPO):,} bytes")
-    print(f"-> Repo: {OUT_PDF_REPO}")
-    print(f"-> Archive: {OUT_PDF_ARCHIVE}")
 
 if __name__ == "__main__":
     build_pdf()

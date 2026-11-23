@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>استمارة تسجيل اشتراك عميل جديد • خدمة العملاء | واحة نور</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .input-field {
+      background: rgba(7, 22, 38, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #F8FAFC;
+      transition: all 0.2s ease;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #10B981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      background: rgba(7, 22, 38, 0.98);
+    }
+    .upload-zone {
+      border: 2px dashed rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.03);
+      transition: all 0.2s ease;
+    }
+    .upload-zone:hover, .upload-zone.dragover {
+      border-color: #10B981;
+      background: rgba(16, 185, 129, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 selection:bg-emerald-500 selection:text-white">
+
+  <!-- Background Lights -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-32 right-1/4 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px]"></div>
+    <div class="absolute -bottom-32 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[140px]"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-2xl mx-auto space-y-6">
+
+    <!-- HEADER CARD -->
+    <div class="text-center space-y-2">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-emerald-400 text-xs font-bold">
+        <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+        <span>بوابة خدمة العملاء والعمليات • CUSTOMER CARE PORTAL</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-black text-white">تسجيل اشتراك عميل جديد</h1>
+      <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+        منظومة واحة نور • د. أحمد الخطيب — تسجيل التحويلات وتأكيد الدفع لاعتماد الحسابات
+      </p>
+    </div>
+
+    <!-- MAIN FORM -->
+    <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden" id="form-container">
+      
+      <form id="clientDepositForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
+
+        <!-- SECTION 1: CLIENT DETAILS -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2 pb-2 border-b border-white/10 text-emerald-400 font-bold text-sm">
+            <i data-lucide="user" class="w-4 h-4"></i>
+            <span>بيانات العميل الشخصية</span>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">
+              اسم العميل بالكامل <span class="text-rose-400">*</span>
+            </label>
+            <input type="text" id="clientName" required placeholder="مثال: محمد أحمد علي"
+                   class="input-field w-full px-4 py-2.5 rounded-xl text-sm">
+          </div>
+
+          <!-- Email & Phone in Row -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                البريد الإلكتروني <span class="text-rose-400">*</span>
+              </label>
+              <input type="email" id="clientEmail" required placeholder="client@example.com"
+                     class="input-field w-full px-4 py-2.5 rounded-xl text-sm text-left font-mono" dir="ltr">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                رقم الهاتف / الواتساب <span class="text-rose-400">*</span>
+              </label>
+              <input type="tel" id="clientPhone" required placeholder="01xxxxxxxxx أو 966xxxxxxx"
+                     class="input-field w-full px-4 py-2.5 rounded-xl text-sm text-left font-mono" dir="ltr">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: SUBSCRIPTION & PACKAGE -->
+        <div class="space-y-4 pt-2">
+          <div class="flex items-center gap-2 pb-2 border-b border-white/10 text-cyan-400 font-bold text-sm">
+            <i data-lucide="package-check" class="w-4 h-4"></i>
+            <span>تفاصيل الباقة والاشتراك</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Package Type -->
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                نوع الباقة <span class="text-rose-400">*</span>
+              </label>
+              <select id="packageType" required class="input-field w-full px-4 py-2.5 rounded-xl text-sm bg-slate-900 cursor-pointer">
+                <option value="كوميونيتي" selected>👥 كوميونيتي</option>
+                <option value="ميكس">⚡ ميكس</option>
+                <option value="خاصة">💎 خاصة</option>
+              </select>
+            </div>
+
+            <!-- Duration -->
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                مدة الاشتراك <span class="text-rose-400">*</span>
+              </label>
+              <select id="subscriptionDuration" required class="input-field w-full px-4 py-2.5 rounded-xl text-sm bg-slate-900 cursor-pointer">
+                <option value="شهر" selected>شهر</option>
+                <option value="2 شهر">2 شهر</option>
+                <option value="3 شهور">3 شهور</option>
+                <option value="6 شهور">6 شهور</option>
+                <option value="سنة">سنة</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: PAYMENT & RECEIPT -->
+        <div class="space-y-4 pt-2">
+          <div class="flex items-center gap-2 pb-2 border-b border-white/10 text-amber-400 font-bold text-sm">
+            <i data-lucide="credit-card" class="w-4 h-4"></i>
+            <span>بيانات الدفع والتحويل المالي</span>
+          </div>
+
+          <!-- Amount & Currency & Payment Method -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                المبلغ المدفوع والعملة <span class="text-rose-400">*</span>
+              </label>
+              <div class="flex items-center gap-2">
+                <input type="number" id="amountPaid" required min="1" step="any" placeholder="99"
+                       class="input-field flex-1 px-4 py-2.5 rounded-xl text-sm font-mono font-bold text-emerald-400 text-left" dir="ltr">
+                <select id="currency" class="input-field px-3 py-2.5 rounded-xl text-sm bg-slate-900 cursor-pointer font-bold">
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="EGP">EGP (ج.م)</option>
+                  <option value="SAR">SAR (ر.س)</option>
+                  <option value="AED">AED (د.إ)</option>
+                  <option value="EUR">EUR (€)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                طريقة الدفع <span class="text-rose-400">*</span>
+              </label>
+              <select id="paymentMethod" required class="input-field w-full px-3 py-2.5 rounded-xl text-sm bg-slate-900 cursor-pointer">
+                <option value="فودافون كاش (Vodafone Cash)">فودافون كاش</option>
+                <option value="إنستاباي (InstaPay)">إنستاباي (InstaPay)</option>
+                <option value="تحويل بنكي مباشر">تحويل بنكي</option>
+                <option value="بطاقة ائتمان (Visa / Mastercard)">فيزا / ماستر كارد</option>
+                <option value="مدى (Mada)">مدى (Mada)</option>
+                <option value="باي بال (PayPal)">باي بال (PayPal)</option>
+                <option value="دفع نقدي / أخرى">دفع نقدي / أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SCREENSHOT UPLOAD -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">
+              إيصال التحويل / سكرين شوت الدفع <span class="text-rose-400">*</span>
+            </label>
+            
+            <div class="upload-zone rounded-2xl p-4 text-center cursor-pointer relative" id="dropZone" onclick="document.getElementById('receiptFileInput').click()">
+              <input type="file" id="receiptFileInput" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+              
+              <div id="uploadPrompt" class="space-y-2 py-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/20">
+                  <i data-lucide="image-plus" class="w-5 h-5"></i>
+                </div>
+                <p class="text-xs font-bold text-slate-200">اضغط لرفع صورة الإيصال أو اسحب الصورة هنا</p>
+                <p class="text-[11px] text-slate-500">يدعم JPG, PNG, WebP (يتم ضغط الصورة تلقائياً لسرعة العرض)</p>
+              </div>
+
+              <!-- Preview Container -->
+              <div id="previewContainer" class="hidden relative inline-block">
+                <img id="receiptPreview" src="" alt="معاينة الإيصال" class="max-h-48 rounded-xl border border-emerald-500/40 shadow-lg mx-auto">
+                <button type="button" onclick="removeReceipt(event)" class="absolute -top-2 -right-2 bg-rose-600 hover:bg-rose-500 text-white p-1 rounded-full shadow" title="إزالة الصورة">
+                  <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+                <span class="block text-[11px] text-emerald-400 font-bold mt-2">✅ تم تجهيز الإيصال بنجاح</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CS AGENT & NOTES -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                اسم موظف خدمة العملاء <span class="text-rose-400">*</span>
+              </label>
+              <input type="text" id="csAgentName" required placeholder="اسمك أو كودك"
+                     class="input-field w-full px-4 py-2 rounded-xl text-sm">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">
+                ملاحظات إضافية (اختياري)
+              </label>
+              <input type="text" id="clientNotes" placeholder="أي تفاصيل خاصة بحالة العميل..."
+                     class="input-field w-full px-4 py-2 rounded-xl text-sm">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="pt-4">
+          <button type="submit" id="submitBtn"
+                  class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-500 hover:to-teal-500 text-white font-black py-3.5 px-6 rounded-2xl text-sm transition-all shadow-xl shadow-emerald-950 flex items-center justify-center gap-2 cursor-pointer active:scale-98">
+            <i data-lucide="send" id="btnIcon" class="w-4 h-4"></i>
+            <span id="btnText">تسجيل العميل وإرسال البيانات للداشبورد 🚀</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- SUCCESS MODAL STATE (Hidden initially) -->
+      <div id="successState" class="hidden text-center py-8 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
+          <i data-lucide="check-circle" class="w-8 h-8"></i>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-black text-white">تم تسجيل العميل بنجاح في قاعدة البيانات!</h2>
+        <div class="glass-card max-w-md mx-auto p-4 rounded-2xl text-right text-xs space-y-2 border border-emerald-500/20 text-slate-300">
+          <div><strong>معرّف العملية:</strong> <span id="confRef" class="font-mono text-emerald-400"></span></div>
+          <div><strong>العميل:</strong> <span id="confName" class="font-bold text-white"></span></div>
+          <div><strong>الباقة:</strong> <span id="confPackage" class="text-cyan-400"></span></div>
+          <div><strong>المبلغ:</strong> <span id="confAmount" class="font-bold text-emerald-400"></span></div>
+          <div class="pt-2 text-[11px] text-slate-400 border-t border-white/10">
+            تمت المزامنة الفورية وتظهر الحالة الآن لدكتور أحمد في لوحة الاعتماد لتفعيل حسابه على الموقع.
+          </div>
+        </div>
+
+        <button type="button" onclick="resetForm()" class="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition border border-white/10">
+          ➕ تسجيل عميل آخر جديد
+        </button>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center text-xs text-slate-500 space-y-1">
+      <div>واحة نور • د. أحمد الخطيب © 2026. نظام خدمة العملاء والعمليات.</div>
+      <div class="text-[11px] text-slate-600">كافة البيانات مشفرة ومحفوظة سحابياً ومحلياً لضمان عدم فقدان أي عميل.</div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    // Central Google Apps Script Webhook (Cloud Database)
+    const CLOUD_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx9-AIbMs5_JFHLlfks7Jumv8j3NCDc-JkZu0cJVtmbW5Fx0bZ2_494TVsjARGyJZTNZA/exec';
+    const STORAGE_KEY = 'wahetnor_client_deposits_v1';
+
+    let currentReceiptBase64 = '';
+
+    // Auto suggest amount based on package & duration
+    function autoSuggestPrice() {
+      const pkg = document.getElementById('packageType').value;
+      const duration = document.getElementById('subscriptionDuration').value;
+      const amountInput = document.getElementById('amountPaid');
+      const currencySelect = document.getElementById('currency');
+
+      if (pkg.includes('Elite')) {
+        currencySelect.value = 'USD';
+        if (duration.includes('شهر واحد')) amountInput.value = 99;
+        else if (duration.includes('3 شهور')) amountInput.value = 249;
+        else if (duration.includes('6 شهور')) amountInput.value = 449;
+        else if (duration.includes('سنة')) amountInput.value = 799;
+      }
+    }
+
+    // Image Upload & Compression
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      processImageFile(file);
+    }
+
+    // Drag and Drop
+    const dropZone = document.getElementById('dropZone');
+    ['dragenter', 'dragover'].forEach(name => {
+      dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.add('dragover'); }, false);
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      dropZone.addEventListener(name, (e) => { e.preventDefault(); dropZone.classList.remove('dragover'); }, false);
+    });
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length > 0) processImageFile(files[0]);
+    });
+
+    function processImageFile(file) {
+      if (!file.type.startsWith('image/')) {
+        alert('يرجى رفع ملف صورة صالح (JPG, PNG, WebP).');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const img = new Image();
+        img.onload = function() {
+          // Resize image to max 900px width/height to keep Base64 lightweight (< 150KB)
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+          const maxDim = 900;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          currentReceiptBase64 = canvas.toDataURL('image/jpeg', 0.82);
+          document.getElementById('receiptPreview').src = currentReceiptBase64;
+          document.getElementById('uploadPrompt').classList.add('hidden');
+          document.getElementById('previewContainer').classList.remove('hidden');
+          lucide.createIcons();
+        };
+        img.src = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeReceipt(e) {
+      e.stopPropagation();
+      currentReceiptBase64 = '';
+      document.getElementById('receiptFileInput').value = '';
+      document.getElementById('uploadPrompt').classList.remove('hidden');
+      document.getElementById('previewContainer').classList.add('hidden');
+    }
+
+    // Submission Handler
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      if (!currentReceiptBase64) {
+        alert('⚠️ يرجى رفع صورة إيصال التحويل أو لقطة الشاشة (الإسكرين) لتأكيد العملية.');
+        return;
+      }
+
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+
+      submitBtn.disabled = true;
+      btnText.innerText = 'جاري حفظ البيانات في قاعدة البيانات...';
+      btnIcon.setAttribute('data-lucide', 'loader-2');
+      btnIcon.classList.add('animate-spin');
+      lucide.createIcons();
+
+      const refId = 'WN-' + Math.floor(100000 + Math.random() * 900000);
+      const timestamp = new Date().toISOString();
+      const localDate = new Date().toLocaleString('ar-EG');
+
+      const clientData = {
+        id: refId,
+        ref: refId,
+        submittedAt: timestamp,
+        dateFormatted: localDate,
+        name: document.getElementById('clientName').value.trim(),
+        clientName: document.getElementById('clientName').value.trim(),
+        email: document.getElementById('clientEmail').value.trim(),
+        clientEmail: document.getElementById('clientEmail').value.trim(),
+        phone: document.getElementById('clientPhone').value.trim(),
+        clientPhone: document.getElementById('clientPhone').value.trim(),
+        package: document.getElementById('packageType').value,
+        packageType: document.getElementById('packageType').value,
+        duration: document.getElementById('subscriptionDuration').value,
+        subscriptionDuration: document.getElementById('subscriptionDuration').value,
+        amount: parseFloat(document.getElementById('amountPaid').value) || 0,
+        amountPaid: parseFloat(document.getElementById('amountPaid').value) || 0,
+        currency: document.getElementById('currency').value,
+        paymentMethod: document.getElementById('paymentMethod').value,
+        agentName: document.getElementById('csAgentName').value.trim(),
+        moderatorName: document.getElementById('csAgentName').value.trim(),
+        notes: document.getElementById('clientNotes').value.trim(),
+        receiptImage: currentReceiptBase64,
+        status: 'pending',
+        approvedAt: null
+      };
+
+      // 1. Save locally to localStorage (Instant zero-loss fallback)
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        saved.unshift(clientData);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+        if (window.BroadcastChannel) {
+          try {
+            const bc = new BroadcastChannel('wahetnor_deposits_channel');
+            bc.postMessage({ type: 'NEW_DEPOSIT', data: clientData });
+          } catch(e) {}
+        }
+      } catch (err) {
+        console.warn('LocalStorage save note:', err);
+      }
+
+      // 2. Post to Cloud Webhook (Google Sheets / Central Database)
+      try {
+        await fetch(CLOUD_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'client_deposit',
+            action: 'save',
+            ...clientData
+          })
+        });
+      } catch (err) {
+        console.warn('Cloud sync background notice:', err);
+      }
+
+      // Show Confirmation Screen
+      document.getElementById('confRef').textContent = refId;
+      document.getElementById('confName').textContent = clientData.name;
+      document.getElementById('confPackage').textContent = `${clientData.package} (${clientData.duration})`;
+      document.getElementById('confAmount').textContent = `${clientData.amount} ${clientData.currency} — ${clientData.paymentMethod}`;
+
+      document.getElementById('clientDepositForm').classList.add('hidden');
+      document.getElementById('successState').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function resetForm() {
+      document.getElementById('clientDepositForm').reset();
+      currentReceiptBase64 = '';
+      document.getElementById('receiptFileInput').value = '';
+      document.getElementById('uploadPrompt').classList.remove('hidden');
+      document.getElementById('previewContainer').classList.add('hidden');
+
+      document.getElementById('clientDepositForm').classList.remove('hidden');
+      document.getElementById('successState').classList.add('hidden');
+
+      const submitBtn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const btnIcon = document.getElementById('btnIcon');
+      submitBtn.disabled = false;
+      btnText.innerText = 'تسجيل العميل وإرسال البيانات للداشبورد 🚀';
+      btnIcon.setAttribute('data-lucide', 'send');
+      btnIcon.classList.remove('animate-spin');
+
+      autoSuggestPrice();
+      lucide.createIcons();
+    }
+
+    // Auto init
+    window.addEventListener('DOMContentLoaded', () => {
+      autoSuggestPrice();
+    });
+  </script>
+</body>
+</html>

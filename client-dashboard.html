@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>لوحة متابعة واعتماد اشتراكات العملاء • د. أحمد الخطيب | واحة نور</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #071626;
+      color: #E2E8F0;
+    }
+    .glass-card {
+      background: rgba(11, 30, 51, 0.90);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .input-field {
+      background: rgba(7, 22, 38, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #F8FAFC;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: #10B981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-6 lg:p-8 selection:bg-emerald-500 selection:text-white">
+
+  <!-- Ambient Light Effects -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 right-1/4 w-[600px] h-[600px] bg-emerald-600/10 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-10 left-10 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[150px]"></div>
+  </div>
+
+  <!-- PIN GATE OVERLAY (Protected for Dr. Ahmed) -->
+  <div id="pinGateOverlay" class="fixed inset-0 z-50 bg-[#071626]/95 backdrop-blur-xl flex items-center justify-center p-4">
+    <div class="glass-card max-w-md w-full p-8 rounded-3xl text-center space-y-6 border border-emerald-500/20 shadow-2xl">
+      <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-center mx-auto text-emerald-400">
+        <i data-lucide="lock" class="w-8 h-8"></i>
+      </div>
+      <div>
+        <h2 class="text-xl font-black text-white mb-2">لوحة اعتماد وتفعيل العملاء</h2>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          الوصول مقتصر على د. أحمد الخطيب لتأكيد تحويلات خدمة العملاء وتفعيل المشتركين على المنصة.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <input type="password" id="adminPinInput" placeholder="أدخل رمز الدخول (PIN)" maxlength="10" 
+               class="input-field w-full px-4 py-3 rounded-xl text-center text-lg font-mono tracking-widest"
+               onkeypress="if(event.key === 'Enter') verifyAdminPin()">
+        <button onclick="verifyAdminPin()" 
+                class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-3 rounded-xl text-sm transition shadow-lg shadow-emerald-950 cursor-pointer">
+          فتح لوحة المتابعة 🚀
+        </button>
+        <p id="pinError" class="text-xs text-rose-400 font-bold hidden">رمز الدخول غير صحيح، يرجى المحاولة ثانية.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD CONTENT -->
+  <div class="relative z-10 max-w-7xl mx-auto space-y-6" id="dashboardContent">
+
+    <!-- TOP BAR -->
+    <div class="glass-card p-6 rounded-3xl flex flex-col md:flex-row md:items-center justify-between gap-4 border border-white/10 shadow-xl">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 font-black text-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+          ن
+        </div>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+            <span>لوحة اعتماد وتفعيل اشتراكات العملاء</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-1"></span>
+              مباشر (Live Sync)
+            </span>
+          </h1>
+          <p class="text-xs text-slate-400 mt-1">تزامن فوري لتحويلات خدمة العملاء لاعتماد وتفعيل الحسابات على موقع واحة نور</p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Intake Form Link for CS -->
+        <a href="client-deposit.html" target="_blank" class="px-4 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-xs font-bold text-cyan-300 flex items-center gap-2 transition">
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <span>فتح استمارة خدمة العملاء ↗</span>
+        </a>
+
+        <!-- Register on WahetNour.com Admin Link -->
+        <a href="https://wahetnor.com/admin/analytics" target="_blank" class="px-4 py-2 rounded-xl bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs font-bold text-purple-300 flex items-center gap-2 transition">
+          <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+          <span>لوحة تحكم الموقع (Admin) ↗</span>
+        </a>
+
+        <!-- Export CSV -->
+        <button onclick="exportToCSV()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-white/10 text-xs font-bold text-slate-200 flex items-center gap-2 transition">
+          <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>تصدير Excel</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- METRICS CARDS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Total Submissions -->
+      <div class="glass-card p-5 rounded-2xl border border-white/10">
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-slate-400 font-bold">إجمالي العملاء المسجلين</span>
+          <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
+            <i data-lucide="users" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <p id="metricTotalClients" class="text-3xl font-black text-white mt-3">0</p>
+        <span class="text-[11px] text-slate-500">من استمارة خدمة العملاء</span>
+      </div>
+
+      <!-- Pending Registration on Site -->
+      <div class="glass-card p-5 rounded-2xl border border-amber-500/20 bg-amber-950/10">
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-amber-400 font-bold">بانتظار التسجيل على الموقع</span>
+          <div class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <p id="metricPendingClients" class="text-3xl font-black text-amber-400 mt-3">0</p>
+        <span class="text-[11px] text-slate-400">تحويلات مؤكدة بحاجة للتفعيل</span>
+      </div>
+
+      <!-- Registered on Site -->
+      <div class="glass-card p-5 rounded-2xl border border-emerald-500/20 bg-emerald-950/10">
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-emerald-400 font-bold">تم تفعيلهم على الموقع</span>
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="check-check" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <p id="metricRegisteredClients" class="text-3xl font-black text-emerald-400 mt-3">0</p>
+        <span class="text-[11px] text-slate-400">مشتركون فاعلون بالمنصة</span>
+      </div>
+
+      <!-- Total Revenue -->
+      <div class="glass-card p-5 rounded-2xl border border-white/10">
+        <div class="flex items-center justify-between">
+          <span class="text-xs text-slate-400 font-bold">إجمالي الإيرادات المحصلة</span>
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+          </div>
+        </div>
+        <p id="metricTotalRevenue" class="text-2xl font-black text-emerald-400 mt-3">$0</p>
+        <span id="metricSubRevenue" class="text-[11px] text-slate-500">حسب الإيصالات المحفوظة</span>
+      </div>
+
+    </div>
+
+    <!-- MAIN TABLE SECTION -->
+    <div class="glass-card rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+      
+      <!-- Table Filter and Search Header -->
+      <div class="p-5 border-b border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-500 absolute right-3.5 top-3.5"></i>
+          <input type="text" id="searchInput" onkeyup="filterAndRenderTable()" 
+                 placeholder="بحث باسم العميل، الإيميل، الهاتف، أو الموظف..." 
+                 class="input-field w-full rounded-xl pr-10 pl-4 py-2.5 text-xs placeholder-slate-500">
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="setFilter('all')" id="filterBtnAll" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition">الكل</button>
+          <button onclick="setFilter('pending')" id="filterBtnPending" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-400 hover:text-white transition">⏳ بانتظار التسجيل</button>
+          <button onclick="setFilter('registered')" id="filterBtnRegistered" class="px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-400 hover:text-white transition">✅ مسجلون بالموقع</button>
+        </div>
+      </div>
+
+      <!-- Table Body -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-right text-xs">
+          <thead class="bg-slate-900/80 text-slate-400 font-bold border-b border-white/10">
+            <tr>
+              <th class="py-3.5 px-4 whitespace-nowrap">التاريخ والعملية</th>
+              <th class="py-3.5 px-4 whitespace-nowrap">اسم العميل والتواصل</th>
+              <th class="py-3.5 px-4 whitespace-nowrap">الباقة والمدة</th>
+              <th class="py-3.5 px-4 whitespace-nowrap">المبلغ وطريقة الدفع</th>
+              <th class="py-3.5 px-4 text-center whitespace-nowrap">إيصال التحويل (الإسكرين)</th>
+              <th class="py-3.5 px-4 text-center whitespace-nowrap">حالة التفعيل على الموقع</th>
+              <th class="py-3.5 px-4 text-center whitespace-nowrap">إجراءات دكتور أحمد</th>
+            </tr>
+          </thead>
+          <tbody id="clientsTableBody" class="divide-y divide-white/5 font-medium">
+            <!-- Dynamic Rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyTableState" class="hidden text-center py-12 text-slate-500 space-y-2">
+        <i data-lucide="inbox" class="w-8 h-8 mx-auto text-slate-600"></i>
+        <p class="text-sm font-bold text-slate-400">لا توجد اشتراكات مسجلة حالياً</p>
+        <p class="text-xs text-slate-500">أي عميل يسجله موظف خدمة العملاء في الاستمارة سيظهر هنا فورياً.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SCREENSHOT LIGHTBOX MODAL -->
+  <div id="receiptModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" onclick="closeReceiptModal()">
+    <div class="relative max-w-2xl w-full text-center" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-3 text-white border-b border-white/10 mb-3">
+        <span id="modalReceiptTitle" class="font-bold text-sm">إيصال التحويل المالي</span>
+        <button onclick="closeReceiptModal()" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <img id="modalReceiptImg" src="" alt="إيصال التحويل" class="max-h-[75vh] mx-auto rounded-2xl shadow-2xl border border-white/20">
+      <div class="mt-4 flex items-center justify-center gap-3">
+        <a id="modalDownloadBtn" href="" download="wahetnor-receipt.jpg" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>تحميل الإيصال بجودة كاملة</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER CLIENT QUICK HELPER MODAL -->
+  <div id="registerHelperModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-lg w-full p-6 rounded-3xl space-y-4 border border-emerald-500/30 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2 text-emerald-400 font-bold">
+          <i data-lucide="user-plus" class="w-5 h-5"></i>
+          <span>تسجيل العميل على منصة واحة نور</span>
+        </div>
+        <button onclick="closeRegisterHelperModal()" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-300">
+        <p>انسخ بيانات العميل التالية لإضافتها في لوحة تحكم المنصة (`/admin`):</p>
+        
+        <div class="bg-slate-900/90 p-4 rounded-xl border border-white/10 space-y-2 font-mono text-[11px]">
+          <div><span class="text-slate-500">الاسم:</span> <strong id="regHelpName" class="text-white"></strong></div>
+          <div><span class="text-slate-500">البريد:</span> <strong id="regHelpEmail" class="text-cyan-400"></strong></div>
+          <div><span class="text-slate-500">الهاتف:</span> <strong id="regHelpPhone" class="text-emerald-400"></strong></div>
+          <div><span class="text-slate-500">الباقة:</span> <strong id="regHelpPackage" class="text-amber-400"></strong></div>
+          <div><span class="text-slate-500">المبلغ:</span> <strong id="regHelpAmount" class="text-emerald-400"></strong></div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="copyClientDetailsForSite()" class="flex-1 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs flex items-center justify-center gap-2 border border-white/10">
+            <i data-lucide="copy" class="w-4 h-4 text-emerald-400"></i>
+            <span>نسخ كافة البيانات 📋</span>
+          </button>
+          
+          <a href="https://wahetnor.com/admin/analytics" target="_blank" class="flex-1 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center justify-center gap-2">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>فتح لوحة الإدارة للموقع ↗</span>
+          </a>
+        </div>
+
+        <div class="pt-3 border-t border-white/10">
+          <button id="btnConfirmSiteReg" onclick="markAsRegisteredFromModal()" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-950">
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+            <span>تأكيد تسجيل وتفعيل العميل على الموقع الآن ✅</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const STORAGE_KEY = 'wahetnor_client_deposits_v1';
+    const CORRECT_PIN = '2026';
+    let currentFilter = 'all';
+    let allClients = [];
+    let activeModalClientId = null;
+
+    // PIN Gate Verification
+    function verifyAdminPin() {
+      const pin = document.getElementById('adminPinInput').value.trim();
+      if (pin === CORRECT_PIN) {
+        document.getElementById('pinGateOverlay').classList.add('hidden');
+        sessionStorage.setItem('wahetnor_admin_auth', 'true');
+        loadClientsData();
+    if (window.BroadcastChannel) {
+      try {
+        const bc = new BroadcastChannel('wahetnor_deposits_channel');
+        bc.onmessage = function(ev) {
+          if (ev.data && ev.data.type === 'NEW_DEPOSIT') {
+            loadClientsData();
+          }
+        };
+      } catch(e) {}
+    }
+      } else {
+        document.getElementById('pinError').classList.remove('hidden');
+      }
+    }
+
+    // Auto verify if already authenticated in session
+    window.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('wahetnor_admin_auth') === 'true') {
+        document.getElementById('pinGateOverlay').classList.add('hidden');
+        loadClientsData();
+      }
+    });
+
+    // Sample initial seed data so the dashboard is beautiful immediately
+    const DEFAULT_SEED_CLIENTS = [
+      {
+        id: "WN-SUB-261117-01",
+        ref: "WN-SUB-261117-01",
+        submittedAt: "2026-11-17T14:00:00.000Z",
+        dateFormatted: "17/11/2026 02:00 م",
+        name: "محمود حسن",
+        email: "polefel911@jcaton.com",
+        phone: "01019283746",
+        package: "كوميونيتي",
+        duration: "شهر",
+        amount: 99,
+        currency: "USD",
+        paymentMethod: "فودافون كاش (Vodafone Cash)",
+        agentName: "سارة (خدمة العملاء)",
+        notes: "تم التواصل عبر واتساب، مهتم بعلاج مقاومة الأنسولين وثبات الوزن.",
+        receiptImage: "",
+        status: "registered",
+        registeredOnSiteAt: "2026-11-17 14:05:00"
+      }
+    ];
+
+    function loadClientsData() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          allClients = JSON.parse(raw);
+        } else {
+          allClients = DEFAULT_SEED_CLIENTS;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(allClients));
+        }
+      } catch (e) {
+        allClients = DEFAULT_SEED_CLIENTS;
+      }
+
+      updateMetrics();
+      filterAndRenderTable();
+    }
+
+    function saveClientsData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(allClients));
+      } catch (e) {}
+      updateMetrics();
+      filterAndRenderTable();
+    }
+
+    function updateMetrics() {
+      document.getElementById('metricTotalClients').textContent = allClients.length;
+      
+      const pending = allClients.filter(c => c.status === 'pending').length;
+      const registered = allClients.filter(c => c.status === 'registered').length;
+      
+      document.getElementById('metricPendingClients').textContent = pending;
+      document.getElementById('metricRegisteredClients').textContent = registered;
+
+      let usdSum = 0;
+      let egpSum = 0;
+      let sarSum = 0;
+
+      allClients.forEach(c => {
+        const amt = parseFloat(c.amount) || 0;
+        if (c.currency === 'USD') usdSum += amt;
+        else if (c.currency === 'EGP') egpSum += amt;
+        else if (c.currency === 'SAR') sarSum += amt;
+      });
+
+      let revText = `$${usdSum.toLocaleString()}`;
+      let subText = [];
+      if (egpSum > 0) subText.push(`${egpSum.toLocaleString()} ج.م`);
+      if (sarSum > 0) subText.push(`${sarSum.toLocaleString()} ر.س`);
+
+      document.getElementById('metricTotalRevenue').textContent = revText;
+      document.getElementById('metricSubRevenue').textContent = subText.length > 0 ? ('+ ' + subText.join(' • ')) : 'حسب الإيصالات المحفوظة';
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      ['All', 'Pending', 'Registered'].forEach(f => {
+        const btn = document.getElementById('filterBtn' + f);
+        if (f.toLowerCase() === filter) {
+          btn.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 transition';
+        } else {
+          btn.className = 'px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 text-slate-400 hover:text-white transition';
+        }
+      });
+      filterAndRenderTable();
+    }
+
+    function filterAndRenderTable() {
+      const tbody = document.getElementById('clientsTableBody');
+      const emptyState = document.getElementById('emptyTableState');
+      const query = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+
+      let list = allClients;
+
+      if (currentFilter === 'pending') {
+        list = list.filter(c => c.status === 'pending');
+      } else if (currentFilter === 'registered') {
+        list = list.filter(c => c.status === 'registered');
+      }
+
+      if (query) {
+        list = list.filter(c => 
+          (c.name && c.name.toLowerCase().includes(query)) ||
+          (c.email && c.email.toLowerCase().includes(query)) ||
+          (c.phone && c.phone.includes(query)) ||
+          (c.package && c.package.toLowerCase().includes(query)) ||
+          (c.agentName && c.agentName.toLowerCase().includes(query)) ||
+          (c.ref && c.ref.toLowerCase().includes(query))
+        );
+      }
+
+      if (list.length === 0) {
+        tbody.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      tbody.innerHTML = list.map(c => {
+        const isRegistered = c.status === 'registered';
+        const cleanPhone = (c.phone || '').replace(/[^0-9]/g, '');
+        const waMsg = encodeURIComponent(`أهلاً بك أستاذ ${c.name} في واحة نور مع د. أحمد الخطيب! تم استلام إيصال اشتراكك في (${c.package})، ونقوم حالياً بتجهيز وتفعيل حسابك على المنصة.`);
+        const waLink = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${waMsg}`;
+
+        const receiptThumbHtml = c.receiptImage ? `
+          <div class="cursor-pointer group relative inline-block" onclick="openReceiptModal('${c.id}')">
+            <img src="${c.receiptImage}" class="w-12 h-12 object-cover rounded-xl border border-emerald-500/30 group-hover:border-emerald-400 shadow transition-all">
+            <span class="absolute inset-0 bg-black/40 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-[10px] font-bold transition">تكبير</span>
+          </div>
+        ` : `
+          <span class="text-slate-500 text-[11px]">لا يوجد صورة</span>
+        `;
+
+        const statusBadgeHtml = isRegistered ? `
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+            <i data-lucide="check-circle" class="w-3 h-3"></i>
+            <span>مسجل ومفعل بالموقع</span>
+          </span>
+        ` : `
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 animate-pulse">
+            <i data-lucide="clock" class="w-3 h-3"></i>
+            <span>بانتظار التسجيل بالموقع</span>
+          </span>
+        `;
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="py-3.5 px-4 whitespace-nowrap">
+              <div class="font-mono text-emerald-400 font-bold">${c.ref || c.id}</div>
+              <div class="text-[11px] text-slate-400">${c.dateFormatted || c.submittedAt.split('T')[0]}</div>
+              <div class="text-[10px] text-slate-500 mt-0.5">موظف: ${escapeHtml(c.agentName || '—')}</div>
+            </td>
+
+            <td class="py-3.5 px-4">
+              <strong class="text-white text-sm block">${escapeHtml(c.name)}</strong>
+              <div class="font-mono text-slate-400 text-[11px]" dir="ltr">${escapeHtml(c.email)}</div>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="font-mono text-emerald-400 text-xs" dir="ltr">${escapeHtml(c.phone)}</span>
+                <a href="${waLink}" target="_blank" class="text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-0.5 text-[10px] font-bold" title="مراسلة واتساب">
+                  <i data-lucide="message-circle" class="w-3 h-3"></i>
+                  <span>شات</span>
+                </a>
+              </div>
+            </td>
+
+            <td class="py-3.5 px-4">
+              <span class="font-bold text-cyan-300 block">${escapeHtml(c.package)}</span>
+              <span class="text-slate-400 text-[11px]">${escapeHtml(c.duration)}</span>
+              ${c.notes && c.notes !== '—' ? `<div class="text-[10px] text-slate-500 truncate max-w-xs mt-1" title="${escapeHtml(c.notes)}">ملاحظة: ${escapeHtml(c.notes)}</div>` : ''}
+            </td>
+
+            <td class="py-3.5 px-4 whitespace-nowrap">
+              <div class="font-black text-emerald-400 text-sm font-mono">${c.amount} ${c.currency}</div>
+              <div class="text-[11px] text-slate-400">${escapeHtml(c.paymentMethod)}</div>
+            </td>
+
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              ${receiptThumbHtml}
+            </td>
+
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              ${statusBadgeHtml}
+            </td>
+
+            <td class="py-3.5 px-4 text-center whitespace-nowrap">
+              <div class="flex items-center justify-center gap-2">
+                ${!isRegistered ? `
+                  <button onclick="openRegisterHelper('${c.id}')" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] flex items-center gap-1 shadow transition">
+                    <i data-lucide="user-plus" class="w-3.5 h-3.5"></i>
+                    <span>تسجيل بالموقع</span>
+                  </button>
+                ` : `
+                  <button onclick="toggleClientStatus('${c.id}')" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 text-[10px] transition" title="إرجاع الحالة كمعلقة">
+                    إلغاء التفعيل ↩
+                  </button>
+                `}
+                
+                <button onclick="deleteClient('${c.id}')" class="p-1 text-slate-500 hover:text-rose-400 transition" title="حذف السجل">
+                  <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      lucide.createIcons();
+    }
+
+    // Modal Receipt
+    function openReceiptModal(id) {
+      const client = allClients.find(c => c.id === id);
+      if (!client || !client.receiptImage) return;
+
+      document.getElementById('modalReceiptImg').src = client.receiptImage;
+      document.getElementById('modalDownloadBtn').href = client.receiptImage;
+      document.getElementById('modalReceiptTitle').textContent = `إيصال العميل: ${client.name} (${client.amount} ${client.currency} — ${client.paymentMethod})`;
+      
+      const modal = document.getElementById('receiptModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function closeReceiptModal() {
+      const modal = document.getElementById('receiptModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Register Helper Modal
+    function openRegisterHelper(id) {
+      activeModalClientId = id;
+      const client = allClients.find(c => c.id === id);
+      if (!client) return;
+
+      document.getElementById('regHelpName').textContent = client.name;
+      document.getElementById('regHelpEmail').textContent = client.email;
+      document.getElementById('regHelpPhone').textContent = client.phone;
+      document.getElementById('regHelpPackage').textContent = `${client.package} (${client.duration})`;
+      document.getElementById('regHelpAmount').textContent = `${client.amount} ${client.currency} [${client.paymentMethod}]`;
+
+      const modal = document.getElementById('registerHelperModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function closeRegisterHelperModal() {
+      activeModalClientId = null;
+      const modal = document.getElementById('registerHelperModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function copyClientDetailsForSite() {
+      if (!activeModalClientId) return;
+      const client = allClients.find(c => c.id === activeModalClientId);
+      if (!client) return;
+
+      const text = `بيانات تسجيل العميل في واحة نور:
+الاسم: ${client.name}
+البريد الإلكتروني: ${client.email}
+الهاتف: ${client.phone}
+الباقة: ${client.package}
+المدة: ${client.duration}
+المبلغ وطريقة الدفع: ${client.amount} ${client.currency} (${client.paymentMethod})
+معرّف العملية: ${client.ref || client.id}`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        alert('تم نسخ كافة بيانات العميل بنجاح! 📋 يمكنك لصقها الآن في لوحة الإدارة.');
+      });
+    }
+
+    function markAsRegisteredFromModal() {
+      if (!activeModalClientId) return;
+      toggleClientStatus(activeModalClientId);
+      closeRegisterHelperModal();
+    }
+
+    function toggleClientStatus(id) {
+      const client = allClients.find(c => c.id === id);
+      if (!client) return;
+
+      if (client.status === 'registered') {
+        client.status = 'pending';
+        client.registeredOnSiteAt = null;
+      } else {
+        client.status = 'registered';
+        client.registeredOnSiteAt = new Date().toISOString();
+      }
+
+      saveClientsData();
+    }
+
+    function deleteClient(id) {
+      if (!confirm('هل أنت متأكد من حذف هذا السجل نهائياً؟')) return;
+      allClients = allClients.filter(c => c.id !== id);
+      saveClientsData();
+    }
+
+    // Export CSV
+    function exportToCSV() {
+      if (allClients.length === 0) {
+        alert('لا توجد بيانات عملاء لتصديرها.');
+        return;
+      }
+
+      let csvContent = "\uFEFFمعرّف العملية,التاريخ,اسم العميل,البريد الإلكتروني,رقم الهاتف,نوع الباقة,مدة الاشتراك,المبلغ,العملة,طريقة الدفع,موظف خدمة العملاء,حالة التسجيل بالموقع,ملاحظات\n";
+
+      allClients.forEach(c => {
+        const row = [
+          `"${c.ref || c.id}"`,
+          `"${c.dateFormatted || c.submittedAt}"`,
+          `"${c.name}"`,
+          `"${c.email}"`,
+          `"${c.phone}"`,
+          `"${c.package}"`,
+          `"${c.duration}"`,
+          `"${c.amount}"`,
+          `"${c.currency}"`,
+          `"${c.paymentMethod}"`,
+          `"${c.agentName || ''}"`,
+          `"${c.status === 'registered' ? 'تم التسجيل بالموقع' : 'قيد الانتظار'}"`,
+          `"${c.notes || ''}"`
+        ];
+        csvContent += row.join(",") + "\n";
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `سجل_اشتراكات_عملاء_واحة_نور_${new Date().toISOString().split('T')[0]}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>

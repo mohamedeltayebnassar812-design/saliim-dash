@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة تسجيل مشترك جديد وإيصال الدفع | واحة نور • د. أحمد الخطيب</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+      background-color: #051322;
+      color: #E2E8F0;
+    }
+    .form-card {
+      background: rgba(11, 30, 51, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .input-field {
+      background: rgba(7, 20, 36, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.2s ease;
+    }
+    .input-field:focus {
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+      outline: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 selection:bg-emerald-500 selection:text-white">
+
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Header & Branding -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-3">
+        <i data-lucide="shield-check" class="w-4 h-4"></i>
+        بوابة خدمة العملاء والمودريشن الرسمية
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        تسجيل مشترك جديد وتأكيد الدفع 🌿
+      </h1>
+      <p class="text-sm text-slate-400 mt-2">
+        منظومة واحة نور • إشراف الأستاذ د. أحمد الخطيب
+      </p>
+      <div class="mt-3 flex items-center justify-center gap-4 text-xs text-slate-400">
+        <span class="flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i> مزامنة فورية مع الداشبورد</span>
+        <span class="flex items-center gap-1"><i data-lucide="database" class="w-3.5 h-3.5 text-emerald-400"></i> حفظ مشفر ومضمون</span>
+      </div>
+    </div>
+
+    <!-- Main Form Card -->
+    <div class="form-card rounded-2xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <form id="paymentForm" onsubmit="handleFormSubmit(event)" class="space-y-8 relative z-10">
+
+        <!-- 1. بيانات العميل الشخصية -->
+        <div>
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-700/60 mb-5">
+            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm">1</span>
+            <h2 class="text-base font-bold text-white">بيانات المشترك الشخصية</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="sm:col-span-2">
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">اسم العميل الكامل <span class="text-rose-400">*</span></label>
+              <div class="relative">
+                <i data-lucide="user" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3"></i>
+                <input type="text" id="clientName" required placeholder="مثال: محمد عبد الله الشمري" class="input-field w-full rounded-xl pr-10 pl-4 py-2.5 text-sm text-white placeholder-slate-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">رقم الهاتف / الواتساب <span class="text-rose-400">*</span></label>
+              <div class="flex gap-2">
+                <select id="countryCode" class="input-field rounded-xl px-2.5 py-2.5 text-xs text-white bg-slate-900 border border-slate-700">
+                  <option value="+20">🇪🇬 مصر (+20)</option>
+                  <option value="+966" selected>🇸🇦 السعودية (+966)</option>
+                  <option value="+971">🇦🇪 الإمارات (+971)</option>
+                  <option value="+965">🇰🇼 الكويت (+965)</option>
+                  <option value="+974">🇶🇦 قطر (+974)</option>
+                  <option value="+968">🇴🇲 عمان (+968)</option>
+                  <option value="+973">🇧🇭 البحرين (+973)</option>
+                  <option value="+1">🇺🇸 أمريكا (+1)</option>
+                  <option value="+44">🇬🇧 بريطانيا (+44)</option>
+                  <option value="+other">🌍 دول أخرى</option>
+                </select>
+                <div class="relative flex-1">
+                  <i data-lucide="phone" class="w-4 h-4 text-slate-400 absolute right-3 top-3"></i>
+                  <input type="tel" id="clientPhone" required placeholder="501234567" class="input-field w-full rounded-xl pr-9 pl-3 py-2.5 text-sm text-white placeholder-slate-500">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">البريد الإلكتروني (لتفعيل الحساب) <span class="text-rose-400">*</span></label>
+              <div class="relative">
+                <i data-lucide="mail" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3"></i>
+                <input type="email" id="clientEmail" required placeholder="client@example.com" class="input-field w-full rounded-xl pr-10 pl-4 py-2.5 text-sm text-white placeholder-slate-500">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. تفاصيل الباقة والاشتراك -->
+        <div>
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-700/60 mb-5">
+            <span class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-sm">2</span>
+            <h2 class="text-base font-bold text-white">تفاصيل الباقة والاشتراك</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">نوع الباقة <span class="text-rose-400">*</span></label>
+              <select id="packageType" required class="input-field w-full rounded-xl px-3 py-2.5 text-sm text-white">
+                <option value="كوميونيتي" selected>👥 كوميونيتي</option>
+                <option value="ميكس">⚡ ميكس</option>
+                <option value="خاصة">💎 خاصة</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">مدة الاشتراك <span class="text-rose-400">*</span></label>
+              <select id="subscriptionDuration" required class="input-field w-full rounded-xl px-3 py-2.5 text-sm text-white">
+                <option value="شهر" selected>شهر</option>
+                <option value="2 شهر">2 شهر</option>
+                <option value="3 شهور">3 شهور</option>
+                <option value="6 شهور">6 شهور</option>
+                <option value="سنة">سنة</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. تفاصيل الدفع والتحويل -->
+        <div>
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-700/60 mb-5">
+            <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm">3</span>
+            <h2 class="text-base font-bold text-white">تفاصيل الدفع والتحويل</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">المبلغ المدفوع <span class="text-rose-400">*</span></label>
+              <div class="relative">
+                <i data-lucide="dollar-sign" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3"></i>
+                <input type="number" id="amountPaid" step="any" required placeholder="مثال: 2200 أو 79" class="input-field w-full rounded-xl pr-10 pl-4 py-2.5 text-sm text-white placeholder-slate-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">العملة <span class="text-rose-400">*</span></label>
+              <select id="currency" required class="input-field w-full rounded-xl px-3 py-2.5 text-sm text-white">
+                <option value="EGP">🇪🇬 جنيه مصري (ج.م)</option>
+                <option value="SAR" selected>🇸🇦 ريال سعودي (ر.س)</option>
+                <option value="AED">🇦🇪 درهم إماراتي (د.إ)</option>
+                <option value="USD">🇺🇸 دولار أمريكي ($)</option>
+                <option value="KWD">🇰🇼 دينار كويتي (د.ك)</option>
+                <option value="QAR">🇶🇦 ريال قطري (ر.ق)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">طريقة الدفع <span class="text-rose-400">*</span></label>
+              <select id="paymentMethod" required class="input-field w-full rounded-xl px-3 py-2.5 text-sm text-white">
+                <option value="InstaPay (إنستاباي)">📲 إنستاباي (InstaPay)</option>
+                <option value="Vodafone Cash (فودافون كاش)">🔴 فودافون كاش</option>
+                <option value="محفظة إلكترونية أخرى">📱 محفظة ذكية (اتصالات/أورنج/وي)</option>
+                <option value="تحويل بنكي مباشر (CIB/الأهلي/الراجحي)">🏦 تحويل بنكي مباشر</option>
+                <option value="فيزا / ماستركارد (إيزي كاش)">💳 فيزا / ماستركارد (إيزي كاش)</option>
+                <option value="كاش / عيادة">💵 دفع نقدي بالعيادة</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. رفع صورة إيصال التحويل (Screenshot) -->
+        <div>
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-700/60 mb-5">
+            <span class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-sm">4</span>
+            <h2 class="text-base font-bold text-white">رفع صورة إيصال الدفع (سكرين شوت) <span class="text-rose-400">*</span></h2>
+          </div>
+
+          <div class="border-2 border-dashed border-slate-700 hover:border-emerald-500/60 transition-colors rounded-2xl p-6 text-center cursor-pointer bg-slate-900/40 relative" id="dropArea" onclick="document.getElementById('receiptInput').click()">
+            <input type="file" id="receiptInput" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+            
+            <div id="uploadPrompt" class="space-y-2">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 mx-auto flex items-center justify-center">
+                <i data-lucide="upload-cloud" class="w-6 h-6"></i>
+              </div>
+              <p class="text-sm font-semibold text-slate-200">اضغط لرفع سكرين شوت التحويل أو اسحب الصورة هنا</p>
+              <p class="text-xs text-slate-500">يدعم جميع صيغ الصور (PNG, JPG, WEBP) من الموبايل أو الكمبيوتر</p>
+            </div>
+
+            <!-- المعاينة الفورية -->
+            <div id="imagePreviewContainer" class="hidden relative max-w-xs mx-auto">
+              <img id="imagePreview" src="" alt="معاينة الإيصال" class="rounded-xl border border-slate-600 shadow-md max-h-56 mx-auto object-contain">
+              <button type="button" onclick="removeImage(event)" class="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-lg hover:bg-rose-600">
+                <i data-lucide="x" class="w-4 h-4"></i>
+              </button>
+              <p id="imageFileName" class="text-xs text-emerald-400 mt-2 truncate font-mono"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. بيانات موظف المودريشن والملاحظات -->
+        <div>
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-700/60 mb-5">
+            <span class="w-7 h-7 rounded-lg bg-slate-500/20 text-slate-300 flex items-center justify-center font-bold text-sm">5</span>
+            <h2 class="text-base font-bold text-white">بيانات المودريتور والملاحظات</h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">اسم موظف المودريشن / الكول سنتر <span class="text-rose-400">*</span></label>
+              <input type="text" id="moderatorName" required placeholder="مثال: سارة أحمد / أحمد علي" class="input-field w-full rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">ملاحظات إضافية عن العميل (اختياري)</label>
+              <input type="text" id="notes" placeholder="مثال: العميل يعاني من مقاومة إنسولين ويفضل جلسة مسائية" class="input-field w-full rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button & Feedback -->
+        <div class="pt-4">
+          <button type="submit" id="submitBtn" class="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-extrabold text-base shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all duration-200">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span>تسجيل وحفظ الطلب وإرساله للداشبورد 🚀</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- رسالة النجاح المنبثقة -->
+      <div id="successModal" class="hidden text-center py-10 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
+          <i data-lucide="check-check" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white">تم تسجيل وتأكيد إيصال العميل بنجاح! 🎉</h3>
+        <p class="text-sm text-slate-300 max-w-md mx-auto">
+          تم ترحيل البيانات فورياً إلى لوحة تحكم الإدارة ومزامنة صورة الإيصال بنجاح.
+        </p>
+        <div class="p-3 bg-slate-900/60 rounded-xl max-w-xs mx-auto border border-slate-700 text-xs">
+          رقم الطلب المرجعي: <span id="refCode" class="font-mono text-emerald-400 font-bold"></span>
+        </div>
+        <div class="pt-2 flex justify-center gap-3">
+          <button onclick="resetForm()" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5">
+            <i data-lucide="plus" class="w-4 h-4"></i> تسجيل عميل آخر
+          </button>
+          <a href="admin-client-approvals.html" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i> فتح الداشبورد
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick Footer Link -->
+    <div class="text-center mt-6 text-xs text-slate-500">
+      لوحة تحكم الإدارة للاعتماد: <a href="admin-client-approvals.html" class="text-emerald-400 hover:underline">اضغط هنا لفتح الداشبورد الإداري</a>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    let uploadedReceiptBase64 = null;
+    const STORAGE_KEY = 'wahetnor_pending_client_receipts';
+
+    // Image Upload & Preview Handler with Auto-Compression
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+          // Compress image via canvas to keep Base64 lightweight
+          const canvas = document.createElement('canvas');
+          const maxDim = 1200;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height && width > maxDim) {
+            height = (height * maxDim) / width;
+            width = maxDim;
+          } else if (height > maxDim) {
+            width = (width * maxDim) / height;
+            height = maxDim;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          uploadedReceiptBase64 = canvas.toDataURL('image/jpeg', 0.85);
+
+          document.getElementById('imagePreview').src = uploadedReceiptBase64;
+          document.getElementById('imageFileName').textContent = file.name;
+          document.getElementById('uploadPrompt').classList.add('hidden');
+          document.getElementById('imagePreviewContainer').classList.remove('hidden');
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeImage(e) {
+      e.stopPropagation();
+      uploadedReceiptBase64 = null;
+      document.getElementById('receiptInput').value = '';
+      document.getElementById('imagePreview').src = '';
+      document.getElementById('imagePreviewContainer').classList.add('hidden');
+      document.getElementById('uploadPrompt').classList.remove('hidden');
+    }
+
+    // Form Submission
+    function handleFormSubmit(e) {
+      e.preventDefault();
+
+      if (!uploadedReceiptBase64) {
+        alert('برجاء رفع سكرين شوت إيصال التحويل للمتابعة!');
+        return;
+      }
+
+      const clientData = {
+        id: 'WN-' + Date.now().toString(36).toUpperCase(),
+        timestamp: new Date().toISOString(),
+        clientName: document.getElementById('clientName').value.trim(),
+        countryCode: document.getElementById('countryCode').value,
+        clientPhone: document.getElementById('countryCode').value + document.getElementById('clientPhone').value.trim(),
+        clientEmail: document.getElementById('clientEmail').value.trim().toLowerCase(),
+        packageType: document.getElementById('packageType').value,
+        subscriptionDuration: document.getElementById('subscriptionDuration').value,
+        amountPaid: parseFloat(document.getElementById('amountPaid').value),
+        currency: document.getElementById('currency').value,
+        paymentMethod: document.getElementById('paymentMethod').value,
+        receiptImage: uploadedReceiptBase64,
+        moderatorName: document.getElementById('moderatorName').value.trim(),
+        notes: document.getElementById('notes').value.trim(),
+        status: 'pending', // pending, approved, rejected
+        approvedAt: null
+      };
+
+      // 1. Save to LocalStorage / IndexedDB
+      let records = [];
+      try {
+        records = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      } catch(err) { records = []; }
+      records.unshift(clientData);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+
+      
+      // 3. Post to Google Apps Script Webhook (Google Sheets & Google Drive)
+      try {
+        fetch('https://script.google.com/macros/s/AKfycbx9-AIbMs5_JFHLlfks7Jumv8j3NCDc-JkZu0cJVtmbW5Fx0bZ2_494TVsjARGyJZTNZA/exec', {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(clientData)
+        });
+      } catch(err) {
+        console.warn('Google Drive sync note:', err);
+      }
+
+      // 2. Broadcast to open admin dashboard in real-time
+      if (window.BroadcastChannel) {
+        const bc = new BroadcastChannel('wahetnor_orders_channel');
+        bc.postMessage({ type: 'NEW_RECEIPT', data: clientData });
+      }
+
+      // Show Success Modal
+      document.getElementById('refCode').textContent = clientData.id;
+      document.getElementById('paymentForm').classList.add('hidden');
+      document.getElementById('successModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function resetForm() {
+      document.getElementById('paymentForm').reset();
+      removeImage({ stopPropagation: () => {} });
+      document.getElementById('successModal').classList.add('hidden');
+      document.getElementById('paymentForm').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

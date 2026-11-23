@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/client-deposit", "destination": "/client-deposit.html" },
+    { "source": "/client-dashboard", "destination": "/client-dashboard.html" },
+    { "source": "/admin-client-approvals", "destination": "/admin-client-approvals.html" },
+    { "source": "/client-payment-entry", "destination": "/client-payment-entry.html" }
+  ],
   "redirects": [
     {
       "source": "/strategy",

@@ -792,10 +792,25 @@
                     </div>
                 </div>
 
+                <!-- Short Slug Input -->
+                <div class="form-group" style="background: #f8fafc; padding: 12px 14px; border-radius: 8px; border: 1px dashed #cbd5e1; margin-bottom: 16px;">
+                    <label for="shortSlug" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <span>⚡ 6. الاسم المختصر للرابط الذكي (wahetnor.com/Slug):</span>
+                        <span style="font-size: 11px; background: #ecfdf5; color: #047857; font-weight: 700; padding: 2px 8px; border-radius: 999px; border: 1px solid #a7f3d0;">Cloudflare Edge 302</span>
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 8px; direction: ltr;">
+                        <span style="font-family: monospace; font-weight: 700; color: #475569; font-size: 13px;">https://wahetnor.com/</span>
+                        <input type="text" id="shortSlug" placeholder="fb" oninput="onShortSlugManualInput()" style="font-family: monospace; font-weight: 800; color: #047857; text-align: left; padding: 8px 12px; flex: 1;">
+                    </div>
+                    <div style="font-size: 11.5px; color: #64748b; margin-top: 5px;">
+                        💡 يقترح تلقائياً (مثل <code>fb</code>, <code>ig</code>, <code>r1</code>, <code>v1</code>) ويمكنك تعديله كما تشاء.
+                    </div>
+                </div>
+
                 <!-- Optional Post / Video Source URL -->
                 <div class="form-group">
                     <label for="postUrl">
-                        🔗 6. رابط المنشور أو الفيديو الأصلي على المنصة:
+                        🔗 7. رابط المنشور أو الفيديو الأصلي على المنصة:
                         <span class="hint" style="color: var(--primary); font-weight: 600;">(اختياري — يمكنك تركه فارغاً وإضافته لاحقاً بعد نشر الفيديو)</span>
                     </label>
                     <input type="text" id="postUrl" placeholder="https://www.facebook.com/... أو https://instagram.com/reel/..." style="direction: ltr; text-align: left; font-family: monospace; font-size: 13px;">
@@ -810,17 +825,42 @@
                     <span>الرابط الذكي النهائي</span>
                 </div>
 
+                <!-- 1. Star Box: Official Branded Shortlink -->
+                <div class="result-box" style="border: 2px solid #10b981; background: #f0fdf4; margin-bottom: 16px; border-radius: 12px; padding: 16px;">
+                    <div class="result-label" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="color: #065f46; font-weight: 800; font-size: 13.5px;">⚡ الرابط المختصر الرسمي (wahetnor.com):</span>
+                        <span class="badge-plat badge-wa" style="font-size: 11px; font-weight: 700;">موصى به للنشر المباشر 🌟</span>
+                    </div>
+                    <div class="link-display" id="shortUrlDisplay" style="color: #065f46; font-size: 16px; font-weight: 800; background: #ffffff; border: 1.5px solid #a7f3d0; padding: 12px 14px; margin: 10px 0; border-radius: 8px; direction: ltr; text-align: left;">https://wahetnor.com/fb</div>
+
+                    <div class="action-buttons" style="gap: 8px;">
+                        <button type="button" class="btn" onclick="copyShortLink()" style="background: #10b981; color: white; border: none; font-weight: 700; flex: 1.4; box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);">
+                            <span>⚡</span>
+                            <span>نسخ الرابط المختصر</span>
+                        </button>
+                        <button type="button" class="btn btn-test" onclick="testShortLink()" title="تجربة التحويل اللحظي في تبويب جديد">
+                            <span>↗️</span>
+                            <span>تجربة</span>
+                        </button>
+                        <button type="button" class="btn" onclick="copyWhatsAppPost()" style="background: #25d366; color: white; border: none; font-weight: 700;" title="نسخ نص البوست مع الرابط المختصر جاهزاً للواتساب">
+                            <span>💬</span>
+                            <span>واتساب</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Full UTM Link Box -->
                 <div class="result-box">
                     <div class="result-label">
-                        <span>الرابط الجاهز للنشر المباشر:</span>
+                        <span>رابط الـ UTM التفصيلي الكامل:</span>
                         <span id="charCount" style="color: var(--text-muted); font-size: 11px;">0 حرف</span>
                     </div>
-                    <div class="link-display" id="finalUrl">https://wahetnor.com/start...</div>
+                    <div class="link-display" id="finalUrl" style="font-size: 11px; word-break: break-all;">https://wahetnor.com/start...</div>
 
                     <div class="action-buttons">
                         <button type="button" class="btn btn-copy" onclick="copyLink()">
                             <span>📋</span>
-                            <span>نسخ الرابط</span>
+                            <span>نسخ الرابط الكامل</span>
                         </button>
                         <button type="button" class="btn btn-save" onclick="saveToHistory()">
                             <span>💾</span>
@@ -890,6 +930,7 @@
                     <button class="btn-small" onclick="document.getElementById('importFileInput').click()" title="استعادة نسخة احتياطية من ملف JSON">📂 استعادة</button>
                     <input type="file" id="importFileInput" accept=".json" style="display: none;" onchange="importJSONBackup(event)">
                     <button class="btn-small" onclick="exportCSV()">📥 تصدير Excel</button>
+                    <button class="btn-small" onclick="copyAllWhatsAppSummary()" style="background: #065f46; color: #a7f3d0; border-color: #059669; font-weight: 700;" title="نسخ قائمة الروابط منسقة بالكامل لمشاركتها على واتساب">💬 رسالة الواتساب الموحدة</button>
                     <button class="btn-small" onclick="clearHistory()" style="color: var(--danger);">🗑️ مسح</button>
                 </div>
             </div>
@@ -898,11 +939,12 @@
                 <table id="historyTable">
                     <thead>
                         <tr>
-                            <th style="width: 28%;">عنوان المحتوى والبوست الأصلي</th>
+                            <th style="width: 26%;">عنوان المحتوى والبوست</th>
                             <th style="width: 14%;">المنصة والنوع</th>
-                            <th style="width: 14%;">كود الحملة</th>
-                            <th style="width: 24%;">الرابط الذكي</th>
-                            <th style="width: 20%; text-align: center;">إجراءات</th>
+                            <th style="width: 12%;">كود الحملة</th>
+                            <th style="width: 18%;">⚡ الرابط المختصر</th>
+                            <th style="width: 18%;">🔗 الرابط الكامل (UTM)</th>
+                            <th style="width: 12%; text-align: center;">إجراءات</th>
                         </tr>
                     </thead>
                     <tbody id="historyBody">
@@ -1052,103 +1094,250 @@
             const OFFICIAL_CAMPAIGNS = [
                     {
                                         "id": "utm_vid_yt_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "فيديو رئيسي 1: الدليل الكامل لمنظومة واحة نور وعلاج مقاومة الإنسولين",
                                         "platform": "youtube",
                                         "medium": "video_description",
                                         "campaign": "yt_vid_01",
-                                        "postUrl": "",
+                                        "shortSlug": "v1",
+                                        "shortUrl": "https://wahetnor.com/v1",
                                         "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=video_description&utm_campaign=yt_vid_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_vid_fb_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "فيديو رئيسي 1: المحتوى التوعوي الشامل لمنظومة واحة نور",
                                         "platform": "facebook",
                                         "medium": "video_post",
                                         "campaign": "fb_vid_01",
-                                        "postUrl": "",
+                                        "shortSlug": "fbv1",
+                                        "shortUrl": "https://wahetnor.com/fbv1",
                                         "url": "https://wahetnor.com/start?utm_source=facebook&utm_medium=video_post&utm_campaign=fb_vid_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_vid_ig_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "فيديو رئيسي 1: رابط البايو والستوري المرافق للفيديو الطويل",
                                         "platform": "instagram",
                                         "medium": "bio",
                                         "campaign": "ig_vid_01",
-                                        "postUrl": "",
+                                        "shortSlug": "igv1",
+                                        "shortUrl": "https://wahetnor.com/igv1",
                                         "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=bio&utm_campaign=ig_vid_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_vid_tg_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "فيديو رئيسي 1: رسالة القناة الرسمية لدكتور أحمد الخطيب",
                                         "platform": "telegram",
                                         "medium": "channel_post",
                                         "campaign": "tg_vid_01",
-                                        "postUrl": "",
+                                        "shortSlug": "tgv1",
+                                        "shortUrl": "https://wahetnor.com/tgv1",
                                         "url": "https://wahetnor.com/start?utm_source=telegram&utm_medium=channel_post&utm_campaign=tg_vid_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_vid_wa_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "فيديو رئيسي 1: رسالة مجتمع وقناة واحة نور الرسمية على واتساب",
                                         "platform": "whatsapp",
                                         "medium": "broadcast",
                                         "campaign": "wa_vid_01",
-                                        "postUrl": "",
+                                        "shortSlug": "wav1",
+                                        "shortUrl": "https://wahetnor.com/wav1",
                                         "url": "https://wahetnor.com/start?utm_source=whatsapp&utm_medium=broadcast&utm_campaign=wa_vid_01",
-                                        "date": "2026-11-17"
-                    },
-                    {
-                                        "id": "utm_reel_ig_01",
-                                        "title": "ريل 1: 3 علامات للشفاء من مقاومة الإنسولين وثبات الوزن",
-                                        "platform": "instagram",
-                                        "medium": "reels",
-                                        "campaign": "ig_reel_01",
                                         "postUrl": "",
-                                        "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_01",
-                                        "date": "2026-11-17"
-                    },
-                    {
-                                        "id": "utm_reel_tt_01",
-                                        "title": "ريل 1 تيك توك: سر ثبات الوزن وعلاج مقاومة الإنسولين في واحة نور",
-                                        "platform": "tiktok",
-                                        "medium": "video",
-                                        "campaign": "tt_reel_01",
-                                        "postUrl": "",
-                                        "url": "https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_reel_01",
-                                        "date": "2026-11-17"
-                    },
-                    {
-                                        "id": "utm_reel_yt_01",
-                                        "title": "ريل 1 يوتيوب شورتس: علامات الشفاء من مقاومة الإنسولين",
-                                        "platform": "youtube",
-                                        "medium": "shorts",
-                                        "campaign": "yt_short_01",
-                                        "postUrl": "",
-                                        "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=shorts&utm_campaign=yt_short_01",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_reel_fb_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "ريل 1 فيسبوك: ريل الأخطاء الثلاثة ونصائح باقة النخبة",
                                         "platform": "facebook",
                                         "medium": "reels",
                                         "campaign": "fb_reel_01",
-                                        "postUrl": "",
+                                        "shortSlug": "r1",
+                                        "shortUrl": "https://wahetnor.com/r1",
                                         "url": "https://wahetnor.com/start?utm_source=facebook&utm_medium=reels&utm_campaign=fb_reel_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_ig_01",
+                                        "createdAt": "2026-11-17 12:00:00",
+                                        "title": "ريل 1: 3 علامات للشفاء من مقاومة الإنسولين وثبات الوزن",
+                                        "platform": "instagram",
+                                        "medium": "reels",
+                                        "campaign": "ig_reel_01",
+                                        "shortSlug": "igr1",
+                                        "shortUrl": "https://wahetnor.com/igr1",
+                                        "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=reels&utm_campaign=ig_reel_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_tt_01",
+                                        "createdAt": "2026-11-17 12:00:00",
+                                        "title": "ريل 1 تيك توك: سر ثبات الوزن وعلاج مقاومة الإنسولين في واحة نور",
+                                        "platform": "tiktok",
+                                        "medium": "video",
+                                        "campaign": "tt_reel_01",
+                                        "shortSlug": "ttr1",
+                                        "shortUrl": "https://wahetnor.com/ttr1",
+                                        "url": "https://wahetnor.com/start?utm_source=tiktok&utm_medium=video&utm_campaign=tt_reel_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_reel_yt_01",
+                                        "createdAt": "2026-11-17 12:00:00",
+                                        "title": "ريل 1 يوتيوب شورتس: علامات الشفاء من مقاومة الإنسولين",
+                                        "platform": "youtube",
+                                        "medium": "shorts",
+                                        "campaign": "yt_short_01",
+                                        "shortSlug": "ytr1",
+                                        "shortUrl": "https://wahetnor.com/ytr1",
+                                        "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=shorts&utm_campaign=yt_short_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
                     },
                     {
                                         "id": "utm_reel_snap_01",
+                                        "createdAt": "2026-11-17 12:00:00",
                                         "title": "ريل 1 سناب شات: ستوري الأخطاء الثلاثة ورابط السحب لأعلى",
                                         "platform": "snapchat",
                                         "medium": "story",
                                         "campaign": "snap_reel_01",
-                                        "postUrl": "",
+                                        "shortSlug": "snapr1",
+                                        "shortUrl": "https://wahetnor.com/snapr1",
                                         "url": "https://wahetnor.com/start?utm_source=snapchat&utm_medium=story&utm_campaign=snap_reel_01",
+                                        "postUrl": "",
                                         "date": "2026-11-17"
+                    },
+                    {
+                                        "id": "utm_post_fb_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست فيسبوك 1: منشور خطة واحة نور الشاملة وعلاج مقاومة الإنسولين وثبات الوزن",
+                                        "platform": "facebook",
+                                        "medium": "post",
+                                        "campaign": "fb_post_01",
+                                        "shortSlug": "fb",
+                                        "shortUrl": "https://wahetnor.com/fb",
+                                        "url": "https://wahetnor.com/start?utm_source=facebook&utm_medium=post&utm_campaign=fb_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_ig_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست إنستغرام 1: كاروسيل ومنشور خريطة التعافي وباقة النخبة",
+                                        "platform": "instagram",
+                                        "medium": "post",
+                                        "campaign": "ig_post_01",
+                                        "shortSlug": "ig",
+                                        "shortUrl": "https://wahetnor.com/ig",
+                                        "url": "https://wahetnor.com/start?utm_source=instagram&utm_medium=post&utm_campaign=ig_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_tg_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست تليجرام 1: رسالة القناة التوعوية الشاملة ورابط باقة النخبة",
+                                        "platform": "telegram",
+                                        "medium": "channel_post",
+                                        "campaign": "tg_post_01",
+                                        "shortSlug": "tg",
+                                        "shortUrl": "https://wahetnor.com/tg",
+                                        "url": "https://wahetnor.com/start?utm_source=telegram&utm_medium=channel_post&utm_campaign=tg_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_wa_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست واتساب 1: رسالة البرودكاست ومجتمع واحة نور للتعافي الصحي",
+                                        "platform": "whatsapp",
+                                        "medium": "broadcast",
+                                        "campaign": "wa_post_01",
+                                        "shortSlug": "wa",
+                                        "shortUrl": "https://wahetnor.com/wa",
+                                        "url": "https://wahetnor.com/start?utm_source=whatsapp&utm_medium=broadcast&utm_campaign=wa_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_tt_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست تيك توك 1: منشور الصور التوعوية وسر علاج مقاومة الإنسولين",
+                                        "platform": "tiktok",
+                                        "medium": "post",
+                                        "campaign": "tt_post_01",
+                                        "shortSlug": "tt",
+                                        "shortUrl": "https://wahetnor.com/tt",
+                                        "url": "https://wahetnor.com/start?utm_source=tiktok&utm_medium=post&utm_campaign=tt_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_yt_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست يوتيوب 1: منشور تبويب المنتدى (Community) وخطة باقة النخبة",
+                                        "platform": "youtube",
+                                        "medium": "community_post",
+                                        "campaign": "yt_post_01",
+                                        "shortSlug": "yt",
+                                        "shortUrl": "https://wahetnor.com/yt",
+                                        "url": "https://wahetnor.com/start?utm_source=youtube&utm_medium=community_post&utm_campaign=yt_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_snap_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست سناب شات 1: ستوري المنشور التوعوي ورابط السحب لأعلى",
+                                        "platform": "snapchat",
+                                        "medium": "story",
+                                        "campaign": "snap_post_01",
+                                        "shortSlug": "snap",
+                                        "shortUrl": "https://wahetnor.com/snap",
+                                        "url": "https://wahetnor.com/start?utm_source=snapchat&utm_medium=story&utm_campaign=snap_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_li_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست لينكد إن 1: المقال والمنشور المهني لمنظومة د. أحمد الخطيب",
+                                        "platform": "linkedin",
+                                        "medium": "post",
+                                        "campaign": "li_post_01",
+                                        "shortSlug": "li",
+                                        "shortUrl": "https://wahetnor.com/li",
+                                        "url": "https://wahetnor.com/start?utm_source=linkedin&utm_medium=post&utm_campaign=li_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
+                    },
+                    {
+                                        "id": "utm_post_x_01",
+                                        "createdAt": "2026-11-18 18:30:00",
+                                        "title": "بوست إكس 1: ثريد التوعية وخطة واحة نور لعلاج مقاومة الإنسولين",
+                                        "platform": "x",
+                                        "medium": "post",
+                                        "campaign": "x_post_01",
+                                        "shortSlug": "x",
+                                        "shortUrl": "https://wahetnor.com/x",
+                                        "url": "https://wahetnor.com/start?utm_source=x&utm_medium=post&utm_campaign=x_post_01",
+                                        "postUrl": "",
+                                        "date": "2026-11-18"
                     }
 ];
 
@@ -1454,6 +1643,7 @@
         };
 
         function onPlatformChange() {
+            isShortSlugManual = false;
             const plat = document.getElementById('platform').value;
             const medSelect = document.getElementById('medium');
             
@@ -1471,6 +1661,7 @@
         }
 
         function onMediumChange() {
+            isShortSlugManual = false;
             autoSuggestInitialCode();
             generateLink();
         }
@@ -1528,19 +1719,146 @@
                 return;
             }
 
-            const existing = historyData.find(item => item.campaign && item.campaign.toLowerCase() === code.toLowerCase());
+            const currentSlug = document.getElementById('shortSlug') ? document.getElementById('shortSlug').value.trim().toLowerCase() : '';
+            
+            const existingCode = historyData.find(item => item.campaign && item.campaign.toLowerCase() === code.toLowerCase());
+            const existingSlug = currentSlug ? historyData.find(item => {
+                const s = (item.shortSlug || deriveShortSlug(item.platform, item.medium, item.campaign)).toLowerCase();
+                return s === currentSlug;
+            }) : null;
 
-            if (existing) {
+            if (existingCode) {
                 alertBox.className = 'dedup-alert active';
                 alertIcon.textContent = '⚠️';
-                alertText.innerHTML = `<strong>كود مكرر!</strong> تم استخدام هذا الكود سابقاً لـ: "<em>${existing.title || 'محتوى محفوظ'}</em>". <a href="javascript:void(0)" onclick="autoIncrementCode()" style="color: #b45309; font-weight: 700; text-decoration: underline; margin-right: 5px;">اضغط هنا للزيادة التلقائية</a>`;
+                alertText.innerHTML = `<strong>كود حملة مكرر!</strong> مسجل سابقاً لـ: "<em>${escapeHtml(existingCode.title || 'محتوى محفوظ')}</em>". <a href="javascript:void(0)" onclick="autoIncrementCode()" style="color: #b45309; font-weight: 700; text-decoration: underline; margin-right: 5px;">اضغط هنا للزيادة التلقائية ➕</a>`;
+            } else if (existingSlug && (!existingCode || existingSlug.id !== existingCode.id)) {
+                alertBox.className = 'dedup-alert active';
+                alertIcon.textContent = '⚡';
+                alertText.innerHTML = `<strong>تنبيه: الرابط المختصر (wahetnor.com/${escapeHtml(currentSlug)}) محجوز سابقاً!</strong> يُفضل تعديل الاسم المختصر في خانة رقم 6 لضمان دقة الإحصائيات.`;
             } else {
                 alertBox.className = 'dedup-alert active safe';
                 alertIcon.textContent = '✅';
-                alertText.innerHTML = `<strong>كود ممتاز وفريد!</strong> لم يسبق استخدامه مطلقاً وسيرصد في اللوحة بشكل مستقل تماماً.`;
+                alertText.innerHTML = `<strong>كود ورابط ممتاز وفريد!</strong> لم يسبق استخدامه مطلقاً وسيرصد في لوحة التحليلات بشكل مستقل تماماً.`;
             }
 
             generateLink();
+        }
+
+        
+        // ==============================================================================
+        // ⚡ محرك توليد وإدارة الروابط المختصرة (wahetnor.com Shortlinks Engine)
+        // ==============================================================================
+        let isShortSlugManual = false;
+
+        function deriveShortSlug(platform, medium, campaign) {
+            const code = (campaign || '').toLowerCase();
+            const numMatch = code.match(/\d+/);
+            const num = numMatch ? numMatch[0] : '';
+            const cleanNum = num.replace(/^0+/, '') || '1';
+
+            if (medium === 'reels' || medium === 'shorts') {
+                return 'r' + cleanNum;
+            }
+            if (medium === 'video' || medium === 'video_description' || medium === 'podcast') {
+                return 'v' + cleanNum;
+            }
+            if (platform === 'facebook') {
+                return cleanNum === '1' ? 'fb' : ('fb' + cleanNum);
+            }
+            if (platform === 'instagram') {
+                return cleanNum === '1' ? 'ig' : ('ig' + cleanNum);
+            }
+            if (platform === 'telegram') {
+                return cleanNum === '1' ? 'tg' : ('tg' + cleanNum);
+            }
+            if (platform === 'whatsapp') {
+                return cleanNum === '1' ? 'wa' : ('wa' + cleanNum);
+            }
+            if (platform === 'youtube') {
+                return cleanNum === '1' ? 'yt' : ('yt' + cleanNum);
+            }
+            if (platform === 'tiktok') {
+                return cleanNum === '1' ? 'tt' : ('tt' + cleanNum);
+            }
+            if (platform === 'snapchat') {
+                return cleanNum === '1' ? 'snap' : ('snap' + cleanNum);
+            }
+            if (platform === 'linkedin') {
+                return cleanNum === '1' ? 'li' : ('li' + cleanNum);
+            }
+            if (platform === 'x') {
+                return cleanNum === '1' ? 'x' : ('x' + cleanNum);
+            }
+            return (platform || 'link').substring(0, 4) + cleanNum;
+        }
+
+        function onShortSlugManualInput() {
+            isShortSlugManual = true;
+            updateShortUrlDisplay();
+        }
+
+        function updateShortUrlDisplay() {
+            const slugInput = document.getElementById('shortSlug');
+            let slug = slugInput ? slugInput.value.trim().toLowerCase().replace(/^\/+/, '') : 'fb';
+            if (!slug) slug = 'fb';
+            const shortUrl = `https://wahetnor.com/${slug}`;
+            const displayEl = document.getElementById('shortUrlDisplay');
+            if (displayEl) {
+                displayEl.textContent = shortUrl;
+            }
+        }
+
+        function copyShortLink() {
+            const url = document.getElementById('shortUrlDisplay').textContent;
+            navigator.clipboard.writeText(url).then(() => {
+                showToast(`تم نسخ الرابط المختصر: ${url} ⚡`);
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(`تم نسخ الرابط المختصر! ⚡`);
+            });
+        }
+
+        function testShortLink() {
+            const url = document.getElementById('shortUrlDisplay').textContent;
+            window.open(url, '_blank');
+        }
+
+        function copyWhatsAppPost() {
+            const shortUrl = document.getElementById('shortUrlDisplay').textContent;
+            const title = document.getElementById('videoTitle').value.trim() || 'واحة نور — استعادة الحرق الطبيعي';
+            
+            const msg = `لا تنتظر السبت القادم هذه المرة..\nاضغط على الرابط، واختر باقتك، وابدأ اليوم 👇\n\n${shortUrl}`;
+            
+            navigator.clipboard.writeText(msg).then(() => {
+                showToast('تم نسخ نص البوست الجاهز للواتساب! 💬');
+            }).catch(() => {
+                showToast('يرجى نسخ النص يدوياً.');
+            });
+        }
+
+        function copyAllWhatsAppSummary() {
+            if (!historyData || historyData.length === 0) {
+                showToast('لا توجد روابط في السجل بعد.');
+                return;
+            }
+
+            let msg = `🌿 *الروابط المعتمدة لمنظومة واحة نور*\n──────────────────────\n`;
+            historyData.forEach((item, idx) => {
+                const short = item.shortUrl || (`https://wahetnor.com/` + deriveShortSlug(item.platform, item.medium, item.campaign));
+                msg += `${idx + 1}. *${item.title || item.campaign}* (${item.platform}):\n${short}\n\n`;
+            });
+            msg += `──────────────────────\n🔒 جميع الروابط تحول مباشرة إلى باقة النخبة مع تتبع UTM كامل بنسبة 100%.`;
+
+            navigator.clipboard.writeText(msg).then(() => {
+                showToast('تم نسخ رسالة الواتساب الكاملة لكافة الروابط! 💬');
+            }).catch(() => {
+                showToast('تم النسخ!');
+            });
         }
 
         function generateLink() {
@@ -1555,6 +1873,13 @@
             const source = document.getElementById('platform').value;
             const medium = document.getElementById('medium').value;
             let campaign = document.getElementById('campaignCode').value.trim();
+
+            // Auto-update shortlink slug
+            const slugInput = document.getElementById('shortSlug');
+            if (slugInput && !isShortSlugManual) {
+                slugInput.value = deriveShortSlug(source, medium, campaign);
+            }
+            updateShortUrlDisplay();
 
             if (!campaign) {
                 campaign = 'v1';
@@ -1623,12 +1948,17 @@
                 return;
             }
 
+            const shortSlug = document.getElementById('shortSlug') ? document.getElementById('shortSlug').value.trim() : deriveShortSlug(platform, medium, campaign);
+            const shortUrl = `https://wahetnor.com/${shortSlug}`;
+
             const newItem = {
                 id: 'utm_' + Date.now(),
                 title: title,
                 platform: platform,
                 medium: medium,
                 campaign: campaign,
+                shortSlug: shortSlug,
+                shortUrl: shortUrl,
                 postUrl: postUrl,
                 url: url,
                 date: new Date().toISOString().split('T')[0]
@@ -1647,6 +1977,7 @@
             showToast('تم حفظ الرابط في قاعدة البيانات والسحابة بنجاح! 💾');
             
             document.getElementById('postUrl').value = '';
+            isShortSlugManual = false;
             autoIncrementCode();
         }
 
@@ -1718,6 +2049,9 @@
                     </div>
                 `;
 
+                const shortSlug = item.shortSlug || deriveShortSlug(item.platform, item.medium, item.campaign);
+                const shortUrl = item.shortUrl || (`https://wahetnor.com/` + shortSlug);
+
                 return `
                     <tr>
                         <td>
@@ -1733,12 +2067,22 @@
                             <code style="font-weight: 700; color: var(--primary-dark); background: #f0fdfa; padding: 2px 6px; border-radius: 4px;">${escapeHtml(item.campaign)}</code>
                         </td>
                         <td>
-                            <div style="direction: ltr; font-family: monospace; font-size: 11px; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(item.url)}">
-                                ${escapeHtml(item.url)}
+                            <div style="display: flex; align-items: center; gap: 6px; direction: ltr;">
+                                <a href="${escapeHtml(shortUrl)}" target="_blank" style="font-family: monospace; font-weight: 700; color: #047857; text-decoration: none; font-size: 12px; background: #ecfdf5; padding: 3px 8px; border-radius: 6px; border: 1px solid #a7f3d0;" title="فتح الرابط المختصر">
+                                    ${escapeHtml(shortUrl.replace('https://', ''))} ↗
+                                </a>
+                                <button class="btn-copy-tbl" style="padding: 3px 6px; font-size: 11px; background: #10b981; color: white;" onclick="copyTableUrl('${escapeHtml(shortUrl)}')">⚡</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 6px; direction: ltr;">
+                                <div style="font-family: monospace; font-size: 10.5px; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #64748b;" title="${escapeHtml(item.url)}">
+                                    ${escapeHtml(item.url)}
+                                </div>
+                                <button class="btn-copy-tbl" style="padding: 3px 6px; font-size: 11px;" onclick="copyTableUrl('${escapeHtml(item.url)}')">📋</button>
                             </div>
                         </td>
                         <td style="text-align: center; white-space: nowrap;">
-                            <button class="btn-copy-tbl" onclick="copyTableUrl('${escapeHtml(item.url)}')">نسخ 📋</button>
                             <button class="btn-del-tbl" onclick="deleteHistoryItem('${item.id}')" title="حذف">✕</button>
                         </td>
                     </tr>

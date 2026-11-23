@@ -55,7 +55,7 @@
       <div class="flex items-center gap-2 flex-wrap">
         <span class="text-xs text-slate-300 font-bold">سيناريوهات سريعة:</span>
         <button onclick="setScenario('breakeven')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition shadow">
-          نقطة التعادل (23)
+          نقطة التعادل (27)
         </button>
         <button onclick="setScenario('standard')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-900/40 transition">
           الهدف القياسي (45) ⭐
@@ -343,9 +343,9 @@
         </div>
 
         <div class="space-y-2 text-xs">
-          <!-- Section 1: Team & Sales -->
+          <!-- Section 1: Team, Marketing & Content -->
           <div class="text-[11px] font-black text-slate-400 flex items-center gap-1 pt-0.5 border-b border-slate-800/60 pb-1">
-            <span>👥</span> فريق العمل والمبيعات
+            <span>👥</span> فريق العمل والتسويق والمحتوى
           </div>
 
           <div class="flex items-center justify-between gap-2">
@@ -361,6 +361,16 @@
           <div class="flex items-center justify-between gap-2">
             <label class="text-slate-300 font-bold flex-1">مسؤول مبيعات ودعم الواتساب:</label>
             <input id="salary-sales" type="number" step="500" value="5000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-slate-300 font-bold flex-1">إدارة السوشيال ميديا:</label>
+            <input id="cost-social" type="number" step="500" value="5000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold text-indigo-300" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-slate-300 font-bold flex-1">مونتير ومصممين:</label>
+            <input id="cost-creatives" type="number" step="500" value="6000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold text-indigo-300" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
@@ -575,7 +585,7 @@
 
     function setScenario(type) {
       if (type === 'breakeven') {
-        document.getElementById('range-total-members').value = 23;
+        document.getElementById('range-total-members').value = 27;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
         setSplitPreset(30);
@@ -617,6 +627,8 @@
       const salNutri = parseFloat(document.getElementById('salary-nutri').value) || 0;
       const salCoach = parseFloat(document.getElementById('salary-coach').value) || 0;
       const salSales = parseFloat(document.getElementById('salary-sales').value) || 0;
+      const costSocial = parseFloat(document.getElementById('cost-social').value) || 0;
+      const costCreatives = parseFloat(document.getElementById('cost-creatives').value) || 0;
       const salesComm = parseFloat(document.getElementById('sales-comm').value) || 0;
       const costRent = parseFloat(document.getElementById('cost-rent').value) || 0;
       const costEditing = parseFloat(document.getElementById('cost-editing').value) || 0;
@@ -670,11 +682,11 @@
 
       // Expenses Calculation
       const totalStaff = salNutri + salCoach + salSales + (salesComm * totalMembers);
-      const totalFixedOps = salNutri + salCoach + salSales + costRent + costEditing + costInternet + costTech;
+      const totalFixedOps = salNutri + salCoach + salSales + costSocial + costCreatives + costRent + costEditing + costInternet + costTech;
       document.getElementById('readout-total-staff').innerText = Math.round(totalFixedOps + (salesComm * totalMembers)).toLocaleString() + ' ج';
 
       const gatewayCost = totalRevenue * gatewayRate;
-      const totalExpenses = adSpend + totalStaff + costRent + costEditing + costInternet + costTech + gatewayCost;
+      const totalExpenses = adSpend + totalStaff + costSocial + costCreatives + costRent + costEditing + costInternet + costTech + gatewayCost;
       document.getElementById('kpi-expenses').innerText = Math.round(totalExpenses).toLocaleString() + ' ج.م';
 
       const adRatio = totalRevenue > 0 ? Math.round((adSpend / totalRevenue) * 100) : 0;
@@ -701,7 +713,7 @@
       }
 
       // Break-Even Calculation
-      const fixedCosts = adSpend + salNutri + salCoach + salSales + costRent + costEditing + costInternet + costTech;
+      const fixedCosts = adSpend + salNutri + salCoach + salSales + costSocial + costCreatives + costRent + costEditing + costInternet + costTech;
       const contributionPerMember = (arpu * (1 - gatewayRate)) - salesComm;
       const breakEvenMembers = contributionPerMember > 0 ? Math.ceil(fixedCosts / contributionPerMember) : 0;
       document.getElementById('kpi-breakeven').innerText = breakEvenMembers + ' مشتركاً';

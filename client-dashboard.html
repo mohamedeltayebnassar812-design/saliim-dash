@@ -433,6 +433,7 @@
           (c.email && c.email.toLowerCase().includes(query)) ||
           (c.phone && c.phone.includes(query)) ||
           (c.package && c.package.toLowerCase().includes(query)) ||
+          (c.agentEmail && c.agentEmail.toLowerCase().includes(query)) ||
           (c.agentName && c.agentName.toLowerCase().includes(query)) ||
           (c.ref && c.ref.toLowerCase().includes(query))
         );
@@ -477,7 +478,7 @@
             <td class="py-3.5 px-4 whitespace-nowrap">
               <div class="font-mono text-emerald-400 font-bold">${c.ref || c.id}</div>
               <div class="text-[11px] text-slate-400">${c.dateFormatted || c.submittedAt.split('T')[0]}</div>
-              <div class="text-[10px] text-slate-500 mt-0.5">موظف: ${escapeHtml(c.agentName || '—')}</div>
+              <div class="text-[10px] text-cyan-400/90 mt-0.5 font-mono" dir="ltr" title="إيميل الموظف المسؤول">📧 ${escapeHtml(c.agentEmail || c.agentName || '—')}</div>
             </td>
 
             <td class="py-3.5 px-4">
@@ -635,7 +636,7 @@
         return;
       }
 
-      let csvContent = "\uFEFFمعرّف العملية,التاريخ,اسم العميل,البريد الإلكتروني,رقم الهاتف,نوع الباقة,مدة الاشتراك,المبلغ,العملة,طريقة الدفع,موظف خدمة العملاء,حالة التسجيل بالموقع,ملاحظات\n";
+      let csvContent = "\uFEFFمعرّف العملية,التاريخ,اسم العميل,البريد الإلكتروني,رقم الهاتف,نوع الباقة,مدة الاشتراك,المبلغ,العملة,طريقة الدفع,إيميل موظف خدمة العملاء,حالة التسجيل بالموقع,ملاحظات\n";
 
       allClients.forEach(c => {
         const row = [
@@ -649,7 +650,7 @@
           `"${c.amount}"`,
           `"${c.currency}"`,
           `"${c.paymentMethod}"`,
-          `"${c.agentName || ''}"`,
+          `"${c.agentEmail || c.agentName || ''}"`,
           `"${c.status === 'registered' ? 'تم التسجيل بالموقع' : 'قيد الانتظار'}"`,
           `"${c.notes || ''}"`
         ];

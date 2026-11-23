@@ -219,14 +219,14 @@
             </div>
           </div>
 
-          <!-- CS AGENT & NOTES -->
+          <!-- CS AGENT EMAIL & NOTES -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1.5">
-                اسم موظف خدمة العملاء <span class="text-rose-400">*</span>
+                إيميل موظف خدمة العملاء (المسؤول) <span class="text-rose-400">*</span>
               </label>
-              <input type="text" id="csAgentName" required placeholder="اسمك أو كودك"
-                     class="input-field w-full px-4 py-2 rounded-xl text-sm">
+              <input type="email" id="csAgentEmail" required placeholder="employee@wahetnor.com" dir="ltr"
+                     class="input-field w-full px-4 py-2 rounded-xl text-sm text-left font-mono">
             </div>
 
             <div>
@@ -401,6 +401,11 @@
       const timestamp = new Date().toISOString();
       const localDate = new Date().toLocaleString('ar-EG');
 
+      const agentEmail = document.getElementById('csAgentEmail').value.trim();
+      if (agentEmail) {
+        try { localStorage.setItem('last_cs_agent_email', agentEmail); } catch(e) {}
+      }
+
       const clientData = {
         id: refId,
         ref: refId,
@@ -420,8 +425,10 @@
         amountPaid: parseFloat(document.getElementById('amountPaid').value) || 0,
         currency: document.getElementById('currency').value,
         paymentMethod: document.getElementById('paymentMethod').value,
-        agentName: document.getElementById('csAgentName').value.trim(),
-        moderatorName: document.getElementById('csAgentName').value.trim(),
+        agentEmail: agentEmail,
+        moderatorEmail: agentEmail,
+        agentName: agentEmail,
+        moderatorName: agentEmail,
         notes: document.getElementById('clientNotes').value.trim(),
         receiptImage: currentReceiptBase64,
         status: 'pending',
@@ -471,7 +478,11 @@
     }
 
     function resetForm() {
+      const savedEmail = localStorage.getItem('last_cs_agent_email') || '';
       document.getElementById('clientDepositForm').reset();
+      if (savedEmail && document.getElementById('csAgentEmail')) {
+        document.getElementById('csAgentEmail').value = savedEmail;
+      }
       currentReceiptBase64 = '';
       document.getElementById('receiptFileInput').value = '';
       document.getElementById('uploadPrompt').classList.remove('hidden');
@@ -495,6 +506,12 @@
     // Auto init
     window.addEventListener('DOMContentLoaded', () => {
       autoSuggestPrice();
+      try {
+        const savedEmail = localStorage.getItem('last_cs_agent_email');
+        if (savedEmail && document.getElementById('csAgentEmail')) {
+          document.getElementById('csAgentEmail').value = savedEmail;
+        }
+      } catch(e) {}
     });
   </script>
 </body>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>داشبورد المحاكاة المالية لمنظومة واحة نور</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    input[type=range] {
+      accent-color: var(--primary, #10b981);
+    }
+    .metric-card {
+      background: var(--card, rgba(255,255,255,0.05));
+      border: 1px solid var(--card-border, rgba(255,255,255,0.1));
+    }
+  </style>
+</head>
+<body class="bg-transparent text-[var(--foreground,#0f172a)] antialiased p-2 m-0 text-xs">
+
+  <div class="max-w-5xl mx-auto space-y-4">
+    
+    <!-- Header & Presets -->
+    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[var(--card-border,#e2e8f0)]">
+      <div>
+        <h1 class="text-base font-bold flex items-center gap-2">
+          <span>🌿</span> محاكي الجدوى المالية والتسعير المعتمد — واحة نور
+        </h1>
+        <p class="text-[11px] text-[var(--muted-foreground,#64748b)]">تحكم لحظي في الأسعار الجديدة (2499 ج / 1499 ج / 999 ج)، وتكاليف الموظفين، والإعلانات</p>
+      </div>
+      <div class="flex items-center gap-1.5 flex-wrap">
+        <span class="text-[10px] text-[var(--muted-foreground,#64748b)]">سيناريوهات سريعة:</span>
+        <button onclick="setScenario('breakeven')" class="px-2 py-1 rounded bg-[var(--secondary,#f1f5f9)] hover:bg-[var(--accent,#e2e8f0)] text-[10px] font-medium transition">نقطة التعادل (30)</button>
+        <button onclick="setScenario('standard')" class="px-2 py-1 rounded bg-[var(--primary,#10b981)] text-white hover:opacity-90 text-[10px] font-medium transition">الهدف القياسي (45)</button>
+        <button onclick="setScenario('growth')" class="px-2 py-1 rounded bg-[var(--secondary,#f1f5f9)] hover:bg-[var(--accent,#e2e8f0)] text-[10px] font-medium transition">مرحلة التوسع (70)</button>
+      </div>
+    </div>
+
+    <!-- Top KPI Highlights -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+      <div class="metric-card rounded-lg p-3 text-center">
+        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">إجمالي الإيرادات</div>
+        <div id="kpi-revenue" class="text-base font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">0 ج.م</div>
+        <div id="kpi-arpu" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">متوسط المشترك: 0 ج</div>
+      </div>
+      <div class="metric-card rounded-lg p-3 text-center">
+        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">إجمالي التكاليف (OPEX)</div>
+        <div id="kpi-expenses" class="text-base font-bold text-rose-500 font-mono mt-0.5">0 ج.م</div>
+        <div id="kpi-ad-ratio" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">الإعلانات: 0% من الدخل</div>
+      </div>
+      <div class="metric-card rounded-lg p-3 text-center">
+        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">صافي الربح الشهري</div>
+        <div id="kpi-profit" class="text-base font-bold font-mono mt-0.5 text-emerald-600">0 ج.م</div>
+        <div id="kpi-margin" class="text-[9px] font-semibold mt-0.5 text-emerald-600">هامش الربح: 0%</div>
+      </div>
+      <div class="metric-card rounded-lg p-3 text-center border-l-2 border-l-emerald-500">
+        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">نقطة التعادل (Break-Even)</div>
+        <div id="kpi-breakeven" class="text-base font-bold font-mono mt-0.5 text-indigo-500">30 مشتركاً</div>
+        <div id="kpi-safety-margin" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">فائض أمان: 0 مشترك</div>
+      </div>
+    </div>
+
+    <!-- Main Grid: Controls & Insights -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+
+      <!-- Column 1: Pricing Tiers Inputs -->
+      <div class="metric-card rounded-lg p-3 space-y-3">
+        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
+          <span class="flex items-center gap-1.5">🏷️ أسعار الباقات الثلاث (المحدثة)</span>
+          <span class="text-[9px] text-[var(--muted-foreground,#64748b)]">الدولار = 50 ج</span>
+        </div>
+
+        <!-- Elite -->
+        <div class="space-y-1 bg-amber-500/5 p-2 rounded border border-amber-500/20">
+          <div class="flex justify-between items-center font-semibold text-amber-600 dark:text-amber-400">
+            <span>👑 باقة النخبة (Elite 1:1)</span>
+            <span class="text-[9px] bg-amber-500/20 px-1 rounded">سقف 15 مقعداً</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-1">
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
+              <input id="price-elite-eg" type="number" step="100" value="2499" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-amber-600" oninput="calculate()">
+            </div>
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
+              <input id="price-elite-gcc" type="number" step="1" value="79" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-amber-600" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Mix -->
+        <div class="space-y-1 bg-emerald-500/5 p-2 rounded border border-emerald-500/30">
+          <div class="flex justify-between items-center font-semibold text-emerald-600 dark:text-emerald-400">
+            <span>⚡ باقة الميكس (Hybrid)</span>
+            <span class="text-[9px] bg-emerald-500 text-white px-1 rounded">الأكثر طلباً ⭐</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-1">
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
+              <input id="price-mix-eg" type="number" step="100" value="1499" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-emerald-600" oninput="calculate()">
+            </div>
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
+              <input id="price-mix-gcc" type="number" step="1" value="49" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-emerald-600" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Community -->
+        <div class="space-y-1 bg-blue-500/5 p-2 rounded border border-blue-500/20">
+          <div class="flex justify-between items-center font-semibold text-blue-600 dark:text-blue-400">
+            <span>🌟 باقة الكوميونيتي</span>
+            <span class="text-[9px]">جماعي فقط</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-1">
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
+              <input id="price-comm-eg" type="number" step="50" value="999" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-blue-600" oninput="calculate()">
+            </div>
+            <div>
+              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
+              <input id="price-comm-gcc" type="number" step="1" value="34" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-blue-600" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Volume & Ad Spend Controls -->
+      <div class="metric-card rounded-lg p-3 space-y-3">
+        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
+          <span>👥 المشتركون والإعلانات</span>
+          <span id="readout-total-members" class="font-mono text-emerald-600 font-bold">45 مشترك</span>
+        </div>
+
+        <div class="space-y-2">
+          <div>
+            <div class="flex justify-between text-[10px]">
+              <span class="text-[var(--muted-foreground,#64748b)]">إجمالي المشتركين بالدفعة:</span>
+              <span id="val-total-members" class="font-bold font-mono">45</span>
+            </div>
+            <input id="range-total-members" type="range" min="10" max="100" value="45" class="w-full" oninput="syncRange('total-members')">
+          </div>
+
+          <div>
+            <div class="flex justify-between text-[10px]">
+              <span class="text-[var(--muted-foreground,#64748b)]">نسبة الخليج vs مصر:</span>
+              <span id="val-gcc-pct" class="font-mono">40% خليج · 60% مصر</span>
+            </div>
+            <input id="range-gcc-pct" type="range" min="10" max="80" value="40" class="w-full" oninput="syncRange('gcc-pct')">
+          </div>
+
+          <div class="pt-1 border-t border-[var(--card-border,#e2e8f0)]">
+            <div class="text-[10px] text-[var(--muted-foreground,#64748b)] mb-1">توزيع المشتركين على الباقات:</div>
+            <div class="grid grid-cols-3 gap-1.5 text-center">
+              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
+                <div class="text-[8px] text-amber-500 font-bold">Elite (25%)</div>
+                <div id="count-elite" class="font-bold font-mono">11</div>
+              </div>
+              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
+                <div class="text-[8px] text-emerald-500 font-bold">Mix (50%)</div>
+                <div id="count-mix" class="font-bold font-mono">23</div>
+              </div>
+              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
+                <div class="text-[8px] text-blue-500 font-bold">Comm (25%)</div>
+                <div id="count-comm" class="font-bold font-mono">11</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-1 border-t border-[var(--card-border,#e2e8f0)] space-y-1">
+            <div class="flex justify-between text-[10px]">
+              <span class="text-[var(--muted-foreground,#64748b)]">ميزانية الإعلانات الشهرية:</span>
+              <span id="val-ad-spend" class="font-bold font-mono text-rose-500">30,000 ج</span>
+            </div>
+            <input id="range-ad-spend" type="range" min="10000" max="80000" step="2500" value="30000" class="w-full" oninput="syncRange('ad-spend')">
+            <div class="flex justify-between text-[8px] text-[var(--muted-foreground,#64748b)]">
+              <span>تكلفة الاستحواذ المقدرة (CAC): <strong id="val-cac" class="font-mono text-[var(--foreground,#0f172a)]">667 ج</strong></span>
+              <span>1,500 ج/يوم (20 يوم)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Salaries & Staffing OPEX -->
+      <div class="metric-card rounded-lg p-3 space-y-3">
+        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
+          <span>💼 رواتب ومصاريف الفريق</span>
+          <span id="readout-total-staff" class="font-mono text-rose-500 font-bold">25,500 ج</span>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">أخصائي التغذية (شهرياً):</label>
+            <input id="salary-nutri" type="number" step="500" value="9000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">كوتش الحركة والنشاط:</label>
+            <input id="salary-coach" type="number" step="500" value="7000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">مسؤول مبيعات ودعم الواتساب:</label>
+            <input id="salary-sales" type="number" step="500" value="5000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">عمولة مبيعات (لكل مشترك):</label>
+            <input id="sales-comm" type="number" step="10" value="100" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">سيرفرات وأدوات تقنية:</label>
+            <input id="cost-tech" type="number" step="200" value="2500" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+          </div>
+
+          <div class="flex items-center justify-between gap-2">
+            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">عمولة بوابات الدفع (EasyKash):</label>
+            <div class="flex items-center gap-1">
+              <input id="rate-gateway" type="number" step="0.1" value="3.5" class="w-14 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+              <span class="text-[10px] text-[var(--muted-foreground,#64748b)]">%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Capacity & Strategic Benchmarks Box -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+      
+      <!-- Staff Capacity Gauge -->
+      <div class="metric-card rounded-lg p-3 space-y-2">
+        <div class="font-bold flex items-center justify-between text-xs">
+          <span>⏱️ سعة وقت الفريق ومعدل الإشغال (Capacity)</span>
+          <span id="capacity-status-badge" class="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-600">طاقة مريحة جداً</span>
+        </div>
+        <div class="space-y-1.5 text-[10px]">
+          <div>
+            <div class="flex justify-between text-[9px] text-[var(--muted-foreground,#64748b)] mb-0.5">
+              <span>ساعات أخصائي التغذية شهرياً:</span>
+              <span id="nutri-hours" class="font-mono font-bold">24.3 ساعة</span>
+            </div>
+            <div class="w-full bg-[var(--border,#cbd5e1)] rounded-full h-1.5 overflow-hidden">
+              <div id="nutri-bar" class="bg-emerald-500 h-1.5 rounded-full" style="width: 30%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[9px] text-[var(--muted-foreground,#64748b)] mb-0.5">
+              <span>ساعات كوتش الحركة شهرياً:</span>
+              <span id="coach-hours" class="font-mono font-bold">22.5 ساعة</span>
+            </div>
+            <div class="w-full bg-[var(--border,#cbd5e1)] rounded-full h-1.5 overflow-hidden">
+              <div id="coach-bar" class="bg-blue-500 h-1.5 rounded-full" style="width: 28%"></div>
+            </div>
+          </div>
+          <p id="capacity-note" class="text-[9px] text-[var(--muted-foreground,#64748b)] pt-1">
+            الفريق يعمل بمعدل ~6 ساعات أسبوعياً فقط. طاقة استيعابية ممتازة ومريحة.
+          </p>
+        </div>
+      </div>
+
+      <!-- Guiding Benchmarks Checklist -->
+      <div class="metric-card rounded-lg p-3 space-y-1.5 text-[10px]">
+        <div class="font-bold text-xs flex items-center gap-1.5 text-indigo-500">
+          <span>📌 أرقام استرشادية لنمو صحي (Healthy Benchmarks)</span>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
+            <span class="text-[var(--muted-foreground,#64748b)]">هامش الربح الصافي المستهدف:</span>
+            <span class="font-bold text-emerald-600 font-mono">> 40% - 50%</span>
+          </div>
+          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
+            <span class="text-[var(--muted-foreground,#64748b)]">نسبة مصاريف الإعلانات من الإيراد:</span>
+            <span class="font-bold text-blue-500 font-mono">< 30% - 35%</span>
+          </div>
+          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
+            <span class="text-[var(--muted-foreground,#64748b)]">نسبة الرواتب الثابتة من الإيراد:</span>
+            <span class="font-bold text-amber-500 font-mono">< 25% - 30%</span>
+          </div>
+          <div class="flex items-center justify-between py-0.5">
+            <span class="text-[var(--muted-foreground,#64748b)]">الحد الأقصى الموصى به لمقاعد Elite:</span>
+            <span class="font-bold text-rose-500 font-mono">15 مقعداً شهرياً</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const USD_RATE = 50.0;
+
+    function syncRange(key) {
+      if (key === 'total-members') {
+        const val = document.getElementById('range-total-members').value;
+        document.getElementById('val-total-members').innerText = val;
+        document.getElementById('readout-total-members').innerText = val + ' مشترك';
+      } else if (key === 'gcc-pct') {
+        const val = document.getElementById('range-gcc-pct').value;
+        document.getElementById('val-gcc-pct').innerText = val + '% خليج · ' + (100 - val) + '% مصر';
+      } else if (key === 'ad-spend') {
+        const val = parseInt(document.getElementById('range-ad-spend').value);
+        document.getElementById('val-ad-spend').innerText = val.toLocaleString() + ' ج';
+      }
+      calculate();
+    }
+
+    function setScenario(type) {
+      if (type === 'breakeven') {
+        document.getElementById('range-total-members').value = 30;
+        document.getElementById('range-gcc-pct').value = 40;
+        document.getElementById('range-ad-spend').value = 30000;
+      } else if (type === 'standard') {
+        document.getElementById('range-total-members').value = 45;
+        document.getElementById('range-gcc-pct').value = 40;
+        document.getElementById('range-ad-spend').value = 30000;
+      } else if (type === 'growth') {
+        document.getElementById('range-total-members').value = 70;
+        document.getElementById('range-gcc-pct').value = 45;
+        document.getElementById('range-ad-spend').value = 45000;
+      }
+      syncRange('total-members');
+      syncRange('gcc-pct');
+      syncRange('ad-spend');
+    }
+
+    function calculate() {
+      // Inputs
+      const pEliteEg = parseFloat(document.getElementById('price-elite-eg').value) || 0;
+      const pEliteGcc = (parseFloat(document.getElementById('price-elite-gcc').value) || 0) * USD_RATE;
+
+      const pMixEg = parseFloat(document.getElementById('price-mix-eg').value) || 0;
+      const pMixGcc = (parseFloat(document.getElementById('price-mix-gcc').value) || 0) * USD_RATE;
+
+      const pCommEg = parseFloat(document.getElementById('price-comm-eg').value) || 0;
+      const pCommGcc = (parseFloat(document.getElementById('price-comm-gcc').value) || 0) * USD_RATE;
+
+      const totalMembers = parseInt(document.getElementById('range-total-members').value) || 0;
+      const gccPct = (parseInt(document.getElementById('range-gcc-pct').value) || 40) / 100;
+      const egPct = 1.0 - gccPct;
+
+      const adSpend = parseFloat(document.getElementById('range-ad-spend').value) || 0;
+      const salNutri = parseFloat(document.getElementById('salary-nutri').value) || 0;
+      const salCoach = parseFloat(document.getElementById('salary-coach').value) || 0;
+      const salSales = parseFloat(document.getElementById('salary-sales').value) || 0;
+      const salesComm = parseFloat(document.getElementById('sales-comm').value) || 0;
+      const costTech = parseFloat(document.getElementById('cost-tech').value) || 0;
+      const gatewayRate = (parseFloat(document.getElementById('rate-gateway').value) || 3.5) / 100;
+
+      // Member Distribution: 25% Elite, 50% Mix, 25% Community
+      const countElite = Math.round(totalMembers * 0.25);
+      const countMix = Math.round(totalMembers * 0.50);
+      const countComm = Math.max(0, totalMembers - countElite - countMix);
+
+      document.getElementById('count-elite').innerText = countElite;
+      document.getElementById('count-mix').innerText = countMix;
+      document.getElementById('count-comm').innerText = countComm;
+
+      // Revenue Calculation
+      const revElite = countElite * ((egPct * pEliteEg) + (gccPct * pEliteGcc));
+      const revMix = countMix * ((egPct * pMixEg) + (gccPct * pMixGcc));
+      const revComm = countComm * ((egPct * pCommEg) + (gccPct * pCommGcc));
+      const totalRevenue = revElite + revMix + revComm;
+
+      const arpu = totalMembers > 0 ? (totalRevenue / totalMembers) : 0;
+      document.getElementById('kpi-revenue').innerText = Math.round(totalRevenue).toLocaleString() + ' ج.م';
+      document.getElementById('kpi-arpu').innerText = 'متوسط المشترك: ' + Math.round(arpu).toLocaleString() + ' ج';
+
+      // Expenses Calculation
+      const totalStaff = salNutri + salCoach + salSales + (salesComm * totalMembers);
+      document.getElementById('readout-total-staff').innerText = Math.round(totalStaff).toLocaleString() + ' ج';
+
+      const gatewayCost = totalRevenue * gatewayRate;
+      const totalExpenses = adSpend + totalStaff + costTech + gatewayCost;
+      document.getElementById('kpi-expenses').innerText = Math.round(totalExpenses).toLocaleString() + ' ج.م';
+
+      const adRatio = totalRevenue > 0 ? Math.round((adSpend / totalRevenue) * 100) : 0;
+      document.getElementById('kpi-ad-ratio').innerText = 'الإعلانات: ' + adRatio + '% من الدخل';
+
+      const cac = totalMembers > 0 ? Math.round(adSpend / totalMembers) : 0;
+      document.getElementById('val-cac').innerText = cac.toLocaleString() + ' ج';
+
+      // Net Profit & Margin
+      const netProfit = totalRevenue - totalExpenses;
+      const profitEl = document.getElementById('kpi-profit');
+      const marginEl = document.getElementById('kpi-margin');
+
+      profitEl.innerText = Math.round(netProfit).toLocaleString() + ' ج.م';
+      const margin = totalRevenue > 0 ? Math.round((netProfit / totalRevenue) * 100) : 0;
+      marginEl.innerText = 'هامش الربح: ' + margin + '%';
+
+      if (netProfit >= 0) {
+        profitEl.className = 'text-base font-bold font-mono mt-0.5 text-emerald-600 dark:text-emerald-400';
+        marginEl.className = 'text-[9px] font-semibold mt-0.5 text-emerald-600 dark:text-emerald-400';
+      } else {
+        profitEl.className = 'text-base font-bold font-mono mt-0.5 text-rose-500';
+        marginEl.className = 'text-[9px] font-semibold mt-0.5 text-rose-500';
+      }
+
+      // Break-Even Calculation
+      // Fixed Costs = adSpend + salNutri + salCoach + salSales + costTech
+      const fixedCosts = adSpend + salNutri + salCoach + salSales + costTech;
+      // Contribution margin per member = arpu * (1 - gatewayRate) - salesComm
+      const contributionPerMember = (arpu * (1 - gatewayRate)) - salesComm;
+      const breakEvenMembers = contributionPerMember > 0 ? Math.ceil(fixedCosts / contributionPerMember) : 0;
+      document.getElementById('kpi-breakeven').innerText = breakEvenMembers + ' مشتركاً';
+
+      const safetyMargin = totalMembers - breakEvenMembers;
+      const safetyEl = document.getElementById('kpi-safety-margin');
+      if (safetyMargin >= 0) {
+        safetyEl.innerText = 'فائض أمان: +' + safetyMargin + ' مشترك';
+        safetyEl.className = 'text-[9px] text-emerald-600 font-medium mt-0.5';
+      } else {
+        safetyEl.innerText = 'عجز لتحقيق التعادل: ' + safetyMargin + ' مشترك';
+        safetyEl.className = 'text-[9px] text-rose-500 font-medium mt-0.5';
+      }
+
+      // Capacity Calculation
+      const nutriMinutes = (countElite * 70) + (countMix * 30);
+      const coachMinutes = (countElite * 60) + (countMix * 30);
+
+      const nutriHours = (nutriMinutes / 60).toFixed(1);
+      const coachHours = (coachMinutes / 60).toFixed(1);
+
+      document.getElementById('nutri-hours').innerText = nutriHours + ' ساعة';
+      document.getElementById('coach-hours').innerText = coachHours + ' ساعة';
+
+      const nutriBarPct = Math.min(100, Math.round((nutriHours / 80) * 100));
+      const coachBarPct = Math.min(100, Math.round((coachHours / 80) * 100));
+
+      document.getElementById('nutri-bar').style.width = nutriBarPct + '%';
+      document.getElementById('coach-bar').style.width = coachBarPct + '%';
+
+      const badge = document.getElementById('capacity-status-badge');
+      const note = document.getElementById('capacity-note');
+
+      if (nutriHours <= 35) {
+        badge.innerText = 'طاقة مريحة جداً';
+        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-600';
+        note.innerText = 'الفريق يعمل بمعدل ~' + (nutriHours / 4).toFixed(1) + ' ساعات أسبوعياً فقط. يمكن استيعاب حتى 50-60 مشتركاً دون أي توظيف إضافي.';
+      } else if (nutriHours <= 60) {
+        badge.innerText = 'طاقة عمل مثالية ومستقرة';
+        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-blue-500/20 text-blue-600';
+        note.innerText = 'استغلال ممتاز لوقت الفريق (~' + (nutriHours / 4).toFixed(1) + ' ساعة أسبوعياً). لا حاجة لتوظيف جديد.';
+      } else {
+        badge.innerText = 'تنبيه: اقتراب من الحد الأقصى';
+        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-600';
+        note.innerText = 'ضغط جلسات مرتفع (~' + (nutriHours / 4).toFixed(1) + ' ساعة أسبوعياً). ستحتاج لإضافة أخصائي ثانٍ عند تجاوز هذا الرقم.';
+      }
+    }
+
+    // Initial run
+    calculate();
+  </script>
+</body>
+</html>

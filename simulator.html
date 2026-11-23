@@ -84,9 +84,12 @@
 
       <!-- Net Profit -->
       <div class="panel-card rounded-2xl p-4 border-r-4 border-r-amber-400">
-        <div class="text-xs font-bold text-slate-300">صافي الربح الفوري الخالص</div>
+        <div class="text-xs font-bold text-slate-300">صافي ربح د. أحمد (بعد نسبة الإدارة)</div>
         <div id="kpi-profit" class="text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400">0 ج.م</div>
-        <div id="kpi-margin" class="text-xs font-black mt-1 text-emerald-400">هامش الربح: 0%</div>
+        <div class="flex items-center justify-between text-[11px] mt-1 pt-0.5 border-t border-slate-800">
+          <span id="kpi-om-share" class="text-amber-300 font-bold">العمليات (10%): 0 ج</span>
+          <span id="kpi-margin" class="font-black text-emerald-400">الهامش: 0%</span>
+        </div>
       </div>
 
       <!-- Break Even -->
@@ -410,6 +413,23 @@
               <span class="text-slate-300 font-bold">%</span>
             </div>
           </div>
+
+          <!-- Section 3: Operations Manager Profit Share -->
+          <div class="pt-2 border-t border-slate-800 space-y-1.5">
+            <div class="text-[11px] font-black text-amber-400 flex items-center justify-between">
+              <span class="flex items-center gap-1">
+                <span>🎯</span> نسبة مدير العمليات (Operation Manager):
+              </span>
+              <span id="readout-om-amount" class="text-amber-300 font-mono font-bold text-[10px]">المستحق: 0 ج</span>
+            </div>
+            <div class="flex items-center justify-between gap-2 bg-amber-950/30 p-2 rounded-xl border border-amber-500/40">
+              <label class="text-slate-200 font-bold flex-1 text-xs">نسبة من صافي الربح:</label>
+              <div class="flex items-center gap-1.5">
+                <input id="rate-om" type="number" step="1" min="0" max="50" value="10" class="input-box w-16 p-1.5 rounded-xl text-center text-xs font-black text-amber-300" oninput="calculate()">
+                <span class="text-amber-300 font-black text-xs">%</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -695,21 +715,29 @@
       const cac = totalMembers > 0 ? Math.round(adSpend / totalMembers) : 0;
       document.getElementById('val-cac').innerText = cac.toLocaleString() + ' ج';
 
-      // Net Profit & Margin
-      const netProfit = totalRevenue - totalExpenses;
+      // Net Profit & OM Profit Share
+      const netProfitBeforeOM = totalRevenue - totalExpenses;
+      const rateOM = (parseFloat(document.getElementById('rate-om').value) || 0) / 100;
+      const omShare = netProfitBeforeOM > 0 ? (netProfitBeforeOM * rateOM) : 0;
+      const drNetProfit = netProfitBeforeOM - omShare;
+
+      document.getElementById('readout-om-amount').innerText = 'المستحق: ' + Math.round(omShare).toLocaleString() + ' ج';
+
       const profitEl = document.getElementById('kpi-profit');
       const marginEl = document.getElementById('kpi-margin');
+      const omShareEl = document.getElementById('kpi-om-share');
 
-      profitEl.innerText = Math.round(netProfit).toLocaleString() + ' ج.م';
-      const margin = totalRevenue > 0 ? Math.round((netProfit / totalRevenue) * 100) : 0;
-      marginEl.innerText = 'هامش الربح: ' + margin + '%';
+      profitEl.innerText = Math.round(drNetProfit).toLocaleString() + ' ج.م';
+      const margin = totalRevenue > 0 ? Math.round((drNetProfit / totalRevenue) * 100) : 0;
+      marginEl.innerText = 'الهامش: ' + margin + '%';
+      omShareEl.innerText = 'العمليات (' + Math.round(rateOM * 100) + '%): ' + Math.round(omShare).toLocaleString() + ' ج';
 
-      if (netProfit >= 0) {
+      if (drNetProfit >= 0) {
         profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400';
-        marginEl.className = 'text-xs font-black mt-1 text-emerald-400';
+        marginEl.className = 'font-black text-emerald-400';
       } else {
         profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-rose-400';
-        marginEl.className = 'text-xs font-black mt-1 text-rose-400';
+        marginEl.className = 'font-black text-rose-400';
       }
 
       // Break-Even Calculation

@@ -396,9 +396,17 @@
       <!-- Column 3: Salaries & Operational OPEX -->
       <div class="panel-card rounded-2xl p-4 space-y-3">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
-          <h2 class="font-black text-sm text-white flex items-center gap-2">
-            <span>🏢</span> المصاريف التشغيلية والمقر
-          </h2>
+          <div class="flex items-center gap-1.5">
+            <h2 class="font-black text-sm text-white flex items-center gap-1.5">
+              <span>🏢</span> المصاريف التشغيلية
+            </h2>
+            <button onclick="saveExpensesToStorage()" title="حفظ هذه الأرقام في المتصفح حتى لا تضطر لتعديلها في كل زيارة" class="px-2 py-0.5 rounded-lg bg-emerald-950/90 hover:bg-emerald-900 text-[10px] font-bold text-emerald-300 border border-emerald-700 transition flex items-center gap-1 shadow">
+              <span>💾</span> <span>حفظ أرقامي</span>
+            </button>
+            <button onclick="resetExpensesDefaults()" title="استعادة الأرقام الافتراضية الأصلية" class="px-1.5 py-0.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-400 border border-slate-700 transition">
+              <span>🔄</span>
+            </button>
+          </div>
           <span id="readout-total-staff" class="font-mono text-rose-400 font-black text-xs bg-slate-900 px-2.5 py-0.5 rounded-lg border border-slate-700">33,800 ج</span>
         </div>
 
@@ -486,6 +494,14 @@
                 <span class="text-amber-300 font-black text-xs">%</span>
               </div>
             </div>
+          </div>
+
+          <!-- Save Expenses to LocalStorage Button -->
+          <div class="pt-2 border-t border-slate-800/80">
+            <button onclick="saveExpensesToStorage()" class="w-full py-2 rounded-xl bg-gradient-to-r from-emerald-600/30 to-teal-600/30 hover:from-emerald-600/40 hover:to-teal-600/40 text-emerald-300 border border-emerald-500/50 text-xs font-black transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40">
+              <span>💾</span> <span>حفظ أرقام المصاريف (تذكرها دائماً)</span>
+            </button>
+            <p id="save-status-msg" class="text-[10px] text-center text-slate-400 mt-1">يتم حفظ أرقامك في هذا المتصفح لتبقى ثابتة دون الحاجة لإعادة كتابتها.</p>
           </div>
         </div>
       </div>
@@ -977,7 +993,95 @@
       }
     }
 
-        // Share & URL State Functions
+            // LocalStorage Expenses Persistence Functions
+    const STORAGE_KEY_EXPENSES = 'wahet_nour_saved_expenses_v1';
+
+    function saveExpensesToStorage() {
+      const data = {
+        nutri: document.getElementById('salary-nutri').value,
+        coach: document.getElementById('salary-coach').value,
+        sales: document.getElementById('salary-sales').value,
+        social: document.getElementById('cost-social').value,
+        creatives: document.getElementById('cost-creatives').value,
+        comm: document.getElementById('sales-comm').value,
+        rent: document.getElementById('cost-rent').value,
+        editing: document.getElementById('cost-editing').value,
+        internet: document.getElementById('cost-internet').value,
+        tech: document.getElementById('cost-tech').value,
+        gateway: document.getElementById('rate-gateway').value,
+        om: document.getElementById('rate-om').value
+      };
+
+      try {
+        localStorage.setItem(STORAGE_KEY_EXPENSES, JSON.stringify(data));
+        showToast('تم حفظ أرقام بند المصاريف بنجاح! سيتم تذكرها في كل زيارة.');
+        const statusEl = document.getElementById('save-status-msg');
+        if (statusEl) {
+          statusEl.innerText = 'تم حفظ أرقامك بنجاح ✅ ستظهر دائماً عند فتح الصفحة.';
+          statusEl.className = 'text-[10px] text-center text-emerald-400 mt-1 font-bold';
+        }
+      } catch (e) {
+        showToast('تعذر الحفظ في المتصفح');
+      }
+    }
+
+    function loadExpensesFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY_EXPENSES);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+
+        if (data.nutri) document.getElementById('salary-nutri').value = data.nutri;
+        if (data.coach) document.getElementById('salary-coach').value = data.coach;
+        if (data.sales) document.getElementById('salary-sales').value = data.sales;
+        if (data.social) document.getElementById('cost-social').value = data.social;
+        if (data.creatives) document.getElementById('cost-creatives').value = data.creatives;
+        if (data.comm) document.getElementById('sales-comm').value = data.comm;
+        if (data.rent) document.getElementById('cost-rent').value = data.rent;
+        if (data.editing) document.getElementById('cost-editing').value = data.editing;
+        if (data.internet) document.getElementById('cost-internet').value = data.internet;
+        if (data.tech) document.getElementById('cost-tech').value = data.tech;
+        if (data.gateway) document.getElementById('rate-gateway').value = data.gateway;
+        if (data.om) document.getElementById('rate-om').value = data.om;
+
+        const statusEl = document.getElementById('save-status-msg');
+        if (statusEl) {
+          statusEl.innerText = 'تم تحميل أرقامك المحفوظة تلقائياً ✅';
+          statusEl.className = 'text-[10px] text-center text-emerald-400 mt-1 font-semibold';
+        }
+      } catch (e) {
+        console.error('Error loading expenses:', e);
+      }
+    }
+
+    function resetExpensesDefaults() {
+      try {
+        localStorage.removeItem(STORAGE_KEY_EXPENSES);
+      } catch (e) {}
+
+      document.getElementById('salary-nutri').value = 15000;
+      document.getElementById('salary-coach').value = 7000;
+      document.getElementById('salary-sales').value = 5000;
+      document.getElementById('cost-social').value = 5000;
+      document.getElementById('cost-creatives').value = 6000;
+      document.getElementById('sales-comm').value = 100;
+      document.getElementById('cost-rent').value = 6000;
+      document.getElementById('cost-editing').value = 1500;
+      document.getElementById('cost-internet').value = 800;
+      document.getElementById('cost-tech').value = 2500;
+      document.getElementById('rate-gateway').value = 3.5;
+      document.getElementById('rate-om').value = 10;
+
+      calculate();
+      showToast('تمت استعادة الأرقام الافتراضية للمصاريف.');
+      const statusEl = document.getElementById('save-status-msg');
+      if (statusEl) {
+        statusEl.innerText = 'الأرقام الافتراضية نشطة الآن. اضغط حفظ إذا أردت تثبيت أي تعديل.';
+        statusEl.className = 'text-[10px] text-center text-slate-400 mt-1';
+      }
+    }
+
+    // Share & URL State Functions
     function shareScenarioURL() {
       const params = new URLSearchParams();
       params.set('m', document.getElementById('range-total-members').value);
@@ -1042,6 +1146,7 @@
 
     // Initial run
     updateDistUI();
+    loadExpensesFromStorage();
     loadStateFromURL();
     calculate();
   </script>

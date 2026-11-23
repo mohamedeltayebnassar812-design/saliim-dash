@@ -219,23 +219,47 @@
             </div>
           </div>
 
-          <!-- CS AGENT EMAIL & NOTES -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">
-                إيميل موظف خدمة العملاء (المسؤول) <span class="text-rose-400">*</span>
-              </label>
-              <input type="email" id="csAgentEmail" required placeholder="employee@wahetnor.com" dir="ltr"
-                     class="input-field w-full px-4 py-2 rounded-xl text-sm text-left font-mono">
+          <!-- AGENT SESSION IDENTIFIER (AUTO FROM BROWSER) -->
+          <div class="pt-2">
+            <!-- Case A: Employee Email Already Recognized In Browser -->
+            <div id="agentActiveBadge" class="hidden p-3.5 rounded-2xl bg-slate-900/90 border border-emerald-500/30 flex items-center justify-between gap-3 shadow-lg">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div class="truncate">
+                  <div class="text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>تم التعرّف على الموظف تلقائياً من المتصفح:</span>
+                  </div>
+                  <div id="activeAgentDisplay" class="font-mono font-bold text-xs sm:text-sm text-emerald-300 truncate" dir="ltr"></div>
+                </div>
+              </div>
+              <button type="button" onclick="promptChangeAgentEmail()" class="text-[11px] text-slate-400 hover:text-white underline cursor-pointer shrink-0 transition" title="تغيير إيميل الموظف على هذا المتصفح">
+                تغيير الإيميل
+              </button>
             </div>
 
-            <div>
-              <label class="block text-xs font-bold text-slate-300 mb-1.5">
-                ملاحظات إضافية (اختياري)
+            <!-- Case B: First Time Setup (Only shown if no email saved yet) -->
+            <div id="agentEmailSetupBox" class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-2">
+              <label class="block text-xs font-bold text-amber-300">
+                👤 إيميلك كموظف خدمة عملاء (يُطلب لمرة واحدة فقط ويحفظه المتصفح تلقائياً) <span class="text-rose-400">*</span>
               </label>
-              <input type="text" id="clientNotes" placeholder="أي تفاصيل خاصة بحالة العميل..."
-                     class="input-field w-full px-4 py-2 rounded-xl text-sm">
+              <input type="email" id="csAgentEmailInput" placeholder="name@wahetnor.com" dir="ltr"
+                     class="input-field w-full px-4 py-2.5 rounded-xl text-sm text-left font-mono">
+              <p class="text-[11px] text-slate-400 leading-relaxed">
+                ⚡ بمجرد كتابته لأول مرة، سيتذكره المتصفح ويسجل كافة العملاء القادمين باسمك تلقائياً دون الحاجة لكتابته مجدداً.
+              </p>
             </div>
+          </div>
+
+          <!-- NOTES (FULL WIDTH) -->
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">
+              ملاحظات إضافية على العميل (اختياري)
+            </label>
+            <input type="text" id="clientNotes" placeholder="أي تفاصيل خاصة بحالة العميل..."
+                   class="input-field w-full px-4 py-2.5 rounded-xl text-sm">
           </div>
 
         </div>
@@ -288,8 +312,77 @@
     // Central Google Apps Script Webhook (Cloud Database)
     const CLOUD_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbx9-AIbMs5_JFHLlfks7Jumv8j3NCDc-JkZu0cJVtmbW5Fx0bZ2_494TVsjARGyJZTNZA/exec';
     const STORAGE_KEY = 'wahetnor_client_deposits_v1';
+    const AGENT_EMAIL_KEY = 'wahetnor_cs_agent_email';
 
     let currentReceiptBase64 = '';
+
+    // Retrieve agent email: Check URL (?agent=...) first, then localStorage
+    function getSavedAgentEmail() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const urlEmail = params.get('agent') || params.get('email');
+        if (urlEmail && urlEmail.includes('@')) {
+          const cleanEmail = urlEmail.trim().toLowerCase();
+          localStorage.setItem(AGENT_EMAIL_KEY, cleanEmail);
+          return cleanEmail;
+        }
+        return localStorage.getItem(AGENT_EMAIL_KEY) || localStorage.getItem('last_cs_agent_email') || '';
+      } catch (e) {
+        return '';
+      }
+    }
+
+    function setSavedAgentEmail(email) {
+      try {
+        localStorage.setItem(AGENT_EMAIL_KEY, email);
+        localStorage.setItem('last_cs_agent_email', email);
+      } catch (e) {}
+    }
+
+    function updateAgentUI() {
+      const email = getSavedAgentEmail();
+      const badge = document.getElementById('agentActiveBadge');
+      const setupBox = document.getElementById('agentEmailSetupBox');
+      const display = document.getElementById('activeAgentDisplay');
+      const input = document.getElementById('csAgentEmailInput');
+
+      if (!badge || !setupBox) return;
+
+      if (email && email.includes('@')) {
+        badge.classList.remove('hidden');
+        setupBox.classList.add('hidden');
+        if (display) display.textContent = email;
+        if (input) {
+          input.value = email;
+          input.removeAttribute('required');
+        }
+      } else {
+        badge.classList.add('hidden');
+        setupBox.classList.remove('hidden');
+        if (input) {
+          input.value = '';
+          input.setAttribute('required', 'required');
+        }
+      }
+      lucide.createIcons();
+    }
+
+    function promptChangeAgentEmail() {
+      const current = getSavedAgentEmail();
+      const newEmail = prompt('أدخل إيميل موظف خدمة العملاء الجديد لهذا الجهاز:', current);
+      if (newEmail !== null) {
+        const clean = newEmail.trim().toLowerCase();
+        if (clean.includes('@') && clean.includes('.')) {
+          setSavedAgentEmail(clean);
+          updateAgentUI();
+        } else if (clean === '') {
+          setSavedAgentEmail('');
+          updateAgentUI();
+        } else {
+          alert('يرجى إدخال بريد إلكتروني صحيح (يحتوي على @ و .).');
+        }
+      }
+    }
 
     // Auto suggest amount based on package & duration
     function autoSuggestPrice() {
@@ -401,9 +494,24 @@
       const timestamp = new Date().toISOString();
       const localDate = new Date().toLocaleString('ar-EG');
 
-      const agentEmail = document.getElementById('csAgentEmail').value.trim();
-      if (agentEmail) {
-        try { localStorage.setItem('last_cs_agent_email', agentEmail); } catch(e) {}
+      // Resolve agent email automatically from browser
+      let agentEmail = getSavedAgentEmail();
+      if (!agentEmail || !agentEmail.includes('@')) {
+        const inputElem = document.getElementById('csAgentEmailInput');
+        const inputVal = inputElem ? inputElem.value.trim().toLowerCase() : '';
+        if (!inputVal || !inputVal.includes('@')) {
+          alert('⚠️ يرجى إدخال إيميلك لمرة واحدة فقط ليتم حفظه تلقائياً في المتصفح.');
+          if (inputElem) inputElem.focus();
+          submitBtn.disabled = false;
+          btnText.innerText = 'تسجيل العميل وإرسال البيانات للداشبورد 🚀';
+          btnIcon.setAttribute('data-lucide', 'send');
+          btnIcon.classList.remove('animate-spin');
+          lucide.createIcons();
+          return;
+        }
+        setSavedAgentEmail(inputVal);
+        agentEmail = inputVal;
+        updateAgentUI();
       }
 
       const clientData = {
@@ -478,11 +586,7 @@
     }
 
     function resetForm() {
-      const savedEmail = localStorage.getItem('last_cs_agent_email') || '';
       document.getElementById('clientDepositForm').reset();
-      if (savedEmail && document.getElementById('csAgentEmail')) {
-        document.getElementById('csAgentEmail').value = savedEmail;
-      }
       currentReceiptBase64 = '';
       document.getElementById('receiptFileInput').value = '';
       document.getElementById('uploadPrompt').classList.remove('hidden');
@@ -500,18 +604,14 @@
       btnIcon.classList.remove('animate-spin');
 
       autoSuggestPrice();
+      updateAgentUI();
       lucide.createIcons();
     }
 
     // Auto init
     window.addEventListener('DOMContentLoaded', () => {
       autoSuggestPrice();
-      try {
-        const savedEmail = localStorage.getItem('last_cs_agent_email');
-        if (savedEmail && document.getElementById('csAgentEmail')) {
-          document.getElementById('csAgentEmail').value = savedEmail;
-        }
-      } catch(e) {}
+      updateAgentUI();
     });
   </script>
 </body>

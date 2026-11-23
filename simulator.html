@@ -34,6 +34,35 @@
       outline: none;
       box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
     }
+      @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        padding: 10px !important;
+      }
+      .panel-card {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+        margin-bottom: 12px !important;
+      }
+      input[type=range], button, #toast-notify {
+        display: none !important;
+      }
+      .input-box {
+        background: #f8fafc !important;
+        border: 1px solid #94a3b8 !important;
+        color: #0f172a !important;
+      }
+      .text-white { color: #0f172a !important; }
+      .text-slate-300, .text-slate-400 { color: #334155 !important; }
+      .text-emerald-400, .text-emerald-300 { color: #047857 !important; }
+      .text-cyan-400, .text-cyan-300 { color: #0284c7 !important; }
+      .text-rose-400 { color: #be123c !important; }
+      .text-amber-400, .text-amber-300 { color: #b45309 !important; }
+    }
   </style>
 </head>
 <body class="p-3 sm:p-5 m-0 text-slate-100 antialiased">
@@ -63,6 +92,15 @@
         <button onclick="setScenario('growth')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white shadow-lg shadow-indigo-900/40 transition">
           مرحلة التوسع (70) 🚀
         </button>
+
+        <div class="flex items-center gap-1.5 mr-auto">
+          <button onclick="shareScenarioURL()" title="نسخ رابط السيناريو المالي مع كافة المدخلات الحالية" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-cyan-300 border border-slate-700 transition flex items-center gap-1 shadow">
+            <span>🔗</span> <span>نسخ الرابط</span>
+          </button>
+          <button onclick="window.print()" title="طباعة أو تصدير التقرير المالي كملف PDF" class="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-amber-300 border border-slate-700 transition flex items-center gap-1 shadow">
+            <span>📄</span> <span>تصدير PDF</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -321,15 +359,34 @@
             </div>
           </div>
 
-          <!-- Ad Spend Slider -->
+          <!-- Ad Spend Slider & Split CAC -->
           <div class="pt-2 border-t border-slate-800 space-y-1.5">
             <div class="flex justify-between font-bold">
               <span class="text-slate-300">ميزانية الإعلانات الشهرية:</span>
               <span id="val-ad-spend" class="font-black font-mono text-rose-400 text-sm">30,000 ج</span>
             </div>
             <input id="range-ad-spend" type="range" min="10000" max="80000" step="2500" value="30000" class="w-full" oninput="syncRange('ad-spend')">
+            
+            <!-- Split CAC between Egypt and GCC -->
+            <div class="grid grid-cols-2 gap-2 pt-1 text-[11px]">
+              <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-slate-400 font-bold flex items-center justify-between">
+                  <span>🇪🇬 CAC مصر:</span>
+                  <span id="val-cac-eg" class="font-mono text-emerald-400 font-black">438 ج</span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-0.5" id="val-spend-eg">ميزانية: ~11,800 ج</div>
+              </div>
+              <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+                <div class="text-slate-400 font-bold flex items-center justify-between">
+                  <span>🇸🇦 CAC الخليج:</span>
+                  <span id="val-cac-gcc" class="font-mono text-cyan-400 font-black">1,008 ج</span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-0.5" id="val-spend-gcc">ميزانية: ~18,200 ج ($20)</div>
+              </div>
+            </div>
+
             <div class="flex justify-between text-[11px] text-slate-300 pt-0.5">
-              <span>تكلفة الاستحواذ (CAC): <strong id="val-cac" class="font-mono text-emerald-400 font-bold">667 ج</strong></span>
+              <span>متوسط الاستحواذ المجمع (CAC): <strong id="val-cac" class="font-mono text-emerald-400 font-bold">667 ج</strong></span>
               <span>1,500 ج/يوم (20 يوم)</span>
             </div>
           </div>
@@ -433,6 +490,73 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Retention, LTV & Long-Term Cohort Economics Panel -->
+    <div class="panel-card rounded-2xl p-4 space-y-3.5 border-cyan-500/30">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+        <h2 class="font-black text-sm text-white flex items-center gap-2">
+          <span>🔄</span> معدل التجديد والقيمة الدائمة للعميل (Retention & Cohort LTV)
+        </h2>
+        <span class="text-xs font-bold text-cyan-300 bg-cyan-950/80 px-2.5 py-0.5 rounded-full border border-cyan-800">
+          استشراف أرباح الدفعة التراكمية
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3.5 text-xs">
+        <!-- Retention Controller -->
+        <div class="space-y-2 p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+          <div class="flex justify-between items-center font-bold">
+            <span class="text-slate-300">معدل التجديد الشهري المتوقع:</span>
+            <span id="val-retention" class="font-mono text-cyan-400 font-black text-sm">40%</span>
+          </div>
+          <input id="range-retention" type="range" min="15" max="75" step="5" value="40" class="w-full accent-cyan-400" oninput="syncRange('retention')">
+          <div class="flex justify-between text-[10px] text-slate-400 pt-0.5">
+            <span>20% تحفظي</span>
+            <span>40% واقعي ⭐</span>
+            <span>60% عالي</span>
+          </div>
+          <p class="text-[11px] text-slate-400 pt-1 leading-relaxed">
+            نسبة المشتركين شهرياً الذين يجددون اشتراكهم للشهر الثاني والثالث دون تكلفة إعلانات جديدة.
+          </p>
+        </div>
+
+        <!-- LTV & Multipliers -->
+        <div class="space-y-2 p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="text-slate-400 font-bold mb-1">القيمة الدائمة للمشترك (Customer LTV):</div>
+            <div id="kpi-ltv" class="text-2xl font-black text-emerald-400 font-mono">4,447 ج.م</div>
+          </div>
+          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <span class="text-slate-300 font-bold">مضاعف الاستحواذ (LTV : CAC):</span>
+            <span id="kpi-ltv-cac" class="font-mono text-emerald-300 font-black text-sm bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">6.7x مميز</span>
+          </div>
+          <div class="text-[10px] text-slate-400">
+            معيار النمو الصحي: أن يتجاوز LTV ثلاثة أضعاف الـ CAC (> 3.0x).
+          </div>
+        </div>
+
+        <!-- Cumulative Profit Forecast -->
+        <div class="space-y-2 p-3 rounded-xl bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-indigo-500/30">
+          <div class="font-bold text-indigo-300 flex items-center gap-1.5 mb-1">
+            <span>📈</span> الأرباح التراكمية لنفس الدفعة:
+          </div>
+          <div class="space-y-1.5 text-xs">
+            <div class="flex justify-between items-center py-1 border-b border-slate-800">
+              <span class="text-slate-300">أرباح الشهر الأول (السيولة الحالية):</span>
+              <span id="cohort-m1" class="font-mono font-bold text-white">0 ج.م</span>
+            </div>
+            <div class="flex justify-between items-center py-1 border-b border-slate-800">
+              <span class="text-slate-300">تراكمي 3 شهور (مع التجديد):</span>
+              <span id="cohort-m3" class="font-mono font-bold text-cyan-300">0 ج.م</span>
+            </div>
+            <div class="flex justify-between items-center py-1">
+              <span class="text-slate-300">تراكمي 6 شهور (LTV كامل):</span>
+              <span id="cohort-m6" class="font-mono font-black text-emerald-400 text-sm">0 ج.م</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Capacity & Strategic Benchmarks Box -->
@@ -599,6 +723,9 @@
       } else if (key === 'ad-spend') {
         const val = parseInt(document.getElementById('range-ad-spend').value);
         document.getElementById('val-ad-spend').innerText = val.toLocaleString() + ' ج';
+      } else if (key === 'retention') {
+        const val = parseInt(document.getElementById('range-retention').value);
+        document.getElementById('val-retention').innerText = val + '%';
       }
       calculate();
     }
@@ -712,8 +839,65 @@
       const adRatio = totalRevenue > 0 ? Math.round((adSpend / totalRevenue) * 100) : 0;
       document.getElementById('kpi-ad-ratio').innerText = 'الإعلانات: ' + adRatio + '% من الدخل';
 
+      // Split CAC Calculation (GCC weighted ~ 2.3x cost of Egypt)
+      const countEg = Math.round(totalMembers * egPct);
+      const countGcc = totalMembers - countEg;
+      const gccMultiplier = 2.3;
+      const effectiveAdUnits = countEg + (gccMultiplier * countGcc);
+
+      let cacEg = 0;
+      let cacGcc = 0;
+      let spendEg = 0;
+      let spendGcc = 0;
+
+      if (effectiveAdUnits > 0) {
+        cacEg = Math.round(adSpend / effectiveAdUnits);
+        cacGcc = Math.round(cacEg * gccMultiplier);
+        spendEg = Math.round(countEg * cacEg);
+        spendGcc = adSpend - spendEg;
+      }
+
       const cac = totalMembers > 0 ? Math.round(adSpend / totalMembers) : 0;
       document.getElementById('val-cac').innerText = cac.toLocaleString() + ' ج';
+      document.getElementById('val-cac-eg').innerText = cacEg.toLocaleString() + ' ج';
+      document.getElementById('val-spend-eg').innerText = 'ميزانية: ~' + spendEg.toLocaleString() + ' ج';
+      document.getElementById('val-cac-gcc').innerText = cacGcc.toLocaleString() + ' ج';
+      document.getElementById('val-spend-gcc').innerText = 'ميزانية: ~' + spendGcc.toLocaleString() + ' ج ($' + Math.round(cacGcc / USD_RATE) + ')';
+
+      // Retention & LTV Calculations
+      const retentionRate = (parseInt(document.getElementById('range-retention') ? document.getElementById('range-retention').value : 40) || 40) / 100;
+      
+      const p1BlendedElite = (egPct * p1EliteEg) + (gccPct * p1EliteGcc);
+      const p1BlendedMix = (egPct * p1MixEg) + (gccPct * p1MixGcc);
+      const p1BlendedComm = (egPct * p1CommEg) + (gccPct * p1CommGcc);
+      const avg1M = ((pctElite / 100) * p1BlendedElite) + ((pctMix / 100) * p1BlendedMix) + ((pctComm / 100) * p1BlendedComm);
+
+      const p3BlendedElite = (egPct * P_3M_ELITE_EG) + (gccPct * P_3M_ELITE_GCC);
+      const p3BlendedMix = (egPct * P_3M_MIX_EG) + (gccPct * P_3M_MIX_GCC);
+      const p3BlendedComm = (egPct * P_3M_COMM_EG) + (gccPct * P_3M_COMM_GCC);
+      const avg3M = ((pctElite / 100) * p3BlendedElite) + ((pctMix / 100) * p3BlendedMix) + ((pctComm / 100) * p3BlendedComm);
+
+      const ltv1M = retentionRate < 1 ? (avg1M / (1 - retentionRate)) : (avg1M * 3);
+      const ltv3M = avg3M * 1.35; // conservative extension for 3M cohort
+      const cohortLTV = Math.round(((1 - pct3M) * ltv1M) + (pct3M * ltv3M));
+
+      if (document.getElementById('kpi-ltv')) {
+        document.getElementById('kpi-ltv').innerText = cohortLTV.toLocaleString() + ' ج.م';
+        const ltvRatio = cac > 0 ? (cohortLTV / cac).toFixed(1) : '0';
+        document.getElementById('kpi-ltv-cac').innerText = ltvRatio + 'x ' + (parseFloat(ltvRatio) >= 3.0 ? 'مميز' : 'مقبول');
+      }
+
+      // Cumulative Cohort Profits Forecast
+      if (document.getElementById('cohort-m1')) {
+        document.getElementById('cohort-m1').innerText = Math.round(drNetProfit).toLocaleString() + ' ج.م';
+        // Month 3: M1 profit + month 2 and month 3 renewals (almost pure profit as CAC is already paid)
+        const monthlyRenewals = count1M * retentionRate;
+        const extraRevM23 = Math.round(monthlyRenewals * avg1M * 1.6);
+        const profitM3 = drNetProfit + extraRevM23;
+        document.getElementById('cohort-m3').innerText = Math.round(profitM3).toLocaleString() + ' ج.م';
+        const profitM6 = Math.round(drNetProfit + (extraRevM23 * 2.1));
+        document.getElementById('cohort-m6').innerText = Math.round(profitM6).toLocaleString() + ' ج.م';
+      }
 
       // Net Profit & OM Profit Share
       const netProfitBeforeOM = totalRevenue - totalExpenses;
@@ -793,9 +977,77 @@
       }
     }
 
+        // Share & URL State Functions
+    function shareScenarioURL() {
+      const params = new URLSearchParams();
+      params.set('m', document.getElementById('range-total-members').value);
+      params.set('s3m', document.getElementById('range-split-3m').value);
+      params.set('gcc', document.getElementById('range-gcc-pct').value);
+      params.set('pe', document.getElementById('range-pct-elite').value);
+      params.set('pm', document.getElementById('range-pct-mix').value);
+      params.set('pc', document.getElementById('range-pct-comm').value);
+      params.set('ad', document.getElementById('range-ad-spend').value);
+      params.set('om', document.getElementById('rate-om').value);
+      if (document.getElementById('range-retention')) {
+        params.set('ret', document.getElementById('range-retention').value);
+      }
+
+      const newUrl = window.location.origin + window.location.pathname + '?' + params.toString();
+      window.history.replaceState({}, '', newUrl);
+
+      navigator.clipboard.writeText(newUrl).then(() => {
+        showToast('تم نسخ رابط السيناريو المالي بنجاح!');
+      }).catch(() => {
+        showToast('الرابط: ' + newUrl);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notify');
+      const toastMsg = document.getElementById('toast-msg');
+      if (toast && toastMsg) {
+        toastMsg.innerText = msg;
+        toast.classList.remove('opacity-0', 'pointer-events-none');
+        toast.classList.add('opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0', 'pointer-events-none');
+        }, 3000);
+      }
+    }
+
+    function loadStateFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (!urlParams.has('m')) return;
+
+      if (urlParams.has('m')) document.getElementById('range-total-members').value = urlParams.get('m');
+      if (urlParams.has('s3m')) document.getElementById('range-split-3m').value = urlParams.get('s3m');
+      if (urlParams.has('gcc')) document.getElementById('range-gcc-pct').value = urlParams.get('gcc');
+      if (urlParams.has('ad')) document.getElementById('range-ad-spend').value = urlParams.get('ad');
+      if (urlParams.has('om')) document.getElementById('rate-om').value = urlParams.get('om');
+      if (urlParams.has('ret') && document.getElementById('range-retention')) {
+        document.getElementById('range-retention').value = urlParams.get('ret');
+      }
+
+      if (urlParams.has('pe') && urlParams.has('pm') && urlParams.has('pc')) {
+        setDistPreset(parseInt(urlParams.get('pe')), parseInt(urlParams.get('pm')), parseInt(urlParams.get('pc')));
+      }
+
+      onSplit3MChange();
+      syncRange('total-members');
+      syncRange('gcc-pct');
+      syncRange('ad-spend');
+      if (document.getElementById('range-retention')) syncRange('retention');
+    }
+
     // Initial run
     updateDistUI();
+    loadStateFromURL();
     calculate();
   </script>
+  <!-- Toast Notification -->
+  <div id="toast-notify" class="fixed bottom-5 left-1/2 -translate-x-1/2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-2xl transition-all duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+    <span>✅</span> <span id="toast-msg">تم نسخ رابط السيناريو بنجاح!</span>
+  </div>
 </body>
 </html>

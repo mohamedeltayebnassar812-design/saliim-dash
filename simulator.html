@@ -2,177 +2,220 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>داشبورد المحاكاة المالية لمنظومة واحة نور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>داشبورد المحاكاة المالية — واحة نور</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    input[type=range] {
-      accent-color: var(--primary, #10b981);
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+      background-color: #070d17;
+      color: #f1f5f9;
     }
-    .metric-card {
-      background: var(--card, rgba(255,255,255,0.05));
-      border: 1px solid var(--card-border, rgba(255,255,255,0.1));
+    input[type=range] {
+      accent-color: #10b981;
+      height: 6px;
+      border-radius: 9999px;
+      background: #1e293b;
+    }
+    .panel-card {
+      background: #0d1726;
+      border: 1px solid #1e2e46;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    .input-box {
+      background: #132238;
+      border: 1px solid #2b4060;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .input-box:focus {
+      border-color: #10b981;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
     }
   </style>
 </head>
-<body class="bg-transparent text-[var(--foreground,#0f172a)] antialiased p-2 m-0 text-xs">
+<body class="p-3 sm:p-5 m-0 text-slate-100 antialiased">
 
-  <div class="max-w-5xl mx-auto space-y-4">
+  <div class="max-w-6xl mx-auto space-y-4">
     
-    <!-- Header & Presets -->
-    <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[var(--card-border,#e2e8f0)]">
+    <!-- Header -->
+    <div class="panel-card rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 border-emerald-500/30">
       <div>
-        <h1 class="text-base font-bold flex items-center gap-2">
-          <span>🌿</span> محاكي الجدوى المالية والتسعير المعتمد — واحة نور
+        <h1 class="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+          <span class="text-emerald-400 text-2xl">🌿</span> 
+          <span>محاكي الجدوى المالية والتسعير المعتمد — واحة نور</span>
         </h1>
-        <p class="text-[11px] text-[var(--muted-foreground,#64748b)]">تحكم لحظي في الأسعار الجديدة (2499 ج / 1499 ج / 999 ج)، وتكاليف الموظفين، والإعلانات</p>
+        <p class="text-xs text-slate-300 mt-0.5">
+          تحكم لحظي في الأسعار المعتمدة (<strong class="text-emerald-400">2499 ج</strong> · <strong class="text-emerald-400">1499 ج</strong> · <strong class="text-emerald-400">999 ج</strong>)، وتكاليف الموظفين والإعلانات ونقطة التعادل
+        </p>
       </div>
-      <div class="flex items-center gap-1.5 flex-wrap">
-        <span class="text-[10px] text-[var(--muted-foreground,#64748b)]">سيناريوهات سريعة:</span>
-        <button onclick="setScenario('breakeven')" class="px-2 py-1 rounded bg-[var(--secondary,#f1f5f9)] hover:bg-[var(--accent,#e2e8f0)] text-[10px] font-medium transition">نقطة التعادل (30)</button>
-        <button onclick="setScenario('standard')" class="px-2 py-1 rounded bg-[var(--primary,#10b981)] text-white hover:opacity-90 text-[10px] font-medium transition">الهدف القياسي (45)</button>
-        <button onclick="setScenario('growth')" class="px-2 py-1 rounded bg-[var(--secondary,#f1f5f9)] hover:bg-[var(--accent,#e2e8f0)] text-[10px] font-medium transition">مرحلة التوسع (70)</button>
+
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="text-xs text-slate-300 font-bold">سيناريوهات سريعة:</span>
+        <button onclick="setScenario('breakeven')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition shadow">
+          نقطة التعادل (30)
+        </button>
+        <button onclick="setScenario('standard')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-900/40 transition">
+          الهدف القياسي (45) ⭐
+        </button>
+        <button onclick="setScenario('growth')" class="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white shadow-lg shadow-indigo-900/40 transition">
+          مرحلة التوسع (70) 🚀
+        </button>
       </div>
     </div>
 
-    <!-- Top KPI Highlights -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-      <div class="metric-card rounded-lg p-3 text-center">
-        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">إجمالي الإيرادات</div>
-        <div id="kpi-revenue" class="text-base font-bold text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">0 ج.م</div>
-        <div id="kpi-arpu" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">متوسط المشترك: 0 ج</div>
+    <!-- 4 Key Metric Cards (High Contrast) -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <!-- Revenue -->
+      <div class="panel-card rounded-2xl p-4 border-r-4 border-r-emerald-500">
+        <div class="text-xs font-bold text-slate-300">إجمالي الإيرادات المتوقعة</div>
+        <div id="kpi-revenue" class="text-xl sm:text-2xl font-black text-emerald-400 font-mono mt-1">0 ج.م</div>
+        <div id="kpi-arpu" class="text-xs text-slate-300 font-semibold mt-1">متوسط المشترك: 0 ج</div>
       </div>
-      <div class="metric-card rounded-lg p-3 text-center">
-        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">إجمالي التكاليف (OPEX)</div>
-        <div id="kpi-expenses" class="text-base font-bold text-rose-500 font-mono mt-0.5">0 ج.م</div>
-        <div id="kpi-ad-ratio" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">الإعلانات: 0% من الدخل</div>
+
+      <!-- OPEX -->
+      <div class="panel-card rounded-2xl p-4 border-r-4 border-r-rose-500">
+        <div class="text-xs font-bold text-slate-300">إجمالي التكاليف (OPEX)</div>
+        <div id="kpi-expenses" class="text-xl sm:text-2xl font-black text-rose-400 font-mono mt-1">0 ج.م</div>
+        <div id="kpi-ad-ratio" class="text-xs text-slate-300 font-semibold mt-1">الإعلانات: 0% من الدخل</div>
       </div>
-      <div class="metric-card rounded-lg p-3 text-center">
-        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">صافي الربح الشهري</div>
-        <div id="kpi-profit" class="text-base font-bold font-mono mt-0.5 text-emerald-600">0 ج.م</div>
-        <div id="kpi-margin" class="text-[9px] font-semibold mt-0.5 text-emerald-600">هامش الربح: 0%</div>
+
+      <!-- Net Profit -->
+      <div class="panel-card rounded-2xl p-4 border-r-4 border-r-amber-400">
+        <div class="text-xs font-bold text-slate-300">صافي الربح الشهري الخالص</div>
+        <div id="kpi-profit" class="text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400">0 ج.م</div>
+        <div id="kpi-margin" class="text-xs font-black mt-1 text-emerald-400">هامش الربح: 0%</div>
       </div>
-      <div class="metric-card rounded-lg p-3 text-center border-l-2 border-l-emerald-500">
-        <div class="text-[10px] text-[var(--muted-foreground,#64748b)]">نقطة التعادل (Break-Even)</div>
-        <div id="kpi-breakeven" class="text-base font-bold font-mono mt-0.5 text-indigo-500">30 مشتركاً</div>
-        <div id="kpi-safety-margin" class="text-[9px] text-[var(--muted-foreground,#64748b)] mt-0.5">فائض أمان: 0 مشترك</div>
+
+      <!-- Break Even -->
+      <div class="panel-card rounded-2xl p-4 border-r-4 border-r-cyan-400">
+        <div class="text-xs font-bold text-slate-300">نقطة التعادل (Break-Even)</div>
+        <div id="kpi-breakeven" class="text-xl sm:text-2xl font-black font-mono mt-1 text-cyan-400">30 مشتركاً</div>
+        <div id="kpi-safety-margin" class="text-xs font-bold mt-1 text-emerald-400">فائض أمان: 0 مشترك</div>
       </div>
     </div>
 
-    <!-- Main Grid: Controls & Insights -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+    <!-- 3 Columns: Inputs & Controls -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-3.5">
 
       <!-- Column 1: Pricing Tiers Inputs -->
-      <div class="metric-card rounded-lg p-3 space-y-3">
-        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
-          <span class="flex items-center gap-1.5">🏷️ أسعار الباقات الثلاث (المحدثة)</span>
-          <span class="text-[9px] text-[var(--muted-foreground,#64748b)]">الدولار = 50 ج</span>
+      <div class="panel-card rounded-2xl p-4 space-y-3.5">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <h2 class="font-black text-sm text-white flex items-center gap-2">
+            <span>🏷️</span> أسعار الباقات الثلاث
+          </h2>
+          <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-lg border border-emerald-800/60">الدولار = 50 ج</span>
         </div>
 
-        <!-- Elite -->
-        <div class="space-y-1 bg-amber-500/5 p-2 rounded border border-amber-500/20">
-          <div class="flex justify-between items-center font-semibold text-amber-600 dark:text-amber-400">
-            <span>👑 باقة النخبة (Elite 1:1)</span>
-            <span class="text-[9px] bg-amber-500/20 px-1 rounded">سقف 15 مقعداً</span>
+        <!-- Elite Package -->
+        <div class="p-3 rounded-xl bg-amber-950/30 border border-amber-500/40 space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-black text-amber-300 text-xs">👑 باقة النخبة (Elite 1:1)</span>
+            <span class="text-[10px] font-bold bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30">سقف 15 مقعداً</span>
           </div>
-          <div class="grid grid-cols-2 gap-2 mt-1">
+          <div class="grid grid-cols-2 gap-2 text-xs">
             <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
-              <input id="price-elite-eg" type="number" step="100" value="2499" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-amber-600" oninput="calculate()">
+              <label class="block text-slate-300 font-bold mb-1">مصر (ج.م):</label>
+              <input id="price-elite-eg" type="number" step="100" value="2499" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-amber-300" oninput="calculate()">
             </div>
             <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
-              <input id="price-elite-gcc" type="number" step="1" value="79" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-amber-600" oninput="calculate()">
-            </div>
-          </div>
-        </div>
-
-        <!-- Mix -->
-        <div class="space-y-1 bg-emerald-500/5 p-2 rounded border border-emerald-500/30">
-          <div class="flex justify-between items-center font-semibold text-emerald-600 dark:text-emerald-400">
-            <span>⚡ باقة الميكس (Hybrid)</span>
-            <span class="text-[9px] bg-emerald-500 text-white px-1 rounded">الأكثر طلباً ⭐</span>
-          </div>
-          <div class="grid grid-cols-2 gap-2 mt-1">
-            <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
-              <input id="price-mix-eg" type="number" step="100" value="1499" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-emerald-600" oninput="calculate()">
-            </div>
-            <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
-              <input id="price-mix-gcc" type="number" step="1" value="49" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-emerald-600" oninput="calculate()">
+              <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
+              <input id="price-elite-gcc" type="number" step="1" value="79" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-amber-300" oninput="calculate()">
             </div>
           </div>
         </div>
 
-        <!-- Community -->
-        <div class="space-y-1 bg-blue-500/5 p-2 rounded border border-blue-500/20">
-          <div class="flex justify-between items-center font-semibold text-blue-600 dark:text-blue-400">
-            <span>🌟 باقة الكوميونيتي</span>
-            <span class="text-[9px]">جماعي فقط</span>
+        <!-- Mix Package -->
+        <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/40 space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-black text-emerald-300 text-xs">⚡ باقة الميكس (Hybrid)</span>
+            <span class="text-[10px] font-black bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full">الأكثر طلباً ⭐</span>
           </div>
-          <div class="grid grid-cols-2 gap-2 mt-1">
+          <div class="grid grid-cols-2 gap-2 text-xs">
             <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">مصر (ج.م)</label>
-              <input id="price-comm-eg" type="number" step="50" value="999" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-blue-600" oninput="calculate()">
+              <label class="block text-slate-300 font-bold mb-1">مصر (ج.م):</label>
+              <input id="price-mix-eg" type="number" step="100" value="1499" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-emerald-300" oninput="calculate()">
             </div>
             <div>
-              <label class="text-[9px] text-[var(--muted-foreground,#64748b)]">الخليج ($)</label>
-              <input id="price-comm-gcc" type="number" step="1" value="34" class="w-full px-1.5 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[11px] font-mono text-center font-bold text-blue-600" oninput="calculate()">
+              <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
+              <input id="price-mix-gcc" type="number" step="1" value="49" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-emerald-300" oninput="calculate()">
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Package -->
+        <div class="p-3 rounded-xl bg-cyan-950/30 border border-cyan-500/40 space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="font-black text-cyan-300 text-xs">🌟 باقة الكوميونيتي (Community)</span>
+            <span class="text-[10px] font-bold bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full border border-cyan-500/30">جماعي فقط</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <label class="block text-slate-300 font-bold mb-1">مصر (ج.م):</label>
+              <input id="price-comm-eg" type="number" step="50" value="999" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-cyan-300" oninput="calculate()">
+            </div>
+            <div>
+              <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
+              <input id="price-comm-gcc" type="number" step="1" value="34" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-cyan-300" oninput="calculate()">
             </div>
           </div>
         </div>
       </div>
 
       <!-- Column 2: Volume & Ad Spend Controls -->
-      <div class="metric-card rounded-lg p-3 space-y-3">
-        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
-          <span>👥 المشتركون والإعلانات</span>
-          <span id="readout-total-members" class="font-mono text-emerald-600 font-bold">45 مشترك</span>
+      <div class="panel-card rounded-2xl p-4 space-y-3.5">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <h2 class="font-black text-sm text-white flex items-center gap-2">
+            <span>👥</span> المشتركون والإعلانات
+          </h2>
+          <span id="readout-total-members" class="font-mono text-emerald-400 font-black text-xs bg-slate-900 px-2.5 py-0.5 rounded-lg border border-slate-700">45 مشترك</span>
         </div>
 
-        <div class="space-y-2">
+        <div class="space-y-3 text-xs">
           <div>
-            <div class="flex justify-between text-[10px]">
-              <span class="text-[var(--muted-foreground,#64748b)]">إجمالي المشتركين بالدفعة:</span>
-              <span id="val-total-members" class="font-bold font-mono">45</span>
+            <div class="flex justify-between font-bold mb-1">
+              <span class="text-slate-300">إجمالي المشتركين المستهدف:</span>
+              <span id="val-total-members" class="font-black font-mono text-emerald-400 text-sm">45</span>
             </div>
             <input id="range-total-members" type="range" min="10" max="100" value="45" class="w-full" oninput="syncRange('total-members')">
           </div>
 
           <div>
-            <div class="flex justify-between text-[10px]">
-              <span class="text-[var(--muted-foreground,#64748b)]">نسبة الخليج vs مصر:</span>
-              <span id="val-gcc-pct" class="font-mono">40% خليج · 60% مصر</span>
+            <div class="flex justify-between font-bold mb-1">
+              <span class="text-slate-300">نسبة الخليج vs مصر:</span>
+              <span id="val-gcc-pct" class="font-black font-mono text-cyan-400 text-xs">40% خليج · 60% مصر</span>
             </div>
             <input id="range-gcc-pct" type="range" min="10" max="80" value="40" class="w-full" oninput="syncRange('gcc-pct')">
           </div>
 
-          <div class="pt-1 border-t border-[var(--card-border,#e2e8f0)]">
-            <div class="text-[10px] text-[var(--muted-foreground,#64748b)] mb-1">توزيع المشتركين على الباقات:</div>
-            <div class="grid grid-cols-3 gap-1.5 text-center">
-              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
-                <div class="text-[8px] text-amber-500 font-bold">Elite (25%)</div>
-                <div id="count-elite" class="font-bold font-mono">11</div>
+          <div class="pt-2 border-t border-slate-800">
+            <div class="text-slate-300 font-bold mb-1.5">توزيع المشتركين على الباقات:</div>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
+                <div class="text-[10px] text-amber-400 font-bold">Elite (25%)</div>
+                <div id="count-elite" class="font-black font-mono text-white text-base">11</div>
               </div>
-              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
-                <div class="text-[8px] text-emerald-500 font-bold">Mix (50%)</div>
-                <div id="count-mix" class="font-bold font-mono">23</div>
+              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
+                <div class="text-[10px] text-emerald-400 font-bold">Mix (50%)</div>
+                <div id="count-mix" class="font-black font-mono text-white text-base">23</div>
               </div>
-              <div class="bg-[var(--card,#f8fafc)] p-1 rounded border border-[var(--card-border,#e2e8f0)]">
-                <div class="text-[8px] text-blue-500 font-bold">Comm (25%)</div>
-                <div id="count-comm" class="font-bold font-mono">11</div>
+              <div class="bg-slate-900/90 p-2 rounded-xl border border-slate-700">
+                <div class="text-[10px] text-cyan-400 font-bold">Comm (25%)</div>
+                <div id="count-comm" class="font-black font-mono text-white text-base">11</div>
               </div>
             </div>
           </div>
 
-          <div class="pt-1 border-t border-[var(--card-border,#e2e8f0)] space-y-1">
-            <div class="flex justify-between text-[10px]">
-              <span class="text-[var(--muted-foreground,#64748b)]">ميزانية الإعلانات الشهرية:</span>
-              <span id="val-ad-spend" class="font-bold font-mono text-rose-500">30,000 ج</span>
+          <div class="pt-2 border-t border-slate-800 space-y-1.5">
+            <div class="flex justify-between font-bold">
+              <span class="text-slate-300">ميزانية الإعلانات الشهرية:</span>
+              <span id="val-ad-spend" class="font-black font-mono text-rose-400 text-sm">30,000 ج</span>
             </div>
             <input id="range-ad-spend" type="range" min="10000" max="80000" step="2500" value="30000" class="w-full" oninput="syncRange('ad-spend')">
-            <div class="flex justify-between text-[8px] text-[var(--muted-foreground,#64748b)]">
-              <span>تكلفة الاستحواذ المقدرة (CAC): <strong id="val-cac" class="font-mono text-[var(--foreground,#0f172a)]">667 ج</strong></span>
+            <div class="flex justify-between text-[11px] text-slate-300 pt-0.5">
+              <span>تكلفة الاستحواذ (CAC): <strong id="val-cac" class="font-mono text-emerald-400 font-bold">667 ج</strong></span>
               <span>1,500 ج/يوم (20 يوم)</span>
             </div>
           </div>
@@ -180,43 +223,45 @@
       </div>
 
       <!-- Column 3: Salaries & Staffing OPEX -->
-      <div class="metric-card rounded-lg p-3 space-y-3">
-        <div class="font-bold flex items-center justify-between pb-1.5 border-b border-[var(--card-border,#e2e8f0)]">
-          <span>💼 رواتب ومصاريف الفريق</span>
-          <span id="readout-total-staff" class="font-mono text-rose-500 font-bold">25,500 ج</span>
+      <div class="panel-card rounded-2xl p-4 space-y-3.5">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+          <h2 class="font-black text-sm text-white flex items-center gap-2">
+            <span>💼</span> رواتب ومصاريف الفريق
+          </h2>
+          <span id="readout-total-staff" class="font-mono text-rose-400 font-black text-xs bg-slate-900 px-2.5 py-0.5 rounded-lg border border-slate-700">25,500 ج</span>
         </div>
 
-        <div class="space-y-2">
+        <div class="space-y-2 text-xs">
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">أخصائي التغذية (شهرياً):</label>
-            <input id="salary-nutri" type="number" step="500" value="9000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">أخصائي التغذية (شهرياً):</label>
+            <input id="salary-nutri" type="number" step="500" value="9000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">كوتش الحركة والنشاط:</label>
-            <input id="salary-coach" type="number" step="500" value="7000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">كوتش الحركة والنشاط:</label>
+            <input id="salary-coach" type="number" step="500" value="7000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">مسؤول مبيعات ودعم الواتساب:</label>
-            <input id="salary-sales" type="number" step="500" value="5000" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">مسؤول مبيعات ودعم الواتساب:</label>
+            <input id="salary-sales" type="number" step="500" value="5000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">عمولة مبيعات (لكل مشترك):</label>
-            <input id="sales-comm" type="number" step="10" value="100" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">عمولة مبيعات (لكل مشترك):</label>
+            <input id="sales-comm" type="number" step="10" value="100" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold text-emerald-400" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">سيرفرات وأدوات تقنية:</label>
-            <input id="cost-tech" type="number" step="200" value="2500" class="w-20 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">سيرفرات وأدوات تقنية:</label>
+            <input id="cost-tech" type="number" step="200" value="2500" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-[10px] text-[var(--muted-foreground,#64748b)] flex-1">عمولة بوابات الدفع (EasyKash):</label>
-            <div class="flex items-center gap-1">
-              <input id="rate-gateway" type="number" step="0.1" value="3.5" class="w-14 px-1 py-0.5 rounded border border-[var(--border,#cbd5e1)] bg-[var(--background,#ffffff)] text-[10px] font-mono text-center" oninput="calculate()">
-              <span class="text-[10px] text-[var(--muted-foreground,#64748b)]">%</span>
+            <label class="text-slate-300 font-bold flex-1">عمولة بوابات الدفع (EasyKash):</label>
+            <div class="flex items-center gap-1.5">
+              <input id="rate-gateway" type="number" step="0.1" value="3.5" class="input-box w-16 p-1.5 rounded-xl text-center text-xs font-bold text-amber-300" oninput="calculate()">
+              <span class="text-slate-300 font-bold">%</span>
             </div>
           </div>
         </div>
@@ -225,60 +270,60 @@
     </div>
 
     <!-- Capacity & Strategic Benchmarks Box -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
       
       <!-- Staff Capacity Gauge -->
-      <div class="metric-card rounded-lg p-3 space-y-2">
-        <div class="font-bold flex items-center justify-between text-xs">
-          <span>⏱️ سعة وقت الفريق ومعدل الإشغال (Capacity)</span>
-          <span id="capacity-status-badge" class="px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-600">طاقة مريحة جداً</span>
+      <div class="panel-card rounded-2xl p-4 space-y-3">
+        <div class="flex items-center justify-between text-xs pb-2 border-b border-slate-800">
+          <span class="font-black text-white flex items-center gap-2">⏱️ سعة وقت الفريق ومعدل الإشغال (Capacity)</span>
+          <span id="capacity-status-badge" class="px-2.5 py-1 rounded-xl text-xs font-black bg-emerald-950 text-emerald-300 border border-emerald-500/40">طاقة مريحة جداً</span>
         </div>
-        <div class="space-y-1.5 text-[10px]">
+        <div class="space-y-2 text-xs">
           <div>
-            <div class="flex justify-between text-[9px] text-[var(--muted-foreground,#64748b)] mb-0.5">
+            <div class="flex justify-between text-slate-300 font-bold mb-1">
               <span>ساعات أخصائي التغذية شهرياً:</span>
-              <span id="nutri-hours" class="font-mono font-bold">24.3 ساعة</span>
+              <span id="nutri-hours" class="font-mono font-black text-emerald-400 text-sm">24.3 ساعة</span>
             </div>
-            <div class="w-full bg-[var(--border,#cbd5e1)] rounded-full h-1.5 overflow-hidden">
-              <div id="nutri-bar" class="bg-emerald-500 h-1.5 rounded-full" style="width: 30%"></div>
+            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+              <div id="nutri-bar" class="bg-emerald-500 h-2.5 rounded-full transition-all" style="width: 30%"></div>
             </div>
           </div>
           <div>
-            <div class="flex justify-between text-[9px] text-[var(--muted-foreground,#64748b)] mb-0.5">
+            <div class="flex justify-between text-slate-300 font-bold mb-1">
               <span>ساعات كوتش الحركة شهرياً:</span>
-              <span id="coach-hours" class="font-mono font-bold">22.5 ساعة</span>
+              <span id="coach-hours" class="font-mono font-black text-cyan-400 text-sm">22.5 ساعة</span>
             </div>
-            <div class="w-full bg-[var(--border,#cbd5e1)] rounded-full h-1.5 overflow-hidden">
-              <div id="coach-bar" class="bg-blue-500 h-1.5 rounded-full" style="width: 28%"></div>
+            <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700">
+              <div id="coach-bar" class="bg-cyan-500 h-2.5 rounded-full transition-all" style="width: 28%"></div>
             </div>
           </div>
-          <p id="capacity-note" class="text-[9px] text-[var(--muted-foreground,#64748b)] pt-1">
+          <p id="capacity-note" class="text-xs text-slate-300 pt-1 font-semibold leading-relaxed">
             الفريق يعمل بمعدل ~6 ساعات أسبوعياً فقط. طاقة استيعابية ممتازة ومريحة.
           </p>
         </div>
       </div>
 
       <!-- Guiding Benchmarks Checklist -->
-      <div class="metric-card rounded-lg p-3 space-y-1.5 text-[10px]">
-        <div class="font-bold text-xs flex items-center gap-1.5 text-indigo-500">
+      <div class="panel-card rounded-2xl p-4 space-y-2.5 text-xs">
+        <div class="font-black text-xs flex items-center gap-2 text-indigo-400 pb-2 border-b border-slate-800">
           <span>📌 أرقام استرشادية لنمو صحي (Healthy Benchmarks)</span>
         </div>
-        <div class="space-y-1">
-          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
-            <span class="text-[var(--muted-foreground,#64748b)]">هامش الربح الصافي المستهدف:</span>
-            <span class="font-bold text-emerald-600 font-mono">> 40% - 50%</span>
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between py-1 border-b border-slate-800/80">
+            <span class="text-slate-300 font-semibold">هامش الربح الصافي المستهدف:</span>
+            <span class="font-black text-emerald-400 font-mono text-sm">> 40% - 50%</span>
           </div>
-          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
-            <span class="text-[var(--muted-foreground,#64748b)]">نسبة مصاريف الإعلانات من الإيراد:</span>
-            <span class="font-bold text-blue-500 font-mono">< 30% - 35%</span>
+          <div class="flex items-center justify-between py-1 border-b border-slate-800/80">
+            <span class="text-slate-300 font-semibold">نسبة مصاريف الإعلانات من الإيراد:</span>
+            <span class="font-black text-cyan-400 font-mono text-sm">< 30% - 35%</span>
           </div>
-          <div class="flex items-center justify-between py-0.5 border-b border-[var(--card-border,#e2e8f0)]">
-            <span class="text-[var(--muted-foreground,#64748b)]">نسبة الرواتب الثابتة من الإيراد:</span>
-            <span class="font-bold text-amber-500 font-mono">< 25% - 30%</span>
+          <div class="flex items-center justify-between py-1 border-b border-slate-800/80">
+            <span class="text-slate-300 font-semibold">نسبة الرواتب الثابتة من الإيراد:</span>
+            <span class="font-black text-amber-400 font-mono text-sm">< 25% - 30%</span>
           </div>
-          <div class="flex items-center justify-between py-0.5">
-            <span class="text-[var(--muted-foreground,#64748b)]">الحد الأقصى الموصى به لمقاعد Elite:</span>
-            <span class="font-bold text-rose-500 font-mono">15 مقعداً شهرياً</span>
+          <div class="flex items-center justify-between py-1">
+            <span class="text-slate-300 font-semibold">الحد الأقصى الموصى به لمقاعد Elite:</span>
+            <span class="font-black text-rose-400 font-mono text-sm">15 مقعداً شهرياً</span>
           </div>
         </div>
       </div>
@@ -390,17 +435,15 @@
       marginEl.innerText = 'هامش الربح: ' + margin + '%';
 
       if (netProfit >= 0) {
-        profitEl.className = 'text-base font-bold font-mono mt-0.5 text-emerald-600 dark:text-emerald-400';
-        marginEl.className = 'text-[9px] font-semibold mt-0.5 text-emerald-600 dark:text-emerald-400';
+        profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-emerald-400';
+        marginEl.className = 'text-xs font-black mt-1 text-emerald-400';
       } else {
-        profitEl.className = 'text-base font-bold font-mono mt-0.5 text-rose-500';
-        marginEl.className = 'text-[9px] font-semibold mt-0.5 text-rose-500';
+        profitEl.className = 'text-xl sm:text-2xl font-black font-mono mt-1 text-rose-400';
+        marginEl.className = 'text-xs font-black mt-1 text-rose-400';
       }
 
       // Break-Even Calculation
-      // Fixed Costs = adSpend + salNutri + salCoach + salSales + costTech
       const fixedCosts = adSpend + salNutri + salCoach + salSales + costTech;
-      // Contribution margin per member = arpu * (1 - gatewayRate) - salesComm
       const contributionPerMember = (arpu * (1 - gatewayRate)) - salesComm;
       const breakEvenMembers = contributionPerMember > 0 ? Math.ceil(fixedCosts / contributionPerMember) : 0;
       document.getElementById('kpi-breakeven').innerText = breakEvenMembers + ' مشتركاً';
@@ -409,10 +452,10 @@
       const safetyEl = document.getElementById('kpi-safety-margin');
       if (safetyMargin >= 0) {
         safetyEl.innerText = 'فائض أمان: +' + safetyMargin + ' مشترك';
-        safetyEl.className = 'text-[9px] text-emerald-600 font-medium mt-0.5';
+        safetyEl.className = 'text-xs font-black mt-1 text-emerald-400';
       } else {
         safetyEl.innerText = 'عجز لتحقيق التعادل: ' + safetyMargin + ' مشترك';
-        safetyEl.className = 'text-[9px] text-rose-500 font-medium mt-0.5';
+        safetyEl.className = 'text-xs font-black mt-1 text-rose-400';
       }
 
       // Capacity Calculation
@@ -436,15 +479,15 @@
 
       if (nutriHours <= 35) {
         badge.innerText = 'طاقة مريحة جداً';
-        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-600';
+        badge.className = 'px-2.5 py-1 rounded-xl text-xs font-black bg-emerald-950 text-emerald-300 border border-emerald-500/40';
         note.innerText = 'الفريق يعمل بمعدل ~' + (nutriHours / 4).toFixed(1) + ' ساعات أسبوعياً فقط. يمكن استيعاب حتى 50-60 مشتركاً دون أي توظيف إضافي.';
       } else if (nutriHours <= 60) {
         badge.innerText = 'طاقة عمل مثالية ومستقرة';
-        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-blue-500/20 text-blue-600';
+        badge.className = 'px-2.5 py-1 rounded-xl text-xs font-black bg-blue-950 text-cyan-300 border border-cyan-500/40';
         note.innerText = 'استغلال ممتاز لوقت الفريق (~' + (nutriHours / 4).toFixed(1) + ' ساعة أسبوعياً). لا حاجة لتوظيف جديد.';
       } else {
         badge.innerText = 'تنبيه: اقتراب من الحد الأقصى';
-        badge.className = 'px-2 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-600';
+        badge.className = 'px-2.5 py-1 rounded-xl text-xs font-black bg-amber-950 text-amber-300 border border-amber-500/40';
         note.innerText = 'ضغط جلسات مرتفع (~' + (nutriHours / 4).toFixed(1) + ' ساعة أسبوعياً). ستحتاج لإضافة أخصائي ثانٍ عند تجاوز هذا الرقم.';
       }
     }

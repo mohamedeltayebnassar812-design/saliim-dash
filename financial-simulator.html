@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>داشبورد المحاكاة المالية — واحة نور</title>
+  <title>داشبورد المحاكاة المالية والتسعير — واحة نور</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
@@ -48,14 +48,14 @@
           <span>محاكي الجدوى المالية والتسعير المعتمد — واحة نور</span>
         </h1>
         <p class="text-xs text-slate-300 mt-0.5">
-          تحكم لحظي في الأسعار المعتمدة (<strong class="text-emerald-400">2499 ج</strong> · <strong class="text-emerald-400">1499 ج</strong> · <strong class="text-emerald-400">999 ج</strong>)، وتكاليف الموظفين والإعلانات ونقطة التعادل
+          الأسعار المعتمدة: الخليج (<strong class="text-emerald-400">$99 · $59 · $35</strong>) · مصر (<strong class="text-emerald-400">2499 ج · 1499 ج · 999 ج</strong>) · عروض 3 شهور بسعر شهرين
         </p>
       </div>
 
       <div class="flex items-center gap-2 flex-wrap">
         <span class="text-xs text-slate-300 font-bold">سيناريوهات سريعة:</span>
         <button onclick="setScenario('breakeven')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition shadow">
-          نقطة التعادل (30)
+          نقطة التعادل (28)
         </button>
         <button onclick="setScenario('standard')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-900/40 transition">
           الهدف القياسي (45) ⭐
@@ -92,8 +92,57 @@
       <!-- Break Even -->
       <div class="panel-card rounded-2xl p-4 border-r-4 border-r-cyan-400">
         <div class="text-xs font-bold text-slate-300">نقطة التعادل (Break-Even)</div>
-        <div id="kpi-breakeven" class="text-xl sm:text-2xl font-black font-mono mt-1 text-cyan-400">30 مشتركاً</div>
+        <div id="kpi-breakeven" class="text-xl sm:text-2xl font-black font-mono mt-1 text-cyan-400">28 مشتركاً</div>
         <div id="kpi-safety-margin" class="text-xs font-bold mt-1 text-emerald-400">فائض أمان: 0 مشترك</div>
+      </div>
+    </div>
+
+    <!-- 3-Month Offer Special Banner -->
+    <div class="panel-card rounded-2xl p-4 border-indigo-500/40 bg-gradient-to-r from-indigo-950/40 via-slate-900 to-emerald-950/40">
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🔥</span>
+          <span class="font-black text-sm text-white">عروض الـ 3 شهور الحصرية (ادفع شهرين واحصل على الثالث مجاناً 🎁):</span>
+        </div>
+        <span class="text-[11px] font-bold text-emerald-400 bg-emerald-950 px-2.5 py-0.5 rounded-full border border-emerald-800">تضمن استمرار العميل 90 يوماً وتدفق نقدي فوري</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3 text-xs">
+        <!-- Elite 3-Months -->
+        <div class="p-2.5 rounded-xl bg-amber-950/30 border border-amber-500/40 flex justify-between items-center">
+          <div>
+            <div class="font-bold text-amber-300">👑 باقة النخبة (3 شهور)</div>
+            <div class="text-[10px] text-slate-400">وفر شهر كامل (2,499 ج / $99)</div>
+          </div>
+          <div class="text-left font-mono">
+            <div class="font-black text-amber-400 text-sm">4,999 ج.م</div>
+            <div class="text-[11px] font-bold text-amber-300">$198</div>
+          </div>
+        </div>
+
+        <!-- Mix 3-Months -->
+        <div class="p-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/40 flex justify-between items-center">
+          <div>
+            <div class="font-bold text-emerald-300">⚡ باقة الميكس (3 شهور)</div>
+            <div class="text-[10px] text-slate-400">وفر شهر كامل (1,499 ج / $59)</div>
+          </div>
+          <div class="text-left font-mono">
+            <div class="font-black text-emerald-400 text-sm">2,999 ج.م</div>
+            <div class="text-[11px] font-bold text-emerald-300">$118</div>
+          </div>
+        </div>
+
+        <!-- Community 3-Months -->
+        <div class="p-2.5 rounded-xl bg-cyan-950/30 border border-cyan-500/40 flex justify-between items-center">
+          <div>
+            <div class="font-bold text-cyan-300">🌟 الكوميونيتي</div>
+            <div class="text-[10px] text-rose-300 font-semibold">مصر: شهري فقط (بدون عروض)</div>
+          </div>
+          <div class="text-left font-mono">
+            <div class="font-bold text-slate-300 text-xs">مصر: 999 ج/شهر</div>
+            <div class="text-[11px] font-black text-cyan-400">الخليج: $70 (3 شهور)</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -104,7 +153,7 @@
       <div class="panel-card rounded-2xl p-4 space-y-3.5">
         <div class="flex items-center justify-between pb-2 border-b border-slate-800">
           <h2 class="font-black text-sm text-white flex items-center gap-2">
-            <span>🏷️</span> أسعار الباقات الثلاث
+            <span>🏷️</span> الأسعار الشهرية الأساسية
           </h2>
           <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-lg border border-emerald-800/60">الدولار = 50 ج</span>
         </div>
@@ -122,7 +171,7 @@
             </div>
             <div>
               <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
-              <input id="price-elite-gcc" type="number" step="1" value="79" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-amber-300" oninput="calculate()">
+              <input id="price-elite-gcc" type="number" step="1" value="99" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-amber-300" oninput="calculate()">
             </div>
           </div>
         </div>
@@ -140,7 +189,7 @@
             </div>
             <div>
               <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
-              <input id="price-mix-gcc" type="number" step="1" value="49" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-emerald-300" oninput="calculate()">
+              <input id="price-mix-gcc" type="number" step="1" value="59" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-emerald-300" oninput="calculate()">
             </div>
           </div>
         </div>
@@ -158,7 +207,7 @@
             </div>
             <div>
               <label class="block text-slate-300 font-bold mb-1">الخليج ($):</label>
-              <input id="price-comm-gcc" type="number" step="1" value="34" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-cyan-300" oninput="calculate()">
+              <input id="price-comm-gcc" type="number" step="1" value="35" class="input-box w-full p-2 rounded-xl text-center text-sm font-black text-cyan-300" oninput="calculate()">
             </div>
           </div>
         </div>
@@ -311,7 +360,7 @@
         <div class="space-y-1.5">
           <div class="flex items-center justify-between py-1 border-b border-slate-800/80">
             <span class="text-slate-300 font-semibold">هامش الربح الصافي المستهدف:</span>
-            <span class="font-black text-emerald-400 font-mono text-sm">> 40% - 50%</span>
+            <span class="font-black text-emerald-400 font-mono text-sm">> 45% - 55%</span>
           </div>
           <div class="flex items-center justify-between py-1 border-b border-slate-800/80">
             <span class="text-slate-300 font-semibold">نسبة مصاريف الإعلانات من الإيراد:</span>
@@ -352,7 +401,7 @@
 
     function setScenario(type) {
       if (type === 'breakeven') {
-        document.getElementById('range-total-members').value = 30;
+        document.getElementById('range-total-members').value = 28;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
       } else if (type === 'standard') {

@@ -55,7 +55,7 @@
       <div class="flex items-center gap-2 flex-wrap">
         <span class="text-xs text-slate-300 font-bold">سيناريوهات سريعة:</span>
         <button onclick="setScenario('breakeven')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 transition shadow">
-          نقطة التعادل (27)
+          نقطة التعادل (29)
         </button>
         <button onclick="setScenario('standard')" class="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white shadow-lg shadow-emerald-900/40 transition">
           الهدف القياسي (45) ⭐
@@ -352,8 +352,8 @@
           </div>
 
           <div class="flex items-center justify-between gap-2">
-            <label class="text-slate-300 font-bold flex-1">أخصائي التغذية (شهرياً):</label>
-            <input id="salary-nutri" type="number" step="500" value="9000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold" oninput="calculate()">
+            <label class="text-slate-300 font-bold flex-1">أخصائي التغذية والكوميونيتي:</label>
+            <input id="salary-nutri" type="number" step="500" value="15000" class="input-box w-24 p-1.5 rounded-xl text-center text-xs font-bold text-emerald-300" oninput="calculate()">
           </div>
 
           <div class="flex items-center justify-between gap-2">
@@ -605,7 +605,7 @@
 
     function setScenario(type) {
       if (type === 'breakeven') {
-        document.getElementById('range-total-members').value = 27;
+        document.getElementById('range-total-members').value = 29;
         document.getElementById('range-gcc-pct').value = 40;
         document.getElementById('range-ad-spend').value = 30000;
         setSplitPreset(30);
@@ -756,9 +756,12 @@
         safetyEl.className = 'text-xs font-black mt-1 text-rose-400';
       }
 
-      // Capacity Calculation
-      const nutriMinutes = (countElite * 70) + (countMix * 30);
-      const coachMinutes = (countElite * 60) + (countMix * 30);
+      // Capacity Calculation based on specific protocols:
+      // Elite: 3 sessions x 40m = 120m Nutri | 2 sessions x 30m = 60m Coach
+      // Mix: 40m Nutri | 40m Coach
+      // Comm: Continuous community support & replies ~ 20m per member/month Nutri
+      const nutriMinutes = (countElite * 120) + (countMix * 40) + (countComm * 20);
+      const coachMinutes = (countElite * 60) + (countMix * 40);
 
       const nutriHours = (nutriMinutes / 60).toFixed(1);
       const coachHours = (coachMinutes / 60).toFixed(1);
@@ -775,11 +778,11 @@
       const badge = document.getElementById('capacity-status-badge');
       const note = document.getElementById('capacity-note');
 
-      if (nutriHours <= 35) {
+      if (nutriHours <= 45) {
         badge.innerText = 'طاقة مريحة جداً';
         badge.className = 'px-2.5 py-1 rounded-xl text-xs font-black bg-emerald-950 text-emerald-300 border border-emerald-500/40';
-        note.innerText = 'الفريق يعمل بمعدل ~' + (nutriHours / 4).toFixed(1) + ' ساعات أسبوعياً فقط. يمكن استيعاب حتى 50-60 مشتركاً دون أي توظيف إضافي.';
-      } else if (nutriHours <= 60) {
+        note.innerText = 'الفريق يعمل بمعدل ~' + (nutriHours / 4).toFixed(1) + ' ساعات أسبوعياً (شامل جلسات 1:1 والدعم المستمر للكوميونيتي). طاقة مستقرة ومريحة جداً.';
+      } else if (nutriHours <= 70) {
         badge.innerText = 'طاقة عمل مثالية ومستقرة';
         badge.className = 'px-2.5 py-1 rounded-xl text-xs font-black bg-blue-950 text-cyan-300 border border-cyan-500/40';
         note.innerText = 'استغلال ممتاز لوقت الفريق (~' + (nutriHours / 4).toFixed(1) + ' ساعة أسبوعياً). لا حاجة لتوظيف جديد.';
